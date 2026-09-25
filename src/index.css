@@ -1,0 +1,388 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   nexsate.com Kyndryl-inspired theme tokens
+   (class names keep the historical `shell-*` prefix so component
+   markup stays untouched — only values rotate)
+   ------------------------------------------------------------------ */
+@theme {
+  --color-shell-red: #ff462d;        /* Kyndryl warm-red coral: buttons, links */
+  --color-shell-red-dark: #cc1800;   /* warm-red-70 hover */
+  --color-shell-green: #24c060;      /* Kyndryl spring-green CTA */
+  --color-shell-green-dark: #1fa452; /* spring-green-40 hover */
+  --color-shell-yellow: #4cdd84;     /* spring-green-20 accent on dark surfaces */
+  --color-shell-black: #0e1114;
+  --color-shell-gray-900: #15191d;
+  --color-shell-gray-700: #333a3f;
+  --color-shell-gray-500: #5f6b72;
+  --color-shell-gray-300: #d8dbdd;
+  --color-shell-gray-100: #f4f5f6;
+  --color-shell-white: #ffffff;
+
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --container-shell: 80rem; /* 1280px content width */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Keep anchored sections clear of the sticky header (feel polish). */
+  section[id] {
+    scroll-margin-top: 6.5rem;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-shell-gray-900);
+    background: var(--color-shell-white);
+    -webkit-font-smoothing: antialiased;
+    /* Guard against accidental horizontal scrolling on small screens.
+       `clip` (not `hidden`) so the sticky header keeps working. */
+    overflow-x: clip;
+  }
+
+  /* Visible focus ring for keyboard users. */
+  :focus-visible {
+    outline: 2px solid var(--color-shell-red);
+    outline-offset: 2px;
+  }
+}
+
+/* Custom classes live in @layer components so Tailwind utilities
+   (max-w-*, px-*, text-* …) can override them — unlayered CSS would
+   always beat layered utilities in the cascade. */
+@layer components {
+  /* Utility helpers matching the site layout look & feel */
+  .shell-container {
+    width: 100%;
+    max-width: var(--container-shell);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell-container {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Primary pill button — tactile hover lift + press feedback */
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1;
+    padding: 0.875rem 1.5rem;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  }
+  .btn-pill:hover {
+    transform: translateY(-1px);
+  }
+  .btn-pill:active {
+    transform: translateY(0) scale(0.97);
+  }
+
+  .btn-pill--primary {
+    background: var(--color-shell-red);
+    color: #fff;
+  }
+  .btn-pill--primary:hover {
+    background: var(--color-shell-red-dark);
+    box-shadow: 0 10px 22px -8px rgba(255, 70, 45, 0.55);
+  }
+
+  .btn-pill--outline {
+    background: transparent;
+    color: var(--color-shell-gray-900);
+    box-shadow: inset 0 0 0 1px var(--color-shell-gray-900);
+  }
+  .btn-pill--outline:hover {
+    background: var(--color-shell-gray-900);
+    color: #fff;
+    box-shadow: inset 0 0 0 1px var(--color-shell-gray-900), 0 10px 22px -10px rgba(15, 30, 46, 0.55);
+  }
+
+  .btn-pill--ghost-light {
+    background: transparent;
+    color: #fff;
+    box-shadow: inset 0 0 0 1px #fff;
+  }
+  .btn-pill--ghost-light:hover {
+    background: #fff;
+    color: var(--color-shell-gray-900);
+    box-shadow: inset 0 0 0 1px #fff, 0 10px 22px -10px rgba(15, 30, 46, 0.55);
+  }
+
+  .btn-pill--green {
+    background: var(--color-shell-green);
+    color: #fff;
+  }
+  .btn-pill--green:hover {
+    background: var(--color-shell-green-dark);
+    box-shadow: 0 10px 22px -8px rgba(36, 192, 96, 0.55);
+  }
+
+  /* Floating nav bar (Kyndryl-style): dark frosted glass over the hero. */
+  .nav-glass {
+    background: rgba(14, 17, 20, 0.32);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      0 12px 32px -12px rgba(0, 0, 0, 0.35);
+  }
+
+  /* ------------------------------------------------------------------
+     Transparent mirror (glass) cards — translucent surface + backdrop
+     blur (\"mirrors\" whatever sits behind), thin tinted border, and a
+     specular light-sweep on hover. NOTE: hover lift uses the standalone
+     `translate` property (not `transform`) so it never fights the
+     scroll-reveal animation fill on the same element.
+     ------------------------------------------------------------------ */
+  .glass-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(214, 228, 240, 0.9);
+    box-shadow:
+      0 8px 32px rgba(11, 27, 43, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition:
+      translate 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+  .glass-card:hover {
+    translate: 0 -4px;
+    border-color: rgba(255, 70, 45, 0.55);
+    box-shadow:
+      0 18px 44px rgba(11, 27, 43, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  /* The \"mirror\" reflection — a sheen band sweeps across on hover. */
+  .glass-card::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 70%
+    );
+    transform: translateX(-130%);
+    pointer-events: none;
+  }
+  .glass-card:hover::after {
+    animation: glassSheen 0.8s ease forwards;
+  }
+
+  /* Dark-surface variant (stats tiles, navy/photo backdrops). */
+  .glass-card--dark {
+    background: rgba(11, 27, 43, 0.4);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+  .glass-card--dark:hover {
+    border-color: rgba(255, 255, 255, 0.38);
+    box-shadow:
+      0 18px 44px rgba(0, 0, 0, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  }
+
+  /* Static panels (prose blocks, stat tiles): glass look, no lift/sheen. */
+  .glass-card--static:hover {
+    translate: none;
+    border-color: rgba(214, 228, 240, 0.9);
+    box-shadow:
+      0 8px 32px rgba(11, 27, 43, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  .glass-card--static:hover::after {
+    animation: none;
+  }
+  .glass-card--dark.glass-card--static:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  /* Micro glass chip for controls floating on imagery (hero arrows). */
+  .glass-chip {
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+      0 4px 16px rgba(0, 0, 0, 0.18);
+    transition: background-color 0.25s ease, transform 0.25s ease;
+  }
+  .glass-chip:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Progressive fallback where backdrop-filter is unsupported. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass-card {
+      background: rgba(255, 255, 255, 0.96);
+    }
+    .glass-card--dark {
+      background: rgba(11, 27, 43, 0.88);
+    }
+    .glass-chip {
+      background: rgba(11, 27, 43, 0.55);
+    }
+  }
+
+  /* Arrow link (text + animated →) */
+  .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--color-shell-red);
+  }
+  .arrow-link .arrow {
+    transition: transform 0.2s ease;
+  }
+  .arrow-link:hover .arrow {
+    transform: translateX(4px);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Motion layer — NanoSoft-style scroll reveals, hero word/layer
+   entrances, menu drops, banner + back-to-top entrances.
+   Keyframes follow animate.css semantics (subset the site uses).
+   ------------------------------------------------------------------ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  55% { opacity: 1; transform: scale(1.03); }
+  75% { transform: scale(0.985); }
+  100% { transform: none; }
+}
+@keyframes zoomInSoft {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes wordIn {
+  from { opacity: 0; transform: translateY(0.55em); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes kenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.07); }
+}
+@keyframes menuDrop {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bannerIn {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bttIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.85); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes glassSheen {
+  from { transform: translateX(-130%); }
+  to { transform: translateX(130%); }
+}
+
+@layer components {
+  /* Scroll reveals — armed only in the browser (see Reveal.jsx) */
+  .reveal--up { opacity: 0; transform: translateY(26px); }
+  .reveal--left { opacity: 0; transform: translateX(-30px); }
+  .reveal--right { opacity: 0; transform: translateX(30px); }
+  .reveal--fade { opacity: 0; }
+  .reveal--zoom { opacity: 0; transform: scale(0.94); }
+  .reveal--bounce { opacity: 0; transform: scale(0.9); }
+
+  .reveal.is-visible {
+    animation-duration: 0.64s;
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+    animation-fill-mode: both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal--up.is-visible { animation-name: fadeInUp; }
+  .reveal--left.is-visible { animation-name: fadeInLeft; }
+  .reveal--right.is-visible { animation-name: fadeInRight; }
+  .reveal--fade.is-visible { animation-name: fadeIn; }
+  .reveal--zoom.is-visible { animation-name: zoomInSoft; }
+  .reveal--bounce.is-visible { animation-name: bounceIn; animation-duration: 0.76s; }
+
+  .reveal-delay-1 { --reveal-delay: 90ms; }
+  .reveal-delay-2 { --reveal-delay: 180ms; }
+  .reveal-delay-3 { --reveal-delay: 270ms; }
+  .reveal-delay-4 { --reveal-delay: 360ms; }
+  .reveal-delay-5 { --reveal-delay: 450ms; }
+
+  /* Hero — Revolution-Slider-style staggered word/layer entrances */
+  .hero-word { display: inline-block; }
+  .hero-copy.is-active .hero-kicker {
+    animation: fadeInUp 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  .hero-copy.is-active .hero-word {
+    animation: wordIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) calc(130ms + var(--wi, 0) * 75ms) both;
+  }
+  .hero-copy.is-active .hero-text {
+    animation: fadeInUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.62s both;
+  }
+  .hero-copy.is-active .hero-cta {
+    animation: fadeInUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.78s both;
+  }
+  .hero-zoom { animation: kenBurns 9s ease-out both; }
+
+  /* Header panels — drop-in + staggered columns (mega menu, search, mobile) */
+  .menu-anim { animation: menuDrop 0.24s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+  .menu-anim .menu-col { animation: fadeInUp 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+  .menu-anim .menu-col:nth-child(1) { animation-delay: 0.06s; }
+  .menu-anim .menu-col:nth-child(2) { animation-delay: 0.12s; }
+  .menu-anim .menu-col:nth-child(3) { animation-delay: 0.18s; }
+  .menu-anim .menu-col:nth-child(4) { animation-delay: 0.24s; }
+  .menu-anim .menu-col:nth-child(5) { animation-delay: 0.3s; }
+  .panel-anim { animation: fadeInUp 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+
+  /* Cookie bar + floating back-to-top entrances */
+  .banner-in { animation: bannerIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s both; }
+  .back-to-top { animation: bttIn 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+}
+
+/* Reduced motion: neutralise every entrance (content simply shows) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
