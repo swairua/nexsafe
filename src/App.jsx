@@ -7,6 +7,7 @@ import HeroCarousel from './components/sections/HeroCarousel.jsx'
 import IntroBand from './components/sections/IntroBand.jsx'
 import CardGrid from './components/sections/CardGrid.jsx'
 import PicturesRow from './components/sections/PicturesRow.jsx'
+import PartnerStrip from './components/sections/PartnerStrip.jsx'
 import IndustriesStrip from './components/sections/IndustriesStrip.jsx'
 import ImageTextSplit from './components/sections/ImageTextSplit.jsx'
 import StatsStrip from './components/sections/StatsStrip.jsx'
@@ -72,6 +73,7 @@ export default function App() {
           <IntroBand />
           <CardGrid />
           <PicturesRow />
+          <PartnerStrip />
           <IndustriesStrip />
           <ImageTextSplit />
           <StatsStrip />

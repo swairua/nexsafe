@@ -23,6 +23,7 @@ Facebook, LinkedIn and X social channels.
 | `about` | IntroBand grid (in-page anchor) |
 | `it-solutions` | CardGrid (the seven services) |
 | `pictures` | PicturesRow (pictures straight after services) |
+| `partners` | PartnerStrip (vendor wall — roster from `src/data/partners.js`) |
 | `industries` | IndustriesStrip (six sectors + corporate-colour sweep button) |
 | `who-we-serve` | ImageTextSplit #1 |
 | `technology-stack` | ImageTextSplit #2 (replaces the old "Why nexsate" block) |
@@ -31,7 +32,7 @@ Facebook, LinkedIn and X social channels.
 | `support` | PromoBanner |
 
 Homepage order: Hero → IntroBand → **services grid** → **pictures** →
-industries → splits → stats → blog → promo → footer.
+**partners** → industries → splits → stats → blog → promo → footer.
 
 Breadcrumbs on inner pages map eyebrow → anchor via `SECTION_ANCHORS` in
 `PageView.jsx` (Company / IT solutions / Industries / Insights / Support;
@@ -105,20 +106,36 @@ Technology Stack, IT Solutions).
 ## 7. Theme tokens
 
 `src/index.css` `@theme` keeps the historical `shell-*` class names but the
-values are now corporate navy/blue:
+values now mirror the live nexsate.com blue/cyan scheme:
 
 | token | value | use |
 |-------|-------|-----|
-| `--color-shell-red` | `#0a7ffa` | buttons, links, accents |
-| `--color-shell-red-dark` | `#0b45f5` | hover |
-| `--color-shell-green` | `#0a7ffa` | CTA pills |
-| `--color-shell-yellow` | `#3aa0ff` | accents on dark surfaces |
+| `--color-shell-red` | `#0693e3` | corporate cyan-blue: buttons, links, accents |
+| `--color-shell-red-dark` | `#010ed0` | deep royal blue: hover, sweep gradient end |
+| `--color-shell-green` | `#0693e3` | CTA pills |
+| `--color-shell-yellow` | `#4aeadc` | turquoise highlight — dark surfaces only |
+| `--color-shell-cyan` | `#00a1e0` | secondary cyan: tiles, borders, gradients |
 | `--color-shell-black` | `#070e40` | navy hero / footer bands |
+
+Values were read off the live site (its 135° brand gradient starts at
+`rgb(6,147,227)`; the turquoise highlight appears in its accent gradients).
+`shell-yellow` is only ever used over navy, so the turquoise stays legible.
 
 `.btn-sweep` adds the doc-requested corporate-colour hover animation (blue
 fill wipes left→right, arrow nudges forward).
 
-## 8. Validation commands
+## 8. Partner roster
+
+`src/data/partners.js` is the single source of truth for vendors. Each entry is
+`{ name, area, status }`; `status` is `partner` (agreement held today) or
+`in-progress` (being finalized). The homepage wall, the "Our Partners" page and
+the "Partner ecosystem" page all render from this one array, so a vendor can
+never be claimed on one surface and missing on another. In-progress vendors are
+shown with a "Soon" badge and their own copy block — never presented as
+certified. Current roster: Microsoft, ServiceNow, Enboarder, SAP (in progress),
+Oracle (in progress), Cisco, Fortinet, Veeam, SentinelOne, Dell, Lenovo, HP.
+
+## 9. Validation commands
 
 ```powershell
 node scripts\check-syntax.mjs    # syntax gate over data + scripts

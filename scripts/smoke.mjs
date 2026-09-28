@@ -3,6 +3,7 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { createServer } from 'vite'
+import { readFile } from 'node:fs/promises'
 
 const server = await createServer({
   root: process.cwd(),
@@ -22,6 +23,10 @@ try {
   const notFoundHtml = renderToString(React.createElement(PageView, { page: undefined }))
   const policyHtml = renderToString(React.createElement(PageView, { page: pages['privacy-policy'] }))
   const termsHtml = renderToString(React.createElement(PageView, { page: pages['terms-conditions'] }))
+  const partnersPageHtml = renderToString(React.createElement(PageView, { page: pages['our-partners'] }))
+  const partnerEcosystemHtml = renderToString(React.createElement(PageView, { page: pages['partner-ecosystem'] }))
+  const { partners, activePartners, upcomingPartners } = await server.ssrLoadModule('/src/data/partners.js')
+  const css = await readFile('src/index.css', 'utf8')
   const leafHrefs = navItems.flatMap((i) => i.columns.flatMap((c) => c.links.map((l) => l.href)))
   const deepHrefs = [
     ...footerColumns.flatMap((c) => c.links.map((l) => l.href)),
@@ -39,6 +44,7 @@ try {
     'has intro band': html.includes('Simply enabling IT for a complex world') && html.includes('technology that works as one'),
     'has card grid': html.includes('Seven services that work as one') && html.includes('Data protection &amp; disaster recovery'),
     'has pictures row': html.includes('The people and platforms behind the services') && html.includes('id="pictures"'),
+    'has partner strip': html.includes('id="partners"') && html.includes('The platforms we run, support and license for you') && partners.every((p) => html.includes(p.name)),
     'has industries strip': html.includes('Six sectors, one accountable IT partner') && html.includes('btn-sweep'),
     'has split section': html.includes('Managed IT services customized for your industry') && html.includes('The stack behind technology that works as one.'),
     'has stats': html.includes('24/7') && html.includes('99.9%'),
@@ -91,6 +97,25 @@ try {
       termsHtml.includes('Province of Alberta') &&
       termsHtml.includes('Nexsate Technologies Inc.') &&
       termsHtml.includes('Edmonton'),
+    'pages: partner roster is consistent':
+      partners.length === 12 &&
+      activePartners.length === 10 &&
+      upcomingPartners.map((p) => p.name).join(', ') === 'SAP, Oracle' &&
+      new Set(partners.map((p) => p.name)).size === partners.length &&
+      (html.match(/Agreement in progress/g) || []).length === 2,
+    'pages: partner pages name the vendors and flag the pending ones':
+      [partnersPageHtml, partnerEcosystemHtml].every((h) =>
+        ['Microsoft', 'ServiceNow', 'Enboarder', 'Cisco', 'Fortinet', 'Veeam', 'SentinelOne', 'Dell', 'Lenovo', 'HP'].every(
+          (n) => h.includes(n),
+        ),
+      ) &&
+      partnerEcosystemHtml.includes('In progress') &&
+      partnersPageHtml.includes('Agreements in progress'),
+    'theme: cyan-blue brand tokens in place':
+      css.includes('--color-shell-red: #0693e3') &&
+      css.includes('--color-shell-red-dark: #010ed0') &&
+      css.includes('--color-shell-yellow: #4aeadc') &&
+      css.includes('--color-shell-cyan: #00a1e0'),
     'pages: footer, legal and news hrefs all resolve':
       deepHrefs.length > 0 && deepHrefs.every((h) => h.startsWith('#/') && pages[h.slice(2)]),
     'pages: homepage deep-links into inner pages': [

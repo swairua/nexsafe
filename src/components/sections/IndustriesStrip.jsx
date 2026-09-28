@@ -28,7 +28,7 @@ export default function IndustriesStrip() {
               <li key={item.label}>
                 <a
                   href={item.href}
-                  className="group inline-flex items-center gap-2 rounded-full border border-shell-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-shell-gray-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-shell-red hover:text-shell-red hover:shadow-[0_12px_26px_-14px_rgba(10,127,250,0.7)]"
+                  className="group inline-flex items-center gap-2 rounded-full border border-shell-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-shell-gray-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-shell-red hover:text-shell-red hover:shadow-[0_12px_26px_-14px_rgba(6,147,227,0.7)]"
                 >
                   {item.label}
                   <span className="text-xs font-medium text-shell-gray-500 transition-colors group-hover:text-shell-red">

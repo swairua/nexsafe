@@ -12,9 +12,9 @@ const img = (id, w = 1400) => `https://images.unsplash.com/${id}?auto=format&fit
 // remote image is unavailable) — keeps every dark surface on-palette.
 const navyScrim =
   'linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)'
-const navyFallback = 'linear-gradient(135deg, #070e40 0%, #0b45f5 130%)'
-const navyFallbackSoft = 'linear-gradient(135deg, #070e40 0%, #0a7ffa 130%)'
-const navyTile = 'linear-gradient(135deg, #070e40 0%, #0b45f5 140%)'
+const navyFallback = 'linear-gradient(135deg, #070e40 0%, #010ed0 130%)'
+const navyFallbackSoft = 'linear-gradient(135deg, #070e40 0%, #0693e3 130%)'
+const navyTile = 'linear-gradient(135deg, #070e40 0%, #010ed0 140%)'
 
 export const heroSlides = [
   {
@@ -182,6 +182,15 @@ export const picturesRow = [
     href: pageHref('Data protection & disaster recovery'),
   },
 ]
+
+// Vendor wall copy. The roster itself lives in `partners.js` and is rendered
+// from there, so the headline here and the tiles can never drift apart.
+export const partnerStrip = {
+  tag: 'Technology partners',
+  title: 'The platforms we run, support and license for you',
+  text: 'Partner status means better licensing, a real escalation path when something breaks at vendor level, and certified engineers on the exact tools we recommend.',
+  cta: { label: 'Meet our partners', href: pageHref('Our Partners') },
+}
 
 // Not every industry makes the homepage — six recognisable starting points
 // plus a link through to the full Who We Serve list.

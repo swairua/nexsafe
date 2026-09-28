@@ -1,4 +1,6 @@
 // Company pages: about, values, leadership, careers, contact (eyebrow: Company).
+import { partnerBullets, upcomingBullets, partnerNames, upcomingNames } from '../partners.js'
+
 const eyebrow = 'Company'
 
 export const whoWeArePages = [
@@ -319,8 +321,16 @@ export const whoWeArePages = [
       {
         heading: 'Technology partners',
         body: [
-          'nexsate holds partner status across major cloud, networking, security and productivity vendors. That means better licensing options, faster escalation paths when something breaks at vendor level, and early access to capabilities we can pilot for clients.',
+          `nexsate holds partner status with ${partnerNames.join(', ')}. That means better licensing options, faster escalation paths when something breaks at vendor level, and early access to capabilities we can pilot for clients.`,
         ],
+        list: partnerBullets,
+      },
+      {
+        heading: 'In progress',
+        body: [
+          `We are finalising agreements with ${upcomingNames.join(' and ')}. Until those are signed we treat them as in progress rather than certified, and we only claim the status once it is true.`,
+        ],
+        list: upcomingBullets,
       },
       {
         heading: 'How partnerships help you',

@@ -1,4 +1,6 @@
 // Doc-defined Company + IT-solutions hub pages (eyebrows: Company / IT solutions).
+import { partnerBullets, upcomingBullets } from '../partners.js'
+
 const company = 'Company'
 
 export const docPages = [
@@ -226,6 +228,20 @@ export const docPages = [
     intro:
       'Partner status across the major cloud, networking, security and productivity vendors.',
     sections: [
+      {
+        heading: 'The vendors we work with',
+        body: [
+          'We hold active partner status with the following vendors, covering cloud, productivity, service management, networking, security, backup and hardware.',
+        ],
+        list: partnerBullets,
+      },
+      {
+        heading: 'Agreements in progress',
+        body: [
+          'These relationships are being finalized. We list them for transparency, and only move them to the list above once the agreement is in place.',
+        ],
+        list: upcomingBullets,
+      },
       {
         heading: 'Why partnerships matter',
         body: [

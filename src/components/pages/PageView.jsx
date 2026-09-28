@@ -173,7 +173,7 @@ export default function PageView({ page }) {
               <SmartImage
                 src={categoryImage}
                 alt=""
-                fallback="linear-gradient(135deg, #070e40 0%, #0b45f5 130%)"
+                fallback="linear-gradient(135deg, #070e40 0%, #010ed0 130%)"
                 className="aspect-[16/7] w-full rounded-2xl md:aspect-[21/8]"
               />
             </Reveal>
