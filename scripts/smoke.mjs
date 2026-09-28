@@ -43,7 +43,11 @@ try {
     'has hero heading': plain.includes('Technology that works as one.'),
     'has intro band': html.includes('Simply enabling IT for a complex world') && html.includes('technology that works as one'),
     'has card grid': html.includes('Seven services that work as one') && html.includes('Data protection &amp; disaster recovery'),
-    'has pictures row': html.includes('The people and platforms behind the services') && html.includes('id="pictures"'),
+    'has pictures row':
+      html.includes('The people and platforms behind the services') &&
+      html.includes('id="pictures"') &&
+      ['How we can help', 'Why partner with us', 'Client success stories'].every((t) => html.includes(t)) &&
+      ['Our services', 'Our expertise', 'Our customers'].every((t) => html.includes(t)),
     'has partner strip': html.includes('id="partners"') && html.includes('The platforms we run, support and license for you') && partners.every((p) => html.includes(p.name)),
     'has industries strip': html.includes('Six sectors, one accountable IT partner') && html.includes('btn-sweep'),
     'has split section': html.includes('Managed IT services customized for your industry') && html.includes('The stack behind technology that works as one.'),

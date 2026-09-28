@@ -147,11 +147,14 @@ export const splitSections = [
 ]
 
 // A short "pictures" band that sits directly below the services grid
-// (doc brief: the pictures should come right after our services).
+// (doc brief: the pictures should come right after our services). Three tiles
+// with white caption cards overlapping the image base, in the style of the
+// reference "Our Company" row.
 export const picturesRow = [
   {
     id: 'pic-service-desk',
-    title: 'Service desk',
+    kicker: 'Our services',
+    title: 'How we can help',
     caption: 'Engineers who pick up with full context of your estate.',
     image: img('photo-1552664730-d307ca884978', 900),
     fallback: navyFallback,
@@ -159,27 +162,21 @@ export const picturesRow = [
   },
   {
     id: 'pic-cloud',
-    title: 'Cloud and infrastructure',
+    kicker: 'Our expertise',
+    title: 'Why partner with us',
     caption: 'Landing zones, networks and endpoints under one SLA.',
     image: img('photo-1518770660439-4636190af475', 900),
     fallback: navyFallbackSoft,
-    href: pageHref('Cloud Services'),
+    href: pageHref('Why choose us'),
   },
   {
     id: 'pic-security',
-    title: 'Security operations',
+    kicker: 'Our customers',
+    title: 'Client success stories',
     caption: 'Monitoring and response, not just alerting.',
     image: img('photo-1600880292203-757bb62b4baf', 900),
     fallback: navyTile,
-    href: pageHref('Cybersecurity'),
-  },
-  {
-    id: 'pic-recovery',
-    title: 'Recovery, rehearsed',
-    caption: 'Verified backups with tested, documented restores.',
-    image: img('photo-1544197150-b99a580bb7a8', 900),
-    fallback: navyFallback,
-    href: pageHref('Data protection & disaster recovery'),
+    href: pageHref('Customer success'),
   },
 ]
 

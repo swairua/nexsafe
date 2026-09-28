@@ -22,7 +22,7 @@ Facebook, LinkedIn and X social channels.
 | `company` | IntroBand (Our Company statement) |
 | `about` | IntroBand grid (in-page anchor) |
 | `it-solutions` | CardGrid (the seven services) |
-| `pictures` | PicturesRow (pictures straight after services) |
+| `pictures` | PicturesRow (3 tiles, overlapping white caption cards) |
 | `partners` | PartnerStrip (vendor wall — roster from `src/data/partners.js`) |
 | `industries` | IndustriesStrip (six sectors + corporate-colour sweep button) |
 | `who-we-serve` | ImageTextSplit #1 |
