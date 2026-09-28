@@ -35,7 +35,7 @@ export const promo = {
   text: 'Partner with us for IT management services to grow your existing IT infrastructure — or work with us as your one-stop shop for IT management and solutions.',
   cta: { label: 'Discover now', href: pageHref('IT services') },
   image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80',
-  fallback: 'linear-gradient(120deg, #0e1114 0%, #7a1400 55%, #ff6b57 135%)',
+  fallback: 'linear-gradient(120deg, #070e40 0%, #0b45f5 55%, #3aa0ff 135%)',
 }
 
 export const footerColumns = [
@@ -51,12 +51,12 @@ export const footerColumns = [
     heading: 'IT Services',
     links: [
       link('IT services'),
-      link('Managed IT'),
+      link('Managed IT services'),
       link('IT support'),
-      link('IT consultancy'),
-      link('Cloud computing'),
-      link('Cyber security'),
-      link('Custom software'),
+      link('Software integration'),
+      link('Cloud Services'),
+      link('Cybersecurity'),
+      link('Software development'),
     ],
   },
   {

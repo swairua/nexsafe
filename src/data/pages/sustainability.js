@@ -25,7 +25,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['insurance', 'capital-markets', 'cyber-security', 'compliance-and-standards'],
+    related: ['insurance', 'capital-markets', 'cybersecurity', 'compliance-and-standards'],
   },
   {
     slug: 'capital-markets',
@@ -50,7 +50,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['banking', 'insurance', 'network-management', 'managed-it'],
+    related: ['banking', 'insurance', 'networking', 'managed-it-services'],
   },
   {
     slug: 'insurance',
@@ -75,7 +75,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['banking', 'healthcare', 'data-protection', 'backup-and-recovery'],
+    related: ['banking', 'healthcare', 'data-protection', 'data-protection-disaster-recovery'],
   },
   {
     slug: 'enterprise-technology',
@@ -126,7 +126,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['logistics', 'enterprise-technology', 'network-management', 'managed-it'],
+    related: ['logistics', 'enterprise-technology', 'networking', 'managed-it-services'],
   },
   {
     slug: 'logistics',
@@ -151,7 +151,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['manufacturing', 'retail', 'support-coverage-and-hours', 'network-management'],
+    related: ['manufacturing', 'retail', 'support-coverage-and-hours', 'networking'],
   },
   {
     slug: 'healthcare',
@@ -177,7 +177,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['insurance', 'higher-education', 'data-protection', 'cyber-security'],
+    related: ['insurance', 'higher-education', 'data-protection', 'cybersecurity'],
   },
   {
     slug: 'higher-education',
@@ -203,7 +203,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['government', 'healthcare', 'cyber-security', 'managed-it'],
+    related: ['government', 'healthcare', 'cybersecurity', 'managed-it-services'],
   },
   {
     slug: 'government',
@@ -254,7 +254,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['logistics', 'banking', 'network-management', 'managed-it'],
+    related: ['logistics', 'banking', 'networking', 'managed-it-services'],
   },
   {
     slug: 'energy-and-utilities',
@@ -279,7 +279,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['government', 'manufacturing', 'compliance-and-standards', 'cyber-security'],
+    related: ['government', 'manufacturing', 'compliance-and-standards', 'cybersecurity'],
   },
   {
     slug: 'media-and-entertainment',
@@ -304,7 +304,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['enterprise-technology', 'cloud-computing', 'data-protection', 'professional-services'],
+    related: ['enterprise-technology', 'cloud-services', 'data-protection', 'professional-services'],
   },
   {
     slug: 'telecommunications',
@@ -329,7 +329,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['network-management', 'enterprise-technology', 'logistics'],
+    related: ['networking', 'enterprise-technology', 'logistics'],
   },
   {
     slug: 'construction',
@@ -354,7 +354,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['manufacturing', 'professional-services', 'network-management'],
+    related: ['manufacturing', 'professional-services', 'networking'],
   },
   {
     slug: 'professional-services',
@@ -379,7 +379,7 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['banking', 'hospitality', 'data-protection', 'managed-it'],
+    related: ['banking', 'hospitality', 'data-protection', 'managed-it-services'],
   },
   {
     slug: 'hospitality',
@@ -404,6 +404,6 @@ export const sustainabilityPages = [
         ],
       },
     ],
-    related: ['retail', 'logistics', 'network-management', 'cyber-security'],
+    related: ['retail', 'logistics', 'networking', 'cybersecurity'],
   },
 ]

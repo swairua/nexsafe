@@ -1,29 +1,8 @@
-import NexsateLogo from '../ui/NexsateLogo.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { footerColumns, footerLegal } from '../../data/footerContent.js'
 
+// Social channels in the brand's chosen order: Facebook, LinkedIn, X.
 const socials = [
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/nexsate',
-    icon: (
-      <path d="M6.94 8.5H4V19h2.94V8.5ZM5.47 4a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM19 12.9c0-2.8-1.5-4.1-3.5-4.1-1.6 0-2.3.9-2.7 1.5V8.5H9.9V19h2.9v-5.6c0-1.3.7-2.1 1.8-2.1s1.7.8 1.7 2.1V19H19v-6.1Z" />
-    ),
-  },
-  {
-    label: 'X (Twitter)',
-    href: 'https://x.com/nexsate',
-    icon: (
-      <path d="M17.2 4h2.6l-5.7 6.5L21 20h-5.3l-4.1-5.4L6.8 20H4.2l6.1-7L4 4h5.4l3.7 4.9L17.2 4Zm-.9 14.4h1.4L8.1 5.5H6.5l9.8 12.9Z" />
-    ),
-  },
-  {
-    label: 'Instagram',
-    href: 'https://www.instagram.com/nexsate/',
-    icon: (
-      <path d="M12 7.4A4.6 4.6 0 1 0 12 16.6 4.6 4.6 0 0 0 12 7.4Zm0 7.6a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm5.9-7.8a1.07 1.07 0 1 1-2.14 0 1.07 1.07 0 0 1 2.14 0ZM12 4.6c1.9 0 2.1 0 2.9.04 1.9.09 2.8 1 2.9 2.9.04.8.04 1 .04 2.9s0 2.1-.04 2.9c-.09 1.9-1 2.8-2.9 2.9-.8.04-1 .04-2.9.04s-2.1 0-2.9-.04c-1.9-.09-2.8-1-2.9-2.9-.04-.8-.04-1-.04-2.9s0-2.1.04-2.9c.09-1.9 1-2.8 2.9-2.9.8-.04 1-.04 2.9-.04Zm0-1.6c-2 0-2.2 0-3 .05-2.4.11-3.7 1.4-3.8 3.8-.05.8-.05 1-.05 3s0 2.2.05 3c.11 2.4 1.4 3.7 3.8 3.8.8.05 1 .05 3 .05s2.2 0 3-.05c2.4-.11 3.7-1.4 3.8-3.8.05-.8.05-1 .05-3s0-2.2-.05-3c-.11-2.4-1.4-3.7-3.8-3.8-.8-.05-1-.05-3-.05Z" />
-    ),
-  },
   {
     label: 'Facebook',
     href: 'https://www.facebook.com/nexsate',
@@ -32,10 +11,17 @@ const socials = [
     ),
   },
   {
-    label: 'YouTube',
-    href: 'https://www.youtube.com/@nexsate',
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/nexsate',
     icon: (
-      <path d="M21.6 8s-.2-1.4-.8-2c-.7-.8-1.6-.8-2-.9C16 5 12 5 12 5s-4 0-6.8.1c-.4 0-1.3.1-2 .9-.6.6-.8 2-.8 2S2.2 9.6 2.2 11.3v1.5c0 1.6.2 3.3.2 3.3s.2 1.4.8 2c.7.8 1.7.7 2.1.8 1.6.2 6.7.2 6.7.2s4 0 6.8-.1c.4 0 1.3-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.5c0-1.6-.2-3.3-.2-3.3ZM10 14.6V9.9l5.2 2.4L10 14.6Z" />
+      <path d="M6.94 8.5H4V19h2.94V8.5ZM5.47 4a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM19 12.9c0-2.8-1.5-4.1-3.5-4.1-1.6 0-2.3.9-2.7 1.5V8.5H9.9V19h2.9v-5.6c0-1.3.7-2.1 1.8-2.1s1.7.8 1.7 2.1V19H19v-6.1Z" />
+    ),
+  },
+  {
+    label: 'X',
+    href: 'https://x.com/nexsate',
+    icon: (
+      <path d="M17.2 4h2.6l-5.7 6.5L21 20h-5.3l-4.1-5.4L6.8 20H4.2l6.1-7L4 4h5.4l3.7 4.9L17.2 4Zm-.9 14.4h1.4L8.1 5.5H6.5l9.8 12.9Z" />
     ),
   },
 ]
@@ -69,8 +55,20 @@ export default function Footer() {
 
         {/* Social + logo row */}
         <Reveal className="mt-12 flex flex-col items-start justify-between gap-6 border-t border-shell-gray-300 pt-8 md:flex-row md:items-center" delay={2}>
-          <a href="#top" aria-label="nexsate.com home">
-            <NexsateLogo className="h-10 w-10" />
+          <a href="#top" className="flex items-center gap-3" aria-label="Nexsate home">
+            {/* Client-supplied wordmark on a white chip so the JPG's own
+                background blends with the light footer surface. */}
+            <span className="inline-flex items-center rounded-lg bg-white px-3 py-2 ring-1 ring-shell-gray-300">
+              <img
+                src="/brand/nexsate-wordmark.jpg"
+                alt="Nexsate"
+                className="h-6 w-auto md:h-7"
+                loading="lazy"
+              />
+            </span>
+            <span className="text-xs font-medium uppercase tracking-[0.14em] text-shell-gray-500">
+              Enabling, transforming and empowering your business
+            </span>
           </a>
           <div className="flex items-center gap-3">
             {socials.map((s) => (

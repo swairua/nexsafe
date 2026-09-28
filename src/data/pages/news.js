@@ -56,7 +56,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['cloud-computing', 'case-studies', 'insurance', 'backup-and-recovery'],
+    related: ['cloud-services', 'case-studies', 'insurance', 'data-protection-disaster-recovery'],
   },
   {
     slug: 'remote-support-centre-for-semiconductor-provider',
@@ -87,7 +87,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['support-centre', 'managed-it', 'enterprise-technology', 'case-studies'],
+    related: ['support-centre', 'managed-it-services', 'enterprise-technology', 'case-studies'],
   },
   {
     slug: 'subscription-licensing-unlocks-spike-in-it-orders',
@@ -170,7 +170,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['cyber-security', 'managed-it', 'it-blog'],
+    related: ['cybersecurity', 'managed-it-services', 'it-blog'],
   },
   {
     slug: 'tips-to-make-your-workforce-a-security-front-line',
@@ -209,7 +209,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['cyber-security', 'phishing-and-scam-alerts', 'training-and-enablement', 'it-blog'],
+    related: ['cybersecurity', 'phishing-and-scam-alerts', 'training-and-enablement', 'it-blog'],
   },
   {
     slug: 'cloud-backup-done-right',
@@ -235,7 +235,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['backup-and-recovery', 'cyber-security', 'it-blog'],
+    related: ['data-protection-disaster-recovery', 'cybersecurity', 'it-blog'],
   },
   {
     slug: 'choosing-a-managed-it-partner',
@@ -261,7 +261,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['managed-it', 'why-choose-us', 'service-level-agreements', 'it-blog'],
+    related: ['managed-it-services', 'why-choose-us', 'service-level-agreements', 'it-blog'],
   },
   {
     slug: 'five-signs-it-is-time-to-upgrade-your-hardware',
@@ -287,7 +287,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['managed-it', 'it-consultancy', 'it-blog'],
+    related: ['managed-it-services', 'software-integration', 'it-blog'],
   },
   {
     slug: 'what-zero-trust-means-for-small-business',
@@ -313,7 +313,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['cyber-security', 'managed-accounts', 'data-protection', 'it-blog'],
+    related: ['cybersecurity', 'managed-accounts', 'data-protection', 'it-blog'],
   },
   {
     slug: 'email-alerts',
@@ -417,7 +417,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['managed-it', 'case-studies', 'it-blog'],
+    related: ['managed-it-services', 'case-studies', 'it-blog'],
   },
   {
     slug: 'improving-lives-with-technology-hse-lighthouse-project',
@@ -463,7 +463,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['healthcare', 'cloud-computing', 'it-blog'],
+    related: ['healthcare', 'cloud-services', 'it-blog'],
   },
   {
     slug: 'dynamics-365-a-game-changer-for-dairygold-operations',
@@ -495,7 +495,7 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['enterprise-technology', 'managed-it', 'it-blog'],
+    related: ['enterprise-technology', 'managed-it-services', 'it-blog'],
   },
   {
     slug: '4-ways-compsec-pros-protect-their-computers',
@@ -554,6 +554,6 @@ export const newsPages = [
         ],
       },
     ],
-    related: ['cyber-security', 'training-and-enablement', 'it-blog'],
+    related: ['cybersecurity', 'training-and-enablement', 'it-blog'],
   },
 ]

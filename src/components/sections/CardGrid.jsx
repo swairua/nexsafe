@@ -1,3 +1,4 @@
+import { pageHref } from '../../data/slug.js'
 import SectionTag from '../ui/SectionTag.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
@@ -7,7 +8,7 @@ import { featuredCards } from '../../data/content.js'
  *  scroll reveals and staggered card entrances. */
 export default function CardGrid() {
   return (
-    <section id="company" className="relative overflow-hidden bg-shell-gray-100 py-16 md:py-24">
+    <section id="it-solutions" className="relative overflow-hidden bg-shell-gray-100 py-16 md:py-24">
       {/* Soft colour pools — give the glass cards' backdrop-blur something to mirror */}
       <div className="pointer-events-none absolute -right-24 top-16 h-80 w-80 rounded-full bg-shell-green/15 blur-3xl" aria-hidden="true" />
       <div className="pointer-events-none absolute -left-20 bottom-16 h-64 w-64 rounded-full bg-shell-red/10 blur-3xl" aria-hidden="true" />
@@ -16,10 +17,10 @@ export default function CardGrid() {
           <Reveal variant="fade">
             <SectionTag>Our services</SectionTag>
             <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-              Stay Up, Stay Running, Stay Protected
+              Seven services that work as one
             </h2>
           </Reveal>
-          <Reveal as="a" href="#/it-services" delay={2} className="arrow-link">
+          <Reveal as="a" href={pageHref('Our Services')} delay={2} className="arrow-link">
             Find your solution <span className="arrow">→</span>
           </Reveal>
         </div>

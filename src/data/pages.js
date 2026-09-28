@@ -6,6 +6,7 @@ import { sustainabilityPages } from './pages/sustainability.js'
 import { newsPages } from './pages/news.js'
 import { investorPages } from './pages/investors.js'
 import { utilityPages } from './pages/utility.js'
+import { docPages } from './pages/docPages.js'
 
 export const allPages = [
   ...whoWeArePages,
@@ -14,6 +15,7 @@ export const allPages = [
   ...newsPages,
   ...investorPages,
   ...utilityPages,
+  ...docPages,
 ]
 
 /** slug → page object. Duplicate slugs fail loudly at module load. */

@@ -1,4 +1,4 @@
-// Primary site navigation — 5 top-level items with mega-menu columns.
+// Primary site navigation — doc-defined menu tree (Our Company.docx).
 // Top-level hrefs are homepage section anchors; leaves resolve via pageHref().
 import { pageHref } from './slug.js'
 
@@ -6,64 +6,68 @@ const links = (...labels) => labels.map((label) => ({ label, href: pageHref(labe
 
 export const navItems = [
   {
-    label: 'Company',
+    label: 'Our Company',
     href: '#company',
     columns: [
       {
-        heading: 'About us',
-        links: links('About nexsate', 'Mission, vision and values', 'Why choose us', 'Our story'),
+        heading: 'Our company',
+        links: links('Our Company', 'Our Work', 'People and Impact', 'Our People'),
       },
       {
-        heading: 'People',
-        links: links('Leadership team', 'Careers', 'Diversity and inclusion'),
+        heading: 'Who we are',
+        links: links('Our Philosophy', 'Why choose us', 'Our Story', 'Our Partners'),
       },
       {
-        heading: 'Locations and contact',
-        links: links('Locations', 'Contact us', 'Report an issue with our website'),
+        heading: 'Responsibility',
+        links: links('Corporate Responsibility', 'Communities Impact', 'Innovation & Research', 'Careers'),
+      },
+      {
+        heading: 'More about us',
+        links: links('About nexsate', 'Mission, vision and values', 'Leadership team', 'Awards and recognition'),
       },
     ],
   },
   {
-    label: 'IT solutions',
+    label: 'What We Do',
     href: '#it-solutions',
     columns: [
       {
-        heading: 'IT services',
-        links: links('IT services', 'Managed IT', 'IT support', 'IT consultancy'),
+        heading: 'Our services',
+        links: links('What We Do', 'Our Services', 'Managed IT services', 'Cloud Services'),
       },
       {
-        heading: 'Cloud and software',
-        links: links('Cloud computing', 'Custom software', 'Backup and recovery', 'Network management'),
+        heading: 'More services',
+        links: links('Cybersecurity', 'Networking', 'Software Integration', 'Software development'),
       },
       {
-        heading: 'Security',
-        links: links('Cyber security', 'Data protection', 'Compliance and standards'),
+        heading: 'Protect and recover',
+        links: links('Data protection & disaster recovery', 'Data protection', 'Compliance and standards'),
       },
       {
         heading: 'How we work',
-        links: links('Onboarding and migration', 'Service level agreements', 'Pricing and plans'),
+        links: links('How we Work', 'Technology Stack', 'Onboarding and migration', 'Service level agreements', 'Pricing and plans'),
       },
     ],
   },
   {
-    label: 'Industries',
+    label: 'Who We Serve',
     href: '#industries',
     columns: [
       {
-        heading: 'Financial services',
-        links: links('Banking', 'Capital markets', 'Insurance'),
+        heading: 'Who we serve',
+        links: links('Who We Serve', 'Banking', 'Capital markets', 'Insurance'),
       },
       {
         heading: 'Enterprise',
-        links: links('Enterprise technology', 'Manufacturing', 'Logistics'),
+        links: links('Enterprise technology', 'Manufacturing', 'Logistics', 'Retail'),
       },
       {
         heading: 'Public sector',
-        links: links('Healthcare', 'Higher education', 'Government'),
+        links: links('Healthcare', 'Higher education', 'Government', 'Energy and utilities'),
       },
       {
-        heading: 'Other sectors',
-        links: links('Retail', 'Energy and utilities', 'Media and entertainment'),
+        heading: 'Our expertise',
+        links: links('Our Expertise', 'Customer Success', 'IT Solutions', 'IT strategy consulting'),
       },
     ],
   },

@@ -65,7 +65,7 @@ function Stat({ value, label, delay }) {
 /** Dark stats strip with big light-blue numbers + count-up on scroll. */
 export default function StatsStrip() {
   return (
-    <section id="it-solutions" className="relative overflow-hidden bg-shell-gray-900 py-16 md:py-24">
+    <section id="capabilities" className="relative overflow-hidden bg-shell-gray-900 py-16 md:py-24">
       {/* Soft colour pools — give the glass tiles' backdrop-blur something to mirror */}
       <div className="pointer-events-none absolute -left-24 -top-16 h-72 w-72 rounded-full bg-shell-red/25 blur-3xl" aria-hidden="true" />
       <div className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-shell-yellow/15 blur-3xl" aria-hidden="true" />

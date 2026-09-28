@@ -1,79 +1,121 @@
-# nexsate.com — site map & navigation reference
+# Nexsate site map &amp; navigation reference
 
-Front-end demo: the Shell.com layout, rotated to nexsate.com IT-services content
-(managed IT, cloud, cyber security, industries, insights). Design/structure unchanged;
-content, palette and brand are new.
+Front-end demo rotated to the `Our Company.docx` brief: the doc-defined menu
+tree, Nexsate homepage copy, and the corporate **navy / blue** palette with
+Facebook, LinkedIn and X social channels.
 
 ## 1. Header top-level items (order asserted by `smoke.mjs`)
 
-| # | Label | Mega-menu anchor |
-|---|-------|------------------|
-| 1 | Company | `#company` |
-| 2 | IT solutions | `#it-solutions` |
-| 3 | Industries | `#industries` |
-| 4 | Insights | `#insights` |
-| 5 | Support | `#support` |
+| # | Label | Mega-menu anchor | Doc section |
+|---|-------|------------------|-------------|
+| 1 | Our Company | `#company` | About Us / Who We Are |
+| 2 | What We Do | `#it-solutions` | What We Do + IT Solutions home menu |
+| 3 | Who We Serve | `#industries` | What We Do → Who We Serve |
+| 4 | Insights | `#insights` | Our Work / blog |
+| 5 | Support | `#support` | Support &amp; legal |
 
 ## 2. Homepage section ids (anchor targets)
 
 | id | Section component |
 |----|-------------------|
 | `top` | HeroCarousel |
-| `about` | IntroBand |
-| `company` | CardGrid |
-| `industries` | ImageTextSplit #1 (id from `content.js`) |
-| `why-nexsate` | ImageTextSplit #2 (id from `content.js`) |
-| `it-solutions` | StatsStrip |
-| `insights` | NewsRow |
+| `company` | IntroBand (Our Company statement) |
+| `about` | IntroBand grid (in-page anchor) |
+| `it-solutions` | CardGrid (the seven services) |
+| `pictures` | PicturesRow (pictures straight after services) |
+| `industries` | IndustriesStrip (six sectors + corporate-colour sweep button) |
+| `who-we-serve` | ImageTextSplit #1 |
+| `technology-stack` | ImageTextSplit #2 (replaces the old "Why nexsate" block) |
+| `capabilities` | StatsStrip |
+| `insights` | NewsRow (blog) |
 | `support` | PromoBanner |
 
-Breadcrumbs on inner pages map eyebrow → anchor via `SECTION_ANCHORS` in `PageView.jsx`
-(Company / IT solutions / Industries / Insights / Support; Legal & nexsate.com → `#top`).
+Homepage order: Hero → IntroBand → **services grid** → **pictures** →
+industries → splits → stats → blog → promo → footer.
+
+Breadcrumbs on inner pages map eyebrow → anchor via `SECTION_ANCHORS` in
+`PageView.jsx` (Company / IT solutions / Industries / Insights / Support;
+Legal &amp; nexsate.com → `#top`).
 
 ## 3. Mega-menu tree (every leaf resolves to a page via `pageHref`)
 
-**Company** (3 columns)
-- About us: About nexsate · Mission, vision and values · Why choose us · Our story
-- People: Leadership team · Careers · Diversity and inclusion
-- Locations and contact: Locations · Contact us · Report an issue with our website
+**Our Company** (4 columns) — Our Company · Our Work · People and Impact ·
+Our People | Our Philosophy · Why choose us · Our Story · Our Partners |
+Corporate Responsibility · Communities Impact · Innovation &amp; Research ·
+Careers | About nexsate · Mission, vision and values · Leadership team ·
+Awards and recognition
 
-**IT solutions** (4 columns)
-- IT services: IT services · Managed IT · IT support · IT consultancy
-- Cloud and software: Cloud computing · Custom software · Backup and recovery · Network management
-- Security: Cyber security · Data protection · Compliance and standards
-- How we work: Onboarding and migration · Service level agreements · Pricing and plans
+**What We Do** (4 columns) — What We Do · Our Services · Managed IT services ·
+Cloud Services | Cybersecurity · Networking · Software Integration · Software
+development | Data protection &amp; disaster recovery · Data protection ·
+Compliance and standards | How we Work · Technology Stack · Onboarding and
+migration · Service level agreements · Pricing and plans
 
-**Industries** (4 columns)
-- Financial services: Banking · Capital markets · Insurance
-- Enterprise: Enterprise technology · Manufacturing · Logistics
-- Public sector: Healthcare · Higher education · Government
-- Other sectors: Retail · Energy and utilities · Media and entertainment
+**Who We Serve** (4 columns) — Who We Serve · Banking · Capital markets ·
+Insurance | Enterprise technology · Manufacturing · Logistics · Retail |
+Healthcare · Higher education · Government · Energy and utilities |
+Our Expertise · Customer Success · IT Solutions · IT strategy consulting
 
-**Insights** (4 columns)
-- Case studies: Cloud migration saves money for health insurer · Remote support centre for semiconductor provider · Subscription licensing unlocks spike in IT orders
-- IT blog: Partnering with IT provider helps erie manufacturing company thrive in 21st century · Improving lives with technology – HSE lighthouse project · Dynamics 365: a game changer for dairygold operations · Tips to make your workforce a security front line · 4 ways compsec pros protect their computers
-- Resources: IT blog · Case studies · Email alerts
-- Media: Media contacts · Image library
+**Insights** (4 columns) — Case studies (3) | IT blog (5) | Resources
+(IT blog · Case studies · Email alerts) | Media (Media contacts · Image library)
 
-**Support** (3 columns)
-- Help and support: Help and FAQ · Support centre · Service status
-- Contact: Contact us · Report an issue with our website · Change country
-- Legal: Privacy policy · Cookie policy · Terms of use
+**Support** (3 columns) — Help and FAQ · Support centre · Service status |
+Contact us · Report an issue with our website · Change country | Privacy
+policy · Cookie policy · Terms of use
 
-## 4. Footer
+## 4. The seven services (doc "IT Solutions home menu")
 
-- **Columns (5):** Contact (Beverley Rd, Brooklyn, New York 1226 US · P: + (0712) 819 79 555 · M: info@nexsate.com — all link to Contact us) · IT Services (IT services, Managed IT, IT support, IT consultancy, Cloud computing, Cyber security, Custom software) · Industries (Banking, Capital markets, Enterprise technology, Manufacturing, Healthcare, Higher education) · Company (About nexsate, Leadership team, IT blog, Case studies, Locations, Careers) · Support (Support forum, Help and FAQ, Contact us, Pricing and plans)
-- **Legal bar (7):** Privacy policy · Cookie policy · Terms of use · Accessibility · Data protection · Phishing and scam alerts · Contact us
-- **Socials:** LinkedIn / X / Instagram / Facebook / YouTube — `@nexsate` handles (placeholders)
+Managed IT services · Cloud Services · Cybersecurity · Networking · Software
+Integration · Software development · Data protection &amp; disaster recovery —
+all shown as homepage cards **and** as nav leaves, so the menu and the landing
+page agree.
 
-## 5. Page registry
+## 5. Footer
 
-`src/data/pages.js` merges six arrays — whoWeArePages (15), whatWeDoPages (18),
-sustainabilityPages (16), newsPages (18), investorPages (10), utilityPages (9) = **86 pages**.
+- **Columns (5):** Contact (Beverley Rd, Brooklyn, New York 1226 US · P: +
+  (0712) 819 79 555 · M: info@nexsate.com — all link to Contact us) · IT
+  Services (IT services, Managed IT services, IT support, Software integration,
+  Cloud Services, Cybersecurity, Software development) · Industries (Banking,
+  Capital markets, Enterprise technology, Manufacturing, Healthcare, Higher
+  education) · Company (About nexsate, Leadership team, IT blog, Case studies,
+  Locations, Careers) · Support (Support forum, Help and FAQ, Contact us,
+  Pricing and plans)
+- **Legal bar (7):** Privacy policy · Cookie policy · Terms of use ·
+  Accessibility · Data protection · Phishing and scam alerts · Contact us
+- **Socials (3):** Facebook · LinkedIn · X — `@nexsate` handles (placeholders)
+- **Brand:** `NexsateLogo.jsx` + `public/favicon.svg` in navy→blue gradient;
+  social source art kept in `public/social/`, brand art in `public/brand/`.
+
+## 6. Page registry
+
+`src/data/pages.js` merges seven arrays — whoWeArePages (15), whatWeDoPages
+(18), sustainabilityPages (16), newsPages (18), investorPages (10),
+utilityPages (9), docPages (17) = **103 pages**.
 Invariants: `slug === slugify(title)`, no duplicate slugs, `related[]` all valid.
 Route: `#/` + slug, rendered by `PageView.jsx`.
+New doc pages live in `src/data/pages/docPages.js` (Our Company, Our Work,
+People and Impact, Our Philosophy, Our People, How we Work, Who We Serve,
+Customer Success, Our Expertise, Our Partners, What We Do, Innovation &amp;
+Research, Communities Impact, Corporate Responsibility, Our Services,
+Technology Stack, IT Solutions).
 
-## 6. Validation commands
+## 7. Theme tokens
+
+`src/index.css` `@theme` keeps the historical `shell-*` class names but the
+values are now corporate navy/blue:
+
+| token | value | use |
+|-------|-------|-----|
+| `--color-shell-red` | `#0a7ffa` | buttons, links, accents |
+| `--color-shell-red-dark` | `#0b45f5` | hover |
+| `--color-shell-green` | `#0a7ffa` | CTA pills |
+| `--color-shell-yellow` | `#3aa0ff` | accents on dark surfaces |
+| `--color-shell-black` | `#070e40` | navy hero / footer bands |
+
+`.btn-sweep` adds the doc-requested corporate-colour hover animation (blue
+fill wipes left→right, arrow nudges forward).
+
+## 8. Validation commands
 
 ```powershell
 node scripts\check-syntax.mjs    # syntax gate over data + scripts
@@ -81,3 +123,4 @@ node scripts\validate-pages.mjs  # routes, anchors, related refs, label↔page c
 node scripts\smoke.mjs           # SSR render assertions for homepage + inner page
 npm run build                    # production build
 ```
+

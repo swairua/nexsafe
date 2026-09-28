@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   nexsate.com Kyndryl-inspired theme tokens
+   Nexsate navy/blue theme tokens
    (class names keep the historical `shell-*` prefix so component
    markup stays untouched — only values rotate)
    ------------------------------------------------------------------ */
 @theme {
-  --color-shell-red: #ff462d;        /* Kyndryl warm-red coral: buttons, links */
-  --color-shell-red-dark: #cc1800;   /* warm-red-70 hover */
-  --color-shell-green: #24c060;      /* Kyndryl spring-green CTA */
-  --color-shell-green-dark: #1fa452; /* spring-green-40 hover */
-  --color-shell-yellow: #4cdd84;     /* spring-green-20 accent on dark surfaces */
-  --color-shell-black: #0e1114;
-  --color-shell-gray-900: #15191d;
+  --color-shell-red: #0a7ffa; /* Nexsate corporate blue: buttons, links */
+  --color-shell-red-dark: #0b45f5; /* royal-blue hover */
+  --color-shell-green: #0a7ffa; /* corporate blue CTA (was spring green) */
+  --color-shell-green-dark: #0b45f5; /* CTA hover */
+  --color-shell-yellow: #3aa0ff; /* mid-blue accent readable on dark + light */
+  --color-shell-black: #070e40; /* Nexsate navy */
+  --color-shell-gray-900: #0a1440;
   --color-shell-gray-700: #333a3f;
   --color-shell-gray-500: #5f6b72;
   --color-shell-gray-300: #d8dbdd;
@@ -94,7 +94,7 @@
   }
   .btn-pill--primary:hover {
     background: var(--color-shell-red-dark);
-    box-shadow: 0 10px 22px -8px rgba(255, 70, 45, 0.55);
+    box-shadow: 0 10px 22px -8px rgba(10, 127, 250, 0.55);
   }
 
   .btn-pill--outline {
@@ -125,12 +125,57 @@
   }
   .btn-pill--green:hover {
     background: var(--color-shell-green-dark);
-    box-shadow: 0 10px 22px -8px rgba(36, 192, 96, 0.55);
+    box-shadow: 0 10px 22px -8px rgba(10, 127, 250, 0.55);
   }
 
-  /* Floating nav bar (Kyndryl-style): dark frosted glass over the hero. */
+  /* Corporate-colour sweep button — the navy/blue fill wipes in from the left
+     on hover with the arrow nudging forward (doc brief: "improve the button
+     animation on hover to our corporate colors"). Outline by default so it
+     reads on light sections without competing with the primary pill. */
+  .btn-sweep {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: transparent;
+    color: var(--color-shell-gray-900);
+    box-shadow: inset 0 0 0 1px var(--color-shell-gray-300);
+    transition: color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  }
+  .btn-sweep > * {
+    position: relative;
+    z-index: 1;
+  }
+  .btn-sweep::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: 0;
+    background: linear-gradient(90deg, var(--color-shell-red) 0%, var(--color-shell-red-dark) 100%);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .btn-sweep:hover,
+  .btn-sweep:focus-visible {
+    color: #fff;
+    box-shadow: inset 0 0 0 1px var(--color-shell-red), 0 12px 26px -12px rgba(10, 127, 250, 0.65);
+  }
+  .btn-sweep:hover::before,
+  .btn-sweep:focus-visible::before {
+    transform: scaleX(1);
+  }
+  .btn-sweep .arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .btn-sweep:hover .arrow,
+  .btn-sweep:focus-visible .arrow {
+    transform: translateX(5px);
+  }
+
+  /* Floating nav bar: navy frosted glass over the hero. */
   .nav-glass {
-    background: rgba(14, 17, 20, 0.32);
+    background: rgba(7, 14, 64, 0.4);
     backdrop-filter: blur(16px) saturate(1.2);
     -webkit-backdrop-filter: blur(16px) saturate(1.2);
     box-shadow:
@@ -162,7 +207,7 @@
   }
   .glass-card:hover {
     translate: 0 -4px;
-    border-color: rgba(255, 70, 45, 0.55);
+    border-color: rgba(10, 127, 250, 0.55);
     box-shadow:
       0 18px 44px rgba(11, 27, 43, 0.18),
       inset 0 1px 0 rgba(255, 255, 255, 0.8);

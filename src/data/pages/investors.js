@@ -151,7 +151,7 @@ export const investorPages = [
         ],
       },
     ],
-    related: ['tips-to-make-your-workforce-a-security-front-line', 'knowledge-base', 'managed-it'],
+    related: ['tips-to-make-your-workforce-a-security-front-line', 'knowledge-base', 'managed-it-services'],
   },
   {
     slug: 'support-coverage-and-hours',
@@ -202,7 +202,7 @@ export const investorPages = [
         ],
       },
     ],
-    related: ['onboarding-and-migration', 'support-centre', 'managed-it'],
+    related: ['onboarding-and-migration', 'support-centre', 'managed-it-services'],
   },
   {
     slug: 'managed-accounts',
@@ -228,7 +228,7 @@ export const investorPages = [
         ],
       },
     ],
-    related: ['cyber-security', 'data-protection', 'compliance-and-standards'],
+    related: ['cybersecurity', 'data-protection', 'compliance-and-standards'],
   },
   {
     slug: 'feedback-and-complaints',

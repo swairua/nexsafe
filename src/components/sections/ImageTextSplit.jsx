@@ -44,9 +44,11 @@ export default function ImageTextSplit() {
                 </p>
               </Reveal>
               <Reveal delay={4}>
-                <a href={s.cta.href} className="btn-pill btn-pill--primary mt-8">
+                <a href={s.cta.href} className="btn-pill btn-sweep mt-8">
                   {s.cta.label}
-                  <span aria-hidden="true">→</span>
+                  <span className="arrow" aria-hidden="true">
+                    →
+                  </span>
                 </a>
               </Reveal>
             </div>

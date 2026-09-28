@@ -15,7 +15,7 @@ export default function PromoBanner() {
       />
       <div
         className="absolute inset-0"
-        style={{ background: 'linear-gradient(100deg, rgba(14,17,20,.88) 0%, rgba(163,22,0,.5) 100%)' }}
+        style={{ background: 'linear-gradient(100deg, rgba(7,14,64,.9) 0%, rgba(11,69,245,.5) 100%)' }}
         aria-hidden="true"
       />
 

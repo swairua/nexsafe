@@ -18,7 +18,7 @@ try {
   const { pages, allPages } = await server.ssrLoadModule('/src/data/pages.js')
   const { footerColumns, footerLegal, newsItems } = await server.ssrLoadModule('/src/data/footerContent.js')
   const { default: PageView } = await server.ssrLoadModule('/src/components/pages/PageView.jsx')
-  const strategyHtml = renderToString(React.createElement(PageView, { page: pages['managed-it'] }))
+  const strategyHtml = renderToString(React.createElement(PageView, { page: pages['managed-it-services'] }))
   const notFoundHtml = renderToString(React.createElement(PageView, { page: undefined }))
   const leafHrefs = navItems.flatMap((i) => i.columns.flatMap((c) => c.links.map((l) => l.href)))
   const deepHrefs = [
@@ -33,10 +33,12 @@ try {
   const plain = html.replace(/<[^>]+>/g, '')
   const checks = {
     'has header nav': html.includes('Company') && html.includes('Industries'),
-    'has hero heading': plain.includes('Every Device managed IT solutions.'),
-    'has intro band': html.includes('your trusted source in IT services and support'),
-    'has card grid': html.includes('Stay Up, Stay Running, Stay Protected') && html.includes('Backup and recovery'),
-    'has split section': html.includes('Managed IT services customized for your industry'),
+    'has hero heading': plain.includes('Technology that works as one.'),
+    'has intro band': html.includes('Simply enabling IT for a complex world') && html.includes('technology that works as one'),
+    'has card grid': html.includes('Seven services that work as one') && html.includes('Data protection &amp; disaster recovery'),
+    'has pictures row': html.includes('The people and platforms behind the services') && html.includes('id="pictures"'),
+    'has industries strip': html.includes('Six sectors, one accountable IT partner') && html.includes('btn-sweep'),
+    'has split section': html.includes('Managed IT services customized for your industry') && html.includes('The stack behind technology that works as one.'),
     'has stats': html.includes('24/7') && html.includes('99.9%'),
     'has news': html.includes('More articles from resource library'),
     'has promo': html.includes('WIN with managed IT services.'),
@@ -53,7 +55,7 @@ try {
     'intro band constrained width': html.includes('shell-container max-w-4xl'),
     'menu map: top-level items match nexsate header order':
       JSON.stringify(navLabels) ===
-      JSON.stringify(['Company', 'IT solutions', 'Industries', 'Insights', 'Support']),
+      JSON.stringify(['Our Company', 'What We Do', 'Who We Serve', 'Insights', 'Support']),
     'menu map: every menu has 3-4 columns with links': navItems.every(
       (i) => i.columns.length >= 3 && i.columns.length <= 4 && i.columns.every((c) => c.heading && c.links.length > 0),
     ),
@@ -61,10 +63,10 @@ try {
     'menu map: sitemap-derived links present': [
       'About nexsate',
       'Leadership team',
-      'Our story',
-      'Managed IT',
-      'Cloud computing',
-      'Cyber security',
+      'Our Story',
+      'Managed IT services',
+      'Cloud Services',
+      'Cybersecurity',
       'Banking',
       'Healthcare',
       'Cloud migration saves money for health insurer',
@@ -78,12 +80,12 @@ try {
       deepHrefs.length > 0 && deepHrefs.every((h) => h.startsWith('#/') && pages[h.slice(2)]),
     'pages: homepage deep-links into inner pages': [
       'href="#/about-nexsate"',
-      'href="#/managed-it"',
+      'href="#/managed-it-services"',
       'href="#/cookie-policy"',
       'href="#/it-blog"',
     ].every((s) => html.includes(s)),
     'pages: inner page renders with breadcrumb + related':
-      strategyHtml.includes('Managed IT') &&
+      strategyHtml.includes('Managed IT services') &&
       strategyHtml.includes('aria-label="Breadcrumb"') &&
       strategyHtml.includes('Explore more') &&
       strategyHtml.includes('Back to top'),

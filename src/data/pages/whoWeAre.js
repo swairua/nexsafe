@@ -25,7 +25,7 @@ export const whoWeArePages = [
         ],
       },
     ],
-    related: ['our-story', 'why-choose-us', 'managed-it', 'leadership-team'],
+    related: ['our-story', 'why-choose-us', 'managed-it-services', 'leadership-team'],
   },
   {
     slug: 'mission-vision-and-values',
@@ -103,7 +103,7 @@ export const whoWeArePages = [
         ],
       },
     ],
-    related: ['managed-it', 'service-level-agreements', 'pricing-and-plans', 'customer-testimonials'],
+    related: ['managed-it-services', 'service-level-agreements', 'pricing-and-plans', 'customer-testimonials'],
   },
   {
     slug: 'our-story',
@@ -332,7 +332,7 @@ export const whoWeArePages = [
         ],
       },
     ],
-    related: ['software-licensing', 'vendor-management', 'it-consultancy'],
+    related: ['software-licensing', 'vendor-management', 'software-integration'],
   },
   {
     slug: 'awards-and-recognition',

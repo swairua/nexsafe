@@ -12,7 +12,11 @@ const knownAnchors = new Set([
   '#about',
   '#company',
   '#it-solutions',
+  '#pictures',
   '#industries',
+  '#who-we-serve',
+  '#technology-stack',
+  '#capabilities',
   '#insights',
   '#support',
 ])

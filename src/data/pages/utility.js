@@ -124,7 +124,7 @@ export const utilityPages = [
         ],
       },
     ],
-    related: ['cyber-security', 'tips-to-make-your-workforce-a-security-front-line', 'data-protection'],
+    related: ['cybersecurity', 'tips-to-make-your-workforce-a-security-front-line', 'data-protection'],
   },
   {
     slug: 'change-country',

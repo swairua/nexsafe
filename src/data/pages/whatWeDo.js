@@ -26,11 +26,11 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['managed-it', 'it-support', 'it-consultancy', 'cloud-computing'],
+    related: ['managed-it-services', 'it-support', 'software-integration', 'cloud-services'],
   },
   {
-    slug: 'managed-it',
-    title: 'Managed IT',
+    slug: 'managed-it-services',
+    title: 'Managed IT services',
     eyebrow,
     intro:
       'Proactive management of your entire environment, with support your team will actually enjoy using.',
@@ -52,7 +52,7 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['it-support', 'network-management', 'device-management', 'service-level-agreements'],
+    related: ['it-support', 'networking', 'device-management', 'service-level-agreements'],
   },
   {
     slug: 'it-support',
@@ -77,14 +77,14 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['managed-it', 'help-and-faq', 'support-centre', 'onboarding-and-migration'],
+    related: ['managed-it-services', 'help-and-faq', 'support-centre', 'onboarding-and-migration'],
   },
   {
-    slug: 'it-consultancy',
-    title: 'IT consultancy',
+    slug: 'software-integration',
+    title: 'Software integration',
     eyebrow,
     intro:
-      'Independent, practical advice — architecture, budgets and roadmaps without a vendor axe to grind.',
+      'Connect the systems you already own — integrations, APIs and data flows that make technology work as one.',
     sections: [
       {
         heading: 'Guidance before spend',
@@ -103,11 +103,11 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['it-strategy-consulting', 'cloud-computing', 'cyber-security', 'compliance-and-standards'],
+    related: ['it-strategy-consulting', 'cloud-services', 'cybersecurity', 'compliance-and-standards'],
   },
   {
-    slug: 'cloud-computing',
-    title: 'Cloud computing',
+    slug: 'cloud-services',
+    title: 'Cloud services',
     eyebrow,
     intro:
       'Migrate, run and optimise cloud platforms that scale with you — without the runaway bill.',
@@ -129,11 +129,11 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['backup-and-recovery', 'network-management', 'onboarding-and-migration', 'cloud-migration-saves-money-for-health-insurer'],
+    related: ['data-protection-disaster-recovery', 'networking', 'onboarding-and-migration', 'cloud-migration-saves-money-for-health-insurer'],
   },
   {
-    slug: 'custom-software',
-    title: 'Custom software',
+    slug: 'software-development',
+    title: 'Software development',
     eyebrow,
     intro:
       'Small, focused applications that fit how your business actually works — built to be maintained.',
@@ -155,11 +155,11 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['it-consultancy', 'cloud-computing', 'it-services'],
+    related: ['software-integration', 'cloud-services', 'it-services'],
   },
   {
-    slug: 'backup-and-recovery',
-    title: 'Backup and recovery',
+    slug: 'data-protection-disaster-recovery',
+    title: 'Data protection & disaster recovery',
     eyebrow,
     intro:
       'Backups that are verified, tested and fast to restore — because having copies is not the same as recovering.',
@@ -180,11 +180,11 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['cloud-computing', 'managed-it', 'cloud-backup-done-right'],
+    related: ['cloud-services', 'managed-it-services', 'cloud-backup-done-right'],
   },
   {
-    slug: 'network-management',
-    title: 'Network management',
+    slug: 'networking',
+    title: 'Networking',
     eyebrow,
     intro:
       'Wired, wireless and WAN — designed, documented and watched so connectivity stays boring.',
@@ -205,11 +205,11 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['managed-it', 'cloud-computing', 'it-support'],
+    related: ['managed-it-services', 'cloud-services', 'it-support'],
   },
   {
-    slug: 'cyber-security',
-    title: 'Cyber security',
+    slug: 'cybersecurity',
+    title: 'Cybersecurity',
     eyebrow,
     intro:
       'Layered defence for identities, endpoints, email and data — monitored by people who respond, not just alert.',
@@ -231,7 +231,7 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['data-protection', 'compliance-and-standards', 'managed-it', 'phishing-and-scam-alerts'],
+    related: ['cybersecurity', 'compliance-and-standards', 'managed-it-services', 'phishing-and-scam-alerts', 'cloud-backup-done-right'],
   },
   {
     slug: 'data-protection',
@@ -257,7 +257,7 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['cyber-security', 'compliance-and-standards', 'privacy-policy', 'banking'],
+    related: ['cybersecurity', 'compliance-and-standards', 'privacy-policy', 'banking'],
   },
   {
     slug: 'compliance-and-standards',
@@ -283,7 +283,7 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['cyber-security', 'data-protection', 'banking', 'government'],
+    related: ['cybersecurity', 'data-protection', 'banking', 'government'],
   },
   {
     slug: 'onboarding-and-migration',
@@ -309,7 +309,7 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['managed-it', 'cloud-computing', 'getting-started-with-nexsate', 'service-level-agreements'],
+    related: ['managed-it-services', 'cloud-services', 'getting-started-with-nexsate', 'service-level-agreements'],
   },
   {
     slug: 'service-level-agreements',
@@ -335,7 +335,7 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['managed-it', 'support-coverage-and-hours', 'why-choose-us', 'pricing-and-plans'],
+    related: ['managed-it-services', 'support-coverage-and-hours', 'why-choose-us', 'pricing-and-plans'],
   },
   {
     slug: 'pricing-and-plans',
@@ -359,7 +359,7 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['service-level-agreements', 'why-choose-us', 'managed-it', 'it-support'],
+    related: ['service-level-agreements', 'why-choose-us', 'managed-it-services', 'it-support'],
   },
   {
     slug: 'device-management',
@@ -385,7 +385,7 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['managed-it', 'cyber-security', 'it-support'],
+    related: ['managed-it-services', 'cybersecurity', 'it-support'],
   },
   {
     slug: 'vendor-management',
@@ -462,6 +462,6 @@ export const whatWeDoPages = [
         ],
       },
     ],
-    related: ['it-consultancy', 'cloud-computing', 'pricing-and-plans'],
+    related: ['software-integration', 'cloud-services', 'pricing-and-plans'],
   },
 ]

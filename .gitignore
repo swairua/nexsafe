@@ -31,3 +31,7 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Client source material (raw brief + extracted images) — not site assets
+documents/
+

@@ -6,6 +6,8 @@ import BackToTop from './components/layout/BackToTop.jsx'
 import HeroCarousel from './components/sections/HeroCarousel.jsx'
 import IntroBand from './components/sections/IntroBand.jsx'
 import CardGrid from './components/sections/CardGrid.jsx'
+import PicturesRow from './components/sections/PicturesRow.jsx'
+import IndustriesStrip from './components/sections/IndustriesStrip.jsx'
 import ImageTextSplit from './components/sections/ImageTextSplit.jsx'
 import StatsStrip from './components/sections/StatsStrip.jsx'
 import NewsRow from './components/sections/NewsRow.jsx'
@@ -24,11 +26,11 @@ function parseHash(hash = '') {
 }
 
 /**
- * nexsate.com homepage — section order:
+ * nexsate.com homepage — doc-driven section order:
  * 1. Cookie banner   2. Header + mega menus   3. Hero carousel
- * 4. Intro band      5. Card grid             6. Image/text splits
- * 7. Stats strip     8. Blog row              9. Promo banner
- * 10. Footer         11. Legal bar
+ * 4. Intro band      5. Services grid        6. Pictures row (right after services)
+ * 7. Industries      8. Image/text splits    9. Stats strip
+ * 10. Blog row       11. Promo banner        12. Footer      13. Legal bar
  * Inner routes ('#/<slug>') replace main with PageView.
  */
 export default function App() {
@@ -49,7 +51,7 @@ export default function App() {
       window.scrollTo(0, 0)
       return
     }
-    document.title = 'nexsate.com'
+    document.title = 'Nexsate — technology that works as one'
     if (route.anchor) {
       const el = document.getElementById(route.anchor)
       if (el) el.scrollIntoView({ behavior: 'smooth' })
@@ -69,6 +71,8 @@ export default function App() {
           <HeroCarousel />
           <IntroBand />
           <CardGrid />
+          <PicturesRow />
+          <IndustriesStrip />
           <ImageTextSplit />
           <StatsStrip />
           <NewsRow />
