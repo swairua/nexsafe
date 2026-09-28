@@ -1,0 +1,61 @@
+/**
+ * Link integrity check — every pageHref()/related slug used in nav, footer and
+ * page data must resolve to a registered page, and no page may be orphaned.
+ * Run with: node scripts/check-links.mjs
+ */
+import { allPages } from '../src/data/pages.js'
+import { navItems } from '../src/data/navItems.js'
+import { footerColumns, footerLegal, promo } from '../src/data/footerContent.js'
+import { heroSlides, featuredCards, partnerStrip, industriesStrip, successStory } from '../src/data/content.js'
+import { pageHref } from '../src/data/slug.js'
+
+const known = new Set(allPages.map((p) => p.slug))
+const problems = []
+const checkHref = (href, where) => {
+  if (typeof href !== 'string' || !href.startsWith('#/')) return
+  const slug = href.slice(2)
+  if (!known.has(slug)) problems.push(`${where}: no page for ${href}`)
+}
+
+for (const item of navItems) {
+  for (const col of item.columns) {
+    for (const l of col.links) checkHref(l.href, `nav "${item.label}" / "${l.label}"`)
+  }
+}
+for (const col of footerColumns) {
+  for (const l of col.links) checkHref(l.href, `footer "${col.heading}" / "${l.label}"`)
+}
+for (const l of footerLegal) checkHref(l.href, `footer legal / "${l.label}"`)
+checkHref(promo.cta.href, 'promo cta')
+for (const s of heroSlides) checkHref(s.cta.href, `hero "${s.id}"`)
+for (const c of featuredCards) checkHref(c.href, `card "${c.id}"`)
+checkHref(partnerStrip.cta.href, 'partner strip cta')
+checkHref(industriesStrip.cta.href, 'industries cta')
+for (const i of industriesStrip.items) checkHref(i.href, `industry "${i.label}"`)
+checkHref(successStory.cta.href, 'success story cta')
+
+for (const page of allPages) {
+  for (const slug of page.related || []) {
+    if (!known.has(slug)) problems.push(`${page.slug}: related "${slug}" does not exist`)
+  }
+}
+
+// Every page should be reachable from nav, footer, or another page's related list.
+const linked = new Set()
+const collect = (href) => {
+  if (typeof href === 'string' && href.startsWith('#/')) linked.add(href.slice(2))
+}
+for (const item of navItems) item.columns.forEach((c) => c.links.forEach((l) => collect(l.href)))
+for (const col of footerColumns) col.links.forEach((l) => collect(l.href))
+footerLegal.forEach(collect)
+for (const page of allPages) (page.related || []).forEach(collect)
+
+for (const page of allPages) {
+  if (!linked.has(page.slug)) problems.push(`${page.slug}: orphaned (not linked from anywhere)`)
+}
+
+if (problems.length) {
+  console.error('Link check failed:\n' + problems.map((p) => `  - ${p}`).join('\n'))
+  process.exit(1)
+}
+console.log(`Link check passed: ${allPages.length} pages, all links resolve, no orphans.`)

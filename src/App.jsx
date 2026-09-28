@@ -6,12 +6,10 @@ import BackToTop from './components/layout/BackToTop.jsx'
 import HeroCarousel from './components/sections/HeroCarousel.jsx'
 import IntroBand from './components/sections/IntroBand.jsx'
 import CardGrid from './components/sections/CardGrid.jsx'
-import PicturesRow from './components/sections/PicturesRow.jsx'
 import PartnerStrip from './components/sections/PartnerStrip.jsx'
 import IndustriesStrip from './components/sections/IndustriesStrip.jsx'
-import ImageTextSplit from './components/sections/ImageTextSplit.jsx'
-import StatsStrip from './components/sections/StatsStrip.jsx'
-import NewsRow from './components/sections/NewsRow.jsx'
+import StackSection from './components/sections/StackSection.jsx'
+import SuccessStorySection from './components/sections/SuccessStorySection.jsx'
 import PromoBanner from './components/sections/PromoBanner.jsx'
 import PageView from './components/pages/PageView.jsx'
 import { pages } from './data/pages.js'
@@ -72,12 +70,10 @@ export default function App() {
           <HeroCarousel />
           <IntroBand />
           <CardGrid />
-          <PicturesRow />
           <PartnerStrip />
           <IndustriesStrip />
-          <ImageTextSplit />
-          <StatsStrip />
-          <NewsRow />
+          <StackSection />
+          <SuccessStorySection />
           <PromoBanner />
         </main>
       )}

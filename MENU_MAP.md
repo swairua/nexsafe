@@ -1,107 +1,104 @@
-# Nexsate site map &amp; navigation reference
+# Nexsate site map & navigation reference
 
-Front-end demo rotated to the `Our Company.docx` brief: the doc-defined menu
-tree, Nexsate homepage copy, and the corporate **navy / blue** palette with
-Facebook, LinkedIn and X social channels.
+Front-end demo built from the client documents in `logoandcontent/`
+(`.docx-text/*.txt` are the extracted sources). Every line of page copy traces
+back to a client document; anything not supplied is flagged `TODO(client)` in
+the code rather than invented.
 
-## 1. Header top-level items (order asserted by `smoke.mjs`)
+## 1. Header top-level items
 
-| # | Label | Mega-menu anchor | Doc section |
-|---|-------|------------------|-------------|
-| 1 | Our Company | `#company` | About Us / Who We Are |
-| 2 | What We Do | `#it-solutions` | What We Do + IT Solutions home menu |
-| 3 | Who We Serve | `#industries` | What We Do → Who We Serve |
-| 4 | Insights | `#insights` | Our Work / blog |
-| 5 | Support | `#support` | Support &amp; legal |
+| # | Label | Mega-menu anchor |
+|---|-------|------------------|
+| 1 | Our Company | `#company` |
+| 2 | What We Do | `#it-solutions` |
+| 3 | Who We Serve | `#industries` |
+| 4 | Success Stories | `#insights` |
+| 5 | Support | `#support` |
 
 ## 2. Homepage section ids (anchor targets)
 
 | id | Section component |
 |----|-------------------|
 | `top` | HeroCarousel |
-| `company` | IntroBand (Our Company statement) |
-| `about` | IntroBand grid (in-page anchor) |
-| `it-solutions` | CardGrid (the seven services) |
-| `pictures` | PicturesRow (3 tiles, overlapping white caption cards) |
+| `about` | Benefits (the four principles) |
+| `company` | IntroBand (the "EnableIT. Transform. Empower." statement) |
+| `it-solutions` | CardGrid (the six service cards) |
 | `partners` | PartnerStrip (vendor wall — roster from `src/data/partners.js`) |
-| `industries` | IndustriesStrip (six sectors + corporate-colour sweep button) |
-| `who-we-serve` | ImageTextSplit #1 |
-| `technology-stack` | ImageTextSplit #2 (replaces the old "Why nexsate" block) |
-| `capabilities` | StatsStrip |
-| `insights` | NewsRow (blog) |
-| `support` | PromoBanner |
+| `industries` | IndustriesStrip (four sectors + corporate-colour sweep button) |
+| `capabilities` | StackSection (the four technology-stack groups) |
+| `insights` | SuccessStorySection (the client case study) |
+| `support` | PromoBanner (closing CTA) |
 
-Homepage order: Hero → IntroBand → **services grid** → **pictures** →
-**partners** → industries → splits → stats → blog → promo → footer.
+Homepage order: Hero -> benefits -> intro band -> services grid -> partners ->
+industries -> stack -> success story -> promo -> footer.
 
-Breadcrumbs on inner pages map eyebrow → anchor via `SECTION_ANCHORS` in
+Breadcrumbs on inner pages map eyebrow -> anchor via `SECTION_ANCHORS` in
 `PageView.jsx` (Company / IT solutions / Industries / Insights / Support;
-Legal &amp; nexsate.com → `#top`).
+Legal -> `#top`).
 
 ## 3. Mega-menu tree (every leaf resolves to a page via `pageHref`)
 
-**Our Company** (4 columns) — Our Company · Our Work · People and Impact ·
-Our People | Our Philosophy · Why choose us · Our Story · Our Partners |
-Corporate Responsibility · Communities Impact · Innovation &amp; Research ·
-Careers | About nexsate · Mission, vision and values · Leadership team ·
-Awards and recognition
+**Our Company** (3 columns)
+- About us: About Us / Our Mission / Core Values / Our People / Our Process
+- What we bring together: Services & Solutions / Managed IT Services / Cloud Services / Cybersecurity
+- Business services: Network Management / Backup & Disaster Recovery / Software Development, ERP & CRM Solutions
 
-**What We Do** (4 columns) — What We Do · Our Services · Managed IT services ·
-Cloud Services | Cybersecurity · Networking · Software Integration · Software
-development | Data protection &amp; disaster recovery · Data protection ·
-Compliance and standards | How we Work · Technology Stack · Onboarding and
-migration · Service level agreements · Pricing and plans
+**What We Do** (3 columns)
+- Core services: Managed IT Services / Cloud Services / Cybersecurity / Security
+- Connect and protect: Network Management / Backup & Disaster Recovery
+- Build and improve: Software Development, ERP & CRM Solutions / ERP Solutions / Automation / Digital Transformation / Gaining Efficiency
 
-**Who We Serve** (4 columns) — Who We Serve · Banking · Capital markets ·
-Insurance | Enterprise technology · Manufacturing · Logistics · Retail |
-Healthcare · Higher education · Government · Energy and utilities |
-Our Expertise · Customer Success · IT Solutions · IT strategy consulting
+**Who We Serve** (2 columns)
+- Industry focus: Banks & Insurance / Healthcare / Industrial & Manufacturing / Transportation & Logistics
+- What we do for them: Managed IT Services / Network Management / Cybersecurity / Backup & Disaster Recovery
 
-**Insights** (4 columns) — Case studies (3) | IT blog (5) | Resources
-(IT blog · Case studies · Email alerts) | Media (Media contacts · Image library)
+**Success Stories** (1 column)
+- Client outcomes: IT alignment for a growing business
 
-**Support** (3 columns) — Help and FAQ · Support centre · Service status |
-Contact us · Report an issue with our website · Change country | Privacy
-Policy · Cookie policy · Terms &amp; Conditions
+**Support** (2 columns)
+- Help and support: Help and FAQ / Contact us / Change country
+- Legal: Privacy Policy / Cookie policy / Terms & Conditions
 
-## 4. The seven services (doc "IT Solutions home menu")
+## 4. The six services (doc "Services & Solutions")
 
-Managed IT services · Cloud Services · Cybersecurity · Networking · Software
-Integration · Software development · Data protection &amp; disaster recovery —
-all shown as homepage cards **and** as nav leaves, so the menu and the landing
-page agree.
+Managed IT Services / Cloud Services / Cybersecurity / Network Management /
+Backup & Disaster Recovery / Software Development, ERP & CRM Solutions — shown
+as homepage cards **and** nav leaves, so the menu and the landing page agree.
 
 ## 5. Footer
 
-- **Columns (5):** Contact (Beverley Rd, Brooklyn, New York 1226 US · P: +
-  (0712) 819 79 555 · M: info@nexsate.com — all link to Contact us) · IT
-  Services (IT services, Managed IT services, IT support, Software integration,
-  Cloud Services, Cybersecurity, Software development) · Industries (Banking,
-  Capital markets, Enterprise technology, Manufacturing, Healthcare, Higher
-  education) · Company (About nexsate, Leadership team, IT blog, Case studies,
-  Locations, Careers) · Support (Support forum, Help and FAQ, Contact us,
-  Pricing and plans)
-- **Legal bar (7):** Privacy Policy · Cookie policy · Terms &amp; Conditions ·
-  Accessibility · Data protection · Phishing and scam alerts · Contact us
-- **Socials (3):** Facebook · LinkedIn · X — `@nexsate` handles (placeholders)
+- **Columns (5):** Contact (Talk to an expert / Help and FAQ / Change country),
+  Services, More services, Industries, Company
+- **Legal bar (4):** Privacy Policy / Cookie policy / Terms & Conditions / Contact us
+- **Socials (3):** Facebook / LinkedIn / X — **unconfirmed**. These are
+  conventional guesses; the client supplied no social URLs, so they are
+  flagged `TODO(client)` in `Footer.jsx` and may 404.
 - **Brand:** `NexsateLogo.jsx` renders the client-supplied NEXSATE wordmark
-  (`public/brand/nexsate-wordmark.jpg`, 219×43) in the header **and** footer —
-  on a light plate, because the artwork is dark-on-white and must stay legible
-  over hero photography. The compact blue tile is retained as
-  `public/favicon.svg`. Social source art lives in `public/social/`.
+  (`public/brand/nexsate-wordmark.png`, cropped from the 1254x1254 source to
+  1116x140) in the header **and** footer — on a light plate, because the
+  artwork is blue-on-near-white and must stay legible over hero photography.
+  The compact blue tile is retained as `public/favicon.svg`.
 
 ## 6. Page registry
 
-`src/data/pages.js` merges seven arrays — whoWeArePages (15), whatWeDoPages
-(18), sustainabilityPages (16), newsPages (18), investorPages (10),
-utilityPages (9), docPages (17) = **103 pages**.
-Invariants: `slug === slugify(title)`, no duplicate slugs, `related[]` all valid.
-Route: `#/` + slug, rendered by `PageView.jsx`.
-New doc pages live in `src/data/pages/docPages.js` (Our Company, Our Work,
-People and Impact, Our Philosophy, Our People, How we Work, Who We Serve,
-Customer Success, Our Expertise, Our Partners, What We Do, Innovation &amp;
-Research, Communities Impact, Corporate Responsibility, Our Services,
-Technology Stack, IT Solutions).
+`src/data/pages.js` merges the page arrays under `src/data/pages/`:
+
+| file | pages | covers |
+|------|-------|--------|
+| `company.js` | 5 | About Us, Our Mission, Core Values, Our People, Our Process |
+| `services.js` | 12 | Services & Solutions, the six services, ERP, Automation, Digital Transformation, Gaining Efficiency |
+| `industries.js` | 4 | Banks & Insurance, Healthcare, Industrial & Manufacturing, Transportation & Logistics |
+| `successStory.js` | 1 | The client case study, kept whole |
+| `site.js` | 6 | Contact us, Change country, Help and FAQ, Privacy Policy, Cookie policy, Terms & Conditions |
+
+**28 pages total.** Invariants: no duplicate slugs, every `related[]` resolves,
+every section has a heading plus body/list/items content. Route: `#/` + slug,
+rendered by `PageView.jsx`.
+
+The earlier Kyndryl-derived placeholder sets (investors, news, sustainability,
+generic who-we-are / what-we-do) were **removed** rather than kept, so no copy
+the client did not supply remains on the site.
+
 
 ## 7. Theme tokens
 
@@ -117,30 +114,31 @@ values now mirror the live nexsate.com blue/cyan scheme:
 | `--color-shell-cyan` | `#00a1e0` | secondary cyan: tiles, borders, gradients |
 | `--color-shell-black` | `#070e40` | navy hero / footer bands |
 
-Values were read off the live site (its 135° brand gradient starts at
+Values were read off the live site (its 135-degree brand gradient starts at
 `rgb(6,147,227)`; the turquoise highlight appears in its accent gradients).
 `shell-yellow` is only ever used over navy, so the turquoise stays legible.
 
 `.btn-sweep` adds the doc-requested corporate-colour hover animation (blue
-fill wipes left→right, arrow nudges forward).
+fill wipes left->right, arrow nudges forward).
 
 ## 8. Partner roster
 
 `src/data/partners.js` is the single source of truth for vendors. Each entry is
-`{ name, area, status }`; `status` is `partner` (agreement held today) or
-`in-progress` (being finalized). The homepage wall, the "Our Partners" page and
-the "Partner ecosystem" page all render from this one array, so a vendor can
-never be claimed on one surface and missing on another. In-progress vendors are
-shown with a "Soon" badge and their own copy block — never presented as
-certified. Current roster: Microsoft, ServiceNow, Enboarder, SAP (in progress),
-Oracle (in progress), Cisco, Fortinet, Veeam, SentinelOne, Dell, Lenovo, HP.
+`{ name, area, status }`, where `status` is `partner` (agreement held today) or
+`upcoming` (agreement in progress). The PartnerStrip renders the `upcoming`
+entries with an "Agreement in progress" flag rather than dropping them.
 
-## 9. Validation commands
+## 9. Verification
 
-```powershell
-node scripts\check-syntax.mjs    # syntax gate over data + scripts
-node scripts\validate-pages.mjs  # routes, anchors, related refs, label↔page coverage
-node scripts\smoke.mjs           # SSR render assertions for homepage + inner page
-npm run build                    # production build
+Run these after any content or navigation change:
+
+```
+node scripts/check-syntax.mjs     # bracket balance across the data files
+node scripts/validate-pages.mjs   # registry schema, nav/footer/CTA resolution
+node scripts/check-links.mjs      # every link resolves; no orphan pages
+node scripts/smoke.mjs            # renders <App /> and all 28 pages
+npx vite build                    # production build
 ```
 
+`smoke.mjs` compares copy against tag-stripped, entity-decoded text, so
+ampersands in titles ("Backup & Disaster Recovery") match correctly.

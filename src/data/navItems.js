@@ -1,5 +1,6 @@
-// Primary site navigation — doc-defined menu tree (Our Company.docx).
-// Top-level hrefs are homepage section anchors; leaves resolve via pageHref().
+// Primary site navigation — derived from the client documents in
+// logoandcontent/ rather than a menu spec. Top-level hrefs are homepage
+// section anchors; every leaf resolves through pageHref() to its page slug.
 import { pageHref } from './slug.js'
 
 const links = (...labels) => labels.map((label) => ({ label, href: pageHref(label) }))
@@ -10,20 +11,16 @@ export const navItems = [
     href: '#company',
     columns: [
       {
-        heading: 'Our company',
-        links: links('Our Company', 'Our Work', 'People and Impact', 'Our People'),
+        heading: 'About us',
+        links: links('About Us', 'Our Mission', 'Core Values', 'Our People', 'Our Process'),
       },
       {
-        heading: 'Who we are',
-        links: links('Our Philosophy', 'Why choose us', 'Our Story', 'Our Partners'),
+        heading: 'What we bring together',
+        links: links('Services & Solutions', 'Managed IT Services', 'Cloud Services', 'Cybersecurity'),
       },
       {
-        heading: 'Responsibility',
-        links: links('Corporate Responsibility', 'Communities Impact', 'Innovation & Research', 'Careers'),
-      },
-      {
-        heading: 'More about us',
-        links: links('About nexsate', 'Mission, vision and values', 'Leadership team', 'Awards and recognition'),
+        heading: 'Business services',
+        links: links('Network Management', 'Backup & Disaster Recovery', 'Software Development, ERP & CRM Solutions'),
       },
     ],
   },
@@ -32,20 +29,22 @@ export const navItems = [
     href: '#it-solutions',
     columns: [
       {
-        heading: 'Our services',
-        links: links('What We Do', 'Our Services', 'Managed IT services', 'Cloud Services'),
+        heading: 'Core services',
+        links: links('Managed IT Services', 'Cloud Services', 'Cybersecurity', 'Security'),
       },
       {
-        heading: 'More services',
-        links: links('Cybersecurity', 'Networking', 'Software Integration', 'Software development'),
+        heading: 'Connect and protect',
+        links: links('Network Management', 'Backup & Disaster Recovery'),
       },
       {
-        heading: 'Protect and recover',
-        links: links('Data protection & disaster recovery', 'Data protection', 'Compliance and standards'),
-      },
-      {
-        heading: 'How we work',
-        links: links('How we Work', 'Technology Stack', 'Onboarding and migration', 'Service level agreements', 'Pricing and plans'),
+        heading: 'Build and improve',
+        links: links(
+          'Software Development, ERP & CRM Solutions',
+          'ERP Solutions',
+          'Automation',
+          'Digital Transformation',
+          'Gaining Efficiency',
+        ),
       },
     ],
   },
@@ -54,52 +53,29 @@ export const navItems = [
     href: '#industries',
     columns: [
       {
-        heading: 'Who we serve',
-        links: links('Who We Serve', 'Banking', 'Capital markets', 'Insurance'),
+        heading: 'Industry focus',
+        links: links(
+          'Banks & Insurance',
+          'Healthcare',
+          'Industrial & Manufacturing',
+          'Transportation & Logistics',
+        ),
       },
       {
-        heading: 'Enterprise',
-        links: links('Enterprise technology', 'Manufacturing', 'Logistics', 'Retail'),
-      },
-      {
-        heading: 'Public sector',
-        links: links('Healthcare', 'Higher education', 'Government', 'Energy and utilities'),
-      },
-      {
-        heading: 'Our expertise',
-        links: links('Our Expertise', 'Customer Success', 'IT Solutions', 'IT strategy consulting'),
+        heading: 'What we do for them',
+        links: links('Managed IT Services', 'Network Management', 'Cybersecurity', 'Backup & Disaster Recovery'),
       },
     ],
   },
   {
-    label: 'Insights',
+    label: 'Success Stories',
     href: '#insights',
     columns: [
       {
-        heading: 'Case studies',
-        links: links(
-          'Cloud migration saves money for health insurer',
-          'Remote support centre for semiconductor provider',
-          'Subscription licensing unlocks spike in IT orders',
-        ),
-      },
-      {
-        heading: 'IT blog',
-        links: links(
-          'Partnering with IT provider helps erie manufacturing company thrive in 21st century',
-          'Improving lives with technology – HSE lighthouse project',
-          'Dynamics 365: a game changer for dairygold operations',
-          'Tips to make your workforce a security front line',
-          '4 ways compsec pros protect their computers',
-        ),
-      },
-      {
-        heading: 'Resources',
-        links: links('IT blog', 'Case studies', 'Email alerts'),
-      },
-      {
-        heading: 'Media',
-        links: links('Media contacts', 'Image library'),
+        heading: 'Client outcomes',
+        // Explicit href: the page's slug is a short, stable 'success-story'
+        // rather than a slug derived from its very long case-study title.
+        links: [{ label: 'IT alignment for a growing business', href: '#/success-story' }],
       },
     ],
   },
@@ -109,11 +85,7 @@ export const navItems = [
     columns: [
       {
         heading: 'Help and support',
-        links: links('Help and FAQ', 'Support centre', 'Service status'),
-      },
-      {
-        heading: 'Contact',
-        links: links('Contact us', 'Report an issue with our website', 'Change country'),
+        links: links('Help and FAQ', 'Contact us', 'Change country'),
       },
       {
         heading: 'Legal',

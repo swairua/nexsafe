@@ -1,12 +1,13 @@
 import Reveal from '../ui/Reveal.jsx'
+import SectionTag from '../ui/SectionTag.jsx'
+import { benefits } from '../../data/content.js'
 import { pageHref } from '../../data/slug.js'
 import { navItems } from '../../data/navItems.js'
 
 /**
- * Editorial row directly below the hero: a borderless 3-column grid
- * (eyebrow + headline / statement / chevron link) with a floating pill
- * section-nav beneath it. Content is the doc-approved company statement;
- * pill labels/hrefs are reused from the primary nav items.
+ * Editorial row directly below the hero: the client principle and promise,
+ * then the four benefits from the Home Page document as a 4-up grid, with
+ * the floating pill section nav beneath (labels reused from the primary nav).
  */
 export default function IntroBand() {
   return (
@@ -23,20 +24,18 @@ export default function IntroBand() {
             </h2>
           </Reveal>
 
-          {/* Column 2 — statement paragraph (doc-approved company statement) */}
+          {/* Column 2 — the client's own promise from the Home Page document */}
           <Reveal delay={2}>
             <p className="text-base leading-relaxed text-shell-gray-700 md:text-lg">
-              Nexsate brings together managed IT, cloud, cybersecurity, infrastructure, data
-              protection and disaster recovery, software development, systems integration and
-              technology consulting to simplify complexity, transform operations and empower
-              organizations with technology that works as one.
+              We take care of your IT, so you can take care of your customers. Empowering
+              businesses with transformative technology solutions.
             </p>
           </Reveal>
 
           {/* Column 3 — chevron link, bottom-aligned like the reference row */}
           <Reveal delay={3} className="flex items-start md:items-end">
             <a
-              href={pageHref('How we Work')}
+              href={pageHref('Our Process')}
               className="group inline-flex items-center gap-1.5 text-base font-medium text-shell-gray-900 transition-colors hover:text-shell-red"
             >
               Discover how we work
@@ -46,6 +45,22 @@ export default function IntroBand() {
             </a>
           </Reveal>
         </div>
+
+        {/* The four benefits from the Home Page document */}
+        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 md:mt-16">
+          {benefits.map((benefit, idx) => (
+            <Reveal
+              key={benefit.id}
+              as="li"
+              variant="up"
+              delay={(idx % 4) + 1}
+              className="rounded-2xl border border-shell-gray-300 bg-white p-6"
+            >
+              <SectionTag>{benefit.title}</SectionTag>
+              <p className="mt-3 text-sm leading-relaxed text-shell-gray-700">{benefit.text}</p>
+            </Reveal>
+          ))}
+        </ul>
       </div>
 
       {/* Floating pill section nav */}

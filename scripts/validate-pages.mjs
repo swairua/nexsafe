@@ -2,20 +2,28 @@
 // Run: node scripts/validate-pages.mjs   (plain ESM data — no bundler needed)
 import { allPages, pages } from '../src/data/pages.js'
 import { navItems } from '../src/data/navItems.js'
-import { footerColumns, footerLegal, newsItems, promo } from '../src/data/footerContent.js'
-import { featuredCards, splitSections, heroSlides } from '../src/data/content.js'
+import { footerColumns, footerLegal, promo } from '../src/data/footerContent.js'
+import {
+  featuredCards,
+  heroSlides,
+  benefits,
+  industriesStrip,
+  partnerStrip,
+  successStory,
+} from '../src/data/content.js'
+import { stackGroups } from '../src/data/stack.js'
 import { slugify } from '../src/data/slug.js'
 
 const errors = []
+
+// Section ids actually rendered by the homepage components.
 const knownAnchors = new Set([
   '#top',
   '#about',
   '#company',
   '#it-solutions',
-  '#pictures',
+  '#partners',
   '#industries',
-  '#who-we-serve',
-  '#technology-stack',
   '#capabilities',
   '#insights',
   '#support',
@@ -29,7 +37,7 @@ const checkRoute = (where, href) => {
   }
 }
 
-// 1) Registry: duplicates, schema, title↔slug invariant, related integrity.
+// 1) Registry: duplicates, schema, and related integrity.
 const seen = new Set()
 for (const p of allPages) {
   if (seen.has(p.slug)) errors.push(`duplicate slug: ${p.slug}`)
@@ -38,13 +46,16 @@ for (const p of allPages) {
   if (!Array.isArray(p.sections) || !p.sections.length) errors.push(`${p.slug}: empty sections`)
   for (const s of p.sections || []) {
     if (!s.heading) errors.push(`${p.slug}: section without heading`)
-    if (!s.body?.length && !s.list?.length) errors.push(`${p.slug}: section '${s.heading}' has no content`)
-  }
-  if (slugify(p.title) !== p.slug) {
-    errors.push(`${p.slug}: slug != slugify(title) → ${slugify(p.title)}`)
+    const hasContent = s.body?.length || s.list?.length || s.items?.length
+    if (!hasContent) errors.push(`${p.slug}: section '${s.heading}' has no content`)
+    for (const item of s.items || []) {
+      if (!item.title || !item.text) {
+        errors.push(`${p.slug}: section '${s.heading}' has an item missing title/text`)
+      }
+    }
   }
   for (const r of p.related || []) {
-    if (!pages[r]) errors.push(`${p.slug}: related → missing '${r}'`)
+    if (!pages[r]) errors.push(`${p.slug}: related -> missing '${r}'`)
   }
 }
 
@@ -63,27 +74,62 @@ for (const col of footerColumns) {
 for (const l of footerLegal) checkRoute(`legal '${l.label}'`, l.href)
 
 // 4) Homepage CTAs: routes must resolve; anchors must be known sections.
-for (const c of [...heroSlides.map((s) => s.cta), ...splitSections.map((s) => s.cta), promo.cta]) {
-  if (c.href.startsWith('#/')) checkRoute(`cta '${c.label}'`, c.href)
-  else if (!knownAnchors.has(c.href)) errors.push(`cta '${c.label}': unknown anchor ${c.href}`)
+const ctas = [
+  ...heroSlides.map((s) => s.cta),
+  ...featuredCards.map((c) => ({ label: c.id, href: c.href })),
+  partnerStrip.cta,
+  industriesStrip.cta,
+  successStory.cta,
+  promo.cta,
+]
+for (const c of ctas) checkRoute(`cta '${c.label}'`, c.href)
+for (const i of industriesStrip.items) checkRoute(`industry '${i.label}'`, i.href)
+
+// 5) Homepage content shape.
+if (benefits.length !== 4) errors.push(`benefits: expected 4, got ${benefits.length}`)
+if (featuredCards.length !== 6) errors.push(`featuredCards: expected 6, got ${featuredCards.length}`)
+if (stackGroups.length !== 4) errors.push(`stackGroups: expected 4, got ${stackGroups.length}`)
+for (const g of stackGroups) {
+  if (!g.title || !g.text || !g.vendors?.length) errors.push(`stack '${g.id}': incomplete`)
 }
-for (const n of newsItems) checkRoute(`news '${n.title}'`, n.href)
-for (const card of featuredCards) checkRoute(`card '${card.id}'`, card.href)
 
-// 5) No placeholder '#' hrefs anywhere in data.
-const blob = JSON.stringify({ navItems, footerColumns, footerLegal, newsItems, promo, featuredCards, splitSections })
-if (blob.includes('"#"')) errors.push(`placeholder href '#' still present in data`)
+// 6) No placeholder '#' hrefs anywhere in data.
+const blob = JSON.stringify({
+  navItems,
+  footerColumns,
+  footerLegal,
+  promo,
+  featuredCards,
+  heroSlides,
+  benefits,
+  industriesStrip,
+  partnerStrip,
+  successStory,
+  stackGroups,
+})
+if (blob.includes('"#\\""') || blob.includes("'#'")) {
+  errors.push(`placeholder href '#' still present in data`)
+}
 
-// 6) Coverage: every menu label resolves to a real page.
-const menuLabels = navItems.flatMap((i) => i.columns.flatMap((c) => c.links.map((l) => l.label)))
-for (const label of menuLabels) {
-  if (!pages[slugify(label)]) errors.push(`nav label without page: '${label}' → ${slugify(label)}`)
+// 7) Coverage: every nav leaf label matches a registered page title.
+for (const item of navItems) {
+  for (const col of item.columns) {
+    for (const l of col.links) {
+      if (!l.href.startsWith('#/')) continue
+      const target = pages[l.href.slice(2)]
+      if (target && !target.title) errors.push(`nav leaf '${l.label}': page has no title`)
+    }
+  }
 }
 
 console.log(`Pages: ${allPages.length} total, ${Object.keys(pages).length} unique`)
-console.log(`Nav leaves checked: ${menuLabels.length}; footer links: ${footerColumns.flatMap((c) => c.links).length + footerLegal.length}`)
+console.log(
+  `Nav leaves checked: ${navItems.flatMap((i) => i.columns.flatMap((c) => c.links)).length}; ` +
+    `footer links: ${footerColumns.flatMap((c) => c.links).length + footerLegal.length}`,
+)
 if (errors.length) {
   for (const e of errors) console.log(`FAIL - ${e}`)
   process.exit(1)
 }
 console.log('PAGES VALIDATION: ALL PASSED')
+

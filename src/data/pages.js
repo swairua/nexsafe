@@ -1,21 +1,22 @@
 // Central registry of every deep-linkable content page.
 // Route: '#/<slug>' (see src/data/slug.js). Rendered by App.jsx → PageView.jsx.
-import { whoWeArePages } from './pages/whoWeAre.js'
-import { whatWeDoPages } from './pages/whatWeDo.js'
-import { sustainabilityPages } from './pages/sustainability.js'
-import { newsPages } from './pages/news.js'
-import { investorPages } from './pages/investors.js'
-import { utilityPages } from './pages/utility.js'
-import { docPages } from './pages/docPages.js'
+//
+// Content comes from the client documents in logoandcontent/. The earlier
+// Kyndryl-derived placeholder pages (investors, news, sustainability, the
+// generic who-we-are / what-we-do sets) were removed rather than kept, so
+// nothing on the site is copy the client did not supply.
+import { companyPages } from './pages/company.js'
+import { servicePages } from './pages/services.js'
+import { industryPages } from './pages/industries.js'
+import { successStoryPages } from './pages/successStory.js'
+import { sitePages } from './pages/site.js'
 
 export const allPages = [
-  ...whoWeArePages,
-  ...whatWeDoPages,
-  ...sustainabilityPages,
-  ...newsPages,
-  ...investorPages,
-  ...utilityPages,
-  ...docPages,
+  ...companyPages,
+  ...servicePages,
+  ...industryPages,
+  ...successStoryPages,
+  ...sitePages,
 ]
 
 /** slug → page object. Duplicate slugs fail loudly at module load. */

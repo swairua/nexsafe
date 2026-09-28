@@ -1,11 +1,9 @@
-// Homepage section content: hero slides, featured service cards, the pictures
-// row, split sections and stats. Copy follows the "Our Company.docx" brief
-// (services first, pictures straight after, technology stack in place of the
-// old "Why nexsate" block) with the navy/blue corporate palette.
+// Homepage section content — copy taken from the client-supplied Home Page
+// document. The document sets the order: hero, four benefits, the six
+// services, the industries line, the technology stack, then the success
+// story. Section components render these exports unchanged.
 import { pageHref } from './slug.js'
 
-const office = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab'
-const meeting = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40'
 const img = (id, w = 1400) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
 
 // Navy scrim over photography + brand-blue gradient fallback (used if the
@@ -16,199 +14,170 @@ const navyFallback = 'linear-gradient(135deg, #070e40 0%, #010ed0 130%)'
 const navyFallbackSoft = 'linear-gradient(135deg, #070e40 0%, #0693e3 130%)'
 const navyTile = 'linear-gradient(135deg, #070e40 0%, #010ed0 140%)'
 
+// The document opens on the promise, then the positioning, then the sectors.
 export const heroSlides = [
   {
-    id: 'our-company',
-    kicker: 'Simply enabling IT for a complex world',
-    title: 'Technology that works as one.',
-    text: 'Nexsate brings together managed IT, cloud, cybersecurity, infrastructure, data protection and disaster recovery, software development, systems integration and technology consulting to simplify complexity and transform operations.',
-    cta: { label: 'Discover our company', href: pageHref('Our Company') },
+    id: 'promise',
+    kicker: 'Empowering businesses with transformative technology solutions',
+    title: 'We take care of your IT, so you can take care of your customers.',
+    text: 'Nexsate helps businesses reduce downtime, strengthen security, improve connectivity, support users, and create a more reliable technology environment for daily operations and future growth.',
+    cta: { label: 'Discover our services', href: pageHref('Services & Solutions') },
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2000&q=80',
     gradient: navyScrim,
     fallback: navyFallback,
   },
   {
-    id: 'managed-it-services',
-    kicker: 'Managed IT services',
-    title: 'Let us provide the support you deserve.',
-    text: 'Partner with us for IT management services to grow your existing IT infrastructure — 24/7 monitoring, a service desk your people will enjoy using, and one monthly invoice.',
-    cta: { label: 'Explore managed IT', href: pageHref('Managed IT services') },
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=2000&q=80',
+    id: 'principle',
+    kicker: 'EnableIT. Transform. Empower.',
+    title: 'Simply enabling IT for a complex world',
+    text: 'Since 2016 our principle has shaped the business: technology should make business easier, safer, and more productive. We deliver reliable, responsive, and secure IT, software, and telecommunications solutions.',
+    cta: { label: 'About Nexsate', href: pageHref('About Us') },
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80',
     gradient: navyScrim,
     fallback: navyFallbackSoft,
   },
   {
-    id: 'cybersecurity',
-    kicker: 'Cybersecurity',
-    title: 'Make IT stress free with a security partner.',
-    text: 'Layered defence for identities, endpoints, email and data — monitored and managed by engineers who respond, not just alert.',
-    cta: { label: 'Explore cybersecurity', href: pageHref('Cybersecurity') },
+    id: 'industries',
+    kicker: 'Industry focus',
+    title: 'Solving IT challenges for the industries that keep business moving.',
+    text: 'Industrial & Manufacturing, Transportation & Logistics, Healthcare, Financial Services, Professional Services, Non-Profit — technology support built around the way your sector actually operates.',
+    cta: { label: 'See who we serve', href: pageHref('Services & Solutions') },
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80',
     gradient: navyScrim,
     fallback: navyTile,
   },
 ]
 
-// The seven services from the doc's "IT Solutions home menu", in doc order.
+// The four benefits from the document, in its order and wording.
+export const benefits = [
+  {
+    id: 'cost-effectiveness',
+    title: 'Cost-effectiveness',
+    text: 'Reduce downtime, prevent recurring issues, and access reliable IT expertise without the cost of a full in-house team.',
+  },
+  {
+    id: 'innovative-technology',
+    title: 'Innovative technology',
+    text: 'Modern tools and solutions that improve productivity, strengthen protection, and support smarter ways of working.',
+  },
+  {
+    id: 'industry-expertise',
+    title: 'Industry expertise',
+    text: 'Tailored IT solutions designed around your industry, operations, users, and business needs.',
+  },
+  {
+    id: 'scalability',
+    title: 'Scalability',
+    text: 'Flexible technology solutions that grow with your business and support long-term value from your investment.',
+  },
+]
+
+// The document's "Services" list — six services, each with its own page.
 export const featuredCards = [
   {
     id: 'card-managed-it-services',
     tag: 'Managed IT',
-    title: 'Managed IT services',
-    text: '24/7 maintenance and monitoring that keeps your computers, servers, and systems up and running.',
+    title: 'Managed IT Services',
+    text: 'Reliable IT support that keeps your team productive, resolves issues faster, reduces downtime, and keeps daily operations moving.',
     linkLabel: 'Stay up and running',
     image: img('photo-1516321318423-f06f85e504b3', 1200),
     fallback: navyFallback,
-    href: pageHref('Managed IT services'),
+    href: pageHref('Managed IT Services'),
   },
   {
     id: 'card-cloud-services',
     tag: 'Cloud',
     title: 'Cloud Services',
-    text: 'Migrate, run and optimise cloud platforms that scale with you — without the runaway bill.',
+    text: 'Secure cloud solutions for working, collaborating, accessing information, and protecting data from anywhere.',
     linkLabel: 'Move to the cloud',
     image: img('photo-1451187580459-43490279c0fa', 1200),
     fallback: navyFallbackSoft,
     href: pageHref('Cloud Services'),
   },
   {
+    id: 'card-software-development',
+    tag: 'Software',
+    title: 'Software Development',
+    text: 'Custom software and ERP solutions designed to automate workflows, connect systems, improve efficiency, and support daily operations.',
+    linkLabel: 'Build smarter',
+    image: img('photo-1518770660439-4636190af475', 1200),
+    fallback: navyTile,
+    href: pageHref('Software Development, ERP & CRM Solutions'),
+  },
+  {
+    id: 'card-network-management',
+    tag: 'Network',
+    title: 'Network Management',
+    text: 'Reliable network support that keeps your business connected, secure, and well supported through monitoring, maintenance, and troubleshooting.',
+    linkLabel: 'Stay connected',
+    image: img('photo-1558494949-ef010cbdcc31', 1200),
+    fallback: navyFallback,
+    href: pageHref('Network Management'),
+  },
+  {
     id: 'card-cybersecurity',
     tag: 'Security',
     title: 'Cybersecurity',
-    text: 'Protect your business from malware, hackers, viruses and the most common security threats.',
+    text: 'Security services that protect your business data, users, devices, systems, and cloud platforms from evolving digital threats.',
     linkLabel: 'Protect your business',
-    image: img('photo-1550751827-4bd374c3f58b', 1200),
-    fallback: navyTile,
+    image: img('photo-1563986768609-322da13575f3', 1200),
+    fallback: navyFallbackSoft,
     href: pageHref('Cybersecurity'),
   },
   {
-    id: 'card-networking',
-    tag: 'Infrastructure',
-    title: 'Networking',
-    text: 'Wired, wireless and WAN — designed, documented and watched so connectivity stays boring.',
-    linkLabel: 'Review your network',
-    image: img('photo-1518770660439-4636190af475', 1200),
-    fallback: navyFallback,
-    href: pageHref('Networking'),
-  },
-  {
-    id: 'card-software-integration',
-    tag: 'Integration',
-    title: 'Software Integration',
-    text: 'Connect the systems you already own — integrations, APIs and data flows that make technology work as one.',
-    linkLabel: 'Join up your systems',
-    image: img('photo-1519389950473-47ba0277781c', 1200),
-    fallback: navyFallbackSoft,
-    href: pageHref('Software Integration'),
-  },
-  {
-    id: 'card-software-development',
-    tag: 'Software',
-    title: 'Software development',
-    text: 'Small, focused applications that fit how your business actually works — built to be maintained.',
-    linkLabel: 'Build something better',
-    image: img('photo-1487058792275-0ad4aaf24ca7', 1200),
+    id: 'card-backup',
+    tag: 'Recovery',
+    title: 'Backup & Disaster Recovery',
+    text: 'Reliable data protection and recovery services that safeguard critical information, reduce disruption, and prepare your business for unexpected events.',
+    linkLabel: 'Plan your recovery',
+    image: img('photo-1451187580459-43490279c0fa', 1200),
     fallback: navyTile,
-    href: pageHref('Software development'),
-  },
-  {
-    id: 'card-data-protection',
-    tag: 'Continuity',
-    title: 'Data protection & disaster recovery',
-    text: 'Prevent data loss with encrypted storage and virtualized recovery, then enjoy increased productivity.',
-    linkLabel: 'Defend your data',
-    image: img('photo-1544197150-b99a580bb7a8', 1200),
-    fallback: navyFallback,
-    href: pageHref('Data protection & disaster recovery'),
-  },
-]
-
-export const splitSections = [
-  {
-    id: 'who-we-serve',
-    reversed: false,
-    tag: 'Who we serve',
-    title: 'Managed IT services customized for your industry',
-    text: 'Our vertical solutions expertise allows your business to streamline workflow, and increase productivity. Rather than list every sector here, we pick the ones where our compliance, uptime and security work runs deepest — then tailor the rest to your needs.',
-    cta: { label: 'See who we serve', href: pageHref('Who We Serve') },
-    image: `${office}?auto=format&fit=crop&w=1400&q=80`,
-    fallback: navyFallback,
-  },
-  {
-    id: 'technology-stack',
-    reversed: true,
-    tag: 'Our technology stack',
-    title: 'The stack behind technology that works as one.',
-    text: 'Cloud landing zones with cost guardrails, monitored networks, hardened endpoints, encrypted backup with tested recovery, and the integrations and applications that tie it all together — run by certified engineers and reported on every month.',
-    cta: { label: 'Explore our expertise', href: pageHref('Technology Stack') },
-    image: `${meeting}?auto=format&fit=crop&w=1400&q=80`,
-    fallback: navyFallbackSoft,
-  },
-]
-
-// A short "pictures" band that sits directly below the services grid
-// (doc brief: the pictures should come right after our services). Three tiles
-// with white caption cards overlapping the image base, in the style of the
-// reference "Our Company" row.
-export const picturesRow = [
-  {
-    id: 'pic-service-desk',
-    kicker: 'Our services',
-    title: 'How we can help',
-    caption: 'Engineers who pick up with full context of your estate.',
-    image: img('photo-1552664730-d307ca884978', 900),
-    fallback: navyFallback,
-    href: pageHref('IT support'),
-  },
-  {
-    id: 'pic-cloud',
-    kicker: 'Our expertise',
-    title: 'Why partner with us',
-    caption: 'Landing zones, networks and endpoints under one SLA.',
-    image: img('photo-1518770660439-4636190af475', 900),
-    fallback: navyFallbackSoft,
-    href: pageHref('Why choose us'),
-  },
-  {
-    id: 'pic-security',
-    kicker: 'Our customers',
-    title: 'Client success stories',
-    caption: 'Monitoring and response, not just alerting.',
-    image: img('photo-1600880292203-757bb62b4baf', 900),
-    fallback: navyTile,
-    href: pageHref('Customer success'),
+    href: pageHref('Backup & Disaster Recovery'),
   },
 ]
 
 // Vendor wall copy. The roster itself lives in `partners.js` and is rendered
 // from there, so the headline here and the tiles can never drift apart.
 export const partnerStrip = {
-  tag: 'Technology partners',
-  title: 'The platforms we run, support and license for you',
-  text: 'Partner status means better licensing, a real escalation path when something breaks at vendor level, and certified engineers on the exact tools we recommend.',
-  cta: { label: 'Meet our partners', href: pageHref('Our Partners') },
+  tag: 'Using trusted technology',
+  title: 'Using trusted technology to solve your IT challenges',
+  text: 'Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.',
+  cta: { label: 'Explore our services', href: pageHref('Services & Solutions') },
 }
 
-// Not every industry makes the homepage — six recognisable starting points
-// plus a link through to the full Who We Serve list.
+// The document names six sectors on the homepage; four have their own pages.
 export const industriesStrip = {
   tag: 'Industries we serve',
-  title: 'Six sectors, one accountable IT partner',
-  text: 'Compliance-aware, uptime-obsessed support for the industries where our engineers already work every day.',
-  cta: { label: 'All industries', href: pageHref('Who We Serve') },
+  title: 'Solving IT challenges for the industries that keep business moving',
+  text: 'Technology support built around how your sector works — whether that is a clinic, a warehouse, a branch office or a dispatch floor.',
+  cta: { label: 'All our services', href: pageHref('Services & Solutions') },
   items: [
-    { label: 'Banking', href: pageHref('Banking'), note: 'Audit-ready controls' },
-    { label: 'Healthcare', href: pageHref('Healthcare'), note: 'Clinical uptime' },
-    { label: 'Manufacturing', href: pageHref('Manufacturing'), note: 'Plant-level reliability' },
-    { label: 'Logistics', href: pageHref('Logistics'), note: 'Always-on dispatch' },
-    { label: 'Government', href: pageHref('Government'), note: 'Public-sector standards' },
-    { label: 'Professional services', href: pageHref('Professional services'), note: 'Confidential by default' },
+    { label: 'Industrial & Manufacturing', href: pageHref('Industrial & Manufacturing'), note: 'Production continuity' },
+    { label: 'Transportation & Logistics', href: pageHref('Transportation & Logistics'), note: 'Dispatch and fleet' },
+    { label: 'Healthcare', href: pageHref('Healthcare'), note: 'Patient service' },
+    { label: 'Financial Services', href: pageHref('Banks & Insurance'), note: 'Confidentiality first' },
   ],
 }
 
-export const stats = [
-  { value: '24/7', label: 'monitoring and support' },
-  { value: '99.9%', label: 'guaranteed uptime SLA' },
-  { value: '500+', label: 'businesses protected' },
-  { value: '10+', label: 'years of IT expertise' },
-]
+// The success story from the Home Page document, reduced to its outcome list
+// for the homepage teaser. The full narrative lives on its own page.
+export const successStory = {
+  id: 'success-story',
+  tag: 'Success stories',
+  title: 'How better IT alignment helped a growing business improve security, productivity, and daily operations',
+  text: 'A growing business had the tools it needed, but they were not properly aligned with the way the team worked. Nexsate reviewed the environment, identified gaps, and created a more reliable, secure, and organized IT foundation.',
+  quote:
+    'The goal was not just to fix IT problems. The goal was to create a technology environment that helped the business work better, stay protected, and grow with more confidence.',
+  cta: { label: 'Read the full story', href: pageHref('Success Story') },
+  outcomes: [
+    'Faster and more organized IT support',
+    'Stronger cybersecurity protection',
+    'Better control over user access and permissions',
+    'Improved Microsoft 365 and cloud collaboration',
+    'More reliable backup and recovery planning',
+    'Fewer recurring technology disruptions',
+    'A clearer IT roadmap for growth',
+  ],
+  image: img('photo-1600880292203-757bb62b4baf', 1400),
+  fallback: navyFallback,
+}

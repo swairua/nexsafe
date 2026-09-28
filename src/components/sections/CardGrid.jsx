@@ -4,8 +4,9 @@ import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { featuredCards } from '../../data/content.js'
 
-/** 3-up featured service card grid with image zoom, arrow-link hover,
- *  scroll reveals and staggered card entrances. */
+/** 3-up service card grid with image zoom, arrow-link hover, scroll reveals
+ *  and staggered card entrances. Cards come from the Home Page document's
+ *  own six-service list. */
 export default function CardGrid() {
   return (
     <section id="it-solutions" className="relative overflow-hidden bg-shell-gray-100 py-16 md:py-24">
@@ -15,12 +16,12 @@ export default function CardGrid() {
       <div className="shell-container relative">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <Reveal variant="fade">
-            <SectionTag>Our services</SectionTag>
+            <SectionTag>Services</SectionTag>
             <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-              Seven services that work as one
+              Simply enabling IT for a complex world
             </h2>
           </Reveal>
-          <Reveal as="a" href={pageHref('Our Services')} delay={2} className="arrow-link">
+          <Reveal as="a" href={pageHref('Services & Solutions')} delay={2} className="arrow-link">
             Find your solution <span className="arrow">→</span>
           </Reveal>
         </div>

@@ -3,6 +3,10 @@ import Reveal from '../ui/Reveal.jsx'
 import { footerColumns, footerLegal } from '../../data/footerContent.js'
 
 // Social channels in the brand's chosen order: Facebook, LinkedIn, X.
+//
+// TODO(client): these handles are NOT confirmed. They are conventional guesses
+// and the client supplied no social URLs in logoandcontent/, so they may 404.
+// Replace with the real profile URLs before the site goes live.
 const socials = [
   {
     label: 'Facebook',

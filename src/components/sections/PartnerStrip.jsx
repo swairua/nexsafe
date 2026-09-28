@@ -31,7 +31,7 @@ export default function PartnerStrip() {
         <Reveal delay={2}>
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {partners.map((partner) => (
-              <li key={partner.name}>
+              <li key={`${partner.group}-${partner.name}`}>
                 <div className="flex h-full items-center gap-3 rounded-xl border border-shell-gray-300 bg-shell-gray-100 px-4 py-4 transition-colors duration-300 hover:border-shell-cyan">
                   <span
                     aria-hidden="true"
@@ -44,14 +44,9 @@ export default function PartnerStrip() {
                       {partner.name}
                     </span>
                     <span className="block truncate text-xs text-shell-gray-500">
-                      {partner.status === 'partner' ? partner.area : 'Agreement in progress'}
+                      {partner.area}
                     </span>
                   </span>
-                  {partner.status !== 'partner' && (
-                    <span className="ml-auto shrink-0 rounded-full border border-shell-red/30 bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-shell-red-dark">
-                      Soon
-                    </span>
-                  )}
                 </div>
               </li>
             ))}

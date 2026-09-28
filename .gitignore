@@ -32,6 +32,10 @@ dist-ssr
 .env.*
 !.env.example
 
-# Client source material (raw brief + extracted images) — not site assets
+# Client source material (raw brief + extracted text) - not site assets.
+# These are the supplied documents and brand artwork; the derived site assets
+# live in public/ and src/data/.
 documents/
+logoandcontent/
+.docx-text/
 

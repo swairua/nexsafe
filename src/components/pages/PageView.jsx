@@ -9,7 +9,6 @@ const SECTION_ANCHORS = {
   Industries: '#industries',
   Insights: '#insights',
   Support: '#support',
-  'nexsate.com': '#top',
   Legal: '#top',
 }
 
@@ -19,9 +18,8 @@ const CATEGORY_IMAGES = {
   Company: img('photo-1552664730-d307ca884978'),
   'IT solutions': img('photo-1518770660439-4636190af475'),
   Industries: img('photo-1519389950473-47ba0277781c'),
-  Insights: img('photo-1487058792275-0ad4aaf24ca7'),
-  Support: img('photo-1600880292203-757bb62b4baf'),
-  'nexsate.com': img('photo-1451187580459-43490279c0fa'),
+  Insights: img('photo-1600880292203-757bb62b4baf'),
+  Support: img('photo-1522071820081-009f0129c71c'),
   Legal: img('photo-1451187580459-43490279c0fa'),
 }
 
@@ -156,6 +154,24 @@ export default function PageView({ page }) {
                     >
                       <span className="mt-1.5 h-2 w-2 shrink-0 rounded-[2px] bg-shell-green" aria-hidden="true" />
                       <span className="text-base leading-relaxed text-shell-gray-700 md:text-lg">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {section.items && (
+                <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {section.items.map((item) => (
+                    <li
+                      key={item.title}
+                      className="rounded-2xl border border-shell-gray-300 bg-white p-5"
+                    >
+                      <h3 className="flex gap-3 text-base font-bold leading-snug text-shell-gray-900 md:text-lg">
+                        <span className="mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-shell-green" aria-hidden="true" />
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 pl-5 text-sm leading-relaxed text-shell-gray-700 md:text-base">
+                        {item.text}
+                      </p>
                     </li>
                   ))}
                 </ul>
