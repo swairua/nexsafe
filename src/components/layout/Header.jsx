@@ -143,13 +143,11 @@ export default function Header({ overlay = true }) {
             <span aria-hidden="true">→</span>
           </a>
 
-          <a
-            href="#/change-country"
-            aria-label="Select country or region"
-            className={`hidden items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold transition-colors md:flex ${
-              onHero
-                ? 'text-white/85 hover:bg-white/15 hover:text-white'
-                : 'text-shell-gray-900 hover:bg-shell-gray-100 hover:text-shell-red'
+          {/* Static domain label, not a region selector: the build hosts a
+              single site, so there is nothing to switch to. */}
+          <span
+            className={`hidden items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold md:flex ${
+              onHero ? 'text-white/85' : 'text-shell-gray-900'
             }`}
           >
             <svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -157,7 +155,7 @@ export default function Header({ overlay = true }) {
               <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" strokeWidth="1.5" />
             </svg>
             nexsate.com
-          </a>
+          </span>
 
           <button
             type="button"

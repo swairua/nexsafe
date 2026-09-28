@@ -20,7 +20,6 @@ export const footerColumns = [
     links: [
       { label: 'Talk to an expert', href: pageHref('Contact us') },
       { label: 'Help and FAQ', href: pageHref('Help and FAQ') },
-      { label: 'Change country', href: pageHref('Change country') },
     ],
   },
   {

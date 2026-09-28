@@ -42,22 +42,6 @@ export const sitePages = [
     related: ['services-solutions', 'managed-it-services', 'about-us'],
   },
   {
-    slug: 'change-country',
-    title: 'Change country',
-    eyebrow: support,
-    intro: 'Select the region you would like to view.',
-    sections: [
-      {
-        heading: 'Regional sites',
-        body: [
-          'This front-end build hosts a single Nexsate site. Regional content can be added here as additional markets are confirmed.',
-        ],
-        list: ['nexsate.com — global'],
-      },
-    ],
-    related: ['contact-us'],
-  },
-  {
     slug: 'help-and-faq',
     title: 'Help and FAQ',
     eyebrow: support,

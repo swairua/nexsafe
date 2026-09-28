@@ -56,7 +56,7 @@ Legal -> `#top`).
 - Client outcomes: IT alignment for a growing business
 
 **Support** (2 columns)
-- Help and support: Help and FAQ / Contact us / Change country
+- Help and support: Help and FAQ / Contact us
 - Legal: Privacy Policy / Cookie policy / Terms & Conditions
 
 ## 4. The six services (doc "Services & Solutions")
@@ -67,7 +67,7 @@ as homepage cards **and** nav leaves, so the menu and the landing page agree.
 
 ## 5. Footer
 
-- **Columns (5):** Contact (Talk to an expert / Help and FAQ / Change country),
+- **Columns (5):** Contact (Talk to an expert / Help and FAQ),
   Services, More services, Industries, Company
 - **Legal bar (4):** Privacy Policy / Cookie policy / Terms & Conditions / Contact us
 - **Socials (3):** Facebook / LinkedIn / X — **unconfirmed**. These are
@@ -89,15 +89,28 @@ as homepage cards **and** nav leaves, so the menu and the landing page agree.
 | `services.js` | 12 | Services & Solutions, the six services, ERP, Automation, Digital Transformation, Gaining Efficiency |
 | `industries.js` | 4 | Banks & Insurance, Healthcare, Industrial & Manufacturing, Transportation & Logistics |
 | `successStory.js` | 1 | The client case study, kept whole |
-| `site.js` | 6 | Contact us, Change country, Help and FAQ, Privacy Policy, Cookie policy, Terms & Conditions |
+| `site.js` | 5 | Contact us, Help and FAQ, Privacy Policy, Cookie policy, Terms & Conditions |
 
-**28 pages total.** Invariants: no duplicate slugs, every `related[]` resolves,
+**27 pages total.** Invariants: no duplicate slugs, every `related[]` resolves,
 every section has a heading plus body/list/items content. Route: `#/` + slug,
 rendered by `PageView.jsx`.
 
 The earlier Kyndryl-derived placeholder sets (investors, news, sustainability,
 generic who-we-are / what-we-do) were **removed** rather than kept, so no copy
 the client did not supply remains on the site.
+
+Also removed: **Change country**. It was a 22-word stub whose entire body said
+the build "hosts a single Nexsate site" and that "regional content can be added
+here as additional markets are confirmed" — a page describing its own
+emptiness, with no backing in any client document. The header globe is now a
+static `nexsate.com` label (a `<span>`, not a link) rather than a dead
+selector. Re-add when a second market actually exists.
+
+**Kept despite looking thin:** `Our People` (74 words) traces to the "Our
+People" and "Our Purpose" blocks in `About US.docx`, and the two Security pages
+overlap by ~40% but come from two separate supplied documents (`Security.docx`,
+`Cybersecurity.docx`). The legal pages are site-utility copy the client did not
+supply, but a real site needs them.
 
 
 ## 7. Theme tokens
@@ -136,7 +149,7 @@ Run these after any content or navigation change:
 node scripts/check-syntax.mjs     # bracket balance across the data files
 node scripts/validate-pages.mjs   # registry schema, nav/footer/CTA resolution
 node scripts/check-links.mjs      # every link resolves; no orphan pages
-node scripts/smoke.mjs            # renders <App /> and all 28 pages
+node scripts/smoke.mjs            # renders <App /> and all 27 pages
 npx vite build                    # production build
 ```
 

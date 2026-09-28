@@ -85,7 +85,7 @@ export const navItems = [
     columns: [
       {
         heading: 'Help and support',
-        links: links('Help and FAQ', 'Contact us', 'Change country'),
+        links: links('Help and FAQ', 'Contact us'),
       },
       {
         heading: 'Legal',
