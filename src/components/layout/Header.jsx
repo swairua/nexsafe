@@ -80,8 +80,10 @@ export default function Header({ overlay = true }) {
             : 'shell-container flex h-16 items-center justify-between md:h-[4.5rem]'
         }
       >
-        <a href="#top" className="flex items-center" aria-label="nexsate.com home">
-          <NexsateLogo className="h-10 w-10 md:h-11 md:w-11" />
+        <a href="#top" className="flex items-center" aria-label="Nexsate home">
+          {/* Client logo — plate keeps the dark-on-white artwork legible over
+              the hero imagery and seamless once the bar turns solid white. */}
+          <NexsateLogo className="h-4 md:h-5" />
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">

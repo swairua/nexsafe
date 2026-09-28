@@ -1,3 +1,4 @@
+import NexsateLogo from '../ui/NexsateLogo.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { footerColumns, footerLegal } from '../../data/footerContent.js'
 
@@ -56,16 +57,8 @@ export default function Footer() {
         {/* Social + logo row */}
         <Reveal className="mt-12 flex flex-col items-start justify-between gap-6 border-t border-shell-gray-300 pt-8 md:flex-row md:items-center" delay={2}>
           <a href="#top" className="flex items-center gap-3" aria-label="Nexsate home">
-            {/* Client-supplied wordmark on a white chip so the JPG's own
-                background blends with the light footer surface. */}
-            <span className="inline-flex items-center rounded-lg bg-white px-3 py-2 ring-1 ring-shell-gray-300">
-              <img
-                src="/brand/nexsate-wordmark.jpg"
-                alt="Nexsate"
-                className="h-6 w-auto md:h-7"
-                loading="lazy"
-              />
-            </span>
+            {/* Same client wordmark lockup as the header. */}
+            <NexsateLogo className="h-6 md:h-7" plateClassName="px-3 py-2 ring-shell-gray-300" />
             <span className="text-xs font-medium uppercase tracking-[0.14em] text-shell-gray-500">
               Enabling, transforming and empowering your business
             </span>

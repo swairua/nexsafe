@@ -1,32 +1,29 @@
 /**
- * nexsate.com brand mark — rounded-square gradient tile with ascending
- * signal bars, in the corporate navy/blue palette. Keeps the same h-10/w-10
- * footprint in header and footer.
+ * Nexsate brand lockup — the client-supplied NEXSATE wordmark
+ * (`public/brand/nexsate-wordmark.jpg`, 219×43).
+ *
+ * The artwork is dark charcoal on a white background, so it always sits on a
+ * light "plate": that keeps it legible over hero photography and blends
+ * seamlessly into the solid white header bar and the light footer. The compact
+ * blue tile mark lives on as the favicon (`public/favicon.svg`).
+ *
+ * `className` sizes the wordmark image itself; `plateClassName` tunes the plate.
  */
-export default function NexsateLogo({ className = 'h-9 w-9', showWordmark = false }) {
-  const mark = (
-    <svg viewBox="0 0 100 100" className={className} aria-hidden="true" focusable="false">
-      <defs>
-        <linearGradient id="nexsate-mark" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#3aa0ff" />
-          <stop offset="0.55" stopColor="#0a7ffa" />
-          <stop offset="1" stopColor="#0b45f5" />
-        </linearGradient>
-      </defs>
-      <rect x="6" y="6" width="88" height="88" rx="24" fill="url(#nexsate-mark)" />
-      <rect x="27" y="56" width="13" height="20" rx="4" fill="#ffffff" opacity="0.85" />
-      <rect x="43.5" y="42" width="13" height="34" rx="4" fill="#ffffff" />
-      <rect x="60" y="28" width="13" height="48" rx="4" fill="#ffffff" opacity="0.85" />
-    </svg>
-  )
-
-  if (!showWordmark) return mark
+export default function NexsateLogo({
+  className = 'h-5 md:h-6',
+  plateClassName = '',
+}) {
   return (
-    <span className="inline-flex items-center gap-2">
-      {mark}
-      <span className="text-lg font-bold leading-none tracking-tight text-shell-gray-900">
-        nexsate<span className="text-shell-red">.com</span>
-      </span>
+    <span
+      className={`inline-flex items-center rounded-lg bg-white px-2.5 py-1.5 ring-1 ring-black/10 ${plateClassName}`}
+    >
+      <img
+        src="/brand/nexsate-wordmark.jpg"
+        alt="Nexsate"
+        width="219"
+        height="43"
+        className={`${className} w-auto`}
+      />
     </span>
   )
 }

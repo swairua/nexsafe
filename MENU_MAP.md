@@ -83,8 +83,11 @@ page agree.
 - **Legal bar (7):** Privacy policy · Cookie policy · Terms of use ·
   Accessibility · Data protection · Phishing and scam alerts · Contact us
 - **Socials (3):** Facebook · LinkedIn · X — `@nexsate` handles (placeholders)
-- **Brand:** `NexsateLogo.jsx` + `public/favicon.svg` in navy→blue gradient;
-  social source art kept in `public/social/`, brand art in `public/brand/`.
+- **Brand:** `NexsateLogo.jsx` renders the client-supplied NEXSATE wordmark
+  (`public/brand/nexsate-wordmark.jpg`, 219×43) in the header **and** footer —
+  on a light plate, because the artwork is dark-on-white and must stay legible
+  over hero photography. The compact blue tile is retained as
+  `public/favicon.svg`. Social source art lives in `public/social/`.
 
 ## 6. Page registry
 

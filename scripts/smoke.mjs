@@ -43,6 +43,10 @@ try {
     'has news': html.includes('More articles from resource library'),
     'has promo': html.includes('WIN with managed IT services.'),
     'has footer columns': html.includes('Phishing and scam alerts'),
+    'has client wordmark in header and footer': [
+      'src="/brand/nexsate-wordmark.jpg"',
+      'alt="Nexsate"',
+    ].every((s) => html.includes(s)) && (html.match(/nexsate-wordmark\.jpg/g) || []).length >= 2,
     'has cookie banner': html.includes('Accept all cookies'),
     'has nav anchor targets': [
       'id="about"',
