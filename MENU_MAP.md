@@ -134,6 +134,27 @@ Values were read off the live site (its 135-degree brand gradient starts at
 `.btn-sweep` adds the doc-requested corporate-colour hover animation (blue
 fill wipes left->right, arrow nudges forward).
 
+**Open gap — two sectors awaiting client documents.** The Home Page document
+names six sectors, but only four have a dedicated "Industry Focus" document
+(488–600 words each), so only those four have pages:
+
+| sector | source document | page |
+|--------|-----------------|------|
+| Industrial & Manufacturing | `Industry Focus - Industrial & Manufacturing.docx` (488 w) | yes |
+| Transportation & Logistics | `Industry Focus - Transport and Logistics.docx` (600 w) | yes |
+| Healthcare | `Industry Focus - Healthcare.docx` (544 w) | yes |
+| Financial Services | `Industry Focus - Banks & Insurance.docx` (553 w) | yes |
+| **Professional Services** | **none** | **no** |
+| **Non-Profit** | **none** | **no** |
+
+Across all 18 supplied documents those last two are named exactly once, in the
+homepage's comma-separated sector list, with no supporting narrative. Writing
+pages for them would mean inventing every sector-specific claim — the same
+failure mode as the deleted Kyndryl placeholder pages — so they are omitted
+rather than fabricated. `TODO(client)` in `src/data/content.js` records the
+request, and `validate-pages.mjs` asserts the shortfall so it cannot be quietly
+dropped from view at review time.
+
 ## 8. Partner roster
 
 `src/data/partners.js` is the single source of truth for vendors. Each entry is

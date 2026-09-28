@@ -93,6 +93,20 @@ for (const g of stackGroups) {
   if (!g.title || !g.text || !g.vendors?.length) errors.push(`stack '${g.id}': incomplete`)
 }
 
+// 5b) Sector coverage. The Home Page document names six sectors, but only the
+// four with a dedicated "Industry Focus" document have pages. This asserts the
+// documented, intentional shortfall so it cannot be forgotten at review time.
+const SECTORS_WITHOUT_SOURCE = ['Professional Services', 'Non-Profit']
+const sectorLabels = industriesStrip.items.map((i) => i.label)
+for (const s of SECTORS_WITHOUT_SOURCE) {
+  if (sectorLabels.includes(s)) {
+    errors.push(`sector '${s}' is listed but has no source document or page`)
+  }
+}
+if (sectorLabels.length !== 4) {
+  errors.push(`industriesStrip: expected 4 sourced sectors, got ${sectorLabels.length}`)
+}
+
 // 6) No placeholder '#' hrefs anywhere in data.
 const blob = JSON.stringify({
   navItems,

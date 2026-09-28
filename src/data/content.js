@@ -145,7 +145,20 @@ export const partnerStrip = {
   cta: { label: 'Explore our services', href: pageHref('Services & Solutions') },
 }
 
-// The document names six sectors on the homepage; four have their own pages.
+// The Home Page document names six sectors:
+//
+//   Industrial & Manufacturing, Transportation & Logistics, Healthcare,
+//   Financial Services, Professional Services, Non-Profit
+//
+// Only the first four have a dedicated "Industry Focus" document (488-600
+// words each), so only those four are listed here and given pages. The other
+// two appear nowhere else in the supplied material, so there is nothing to
+// write a page from without inventing sector-specific claims.
+//
+// TODO(client): request "Industry Focus - Professional Services" and
+// "Industry Focus - Non-Profit" documents. When they arrive, add a page to
+// src/data/pages/industries.js and an entry to `items` below, and re-point
+// any existing "Financial Services" label if the client prefers that wording.
 export const industriesStrip = {
   tag: 'Industries we serve',
   title: 'Solving IT challenges for the industries that keep business moving',
