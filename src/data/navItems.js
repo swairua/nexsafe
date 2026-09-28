@@ -117,7 +117,7 @@ export const navItems = [
       },
       {
         heading: 'Legal',
-        links: links('Privacy policy', 'Cookie policy', 'Terms of use'),
+        links: links('Privacy Policy', 'Cookie policy', 'Terms & Conditions'),
       },
     ],
   },

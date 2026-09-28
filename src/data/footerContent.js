@@ -93,9 +93,9 @@ export const footerColumns = [
 ]
 
 export const footerLegal = [
-  link('Privacy policy'),
+  link('Privacy Policy'),
   link('Cookie policy'),
-  link('Terms of use'),
+  link('Terms & Conditions'),
   link('Accessibility'),
   link('Data protection'),
   link('Phishing and scam alerts'),

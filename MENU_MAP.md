@@ -61,7 +61,7 @@ Our Expertise · Customer Success · IT Solutions · IT strategy consulting
 
 **Support** (3 columns) — Help and FAQ · Support centre · Service status |
 Contact us · Report an issue with our website · Change country | Privacy
-policy · Cookie policy · Terms of use
+Policy · Cookie policy · Terms &amp; Conditions
 
 ## 4. The seven services (doc "IT Solutions home menu")
 
@@ -80,7 +80,7 @@ page agree.
   education) · Company (About nexsate, Leadership team, IT blog, Case studies,
   Locations, Careers) · Support (Support forum, Help and FAQ, Contact us,
   Pricing and plans)
-- **Legal bar (7):** Privacy policy · Cookie policy · Terms of use ·
+- **Legal bar (7):** Privacy Policy · Cookie policy · Terms &amp; Conditions ·
   Accessibility · Data protection · Phishing and scam alerts · Contact us
 - **Socials (3):** Facebook · LinkedIn · X — `@nexsate` handles (placeholders)
 - **Brand:** `NexsateLogo.jsx` renders the client-supplied NEXSATE wordmark

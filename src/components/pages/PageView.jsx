@@ -13,7 +13,7 @@ const SECTION_ANCHORS = {
   Legal: '#top',
 }
 
-// Eyebrow → decorative Kyndryl-style imagery (visual blocks only; URLs verified live).
+// Eyebrow → decorative imagery (visual blocks only; URLs verified live).
 const img = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=2000&q=80`
 const CATEGORY_IMAGES = {
   Company: img('photo-1552664730-d307ca884978'),

@@ -20,6 +20,8 @@ try {
   const { default: PageView } = await server.ssrLoadModule('/src/components/pages/PageView.jsx')
   const strategyHtml = renderToString(React.createElement(PageView, { page: pages['managed-it-services'] }))
   const notFoundHtml = renderToString(React.createElement(PageView, { page: undefined }))
+  const policyHtml = renderToString(React.createElement(PageView, { page: pages['privacy-policy'] }))
+  const termsHtml = renderToString(React.createElement(PageView, { page: pages['terms-conditions'] }))
   const leafHrefs = navItems.flatMap((i) => i.columns.flatMap((c) => c.links.map((l) => l.href)))
   const deepHrefs = [
     ...footerColumns.flatMap((c) => c.links.map((l) => l.href)),
@@ -80,6 +82,15 @@ try {
       Object.keys(pages).length === allPages.length && allPages.length >= 80,
     'pages: every nav leaf href is a resolvable #/ route':
       leafHrefs.length > 0 && leafHrefs.every((h) => h.startsWith('#/') && pages[h.slice(2)]),
+    'pages: legal pages carry the live nexsate.com policy text':
+      pages['privacy-policy'].sections.length >= 20 &&
+      pages['terms-conditions'].sections.length >= 20 &&
+      policyHtml.includes('Personal Information Protection Act') &&
+      policyHtml.includes('Privacy Officer') &&
+      policyHtml.includes('Office of the Information and Privacy Commissioner of Alberta') &&
+      termsHtml.includes('Province of Alberta') &&
+      termsHtml.includes('Nexsate Technologies Inc.') &&
+      termsHtml.includes('Edmonton'),
     'pages: footer, legal and news hrefs all resolve':
       deepHrefs.length > 0 && deepHrefs.every((h) => h.startsWith('#/') && pages[h.slice(2)]),
     'pages: homepage deep-links into inner pages': [
