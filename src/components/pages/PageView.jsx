@@ -1,42 +1,25 @@
-import { pages } from '../../data/pages.js'
+import { useContent } from '../../content/ContentContext.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
+import ContactForm from '../sections/ContactForm.jsx'
 
-// Eyebrow → homepage section anchor for the breadcrumb trail.
-const SECTION_ANCHORS = {
-  Company: '#company',
-  'IT solutions': '#it-solutions',
-  Industries: '#industries',
-  Insights: '#insights',
-  Support: '#support',
-  Legal: '#top',
-}
+// Eyebrow → homepage anchor (breadcrumb trail) and the decorative eyebrow →
+// image map are both content-driven (admin > "Breadcrumb anchors" /
+// "Category images"), so neither is duplicated here.
 
-// Eyebrow → decorative imagery (visual blocks only; URLs verified live).
-const img = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=2000&q=80`
-const CATEGORY_IMAGES = {
-  Company: img('photo-1552664730-d307ca884978'),
-  'IT solutions': img('photo-1518770660439-4636190af475'),
-  Industries: img('photo-1519389950473-47ba0277781c'),
-  Insights: img('photo-1600880292203-757bb62b4baf'),
-  Support: img('photo-1522071820081-009f0129c71c'),
-  Legal: img('photo-1451187580459-43490279c0fa'),
-}
-
-function NotFound() {
+function NotFound(notFound) {
   return (
     <section className="bg-shell-black text-white">
       <div className="shell-container py-20 text-center md:py-28">
-        <p className="text-xs font-bold uppercase tracking-wider text-shell-red">404</p>
+        <p className="text-xs font-bold uppercase tracking-wider text-shell-red">{notFound.tag}</p>
         <h1 className="mx-auto mt-3 max-w-2xl text-4xl font-bold tracking-tight md:text-6xl">
-          Page not found
+          {notFound.title}
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
-          The page you are looking for does not exist or may have been moved. Try the
-          header menu, or head back to the homepage.
+          {notFound.text}
         </p>
-        <a href="#top" className="btn-pill btn-pill--green mt-8">
-          Back to the homepage
+        <a href={notFound.cta.href} className="btn-pill btn-pill--green mt-8">
+          {notFound.cta.label}
           <span aria-hidden="true">→</span>
         </a>
       </div>
@@ -48,12 +31,28 @@ function NotFound() {
  * Inner-page renderer for '#/<slug>' routes: dark hero + breadcrumb,
  * prose sections (body paragraphs + lists), related-page cards, back to top.
  */
-export default function PageView({ page }) {
-  if (!page) return <NotFound />
+export default function PageView({ page, slug }) {
+  const content = useContent()
+  const pages = content.pages
+  const labels = content.pageLabels || {}
+  const connect = content.pageConnect || {}
+  const ui = content.uiLabels || {}
+  const anchors = content.categoryAnchors || {}
+  const sectionIds = content.sectionIds || {}
+  const settings = content.settings || {}
+  if (!page) return <NotFound {...(content.notFound || {})} />
 
-  const sectionHref = SECTION_ANCHORS[page.eyebrow]
+  const sectionHref = anchors[page.eyebrow]
   const relatedPages = (page.related || []).map((slug) => pages[slug]).filter(Boolean)
-  const categoryImage = CATEGORY_IMAGES[page.eyebrow]
+  const categoryImage = (content.categoryImages || {})[page.eyebrow]
+  const isContact = slug === "contact-us"
+  const form = content.contactForm || {}
+  // Contact details come from Site settings; each row only renders when filled.
+  const details = [
+    { label: form.emailLabel, value: settings.email, href: settings.email ? "mailto:" + settings.email : "" },
+    { label: form.phoneLabel, value: settings.phone, href: settings.phone ? "tel:" + String(settings.phone).replace(/\s+/g, "") : "" },
+    { label: form.addressLabel, value: settings.address, href: "" },
+  ].filter((d) => d.value)
 
   return (
     <article>
@@ -76,11 +75,11 @@ export default function PageView({ page }) {
             as="nav"
             variant="fade"
             delay={1}
-            aria-label="Breadcrumb"
+            aria-label={ui.breadcrumb}
             className="flex flex-wrap items-center gap-2 text-sm text-white/60"
           >
-            <a href="#top" className="transition-colors hover:text-shell-yellow">
-              Home
+            <a href={'#' + sectionIds.top} className="transition-colors hover:text-shell-yellow">
+              {labels.home}
             </a>
             <span aria-hidden="true">/</span>
             {sectionHref ? (
@@ -110,7 +109,7 @@ export default function PageView({ page }) {
         <div className="sticky top-20 z-30 md:top-24">
           <div className="shell-container py-3">
             <nav
-              aria-label="On this page"
+              aria-label={ui.onThisPage}
               className="inline-flex max-w-full items-center gap-1 overflow-x-auto rounded-full bg-white/95 p-1.5 shadow-[0_10px_36px_-12px_rgba(14,17,20,0.3)] ring-1 ring-black/5 backdrop-blur"
             >
               {page.sections.map((s, i) => (
@@ -202,7 +201,7 @@ export default function PageView({ page }) {
         <section className="bg-shell-gray-100">
           <div className="shell-container py-14 md:py-16">
             <Reveal as="h2" variant="fade" className="text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl">
-              Explore more
+              {labels.exploreMore}
             </Reveal>
             <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {relatedPages.map((rel, idx) => (
@@ -220,7 +219,7 @@ export default function PageView({ page }) {
                     {rel.title}
                   </h3>
                   <span className="arrow-link mt-4 text-sm">
-                    Read more <span className="arrow">›</span>
+                    {labels.readMore} <span className="arrow">›</span>
                   </span>
                 </Reveal>
               ))}
@@ -230,12 +229,36 @@ export default function PageView({ page }) {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="arrow-link mt-10 text-sm"
             >
-              Back to top <span className="arrow">↑</span>
+              {labels.backToTop} <span className="arrow">↑</span>
             </button>
           </div>
         </section>
       )}
 
+      {isContact ? (
+        <section id="contact-form" className="bg-white">
+          <div className="shell-container grid gap-10 py-14 md:py-20 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+            <ContactForm />
+            {details.length ? (
+              <div className="lg:pt-2">
+                <h2 className="text-lg font-bold tracking-tight text-shell-gray-900">{form.detailsHeading}</h2>
+                <ul className="mt-4 space-y-3">
+                  {details.map((d) => (
+                    <li key={d.label} className="rounded-xl border border-shell-gray-300 p-4">
+                      <span className="block text-xs font-semibold uppercase tracking-wide text-shell-gray-500">{d.label}</span>
+                      {d.href ? (
+                        <a href={d.href} className="mt-1 block text-sm font-medium text-shell-gray-900 underline-offset-2 hover:text-shell-red hover:underline">{d.value}</a>
+                      ) : (
+                        <span className="mt-1 block text-sm font-medium text-shell-gray-900">{d.value}</span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
       {/* Connect with us — Kyndryl-style dark CTA band before the footer */}
       <section className="relative overflow-hidden bg-shell-black text-white">
         <div
@@ -245,17 +268,16 @@ export default function PageView({ page }) {
         <div className="shell-container relative py-16 md:py-20">
           <Reveal variant="fade">
             <p className="text-xs font-bold uppercase tracking-wider text-shell-red">
-              Connect with us
+              {connect.tag}
             </p>
             <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-tight md:text-5xl">
-              Let's talk about your IT
+              {connect.title}
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
-              Connect with a nexsate expert to discuss how to design, build, manage and
-              modernize the mission-critical technology your business runs on.
+              {connect.text}
             </p>
-            <a href="#/contact-us" className="btn-pill btn-pill--green mt-8">
-              Talk to an expert
+            <a href={connect.cta.href} className="btn-pill btn-pill--green mt-8">
+              {connect.cta.label}
               <span aria-hidden="true">→</span>
             </a>
           </Reveal>

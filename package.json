@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seed": "node api/seed.mjs",
+    "admin:password": "php scripts/set-admin-password.php",
+    "images:localize": "node scripts/localize-images.mjs",
+    "images:check": "node scripts/localize-images.mjs --check",
+    "verify": "node scripts/check-syntax.mjs && node scripts/validate-pages.mjs && node scripts/check-links.mjs && node scripts/smoke.mjs && node scripts/smoke-admin.mjs && node scripts/smoke-media.mjs"
   },
   "dependencies": {
     "chatbot-widget-ui": "^4.0.4",

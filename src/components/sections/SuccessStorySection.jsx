@@ -1,7 +1,7 @@
 import SectionTag from '../ui/SectionTag.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
-import { successStory } from '../../data/content.js'
+import { useContent } from "../../content/ContentContext.jsx"
 
 /**
  * Success-story band, built from the case study in the client-supplied Home
@@ -10,8 +10,9 @@ import { successStory } from '../../data/content.js'
  * anchor used by the primary nav.
  */
 export default function SuccessStorySection() {
+  const { successStory, sectionIds } = useContent()
   return (
-    <section id="insights" className="bg-shell-gray-100 py-16 md:py-24">
+    <section id={sectionIds.insights} className="bg-shell-gray-100 py-16 md:py-24">
       <div className="shell-container grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal variant="left">
           <SmartImage

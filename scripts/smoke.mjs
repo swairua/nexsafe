@@ -17,6 +17,7 @@ try {
   const { default: App } = await server.ssrLoadModule('/src/App.jsx')
   const { default: PageView } = await server.ssrLoadModule('/src/components/pages/PageView.jsx')
   const { pages, allPages } = await server.ssrLoadModule('/src/data/pages.js')
+  const { defaultContent } = await server.ssrLoadModule('/src/data/siteContent.js')
   const { navItems } = await server.ssrLoadModule('/src/data/navItems.js')
   const { footerColumns, footerLegal } = await server.ssrLoadModule('/src/data/footerContent.js')
   const { partners } = await server.ssrLoadModule('/src/data/partners.js')
@@ -31,8 +32,9 @@ try {
   const plain = visibleText(html)
 
   // Every page must render without throwing and must surface its own title.
+  // The real slug is passed so slug-specific branches (the contact page) run.
   const pageResults = allPages.map((page) => {
-    const rendered = renderToString(React.createElement(PageView, { page }))
+    const rendered = renderToString(React.createElement(PageView, { page, slug: page.slug }))
     const text = visibleText(rendered)
     return {
       slug: page.slug,
@@ -43,6 +45,11 @@ try {
     }
   })
   const failedPages = pageResults.filter((p) => !p.ok).map((p) => p.slug)
+
+  // Contact details on the contact page come from Site settings.
+  const contactHtml = renderToString(
+    React.createElement(PageView, { page: pages['contact-us'], slug: 'contact-us' }),
+  )
 
   const notFoundHtml = renderToString(React.createElement(PageView, { page: undefined }))
 
@@ -93,7 +100,11 @@ try {
     'homepage owns the section anchors the nav targets': navItems.every((i) =>
       html.includes(`id="${i.href.slice(1)}"`),
     ),
+    'homepage serves local images (no image CDN at runtime)':
+      html.includes('/uploads/') && !html.includes('images.unsplash.com'),
     'all pages render with breadcrumb + related': failedPages.length === 0,
+    'contact page renders the editable contact details':
+      contactHtml.includes(defaultContent.settings.email),
     'item blocks render their titles': itemsRendered,
     'unknown slug renders 404': notFoundHtml.includes('Page not found'),
     'every nav leaf href is a resolvable #/ route': leafHrefs.every(

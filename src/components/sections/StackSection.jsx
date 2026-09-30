@@ -1,6 +1,6 @@
 import SectionTag from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
-import { stackGroups } from '../../data/stack.js'
+import { useContent } from "../../content/ContentContext.jsx"
 
 /**
  * Technology-stack band: the four platform areas and the named vendors from
@@ -8,13 +8,14 @@ import { stackGroups } from '../../data/stack.js'
  * Rendered on light so it reads as a reference list, not a marketing wall.
  */
 export default function StackSection() {
+  const { stackGroups, stackSection, sectionIds } = useContent()
   return (
-    <section id="capabilities" className="bg-shell-gray-100 py-16 md:py-24">
+    <section id={sectionIds.capabilities} className="bg-shell-gray-100 py-16 md:py-24">
       <div className="shell-container">
         <Reveal variant="fade" className="max-w-3xl">
-          <SectionTag>Our technology stack</SectionTag>
+          <SectionTag>{stackSection.tag}</SectionTag>
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-            Using trusted technology to solve your IT challenges
+            {stackSection.title}
           </h2>
         </Reveal>
 

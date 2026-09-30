@@ -1,6 +1,6 @@
 import SectionTag from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
-import { industriesStrip } from '../../data/content.js'
+import { useContent } from "../../content/ContentContext.jsx"
 
 /**
  * Compact industries band: the doc says we do not need every industry on the
@@ -9,8 +9,9 @@ import { industriesStrip } from '../../data/content.js'
  * anchor used by the primary nav.
  */
 export default function IndustriesStrip() {
+  const { industriesStrip, sectionIds } = useContent()
   return (
-    <section id="industries" className="bg-shell-gray-100 py-16 md:py-24">
+    <section id={sectionIds.industries} className="bg-shell-gray-100 py-16 md:py-24">
       <div className="shell-container max-w-4xl text-center">
         <Reveal variant="fade">
           <SectionTag>{industriesStrip.tag}</SectionTag>

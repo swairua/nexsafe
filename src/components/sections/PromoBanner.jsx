@@ -1,10 +1,11 @@
 import Reveal from '../ui/Reveal.jsx'
-import { promo } from '../../data/footerContent.js'
+import { useContent } from "../../content/ContentContext.jsx"
 
 /** Full-width promo CTA banner (pricing style) with image + blue gradient. */
 export default function PromoBanner() {
+  const { promo, sectionIds } = useContent()
   return (
-    <section id="support" className="relative overflow-hidden bg-shell-black">
+    <section id={sectionIds.support} className="relative overflow-hidden bg-shell-black">
       {/* Background */}
       <div className="absolute inset-0" style={{ background: promo.fallback }} aria-hidden="true" />
       <img

@@ -1,5 +1,8 @@
+import { useContent } from '../../content/ContentContext.jsx'
+
 /** Search overlay panel that drops below the header when the search icon is toggled. */
 export default function SearchPanel({ autoFocus = true }) {
+  const { settings } = useContent()
   return (
     <div className="menu-anim absolute inset-x-0 top-full rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl">
       <div className="shell-container py-6">
@@ -11,7 +14,7 @@ export default function SearchPanel({ autoFocus = true }) {
           <input
             autoFocus={autoFocus}
             type="search"
-            placeholder="Search nexsate.com"
+            placeholder={settings.searchPlaceholder}
             className="w-full bg-transparent text-base outline-none placeholder:text-shell-gray-500"
           />
         </div>

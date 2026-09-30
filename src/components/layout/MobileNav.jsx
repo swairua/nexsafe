@@ -1,8 +1,11 @@
+import { useContent } from '../../content/ContentContext.jsx'
+
 /** Mobile drawer with accordion sub-menus for each primary nav item. */
 export default function MobileNav({ navItems, openIndex, onToggle, onNavigate }) {
+  const { uiLabels } = useContent()
   return (
     <div className="menu-anim absolute inset-x-0 top-full max-h-[75vh] overflow-y-auto overscroll-contain rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl lg:hidden">
-      <nav className="shell-container py-4" aria-label="Mobile">
+      <nav className="shell-container py-4" aria-label={uiLabels.mobileNav}>
         {navItems.map((item, i) => (
           <div key={item.label} className="border-b border-shell-gray-100 last:border-0">
             <button

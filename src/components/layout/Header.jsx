@@ -3,7 +3,7 @@ import NexsateLogo from '../ui/NexsateLogo.jsx'
 import MegaMenu from './MegaMenu.jsx'
 import MobileNav from './MobileNav.jsx'
 import SearchPanel from './SearchPanel.jsx'
-import { navItems } from '../../data/navItems.js'
+import { useContent } from "../../content/ContentContext.jsx"
 
 /**
  * Kyndryl-style floating header: a transparent frosted-glass bar offset from
@@ -11,6 +11,7 @@ import { navItems } from '../../data/navItems.js'
  * past it. `overlay=false` (e.g. the 404 route) keeps the classic sticky bar.
  */
 export default function Header({ overlay = true }) {
+  const { navItems, settings, uiLabels, sectionIds } = useContent()
   const [openMenu, setOpenMenu] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -80,13 +81,14 @@ export default function Header({ overlay = true }) {
             : 'shell-container flex h-16 items-center justify-between md:h-[4.5rem]'
         }
       >
-        <a href="#top" className="flex items-center" aria-label="Nexsate home">
+        <a href={'#' + sectionIds.top} className="flex items-center" aria-label={settings.brandName + ' home'}>
           {/* Client logo — plate keeps the dark-on-white artwork legible over
-              the hero imagery and seamless once the bar turns solid white. */}
-          <NexsateLogo className="h-4 md:h-5" />
+              the hero imagery and seamless once the bar turns solid white.
+              The artwork itself comes from content settings (admin > Site settings). */}
+          <NexsateLogo className="h-4 md:h-5" src={settings.logo} alt={settings.brandName} />
         </a>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label={uiLabels.primaryNav}>
           {navItems.map((item, i) => (
             <button
               key={item.label}
@@ -121,7 +123,7 @@ export default function Header({ overlay = true }) {
           <button
             type="button"
             onClick={() => { setSearchOpen((s) => !s); setOpenMenu(null) }}
-            aria-label="Search"
+            aria-label={uiLabels.search}
             aria-expanded={searchOpen}
             className={`rounded-full p-3 transition-colors ${
               onHero
@@ -136,15 +138,16 @@ export default function Header({ overlay = true }) {
           </button>
 
           <a
-            href="#/contact-us"
+            href={settings.menuCta.href}
             className="btn-pill btn-pill--green mr-1 hidden px-4 py-2.5 text-sm md:inline-flex"
           >
-            Talk to an expert
+            {settings.menuCta.label}
             <span aria-hidden="true">→</span>
           </a>
 
           {/* Static domain label, not a region selector: the build hosts a
-              single site, so there is nothing to switch to. */}
+              single site, so there is nothing to switch to. The domain comes
+              from content settings (admin > Site settings). */}
           <span
             className={`hidden items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold md:flex ${
               onHero ? 'text-white/85' : 'text-shell-gray-900'
@@ -154,13 +157,13 @@ export default function Header({ overlay = true }) {
               <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
               <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" strokeWidth="1.5" />
             </svg>
-            nexsate.com
+            {settings.domain}
           </span>
 
           <button
             type="button"
             onClick={() => { setMobileOpen((m) => !m); setOpenMenu(null); setSearchOpen(false) }}
-            aria-label="Menu"
+            aria-label={uiLabels.openMenu}
             aria-expanded={mobileOpen}
             className={`rounded-full p-2.5 transition-colors lg:hidden ${
               onHero ? 'text-white hover:bg-white/15' : 'text-shell-gray-900 hover:bg-shell-gray-100'

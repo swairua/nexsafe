@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import { heroSlides } from '../../data/content.js'
+import { useContent } from "../../content/ContentContext.jsx"
 
 /** Full-bleed hero carousel with autoplay, arrows and dots (full-bleed banner style). */
 export default function HeroCarousel() {
+  const { heroSlides, uiLabels, sectionIds } = useContent()
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 38 }, [
     Autoplay({ delay: 6000, stopOnInteraction: false, stopOnMouseEnter: true }),
   ])
@@ -26,7 +27,7 @@ export default function HeroCarousel() {
   const goTo = (i) => emblaApi && emblaApi.scrollTo(i)
 
   return (
-    <section id="top" className="relative bg-shell-black" aria-label="Featured content">
+    <section id={sectionIds.top} className="relative bg-shell-black" aria-label={uiLabels.heroRegion}>
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {heroSlides.map((slide, i) => (
@@ -84,7 +85,7 @@ export default function HeroCarousel() {
       <button
         type="button"
         onClick={scrollPrev}
-        aria-label="Previous slide"
+        aria-label={uiLabels.previousSlide}
         className="glass-chip absolute bottom-4 left-4 flex h-9 w-9 items-center justify-center rounded-full text-white active:scale-95 md:bottom-auto md:left-3 md:top-1/2 md:h-11 md:w-11 md:-translate-y-1/2"
       >
         <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -94,7 +95,7 @@ export default function HeroCarousel() {
       <button
         type="button"
         onClick={scrollNext}
-        aria-label="Next slide"
+        aria-label={uiLabels.nextSlide}
         className="glass-chip absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full text-white active:scale-95 md:bottom-auto md:right-3 md:top-1/2 md:h-11 md:w-11 md:-translate-y-1/2"
       >
         <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -109,7 +110,7 @@ export default function HeroCarousel() {
             key={s.id}
             type="button"
             onClick={() => goTo(i)}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-label={`${uiLabels.goToSlide} ${i + 1}`}
             aria-current={selected === i}
             className="group/dot flex h-6 w-6 items-center justify-center rounded-full active:scale-90"
           >

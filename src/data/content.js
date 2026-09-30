@@ -4,10 +4,10 @@
 // story. Section components render these exports unchanged.
 import { pageHref } from './slug.js'
 
-const img = (id, w = 1400) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`
+// Photography is served from public/uploads (see scripts/localize-images.mjs).
 
 // Navy scrim over photography + brand-blue gradient fallback (used if the
-// remote image is unavailable) — keeps every dark surface on-palette.
+// image file is missing) — keeps every dark surface on-palette.
 const navyScrim =
   'linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)'
 const navyFallback = 'linear-gradient(135deg, #070e40 0%, #010ed0 130%)'
@@ -22,7 +22,7 @@ export const heroSlides = [
     title: 'We take care of your IT, so you can take care of your customers.',
     text: 'Nexsate helps businesses reduce downtime, strengthen security, improve connectivity, support users, and create a more reliable technology environment for daily operations and future growth.',
     cta: { label: 'Discover our services', href: pageHref('Services & Solutions') },
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2000&q=80',
+    image: '/uploads/hero-network-servers.jpg',
     gradient: navyScrim,
     fallback: navyFallback,
   },
@@ -32,7 +32,7 @@ export const heroSlides = [
     title: 'Simply enabling IT for a complex world',
     text: 'Since 2016 our principle has shaped the business: technology should make business easier, safer, and more productive. We deliver reliable, responsive, and secure IT, software, and telecommunications solutions.',
     cta: { label: 'About Nexsate', href: pageHref('About Us') },
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=80',
+    image: '/uploads/hero-team-planning.jpg',
     gradient: navyScrim,
     fallback: navyFallbackSoft,
   },
@@ -42,7 +42,7 @@ export const heroSlides = [
     title: 'Solving IT challenges for the industries that keep business moving.',
     text: 'Industrial & Manufacturing, Transportation & Logistics, Healthcare, Financial Services, Professional Services, Non-Profit — technology support built around the way your sector actually operates.',
     cta: { label: 'See who we serve', href: pageHref('Services & Solutions') },
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80',
+    image: '/uploads/team-collaboration.jpg',
     gradient: navyScrim,
     fallback: navyTile,
   },
@@ -80,7 +80,7 @@ export const featuredCards = [
     title: 'Managed IT Services',
     text: 'Reliable IT support that keeps your team productive, resolves issues faster, reduces downtime, and keeps daily operations moving.',
     linkLabel: 'Stay up and running',
-    image: img('photo-1516321318423-f06f85e504b3', 1200),
+    image: '/uploads/service-managed-it.jpg',
     fallback: navyFallback,
     href: pageHref('Managed IT Services'),
   },
@@ -90,7 +90,7 @@ export const featuredCards = [
     title: 'Cloud Services',
     text: 'Secure cloud solutions for working, collaborating, accessing information, and protecting data from anywhere.',
     linkLabel: 'Move to the cloud',
-    image: img('photo-1451187580459-43490279c0fa', 1200),
+    image: '/uploads/data-centre.jpg',
     fallback: navyFallbackSoft,
     href: pageHref('Cloud Services'),
   },
@@ -100,7 +100,7 @@ export const featuredCards = [
     title: 'Software Development',
     text: 'Custom software and ERP solutions designed to automate workflows, connect systems, improve efficiency, and support daily operations.',
     linkLabel: 'Build smarter',
-    image: img('photo-1518770660439-4636190af475', 1200),
+    image: '/uploads/circuit-board.jpg',
     fallback: navyTile,
     href: pageHref('Software Development, ERP & CRM Solutions'),
   },
@@ -110,7 +110,7 @@ export const featuredCards = [
     title: 'Network Management',
     text: 'Reliable network support that keeps your business connected, secure, and well supported through monitoring, maintenance, and troubleshooting.',
     linkLabel: 'Stay connected',
-    image: img('photo-1558494949-ef010cbdcc31', 1200),
+    image: '/uploads/hero-network-servers.jpg',
     fallback: navyFallback,
     href: pageHref('Network Management'),
   },
@@ -120,7 +120,7 @@ export const featuredCards = [
     title: 'Cybersecurity',
     text: 'Security services that protect your business data, users, devices, systems, and cloud platforms from evolving digital threats.',
     linkLabel: 'Protect your business',
-    image: img('photo-1563986768609-322da13575f3', 1200),
+    image: '/uploads/cybersecurity.jpg',
     fallback: navyFallbackSoft,
     href: pageHref('Cybersecurity'),
   },
@@ -130,7 +130,7 @@ export const featuredCards = [
     title: 'Backup & Disaster Recovery',
     text: 'Reliable data protection and recovery services that safeguard critical information, reduce disruption, and prepare your business for unexpected events.',
     linkLabel: 'Plan your recovery',
-    image: img('photo-1451187580459-43490279c0fa', 1200),
+    image: '/uploads/data-centre.jpg',
     fallback: navyTile,
     href: pageHref('Backup & Disaster Recovery'),
   },
@@ -191,6 +191,6 @@ export const successStory = {
     'Fewer recurring technology disruptions',
     'A clearer IT roadmap for growth',
   ],
-  image: img('photo-1600880292203-757bb62b4baf', 1400),
+  image: '/uploads/business-meeting.jpg',
   fallback: navyFallback,
 }

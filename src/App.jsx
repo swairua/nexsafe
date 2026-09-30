@@ -12,7 +12,7 @@ import StackSection from './components/sections/StackSection.jsx'
 import SuccessStorySection from './components/sections/SuccessStorySection.jsx'
 import PromoBanner from './components/sections/PromoBanner.jsx'
 import PageView from './components/pages/PageView.jsx'
-import { pages } from './data/pages.js'
+import { useContent } from './content/ContentContext.jsx'
 
 /**
  * Hash router (SSR-safe): '#/<slug>' renders the PageView for that page;
@@ -33,6 +33,13 @@ function parseHash(hash = '') {
  * Inner routes ('#/<slug>') replace main with PageView.
  */
 export default function App() {
+  const content = useContent()
+  const pages = content.pages
+  // Tab titles are content-driven (admin > Site settings), with the shipped
+  // defaults kept as a safety net if a key is ever removed.
+  const settings = content.settings || {}
+  const homeTitle = settings.homeTitle || 'Nexsate — technology that works as one'
+  const domain = settings.domain || 'nexsate.com'
   const [route, setRoute] = useState(() =>
     typeof window === 'undefined' ? { kind: 'home', anchor: '' } : parseHash(window.location.hash),
   )
@@ -46,24 +53,24 @@ export default function App() {
   useEffect(() => {
     if (route.kind === 'page') {
       const page = pages[route.slug]
-      document.title = page ? `${page.title} | nexsate.com` : 'Page not found | nexsate.com'
+      document.title = page ? `${page.title} | ${domain}` : `${(content.notFound || {}).title || 'Page not found'} | ${domain}`
       window.scrollTo(0, 0)
       return
     }
-    document.title = 'Nexsate — technology that works as one'
+    document.title = homeTitle
     if (route.anchor) {
       const el = document.getElementById(route.anchor)
       if (el) el.scrollIntoView({ behavior: 'smooth' })
       else window.scrollTo(0, 0)
     }
-  }, [route])
+  }, [route, homeTitle, domain, content.notFound, pages])
 
   return (
     <div className="min-h-screen bg-white">
       <Header overlay={route.kind === 'home' || Boolean(pages[route.slug])} />
       {route.kind === 'page' ? (
         <main>
-          <PageView page={pages[route.slug]} />
+          <PageView page={pages[route.slug]} slug={route.slug} />
         </main>
       ) : (
         <main>

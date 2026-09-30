@@ -1,5 +1,8 @@
+import { useContent } from '../../content/ContentContext.jsx'
+
 /** Desktop mega-menu panel rendered below the header for the open nav item. */
 export default function MegaMenu({ item, onClose }) {
+  const { uiLabels } = useContent()
   return (
     <div
       className="menu-anim absolute inset-x-0 top-full hidden rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl lg:block"
@@ -28,7 +31,7 @@ export default function MegaMenu({ item, onClose }) {
         ))}
         <div className="menu-col col-span-2 border-t border-shell-gray-100 pt-5 xl:col-span-4">
           <a href={item.href} onClick={onClose} className="arrow-link text-base">
-            Explore {item.label} <span className="arrow">→</span>
+            {uiLabels.explore} {item.label} <span className="arrow">→</span>
           </a>
         </div>
       </div>

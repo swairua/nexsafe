@@ -1,7 +1,6 @@
 import SectionTag from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
-import { partners } from '../../data/partners.js'
-import { partnerStrip } from '../../data/content.js'
+import { useContent } from "../../content/ContentContext.jsx"
 
 /**
  * Vendor wall: the platforms Nexsate holds partner status with today. Vendors
@@ -10,8 +9,9 @@ import { partnerStrip } from '../../data/content.js'
  * Owns the `#partners` anchor.
  */
 export default function PartnerStrip() {
+  const { partners, partnerStrip, sectionIds } = useContent()
   return (
-    <section id="partners" className="bg-white py-16 md:py-20">
+    <section id={sectionIds.partners} className="bg-white py-16 md:py-20">
       <div className="shell-container">
         <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
           <Reveal variant="fade">

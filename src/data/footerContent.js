@@ -10,7 +10,7 @@ export const promo = {
   title: 'We take care of your IT, so you can take care of your customers.',
   text: 'Tell us about your environment, your users, and the technology challenges affecting daily operations — we will come back to you with a practical way forward.',
   cta: { label: 'Talk to an expert', href: pageHref('Contact us') },
-  image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80',
+  image: '/uploads/office-space.jpg',
   fallback: 'linear-gradient(120deg, #070e40 0%, #010ed0 55%, #00a1e0 135%)',
 }
 

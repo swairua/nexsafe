@@ -1,0 +1,196 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__ . '/config.php';
+
+/** PDO (SQLite) singleton — creates the file, schema, and seeds on first use. */
+function nx_db(): PDO
+{
+    static $pdo = null;
+    if ($pdo instanceof PDO) {
+        return $pdo;
+    }
+    if (!is_dir(DATA_DIR)) {
+        @mkdir(DATA_DIR, 0775, true);
+    }
+    $pdo = new PDO('sqlite:' . DB_FILE);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $pdo->exec('PRAGMA journal_mode = WAL');
+    nx_migrate($pdo);
+    nx_seed($pdo);
+    return $pdo;
+}
+
+function nx_migrate(PDO $pdo): void
+{
+    $pdo->exec('CREATE TABLE IF NOT EXISTS content (key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL)');
+    $pdo->exec('CREATE TABLE IF NOT EXISTS media (id INTEGER PRIMARY KEY AUTOINCREMENT, filename TEXT NOT NULL, url TEXT NOT NULL, mime TEXT, size INTEGER, alt TEXT, width INTEGER, height INTEGER, created_at TEXT NOT NULL)');
+    $pdo->exec('CREATE TABLE IF NOT EXISTS admins (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, email TEXT, created_at TEXT NOT NULL)');
+    $pdo->exec('CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, phone TEXT, company TEXT, subject TEXT, body TEXT, created_at TEXT NOT NULL, seen INTEGER DEFAULT 0)');
+}
+
+function nx_seed(PDO $pdo): void
+{
+    if ((int) $pdo->query('SELECT COUNT(*) FROM admins')->fetchColumn() === 0) {
+        $a = nx_default_admin();
+        $st = $pdo->prepare('INSERT INTO admins (username, password_hash, email, created_at) VALUES (?,?,?,?)');
+        $st->execute([$a['username'], $a['password_hash'], $a['email'], date('c')]);
+    }
+    if (!is_file(SEED_FILE)) {
+        return;
+    }
+    $seed = json_decode((string) file_get_contents(SEED_FILE), true);
+    if (!is_array($seed)) {
+        return;
+    }
+
+    // Additive backfill: an install that already has content still picks up keys
+    // (and nested fields) added to the seed afterwards, so new admin sections
+    // show up without a manual re-seed. Saved values always win — nothing an
+    // editor changed is ever overwritten.
+    $select  = $pdo->prepare('SELECT value FROM content WHERE key = ?');
+    $insert  = $pdo->prepare('INSERT OR IGNORE INTO content (key, value, updated_at) VALUES (?,?,?)');
+    $update  = $pdo->prepare('UPDATE content SET value = ?, updated_at = ? WHERE key = ?');
+    $now = date('c');
+    foreach ($seed as $key => $default) {
+        $select->execute([(string) $key]);
+        $stored = $select->fetchColumn();
+        if ($stored === false) {
+            $insert->execute([(string) $key, nx_encode($default), $now]);
+            continue;
+        }
+        $merged = nx_merge_defaults($default, json_decode((string) $stored, true));
+        if (nx_encode($merged) !== (string) $stored) {
+            $update->execute([nx_encode($merged), $now, (string) $key]);
+        }
+    }
+}
+
+/** Content JSON writer — one place defines the encoding for stored values. */
+function nx_encode($value): string
+{
+    return (string) json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+}
+
+/**
+ * Fill in fields a stored value is missing, using the seed as the source of
+ * truth for new defaults. Stored values always win; lists are never merged
+ * index-wise (an editor who removed a card keeps it removed).
+ */
+function nx_merge_defaults($defaults, $stored)
+{
+    if (!is_array($defaults) || !is_array($stored) || $stored === null) {
+        return $stored === null ? $defaults : $stored;
+    }
+    if (array_is_list($defaults) || array_is_list($stored)) {
+        return $stored;
+    }
+    $out = $stored;
+    foreach ($defaults as $k => $v) {
+        $out[$k] = array_key_exists($k, $out) ? nx_merge_defaults($v, $out[$k]) : $v;
+    }
+    return $out;
+}
+
+/** Full content map (key => decoded value) — the shape the SPA consumes. */
+function nx_content_all(): array
+{
+    $out = [];
+    foreach (nx_db()->query('SELECT key, value FROM content') as $r) {
+        $out[$r['key']] = json_decode($r['value'], true);
+    }
+    return $out;
+}
+
+function nx_content_get(string $key)
+{
+    $st = nx_db()->prepare('SELECT value FROM content WHERE key = ?');
+    $st->execute([$key]);
+    $v = $st->fetchColumn();
+    return $v === false ? null : json_decode($v, true);
+}
+
+function nx_content_set(string $key, $value): void
+{
+    $st = nx_db()->prepare('INSERT OR REPLACE INTO content (key, value, updated_at) VALUES (?,?,?)');
+    $st->execute([$key, json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), date('c')]);
+}
+
+/** Image types the media library accepts: detected MIME type => stored extension. */
+function nx_media_types(): array
+{
+    return ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp', 'image/gif' => 'gif', 'image/svg+xml' => 'svg'];
+}
+
+/**
+ * Register files that already sit in UPLOAD_DIR but have no media row yet.
+ *
+ * The Media Library lists database rows, so images that arrived by any other
+ * route - git checkout, FTP, the image localizer, a manual copy - were invisible
+ * in the admin and unusable in the image picker. This makes the library match
+ * the folder. It only ever adds rows: tracked files keep their stored alt text
+ * and timestamps, and nothing on disk is touched or deleted.
+ *
+ * @return int number of rows added
+ */
+function nx_media_sync(): int
+{
+    $pdo = nx_db();
+    $known = [];
+    foreach ($pdo->query('SELECT filename FROM media') as $row) {
+        $known[(string) $row['filename']] = true;
+    }
+    $types = nx_media_types();
+    $byExt = ['jpg' => 'image/jpeg', 'jpeg' => 'image/jpeg', 'png' => 'image/png', 'webp' => 'image/webp', 'gif' => 'image/gif', 'svg' => 'image/svg+xml'];
+    $finfo = class_exists('finfo') ? new finfo(FILEINFO_MIME_TYPE) : null;
+    $ins = $pdo->prepare('INSERT INTO media (filename, url, mime, size, alt, width, height, created_at) VALUES (?,?,?,?,?,?,?,?)');
+    $added = 0;
+    foreach (is_dir(UPLOAD_DIR) ? (array) scandir((string) UPLOAD_DIR) : [] as $name) {
+        if ($name === '.' || $name === '..') {
+            continue;
+        }
+        $f = UPLOAD_DIR . DIRECTORY_SEPARATOR . $name;
+        if (!is_file($f)) {
+            continue;
+        }
+        if (isset($known[$name])) {
+            continue;                      // already tracked - keep its stored alt text and date
+        }
+        $ext = strtolower((string) pathinfo($name, PATHINFO_EXTENSION));
+        $mime = $finfo ? ((string) $finfo->file($f) ?: '') : '';
+        if ($mime === '' || !isset($types[$mime])) {
+            $mime = $byExt[$ext] ?? '';   // no fileinfo (or unknown type): fall back to the extension
+        }
+        if (!isset($types[$mime])) {
+            continue;                      // stray non-image file in the uploads folder
+        }
+        $w = null; $h = null;
+        if ($mime !== 'image/svg+xml') {
+            $info = @getimagesize($f);
+            if (is_array($info)) { $w = (int) $info[0]; $h = (int) $info[1]; }
+        }
+        $ins->execute([$name, UPLOAD_URL . '/' . $name, $mime, (int) filesize($f), '', $w, $h, date('c', (int) filemtime($f))]);
+        $added++;
+    }
+    return $added;
+}
+
+/**
+ * How many content fields reference each uploaded file, keyed by filename.
+ * Used by the Media Library to warn before deleting an image the site still uses.
+ */
+function nx_media_usage(): array
+{
+    $usage = [];
+    foreach (nx_db()->query('SELECT value FROM content') as $row) {
+        $value = str_replace('\/', '/', (string) $row['value']);
+        if (preg_match_all('#/uploads/([A-Za-z0-9][A-Za-z0-9._-]*)#', $value, $m)) {
+            foreach ($m[1] as $file) {
+                $usage[$file] = ($usage[$file] ?? 0) + 1;
+            }
+        }
+    }
+    return $usage;
+}
+
+

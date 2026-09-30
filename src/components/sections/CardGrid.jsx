@@ -2,27 +2,28 @@ import { pageHref } from '../../data/slug.js'
 import SectionTag from '../ui/SectionTag.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
-import { featuredCards } from '../../data/content.js'
+import { useContent } from "../../content/ContentContext.jsx"
 
 /** 3-up service card grid with image zoom, arrow-link hover, scroll reveals
  *  and staggered card entrances. Cards come from the Home Page document's
  *  own six-service list. */
 export default function CardGrid() {
+  const { featuredCards, servicesSection, sectionIds } = useContent()
   return (
-    <section id="it-solutions" className="relative overflow-hidden bg-shell-gray-100 py-16 md:py-24">
+    <section id={sectionIds.itSolutions} className="relative overflow-hidden bg-shell-gray-100 py-16 md:py-24">
       {/* Soft colour pools — give the glass cards' backdrop-blur something to mirror */}
       <div className="pointer-events-none absolute -right-24 top-16 h-80 w-80 rounded-full bg-shell-green/15 blur-3xl" aria-hidden="true" />
       <div className="pointer-events-none absolute -left-20 bottom-16 h-64 w-64 rounded-full bg-shell-red/10 blur-3xl" aria-hidden="true" />
       <div className="shell-container relative">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <Reveal variant="fade">
-            <SectionTag>Services</SectionTag>
+            <SectionTag>{servicesSection.tag}</SectionTag>
             <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-              Simply enabling IT for a complex world
+              {servicesSection.title}
             </h2>
           </Reveal>
           <Reveal as="a" href={pageHref('Services & Solutions')} delay={2} className="arrow-link">
-            Find your solution <span className="arrow">→</span>
+            {servicesSection.linkLabel} <span className="arrow">→</span>
           </Reveal>
         </div>
 

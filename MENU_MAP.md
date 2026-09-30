@@ -162,15 +162,101 @@ dropped from view at review time.
 `upcoming` (agreement in progress). The PartnerStrip renders the `upcoming`
 entries with an "Agreement in progress" flag rather than dropping them.
 
-## 9. Verification
+## 9. Content store, admin portal & local images
+
+`admin.html` → `src/admin/` is the editor for the whole site. It signs in
+against `api/auth.php` (session + CSRF) and reads/writes `api/content.php`,
+backed by SQLite (`api/data/nexsate.sqlite`). `src/data/siteContent.js` is both
+the SPA fallback and the seed that populates an empty database; `api/db.php`
+backfills keys (and nested fields) added to the seed later, so an existing
+install picks up new admin sections without losing saved edits.
+
+### Signing in
+
+Run the backend and the front-end, then open the admin entry point:
+
+```
+php -S localhost:8000 -t .      # PHP + SQLite API
+npm run dev                     # Vite dev server (proxies /api -> :8000)
+```
+
+| | |
+|---|---|
+| Admin portal | `http://localhost:5173/admin.html` |
+| Public site | `http://localhost:5173/` |
+| API directly | `http://localhost:8000/api/content.php` |
+| Username | `admin` |
+| Password | whatever was last set with `npm run admin:password` (shipped default is `nexsate-admin`) |
+
+The password lives as a bcrypt hash in the `admins` table; `nx_default_admin()`
+in `api/config.php` only seeds a database that does not exist yet. To change it:
+
+```
+npm run admin:password -- admin "a-longer-new-password"
+# or: php scripts/set-admin-password.php admin "a-longer-new-password"
+```
+
+Passwords under 8 characters are refused unless you pass `--force` (a `--min=N`
+flag raises the bar instead). `scripts/.htaccess` denies web access to that tool
+and the other scripts.
+
+### Dev server gotcha: "URI malformed" overlay
+
+Vite's static middleware lets a `URIError` escape out of `decodeURI()`, so any request
+path carrying an invalid percent escape (a bare `%`) crashes the page with a full-screen
+dev-server overlay. Two layers keep that from happening:
+
+- `vite.config.js` registers `nexsate-malformed-uri-guard`, which answers such requests
+  with a plain `400` plus a warning in the Vite log. Guarded path: `/a%.png`.
+- `src/admin/FieldEditor.jsx` matches image fields on the **leaf** key only and only
+  renders an `<img>` for a value that really looks like an image URL, so nested CSS such
+  as `heroSlides[0].gradient` stays a text field instead of becoming `<img src>`.
+
+`npm run verify` asserts both halves (see `scripts/smoke-admin.mjs`).
+
+Deploying from a sub-folder (e.g. `/nexsate/`) needs Vite's `base` and
+`UPLOAD_URL` in `api/config.php` set to match, otherwise `/api` and `/uploads`
+resolve against the domain root.
+
+Content tabs and the keys they drive:
+
+| Admin tab | key | Rendered by |
+|-----------|-----|-------------|
+| Site settings | `settings` | header CTA/domain/logo, footer, contact details, tab title |
+| Section anchors | `sectionIds` | every homepage section `id` (the nav's scroll targets) |
+| Breadcrumb anchors | `categoryAnchors` | `PageView` breadcrumb eyebrow links |
+| UI / screen-reader labels | `uiLabels` | aria labels and the mega-menu "Explore …" link |
+| Social channels | `socialLinks` | footer channel row (add/remove/reorder; blank `icon` = built-in glyph) |
+| Navigation menu | `navItems` | header, mega menu, mobile drawer, in-page pills |
+| Home - * | `heroSlides`, `introBand`, `introCards`, `benefits`, `featuredCards`, `servicesSection`, `partnerStrip`, `partners`, `industriesStrip`, `stackGroups`, `stackSection`, `successStory`, `promo` | homepage sections |
+| Category images | `categoryImages` | deep-page header/prose imagery |
+| Connect / contact block | `pageConnect` | dark CTA band on every deep page |
+| Page labels | `pageLabels` | breadcrumb "Home", "Explore more", "Read more", "Back to top" |
+| 404 page | `notFound` | unknown-route view |
+| Cookie banner | `cookieBanner` | first-visit consent bar |
+| Contact form | `contactForm` | contact page form + contact-detail labels |
+| Footer columns / legal | `footerColumns`, `footerLegal` | footer link columns and legal bar |
+| Pages | `pages` | every `#/<slug>` page (one page at a time) |
+
+**Images are local.** Photography lives in `public/uploads/` and the data layer
+stores `/uploads/<file>` paths, so nothing loads from an image CDN at runtime.
+`scripts/localize-images.mjs` (npm `images:localize`) downloads any remote image
+a data file references and rewrites the reference in place;
+`scripts/apply-image-map.php` applies the same mapping to URLs already stored in
+the database. Admins can replace any image via the field's **Pick** button
+(Media tab), which stores new files in `public/uploads/` too.
+
+## 10. Verification
 
 Run these after any content or navigation change:
 
 ```
+npm run verify                    # all five checks below, in order
 node scripts/check-syntax.mjs     # bracket balance across the data files
 node scripts/validate-pages.mjs   # registry schema, nav/footer/CTA resolution
 node scripts/check-links.mjs      # every link resolves; no orphan pages
 node scripts/smoke.mjs            # renders <App /> and all 27 pages
+node scripts/smoke-admin.mjs      # every admin section renders; no remote images
 npx vite build                    # production build
 ```
 

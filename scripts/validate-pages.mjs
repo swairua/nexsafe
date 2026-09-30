@@ -12,22 +12,16 @@ import {
   successStory,
 } from '../src/data/content.js'
 import { stackGroups } from '../src/data/stack.js'
+import { defaultContent } from '../src/data/siteContent.js'
 import { slugify } from '../src/data/slug.js'
+
+const { sectionIds } = defaultContent
 
 const errors = []
 
-// Section ids actually rendered by the homepage components.
-const knownAnchors = new Set([
-  '#top',
-  '#about',
-  '#company',
-  '#it-solutions',
-  '#partners',
-  '#industries',
-  '#capabilities',
-  '#insights',
-  '#support',
-])
+// Section ids actually rendered by the homepage components (content-driven:
+// src/data/siteContent.js -> sectionIds, editable under "Section anchors").
+const knownAnchors = new Set(Object.values(sectionIds).map((id) => `#${id}`))
 
 const checkRoute = (where, href) => {
   if (!href.startsWith('#/')) {
