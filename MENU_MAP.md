@@ -77,7 +77,23 @@ as homepage cards **and** nav leaves, so the menu and the landing page agree.
   (`public/brand/nexsate-wordmark.png`, cropped from the 1254x1254 source to
   1116x140) in the header **and** footer — on a light plate, because the
   artwork is blue-on-near-white and must stay legible over hero photography.
-  The compact blue tile is retained as `public/favicon.svg`.
+- **Favicon / social card:** both are derived from that same wordmark by
+  `scripts/build-brand-assets.py` (`npm run brand:build`), never hand-drawn.
+  The script first converts the artwork from a flattened RGB PNG (its
+  transparency checkerboard is baked into the pixels) into a real alpha
+  channel, then emits:
+  - `public/favicon.svg` — the leading **N** in white on the brand gradient
+    tile, vector-traced from the glyph (crisp at 16px; a 1116x140 wordmark is
+    unusable as a tab icon);
+  - `public/apple-touch-icon.png` — the same N rasterised at 180x180, opaque
+    because iOS renders transparency as black;
+  - `public/brand/nexsate-og.png` — a 1200x630 `og:image` / `twitter:image`
+    card with the wordmark over the live tagline.
+
+  It replaces `public/brand/nexsate-banner.png`, a 600x150 (4:1) strip still
+  carrying the retired "Managed IT / Software / Telecommunications" lockup —
+  too short for a 1.91:1 card and off-brand. Re-run the script after any
+  replacement artwork.
 
 ## 6. Page registry
 
@@ -210,7 +226,7 @@ origin via `router.php`:
 |---------|-----------|
 | `/api/{auth,content,media,messages}.php` | the PHP + SQLite API |
 | `/uploads/*` | files from `NX_UPLOAD_DIR` |
-| `/brand/*`, `/social/*`, `/assets/*`, `/favicon.svg` | `dist/` |
+| `/brand/*`, `/social/*`, `/assets/*`, `/favicon.svg`, `/apple-touch-icon.png` | `dist/` |
 | anything else | `dist/index.html` (hash-routed SPA) |
 
 `router.php` allow-lists the API scripts (`config.php`, `db.php`,

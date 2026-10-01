@@ -11,6 +11,7 @@
     "admin:password": "php scripts/set-admin-password.php",
     "images:localize": "node scripts/localize-images.mjs",
     "images:check": "node scripts/localize-images.mjs --check",
+    "brand:build": "python scripts/build-brand-assets.py",
     "verify": "node scripts/check-syntax.mjs && node scripts/check-hooks.mjs && node scripts/validate-pages.mjs && node scripts/check-links.mjs && node scripts/smoke.mjs && node scripts/smoke-admin.mjs && node scripts/smoke-media.mjs"
   },
   "dependencies": {

@@ -2,10 +2,17 @@
  * Nexsate brand lockup — the client-supplied NEXSATE wordmark
  * (`public/brand/nexsate-wordmark.png`).
  *
- * The artwork is the blue wordmark on a transparent background, so it sits on
- * a light "plate": that keeps it legible over hero photography and blends
- * seamlessly into the solid white header bar and the light footer. The compact
- * blue tile mark lives on as the favicon (`public/favicon.svg`).
+ * The artwork is the blue wordmark (#0174A4) on a transparent background, so it
+ * sits on a light "plate": that keeps it legible over hero photography and
+ * blends seamlessly into the solid white header bar and the light footer.
+ *
+ * The source file shipped as a flattened RGB PNG with the transparency
+ * checkerboard baked into the pixels. `scripts/build-brand-assets.py` converts
+ * it to a real alpha channel and derives every other brand surface from the same
+ * artwork: the leading "N" becomes `public/favicon.svg` and
+ * `public/apple-touch-icon.png`, and the full wordmark becomes the 1200x630
+ * `public/brand/nexsate-og.png` share card. Re-run that script after replacing
+ * the artwork.
  *
  * The source artwork was a 1254×1254 canvas with the wordmark centred; it has
  * been cropped to the mark itself (1116×140) so the browser reserves the

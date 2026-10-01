@@ -72,14 +72,24 @@ export const IMAGE_META = {
     replaceable: true,
   },
   '/brand/nexsate-wordmark.png': {
-    description: 'Nexsate blue wordmark on transparent background — header and footer logo.',
+    description: 'Nexsate blue wordmark on a transparent background — header and footer logo.',
     locations: ['Site settings > Logo (header, footer)'],
     replaceable: true,
   },
-  '/brand/nexsate-banner.png': {
-    description: 'Nexsate banner artwork used for social / open-graph previews.',
-    locations: ['Site metadata (og:image)'],
+  '/brand/nexsate-og.png': {
+    description: '1200x630 social share card: the Nexsate wordmark on a light plate above the EnableIT. Transform. Empower. tagline.',
+    locations: ['Site metadata (og:image, twitter:image)'],
     replaceable: true,
+  },
+  '/favicon.svg': {
+    description: 'Browser tab icon — the leading "N" of the Nexsate wordmark, in white on the brand gradient tile.',
+    locations: ['Browser tab / bookmark (favicon)'],
+    replaceable: false,
+  },
+  '/apple-touch-icon.png': {
+    description: 'iOS home-screen icon — the Nexsate "N" on the brand gradient tile.',
+    locations: ['iOS home screen (apple-touch-icon)'],
+    replaceable: false,
   },
   '/social/facebook.png': {
     description: 'Facebook glyph — footer social channel icon.',
