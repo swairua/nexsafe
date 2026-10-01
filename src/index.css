@@ -25,7 +25,15 @@
   --color-shell-gray-100: #f4f5f6;
   --color-shell-white: #ffffff;
 
-  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Roboto", "Helvetica Neue", Arial, sans-serif;
+
+  /* Roboto ships 400/500/700/900 — no static 800. Remap the weight tokens so
+     `font-extrabold` lands on the real Black face instead of the browser
+     synthesizing a faux-bold (which renders blurry at display sizes). */
+  --font-weight-medium: 500;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 900;
 
   --container-shell: 80rem; /* 1280px content width */
 }
@@ -81,7 +89,9 @@
     align-items: center;
     gap: 0.5rem;
     border-radius: 9999px;
-    font-weight: 600;
+    /* Roboto has no 600 — 500 (Medium) is the closest match, matching the
+       `font-semibold` remap in the @theme block above. */
+    font-weight: 500;
     font-size: 0.9375rem;
     line-height: 1;
     padding: 0.875rem 1.5rem;
@@ -302,7 +312,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-weight: 600;
+    font-weight: 500; /* see .btn-pill — Roboto has no 600 */
     color: var(--color-shell-red);
   }
   .arrow-link .arrow {
