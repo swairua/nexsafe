@@ -1,5 +1,5 @@
 import Reveal from "../ui/Reveal.jsx"
-import SectionTag from "../ui/SectionTag.jsx"
+import SectionTag, { Rich } from "../ui/SectionTag.jsx"
 import SmartImage from "../ui/SmartImage.jsx"
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -14,7 +14,7 @@ export default function IntroBand() {
             <h2 className="mt-4 text-3xl font-extrabold leading-[1.12] tracking-tight text-white md:text-[2.6rem]">{introBand.title}</h2>
           </Reveal>
           <Reveal delay={2} variant="fade" className="flex items-start md:pt-8">
-            <p className="text-[15px] leading-relaxed text-white/60 md:text-base">{introBand.text}</p>
+            <div className="text-[15px] leading-relaxed text-white/60 md:text-base"><Rich as="p">{introBand.text}</Rich></div>
           </Reveal>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default function IntroBand() {
           {benefits.map((benefit, idx) => (
             <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-white p-6">
               <SectionTag>{benefit.title}</SectionTag>
-              <p className="mt-3 text-sm leading-relaxed text-shell-gray-700">{benefit.text}</p>
+              <div className="mt-3 text-sm leading-relaxed text-shell-gray-700"><Rich as="p">{benefit.text}</Rich></div>
             </Reveal>
           ))}
         </ul>

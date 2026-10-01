@@ -1,4 +1,4 @@
-import SectionTag from '../ui/SectionTag.jsx'
+import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -30,9 +30,7 @@ export default function StackSection() {
               <h3 className="text-lg font-bold leading-snug text-shell-gray-900 md:text-xl">
                 {group.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-shell-gray-700 md:text-base">
-                {group.text}
-              </p>
+              <div className="mt-3 text-sm leading-relaxed text-shell-gray-700 md:text-base"><Rich as="p">{group.text}</Rich></div>
               <ul className="mt-5 flex flex-wrap gap-2">
                 {group.vendors.map((vendor) => (
                   <li

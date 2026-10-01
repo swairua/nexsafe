@@ -24,7 +24,7 @@ export default function Messages() {
             </button>
             {open === m.id ? (
               <div className="border-t border-shell-gray-100 px-4 py-3">
-                <div className="grid grid-cols-2 gap-2 text-xs text-shell-gray-600">
+                <div className="grid grid-cols-1 gap-2 text-xs text-shell-gray-600 sm:grid-cols-2">
                   <span>Phone: {m.phone || "-"}</span>
                   <span>Company: {m.company || "-"}</span>
                 </div>

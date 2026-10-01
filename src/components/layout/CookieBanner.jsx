@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useContent } from '../../content/ContentContext.jsx'
+import { Rich } from '../ui/SectionTag.jsx'
 
 const STORAGE_KEY = 'nexsate-cookie-consent'
 
@@ -35,12 +36,12 @@ export default function CookieBanner() {
       className="banner-in fixed inset-x-0 bottom-0 z-[60] border-t-4 border-shell-yellow bg-white pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_20px_rgba(0,0,0,0.15)]"
     >
       <div className="shell-container flex flex-col gap-4 py-5 md:flex-row md:items-center md:justify-between">
-        <p className="max-w-3xl text-sm text-shell-gray-700">
-          {cookieBanner.text}{' '}
+        <div className="max-w-3xl text-sm text-shell-gray-700">
+          <Rich>{cookieBanner.text}</Rich>{' '}
           <a href={cookieBanner.policyHref} className="font-semibold text-shell-red underline">
             {cookieBanner.policyLabel}
           </a>
-        </p>
+        </div>
         <div className="flex shrink-0 flex-wrap items-center gap-3">
           <button type="button" onClick={accept} className="btn-pill btn-pill--outline w-full justify-center sm:w-auto">
             {cookieBanner.manageLabel}

@@ -2,16 +2,23 @@
 declare(strict_types=1);
 
 // ---- Absolute filesystem paths ---------------------------------------------
+// DATA_DIR / UPLOAD_DIR / UPLOAD_URL / SITE_BASE are environment-overridable so
+// the same tree runs locally (XAMPP, "php -S") and on Render, where the writable
+// state lives on a persistent disk rather than inside the repo.
+$envOr = static function (string $key, string $fallback): string {
+    $v = getenv($key);
+    return ($v === false || $v === '') ? $fallback : $v;
+};
 define('APP_ROOT',   dirname(__DIR__));
 define('API_ROOT',   __DIR__);
-define('DATA_DIR',   API_ROOT . '/data');
+define('DATA_DIR',   $envOr('NX_DATA_DIR', API_ROOT . '/data'));
 define('DB_FILE',    DATA_DIR . '/nexsate.sqlite');
 define('SEED_FILE',  API_ROOT . '/seed.json');
-define('UPLOAD_DIR', APP_ROOT . '/public/uploads');
+define('UPLOAD_DIR', $envOr('NX_UPLOAD_DIR', APP_ROOT . '/public/uploads'));
 
 // ---- Public URL bases (adjust if not served from /nexsate) -------------------
-define('UPLOAD_URL', '/uploads');
-define('SITE_BASE',  '/nexsate');
+define('UPLOAD_URL', $envOr('NX_UPLOAD_URL', '/uploads'));
+define('SITE_BASE',  $envOr('NX_SITE_BASE', '/'));
 
 // ---- Upload rules -----------------------------------------------------------
 define('UPLOAD_MAX_BYTES', 8 * 1024 * 1024);

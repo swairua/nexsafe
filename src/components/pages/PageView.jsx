@@ -1,7 +1,19 @@
 import { useContent } from '../../content/ContentContext.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
+import { Rich, RichText } from '../ui/SectionTag.jsx'
 import ContactForm from '../sections/ContactForm.jsx'
+
+// Plain paragraphs render as <p>; HTML saved by the admin rich-text editor
+// renders through <RichText> (sanitised), so formatting survives.
+function Copy({ para }) {
+  const html = String(para || "")
+  if (/<\s*(p|br|strong|em|ul|ol|li|a|h3|h4|blockquote)[\s/>]/i.test(html)) {
+    return <RichText value={html} className="mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg [&_a]:text-shell-red [&_a]:underline [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_blockquote]:border-l-4 [&_blockquote]:border-shell-gray-300 [&_blockquote]:pl-4 [&_blockquote]:italic" />
+  }
+  return <p className="mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg">{para}</p>
+}
+
 
 // Eyebrow → homepage anchor (breadcrumb trail) and the decorative eyebrow →
 // image map are both content-driven (admin > "Breadcrumb anchors" /
@@ -15,9 +27,9 @@ function NotFound(notFound) {
         <h1 className="mx-auto mt-3 max-w-2xl text-4xl font-bold tracking-tight md:text-6xl">
           {notFound.title}
         </h1>
-        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
-          {notFound.text}
-        </p>
+        <div className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
+          <Rich as="p">{notFound.text}</Rich>
+        </div>
         <a href={notFound.cta.href} className="btn-pill btn-pill--green mt-8">
           {notFound.cta.label}
           <span aria-hidden="true">→</span>
@@ -44,7 +56,10 @@ export default function PageView({ page, slug }) {
 
   const sectionHref = anchors[page.eyebrow]
   const relatedPages = (page.related || []).map((slug) => pages[slug]).filter(Boolean)
-  const categoryImage = (content.categoryImages || {})[page.eyebrow]
+  // Category images carry alt text ({ src, alt }); legacy string values keep working.
+  const categoryRaw = (content.categoryImages || {})[page.eyebrow]
+  const categoryImage = typeof categoryRaw === "string" ? categoryRaw : (categoryRaw && categoryRaw.src) || ""
+  const categoryAlt = typeof categoryRaw === "string" ? "" : ((categoryRaw && categoryRaw.alt) || "")
   const isContact = slug === "contact-us"
   const form = content.contactForm || {}
   // Contact details come from Site settings; each row only renders when filled.
@@ -65,8 +80,8 @@ export default function PageView({ page, slug }) {
         {categoryImage && (
           <img
             src={categoryImage}
-            alt=""
-            aria-hidden="true"
+            alt={categoryAlt}
+            aria-hidden={categoryAlt ? undefined : "true"}
             className="pointer-events-none absolute -right-24 top-0 hidden h-full w-2/3 object-cover opacity-25 [mask-image:linear-gradient(to_left,black_30%,transparent)] md:block"
           />
         )}
@@ -98,8 +113,8 @@ export default function PageView({ page, slug }) {
           <Reveal as="h1" delay={3} className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
             {page.title}
           </Reveal>
-          <Reveal as="p" delay={4} className="mt-5 max-w-3xl text-base leading-relaxed text-white/80 md:text-lg">
-            {page.intro}
+          <Reveal as="div" delay={4} className="mt-5 max-w-3xl text-base leading-relaxed text-white/80 md:text-lg">
+            <Copy para={page.intro} />
           </Reveal>
         </div>
       </section>
@@ -139,10 +154,8 @@ export default function PageView({ page, slug }) {
               <h2 className="text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl lg:text-4xl">
                 {section.heading}
               </h2>
-              {(section.body || []).map((para) => (
-                <p key={para} className="mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg">
-                  {para}
-                </p>
+              {(section.body || []).map((para, pi) => (
+                <Copy key={String(para).slice(0, 60) + pi} para={para} />
               ))}
               {section.list && (
                 <ul className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -168,9 +181,9 @@ export default function PageView({ page, slug }) {
                         <span className="mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-shell-green" aria-hidden="true" />
                         {item.title}
                       </h3>
-                      <p className="mt-2 pl-5 text-sm leading-relaxed text-shell-gray-700 md:text-base">
-                        {item.text}
-                      </p>
+                      <div className="mt-2 pl-5 text-sm leading-relaxed text-shell-gray-700 md:text-base">
+                        <Copy para={item.text} />
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -187,7 +200,7 @@ export default function PageView({ page, slug }) {
             <Reveal variant="zoom">
               <SmartImage
                 src={categoryImage}
-                alt=""
+                alt={categoryAlt}
                 fallback="linear-gradient(135deg, #070e40 0%, #010ed0 130%)"
                 className="aspect-[16/7] w-full rounded-2xl md:aspect-[21/8]"
               />
@@ -273,9 +286,9 @@ export default function PageView({ page, slug }) {
             <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-tight md:text-5xl">
               {connect.title}
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
-              {connect.text}
-            </p>
+            <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
+              <Rich as="p">{connect.text}</Rich>
+            </div>
             <a href={connect.cta.href} className="btn-pill btn-pill--green mt-8">
               {connect.cta.label}
               <span aria-hidden="true">→</span>

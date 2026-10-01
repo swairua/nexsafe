@@ -11,6 +11,7 @@ export const promo = {
   text: 'Tell us about your environment, your users, and the technology challenges affecting daily operations — we will come back to you with a practical way forward.',
   cta: { label: 'Talk to an expert', href: pageHref('Contact us') },
   image: '/uploads/office-space.jpg',
+  alt: 'Modern open-plan office space with desks and daylight',
   fallback: 'linear-gradient(120deg, #070e40 0%, #010ed0 55%, #00a1e0 135%)',
 }
 

@@ -1,5 +1,5 @@
 import { pageHref } from '../../data/slug.js'
-import SectionTag from '../ui/SectionTag.jsx'
+import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
@@ -39,7 +39,7 @@ export default function CardGrid() {
               <div className="relative aspect-[16/10] overflow-hidden">
                 <SmartImage
                   src={card.image}
-                  alt={card.title}
+                  alt={card.alt || card.title}
                   fallback={card.fallback}
                   className="h-full w-full"
                   imgClassName="transition-transform duration-500 group-hover:scale-105"
@@ -52,7 +52,7 @@ export default function CardGrid() {
                 <h3 className="mb-3 text-lg font-bold leading-snug text-shell-gray-900 group-hover:text-shell-red md:text-xl">
                   {card.title}
                 </h3>
-                <p className="mb-5 text-sm leading-relaxed text-shell-gray-700">{card.text}</p>
+                <div className="mb-5 text-sm leading-relaxed text-shell-gray-700"><Rich>{card.text}</Rich></div>
                 <span className="arrow-link mt-auto text-sm">
                   {card.linkLabel} <span className="arrow">→</span>
                 </span>

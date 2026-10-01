@@ -1,3 +1,6 @@
+import RichTextEditor, { looksLikeHtml } from "./RichTextEditor.jsx"
+import { imageDescription, imageLocations } from "../data/imageMeta.js"
+
 const IMAGE_KEYS = ["image", "img", "src", "logo", "banner", "photo", "thumbnail", "thumb", "icon", "cover", "hero", "background", "avatar", "picture"]
 const IMG_EXT = [".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"]
 
@@ -92,27 +95,55 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
       </label>
     )
   }
-  const str = String(value)
+  const str = String(value == null ? "" : value)
   const preview = imageSrc(str)
+  const leaf = String(key || "").split(".").pop().split("[")[0].toLowerCase()
+  const isAltField = leaf === "alt" || leaf === "alttext" || leaf === "alt_text" || leaf === "logoalt"
   if (isImageKey(key) || preview) {
+    const desc = preview ? imageDescription(preview) : ""
+    const places = preview ? imageLocations(preview) : []
+    return (
+      <div className="block text-sm">
+        <span className={LABEL}>{label(key)} <span className="font-normal normal-case text-shell-gray-400">— image · replaceable</span></span>
+        <div className="flex items-center gap-2">
+          <input type="text" value={str} onChange={(e) => onChange(e.target.value)} placeholder="/uploads/…" className={INPUT + " flex-1"} />
+          {onPickImage ? <button type="button" onClick={() => onPickImage((url) => onChange(url || ""))} className="shrink-0 rounded-md bg-shell-gray-900 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-shell-red">Pick · Replace</button> : null}
+        </div>
+        {preview ? (
+          <div className="mt-2 flex gap-2 rounded-md border border-shell-gray-300 bg-shell-gray-100 p-2">
+            <img src={preview} alt="" className="h-16 w-24 shrink-0 rounded object-cover" onError={(e) => { e.currentTarget.style.opacity = "0.25" }} />
+            <div className="min-w-0 text-xs leading-relaxed text-shell-gray-600">
+              {desc ? <p><span className="font-semibold text-shell-gray-900">What: </span>{desc}</p> : null}
+              <p className="truncate" title={preview}><span className="font-semibold text-shell-gray-900">Location: </span><span className="font-mono">{preview}</span></p>
+              {places.length ? <p><span className="font-semibold text-shell-gray-900">Used in: </span>{places.join(" · ")}</p> : null}
+            </div>
+          </div>
+        ) : null}
+        {desc || places.length ? null : <p className="mt-1 text-[11px] text-shell-gray-500">Local file under /uploads, /brand or /social — use Pick to replace it from the Media Library.</p>}
+      </div>
+    )
+  }
+  // Alt / description text next to an image: short input with guidance.
+  if (isAltField) {
     return (
       <label className="block text-sm">
-        <span className={LABEL}>{label(key)}</span>
-        <div className="flex items-center gap-2">
-          <input type="text" value={str} onChange={(e) => onChange(e.target.value)} className={INPUT + " flex-1"} />
-          {onPickImage ? <button type="button" onClick={() => onPickImage((url) => onChange(url || ""))} className="shrink-0 rounded-md bg-shell-gray-900 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-shell-red">Pick</button> : null}
-        </div>
-        {preview ? <img src={preview} alt="" className="mt-2 max-h-20 w-auto rounded border border-shell-gray-300 object-cover" onError={(e) => { e.currentTarget.style.opacity = "0.25" }} /> : null}
+        <span className={LABEL}>{label(key)} <span className="font-normal normal-case text-shell-gray-400">— alt text</span></span>
+        <input type="text" value={str} onChange={(e) => onChange(e.target.value)} placeholder="Describe the image for screen readers" className={INPUT} />
       </label>
     )
   }
-  if (str.length > 70 || str.split(NL).length > 1) {
+  // CSS (gradients) stays a plain textarea — rich formatting makes no sense there.
+  if (/^(linear|radial|conic)-gradient\(/i.test(str)) {
     return (
       <label className="block text-sm sm:col-span-2">
-        <span className={LABEL}>{label(key)}</span>
-        <textarea value={str} rows={3} onChange={(e) => onChange(e.target.value)} className={INPUT} />
+        <span className={LABEL}>{label(key)} <span className="font-normal normal-case text-shell-gray-400">— CSS</span></span>
+        <textarea value={str} rows={2} onChange={(e) => onChange(e.target.value)} className={INPUT + " font-mono text-xs"} />
       </label>
     )
+  }
+  // Long copy (or HTML from the rich editor) gets the free WYSIWYG editor.
+  if (str.length > 70 || str.split(NL).length > 1 || looksLikeHtml(str)) {
+    return <RichTextEditor label={label(key)} value={str} onChange={onChange} />
   }
   return (
     <label className="block text-sm">

@@ -101,15 +101,23 @@ async function rewrite() {
   console.log(`Files rewritten: ${changed}`)
 }
 
-/** Report any remaining remote image reference in the data layer. */
+/** Report any remaining remote IMAGE reference in the data layer.
+ * Social profile links (facebook/linkedin/x) are outbound links, not hotlinked
+ * images, so they are deliberately ignored here. */
 async function report() {
   const found = new Set()
   for (const rel of TARGETS) {
     const src = await readFile(join(root, rel), 'utf8')
-    for (const m of src.matchAll(/https?:\/\/[^"'\s`)]+/g)) found.add(`${rel}: ${m[0]}`)
+    for (const m of src.matchAll(/https?:\/\/[^"'\s`)]+/g)) {
+      const original = m[0]
+      const url = original.toLowerCase()
+      const tail = url.split("?")[0].split("#")[0]
+      const isImage = url.includes("images.unsplash.com") || /\.(jpe?g|png|webp|gif|svg|avif)$/.test(tail)
+      if (isImage) found.add(`${rel}: ${original}`)
+    }
   }
   if (found.size === 0) {
-    console.log('No remote asset references left in the data layer.')
+    console.log('No remote image references left in the data layer.')
   } else {
     for (const f of found) console.log(`  remote: ${f}`)
   }

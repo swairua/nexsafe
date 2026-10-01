@@ -47,7 +47,7 @@ export default function Footer() {
         </div>
         <Reveal className="mt-12 flex flex-col items-start justify-between gap-6 border-t border-shell-gray-300 pt-8 md:flex-row md:items-center" delay={2}>
           <a href="#top" className="flex items-center gap-3" aria-label={settings.brandName + " home"}>
-            <NexsateLogo className="h-6 md:h-7" plateClassName="px-3 py-2 ring-shell-gray-300" src={settings.logo} alt={settings.brandName} />
+            <NexsateLogo className="h-6 md:h-7" plateClassName="px-3 py-2 ring-shell-gray-300" src={settings.logo} alt={settings.logoAlt || settings.brandName} />
             <span className="text-xs font-medium uppercase tracking-[0.14em] text-shell-gray-500">{settings.footerNote}</span>
           </a>
           <div className="flex items-center gap-3">

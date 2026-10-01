@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { apiUrl, useContent } from "../../content/ContentContext.jsx"
+import { Rich } from "../ui/SectionTag.jsx"
 
 const EMPTY = { name: "", email: "", phone: "", company: "", subject: "", message: "" }
 
@@ -28,8 +29,8 @@ export default function ContactForm() {
   const L = "block text-sm font-medium text-shell-gray-700"
   return (
     <div className="mx-auto max-w-2xl">
-      <h2 className="text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl">{contactForm.title}</h2>
-      <p className="mt-2 text-base text-shell-gray-600">{contactForm.text}</p>
+      <h2 className="text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl"><Rich>{contactForm.title}</Rich></h2>
+      <div className="mt-2 text-base text-shell-gray-600"><Rich as="p">{contactForm.text}</Rich></div>
       <form onSubmit={submit} className="mt-8 grid gap-4 sm:grid-cols-2">
         <label className={L}>{contactForm.nameLabel}<input value={form.name} onChange={set("name")} className={F + " mt-1"} /></label>
         <label className={L}>{contactForm.emailLabel}<input type="email" value={form.email} onChange={set("email")} className={F + " mt-1"} /></label>

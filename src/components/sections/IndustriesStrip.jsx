@@ -1,4 +1,4 @@
-import SectionTag from '../ui/SectionTag.jsx'
+import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -18,9 +18,7 @@ export default function IndustriesStrip() {
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
             {industriesStrip.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-shell-gray-700 md:text-lg">
-            {industriesStrip.text}
-          </p>
+          <div className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{industriesStrip.text}</Rich></div>
         </Reveal>
 
         <Reveal delay={2} className="mt-9">

@@ -1,0 +1,25 @@
+services:
+  # Public site + admin portal + PHP API, all from one container.
+  - type: web
+    name: nexsate
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter          # free instances cannot mount a persistent disk
+    healthCheckPath: /api/content.php
+    autoDeploy: true
+    envVars:
+      - key: NX_DATA_DIR
+        value: /data/db
+      - key: NX_UPLOAD_DIR
+        value: /data/uploads
+      - key: NX_UPLOAD_URL
+        value: /uploads
+      - key: NX_SITE_BASE
+        value: /
+    disk:
+      # Keeps the SQLite content store and uploaded images across deploys.
+      # Without this every restart reverts edits to the api/seed.json defaults.
+      name: nexsate-data
+      mountPath: /data
+      sizeGB: 1

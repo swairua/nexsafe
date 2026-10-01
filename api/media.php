@@ -11,9 +11,12 @@ if ($method === 'GET') {
     nx_session_start();
     $synced = nx_is_authed() ? nx_media_sync() : 0;
     $usage = nx_media_usage();
+    $locations = nx_is_authed() ? nx_media_locations() : [];
     $rows = nx_db()->query('SELECT * FROM media ORDER BY datetime(created_at) DESC, id DESC')->fetchAll();
     foreach ($rows as &$row) {
         $row['used'] = $usage[$row['filename']] ?? 0;
+        $row['locations'] = $locations[$row['filename']] ?? [];
+        if (!isset($row['description'])) $row['description'] = '';
     }
     unset($row);
     nx_json(['ok' => true, 'media' => $rows, 'synced' => $synced]);
@@ -42,6 +45,30 @@ if ($method === 'POST') {
         $info = @getimagesize($f['tmp_name']);
         if ($info !== false) { $w = (int) $info[0]; $h = (int) $info[1]; }
     }
+
+    // Replace mode: same row, same filename/URL — every content field that
+    // points at this image immediately serves the new file. Nothing else to edit.
+    $replaceId = (int) ($_POST['replace_id'] ?? 0);
+    if ($replaceId > 0) {
+        $st = nx_db()->prepare('SELECT * FROM media WHERE id = ?');
+        $st->execute([$replaceId]);
+        $row = $st->fetch();
+        if (!$row) nx_fail('Image to replace not found', 404);
+        $name = basename((string) $row['filename']);
+        $dest = UPLOAD_DIR . DIRECTORY_SEPARATOR . $name;
+        // Validate the replacement extension matches the stored type family.
+        $newExt = strtolower((string) pathinfo($name, PATHINFO_EXTENSION));
+        if ($newExt !== $ext && !($ext === 'jpg' && $newExt === 'jpeg') && !($ext === 'jpeg' && $newExt === 'jpg')) {
+            nx_fail('Replacement file must be the same format as the original (' . $newExt . ')');
+        }
+        if (!move_uploaded_file($f['tmp_name'], $dest)) {
+            nx_fail('Failed to store the replacement file', 500);
+        }
+        $upd = nx_db()->prepare('UPDATE media SET mime = ?, size = ?, width = ?, height = ?, updated_at = ? WHERE id = ?');
+        $upd->execute([$mime, (int) $f['size'], $w, $h, date('c'), $replaceId]);
+        nx_json(['ok' => true, 'id' => $replaceId, 'url' => $row['url'], 'filename' => $name, 'replaced' => true]);
+    }
+
     if (!is_dir(UPLOAD_DIR)) {
         @mkdir(UPLOAD_DIR, 0775, true);
     }
@@ -54,10 +81,27 @@ if ($method === 'POST') {
     }
     $url = UPLOAD_URL . '/' . $name;
     $alt = trim((string) ($_POST['alt'] ?? ''));
-    $st = nx_db()->prepare('INSERT INTO media (filename, url, mime, size, alt, width, height, created_at) VALUES (?,?,?,?,?,?,?,?)');
-    $st->execute([$name, $url, $mime, (int) $f['size'], $alt, $w, $h, date('c')]);
+    $desc = trim((string) ($_POST['description'] ?? ''));
+    $st = nx_db()->prepare('INSERT INTO media (filename, url, mime, size, alt, width, height, created_at, description, locations, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
+    $st->execute([$name, $url, $mime, (int) $f['size'], $alt, $w, $h, date('c'), $desc, '[]', date('c')]);
     $id = (int) nx_db()->lastInsertId();
     nx_json(['ok' => true, 'id' => $id, 'url' => $url, 'filename' => $name]);
+}
+
+if ($method === 'PUT') {
+    $b = nx_body();
+    $id = (int) ($b['id'] ?? 0);
+    $st = nx_db()->prepare('SELECT id FROM media WHERE id = ?');
+    $st->execute([$id]);
+    if (!$st->fetch()) nx_fail('Image not found', 404);
+    $upd = nx_db()->prepare('UPDATE media SET alt = ?, description = ?, updated_at = ? WHERE id = ?');
+    $upd->execute([
+        trim((string) ($b['alt'] ?? '')),
+        trim((string) ($b['description'] ?? '')),
+        date('c'),
+        $id,
+    ]);
+    nx_json(['ok' => true, 'id' => $id]);
 }
 
 if ($method === 'DELETE') {

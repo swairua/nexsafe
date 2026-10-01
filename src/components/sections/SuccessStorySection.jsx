@@ -1,4 +1,4 @@
-import SectionTag from '../ui/SectionTag.jsx'
+import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
@@ -17,7 +17,7 @@ export default function SuccessStorySection() {
         <Reveal variant="left">
           <SmartImage
             src={successStory.image}
-            alt=""
+            alt={successStory.alt || ""}
             fallback={successStory.fallback}
             className="aspect-[4/3] w-full rounded-2xl"
           />
@@ -33,14 +33,10 @@ export default function SuccessStorySection() {
             </h2>
           </Reveal>
           <Reveal delay={3}>
-            <p className="mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg">
-              {successStory.text}
-            </p>
+            <div className="mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{successStory.text}</Rich></div>
           </Reveal>
           <Reveal delay={4}>
-            <blockquote className="mt-6 border-l-4 border-shell-red pl-5 text-base italic leading-relaxed text-shell-gray-700 md:text-lg">
-              {successStory.quote}
-            </blockquote>
+            <blockquote className="mt-6 border-l-4 border-shell-red pl-5 text-base italic leading-relaxed text-shell-gray-700 md:text-lg"><Rich>{successStory.quote}</Rich></blockquote>
           </Reveal>
           <Reveal delay={5}>
             <ul className="mt-7 grid gap-2.5 sm:grid-cols-2">

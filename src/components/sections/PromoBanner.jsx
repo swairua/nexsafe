@@ -1,4 +1,5 @@
 import Reveal from '../ui/Reveal.jsx'
+import { Rich } from '../ui/SectionTag.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
 /** Full-width promo CTA banner (pricing style) with image + blue gradient. */
@@ -10,7 +11,7 @@ export default function PromoBanner() {
       <div className="absolute inset-0" style={{ background: promo.fallback }} aria-hidden="true" />
       <img
         src={promo.image}
-        alt=""
+        alt={promo.alt || ""}
         className="absolute inset-0 h-full w-full object-cover opacity-40"
         onError={(e) => { e.currentTarget.style.display = 'none' }}
       />
@@ -32,9 +33,7 @@ export default function PromoBanner() {
           </h2>
         </Reveal>
         <Reveal delay={3}>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/90 md:text-lg">
-            {promo.text}
-          </p>
+          <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/90 md:text-lg"><Rich as="p">{promo.text}</Rich></div>
         </Reveal>
         <Reveal delay={4}>
           <a href={promo.cta.href} className="btn-pill mt-8 bg-white text-shell-gray-900 hover:bg-shell-gray-100">

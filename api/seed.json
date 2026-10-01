@@ -9,6 +9,7 @@
     "phone": "",
     "address": "",
     "logo": "/brand/nexsate-wordmark.png",
+    "logoAlt": "Nexsate — EnableIT. Transform. Empower.",
     "homeTitle": "Nexsate — technology that works as one",
     "searchPlaceholder": "Search nexsate.com",
     "menuCta": {
@@ -162,12 +163,30 @@
     "errorText": "Could not send your message right now."
   },
   "categoryImages": {
-    "Company": "/uploads/team-handshake.jpg",
-    "IT solutions": "/uploads/circuit-board.jpg",
-    "Industries": "/uploads/industry-team.jpg",
-    "Insights": "/uploads/business-meeting.jpg",
-    "Support": "/uploads/team-collaboration.jpg",
-    "Legal": "/uploads/data-centre.jpg"
+    "Company": {
+      "src": "/uploads/team-handshake.jpg",
+      "alt": "Two professionals shaking hands in partnership"
+    },
+    "IT solutions": {
+      "src": "/uploads/circuit-board.jpg",
+      "alt": "Close-up of a circuit board with glowing traces"
+    },
+    "Industries": {
+      "src": "/uploads/industry-team.jpg",
+      "alt": "Industrial team on site wearing safety gear"
+    },
+    "Insights": {
+      "src": "/uploads/business-meeting.jpg",
+      "alt": "Business meeting with colleagues reviewing documents"
+    },
+    "Support": {
+      "src": "/uploads/team-collaboration.jpg",
+      "alt": "Diverse team collaborating together in a bright office"
+    },
+    "Legal": {
+      "src": "/uploads/data-centre.jpg",
+      "alt": "Data centre corridor with server cabinets"
+    }
   },
   "heroSlides": [
     {
@@ -180,6 +199,7 @@
         "href": "#/services-solutions"
       },
       "image": "/uploads/hero-network-servers.jpg",
+      "alt": "Server racks glowing blue inside a modern data centre",
       "gradient": "linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)",
       "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 130%)"
     },
@@ -193,6 +213,7 @@
         "href": "#/about-us"
       },
       "image": "/uploads/hero-team-planning.jpg",
+      "alt": "Colleagues planning around a table with laptops and notes",
       "gradient": "linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)",
       "fallback": "linear-gradient(135deg, #070e40 0%, #0693e3 130%)"
     },
@@ -206,6 +227,7 @@
         "href": "#/services-solutions"
       },
       "image": "/uploads/team-collaboration.jpg",
+      "alt": "Diverse team collaborating together in a bright office",
       "gradient": "linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)",
       "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 140%)"
     }
@@ -240,6 +262,7 @@
       "text": "Reliable IT support that keeps your team productive, resolves issues faster, reduces downtime, and keeps daily operations moving.",
       "linkLabel": "Stay up and running",
       "image": "/uploads/service-managed-it.jpg",
+      "alt": "IT technician supporting a workstation",
       "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 130%)",
       "href": "#/managed-it-services"
     },
@@ -250,6 +273,7 @@
       "text": "Secure cloud solutions for working, collaborating, accessing information, and protecting data from anywhere.",
       "linkLabel": "Move to the cloud",
       "image": "/uploads/data-centre.jpg",
+      "alt": "Data centre corridor with server cabinets",
       "fallback": "linear-gradient(135deg, #070e40 0%, #0693e3 130%)",
       "href": "#/cloud-services"
     },
@@ -260,6 +284,7 @@
       "text": "Custom software and ERP solutions designed to automate workflows, connect systems, improve efficiency, and support daily operations.",
       "linkLabel": "Build smarter",
       "image": "/uploads/circuit-board.jpg",
+      "alt": "Close-up of a circuit board with glowing traces",
       "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 140%)",
       "href": "#/software-development-erp-crm-solutions"
     },
@@ -270,6 +295,7 @@
       "text": "Reliable network support that keeps your business connected, secure, and well supported through monitoring, maintenance, and troubleshooting.",
       "linkLabel": "Stay connected",
       "image": "/uploads/hero-network-servers.jpg",
+      "alt": "Server racks glowing blue inside a modern data centre",
       "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 130%)",
       "href": "#/network-management"
     },
@@ -280,6 +306,7 @@
       "text": "Security services that protect your business data, users, devices, systems, and cloud platforms from evolving digital threats.",
       "linkLabel": "Protect your business",
       "image": "/uploads/cybersecurity.jpg",
+      "alt": "Padlock security overlay on a laptop",
       "fallback": "linear-gradient(135deg, #070e40 0%, #0693e3 130%)",
       "href": "#/cybersecurity"
     },
@@ -290,6 +317,7 @@
       "text": "Reliable data protection and recovery services that safeguard critical information, reduce disruption, and prepare your business for unexpected events.",
       "linkLabel": "Plan your recovery",
       "image": "/uploads/data-centre.jpg",
+      "alt": "Data centre corridor with server cabinets",
       "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 140%)",
       "href": "#/backup-disaster-recovery"
     }
@@ -524,6 +552,7 @@
       "A clearer IT roadmap for growth"
     ],
     "image": "/uploads/business-meeting.jpg",
+    "alt": "Business meeting with colleagues reviewing documents",
     "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 130%)"
   },
   "promo": {
@@ -535,6 +564,7 @@
       "href": "#/contact-us"
     },
     "image": "/uploads/office-space.jpg",
+    "alt": "Modern open-plan office space with desks and daylight",
     "fallback": "linear-gradient(120deg, #070e40 0%, #010ed0 55%, #00a1e0 135%)"
   },
   "navItems": [

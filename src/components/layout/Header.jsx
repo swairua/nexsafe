@@ -85,7 +85,7 @@ export default function Header({ overlay = true }) {
           {/* Client logo — plate keeps the dark-on-white artwork legible over
               the hero imagery and seamless once the bar turns solid white.
               The artwork itself comes from content settings (admin > Site settings). */}
-          <NexsateLogo className="h-4 md:h-5" src={settings.logo} alt={settings.brandName} />
+          <NexsateLogo className="h-4 md:h-5" src={settings.logo} alt={settings.logoAlt || settings.brandName} />
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label={uiLabels.primaryNav}>

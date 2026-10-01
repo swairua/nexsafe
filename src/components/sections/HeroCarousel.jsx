@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { useContent } from "../../content/ContentContext.jsx"
+import { Rich } from '../ui/SectionTag.jsx'
 
 /** Full-bleed hero carousel with autoplay, arrows and dots (full-bleed banner style). */
 export default function HeroCarousel() {
@@ -40,7 +41,7 @@ export default function HeroCarousel() {
               />
               <img
                 src={slide.image}
-                alt=""
+                alt={slide.alt || ""}
                 className={`absolute inset-0 h-full w-full object-cover ${selected === i ? 'hero-zoom' : ''}`}
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
@@ -67,9 +68,9 @@ export default function HeroCarousel() {
                       </span>
                     ))}
                   </h1>
-                  <p className="hero-text mb-8 max-w-xl text-base leading-relaxed text-white/90 md:text-lg">
-                    {slide.text}
-                  </p>
+                  <div className="hero-text mb-8 max-w-xl text-base leading-relaxed text-white/90 md:text-lg">
+                    <Rich as="p">{slide.text}</Rich>
+                  </div>
                   <a href={slide.cta.href} className="hero-cta btn-pill btn-pill--ghost-light">
                     {slide.cta.label}
                     <span aria-hidden="true">→</span>

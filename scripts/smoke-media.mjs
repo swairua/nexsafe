@@ -161,14 +161,53 @@ try {
       console.log('       note: no content-referenced image found, so 409 protection was not exercised')
     }
 
-    // 5. Non-images are refused on detected type, not on the file extension.
+    // 5. Every row shows what it is, where it lives, and where it is used.
+    const located = rows.filter((m) => Array.isArray(m.locations))
+    check(located.length === rows.length, 'each row carries usage locations', `${located.length}/${rows.length}`)
+    check(rows.every((m) => typeof m.description === 'string'), 'each row carries a description field')
+    const used = located.find((m) => m.locations.length > 0)
+    check(!!used, 'a referenced image reports the content fields using it', used ? `${used.filename} -> ${used.locations[0]}` : 'none found')
+
+    // 6. Metadata (alt + description) is editable through PUT and survives.
+    if (used) {
+      const original = { alt: used.alt, description: used.description }
+      const put = await api('media.php', {
+        method: 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ id: used.id, alt: 'smoke alt', description: 'smoke description' }),
+      })
+      check(put.status === 200, 'media metadata update accepted', `status=${put.status} ${put.text || ''}`)
+      const afterPut = (await api('media.php')).json?.media?.find((m) => m.id === used.id)
+      check(afterPut?.alt === 'smoke alt' && afterPut?.description === 'smoke description', 'alt and description persist')
+      // Restore the original metadata so the test leaves no trace.
+      await api('media.php', {
+        method: 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ id: used.id, alt: original.alt || '', description: original.description || '' }),
+      })
+
+      // 7. Replace swaps the bytes in place: same filename/URL, same metadata,
+      // so every page pointing at the image updates without editing content.
+      const bytes = await readFile(path.join(UPLOADS, used.filename))
+      const rep = multipart({ replace_id: String(used.id) }, { name: 'replacement' + path.extname(used.filename), type: used.mime || 'image/jpeg', data: bytes })
+      const repRes = await api('media.php', { method: 'POST', ...rep })
+      check(repRes.status === 200 && repRes.json?.filename === used.filename, 'replace keeps the same filename', `status=${repRes.status} ${repRes.text || ''}`)
+      const afterRep = (await api('media.php')).json?.media?.find((m) => m.id === used.id)
+      check(afterRep?.url === used.url, 'replace keeps the same URL (content needs no edit)')
+      check(afterRep?.alt === (used.alt || '') && afterRep?.description === (used.description || ''), 'replace keeps alt/description')
+      check(onDisk(used.filename), 'replaced file still on disk')
+    } else {
+      console.log('       note: no located image found, so metadata/replace checks were skipped')
+    }
+
+    // 8. Non-images are refused on detected type, not on the file extension.
     const evil = await api('media.php', {
       method: 'POST',
       ...multipart({ alt: 'evil' }, { name: 'evil.php', type: 'image/png', data: Buffer.from('<?php echo "pwned";', 'binary') }),
     })
     check(evil.status === 400, 'non-image upload refused', `status=${evil.status} ${evil.json?.error || ''}`)
 
-    // 6. Nothing from this run may survive.
+    // 9. Nothing from this run may survive.
     const leftovers = (await readdir(UPLOADS)).filter((n) => /^(smoke|evil|probe)/i.test(n))
     check(leftovers.length === 0, 'smoke run left no files behind', leftovers.join(', '))
   }

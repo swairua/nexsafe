@@ -1,4 +1,4 @@
-import SectionTag from '../ui/SectionTag.jsx'
+import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -19,9 +19,7 @@ export default function PartnerStrip() {
             <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
               {partnerStrip.title}
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-shell-gray-700 md:text-lg">
-              {partnerStrip.text}
-            </p>
+            <div className="mt-4 max-w-2xl text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{partnerStrip.text}</Rich></div>
           </Reveal>
           <Reveal as="a" href={partnerStrip.cta.href} delay={2} className="arrow-link">
             {partnerStrip.cta.label} <span className="arrow">→</span>

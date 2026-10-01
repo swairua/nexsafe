@@ -27,6 +27,14 @@ function nx_migrate(PDO $pdo): void
     $pdo->exec('CREATE TABLE IF NOT EXISTS media (id INTEGER PRIMARY KEY AUTOINCREMENT, filename TEXT NOT NULL, url TEXT NOT NULL, mime TEXT, size INTEGER, alt TEXT, width INTEGER, height INTEGER, created_at TEXT NOT NULL)');
     $pdo->exec('CREATE TABLE IF NOT EXISTS admins (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, email TEXT, created_at TEXT NOT NULL)');
     $pdo->exec('CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, phone TEXT, company TEXT, subject TEXT, body TEXT, created_at TEXT NOT NULL, seen INTEGER DEFAULT 0)');
+    // Media metadata upgrade: every image carries alt text + description +
+    // usage locations so the library shows what each image is, where it is
+    // used, and lets an editor replace the file in place.
+    $cols = [];
+    foreach ($pdo->query('PRAGMA table_info(media)') as $c) { $cols[(string) $c['name']] = true; }
+    if (!isset($cols['description'])) { $pdo->exec("ALTER TABLE media ADD COLUMN description TEXT NOT NULL DEFAULT ''"); }
+    if (!isset($cols['locations'])) { $pdo->exec("ALTER TABLE media ADD COLUMN locations TEXT NOT NULL DEFAULT '[]'"); }
+    if (!isset($cols['updated_at'])) { $pdo->exec("ALTER TABLE media ADD COLUMN updated_at TEXT NOT NULL DEFAULT ''"); }
 }
 
 function nx_seed(PDO $pdo): void
@@ -169,10 +177,17 @@ function nx_media_sync(): int
             $info = @getimagesize($f);
             if (is_array($info)) { $w = (int) $info[0]; $h = (int) $info[1]; }
         }
-        $ins->execute([$name, UPLOAD_URL . '/' . $name, $mime, (int) filesize($f), '', $w, $h, date('c', (int) filemtime($f))]);
+        $now = date('c', (int) filemtime($f));
+        try {
+            $insFull = $pdo->prepare('INSERT INTO media (filename, url, mime, size, alt, width, height, created_at, description, locations, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
+            $insFull->execute([$name, UPLOAD_URL . '/' . $name, $mime, (int) filesize($f), '', $w, $h, $now, '', '[]', $now]);
+        } catch (Throwable $e) {
+            $ins->execute([$name, UPLOAD_URL . '/' . $name, $mime, (int) filesize($f), '', $w, $h, $now]);
+        }
         $added++;
     }
     return $added;
+
 }
 
 /**
@@ -191,6 +206,37 @@ function nx_media_usage(): array
         }
     }
     return $usage;
+}
+
+
+/** Where each file is used: filename => ["section > field path", ...]. */
+function nx_media_locations(): array
+{
+    $out = [];
+    foreach (nx_db()->query('SELECT key, value FROM content') as $row) {
+        $decoded = json_decode((string) $row['value'], true);
+        nx_collect_image_locations($decoded, (string) $row['key'], '', $out);
+    }
+    foreach ($out as $f => $list) { $out[$f] = array_values(array_unique($list)); }
+    return $out;
+}
+
+function nx_collect_image_locations($node, string $section, string $path, array &$out): void
+{
+    if (is_string($node)) {
+        if (preg_match_all('#/uploads/([A-Za-z0-9][A-Za-z0-9._-]*)#', $node, $m)) {
+            foreach ($m[1] as $file) { $out[$file][] = ($section === $path) ? $section : ($section . ' > ' . $path); }
+        }
+        return;
+    }
+    if (is_array($node)) {
+        $isList = array_is_list($node);
+        foreach ($node as $k => $v) {
+            $label = $isList ? ('#' . ((int) $k + 1)) : (string) $k;
+            $next = $path === '' ? $label : ($path . ' > ' . $label);
+            nx_collect_image_locations($v, $section, $next, $out);
+        }
+    }
 }
 
 

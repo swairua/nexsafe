@@ -198,6 +198,49 @@ npm run admin:password -- admin "a-longer-new-password"
 
 Passwords under 8 characters are refused unless you pass `--force` (a `--min=N`
 flag raises the bar instead). `scripts/.htaccess` denies web access to that tool
+
+## 11. Deploying to Render
+
+Render has **no native PHP runtime** (only Node, Python, Ruby, Go, Rust,
+Elixir), so the API ships as a Docker image. `Dockerfile` is a two-stage build:
+Vite builds the SPA, then a `php:8.3-cli` stage serves everything through one
+origin via `router.php`:
+
+| Request | Served by |
+|---------|-----------|
+| `/api/{auth,content,media,messages}.php` | the PHP + SQLite API |
+| `/uploads/*` | files from `NX_UPLOAD_DIR` |
+| `/brand/*`, `/social/*`, `/assets/*`, `/favicon.svg` | `dist/` |
+| anything else | `dist/index.html` (hash-routed SPA) |
+
+`router.php` allow-lists the API scripts (`config.php`, `db.php`,
+`helpers.php` are libraries — hitting them directly only produced a PHP fatal
+error that leaked absolute paths) and 404s `/api/data`, `/api/seed.json`,
+`.git`, `node_modules` and `scripts`.
+
+`render.yaml` defines one Docker web service with a **persistent disk** at
+`/data`. The disk is not optional: `NX_DATA_DIR` (SQLite) and `NX_UPLOAD_DIR`
+(uploads) both live there, so without it every deploy would revert the site to
+the `api/seed.json` defaults and lose uploaded images. `api/config.php` reads
+all four paths from the environment with local defaults, so the same tree runs
+unmodified under XAMPP and on Render.
+
+```
+First deploy: New > Blueprint (picks up render.yaml) — requires a paid plan,
+because free instances cannot mount a persistent disk.
+```
+
+The admin password on a fresh production database is still the shipped
+`nexsate-admin` default, so run `npm run admin:password` (or
+`php scripts/set-admin-password.php`) against the deployed instance before
+sharing the URL.
+
+Local equivalent of the production process:
+
+```
+npm run build
+php -S localhost:8000 -t . router.php    # same router the container uses
+```
 and the other scripts.
 
 ### Dev server gotcha: "URI malformed" overlay

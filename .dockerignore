@@ -1,0 +1,35 @@
+# Keep the Docker build context small and, above all, keep secrets out of it.
+# api/data/*.sqlite holds the admin password hash and live content edits — it is
+# git-ignored, and must not be COPYied into the image either.
+
+# Dependencies / build output (the image builds its own)
+node_modules
+dist
+dist-ssr
+
+# Runtime state — created on the persistent disk in production
+api/data/*.sqlite
+api/data/*.sqlite-journal
+api/data/*.sqlite-wal
+api/data/*.sqlite-shm
+
+# Version control and CI
+.git
+.gitignore
+.github
+.qodo
+
+# Logs and editor noise
+*.log
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Client source material (not shipped to the web server)
+documents
+logoandcontent
+.docx-text
+
+# Docs / scratch files
+MENU_MAP.md

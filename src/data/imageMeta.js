@@ -1,0 +1,111 @@
+// Central image registry — every image the site serves, with a human
+// description, its canonical location(s) in the content store, and whether it
+// can be replaced from the admin Media tab.
+//
+// All photography is local (public/uploads/*); brand art is in public/brand/*
+// and social glyphs in public/social/*. Nothing loads from an image CDN at
+// runtime — see scripts/localize-images.mjs.
+export const IMAGE_META = {
+  '/uploads/hero-network-servers.jpg': {
+    description: 'Server racks glowing blue inside a modern data centre — homepage hero background.',
+    locations: ['Home > Hero slides > #1 "We take care of your IT"', 'Home > Service cards > Network Management'],
+    replaceable: true,
+  },
+  '/uploads/hero-team-planning.jpg': {
+    description: 'Colleagues planning around a table with laptops and notes — homepage hero background.',
+    locations: ['Home > Hero slides > #2 "Simply enabling IT"'],
+    replaceable: true,
+  },
+  '/uploads/team-collaboration.jpg': {
+    description: 'Diverse team collaborating and giving thumbs up in a bright office.',
+    locations: ['Home > Hero slides > #3 Industry focus', 'Home > Intro cards > Why partner with us', 'Category images > Support'],
+    replaceable: true,
+  },
+  '/uploads/boardroom-meeting.jpg': {
+    description: 'Team meeting around a boardroom table — meeting room with presentation screen.',
+    locations: ['Home > Intro cards > How we can help'],
+    replaceable: true,
+  },
+  '/uploads/client-smiling.jpg': {
+    description: 'Smiling client portrait — friendly professional headshot.',
+    locations: ['Home > Intro cards > Client success stories'],
+    replaceable: true,
+  },
+  '/uploads/team-handshake.jpg': {
+    description: 'Two professionals shaking hands — partnership and agreement.',
+    locations: ['Category images > Company'],
+    replaceable: true,
+  },
+  '/uploads/circuit-board.jpg': {
+    description: 'Close-up of a circuit board with glowing traces — technology detail.',
+    locations: ['Home > Service cards > Software Development', 'Category images > IT solutions'],
+    replaceable: true,
+  },
+  '/uploads/industry-team.jpg': {
+    description: 'Industrial team on site wearing safety gear — manufacturing context.',
+    locations: ['Category images > Industries'],
+    replaceable: true,
+  },
+  '/uploads/business-meeting.jpg': {
+    description: 'Business meeting with colleagues reviewing documents — professional discussion.',
+    locations: ['Home > Success story image', 'Category images > Insights'],
+    replaceable: true,
+  },
+  '/uploads/data-centre.jpg': {
+    description: 'Data centre corridor with server cabinets — infrastructure and backup theme.',
+    locations: ['Home > Service cards > Cloud Services', 'Home > Service cards > Backup & Disaster Recovery', 'Category images > Legal'],
+    replaceable: true,
+  },
+  '/uploads/service-managed-it.jpg': {
+    description: 'IT technician supporting a workstation — managed IT support theme.',
+    locations: ['Home > Service cards > Managed IT Services'],
+    replaceable: true,
+  },
+  '/uploads/cybersecurity.jpg': {
+    description: 'Padlock and security overlay on a laptop — cybersecurity theme.',
+    locations: ['Home > Service cards > Cybersecurity'],
+    replaceable: true,
+  },
+  '/uploads/office-space.jpg': {
+    description: 'Modern open-plan office space with desks and daylight — closing CTA background.',
+    locations: ['Home > Promo banner'],
+    replaceable: true,
+  },
+  '/brand/nexsate-wordmark.png': {
+    description: 'Nexsate blue wordmark on transparent background — header and footer logo.',
+    locations: ['Site settings > Logo (header, footer)'],
+    replaceable: true,
+  },
+  '/brand/nexsate-banner.png': {
+    description: 'Nexsate banner artwork used for social / open-graph previews.',
+    locations: ['Site metadata (og:image)'],
+    replaceable: true,
+  },
+  '/social/facebook.png': {
+    description: 'Facebook glyph — footer social channel icon.',
+    locations: ['Social channels > Facebook icon (optional override)'],
+    replaceable: true,
+  },
+  '/social/linkedin.png': {
+    description: 'LinkedIn glyph — footer social channel icon.',
+    locations: ['Social channels > LinkedIn icon (optional override)'],
+    replaceable: true,
+  },
+  '/social/x.png': {
+    description: 'X glyph — footer social channel icon.',
+    locations: ['Social channels > X icon (optional override)'],
+    replaceable: true,
+  },
+}
+
+/** Human description for an image path, or "" when unregistered. */
+export function imageDescription(src) {
+  const m = IMAGE_META[src]
+  return m ? m.description : ''
+}
+
+/** Where an image is used, as a list of "Section > field" labels. */
+export function imageLocations(src) {
+  const m = IMAGE_META[src]
+  return m && Array.isArray(m.locations) ? m.locations : []
+}
