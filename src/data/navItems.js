@@ -30,7 +30,7 @@ export const navItems = [
     columns: [
       {
         heading: 'Core services',
-        links: links('Managed IT Services', 'Cloud Services', 'Cybersecurity', 'Security'),
+        links: links('Managed IT Services', 'Cloud Services', 'Cybersecurity'),
       },
       {
         heading: 'Connect and protect',
@@ -38,13 +38,10 @@ export const navItems = [
       },
       {
         heading: 'Build and improve',
-        links: links(
-          'Software Development, ERP & CRM Solutions',
-          'ERP Solutions',
-          'Automation',
-          'Digital Transformation',
-          'Gaining Efficiency',
-        ).concat([{ label: 'Software & App Development', href: '#/app-development' }]),
+        links: [
+          { label: 'Software & App Development', href: '#/software-erp-app-development' },
+          ...links('Automation', 'Digital Transformation', 'Gaining Efficiency'),
+        ],
       },
     ],
   },

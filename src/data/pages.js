@@ -7,7 +7,7 @@
 // nothing on the site is copy the client did not supply.
 import { companyPages } from './pages/company.js'
 import { servicePages } from './pages/services.js'
-import { appDevPages } from './pages/appdev.js'
+import { softwarePages } from './pages/software.js'
 import { industryPages } from './pages/industries.js'
 import { industryMorePages } from './pages/industries-more.js'
 import { successStoryPages } from './pages/successStory.js'
@@ -17,7 +17,7 @@ import { insightPosts, blogIndexPage } from './posts.js'
 export const allPages = [
   ...companyPages,
   ...servicePages,
-  ...appDevPages,
+  ...softwarePages,
   ...industryPages,
   ...industryMorePages,
   ...successStoryPages,

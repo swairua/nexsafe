@@ -47,22 +47,22 @@ export const servicePages = [
           },
           {
             title: 'Software Development',
-            text: 'Our experts can identify vulnerabilities, assess risks, and implement robust security measures to safeguard your systems and data.',
-            href: '#/software-development-erp-crm-solutions',
+            text: 'Smarter digital solutions that streamline operations, connect business systems, and support growth.',
+            href: '#/software-erp-app-development',
           },
           {
             title: 'Network Management',
-            text: 'Our web development services can help you establish an impactful online presence and reach your target audience effectively.',
+            text: 'Connecting your business and keeping it connected in a secure, reliable, well-managed environment.',
             href: '#/network-management',
           },
           {
             title: 'Cybersecurity',
-            text: 'We can help you create a customized mobile app that aligns with your brand and goals, with expertise in various mobile platforms.',
+            text: 'Protecting your business, users, devices, and data in a secure and well-managed digital environment.',
             href: '#/cybersecurity',
           },
           {
             title: 'Back-up & Disaster Recovery',
-            text: 'With our expertise in cloud technologies, we can help you find the right cloud solutions that meet your business needs and goals.',
+            text: 'Protecting critical business data and preparing your organization to recover quickly from disruption.',
             href: '#/backup-disaster-recovery',
           },
           {
@@ -148,14 +148,6 @@ export const servicePages = [
             text: 'Manage Microsoft 365 users, email, Teams, SharePoint, OneDrive, licences, permissions, and security settings across your business environment.',
           },
           {
-            title: 'Network & connectivity support',
-            text: 'Maintain the technology that keeps your business connected, including Wi-Fi, routers, switches, firewalls, internet coordination, and internal network access.',
-          },
-          {
-            title: 'Backup & recovery oversight',
-            text: 'Monitor backup activity, recovery readiness, alerts, storage usage, and restore support so important business data remains better protected.',
-          },
-          {
             title: 'Vendor & technology coordination',
             text: 'Coordinate with internet providers, software vendors, hardware suppliers, cloud platforms, and other technology partners when support, changes, or troubleshooting are needed.',
           },
@@ -226,16 +218,8 @@ export const servicePages = [
             text: 'Improving teamwork through better use of Microsoft Teams, SharePoint, OneDrive, shared workspaces, and cloud-based communication tools.',
           },
           {
-            title: 'Cloud storage management',
-            text: 'Organizing cloud storage, reduce file confusion, manage permissions, and improve how business information is stored and accessed.',
-          },
-          {
             title: 'Cloud cost & licence review',
             text: 'Reviewing cloud licences, subscriptions, storage usage, and service plans to reduce waste and improve value.',
-          },
-          {
-            title: 'Scalable cloud environment',
-            text: 'Building a cloud setup that can support more users, locations, applications, data, and business activity as your company grows.',
           },
         ],
       },
@@ -281,7 +265,12 @@ export const servicePages = [
         heading: 'From risk to resilience',
         body: [
           'Nexsate looks beyond basic protection to understand where your business is most exposed and what could be impacted if a cyber incident occurs. We then build a practical cybersecurity approach that prioritizes key risks, strengthens weak points, improves preparedness, and supports a safer, more resilient business environment.',
-          'Cyber threats move quickly, and weak security can expose your business to phishing, ransomware, account compromise, data loss, and disruption. Nexsate strengthens access, secures devices, monitors threats, reduces vulnerabilities, and applies practical controls to protect the technology your business depends on.',
+        ],
+        list: [
+          'Incident response support with containment guidance and recovery coordination when issues occur',
+          'Data protection controls for sensitive information, secure storage, and safer file handling',
+          'Vulnerability and patch coordination that closes known gaps before they become risks',
+          'Ongoing security improvement as your business, users, systems, and tools change',
         ],
       },
       {
@@ -314,81 +303,7 @@ export const servicePages = [
         ],
       },
     ],
-    related: ['security', 'managed-it-services', 'network-management', 'cloud-services'],
-  },
-  {
-    slug: 'security',
-    title: 'Security',
-    eyebrow,
-    intro:
-      'Protecting your people, systems, devices, data, and digital operations with effective security controls built for modern business.',
-    sections: [
-      {
-        heading: 'Protection that fits how your business works',
-        body: [
-          'Security risks can reach every part of your business, from email and passwords to devices, cloud platforms, customer data, financial records, and daily operations. One weak account, unprotected device, unsafe link, or poor access control can lead to disruption, data loss, fraud, ransomware, or damage to customer trust.',
-          'Nexsate helps businesses strengthen security by finding risks, improving protection, securing access, and applying the right controls around the technology your team uses every day. Our approach helps reduce exposure, improve visibility, and support safer day-to-day operations.',
-        ],
-      },
-      {
-        heading: 'Core security capabilities',
-        items: [
-          {
-            title: 'Security assessment & risk review',
-            text: 'Find security gaps across accounts, devices, cloud platforms, access controls, and business systems and addressing them before they become bigger risks.',
-          },
-          {
-            title: 'Identity & access security',
-            text: 'Strengthen access to your business systems with secure sign-ins, multi-factor authentication, user permissions, administrator controls, and safer access policies.',
-          },
-          {
-            title: 'Device & endpoint protection',
-            text: 'Secure laptops, desktops, servers, and mobile devices against malware, ransomware, unauthorized access, and suspicious activity.',
-          },
-          {
-            title: 'Email & cloud security',
-            text: 'Strengthen protection across email, Microsoft 365, cloud platforms, file sharing, and collaboration tools to reduce phishing, unsafe access, and data exposure.',
-          },
-        ],
-      },
-      {
-        heading: 'Security built around real business risk',
-        body: [
-          'Good security is not only about installing tools. It is about understanding what needs protection, who needs access, where the risks are, and how quickly the business can respond when something goes wrong. Nexsate looks at your users, systems, devices, data, and workflows, then applies security measures that fit your environment without creating unnecessary complexity.',
-          'Strong security helps your business reduce risk, limit disruption, and respond faster when threats occur. Nexsate protects accounts, devices, cloud access, and daily operations so your team can work in a safer digital environment.',
-        ],
-      },
-      {
-        heading: 'Security that protects business continuity',
-        items: [
-          {
-            title: 'Threat monitoring & alerts',
-            text: 'Monitor security activity across users, devices, and systems so suspicious behaviour, access issues, and potential threats can be identified earlier.',
-          },
-          {
-            title: 'Vulnerability & patch coordination',
-            text: 'Reduce security gaps by keeping software, systems, and devices updated and addressing known vulnerabilities before they become bigger risks.',
-          },
-          {
-            title: 'Security awareness guidance',
-            text: 'Help employees recognize phishing, unsafe links, password risks, suspicious requests, and everyday security mistakes that can expose the business.',
-          },
-          {
-            title: 'Data protection controls',
-            text: 'Protect sensitive business information through access controls, secure storage practices, backup coordination, and safer handling of important files and records.',
-          },
-          {
-            title: 'Incident response support',
-            text: 'Provide structured support when security issues occur, including containment guidance, investigation support, recovery coordination, and steps to reduce future risk.',
-          },
-          {
-            title: 'Ongoing security improvement',
-            text: 'Review security controls over time, adjust protection as your business changes, and strengthen your security posture as new risks, users, systems, and tools are introduced.',
-          },
-        ],
-      },
-    ],
-    related: ['cybersecurity', 'managed-it-services', 'backup-disaster-recovery', 'network-management'],
+    related: ['managed-it-services', 'network-management', 'cloud-services'],
   },
   {
     slug: 'network-management',
@@ -451,14 +366,6 @@ export const servicePages = [
             title: 'Traffic & bandwidth management',
             text: 'Monitor usage, reduce congestion, and improve how bandwidth is used across business applications, cloud platforms, and connected devices.',
           },
-          {
-            title: 'Automated alerts',
-            text: 'Receive timely alerts when network issues, outages, device failures, or performance problems need attention.',
-          },
-          {
-            title: 'Configuration review & growth planning',
-            text: 'Review network settings, capacity, and future requirements so the network can support more users, devices, locations, and business growth.',
-          },
         ],
       },
     ],
@@ -518,14 +425,6 @@ export const servicePages = [
             text: 'Manage cloud-based backups for important business data, files, systems, and applications to improve data availability and reduce reliance on local storage only.',
           },
           {
-            title: 'Server & workstation backup',
-            text: 'Protect business servers, desktops, and laptops by backing up important files, configurations, and system data needed for recovery.',
-          },
-          {
-            title: 'Backup alerts & reporting',
-            text: 'Track backup status, failed jobs, storage usage, and warning signs through alerts and reports that make backup health easier to manage.',
-          },
-          {
             title: 'Recovery testing',
             text: 'Test restore processes to confirm that backups are usable and important data can be recovered when needed.',
           },
@@ -536,155 +435,7 @@ export const servicePages = [
         ],
       },
     ],
-    related: ['cloud-services', 'cybersecurity', 'managed-it-services', 'security'],
-  },
-  {
-    slug: 'software-development-erp-crm-solutions',
-    title: 'Software Development, ERP & CRM Solutions',
-    eyebrow,
-    intro:
-      'Build smarter digital solutions that streamline operations, connect business systems, improve customer experiences, and support growth.',
-    sections: [
-      {
-        heading: 'Benefits of software development provided by Nexsate',
-        body: [
-          'Software should make your business easier to run, not force your team to work around disconnected systems, manual processes, or tools that do not communicate properly. Nexsate develops practical software solutions and supports ERP and CRM implementation for platforms such as SAP, Microsoft Dynamics 365, and other business systems, helping organizations build technology around the way they actually operate.',
-          'Whether you need a custom application, workflow automation, CRM support, client portal, reporting dashboard, ERP support, system integration, or internal business tool, we help turn everyday challenges into smarter digital solutions. Our software development services focus on improving efficiency, reducing repetitive work, connecting systems and data, and creating better experiences for customers, employees, and management teams.',
-        ],
-      },
-      {
-        heading: 'What we build',
-        items: [
-          {
-            title: 'Custom business solutions',
-            text: 'We design and build software solutions tailored to your business processes, users, goals, and day-to-day operations.',
-          },
-          {
-            title: 'Process automation',
-            text: 'We help reduce manual work by automating workflows, approvals, reporting, repetitive tasks, and business processes.',
-          },
-          {
-            title: 'ERP & CRM support',
-            text: 'We support the implementation, customization, and improvement of ERP and CRM systems that help manage operations, customers, sales, data, and workflows.',
-          },
-          {
-            title: 'System integration & scalability',
-            text: 'We connect applications, ERP, CRM, data sources, and business platforms to improve visibility, efficiency, and decision-making, while building solutions that can grow with your business.',
-          },
-        ],
-      },
-      {
-        heading: 'From idea to everyday use',
-        body: [
-          'Nexsate starts by understanding the purpose behind the solution, the people who will use it, and the process it needs to support. From there, we help shape clear requirements, design a practical solution, test it properly, support the rollout, and make improvements after launch so the final product is not just built, but useful, adopted, and valuable in everyday work.',
-          'As your business changes, your software should adapt with it. Nexsate helps create flexible digital solutions that support new users, processes, customers, and growth without adding unnecessary complexity.',
-        ],
-      },
-      {
-        heading: 'Software services for growing a business',
-        items: [
-          {
-            title: 'Better visibility',
-            text: 'Give your team clearer access to business information through dashboards, reports, and connected data.',
-          },
-          {
-            title: 'Smarter decisions',
-            text: 'Use accurate information to understand performance, track progress, and make informed business decisions.',
-          },
-          {
-            title: 'Improved team productivity',
-            text: 'Help employees spend less time searching for information, repeating tasks, or working around disconnected systems.',
-          },
-          {
-            title: 'Stronger customer experience',
-            text: 'Create smoother customer interactions through better portals, faster processes, and more organized service delivery.',
-          },
-          {
-            title: 'Flexible business growth',
-            text: 'Build software that can adapt as your business adds users, services, locations, departments, or new processes.',
-          },
-          {
-            title: 'Long-term improvement',
-            text: 'Continue improving your systems after launch so they remain useful as your business needs change.',
-          },
-        ],
-      },
-    ],
-    related: ['erp-solutions', 'automation', 'digital-transformation', 'erp-solutions'],
-  },
-  {
-    slug: 'erp-solutions',
-    title: 'ERP Solutions',
-    eyebrow,
-    intro:
-      'Bringing operations, data, and people together through smarter systems built for visibility, efficiency, and growth.',
-    sections: [
-      {
-        heading: 'Smarter business systems for better control',
-        body: [
-          'As businesses grow, manual approvals, spreadsheets, disconnected software, and scattered information can make daily operations harder to manage. Teams lose time searching for data, repeating tasks, correcting errors, or moving information between systems that should already work together.',
-          'ERP solutions bring important business functions into one connected system, helping teams manage finance, purchasing, inventory, sales, operations, projects, reporting, and customer-related processes more efficiently. Nexsate works with businesses to plan, configure, improve, and support ERP systems that improve visibility, strengthen process control, and simplify daily operations.',
-        ],
-      },
-      {
-        heading: 'Core ERP capabilities',
-        items: [
-          {
-            title: 'ERP planning & advisory',
-            text: 'Evaluate your business needs, current systems, workflows, and process gaps to define an ERP direction that supports better decisions, smoother implementation, and long-term value.',
-          },
-          {
-            title: 'ERP implementation support',
-            text: 'Guide ERP setup, configuration, data preparation, user readiness, and rollout activities so the system is introduced in a structured way and adopted more smoothly by your team.',
-          },
-          {
-            title: 'Process alignment',
-            text: 'Configure ERP workflows around your real business processes, making approvals, purchasing, inventory, finance, reporting, and daily operations easier to manage.',
-          },
-          {
-            title: 'Reporting & business visibility',
-            text: 'Turn connected data into clear reports and dashboards that help your team understand performance and make better decisions.',
-          },
-        ],
-      },
-      {
-        heading: 'Turning business processes into connected operations',
-        body: [
-          'A successful ERP system starts with understanding how your business really works. At Nexsate, we review your processes, data flow, users, challenges, and reporting needs, then structure ERP solutions around the processes that drive your business. The goal is to reduce disconnected work, improve control, and support daily operations without adding unnecessary complexity.',
-          'Disconnected systems slow down work and make business performance harder to see. Nexsate supports ERP solutions that bring key processes together, improve data accuracy, reduce manual coordination, and give management clearer visibility across operations.',
-        ],
-      },
-      {
-        heading: 'ERP solutions that bring your business together',
-        items: [
-          {
-            title: 'Microsoft Dynamics 365 support',
-            text: 'Implement, configure, integrate, and support Microsoft Dynamics 365 solutions that improve operations, customer management, reporting, workflows, and business process efficiency.',
-          },
-          {
-            title: 'SAP support',
-            text: 'Implement, configure, integrate, and support SAP solutions to help businesses manage operations, reporting, users, workflows, and business processes more effectively.',
-          },
-          {
-            title: 'ERP configuration & customization',
-            text: 'Configure ERP modules, workflows, permissions, forms, fields, and business rules so the system better reflects how your organization works.',
-          },
-          {
-            title: 'Data migration & cleanup',
-            text: 'Prepare, organize, and migrate business data from spreadsheets, legacy systems, or disconnected platforms into a cleaner ERP environment.',
-          },
-          {
-            title: 'ERP integration',
-            text: 'Connect ERP systems with CRM platforms, Microsoft 365, reporting tools, inventory systems, portals, websites, and other business applications.',
-          },
-          {
-            title: 'User training & adoption support',
-            text: 'Support employees with guidance, documentation, and practical training so teams understand how to use the ERP system effectively in their daily work.',
-          },
-        ],
-      },
-    ],
-    related: ['software-development-erp-crm-solutions', 'erp-solutions', 'automation', 'digital-transformation'],
+    related: ['cloud-services', 'cybersecurity', 'managed-it-services'],
   },
   {
     slug: 'automation',
@@ -758,7 +509,7 @@ export const servicePages = [
         ],
       },
     ],
-    related: ['software-development-erp-crm-solutions', 'erp-solutions', 'digital-transformation', 'gaining-efficiency'],
+    related: ['software-erp-app-development', 'automation', 'digital-transformation', 'gaining-efficiency'],
   },
   {
     slug: 'digital-transformation',
@@ -832,7 +583,7 @@ export const servicePages = [
         ],
       },
     ],
-    related: ['cloud-services', 'automation', 'erp-solutions', 'erp-solutions'],
+    related: ['cloud-services', 'automation', 'software-erp-app-development'],
   },
   {
     slug: 'gaining-efficiency',
@@ -906,6 +657,6 @@ export const servicePages = [
         ],
       },
     ],
-    related: ['automation', 'managed-it-services', 'software-development-erp-crm-solutions', 'digital-transformation'],
+    related: ['automation', 'managed-it-services', 'software-erp-app-development', 'digital-transformation'],
   },
 ]

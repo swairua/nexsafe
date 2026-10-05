@@ -151,6 +151,10 @@ static $legacyExact = [
     'industries/telemedicine' => '/#/telemedicine',
     'industries/fintech' => '/#/fintech',
     'industries/education' => '/#/education',
+    // Retired slugs from the readability merges (internal hash routes).
+    'security' => '/#/cybersecurity',
+    'software-development-erp-crm-solutions' => '/#/software-erp-app-development',
+    'erp-solutions' => '/#/software-erp-app-development',
     // Ported blog posts (dated WP slugs -> new slugs).
     'how-startups-are-cutting-cloud-costs-renegotiating-deals-with-service-providers' => '/#/startups-cutting-cloud-costs',
     'heavy-equipment-manufacturer-finds-concrete-solutions' => '/#/heavy-equipment-manufacturer-concrete-solutions',

@@ -1,17 +1,16 @@
 // Industry pages, ported from nexsate.com/industries/ during the redesign:
-// wording, section order, headings and imagery are the source site's own.
+// wording, section order, headings and imagery are the source site's own,
+// tightened in the readability pass (duplicate paragraphs removed, "Focus"
+// headings rewritten as promises, service lists cut to sector-unique items).
 //
-// Shape on the source, kept here: h1 + subtitle -> "Focus" -> two positioning
+// Shape on the source, kept here: h1 + subtitle -> promise -> two positioning
 // sections -> the services list -> a closing section. Each page also carries its
 // own hero background image (page.image), which PageView prefers over the
 // shared per-category image.
 //
-// Source wording is kept verbatim, including its quirks: the "Focus" label,
-// Title Case headings, and the repeated "Financial workflows require..."
-// paragraph on the banks page. One thing is deliberately NOT copied: the
-// source's services heading on the healthcare and banks pages is a copy-paste
-// error ("Our IT services for manufacturers"), so each page names its own
-// sector instead.
+// One thing is deliberately NOT copied: the source's services heading on the
+// healthcare and banks pages is a copy-paste error ("Our IT services for
+// manufacturers"), so each page names its own sector instead.
 const eyebrow = 'Industries'
 
 export const industryPages = [
@@ -28,7 +27,7 @@ export const industryPages = [
     },
     sections: [
       {
-        heading: 'Focus',
+        heading: 'Confidential systems that stay available',
         body: [
           'Financial and insurance operations depend on accuracy, privacy, and timely access to information. Client records, applications, policies, claims, approvals, payments, reports, and communication all move through digital systems that must be properly managed.',
           'A delay in access, a failed workstation, a locked account, a misrouted document, or an exposed file can affect client service, internal workflow, and business confidence. Teams need technology that protects sensitive information while keeping work organized and accessible to the right people.',
@@ -47,7 +46,6 @@ export const industryPages = [
         heading: 'Digital Systems for Finance, Policies, and Claims',
         body: [
           'Banking and insurance teams work through many moving parts: applications, client files, underwriting documents, payment details, policy updates, claims records, compliance tasks, email communication, and reporting.',
-          'Financial workflows require technology that keeps information organized, access controlled, records protected, and business activity moving with fewer interruptions. Nexsate provides the structure, support, and safeguards needed to reduce manual delays and maintain dependable client service.',
           'Our technicians can support secure office technology setup, including workstations, cabling, network equipment, printing, scanning, device deployment, and connectivity, with attention to reliability, access control, and confidentiality.',
         ],
       },
@@ -59,10 +57,6 @@ export const industryPages = [
             text: 'Support for advisors, brokers, tellers, claims staff, administrators, managers, and office teams handling daily technical issues.',
           },
           {
-            title: 'Office Network & Branch Connectivity',
-            text: 'Design and setup of office networks, Wi-Fi, firewalls, workstations, printers, meeting rooms, and multi-location connectivity.',
-          },
-          {
             title: 'Core Application Support',
             text: 'Support for banking platforms, insurance software, CRM systems, accounting tools, document systems, reporting platforms, and client management applications.',
           },
@@ -71,20 +65,8 @@ export const industryPages = [
             text: 'User accounts, permission levels, administrator access, multi-factor authentication, password policies, and secure sign-in practices.',
           },
           {
-            title: 'Hardware Procurement & Device Setup',
-            text: 'Sourcing, configuring, and deploying laptops, desktops, monitors, printers, scanners, phones, tablets, and office technology equipment.',
-          },
-          {
-            title: 'Document Management & Workflow Support',
-            text: 'Support for digital files, client records, forms, approvals, shared folders, document routing, and controlled information access.',
-          },
-          {
             title: 'Cybersecurity & Compliance Readiness',
             text: 'Security reviews, endpoint protection, email safeguards, data handling controls, user awareness, audit preparation, and risk reduction practices.',
-          },
-          {
-            title: 'Automation & AI Administrative Workflows',
-            text: 'Automation and AI-supported processes for document sorting, reminders, reporting, approvals, client follow-ups, form handling, and internal task management.',
           },
         ],
       },
@@ -110,7 +92,7 @@ export const industryPages = [
     },
     sections: [
       {
-        heading: 'Focus',
+        heading: 'Care without system delays',
         body: [
           'Healthcare environments depend on technology at every stage of the patient experience. Appointment booking, intake forms, digital charts, billing, imaging, prescriptions, referrals, communication, and reporting all rely on systems being available, secure, and easy for staff to use.',
           'When technology is unreliable, the impact is felt quickly. Front desk teams may struggle with scheduling, clinicians may lose access to records, patients may wait longer, and administrative work can pile up behind the scenes.',
@@ -148,24 +130,8 @@ export const industryPages = [
             text: 'User permissions, account protection, multi-factor authentication, role-based access, and safeguards for sensitive patient and business information.',
           },
           {
-            title: 'Medical Office Network & Wi-Fi',
-            text: 'Network setup and support for clinics, treatment rooms, reception areas, staff offices, guest access, and connected healthcare workspaces.',
-          },
-          {
-            title: 'Hardware, Printers & Peripheral Setup',
-            text: 'Procurement, configuration, and deployment of computers, tablets, printers, scanners, label printers, phones, monitors, and other office technology.',
-          },
-          {
             title: 'Backup & Record Recovery Readiness',
             text: 'Protection planning for important practice data, digital records, files, cloud platforms, and systems that must be recoverable when problems occur.',
-          },
-          {
-            title: 'Systems Maintenance & Update Coordination',
-            text: 'Regular maintenance for devices, applications, operating systems, security updates, performance concerns, and technology health.',
-          },
-          {
-            title: 'Digital Forms, Automation & AI Admin Workflows',
-            text: 'Automation and AI-supported administrative workflows for forms, reminders, document routing, reporting, task follow-ups, and non-clinical office processes.',
           },
         ],
       },
@@ -191,7 +157,7 @@ export const industryPages = [
     },
     sections: [
       {
-        heading: 'Focus',
+        heading: 'Production that never waits on IT',
         body: [
           'You have orders to complete, shipments to move, production schedules to meet, and customers depending on you. Technology should support that work, not slow it down.',
           'Nexsate works with industrial and manufacturing businesses to strengthen the technology behind daily operations, from users and devices to production systems, warehouse connectivity, data access, and operational continuity. The goal is a more secure, organized, and dependable environment that supports productivity today and growth tomorrow.',
@@ -220,24 +186,8 @@ export const industryPages = [
             text: 'Responsive support for office staff, warehouse teams, supervisors, and production users experiencing day-to-day technology issues.',
           },
           {
-            title: 'System Design & Network Setup',
-            text: 'Design and setup of reliable technology environments, including networks, workstations, servers, Wi-Fi, access points, and system connectivity.',
-          },
-          {
             title: 'Business Software Support',
             text: 'Support for ERP systems, inventory platforms, production software, accounting tools, reporting systems, and other business applications used in daily operations.',
-          },
-          {
-            title: 'Hardware Procurement & Setup',
-            text: 'Sourcing, configuring, and deploying laptops, desktops, servers, printers, networking equipment, and other technology hardware required for business operations.',
-          },
-          {
-            title: 'Cabling & Connectivity',
-            text: 'Structured cabling, fibre connectivity coordination, network points, equipment connections, and connectivity support for offices, warehouses, and production areas.',
-          },
-          {
-            title: 'Systems Maintenance',
-            text: 'Ongoing maintenance of devices, systems, networks, software updates, patches, backups, and performance issues to keep technology operating reliably.',
           },
           {
             title: 'Automation & AI Workflow Support',
@@ -256,7 +206,7 @@ export const industryPages = [
         ],
       },
     ],
-    related: ['network-management', 'managed-it-services', 'erp-solutions', 'transportation-logistics'],
+    related: ['network-management', 'managed-it-services', 'software-erp-app-development', 'transportation-logistics'],
   },
   {
     slug: 'transportation-logistics',
@@ -271,7 +221,7 @@ export const industryPages = [
     },
     sections: [
       {
-        heading: 'Focus',
+        heading: 'Freight visibility without gaps',
         body: [
           'Transportation and logistics operations move quickly. Dispatchers need accurate information, drivers need dependable access, customers expect timely updates, and every delay can affect the next pickup, delivery, invoice, or service commitment.',
           'Behind every shipment is a chain of technology: dispatch systems, fleet platforms, mobile devices, tracking tools, warehouse scanners, shared documents, customer communication, and reporting. When those systems are not properly supported, teams lose visibility, communication slows down, and operations become harder to control.',
@@ -302,24 +252,12 @@ export const industryPages = [
             text: 'Support for dispatchers, office teams, customer service staff, warehouse users, managers, and mobile workers dealing with everyday technical issues.',
           },
           {
-            title: 'Network Design & Site Connectivity',
-            text: 'Design and setup of networks for offices, warehouses, yards, terminals, remote branches, and connected work areas.',
-          },
-          {
             title: 'TMS, WMS & Fleet Software Support',
             text: 'Support for transportation management systems, warehouse platforms, fleet tools, routing software, accounting systems, customer portals, and reporting applications.',
           },
           {
-            title: 'Hardware Procurement & Device Setup',
-            text: 'Sourcing, configuring, and deploying desktops, laptops, tablets, printers, scanners, mobile devices, routers, switches, access points, and fleet-related technology.',
-          },
-          {
             title: 'Cabling, Wi-Fi & Yard Coverage',
             text: 'Structured cabling, fibre coordination, wireless coverage, network drops, equipment connections, and connectivity support for buildings, warehouses, docks, and yards.',
-          },
-          {
-            title: 'Systems Maintenance & Availability',
-            text: 'Ongoing maintenance for workstations, servers, software, updates, patches, device health, access issues, and performance concerns.',
           },
           {
             title: 'Automation & AI Workflow Support',
@@ -334,6 +272,6 @@ export const industryPages = [
         ],
       },
     ],
-    related: ['network-management', 'managed-it-services', 'industrial-manufacturing', 'erp-solutions'],
+    related: ['network-management', 'managed-it-services', 'industrial-manufacturing', 'software-erp-app-development'],
   },
 ]

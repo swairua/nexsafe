@@ -756,10 +756,6 @@
             {
               "label": "Cybersecurity",
               "href": "#/cybersecurity"
-            },
-            {
-              "label": "Security",
-              "href": "#/security"
             }
           ]
         },
@@ -780,12 +776,8 @@
           "heading": "Build and improve",
           "links": [
             {
-              "label": "Software Development, ERP & CRM Solutions",
-              "href": "#/software-development-erp-crm-solutions"
-            },
-            {
-              "label": "ERP Solutions",
-              "href": "#/erp-solutions"
+              "label": "Software & App Development",
+              "href": "#/software-erp-app-development"
             },
             {
               "label": "Automation",
@@ -798,10 +790,6 @@
             {
               "label": "Gaining Efficiency",
               "href": "#/gaining-efficiency"
-            },
-            {
-              "label": "Software & App Development",
-              "href": "#/app-development"
             }
           ]
         }
@@ -978,16 +966,8 @@
           "href": "#/backup-disaster-recovery"
         },
         {
-          "label": "Software Development, ERP & CRM Solutions",
-          "href": "#/software-development-erp-crm-solutions"
-        },
-        {
-          "label": "ERP Solutions",
-          "href": "#/erp-solutions"
-        },
-        {
           "label": "Software & App Development",
-          "href": "#/app-development"
+          "href": "#/software-erp-app-development"
         }
       ]
     },
@@ -1409,84 +1389,6 @@
         "cloud-services"
       ]
     },
-    "security": {
-      "slug": "security",
-      "title": "Security",
-      "eyebrow": "IT solutions",
-      "intro": "Protecting your people, systems, devices, data, and digital operations with effective security controls built for modern business.",
-      "sections": [
-        {
-          "heading": "Protection that fits how your business works",
-          "body": [
-            "Security risks can reach every part of your business, from email and passwords to devices, cloud platforms, customer data, financial records, and daily operations. One weak account, unprotected device, unsafe link, or poor access control can lead to disruption, data loss, fraud, ransomware, or damage to customer trust.",
-            "Nexsate helps businesses strengthen security by finding risks, improving protection, securing access, and applying the right controls around the technology your team uses every day. Our approach helps reduce exposure, improve visibility, and support safer day-to-day operations."
-          ]
-        },
-        {
-          "heading": "Core security capabilities",
-          "items": [
-            {
-              "title": "Security assessment & risk review",
-              "text": "Find security gaps across accounts, devices, cloud platforms, access controls, and business systems and addressing them before they become bigger risks."
-            },
-            {
-              "title": "Identity & access security",
-              "text": "Strengthen access to your business systems with secure sign-ins, multi-factor authentication, user permissions, administrator controls, and safer access policies."
-            },
-            {
-              "title": "Device & endpoint protection",
-              "text": "Secure laptops, desktops, servers, and mobile devices against malware, ransomware, unauthorized access, and suspicious activity."
-            },
-            {
-              "title": "Email & cloud security",
-              "text": "Strengthen protection across email, Microsoft 365, cloud platforms, file sharing, and collaboration tools to reduce phishing, unsafe access, and data exposure."
-            }
-          ]
-        },
-        {
-          "heading": "Security built around real business risk",
-          "body": [
-            "Good security is not only about installing tools. It is about understanding what needs protection, who needs access, where the risks are, and how quickly the business can respond when something goes wrong. Nexsate looks at your users, systems, devices, data, and workflows, then applies security measures that fit your environment without creating unnecessary complexity.",
-            "Strong security helps your business reduce risk, limit disruption, and respond faster when threats occur. Nexsate protects accounts, devices, cloud access, and daily operations so your team can work in a safer digital environment."
-          ]
-        },
-        {
-          "heading": "Security that protects business continuity",
-          "items": [
-            {
-              "title": "Threat monitoring & alerts",
-              "text": "Monitor security activity across users, devices, and systems so suspicious behaviour, access issues, and potential threats can be identified earlier."
-            },
-            {
-              "title": "Vulnerability & patch coordination",
-              "text": "Reduce security gaps by keeping software, systems, and devices updated and addressing known vulnerabilities before they become bigger risks."
-            },
-            {
-              "title": "Security awareness guidance",
-              "text": "Help employees recognize phishing, unsafe links, password risks, suspicious requests, and everyday security mistakes that can expose the business."
-            },
-            {
-              "title": "Data protection controls",
-              "text": "Protect sensitive business information through access controls, secure storage practices, backup coordination, and safer handling of important files and records."
-            },
-            {
-              "title": "Incident response support",
-              "text": "Provide structured support when security issues occur, including containment guidance, investigation support, recovery coordination, and steps to reduce future risk."
-            },
-            {
-              "title": "Ongoing security improvement",
-              "text": "Review security controls over time, adjust protection as your business changes, and strengthen your security posture as new risks, users, systems, and tools are introduced."
-            }
-          ]
-        }
-      ],
-      "related": [
-        "cybersecurity",
-        "managed-it-services",
-        "backup-disaster-recovery",
-        "network-management"
-      ]
-    },
     "network-management": {
       "slug": "network-management",
       "title": "Network Management",
@@ -1641,162 +1543,6 @@
         "cybersecurity",
         "managed-it-services",
         "security"
-      ]
-    },
-    "software-development-erp-crm-solutions": {
-      "slug": "software-development-erp-crm-solutions",
-      "title": "Software Development, ERP & CRM Solutions",
-      "eyebrow": "IT solutions",
-      "intro": "Build smarter digital solutions that streamline operations, connect business systems, improve customer experiences, and support growth.",
-      "sections": [
-        {
-          "heading": "Benefits of software development provided by Nexsate",
-          "body": [
-            "Software should make your business easier to run, not force your team to work around disconnected systems, manual processes, or tools that do not communicate properly. Nexsate develops practical software solutions and supports ERP and CRM implementation for platforms such as SAP, Microsoft Dynamics 365, and other business systems, helping organizations build technology around the way they actually operate.",
-            "Whether you need a custom application, workflow automation, CRM support, client portal, reporting dashboard, ERP support, system integration, or internal business tool, we help turn everyday challenges into smarter digital solutions. Our software development services focus on improving efficiency, reducing repetitive work, connecting systems and data, and creating better experiences for customers, employees, and management teams."
-          ]
-        },
-        {
-          "heading": "What we build",
-          "items": [
-            {
-              "title": "Custom business solutions",
-              "text": "We design and build software solutions tailored to your business processes, users, goals, and day-to-day operations."
-            },
-            {
-              "title": "Process automation",
-              "text": "We help reduce manual work by automating workflows, approvals, reporting, repetitive tasks, and business processes."
-            },
-            {
-              "title": "ERP & CRM support",
-              "text": "We support the implementation, customization, and improvement of ERP and CRM systems that help manage operations, customers, sales, data, and workflows."
-            },
-            {
-              "title": "System integration & scalability",
-              "text": "We connect applications, ERP, CRM, data sources, and business platforms to improve visibility, efficiency, and decision-making, while building solutions that can grow with your business."
-            }
-          ]
-        },
-        {
-          "heading": "From idea to everyday use",
-          "body": [
-            "Nexsate starts by understanding the purpose behind the solution, the people who will use it, and the process it needs to support. From there, we help shape clear requirements, design a practical solution, test it properly, support the rollout, and make improvements after launch so the final product is not just built, but useful, adopted, and valuable in everyday work.",
-            "As your business changes, your software should adapt with it. Nexsate helps create flexible digital solutions that support new users, processes, customers, and growth without adding unnecessary complexity."
-          ]
-        },
-        {
-          "heading": "Software services for growing a business",
-          "items": [
-            {
-              "title": "Better visibility",
-              "text": "Give your team clearer access to business information through dashboards, reports, and connected data."
-            },
-            {
-              "title": "Smarter decisions",
-              "text": "Use accurate information to understand performance, track progress, and make informed business decisions."
-            },
-            {
-              "title": "Improved team productivity",
-              "text": "Help employees spend less time searching for information, repeating tasks, or working around disconnected systems."
-            },
-            {
-              "title": "Stronger customer experience",
-              "text": "Create smoother customer interactions through better portals, faster processes, and more organized service delivery."
-            },
-            {
-              "title": "Flexible business growth",
-              "text": "Build software that can adapt as your business adds users, services, locations, departments, or new processes."
-            },
-            {
-              "title": "Long-term improvement",
-              "text": "Continue improving your systems after launch so they remain useful as your business needs change."
-            }
-          ]
-        }
-      ],
-      "related": [
-        "erp-solutions",
-        "automation",
-        "digital-transformation",
-        "erp-solutions"
-      ]
-    },
-    "erp-solutions": {
-      "slug": "erp-solutions",
-      "title": "ERP Solutions",
-      "eyebrow": "IT solutions",
-      "intro": "Bringing operations, data, and people together through smarter systems built for visibility, efficiency, and growth.",
-      "sections": [
-        {
-          "heading": "Smarter business systems for better control",
-          "body": [
-            "As businesses grow, manual approvals, spreadsheets, disconnected software, and scattered information can make daily operations harder to manage. Teams lose time searching for data, repeating tasks, correcting errors, or moving information between systems that should already work together.",
-            "ERP solutions bring important business functions into one connected system, helping teams manage finance, purchasing, inventory, sales, operations, projects, reporting, and customer-related processes more efficiently. Nexsate works with businesses to plan, configure, improve, and support ERP systems that improve visibility, strengthen process control, and simplify daily operations."
-          ]
-        },
-        {
-          "heading": "Core ERP capabilities",
-          "items": [
-            {
-              "title": "ERP planning & advisory",
-              "text": "Evaluate your business needs, current systems, workflows, and process gaps to define an ERP direction that supports better decisions, smoother implementation, and long-term value."
-            },
-            {
-              "title": "ERP implementation support",
-              "text": "Guide ERP setup, configuration, data preparation, user readiness, and rollout activities so the system is introduced in a structured way and adopted more smoothly by your team."
-            },
-            {
-              "title": "Process alignment",
-              "text": "Configure ERP workflows around your real business processes, making approvals, purchasing, inventory, finance, reporting, and daily operations easier to manage."
-            },
-            {
-              "title": "Reporting & business visibility",
-              "text": "Turn connected data into clear reports and dashboards that help your team understand performance and make better decisions."
-            }
-          ]
-        },
-        {
-          "heading": "Turning business processes into connected operations",
-          "body": [
-            "A successful ERP system starts with understanding how your business really works. At Nexsate, we review your processes, data flow, users, challenges, and reporting needs, then structure ERP solutions around the processes that drive your business. The goal is to reduce disconnected work, improve control, and support daily operations without adding unnecessary complexity.",
-            "Disconnected systems slow down work and make business performance harder to see. Nexsate supports ERP solutions that bring key processes together, improve data accuracy, reduce manual coordination, and give management clearer visibility across operations."
-          ]
-        },
-        {
-          "heading": "ERP solutions that bring your business together",
-          "items": [
-            {
-              "title": "Microsoft Dynamics 365 support",
-              "text": "Implement, configure, integrate, and support Microsoft Dynamics 365 solutions that improve operations, customer management, reporting, workflows, and business process efficiency."
-            },
-            {
-              "title": "SAP support",
-              "text": "Implement, configure, integrate, and support SAP solutions to help businesses manage operations, reporting, users, workflows, and business processes more effectively."
-            },
-            {
-              "title": "ERP configuration & customization",
-              "text": "Configure ERP modules, workflows, permissions, forms, fields, and business rules so the system better reflects how your organization works."
-            },
-            {
-              "title": "Data migration & cleanup",
-              "text": "Prepare, organize, and migrate business data from spreadsheets, legacy systems, or disconnected platforms into a cleaner ERP environment."
-            },
-            {
-              "title": "ERP integration",
-              "text": "Connect ERP systems with CRM platforms, Microsoft 365, reporting tools, inventory systems, portals, websites, and other business applications."
-            },
-            {
-              "title": "User training & adoption support",
-              "text": "Support employees with guidance, documentation, and practical training so teams understand how to use the ERP system effectively in their daily work."
-            }
-          ]
-        }
-      ],
-      "related": [
-        "software-development-erp-crm-solutions",
-        "erp-solutions",
-        "automation",
-        "digital-transformation"
       ]
     },
     "automation": {
@@ -3286,48 +3032,6 @@
         "contact-us"
       ]
     },
-    "app-development": {
-      "slug": "app-development",
-      "title": "Software & App Development",
-      "eyebrow": "IT solutions",
-      "intro": "Mobile apps, web applications, and custom software — designed, built, and supported for businesses that need technology to perform.",
-      "image": {
-        "src": "/uploads/solutions-hero.jpg",
-        "alt": "Technology solutions concept"
-      },
-      "sections": [
-        {
-          "heading": "What we build",
-          "body": [
-            "From customer-facing mobile apps to internal web platforms and fully custom software, development starts from the business need — not the framework."
-          ],
-          "list": [
-            "Mobile app development for iOS and Android, plus hybrid apps that ship to both from one codebase",
-            "Web applications for operations, customers, and partners — from portals to workflow tools",
-            "Custom software development for processes off-the-shelf products cannot cover",
-            "Modern stack: JavaScript, TypeScript, Node.js, React, Swift, and Java"
-          ]
-        },
-        {
-          "heading": "Selected work",
-          "body": [
-            "Recent delivery includes education and consumer products such as Scuolla, Jolie, and Skole — apps used daily by real audiences, supported beyond launch."
-          ]
-        },
-        {
-          "heading": "A team that ships",
-          "body": [
-            "An 80+ strong delivery team across design, engineering, and quality — sized to take on funded-company roadmaps as well as focused business builds.",
-            "Engagements run the same disciplined path as every Nexsate service: understand the need, design the solution, build in the open, and support it in production."
-          ]
-        }
-      ],
-      "related": [
-        "software-development-erp-crm-solutions",
-        "managed-it-services",
-        "contact-us"
-      ]
-    },
     "paysafe-intelligent-automation": {
       "slug": "paysafe-intelligent-automation",
       "title": "Delivering Enterprise-Wide Efficiencies at Paysafe Through Intelligent Automation",
@@ -3411,6 +3115,126 @@
         "managed-it-services",
         "gaining-efficiency",
         "success-story"
+      ]
+    },
+    "software-erp-app-development": {
+      "slug": "software-erp-app-development",
+      "title": "Software, ERP & App Development",
+      "eyebrow": "IT solutions",
+      "intro": "Build smarter digital solutions that streamline operations, connect business systems, improve customer experiences, and support growth.",
+      "image": {
+        "src": "/uploads/solutions-hero.jpg",
+        "alt": "Technology team working together at a long desk in a modern office"
+      },
+      "sections": [
+        {
+          "heading": "Custom software that fits the business",
+          "body": [
+            "Software should make your business easier to run. Nexsate builds practical solutions — and supports ERP and CRM implementation for SAP, Microsoft Dynamics 365, and other systems — around the way you operate."
+          ],
+          "items": [
+            {
+              "title": "Custom business solutions",
+              "text": "We design and build software solutions tailored to your business processes, users, goals, and day-to-day operations."
+            },
+            {
+              "title": "Process automation",
+              "text": "We help reduce manual work by automating workflows, approvals, reporting, repetitive tasks, and business processes."
+            },
+            {
+              "title": "Mobile apps",
+              "text": "Mobile app development for iOS and Android, plus hybrid apps that ship to both from one codebase."
+            },
+            {
+              "title": "Web applications",
+              "text": "Web applications for operations, customers, and partners — from portals to workflow tools."
+            },
+            {
+              "title": "System integration & scalability",
+              "text": "We connect applications, ERP, CRM, data sources, and business platforms to improve visibility, efficiency, and decision-making, while building solutions that can grow with your business."
+            },
+            {
+              "title": "ERP & CRM support",
+              "text": "We support the implementation, customization, and improvement of ERP and CRM systems that help manage operations, customers, sales, data, and workflows."
+            }
+          ]
+        },
+        {
+          "heading": "Core ERP capabilities",
+          "items": [
+            {
+              "title": "ERP planning & advisory",
+              "text": "Evaluate your business needs, current systems, workflows, and process gaps to define an ERP direction that supports better decisions, smoother implementation, and long-term value."
+            },
+            {
+              "title": "ERP implementation support",
+              "text": "Guide ERP setup, configuration, data preparation, user readiness, and rollout activities so the system is introduced in a structured way and adopted more smoothly by your team."
+            },
+            {
+              "title": "Process alignment",
+              "text": "Configure ERP workflows around your real business processes, making approvals, purchasing, inventory, finance, reporting, and daily operations easier to manage."
+            },
+            {
+              "title": "Reporting & business visibility",
+              "text": "Turn connected data into clear reports and dashboards that help your team understand performance and make better decisions."
+            }
+          ]
+        },
+        {
+          "heading": "ERP platforms we support",
+          "items": [
+            {
+              "title": "Microsoft Dynamics 365 support",
+              "text": "Implement, configure, integrate, and support Microsoft Dynamics 365 solutions that improve operations, customer management, reporting, workflows, and business process efficiency."
+            },
+            {
+              "title": "SAP support",
+              "text": "Implement, configure, integrate, and support SAP solutions to help businesses manage operations, reporting, users, workflows, and business processes more effectively."
+            },
+            {
+              "title": "ERP configuration & customization",
+              "text": "Configure ERP modules, workflows, permissions, forms, fields, and business rules so the system better reflects how your organization works."
+            },
+            {
+              "title": "Data migration & cleanup",
+              "text": "Prepare, organize, and migrate business data from spreadsheets, legacy systems, or disconnected platforms into a cleaner ERP environment."
+            },
+            {
+              "title": "ERP integration",
+              "text": "Connect ERP systems with CRM platforms, Microsoft 365, reporting tools, inventory systems, portals, websites, and other business applications."
+            },
+            {
+              "title": "User training & adoption support",
+              "text": "Support employees with guidance, documentation, and practical training so teams understand how to use the ERP system effectively in their daily work."
+            }
+          ]
+        },
+        {
+          "heading": "Selected work",
+          "body": [
+            "Recent delivery includes education and consumer products such as Scuolla, Jolie, and Skole — apps used daily by real audiences, supported beyond launch."
+          ]
+        },
+        {
+          "heading": "From idea to everyday use",
+          "body": [
+            "Nexsate starts by understanding the purpose, the people, and the process — then shapes requirements, designs, tests, rolls out, and improves after launch.",
+            "As your business changes, your software should adapt with it. Nexsate helps create flexible digital solutions that support new users, processes, customers, and growth without adding unnecessary complexity."
+          ]
+        },
+        {
+          "heading": "A team that ships",
+          "body": [
+            "An 80+ strong delivery team across design, engineering, and quality — sized to take on funded-company roadmaps as well as focused business builds.",
+            "Engagements run the same disciplined path as every Nexsate service: understand the need, design the solution, build in the open, and support it in production."
+          ]
+        }
+      ],
+      "related": [
+        "automation",
+        "digital-transformation",
+        "managed-it-services",
+        "contact-us"
       ]
     }
   },

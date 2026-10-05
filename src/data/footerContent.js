@@ -37,9 +37,7 @@ export const footerColumns = [
     links: [
       link('Network Management'),
       link('Backup & Disaster Recovery'),
-      link('Software Development, ERP & CRM Solutions'),
-      link('ERP Solutions'),
-      { label: 'Software & App Development', href: '#/app-development' },
+      { label: 'Software & App Development', href: '#/software-erp-app-development' },
     ],
   },
   {

@@ -119,7 +119,7 @@ export const defaultContent = {
     cta: { label: "Back to the homepage", href: "#top" },
   },
   cookieBanner: {
-    text: "We use cookies (similar technologies) to collect and analyse information on our website's performance and functionality, to enhance and personalise your experience, and for marketing. By continuing to browse, you agree to our use of cookies.",
+    text: "We use only the browser storage needed for the site to function, such as remembering your cookie choice. No tracking or advertising cookies — see our cookie policy for details.",
     policyLabel: "Cookie policy",
     policyHref: "#/cookie-policy",
     manageLabel: "Manage settings",

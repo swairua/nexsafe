@@ -10,7 +10,8 @@ import { useContent } from "../../content/ContentContext.jsx"
  * anchor used by the primary nav.
  */
 export default function SuccessStorySection() {
-  const { successStory, sectionIds } = useContent()
+  const { successStory, sectionIds, testimonials } = useContent()
+  const quotes = (testimonials && testimonials.items) || []
   return (
     <section id={sectionIds.insights} className="bg-shell-gray-100 py-16 md:py-24">
       <div className="shell-container grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
@@ -61,6 +62,31 @@ export default function SuccessStorySection() {
           </Reveal>
         </div>
       </div>
+      {quotes.length ? (
+        <div className="shell-container mt-14">
+          <div className="grid gap-6 md:grid-cols-3">
+            {quotes.map((t, i) => (
+              <Reveal
+                key={t.name + i}
+                variant="up"
+                delay={i + 1}
+                className="flex flex-col rounded-2xl border border-shell-gray-300 bg-white p-6 md:p-7"
+              >
+                <div className="flex gap-1 text-shell-yellow" aria-label="5 out of 5 stars">
+                  {['★', '★', '★', '★', '★'].map((s, j) => (
+                    <span key={j} aria-hidden="true" className="text-lg leading-none">{s}</span>
+                  ))}
+                </div>
+                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-shell-gray-700 md:text-base">
+                  “{t.quote}”
+                </blockquote>
+                <p className="mt-5 text-sm font-bold text-shell-gray-900">{t.name}</p>
+                <p className="mt-0.5 text-xs text-shell-gray-500">{t.role}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </section>
   )
 }

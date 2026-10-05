@@ -7,19 +7,15 @@ import HeroCarousel from './components/sections/HeroCarousel.jsx'
 import IntroBand from './components/sections/IntroBand.jsx'
 import CardGrid from './components/sections/CardGrid.jsx'
 import PartnerStrip from './components/sections/PartnerStrip.jsx'
-import TrustStrip from './components/sections/TrustStrip.jsx'
-import AwardsBand from './components/sections/AwardsBand.jsx'
+import ProofBand from './components/sections/ProofBand.jsx'
 import IndustriesStrip from './components/sections/IndustriesStrip.jsx'
 import StackSection from './components/sections/StackSection.jsx'
 import SuccessStorySection from './components/sections/SuccessStorySection.jsx'
-import ValuesStrip from './components/sections/ValuesStrip.jsx'
 import BlogRow from './components/sections/BlogRow.jsx'
-import Testimonials from './components/sections/Testimonials.jsx'
-import FaqTeaser from './components/sections/FaqTeaser.jsx'
-import DeptSplit from './components/sections/DeptSplit.jsx'
+import AnswersBand from './components/sections/AnswersBand.jsx'
+import StartBand from './components/sections/StartBand.jsx'
 import HomeContact from './components/sections/HomeContact.jsx'
 import ConnectBand from './components/sections/ConnectBand.jsx'
-import PromoBanner from './components/sections/PromoBanner.jsx'
 import PageView from './components/pages/PageView.jsx'
 import { useContent } from './content/ContentContext.jsx'
 
@@ -31,18 +27,25 @@ import { useContent } from './content/ContentContext.jsx'
 function parseHash(hash = '') {
   if (hash.startsWith('#/')) {
     const [path, query] = hash.slice(2).split('?')
-    return { kind: 'page', slug: path, params: new URLSearchParams(query || '') }
+    // Retired slugs (readability merges) resolve to their successor pages so
+    // old bookmarks and links keep working.
+    const retired = {
+      'security': 'cybersecurity',
+      'software-development-erp-crm-solutions': 'software-erp-app-development',
+      'erp-solutions': 'software-erp-app-development',
+      'app-development': 'software-erp-app-development',
+    }
+    return { kind: 'page', slug: retired[path] || path, params: new URLSearchParams(query || '') }
   }
   return { kind: 'home', anchor: hash.length > 1 ? hash.slice(1) : '' }
 }
 
 /**
- * nexsate.com homepage — doc-driven section order:
- * 1. Cookie banner   2. Header + mega menus   3. Hero carousel
- * 4. Intro band      5. Services grid        6. Pictures row (right after services)
- * 7. Industries      8. Partners (vendor wall, just below industries)
- * 9. Image/text splits    10. Stats strip
- * 11. Blog row       12. Promo banner        13. Footer      14. Legal bar
+ * Homepage band order (11 content bands + conversion run-up):
+ * Hero > Intro > Services > Industries > Partners > Proof (stats, certs,
+ * awards) > Stack (heading card overlaps the proof band) > Story (with
+ * testimonials) > Blog > Answers (promo + FAQ) > Start (values + routers)
+ * > Contact form > Connect band. Footer + legal bar close every route.
  * Inner routes ('#/<slug>') replace main with PageView.
  */
 export default function App() {
@@ -92,16 +95,12 @@ export default function App() {
           <CardGrid />
           <IndustriesStrip />
           <PartnerStrip />
-          <TrustStrip />
-          <AwardsBand />
+          <ProofBand />
           <StackSection />
           <SuccessStorySection />
-          <ValuesStrip />
           <BlogRow />
-          <Testimonials />
-          <PromoBanner />
-          <FaqTeaser />
-          <DeptSplit />
+          <AnswersBand />
+          <StartBand />
           <HomeContact />
           <ConnectBand />
         </main>

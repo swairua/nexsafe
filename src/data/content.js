@@ -112,7 +112,7 @@ export const featuredCards = [
     image: '/uploads/circuit-board.jpg',
     alt: 'Close-up of a circuit board with glowing traces',
     fallback: navyTile,
-    href: pageHref('Software Development, ERP & CRM Solutions'),
+    href: pageHref('Software, ERP & App Development'),
   },
   {
     id: 'card-network-management',

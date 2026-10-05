@@ -20,7 +20,7 @@ export const insightPosts = [
     excerpt:
       'Phishing, ransomware, and account compromise target businesses of every size. Here is how practical controls protect email, devices, and cloud access.',
     intro:
-      'Cybersecurity is now a core part of modern business operations — and the threats target businesses of every size.',
+      'Small businesses face enterprise-grade threats. Here is the practical, layered way to meet them.',
     image: { src: '/uploads/cybersecurity.jpg', alt: 'Padlock security overlay on a laptop' },
     sections: [
       {
@@ -61,7 +61,7 @@ export const insightPosts = [
     excerpt:
       'Cloud tools should make work faster and safer — not slower and harder to control. How a structured migration keeps email, files, and collaboration running.',
     intro:
-      'Your team needs secure access to email, files, applications, and collaboration tools — in the office, remote, or on the move.',
+      'The cloud promises flexibility — but only a structured setup delivers it without the chaos.',
     image: { src: '/uploads/office-space.jpg', alt: 'Modern office space with desks and computers' },
     sections: [
       {
@@ -101,7 +101,7 @@ export const insightPosts = [
     excerpt:
       'Slow devices, email issues, and unclear support processes pull attention away from real work. How managed IT brings order back to everyday technology.',
     intro:
-      'Technology problems can quickly affect productivity, communication, customer service, and daily operations.',
+      'The best IT support is the kind you never notice. Here is what that looks like in practice.',
     image: { src: '/uploads/service-managed-it.jpg', alt: 'IT technician supporting office users' },
     sections: [
       {
@@ -249,7 +249,7 @@ export const insightPosts = [
         ],
       },
     ],
-    related: ['erp-solutions', 'cybersecurity', 'software-development-erp-crm-solutions'],
+    related: ['software-erp-app-development', 'cybersecurity'],
   },
   {
     slug: 'sage-100-erp-vs-cloud',
@@ -289,7 +289,7 @@ export const insightPosts = [
         ],
       },
     ],
-    related: ['erp-solutions', 'cloud-services', 'gaining-efficiency'],
+    related: ['software-erp-app-development', 'cloud-services', 'gaining-efficiency'],
   },
   {
     slug: 'gartner-2022-leader-recognition',
@@ -451,7 +451,7 @@ export const insightPosts = [
         ],
       },
     ],
-    related: ['automation', 'software-development-erp-crm-solutions', 'success-story'],
+    related: ['automation', 'software-erp-app-development', 'success-story'],
   },
   {
     slug: 'it-business-alignment-five-elements',
