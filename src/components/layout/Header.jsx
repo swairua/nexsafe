@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import NexsateLogo from '../ui/NexsateLogo.jsx'
 import MegaMenu from './MegaMenu.jsx'
 import MobileNav from './MobileNav.jsx'
+import NoticeBar from './NoticeBar.jsx'
 import SearchPanel from './SearchPanel.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -70,6 +71,7 @@ export default function Header({ overlay = true }) {
             }`
       }
     >
+      <NoticeBar />
       <div
         className={
           overlay
@@ -120,6 +122,21 @@ export default function Header({ overlay = true }) {
         </nav>
 
         <div className="flex items-center gap-1.5">
+          {/* Live-header pattern: "Have any questions?" + the public phone line. */}
+          {settings.phone ? (
+            <a
+              href={"tel:" + String(settings.phone).replace(/\s+/g, "")}
+              className={`mr-1 hidden items-center gap-2.5 lg:flex ${onHero ? 'text-white' : 'text-shell-gray-900'}`}
+            >
+              <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+              </svg>
+              <span className="leading-tight">
+                <span className={`block text-[11px] font-medium ${onHero ? 'text-white/70' : 'text-shell-gray-500'}`}>Have any questions?</span>
+                <span className="block text-sm font-bold tracking-tight">{settings.phone}</span>
+              </span>
+            </a>
+          ) : null}
           <button
             type="button"
             onClick={() => { setSearchOpen((s) => !s); setOpenMenu(null) }}
@@ -184,7 +201,7 @@ export default function Header({ overlay = true }) {
         <MegaMenu item={navItems[openMenu]} onClose={() => setOpenMenu(null)} />
       )}
 
-      {searchOpen && <SearchPanel />}
+      {searchOpen && <SearchPanel onClose={() => setSearchOpen(false)} />}
 
       {mobileOpen && (
         <MobileNav

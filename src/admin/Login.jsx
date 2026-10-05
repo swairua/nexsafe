@@ -16,7 +16,7 @@ export default function Login({ onAuthed }) {
     } catch (err) { setError(err.message) }
     finally { setBusy(false) }
   }
-  const INPUT = "mt-1 w-full rounded-lg border border-shell-gray-300 px-3 py-2 text-sm outline-none focus:border-shell-gray-900 focus:ring-1 focus:ring-shell-gray-900"
+  const INPUT = "mt-1 w-full rounded-lg border border-shell-gray-300 px-3 py-2.5 text-base outline-none focus:border-shell-gray-900 focus:ring-1 focus:ring-shell-gray-900 sm:text-sm"
   return (
     <div className="flex min-h-screen items-center justify-center bg-shell-gray-100 px-4">
       <form onSubmit={submit} className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-xl ring-1 ring-shell-gray-300">
@@ -29,7 +29,7 @@ export default function Login({ onAuthed }) {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" className={INPUT} />
         </label>
         {error ? <p className="mt-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
-        <button type="submit" disabled={busy} className="mt-6 w-full rounded-lg bg-shell-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-shell-red disabled:opacity-50">{busy ? "Signing in..." : "Sign in"}</button>
+        <button type="submit" disabled={busy} className="mt-6 inline-flex min-h-[48px] w-full items-center justify-center rounded-lg bg-shell-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-shell-red disabled:opacity-50">{busy ? "Signing in..." : "Sign in"}</button>
       </form>
     </div>
   )

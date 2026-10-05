@@ -438,9 +438,35 @@
   .back-to-top { animation: bttIn 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
 }
 
+/* ------------------------------------------------------------------
+   Vendor wall marquee - real brand marks drifting left -> right
+   (the track holds two identical copies so the loop is seamless).
+   ------------------------------------------------------------------ */
+@keyframes vendorMarqueeLR {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.vendor-wall {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.vendor-wall__track {
+  display: flex;
+  width: max-content;
+  animation: vendorMarqueeLR 70s linear infinite;
+}
+
+.vendor-wall:hover .vendor-wall__track,
+.vendor-wall:focus-within .vendor-wall__track {
+  animation-play-state: paused;
+}
 /* Reduced motion: neutralise every entrance (content simply shows) */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .vendor-wall__track { animation: none !important; transform: none !important; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-delay: 0ms !important;

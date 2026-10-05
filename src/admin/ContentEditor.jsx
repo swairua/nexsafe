@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { api } from "./api.js"
 import FieldEditor from "./FieldEditor.jsx"
+import { BTN, CARD, INPUT, PANEL_TITLE, SAVE_BAR } from "./ui.js"
 
 // Modern responsive section browser: search + collapsible group drawer on
 // mobile, sticky sidebar + sticky save bar on desktop.
@@ -42,7 +43,7 @@ export default function ContentEditor({ keys, content, onSaved, onPickImage }) {
 
   const nav = (
     <div>
-      <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter sections…" className="mb-2 w-full rounded-lg border border-shell-gray-300 px-3 py-2 text-sm outline-none focus:border-shell-gray-900" />
+      <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter sections…" className={INPUT + " mb-2"} />
       <div className="max-h-[50vh] space-y-3 overflow-y-auto pr-1 lg:max-h-[62vh]">
         {groups.map((g) => (
           <div key={g.name}>
@@ -60,28 +61,37 @@ export default function ContentEditor({ keys, content, onSaved, onPickImage }) {
   )
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[15rem_minmax(0,1fr)]">
-      <aside className="lg:sticky lg:top-20 lg:self-start">
-        <div className="rounded-2xl bg-white p-3 ring-1 ring-shell-gray-300">
-          <button onClick={() => setNavOpen(!navOpen)} className="mb-2 w-full rounded-lg bg-shell-gray-100 px-3 py-2 text-sm font-medium text-shell-gray-700 lg:hidden">
+    <div className="grid gap-3 lg:grid-cols-[14rem_minmax(0,1fr)]">
+      <aside>
+        <div className={CARD + " lg:sticky lg:top-[var(--admin-bar,3.5rem)]"}>
+          <button onClick={() => setNavOpen(!navOpen)} aria-expanded={navOpen} className={BTN + " w-full bg-shell-gray-100 text-shell-gray-700 lg:hidden"}>
             {navOpen ? "Hide sections" : "Choose section… (" + keys.length + ")"}
           </button>
-          <div className={(navOpen ? "" : "hidden ") + "lg:block"}>{nav}</div>
+          <div className={(navOpen ? "" : "hidden ") + "lg:block"}>
+            <div className="fixed inset-0 z-30 bg-black/40 lg:hidden" onClick={() => setNavOpen(false)} aria-hidden="true" />
+            <div className="fixed inset-y-0 left-0 z-30 flex w-[86vw] max-w-xs flex-col bg-white p-3 shadow-2xl lg:static lg:z-auto lg:w-auto lg:max-w-none lg:bg-transparent lg:p-0 lg:shadow-none">
+              <div className="mb-2 flex items-center justify-between lg:hidden">
+                <span className="text-sm font-bold text-shell-gray-900">Sections</span>
+                <button onClick={() => setNavOpen(false)} aria-label="Close sections" className={BTN + " min-w-[44px] px-2 text-shell-gray-700"}>✕</button>
+              </div>
+              <div className="min-h-0 flex-1 overflow-y-auto">{nav}</div>
+            </div>
+          </div>
         </div>
       </aside>
       <div className="min-w-0">
-        <div className="sticky top-[3.6rem] z-10 mb-3 flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-white/95 p-3 ring-1 ring-shell-gray-300 backdrop-blur">
+        <div className={SAVE_BAR}>
           <div className="min-w-0">
-            <h2 className="truncate text-lg font-bold text-shell-gray-900 sm:text-xl">{current ? current.label : active}</h2>
+            <h2 className={PANEL_TITLE}>{current ? current.label : active}</h2>
             {dirty ? <span className="text-xs font-medium text-amber-600">Unsaved changes</span> : <span className="block truncate font-mono text-[11px] text-shell-gray-400">{active}</span>}
           </div>
           <div className="flex items-center gap-2">
             {status ? <span className="max-w-[10rem] truncate text-xs text-shell-gray-500" title={status}>{status}</span> : null}
-            <button onClick={reset} disabled={!dirty || busy} className="rounded-lg bg-shell-gray-100 px-3 py-2 text-sm font-medium text-shell-gray-700 hover:bg-shell-gray-300 disabled:opacity-40">Reset</button>
-            <button onClick={save} disabled={!dirty || busy} className="rounded-lg bg-shell-red px-4 py-2 text-sm font-semibold text-white hover:bg-shell-gray-900 disabled:opacity-40">{busy ? "Saving…" : "Save"}</button>
+            <button onClick={reset} disabled={!dirty || busy} className={BTN + " bg-shell-gray-100 text-shell-gray-700 hover:bg-shell-gray-300 disabled:opacity-40"}>Reset</button>
+            <button onClick={save} disabled={!dirty || busy} className={BTN + " bg-shell-red px-4 font-semibold text-white hover:bg-shell-gray-900 disabled:opacity-40"}>{busy ? "Saving…" : "Save"}</button>
           </div>
         </div>
-        <div className="rounded-2xl bg-white p-3 ring-1 ring-shell-gray-300 sm:p-4">
+        <div className={CARD}>
           {draft === undefined || draft === null ? <p className="text-sm text-shell-gray-500">No data for this section.</p> : <FieldEditor name={active} value={draft} onChange={(nv) => { setDraft(nv); setDirty(true) }} onPickImage={onPickImage} />}
         </div>
       </div>

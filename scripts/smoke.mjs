@@ -22,6 +22,9 @@ try {
   const { footerColumns, footerLegal } = await server.ssrLoadModule('/src/data/footerContent.js')
   const { partners } = await server.ssrLoadModule('/src/data/partners.js')
   const { stackGroups } = await server.ssrLoadModule('/src/data/stack.js')
+  const { buildSearchIndex, searchIndex } = await server.ssrLoadModule('/src/search/searchIndex.js')
+  const { default: SearchPanel } = await server.ssrLoadModule('/src/components/layout/SearchPanel.jsx')
+  const { default: BlogIndex } = await server.ssrLoadModule('/src/components/pages/BlogIndex.jsx')
   const css = await readFile('src/index.css', 'utf8')
 
   const html = renderToString(React.createElement(App))
@@ -52,6 +55,14 @@ try {
   )
 
   const notFoundHtml = renderToString(React.createElement(PageView, { page: undefined }))
+
+  // Search: the local index must rank the obvious page first, suggestions and
+  // grouped results must render, and the blog topic filter must narrow the grid.
+  const searchIdx = buildSearchIndex(defaultContent.pages)
+  const searchHits = searchIndex(searchIdx, 'cloud security')
+  const searchHtml = renderToString(React.createElement(SearchPanel))
+  const blogAll = renderToString(React.createElement(BlogIndex, { page: pages['blog'] }))
+  const blogAI = renderToString(React.createElement(BlogIndex, { page: pages['blog'], topic: 'AI' }))
 
   // Every page with an "items" block must render each item's title — this is
   // what proves the new `items` schema works.
@@ -107,6 +118,12 @@ try {
       contactHtml.includes(defaultContent.settings.email),
     'item blocks render their titles': itemsRendered,
     'unknown slug renders 404': notFoundHtml.includes('Page not found'),
+    'search ranks cloud-services for "cloud security"':
+      searchHits.length > 0 && searchHits[0].slug === 'cloud-services',
+    'search panel renders suggestions and groups':
+      searchHtml.includes('Suggested searches') || searchHtml.includes('Pages'),
+    'blog topic filter narrows to the AI post':
+      blogAll.includes('Sage') && blogAI.includes('ChatGPT') && !blogAI.includes('Sage'),
     'every nav leaf href is a resolvable #/ route': leafHrefs.every(
       (h) => h.startsWith('#/') && pages[h.slice(2)],
     ),

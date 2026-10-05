@@ -6,7 +6,7 @@
 import { allPages } from '../src/data/pages.js'
 import { navItems } from '../src/data/navItems.js'
 import { footerColumns, footerLegal, promo } from '../src/data/footerContent.js'
-import { heroSlides, featuredCards, partnerStrip, industriesStrip, successStory } from '../src/data/content.js'
+import { heroSlides, featuredCards, partnerStrip, industriesStrip, successStory, blogRow } from '../src/data/content.js'
 import { pageHref } from '../src/data/slug.js'
 
 const known = new Set(allPages.map((p) => p.slug))
@@ -33,8 +33,12 @@ checkHref(partnerStrip.cta.href, 'partner strip cta')
 checkHref(industriesStrip.cta.href, 'industries cta')
 for (const i of industriesStrip.items) checkHref(i.href, `industry "${i.label}"`)
 checkHref(successStory.cta.href, 'success story cta')
+checkHref(blogRow.cta.href, 'blog row cta')
 
 for (const page of allPages) {
+  for (const s of page.sections || []) {
+    for (const item of s.items || []) checkHref(item.href, `${page.slug} item "${item.title}"`)
+  }
   for (const slug of page.related || []) {
     if (!known.has(slug)) problems.push(`${page.slug}: related "${slug}" does not exist`)
   }
@@ -49,6 +53,13 @@ for (const item of navItems) item.columns.forEach((c) => c.links.forEach((l) => 
 for (const col of footerColumns) col.links.forEach((l) => collect(l.href))
 footerLegal.forEach(collect)
 for (const page of allPages) (page.related || []).forEach(collect)
+// The blog index ('#/blog') cards every insight post, and the homepage blog
+// row links the index — so insight posts are reachable even with no static href.
+if (linked.has('blog')) {
+  for (const page of allPages) {
+    if (page.eyebrow === 'Insights' && page.slug !== 'blog') linked.add(page.slug)
+  }
+}
 
 for (const page of allPages) {
   if (!linked.has(page.slug)) problems.push(`${page.slug}: orphaned (not linked from anywhere)`)

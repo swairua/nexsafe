@@ -1,7 +1,7 @@
 // Canonical site content - the single source used as (a) the SPA default/fallback and
 // (b) the seed that populates the SQLite DB. Admin edits are fetched from
 // GET /api/content.php at runtime and override these values.
-import { heroSlides, benefits, featuredCards, partnerStrip, industriesStrip, successStory } from "./content.js"
+import { heroSlides, benefits, featuredCards, partnerStrip, industriesStrip, successStory, blogRow, blogIndex, homeContact, testimonials, statsBand, certStrip, searchSuggestions, faqTeaser, awardsBand, noticeBar, deptSplit, valuesStrip } from "./content.js"
 import { stackGroups } from "./stack.js"
 import { partners } from "./partners.js"
 import { promo, footerColumns, footerLegal } from "./footerContent.js"
@@ -13,12 +13,16 @@ export const defaultContent = {
   settings: {
     brandName: "Nexsate",
     tagline: "EnableIT. Transform. Empower.",
-    footerNote: "Enabling, transforming and empowering your business",
-    copyright: "nexsate.com 2026 - front-end demo site.",
+    footerNote: "Simplifying IT for a complex world.",
+    copyright: "© 2026 Nexsate Technologies Inc. All rights reserved.",
     domain: "nexsate.com",
-    email: "info@nexsate.com",
-    phone: "",
-    address: "",
+    // Contact details as published on nexsate.com (footer + contact page).
+    // service@ is the public address; the 526-5555 line is the client-support
+    // channel from nexsate.com/client-support.
+    email: "service@nexsate.com",
+    phone: "1-825-570-4550",
+    supportPhone: "1-825-526-5555",
+    address: "1253 91 St. SW Edmonton, AB T6X 1E9",
     logo: "/brand/nexsate-wordmark.png",
     logoAlt: "Nexsate — EnableIT. Transform. Empower.",
     // Header/search chrome that used to be hardcoded in the components.
@@ -66,10 +70,13 @@ export const defaultContent = {
   },
   // Social channels: add, remove or reorder from the admin. Leave `icon` blank
   // for the built-in network glyph, or point it at an uploaded image/brand asset.
+  // Hrefs are the live nexsate.com profiles.
   socialLinks: [
-    { network: "facebook", label: "Facebook", href: "https://www.facebook.com/nexsate", icon: "" },
-    { network: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/nexsate", icon: "" },
+    { network: "facebook", label: "Facebook", href: "https://www.facebook.com/profile.php?id=61591263043798", icon: "" },
+    { network: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/135134635", icon: "" },
     { network: "x", label: "X", href: "https://x.com/nexsate", icon: "" },
+    { network: "github", label: "GitHub", href: "https://github.com/nexsate", icon: "" },
+    { network: "youtube", label: "YouTube", href: "http://www.youtube.com/@nexsate", icon: "" },
   ],
   introBand: {
     eyebrow: "Our company",
@@ -102,6 +109,7 @@ export const defaultContent = {
     home: "Home",
     exploreMore: "Explore more",
     readMore: "Read more",
+    learnMore: "Learn more",
     backToTop: "Back to top",
   },
   notFound: {
@@ -117,20 +125,44 @@ export const defaultContent = {
     manageLabel: "Manage settings",
     acceptLabel: "Accept all cookies",
   },
+  // The consultation form fields, labels and options mirror the form published
+  // on nexsate.com. `detail*Label` are the contact-page detail rows, which are
+  // worded differently from the form fields ("Call us at:" vs "Phone").
   contactForm: {
-    title: "Talk to an expert",
-    text: "Tell us what you need and we will get back to you.",
-    nameLabel: "Name",
-    emailLabel: "Email",
+    title: "Schedule a Free Consultation",
+    text: "",
+    firstNameLabel: "First name",
+    lastNameLabel: "Last name",
+    companyLabel: "Company / Organization",
+    emailLabel: "Company email",
     phoneLabel: "Phone",
-    companyLabel: "Company",
-    subjectLabel: "Subject",
+    subjectLabel: "How Can We Help You?",
+    priorityLabel: "Priority",
+    priorityPlaceholder: "Select priority",
+    priorityOptions: ["Normal", "High", "Urgent"],
+    options: [
+      "Select Option",
+      "Managed Services",
+      "IT Consulting & Advisory",
+      "Cyber Security",
+      "Web Development",
+      "Mobile Development",
+      "Cloud Services",
+      "Other",
+    ],
     messageLabel: "Message",
+    consentText:
+      "I agree to the Privacy Policy and give my permission to process my personal data for the purposes specified in the Privacy Policy.",
     addressLabel: "Address",
     detailsHeading: "Contact details",
-    submitLabel: "Send message",
+    detailEmailLabel: "Email us:",
+    detailPhoneLabel: "Call us at:",
+    detailSupportLabel: "Support line:",
+    detailAddressLabel: "Address",
+    submitLabel: "Submit",
     sendingLabel: "Sending...",
     requiredText: "Please enter your name and email address.",
+    consentRequired: "Please agree to the Privacy Policy before sending your message.",
     successText: "Thanks - your message has been sent. A nexsate expert will be in touch soon.",
     errorText: "Could not send your message right now.",
   },
@@ -150,6 +182,18 @@ export const defaultContent = {
   industriesStrip,
   stackGroups,
   successStory,
+  blogRow,
+  blogIndex,
+  homeContact,
+  testimonials,
+  statsBand,
+  certStrip,
+  searchSuggestions,
+  faqTeaser,
+  awardsBand,
+  noticeBar,
+  deptSplit,
+  valuesStrip,
   promo,
   navItems,
   footerColumns,

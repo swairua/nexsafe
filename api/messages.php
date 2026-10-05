@@ -18,13 +18,18 @@ if ($method === 'POST') {
     if ($name === '' || $email === '') {
         nx_fail('Name and email are required');
     }
-    $st = nx_db()->prepare('INSERT INTO messages (name, email, phone, company, subject, body, created_at) VALUES (?,?,?,?,?,?,?)');
+    $priority = trim((string) ($b['priority'] ?? ''));
+    if ($priority !== '' && !in_array($priority, ['Normal', 'High', 'Urgent'], true)) {
+        nx_fail('Unknown priority');
+    }
+    $st = nx_db()->prepare('INSERT INTO messages (name, email, phone, company, subject, body, priority, created_at) VALUES (?,?,?,?,?,?,?,?)');
     $st->execute([
         $name, $email,
         trim((string) ($b['phone'] ?? '')),
         trim((string) ($b['company'] ?? '')),
         trim((string) ($b['subject'] ?? '')),
         trim((string) ($b['message'] ?? $b['body'] ?? '')),
+        $priority,
         date('c'),
     ]);
     nx_json(['ok' => true, 'id' => (int) nx_db()->lastInsertId()]);

@@ -12,7 +12,7 @@ export const navItems = [
     columns: [
       {
         heading: 'About us',
-        links: links('About Us', 'Our Mission', 'Core Values', 'Our People', 'Our Process'),
+        links: links('About Us'),
       },
       {
         heading: 'What we bring together',
@@ -44,7 +44,7 @@ export const navItems = [
           'Automation',
           'Digital Transformation',
           'Gaining Efficiency',
-        ),
+        ).concat([{ label: 'Software & App Development', href: '#/app-development' }]),
       },
     ],
   },
@@ -59,6 +59,11 @@ export const navItems = [
           'Healthcare',
           'Industrial & Manufacturing',
           'Transportation & Logistics',
+          'Consulting Providers',
+          'Non-Profit',
+          'Telemedicine',
+          'Fintech',
+          'Education',
         ),
       },
       {
@@ -75,7 +80,10 @@ export const navItems = [
         heading: 'Client outcomes',
         // Explicit href: the page's slug is a short, stable 'success-story'
         // rather than a slug derived from its very long case-study title.
-        links: [{ label: 'IT alignment for a growing business', href: '#/success-story' }],
+        links: [
+          { label: 'View all insights', href: '#/blog' },
+          { label: 'IT alignment for a growing business', href: '#/success-story' },
+        ],
       },
     ],
   },

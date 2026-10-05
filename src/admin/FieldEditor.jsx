@@ -1,5 +1,6 @@
 import RichTextEditor, { looksLikeHtml } from "./RichTextEditor.jsx"
 import { imageDescription, imageLocations } from "../data/imageMeta.js"
+import { BTN, BTN_MINI } from "./ui.js"
 
 const IMAGE_KEYS = ["image", "img", "src", "logo", "banner", "photo", "thumbnail", "thumb", "icon", "cover", "hero", "background", "avatar", "picture"]
 const IMG_EXT = [".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"]
@@ -35,9 +36,21 @@ function label(k) {
   return seg.charAt(0).toUpperCase() + seg.slice(1)
 }
 
-const INPUT = "w-full rounded-md border border-shell-gray-300 bg-white px-2.5 py-1.5 text-sm text-shell-gray-900 outline-none focus:border-shell-gray-900 focus:ring-1 focus:ring-shell-gray-900"
+const INPUT = "w-full rounded-md border border-shell-gray-300 bg-white px-2.5 py-2 text-base text-shell-gray-900 outline-none focus:border-shell-gray-900 focus:ring-1 focus:ring-shell-gray-900 sm:text-sm"
 const LABEL = "mb-1 block text-xs font-semibold uppercase tracking-wide text-shell-gray-500"
 const NL = String.fromCharCode(10)
+
+// Short human label for a collapsed array item: its title/name/heading when
+// it has one, otherwise a truncated peek at the raw value.
+function itemLabel(item, i) {
+  if (item && typeof item === "object") {
+    const t = item.title || item.label || item.name || item.heading || item.slug || item.href || item.src || item.url
+    if (t) return String(t).slice(0, 60)
+    return "Item " + (i + 1)
+  }
+  const s = String(item ?? "")
+  return s ? s.slice(0, 60) : "Item " + (i + 1)
+}
 
 export default function FieldEditor({ name, value, onChange, onPickImage, depth = 0 }) {
   const key = String(name ?? "")
@@ -48,23 +61,26 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
     const move = (i, dir) => { const j = i + dir; if (j < 0 || j >= value.length) return; const c = value.slice(); const t = c[i]; c[i] = c[j]; c[j] = t; onChange(c) }
     return (
       <div className="mb-2">
-        <div className="mb-1.5 flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wide text-shell-gray-500">{label(key)} <span className="font-normal normal-case text-shell-gray-400">- {value.length} items</span></span>
-          <button type="button" onClick={add} className="rounded-md bg-shell-gray-900 px-2.5 py-1 text-xs font-medium text-white hover:bg-shell-red">+ Add</button>
+        <div className="mb-1.5 flex items-center justify-between gap-2">
+          <span className="min-w-0 truncate text-xs font-semibold uppercase tracking-wide text-shell-gray-500">{label(key)} <span className="font-normal normal-case text-shell-gray-400">- {value.length} items</span></span>
+          <button type="button" onClick={add} className={BTN + " shrink-0 bg-shell-gray-900 px-3 text-white hover:bg-shell-red"}>+ Add</button>
         </div>
         <div className="space-y-2">
           {value.map((item, i) => (
-            <div key={i} className="rounded-lg border border-shell-gray-300 bg-shell-gray-100 p-3">
-              <div className="mb-2 flex items-center justify-between">
-                <span className="text-xs font-bold text-shell-gray-400">#{i + 1}</span>
-                <div className="flex gap-1">
-                  <button type="button" onClick={() => move(i, -1)} className="rounded px-1.5 py-0.5 text-xs bg-white ring-1 ring-shell-gray-300 hover:bg-shell-gray-300">Up</button>
-                  <button type="button" onClick={() => move(i, 1)} className="rounded px-1.5 py-0.5 text-xs bg-white ring-1 ring-shell-gray-300 hover:bg-shell-gray-300">Down</button>
-                  <button type="button" onClick={() => remove(i)} className="rounded px-1.5 py-0.5 text-xs bg-red-100 text-red-700 hover:bg-red-200">Remove</button>
-                </div>
+            <details key={i} open={i === 0} className="rounded-lg border border-shell-gray-300 bg-shell-gray-100">
+              <summary className="flex min-h-[44px] cursor-pointer list-none items-center gap-1.5 p-2 [&::-webkit-details-marker]:hidden">
+                <span aria-hidden="true" className="shrink-0 text-xs text-shell-gray-400">▸</span>
+                <span className="min-w-0 flex-1 truncate text-sm font-semibold text-shell-gray-900" title={itemLabel(item, i)}>{itemLabel(item, i)}</span>
+                <span className="flex shrink-0 gap-1">
+                  <button type="button" title="Move up" aria-label={"Move item " + (i + 1) + " up"} onClick={(e) => { e.preventDefault(); move(i, -1) }} className={BTN_MINI + " bg-white text-shell-gray-700 ring-1 ring-shell-gray-300"}>↑</button>
+                  <button type="button" title="Move down" aria-label={"Move item " + (i + 1) + " down"} onClick={(e) => { e.preventDefault(); move(i, 1) }} className={BTN_MINI + " bg-white text-shell-gray-700 ring-1 ring-shell-gray-300"}>↓</button>
+                  <button type="button" title="Remove" aria-label={"Remove item " + (i + 1)} onClick={(e) => { e.preventDefault(); remove(i) }} className={BTN_MINI + " bg-red-100 text-red-700 hover:bg-red-200"}>✕</button>
+                </span>
+              </summary>
+              <div className="border-t border-shell-gray-300 p-2.5">
+                <FieldEditor name={key + "[" + i + "]"} value={item} onChange={(nv) => update(i, nv)} onPickImage={onPickImage} depth={depth + 1} />
               </div>
-              <FieldEditor name={key + "[" + i + "]"} value={item} onChange={(nv) => update(i, nv)} onPickImage={onPickImage} depth={depth + 1} />
-            </div>
+            </details>
           ))}
         </div>
       </div>
@@ -81,8 +97,8 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
   }
   if (typeof value === "boolean") {
     return (
-      <label className="flex items-center gap-2 py-1 text-sm text-shell-gray-900">
-        <input type="checkbox" checked={value} onChange={(e) => onChange(e.target.checked)} className="h-4 w-4" />
+      <label className="flex min-h-[44px] items-center gap-2.5 py-1 text-sm text-shell-gray-900">
+        <input type="checkbox" checked={value} onChange={(e) => onChange(e.target.checked)} className="h-6 w-6 shrink-0" />
         <span>{label(key)}</span>
       </label>
     )
@@ -107,7 +123,7 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
         <span className={LABEL}>{label(key)} <span className="font-normal normal-case text-shell-gray-400">— image · replaceable</span></span>
         <div className="flex items-center gap-2">
           <input type="text" value={str} onChange={(e) => onChange(e.target.value)} placeholder="/uploads/…" className={INPUT + " flex-1"} />
-          {onPickImage ? <button type="button" onClick={() => onPickImage((url) => onChange(url || ""))} className="shrink-0 rounded-md bg-shell-gray-900 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-shell-red">Pick · Replace</button> : null}
+          {onPickImage ? <button type="button" onClick={() => onPickImage((url) => onChange(url || ""))} className="inline-flex min-h-[44px] shrink-0 items-center rounded-md bg-shell-gray-900 px-3 text-xs font-medium text-white hover:bg-shell-red">Pick · Replace</button> : null}
         </div>
         {preview ? (
           <div className="mt-2 flex gap-2 rounded-md border border-shell-gray-300 bg-shell-gray-100 p-2">

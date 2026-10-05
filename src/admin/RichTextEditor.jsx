@@ -115,12 +115,12 @@ export default function RichTextEditor({ label, value, onChange }) {
     cmd("createLink", href || "#/contact-us")
   }
 
-  const tool = "rounded px-1.5 py-1 text-xs font-semibold text-shell-gray-700 hover:bg-shell-gray-100"
+  const tool = "inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded px-2 py-1 text-sm font-semibold text-shell-gray-700 hover:bg-shell-gray-100"
   return (
     <div className="block text-sm sm:col-span-2">
       <span className={LABEL}>{label} <span className="font-normal normal-case text-shell-gray-400">— rich text</span></span>
       <div className="overflow-hidden rounded-md border border-shell-gray-300 bg-white focus-within:border-shell-gray-900 focus-within:ring-1 focus-within:ring-shell-gray-900">
-        <div className="flex flex-wrap items-center gap-0.5 border-b border-shell-gray-300 bg-shell-gray-100 px-1.5 py-1">
+        <div className="flex items-center gap-1 overflow-x-auto border-b border-shell-gray-300 bg-shell-gray-100 px-1.5 py-1">
           <button type="button" title="Bold" onClick={() => cmd("bold")} className={tool + " font-bold"}>B</button>
           <button type="button" title="Italic" onClick={() => cmd("italic")} className={tool + " italic"}>I</button>
           <button type="button" title="Underline" onClick={() => cmd("underline")} className={tool + " underline"}>U</button>
@@ -129,7 +129,7 @@ export default function RichTextEditor({ label, value, onChange }) {
           <button type="button" title="Quote" onClick={() => cmd("formatBlock", "BLOCKQUOTE")} className={tool}>“”</button>
           <button type="button" title="Add link" onClick={addLink} className={tool}>Link</button>
           <button type="button" title="Clear formatting" onClick={() => cmd("removeFormat")} className={tool}>Clear</button>
-          <span className="ml-auto">
+          <span className="ml-auto shrink-0 pl-1">
             <button type="button" onClick={() => { setHtmlDraft(lastEmitted.current || html); setMode(mode === "visual" ? "html" : "visual") }} className={tool + " ring-1 ring-shell-gray-300"}>{mode === "visual" ? "HTML" : "Visual"}</button>
           </span>
         </div>

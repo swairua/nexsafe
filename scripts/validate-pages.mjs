@@ -46,10 +46,20 @@ for (const p of allPages) {
       if (!item.title || !item.text) {
         errors.push(`${p.slug}: section '${s.heading}' has an item missing title/text`)
       }
+      // Service cards may carry a "Learn more" route; it must resolve.
+      if (item.href) checkRoute(`${p.slug} item '${item.title}'`, item.href)
     }
   }
   for (const r of p.related || []) {
     if (!pages[r]) errors.push(`${p.slug}: related -> missing '${r}'`)
+  }
+  // A page may carry its own hero image, gallery and award badges (ported from
+  // the previous site). Every entry must be a local upload, never a remote URL.
+  const shots = [...(p.image ? [p.image] : []), ...(p.gallery || []), ...(p.logos || [])]
+  for (const shot of shots) {
+    if (!shot || !shot.src || !shot.src.startsWith('/uploads/')) {
+      errors.push(`${p.slug}: image entry must point at a local /uploads/ file`)
+    }
   }
 }
 
@@ -87,18 +97,19 @@ for (const g of stackGroups) {
   if (!g.title || !g.text || !g.vendors?.length) errors.push(`stack '${g.id}': incomplete`)
 }
 
-// 5b) Sector coverage. The Home Page document names six sectors, but only the
-// four with a dedicated "Industry Focus" document have pages. This asserts the
-// documented, intentional shortfall so it cannot be forgotten at review time.
-const SECTORS_WITHOUT_SOURCE = ['Professional Services', 'Non-Profit']
+// 5b) Sector coverage. Four sectors have full Industry Focus documents;
+// five more (consulting, non-profit, telemedicine, fintech, education) have
+// compact pages ported from the live site's industry index. Professional
+// Services still has no source document or page, so it must stay unlisted.
+const SECTORS_WITHOUT_SOURCE = ['Professional Services']
 const sectorLabels = industriesStrip.items.map((i) => i.label)
 for (const s of SECTORS_WITHOUT_SOURCE) {
   if (sectorLabels.includes(s)) {
     errors.push(`sector '${s}' is listed but has no source document or page`)
   }
 }
-if (sectorLabels.length !== 4) {
-  errors.push(`industriesStrip: expected 4 sourced sectors, got ${sectorLabels.length}`)
+if (sectorLabels.length !== 9) {
+  errors.push(`industriesStrip: expected 9 sectors, got ${sectorLabels.length}`)
 }
 
 // 6) No placeholder '#' hrefs anywhere in data.

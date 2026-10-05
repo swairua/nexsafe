@@ -1,86 +1,110 @@
-// Contact + legal pages — the small set of non-editorial routes the header,
-// footer and CTA buttons link to. The client supplied no copy for these, so
-// the wording is deliberately plain and factual rather than invented.
+// Contact + FAQ + legal pages — the non-editorial routes the header, footer and
+// CTA buttons link to.
+//
+// The Contact and FAQ pages are ported from nexsate.com/contact/ and
+// nexsate.com/faq/: the wording, the contact details and the questions/answers
+// are the source site's own. The legal pages keep their existing plain copy.
 const support = 'Support'
 const legal = 'Legal'
 
 export const sitePages = [
   {
     slug: 'contact-us',
-    title: 'Contact us',
+    title: 'Contact',
     eyebrow: support,
-    intro:
-      'Tell us about your environment, your users, and the technology challenges affecting daily operations — we will come back to you with a practical way forward.',
+    intro: 'We’re here to help',
+    // Hero image carried over from the source Contact page.
+    image: {
+      src: '/uploads/contact-hero.jpg',
+      alt: 'Support consultant on a call in a modern office',
+    },
     sections: [
       {
-        heading: 'Start a conversation',
-        body: [
-          'Nexsate works with businesses across a range of industries to improve the technology behind daily operations. Whether you need day-to-day IT support, a security review, a cloud migration, or help connecting the systems you already own, the conversation starts the same way: understanding what you are trying to achieve and what is getting in the way.',
-        ],
+        heading: 'Contact us',
         list: [
-          'Managed IT services and day-to-day support',
-          'Cybersecurity, security and compliance readiness',
-          'Cloud services, Microsoft 365 and migration',
-          'Network management, cabling and connectivity',
-          'Backup, disaster recovery and business continuity',
-          'Software development, ERP, CRM and automation',
+          'Call us at: 1-825-570-4550',
+          'Email us: service@nexsate.com',
+          'Schedule a free consultation',
         ],
       },
       {
-        heading: 'What to tell us',
+        heading: 'Our locations',
         body: [
-          'The more we know about your business, the more useful our first response will be. It helps to have an idea of your user numbers, the systems you run, the locations you operate from, and the problems that are costing you the most time.',
+          'We have offices in Alberta, Edmonton — we’d love to show you around sometime. Don’t see an office in your area? We have the power to support your business, no matter the location.',
+        ],
+      },
+      {
+        heading: 'What happens next',
+        body: [
+          'Every engagement starts the same way — no pressure, no obligation:',
         ],
         list: [
-          'How many users need support, and from how many locations',
-          'Which business systems and applications you depend on',
-          'What is currently causing disruption or delay',
-          'Whether you are looking for ongoing support or a specific project',
+          'We schedule a call at your convenience',
+          'We hold a discovery and consulting meeting',
+          'We prepare a proposal',
+        ],
+      },
+      {
+        heading: 'Your benefits',
+        body: [
+          'Working with Nexsate means a partner that is:',
+        ],
+        list: [
+          'Client-oriented',
+          'Independent',
+          'Competent',
+          'Results-driven',
+          'Problem-solving',
+          'Transparent',
         ],
       },
     ],
-    related: ['services-solutions', 'managed-it-services', 'about-us'],
+    related: ['services-solutions', 'help-and-faq', 'about-us'],
   },
-  {
+{
     slug: 'help-and-faq',
-    title: 'Help and FAQ',
+    title: 'FAQ',
     eyebrow: support,
     intro:
       'Common questions about working with Nexsate, answered as plainly as we answer them in person.',
     sections: [
       {
-        heading: 'How we work',
-        body: [
-          'We begin by understanding your business, your people, your systems, and the technology challenges affecting daily operations. From there, we assess your environment, plan the right approach, provide support, and recommend improvements that align with your goals, budget, and growth plans.',
-        ],
-      },
-      {
-        heading: 'Frequently asked questions',
+        heading: 'Frequently Asked Questions',
+        // Questions and answers as published on nexsate.com/faq/. Answers that
+        // are a list on the source site keep their list here.
         items: [
           {
-            title: 'Do we have to replace everything?',
-            text: 'No. Nexsate focuses on improvements that create the most immediate value rather than replacing everything at once. Often the biggest gains come from better configuration, clearer processes, stronger support and smarter use of the tools you already have.',
+            title: 'What are your two primary services?',
+            text: '<p>Fully Managed IT Services – Nexsate monitors, manages, supports, and secures all IT systems and users for a fixed and predictable monthly fee.</p><p>Co-Managed IT Services – We support internal IT as an extension of your team. This role includes patching, repetitive tasks, one-off services, and special projects. We handle the backend while in-house IT manages everything else.</p>',
           },
           {
-            title: 'How is pricing structured?',
-            text: 'Plan your IT spending with fixed monthly support based on the service level, users, systems and support needs of your business.',
+            title: 'What other services do you offer?',
+            text: '<ul><li>Cybersecurity</li><li>IT Consulting</li><li>Cloud Services</li><li>Network Connectivity (ISP Services)</li></ul>',
           },
           {
-            title: 'Do you provide on-site support?',
-            text: 'Yes. Our local service technicians can be on-site when hands-on support is needed for installations, maintenance, hardware setup, software support, cabling and network-related work — in the office, warehouse, yard or on site.',
+            title: 'What business problems do you solve?',
+            text: '<p>By leading with IT strategy and compliance guidance, Nexsate fills two major gaps in the IT provider industry. This expertise helps clients:</p><ul><li>Save time, money, and increase profitability.</li><li>Reduce employee frustration and improve team morale.</li><li>Solidify defenses against data breaches, ransomware attacks, and legal exposure.</li><li>Lower cybersecurity and compliance risk</li></ul>',
           },
           {
-            title: 'Do you support Microsoft 365?',
-            text: 'Yes. We manage Microsoft 365 users, email, Teams, SharePoint, OneDrive, licences, permissions and security settings, and coordinate Microsoft 365 backup for email, OneDrive, SharePoint and Teams.',
+            title: 'What are your core services?',
+            text: '<p>Core Services are fixed, baseline foundational resources included in every Fully Managed IT Service Level Agreement.</p><ul><li>vCIO – Strategic direction, budgeting, planning, and consulting services with account reviews and IT roadmaps to advance your digital transformation.</li><li>Managed Services Concierge – Your point of contact for all account details. This trusted advisor is the quarterback between your vCIO and the service team, managing questions about IT services, invoices, and every piece of business enabling technology that supports decision making, collaboration, productivity, compliance, business continuity, security, and efficiency.</li><li>Client Management Tools – Professional Services Automation, Ticketing, CRM, Remote Management and Monitoring, Documentation, Communication, Notification, and Data Privacy.</li><li>Vendor Technical Assistance – We interact directly with your other technology vendors for incident remediation, opening tickets, escalating requests, or working to resolve incidents within your IT environment. We will also answer basic questions about your environment or provide access to systems the vendor has requested when approved by the client, such as allocating IP addresses for a copier, a security camera vendor or allowing network traffic for a vendor’s service. This assistance covers hardware manufacturers, software development firms, cloud service providers, ISPs, telecommunication brokers, printer and copier companies, and local couriers.</li><li>Procurement Services – Nexsate sources products exclusively from authorized channels and recommends business-class solutions. We also identify configuration options, ensure proper registration, manage licensing and warranties, and guarantee that all products are genuine.</li><li>Network Management – Monitoring, Administration, Reporting, Domain Name, and SSL Certificate Management, Remote Incident Remediation, and On-site Incident Remediation.</li></ul><p>If a client has more than one location – with expanded Network Management &amp; Vendor Technical Assistance requirements – additional Core Services charges will apply.</p>',
+          },
+{
+            title: 'How are you different?',
+            text: '<p>Nexsate selectively partners with growing organizations that like applying strategy and budgets to a proven IT process based on standards and best practices – to improve performance and lower risk.</p><p>Nexsate creates and maintains powerful, quiet, and secure IT systems by actively engaging and advising our clients in regularly scheduled Strategic Business Reviews with a vCIO.</p><p>Most Nexsate locations limit new client onboardings to two per month. This approach allows us to institute comprehensive, data-driven quality controls – on the front end – which create increasing operating leverage for our clients throughout the lifetime of the relationship.</p>',
           },
           {
-            title: 'Can you work with our existing tools?',
-            text: 'Yes. We review your current systems first and build around how your business actually operates, including ERP, CRM and line-of-business applications you already own.',
+            title: 'How do you maximize responsiveness?',
+            text: '<p>Nexsate is responsive by design. We partner with organizations that appreciate the value of following a standards-based approach to inform the architecture and lifecycle management of their IT systems.</p><p>This alignment allows clients to enjoy business optimizing technology that doesn’t require constant, reactive, emergency intervention – so they have more time to focus on growing their business.</p><p>We give users direct access to support, which eliminates bottlenecks and allows us to collect data and insights to identify training gaps and recommend system improvements.</p><p>Our Service Level Agreement prioritizes client matters and response times by P1, P2, P3, and P4. A significant server or cloud application outage is a P1.</p><p>Assisting with a password reset is a P4. Good news: we can set you up with a self-serve password solution, so you don’t have to open a ticket.</p><p>The outcome is similar to the concept of compound interest. When you invest in the process over time, both quality of service and responsiveness accrue. Failure to invest (or starting late) makes it impossible to catch up.</p>',
+          },
+          {
+            title: 'What is your industry focus?',
+            text: '<p>Operationally mature organizations in the following verticals:</p><ul><li>Professional Services</li><li>CPA</li><li>Legal</li><li>Finance</li><li>Insurance</li><li>Real Estate</li><li>Consulting</li><li>Manufacturing</li><li>Healthcare</li><li>Nonprofit</li></ul>',
           },
         ],
       },
     ],
-    related: ['contact-us', 'about-us', 'our-process'],
+    related: ['contact-us', 'about-us', 'services-solutions'],
   },
   {
     slug: 'privacy-policy',

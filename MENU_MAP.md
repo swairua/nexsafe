@@ -39,7 +39,7 @@ Legal -> `#top`).
 ## 3. Mega-menu tree (every leaf resolves to a page via `pageHref`)
 
 **Our Company** (3 columns)
-- About us: About Us / Our Mission / Core Values / Our People / Our Process
+- About us: About Us (`#/about-us`, titled "Commitment to delivering excellence")
 - What we bring together: Services & Solutions / Managed IT Services / Cloud Services / Cybersecurity
 - Business services: Network Management / Backup & Disaster Recovery / Software Development, ERP & CRM Solutions
 
@@ -101,32 +101,53 @@ as homepage cards **and** nav leaves, so the menu and the landing page agree.
 
 | file | pages | covers |
 |------|-------|--------|
-| `company.js` | 5 | About Us, Our Mission, Core Values, Our People, Our Process |
+| `company.js` | 1 | About Us ("Commitment to delivering excellence") |
 | `services.js` | 12 | Services & Solutions, the six services, ERP, Automation, Digital Transformation, Gaining Efficiency |
 | `industries.js` | 4 | Banks & Insurance, Healthcare, Industrial & Manufacturing, Transportation & Logistics |
 | `successStory.js` | 1 | The client case study, kept whole |
-| `site.js` | 5 | Contact us, Help and FAQ, Privacy Policy, Cookie policy, Terms & Conditions |
+| `site.js` | 5 | Contact, FAQ, Privacy Policy, Cookie policy, Terms & Conditions |
 
-**27 pages total.** Invariants: no duplicate slugs, every `related[]` resolves,
-every section has a heading plus body/list/items content. Route: `#/` + slug,
-rendered by `PageView.jsx`.
+**23 pages total.** Invariants: no duplicate slugs, every `related[]` resolves,
+every section has a heading plus body/list/items content, every `items[].href`
+resolves, and every page image/gallery/logo points at a local `/uploads/` file.
+Route: `#/` + slug, rendered by `PageView.jsx`.
 
-The earlier Kyndryl-derived placeholder sets (investors, news, sustainability,
-generic who-we-are / what-we-do) were **removed** rather than kept, so no copy
-the client did not supply remains on the site.
+### Ported from nexsate.com (redesign)
 
-Also removed: **Change country**. It was a 22-word stub whose entire body said
-the build "hosts a single Nexsate site" and that "regional content can be added
-here as additional markets are confirmed" — a page describing its own
-emptiness, with no backing in any client document. The header globe is now a
-static `nexsate.com` label (a `<span>`, not a link) rather than a dead
-selector. Re-add when a second market actually exists.
+Four pages were rewritten from the live site, wording and imagery included:
 
-**Kept despite looking thin:** `Our People` (74 words) traces to the "Our
-People" and "Our Purpose" blocks in `About US.docx`, and the two Security pages
-overlap by ~40% but come from two separate supplied documents (`Security.docx`,
-`Cybersecurity.docx`). The legal pages are site-utility copy the client did not
-supply, but a real site needs them.
+| route | source | notes |
+|-------|--------|-------|
+| `#/services-solutions` | `/solutions/` | Hero image + the 8 service cards as `items`; each card keeps a "Learn more" link to the matching page here. Telecommunication and IT Consulting & Advisory have no counterpart page, so they carry no link. |
+| `#/about-us` | `/about/` | Titled "Commitment to delivering excellence" (the source h1). Hero photo, two-photo gallery and the five award badges, all downloaded to `public/uploads/`. |
+| `#/contact-us` | `/contact/` | "Contact" / "We're here to help", the call-email-consult rows, "Our locations", plus the contact details in **Site settings** (1-825-570-4550, service@nexsate.com, 1253 91 St. SW Edmonton, AB T6X 1E9). |
+| `#/help-and-faq` | `/faq/` | "FAQ" with the seven source questions; list answers are kept as lists. |
+| `#/banks-insurance` | `/industries/banks-insurance/` | Titled "Banking, Finance & Insurance" (the source h1). Source's repeated "Financial workflows require…" paragraph is kept as published. |
+| `#/healthcare` | `/industries/healthcare/` | Source heading is singular: "Technology Behind Better Patient Experience". |
+| `#/industrial-manufacturing` | `/industries/industry-manufacturing/` | Titled "Industry Manufacturing" (the source h1). Source's "ensuring you're your systems" typo is kept as published. |
+| `#/transportation-logistics` | `/industries/transportation-logistics/` | Source has 7 service items (no cybersecurity card); its 3rd closing paragraph is restored. |
+
+Each of the four industry pages carries its own hero background image
+(`public/uploads/industry-*-hero.jpg`, 2558×688), downloaded from the source.
+
+The source's services heading on the healthcare and banks pages is a
+copy-paste error ("Our IT services for manufacturers"), so those two name their
+own sector instead. Nav and footer labels are unchanged because `pageHref()`
+derives the slug from the label — the page *titles* now match the source h1s
+while the menu keeps "Banks & Insurance" / "Industrial & Manufacturing".
+
+Two source links were deliberately **not** carried over because no page here
+routes to them (they would be dead links): the About page's "Learn more"
+(→ `/why-us/`) and "Meet the team" (→ Team page).
+
+`Our Mission`, `Core Values`, `Our People` and `Our Process` were **removed**:
+their content is on the single About page, so keeping them duplicated copy and
+four orphan routes. The nav and footer Company columns now list About Us only.
+
+**Kept despite looking thin:** the two Security pages overlap by ~40% but come
+from two separate supplied documents (`Security.docx`, `Cybersecurity.docx`).
+The legal pages are site-utility copy the client did not supply, but a real site
+needs them.
 
 
 ## 7. Theme tokens
@@ -314,7 +335,7 @@ npm run verify                    # all five checks below, in order
 node scripts/check-syntax.mjs     # bracket balance across the data files
 node scripts/validate-pages.mjs   # registry schema, nav/footer/CTA resolution
 node scripts/check-links.mjs      # every link resolves; no orphan pages
-node scripts/smoke.mjs            # renders <App /> and all 27 pages
+node scripts/smoke.mjs            # renders <App /> and all 23 pages
 node scripts/smoke-admin.mjs      # every admin section renders; no remote images
 npx vite build                    # production build
 ```

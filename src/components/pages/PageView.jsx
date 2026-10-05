@@ -3,6 +3,9 @@ import Reveal from '../ui/Reveal.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import { Rich, RichText } from '../ui/SectionTag.jsx'
 import ContactForm from '../sections/ContactForm.jsx'
+import { useContactDetails } from '../sections/contactDetails.js'
+import ConnectBand from '../sections/ConnectBand.jsx'
+import BlogIndex from './BlogIndex.jsx'
 
 // Plain paragraphs render as <p>; HTML saved by the admin rich-text editor
 // renders through <RichText> (sanitised), so formatting survives.
@@ -13,7 +16,6 @@ function Copy({ para }) {
   }
   return <p className="mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg">{para}</p>
 }
-
 
 // Eyebrow → homepage anchor (breadcrumb trail) and the decorative eyebrow →
 // image map are both content-driven (admin > "Breadcrumb anchors" /
@@ -43,31 +45,33 @@ function NotFound(notFound) {
  * Inner-page renderer for '#/<slug>' routes: dark hero + breadcrumb,
  * prose sections (body paragraphs + lists), related-page cards, back to top.
  */
-export default function PageView({ page, slug }) {
+export default function PageView({ page, slug, params }) {
   const content = useContent()
   const pages = content.pages
   const labels = content.pageLabels || {}
-  const connect = content.pageConnect || {}
   const ui = content.uiLabels || {}
   const anchors = content.categoryAnchors || {}
   const sectionIds = content.sectionIds || {}
-  const settings = content.settings || {}
   if (!page) return <NotFound {...(content.notFound || {})} />
+  // The blog index ('#/blog') renders the insight card grid instead of prose.
+  if (page.layout === 'blog-index') return <BlogIndex page={page} topic={params ? params.get('topic') : null} />
 
   const sectionHref = anchors[page.eyebrow]
   const relatedPages = (page.related || []).map((slug) => pages[slug]).filter(Boolean)
   // Category images carry alt text ({ src, alt }); legacy string values keep working.
+  // A page may ship its own hero image (ported from the previous site), which
+  // takes precedence over the shared per-category image.
   const categoryRaw = (content.categoryImages || {})[page.eyebrow]
-  const categoryImage = typeof categoryRaw === "string" ? categoryRaw : (categoryRaw && categoryRaw.src) || ""
-  const categoryAlt = typeof categoryRaw === "string" ? "" : ((categoryRaw && categoryRaw.alt) || "")
+  const sharedImage = typeof categoryRaw === "string" ? categoryRaw : (categoryRaw && categoryRaw.src) || ""
+  const sharedAlt = typeof categoryRaw === "string" ? "" : ((categoryRaw && categoryRaw.alt) || "")
+  const ownImage = page.image || {}
+  const categoryImage = ownImage.src || sharedImage
+  const categoryAlt = ownImage.src ? (ownImage.alt || "") : sharedAlt
+  const gallery = page.gallery || []
+  const logos = page.logos || []
   const isContact = slug === "contact-us"
   const form = content.contactForm || {}
-  // Contact details come from Site settings; each row only renders when filled.
-  const details = [
-    { label: form.emailLabel, value: settings.email, href: settings.email ? "mailto:" + settings.email : "" },
-    { label: form.phoneLabel, value: settings.phone, href: settings.phone ? "tel:" + String(settings.phone).replace(/\s+/g, "") : "" },
-    { label: form.addressLabel, value: settings.address, href: "" },
-  ].filter((d) => d.value)
+  const details = useContactDetails()
 
   return (
     <article>
@@ -184,6 +188,11 @@ export default function PageView({ page, slug }) {
                       <div className="mt-2 pl-5 text-sm leading-relaxed text-shell-gray-700 md:text-base">
                         <Copy para={item.text} />
                       </div>
+                      {item.href ? (
+                        <a href={item.href} className="arrow-link mt-3 inline-block pl-5 text-sm">
+                          {labels.learnMore || 'Learn more'} <span className="arrow">›</span>
+                        </a>
+                      ) : null}
                     </li>
                   ))}
                 </ul>
@@ -192,6 +201,26 @@ export default function PageView({ page, slug }) {
           </div>
         </section>
       ))}
+
+      {/* Page gallery — photography the page carries itself (About page) */}
+      {gallery.length > 0 && (
+        <section className={page.sections.length % 2 === 0 ? 'bg-shell-gray-100' : 'bg-white'}>
+          <div className="shell-container py-12 md:py-16">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {gallery.map((shot) => (
+                <Reveal key={shot.src} variant="zoom">
+                  <SmartImage
+                    src={shot.src}
+                    alt={shot.alt || ""}
+                    fallback="linear-gradient(135deg, #070e40 0%, #010ed0 130%)"
+                    className="aspect-[4/3] w-full rounded-2xl"
+                  />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Category visual — Kyndryl-style imagery block (decorative) */}
       {categoryImage && (
@@ -205,6 +234,26 @@ export default function PageView({ page, slug }) {
                 className="aspect-[16/7] w-full rounded-2xl md:aspect-[21/8]"
               />
             </Reveal>
+          </div>
+        </section>
+      )}
+
+      {/* Awards / certification logos carried by the page itself */}
+      {logos.length > 0 && (
+        <section className="bg-white">
+          <div className="shell-container py-12 md:py-14">
+            <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
+              {logos.map((badge) => (
+                <Reveal key={badge.src} variant="fade">
+                  <img
+                    src={badge.src}
+                    alt={badge.alt || ""}
+                    loading="lazy"
+                    className="h-20 w-auto object-contain md:h-24"
+                  />
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -272,30 +321,8 @@ export default function PageView({ page, slug }) {
           </div>
         </section>
       ) : null}
-      {/* Connect with us — Kyndryl-style dark CTA band before the footer */}
-      <section className="relative overflow-hidden bg-shell-black text-white">
-        <div
-          className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-shell-green/15 blur-3xl"
-          aria-hidden="true"
-        />
-        <div className="shell-container relative py-16 md:py-20">
-          <Reveal variant="fade">
-            <p className="text-xs font-bold uppercase tracking-wider text-shell-red">
-              {connect.tag}
-            </p>
-            <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-tight md:text-5xl">
-              {connect.title}
-            </h2>
-            <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
-              <Rich as="p">{connect.text}</Rich>
-            </div>
-            <a href={connect.cta.href} className="btn-pill btn-pill--green mt-8">
-              {connect.cta.label}
-              <span aria-hidden="true">→</span>
-            </a>
-          </Reveal>
-        </div>
-      </section>
+      {/* Connect with us — dark CTA band before the footer (shared with homepage). */}
+      <ConnectBand />
     </article>
   )
 }

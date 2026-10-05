@@ -27,6 +27,11 @@ function nx_migrate(PDO $pdo): void
     $pdo->exec('CREATE TABLE IF NOT EXISTS media (id INTEGER PRIMARY KEY AUTOINCREMENT, filename TEXT NOT NULL, url TEXT NOT NULL, mime TEXT, size INTEGER, alt TEXT, width INTEGER, height INTEGER, created_at TEXT NOT NULL)');
     $pdo->exec('CREATE TABLE IF NOT EXISTS admins (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, email TEXT, created_at TEXT NOT NULL)');
     $pdo->exec('CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, phone TEXT, company TEXT, subject TEXT, body TEXT, created_at TEXT NOT NULL, seen INTEGER DEFAULT 0)');
+    // Support-ticket priority (Normal/High/Urgent, as on nexsate.com support
+    // form). Additive: existing rows read as untriaged.
+    $mcols = [];
+    foreach ($pdo->query('PRAGMA table_info(messages)') as $c) { $mcols[(string) $c['name']] = true; }
+    if (!isset($mcols['priority'])) { $pdo->exec("ALTER TABLE messages ADD COLUMN priority TEXT NOT NULL DEFAULT ''"); }
     // Media metadata upgrade: every image carries alt text + description +
     // usage locations so the library shows what each image is, where it is
     // used, and lets an editor replace the file in place.

@@ -100,6 +100,108 @@ if ($uri !== '/' && is_file($candidate)) {
     return true;
 }
 
+// 4b) Legacy WordPress cutover: 301 the old nexsate.com URLs to their hash
+// routes so bookmarks and search results keep working. Exact paths first
+// (trailing slash and case insensitive), then prefix fallbacks for the
+// unported archives (events, team, categories, leftover stubs) which land on
+// the closest hub. Anything else falls through to the SPA fallback below.
+static $legacyExact = [
+    // Company
+    'about' => '/#/about-us',
+    'why-us' => '/#/about-us',
+    'partnerships' => '/#/about-us',
+    'reviews-awards' => '/#/about-us',
+    'careers' => '/#/about-us',
+    'contact' => '/#/contact-us',
+    'faq' => '/#/help-and-faq',
+    'client-support' => '/#support',
+    // Hubs
+    'solutions' => '/#it-solutions',
+    'industries' => '/#industries',
+    'app-development' => '/#/app-development',
+    'blog' => '/#/blog',
+    'events' => '/#/blog',
+    // Solutions (live slugs are scrambled vs their titles — each maps to the
+    // page whose copy it actually carries, app verticals to the dev hub).
+    'solutions/managed-services' => '/#/managed-it-services',
+    'solutions/cloud-services' => '/#/backup-disaster-recovery',
+    'solutions/software-development' => '/#/managed-it-services',
+    'solutions/it-consulting-advisory' => '/#/cloud-services',
+    'solutions/web-development' => '/#/network-management',
+    'solutions/mobile-development' => '/#/cybersecurity',
+    'solutions/digital-transformation' => '/#/digital-transformation',
+    'solutions/security' => '/#/security',
+    'solutions/automation' => '/#/automation',
+    'solutions/gaining-efficiency' => '/#/gaining-efficiency',
+    'solutions/erp-solutions' => '/#/erp-solutions',
+    'solutions/mobile-app-development' => '/#/app-development',
+    'solutions/android-development' => '/#/app-development',
+    'solutions/ios-development' => '/#/app-development',
+    'solutions/hybrid-app-development' => '/#/app-development',
+    'solutions/web-app-development' => '/#/app-development',
+    'solutions/custom-software-development' => '/#/app-development',
+    'solutions/software-development-2' => '/#/software-development-erp-crm-solutions',
+    // Industries
+    'industries/industry-manufacturing' => '/#/industrial-manufacturing',
+    'industries/transportation-logistics' => '/#/transportation-logistics',
+    'industries/healthcare' => '/#/healthcare',
+    'industries/banks-insurance' => '/#/banks-insurance',
+    'industries/consulting-providers' => '/#/consulting-providers',
+    'industries/non-profit' => '/#/non-profit',
+    'industries/telemedicine' => '/#/telemedicine',
+    'industries/fintech' => '/#/fintech',
+    'industries/education' => '/#/education',
+    // Ported blog posts (dated WP slugs -> new slugs).
+    'how-startups-are-cutting-cloud-costs-renegotiating-deals-with-service-providers' => '/#/startups-cutting-cloud-costs',
+    'heavy-equipment-manufacturer-finds-concrete-solutions' => '/#/heavy-equipment-manufacturer-concrete-solutions',
+    'simplifying-and-securing-attachments-in-sage-x3' => '/#/sage-x3-attachments-simplified-secured',
+    'financials-face-off-sage-100-erp-vs-cloud' => '/#/sage-100-erp-vs-cloud',
+    'tecnologia-has-been-recognized-as-a-leader-in-the-2022-gartner' => '/#/gartner-2022-leader-recognition',
+    'identify-the-best-technologies-for-your-business-with-tecnologias-new-tool' => '/#/identifying-best-technologies-for-your-business',
+    'how-chat-gpt-is-revolutionizing-the-way-we-find-information' => '/#/chatgpt-revolutionizing-finding-information',
+    'clutch-recognizes-tecnologia-among-new-yorks-top-development-for-2023' => '/#/clutch-top-development-new-york-2023',
+    // Ported portfolio case studies (new slugs).
+    'delivering-enterprise-wide-efficiencies-at-paysafe-through-intelligent-automation' => '/#/paysafe-intelligent-automation',
+    '5-impactful-elements-that-promote-it-and-business-alignment' => '/#/it-business-alignment-five-elements',
+    // Unported portfolio/filler posts (titles only, duplicated bodies) land on
+    // the blog index rather than 404ing.
+    'building-optimising-and-future-proofing-existing-infrastructures-with-payment-gateways' => '/#/blog',
+    'online-platform-for-distance-learning' => '/#/blog',
+    'private-trust-management-and-trading-platform' => '/#/blog',
+    'convenience-savings-and-rewards-at-your-fingertips-2' => '/#/blog',
+    'strategic-move-to-an-ai-supported-application-for-public-safety-travel-app-in-london' => '/#/blog',
+    'bringing-premium-live-casino-experiences-to-gamers-across-the-globe' => '/#/blog',
+    'next-generation-erp-brings-transformational-change-to-dental-insurer' => '/#/blog',
+    'healthy-supply-chain-management-positions-uniwell-for-growth' => '/#/blog',
+    'what-you-shouldnt-be-doing-with-your-cybersecurity-in-2023' => '/#/blog',
+    'top-5-tips-for-solving-the-email-security-problem' => '/#/blog',
+    '4-cybersecurity-takeaways-from-chinas-largest-data-breach' => '/#/blog',
+];
+static $legacyPrefix = [
+    'solutions/' => '/#/services-solutions',
+    'industries/' => '/#industries',
+    'events/' => '/#/blog',
+    'team/' => '/#/about-us',
+    'category/' => '/#/blog',
+    'author/' => '/#top',
+    'tag/' => '/#/blog',
+    'landing-page' => '/',
+    'maintenance-page' => '/',
+];
+$slug = strtolower(trim($uri, '/'));
+if (isset($legacyExact[$slug])) {
+    http_response_code(301);
+    header('Location: ' . $legacyExact[$slug]);
+    return true;
+}
+foreach ($legacyPrefix as $prefix => $target) {
+    if ($prefix !== '' && str_starts_with($slug . '/', $prefix)) {
+        http_response_code(301);
+        header('Location: ' . $target);
+        return true;
+    }
+}
+
 // 5) SPA fallback. The site uses hash routing (#/slug), so any unknown path that
 //    is not a real file should still boot the app.
 $page = $candidate;

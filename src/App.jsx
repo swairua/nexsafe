@@ -7,9 +7,18 @@ import HeroCarousel from './components/sections/HeroCarousel.jsx'
 import IntroBand from './components/sections/IntroBand.jsx'
 import CardGrid from './components/sections/CardGrid.jsx'
 import PartnerStrip from './components/sections/PartnerStrip.jsx'
+import TrustStrip from './components/sections/TrustStrip.jsx'
+import AwardsBand from './components/sections/AwardsBand.jsx'
 import IndustriesStrip from './components/sections/IndustriesStrip.jsx'
 import StackSection from './components/sections/StackSection.jsx'
 import SuccessStorySection from './components/sections/SuccessStorySection.jsx'
+import ValuesStrip from './components/sections/ValuesStrip.jsx'
+import BlogRow from './components/sections/BlogRow.jsx'
+import Testimonials from './components/sections/Testimonials.jsx'
+import FaqTeaser from './components/sections/FaqTeaser.jsx'
+import DeptSplit from './components/sections/DeptSplit.jsx'
+import HomeContact from './components/sections/HomeContact.jsx'
+import ConnectBand from './components/sections/ConnectBand.jsx'
 import PromoBanner from './components/sections/PromoBanner.jsx'
 import PageView from './components/pages/PageView.jsx'
 import { useContent } from './content/ContentContext.jsx'
@@ -20,7 +29,10 @@ import { useContent } from './content/ContentContext.jsx'
  * (e.g. '#who-we-are') when present. Unknown slugs get the 404 view.
  */
 function parseHash(hash = '') {
-  if (hash.startsWith('#/')) return { kind: 'page', slug: hash.slice(2) }
+  if (hash.startsWith('#/')) {
+    const [path, query] = hash.slice(2).split('?')
+    return { kind: 'page', slug: path, params: new URLSearchParams(query || '') }
+  }
   return { kind: 'home', anchor: hash.length > 1 ? hash.slice(1) : '' }
 }
 
@@ -28,8 +40,9 @@ function parseHash(hash = '') {
  * nexsate.com homepage — doc-driven section order:
  * 1. Cookie banner   2. Header + mega menus   3. Hero carousel
  * 4. Intro band      5. Services grid        6. Pictures row (right after services)
- * 7. Industries      8. Image/text splits    9. Stats strip
- * 10. Blog row       11. Promo banner        12. Footer      13. Legal bar
+ * 7. Industries      8. Partners (vendor wall, just below industries)
+ * 9. Image/text splits    10. Stats strip
+ * 11. Blog row       12. Promo banner        13. Footer      14. Legal bar
  * Inner routes ('#/<slug>') replace main with PageView.
  */
 export default function App() {
@@ -70,18 +83,27 @@ export default function App() {
       <Header overlay={route.kind === 'home' || Boolean(pages[route.slug])} />
       {route.kind === 'page' ? (
         <main>
-          <PageView page={pages[route.slug]} slug={route.slug} />
+          <PageView page={pages[route.slug]} slug={route.slug} params={route.params} />
         </main>
       ) : (
         <main>
           <HeroCarousel />
           <IntroBand />
           <CardGrid />
-          <PartnerStrip />
           <IndustriesStrip />
+          <PartnerStrip />
+          <TrustStrip />
+          <AwardsBand />
           <StackSection />
           <SuccessStorySection />
+          <ValuesStrip />
+          <BlogRow />
+          <Testimonials />
           <PromoBanner />
+          <FaqTeaser />
+          <DeptSplit />
+          <HomeContact />
+          <ConnectBand />
         </main>
       )}
       <Footer />

@@ -11,6 +11,11 @@ export const successStoryPages = [
     slug: 'success-story',
     title: 'Success Story',
     eyebrow,
+    topic: 'Case Study',
+    // Blog fields: the case study leads the insights index, newest first.
+    date: '2026-09-18',
+    excerpt:
+      'A growing business had the tools it needed — but they were not aligned with how the team worked. How Nexsate built a more reliable, secure IT foundation.',
     intro:
       'How better IT alignment helped a growing business improve security, productivity, and daily operations.',
     sections: [

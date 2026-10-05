@@ -3,6 +3,10 @@
 // services, the industries line, the technology stack, then the success
 // story. Section components render these exports unchanged.
 import { pageHref } from './slug.js'
+import { blogIndex } from './posts.js'
+
+// Re-exported so siteContent (and the CMS seed) carry the blog page copy.
+export { blogIndex }
 
 // Photography is served from public/uploads (see scripts/localize-images.mjs).
 
@@ -154,20 +158,140 @@ export const partnerStrip = {
   cta: { label: 'Explore our services', href: pageHref('Services & Solutions') },
 }
 
-// The Home Page document names six sectors:
-//
-//   Industrial & Manufacturing, Transportation & Logistics, Healthcare,
-//   Financial Services, Professional Services, Non-Profit
-//
-// Only the first four have a dedicated "Industry Focus" document (488-600
-// words each), so only those four are listed here and given pages. The other
-// two appear nowhere else in the supplied material, so there is nothing to
-// write a page from without inventing sector-specific claims.
-//
-// TODO(client): request "Industry Focus - Professional Services" and
-// "Industry Focus - Non-Profit" documents. When they arrive, add a page to
-// src/data/pages/industries.js and an entry to `items` below, and re-point
-// any existing "Financial Services" label if the client prefers that wording.
+// Blog copy. The cards themselves render from the insight pages (the case
+// study plus newer posts), so the roster and the teaser can never drift apart.
+export const blogRow = {
+  tag: 'From our blog',
+  title: 'Case studies and insights from the field',
+  text: 'How better IT alignment helps growing businesses — plus practical guidance on security, cloud, and everyday IT.',
+  cta: { label: 'View all articles', href: '#/blog' },
+}
+
+// Suggested searches shown in the empty search panel (Kyndryl pattern).
+// Queries are plain words the local index is guaranteed to match.
+export const searchSuggestions = {
+  title: 'Suggested searches',
+  items: [
+    'cloud services',
+    'cybersecurity',
+    'managed IT support',
+    'backup and recovery',
+  ],
+}
+
+// Homepage FAQ teaser copy. The answers themselves render live from the
+// help-and-faq page, so the teaser and the page can never drift apart.
+export const faqTeaser = {
+  tag: 'Common questions',
+  title: 'Answers, before you even ask',
+  text: 'How managed IT works, what it costs, and what happens when something breaks — straight from our FAQ.',
+  cta: { label: 'View all FAQs', href: '#/help-and-faq' },
+}
+
+// Awards band copy. The badges themselves render live from the about-us
+// page logos, so the band and the page can never drift apart.
+export const awardsBand = {
+  tag: 'Industry recognition',
+  title: 'Recognized. Awarded. Trusted.',
+  text: 'Independent analysts, client-review platforms, and technology partners have recognized the work behind our client outcomes.',
+}
+
+// Notice bar copy. Seeded with the live site's own consultation CTA line;
+// the live "Now Hiring" strip is excluded (it points at wrong-brand filler).
+export const noticeBar = {
+  enabled: true,
+  text: 'Schedule a Free Consultation',
+  href: '#/contact-us',
+}
+
+// Dept splitter copy. Both routes quote FAQ Q1 ("What are your two primary
+// services?"): fully managed vs co-managed, in the FAQ's own words.
+export const deptSplit = {
+  tag: 'Two ways to work with us',
+  title: 'Fully managed or co-managed — your call',
+  text: 'Two primary services, one goal: technology that supports the way your business works.',
+  outsource: {
+    title: 'Outsource all your IT',
+    text: 'Fully Managed IT Services — Nexsate monitors, manages, supports, and secures all IT systems and users for a fixed and predictable monthly fee.',
+    cta: { label: 'Explore managed IT', href: '#/managed-it-services' },
+  },
+  extend: {
+    title: 'Extend your internal IT',
+    text: 'Co-Managed IT Services — We support internal IT as an extension of your team. This role includes patching, repetitive tasks, one-off services, and special projects. We handle the backend while in-house IT manages everything else.',
+    cta: { label: 'Talk to an expert', href: '#/contact-us' },
+  },
+}
+
+// Values strip copy. The value names themselves render live from the
+// about-us "Our Core Values" items; this key only owns the heading.
+export const valuesStrip = {
+  tag: 'Our Core Values',
+  title: 'What we stand by, on every engagement',
+  text: 'Our culture is built around four core values that differentiate us from our competition.',
+}
+
+// Trust blocks ported from nexsate.com/reviews-awards and the homepage.
+// Quotes are verbatim from the live reviews page; stats match the live
+// homepage and client-support figures (20 years, 98%, 3-min response).
+export const testimonials = {
+  tag: 'Testimonials',
+  title: 'What our customers say',
+  text: 'Rated 4.9 out of 5 across client reviews.',
+  items: [
+    {
+      quote:
+        "I've been a customer for more than a decade. Nexsate is an example of the way Managed Services should be done. They do their very best to make sure you succeed. If there's an issue, they step in immediately. We will continue to be a customer for years to come.",
+      name: 'John Labkins',
+      role: 'Partner & CEO, Telecommunication Company',
+    },
+    {
+      quote:
+        'Nexsate has been an outstanding partner. Their team is professional, knowledgeable and customer-service driven. Nexsate proactive collaborative approach has been critical in helping us build an IT infrastructure that enables our success today and supports our long-term positioning strategy.',
+      name: 'Amanda Parks',
+      role: 'Network Manager, Healthcare Organization',
+    },
+    {
+      quote:
+        "Nexsate implemented such a powerful platform that we had no break in service when our employees had to work from home due to the COVID-19 pandemic. We weren't concerned about how to shift to a remote working environment because Nexsate facilitated a seamless transition.",
+      name: 'David Morandes',
+      role: 'CEO & Founder, Skole App',
+    },
+  ],
+}
+
+export const statsBand = {
+  items: [
+    { value: '20+', label: 'Years of experience' },
+    { value: '98%', label: 'Client satisfaction' },
+    { value: '3 min', label: 'Average response time' },
+    { value: '21+', label: 'Projects delivered' },
+  ],
+}
+
+// Certifications named on nexsate.com/partnerships. Text badges only — no
+// badge artwork is fabricated or implied beyond the names themselves.
+export const certStrip = {
+  tag: 'Certifications & partnerships',
+  title: 'Credentials you can verify',
+  items: [
+    { name: 'CISSP', note: 'Security-certified professionals' },
+    { name: 'SOC 2 Type II', note: 'Independently audited controls' },
+    { name: 'Microsoft Partner', note: 'Cloud and Modern Work ecosystem' },
+  ],
+}
+
+// Homepage contact section copy. The form itself reuses `contactForm`, the
+// detail rows reuse Site settings — this key only owns the section heading.
+export const homeContact = {
+  tag: 'Contact us',
+  title: "We're here to help",
+  text: "Tell us about your IT environment and a nexsate expert will be in touch. We have offices in Alberta, Edmonton — and the power to support your business, no matter the location.",
+}
+
+// The Home Page document names six sectors and the live site lists five
+// more (consulting, non-profit, telemedicine, fintech, education), all given
+// compact pages here. Professional Services still has no source document or
+// page, so it stays unlisted rather than invented.
 export const industriesStrip = {
   tag: 'Industries we serve',
   title: 'Solving IT challenges for the industries that keep business moving',
@@ -178,6 +302,11 @@ export const industriesStrip = {
     { label: 'Transportation & Logistics', href: pageHref('Transportation & Logistics'), note: 'Dispatch and fleet' },
     { label: 'Healthcare', href: pageHref('Healthcare'), note: 'Patient service' },
     { label: 'Financial Services', href: pageHref('Banks & Insurance'), note: 'Confidentiality first' },
+    { label: 'Consulting Providers', href: pageHref('Consulting Providers'), note: 'Advisory firms' },
+    { label: 'Non-Profit', href: pageHref('Non-Profit'), note: 'Mission-first IT' },
+    { label: 'Telemedicine', href: pageHref('Telemedicine'), note: 'Virtual care' },
+    { label: 'Fintech', href: pageHref('Fintech'), note: 'Security-forward' },
+    { label: 'Education', href: pageHref('Education'), note: 'Connected learning' },
   ],
 }
 

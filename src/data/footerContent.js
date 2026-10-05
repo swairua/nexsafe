@@ -39,6 +39,7 @@ export const footerColumns = [
       link('Backup & Disaster Recovery'),
       link('Software Development, ERP & CRM Solutions'),
       link('ERP Solutions'),
+      { label: 'Software & App Development', href: '#/app-development' },
     ],
   },
   {
@@ -48,15 +49,20 @@ export const footerColumns = [
       link('Healthcare'),
       link('Industrial & Manufacturing'),
       link('Transportation & Logistics'),
+      link('Consulting Providers'),
+      link('Non-Profit'),
+      link('Telemedicine'),
+      link('Fintech'),
+      link('Education'),
     ],
   },
   {
     heading: 'Company',
     links: [
       link('About Us'),
-      link('Our Mission'),
-      link('Core Values'),
-      link('Our Process'),
+      link('Success Story'),
+      link('Blog'),
+      link('Help and FAQ'),
     ],
   },
 ]

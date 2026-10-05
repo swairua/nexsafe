@@ -1,9 +1,7 @@
-// Service pages — copy from the client-supplied service documents in
-// logoandcontent/ ("Services & Solutions", "Managed IT Services", "Cloud
-// Services", "Cybersecurity", "Security", "Network Management", "Backup &
-// Disaster Recovery", "Automation", "Digital Transformation", "ERP Solutions",
-// "Software Development, ERP & CRM Solutions", "Gaining Efficiency").
-// Each page keeps its source document's own headings and wording.
+// Service pages. The "Services & Solutions" overview is ported from
+// nexsate.com/solutions/ (headline, intro, service cards and closing section are
+// the source site's own wording). The remaining pages keep the copy from the
+// client-supplied service documents in logoandcontent/.
 const eyebrow = 'IT solutions'
 
 export const servicePages = [
@@ -12,11 +10,17 @@ export const servicePages = [
     title: 'Services & Solutions',
     eyebrow,
     intro:
-      'Nexsate Technologies is your trusted partner for managed IT, cybersecurity, cloud technology, telecommunications, and fibre connectivity.',
+      'Take your company to new heights by investing in our reliable and efficient technology solutions.',
+    // Hero image carried over from the source Solutions page.
+    image: {
+      src: '/uploads/solutions-hero.jpg',
+      alt: 'Technology team working together at a long desk in a modern office',
+    },
     sections: [
       {
         heading: 'Comprehensive IT services that enable and transform business',
         body: [
+          'Nexsate Technologies is your trusted partner for managed IT, cybersecurity, cloud technology, telecommunications, and fibre connectivity.',
           'We enable, transform, and empower businesses with reliable technology solutions designed to improve productivity, strengthen security, reduce downtime, and help your organization save time and money.',
           'When we say comprehensive, we mean end-to-end services and support in your technology environment. Nexsate helps your business stay productive, connected, and secure, so you can operate with confidence, reduce downtime, and focus on growth.',
         ],
@@ -26,40 +30,57 @@ export const servicePages = [
         body: [
           'Nexsate turns technology into business advantage through focused solutions that deliver results and solve real-world problems. Our solutions are designed to help businesses grow, adapt, and succeed in a changing digital environment.',
         ],
-      },
-      {
-        heading: 'Focus on your business. We will handle the technology behind it.',
-        body: [
-          'When technology becomes a source of stress, downtime, security risk, or wasted resources, Nexsate Technologies helps get your business back on track. When we professionally manage your IT, it empowers your business to confidently:',
-        ],
-        list: [
-          'Focus on growth while we manage the technology behind your daily operations.',
-          'Minimize downtime with reliable systems, proactive support, and faster resolution.',
-          'Strengthen cybersecurity by protecting users, devices, systems, and business data.',
-          'Improve efficiency by streamlining workflows, support, systems, and daily operations.',
-          'Enhance connectivity with reliable network, cloud, and telecommunications support.',
-          'Plan ahead with expert guidance that supports long-term technology success.',
-        ],
-      },
-      {
-        heading: 'Benefits of managed IT services provided by Nexsate',
+        // The eight service cards from the source page. Their "Learn more"
+        // links are mapped to the matching page in this site; Telecommunication
+        // and IT Consulting & Advisory have no counterpart here, so they are
+        // shown without a link rather than pointing somewhere unrelated.
         items: [
           {
-            title: 'Specialized experts',
-            text: 'Access experienced IT professionals: from cybersecurity, cloud service, networks and fibre connectivity, applications - in one place.',
+            title: 'End-user Support',
+            text: 'Free up your internal resources to focus on the business by letting us handle day to day support services, management, and monitoring of your IT.',
+            href: '#/managed-it-services',
           },
           {
-            title: 'Predictable costs',
-            text: 'Plan your IT spending with fixed monthly support based on the service level your business requires.',
+            title: 'Cloud Services',
+            text: 'The right technology, implemented properly, appropriately managed and monitored, can lead to significant gains in growth',
+            href: '#/cloud-services',
           },
           {
-            title: 'Proactive support',
-            text: 'Reduce downtime by identifying, monitoring, and resolving technology issues before they disrupt operations.',
+            title: 'Software Development',
+            text: 'Our experts can identify vulnerabilities, assess risks, and implement robust security measures to safeguard your systems and data.',
+            href: '#/software-development-erp-crm-solutions',
           },
           {
-            title: 'Responsive service',
-            text: 'Get fast, reliable support when issues arise, so your team can stay productive and focused.',
+            title: 'Network Management',
+            text: 'Our web development services can help you establish an impactful online presence and reach your target audience effectively.',
+            href: '#/network-management',
           },
+          {
+            title: 'Cybersecurity',
+            text: 'We can help you create a customized mobile app that aligns with your brand and goals, with expertise in various mobile platforms.',
+            href: '#/cybersecurity',
+          },
+          {
+            title: 'Back-up & Disaster Recovery',
+            text: 'With our expertise in cloud technologies, we can help you find the right cloud solutions that meet your business needs and goals.',
+            href: '#/backup-disaster-recovery',
+          },
+          {
+            title: 'Telecommunication',
+            text: 'Reliable fibre, cabling, and connectivity support that helps your business stay connected, communicate effectively, and operate with confidence.',
+          },
+          {
+            title: 'IT Consulting & Advisory',
+            text: 'Strategic IT consulting and advisory support that helps your business plan smarter, reduce risk, improve efficiency, and make confident technology decisions.',
+          },
+        ],
+      },
+      {
+        heading: 'Why choose services from Nexsate?',
+        body: [
+          'Nexsate provides businesses with an edge over the competition with a variety of benefits.',
+          'Opting for outsourced IT services improve the efficiency of business and build trust with customers and clients.',
+          'Our services can be tailored to meet specific needs to match your specific goals.',
         ],
       },
     ],
