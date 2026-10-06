@@ -100,12 +100,25 @@ if ($uri !== '/' && is_file($candidate)) {
     return true;
 }
 
-// 4b) Legacy WordPress cutover: 301 the old nexsate.com URLs to their hash
+// 4a) Admin entry point: serve the admin SPA for /admin.
+if ($uri === '/admin') {
+    $admin = $dist . '/admin.html';
+    if (is_file($admin)) {
+        header('Content-Type: text/html; charset=utf-8');
+        header('Content-Length: ' . (string) filesize($admin));
+        readfile($admin);
+        return true;
+    }
+}
+
+// 4) Legacy WordPress cutover: 301 the old nexsate.com URLs to their hash
 // routes so bookmarks and search results keep working. Exact paths first
 // (trailing slash and case insensitive), then prefix fallbacks for the
 // unported archives (events, team, categories, leftover stubs) which land on
 // the closest hub. Anything else falls through to the SPA fallback below.
 static $legacyExact = [
+    // Admin entry point: serve the admin SPA instead of the public site.
+    'admin' => '/admin.html',
     // Company
     'about' => '/#/about-us',
     'why-us' => '/#/about-us',
