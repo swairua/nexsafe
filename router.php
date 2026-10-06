@@ -32,6 +32,7 @@ if (preg_match('#^/api/([A-Za-z0-9_-]+\.php)$#', $uri, $m)) {
             require $script;
             return true;
         }
+        header('X-Router-Missing: ' . $script);
     }
     http_response_code(404);
     header('Content-Type: application/json; charset=utf-8');
