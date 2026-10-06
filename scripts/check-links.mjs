@@ -6,7 +6,7 @@
 import { allPages } from '../src/data/pages.js'
 import { navItems } from '../src/data/navItems.js'
 import { footerColumns, footerLegal, promo } from '../src/data/footerContent.js'
-import { heroSlides, featuredCards, partnerStrip, industriesStrip, successStory, blogRow } from '../src/data/content.js'
+import { heroSlides, featuredCards, partnerStrip, industriesStrip, caseCards, successStory, blogRow } from '../src/data/content.js'
 import { pageHref } from '../src/data/slug.js'
 
 const known = new Set(allPages.map((p) => p.slug))
@@ -19,7 +19,9 @@ const checkHref = (href, where) => {
 
 for (const item of navItems) {
   for (const col of item.columns) {
-    for (const l of col.links) checkHref(l.href, `nav "${item.label}" / "${l.label}"`)
+    for (const l of col.links || []) checkHref(l.href, `nav "${item.label}" / "${l.label}"`)
+    for (const t of col.tiles || []) checkHref(t.href, `nav "${item.label}" / "${t.label}"`)
+    if (col.viewAll) checkHref(col.viewAll.href, `nav "${item.label}" / "${col.viewAll.label}"`)
   }
 }
 for (const col of footerColumns) {
@@ -33,6 +35,7 @@ checkHref(partnerStrip.cta.href, 'partner strip cta')
 checkHref(industriesStrip.cta.href, 'industries cta')
 for (const i of industriesStrip.items) checkHref(i.href, `industry "${i.label}"`)
 checkHref(successStory.cta.href, 'success story cta')
+for (const c of caseCards.items) checkHref(c.href, `case card "${c.title}"`)
 checkHref(blogRow.cta.href, 'blog row cta')
 
 for (const page of allPages) {
@@ -49,7 +52,11 @@ const linked = new Set()
 const collect = (href) => {
   if (typeof href === 'string' && href.startsWith('#/')) linked.add(href.slice(2))
 }
-for (const item of navItems) item.columns.forEach((c) => c.links.forEach((l) => collect(l.href)))
+for (const item of navItems) item.columns.forEach((c) => {
+  ;(c.links || []).forEach((l) => collect(l.href))
+  ;(c.tiles || []).forEach((t) => collect(t.href))
+  if (c.viewAll) collect(c.viewAll.href)
+})
 for (const col of footerColumns) col.links.forEach((l) => collect(l.href))
 footerLegal.forEach(collect)
 for (const page of allPages) (page.related || []).forEach(collect)

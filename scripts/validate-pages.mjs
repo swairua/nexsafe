@@ -8,6 +8,7 @@ import {
   heroSlides,
   benefits,
   industriesStrip,
+  caseCards,
   partnerStrip,
   successStory,
 } from '../src/data/content.js'
@@ -28,6 +29,16 @@ const checkRoute = (where, href) => {
     errors.push(`${where}: not a page route (${href})`)
   } else if (!pages[href.slice(2)]) {
     errors.push(`${where}: unknown page ${href}`)
+  }
+}
+
+// Nav leaves may also point at homepage section anchors (the menu footer
+// uses #it-solutions etc.), so both shapes are accepted there.
+const checkNavLeaf = (where, href) => {
+  if (href.startsWith('#/')) {
+    if (!pages[href.slice(2)]) errors.push(`${where}: unknown page ${href}`)
+  } else if (!knownAnchors.has(href)) {
+    errors.push(`${where}: unknown nav target ${href}`)
   }
 }
 
@@ -63,11 +74,14 @@ for (const p of allPages) {
   }
 }
 
-// 2) Nav: top-level = real homepage anchors; every leaf = resolvable route.
+// 2) Nav: top-level = real homepage anchors; every leaf = resolvable route
+// (page route #/slug or homepage anchor like the menu footer uses).
 for (const item of navItems) {
   if (!knownAnchors.has(item.href)) errors.push(`nav top '${item.label}': unexpected href ${item.href}`)
   for (const col of item.columns) {
-    for (const l of col.links) checkRoute(`nav leaf '${l.label}'`, l.href)
+    for (const l of col.links || []) checkNavLeaf(`nav leaf '${l.label}'`, l.href)
+    for (const t of col.tiles || []) checkNavLeaf(`nav leaf '${t.label}'`, t.href)
+    if (col.viewAll) checkNavLeaf(`nav leaf '${col.viewAll.label}'`, col.viewAll.href)
   }
 }
 
@@ -88,6 +102,18 @@ const ctas = [
 ]
 for (const c of ctas) checkRoute(`cta '${c.label}'`, c.href)
 for (const i of industriesStrip.items) checkRoute(`industry '${i.label}'`, i.href)
+for (const c of caseCards.items) checkRoute(`case card '${c.title}'`, c.href)
+if (caseCards.items.length !== 3) {
+  errors.push(`caseCards: expected 3 cards, got ${caseCards.items.length}`)
+}
+for (const c of caseCards.items) {
+  if (!c.title || !c.brand || !c.href || !c.image || !c.tint) {
+    errors.push(`case card '${c.title || '?'}': incomplete (title/brand/href/image/tint required)`)
+  }
+  if (c.image && !c.image.startsWith('/uploads/')) {
+    errors.push(`case card '${c.title}': image must point at a local /uploads/ file`)
+  }
+}
 
 // 5) Homepage content shape.
 if (benefits.length !== 4) errors.push(`benefits: expected 4, got ${benefits.length}`)
@@ -122,6 +148,7 @@ const blob = JSON.stringify({
   heroSlides,
   benefits,
   industriesStrip,
+  caseCards,
   partnerStrip,
   successStory,
   stackGroups,
@@ -131,9 +158,10 @@ if (blob.includes('"#\\""') || blob.includes("'#'")) {
 }
 
 // 7) Coverage: every nav leaf label matches a registered page title.
+const navLeaves = (c) => [...(c.links || []), ...(c.tiles || []), ...(c.viewAll ? [c.viewAll] : [])]
 for (const item of navItems) {
   for (const col of item.columns) {
-    for (const l of col.links) {
+    for (const l of navLeaves(col)) {
       if (!l.href.startsWith('#/')) continue
       const target = pages[l.href.slice(2)]
       if (target && !target.title) errors.push(`nav leaf '${l.label}': page has no title`)
@@ -143,7 +171,7 @@ for (const item of navItems) {
 
 console.log(`Pages: ${allPages.length} total, ${Object.keys(pages).length} unique`)
 console.log(
-  `Nav leaves checked: ${navItems.flatMap((i) => i.columns.flatMap((c) => c.links)).length}; ` +
+  `Nav leaves checked: ${navItems.flatMap((i) => i.columns.flatMap((c) => navLeaves(c))).length}; ` +
     `footer links: ${footerColumns.flatMap((c) => c.links).length + footerLegal.length}`,
 )
 if (errors.length) {

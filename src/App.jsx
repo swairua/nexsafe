@@ -10,8 +10,7 @@ import PartnerStrip from './components/sections/PartnerStrip.jsx'
 import ProofBand from './components/sections/ProofBand.jsx'
 import IndustriesStrip from './components/sections/IndustriesStrip.jsx'
 import StackSection from './components/sections/StackSection.jsx'
-import SuccessStorySection from './components/sections/SuccessStorySection.jsx'
-import BlogRow from './components/sections/BlogRow.jsx'
+import InsightsSection from './components/sections/InsightsSection.jsx'
 import AnswersBand from './components/sections/AnswersBand.jsx'
 import StartBand from './components/sections/StartBand.jsx'
 import HomeContact from './components/sections/HomeContact.jsx'
@@ -42,9 +41,9 @@ function parseHash(hash = '') {
 
 /**
  * Homepage band order (11 content bands + conversion run-up):
- * Hero > Intro > Services > Industries > Partners > Proof (stats, certs,
- * awards) > Stack (heading card overlaps the proof band) > Story (with
- * testimonials) > Blog > Answers (promo + FAQ) > Start (values + routers)
+ * Hero > Intro > Services > Industries > Partners (technology
+ * strip) > Proof (stats, certs, awards) > Stack (heading card overlaps the proof band)
+ * > Insights (resource-library grid) > Answers (promo + FAQ) > Start (values + routers)
  * > Contact form > Connect band. Footer + legal bar close every route.
  * Inner routes ('#/<slug>') replace main with PageView.
  */
@@ -97,8 +96,7 @@ export default function App() {
           <PartnerStrip />
           <ProofBand />
           <StackSection />
-          <SuccessStorySection />
-          <BlogRow />
+          <InsightsSection />
           <AnswersBand />
           <StartBand />
           <HomeContact />

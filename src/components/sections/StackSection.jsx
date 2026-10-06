@@ -1,36 +1,22 @@
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
-import { vendorLogos } from "../../data/partners.js"
 
 /**
- * One vendor chip. CMS-stored groups may carry vendors as plain name strings
- * (predating the logo fields), so both shapes resolve through the canonical
- * name -> logo map. Unknown names render text-only - never a broken image.
+ * One vendor chip: the platform name as text only. Logos stay out of the
+ * chips until each vendor's approved mark is supplied (see stack.js audit
+ * note) — CMS groups may carry vendors as plain strings or { name } objects,
+ * so both shapes resolve to the name.
  */
 function VendorChip({ vendor }) {
   const name = typeof vendor === "string" ? vendor : vendor?.name
+  const logo = typeof vendor === "string" ? "" : vendor?.logo
   if (!name) return null
-  const src = (typeof vendor === "object" && vendor?.logo) || vendorLogos[name]
   return (
-    <li className="flex items-center gap-2.5 rounded-full bg-shell-gray-100 py-1.5 pl-2 pr-4 text-sm font-semibold text-shell-gray-700">
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white">
-        {src ? (
-          <img
-            src={src}
-            alt=""
-            width="24"
-            height="24"
-            loading="lazy"
-            className="max-h-6 max-w-[28px] object-contain"
-            onError={(e) => { e.currentTarget.style.visibility = 'hidden' }}
-          />
-        ) : (
-          <span aria-hidden="true" className="text-sm font-extrabold text-shell-gray-500">
-            {name.slice(0, 1)}
-          </span>
-        )}
-      </span>
+    <li className="inline-flex items-center gap-2 rounded-full bg-shell-gray-100 px-3 py-1.5 text-sm font-semibold text-shell-gray-700">
+      {logo ? (
+        <img src={logo} alt="" className="h-4 w-4 shrink-0 rounded object-contain" loading="lazy" />
+      ) : null}
       {name}
     </li>
   )

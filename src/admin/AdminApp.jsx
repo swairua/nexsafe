@@ -26,6 +26,7 @@ const CONTENT_KEYS = [
   { key: "partnerStrip", label: "Partner strip", group: "Home" },
   { key: "partners", label: "Partners", group: "Home" },
   { key: "industriesStrip", label: "Industries", group: "Home" },
+  { key: "caseCards", label: "Case cards", group: "Home" },
   { key: "stackGroups", label: "Technology stack", group: "Home" },
   { key: "stackSection", label: "Stack heading", group: "Home" },
   { key: "successStory", label: "Success story", group: "Home" },

@@ -20,7 +20,7 @@ const EMPTY = {
   consent: false,
 }
 
-export default function ContactForm() {
+export default function ContactForm({ simple = false } = {}) {
   const { contactForm } = useContent()
   const [form, setForm] = useState(EMPTY)
   const [status, setStatus] = useState("")
@@ -37,7 +37,7 @@ export default function ContactForm() {
     e.preventDefault()
     const name = `${form.firstName} ${form.lastName}`.trim()
     if (!name || !form.email) { setStatus(contactForm.requiredText); return }
-    if (!form.consent) { setStatus(contactForm.consentRequired); return }
+    if (!simple && !form.consent) { setStatus(contactForm.consentRequired); return }
     setBusy(true); setStatus(""); setDone(false)
     try {
       const r = await fetch(apiUrl("messages.php"), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, email: form.email, phone: form.phone, company: form.company, subject: form.subject, priority: form.priority, message: form.message, action: "create" }) })
@@ -64,15 +64,19 @@ export default function ContactForm() {
         <label className={L + " sm:col-span-2"}>{contactForm.subjectLabel}<select value={form.subject} onChange={set("subject")} className={F + " mt-1"}>
           {options.map((opt) => <option key={opt} value={opt === options[0] ? "" : opt}>{opt}</option>)}
         </select></label>
-        <label className={L}>{contactForm.priorityLabel || "Priority"}<select value={form.priority} onChange={set("priority")} className={F + " mt-1"}>
-          <option value="">{contactForm.priorityPlaceholder || "Select priority"}</option>
-          {priorities.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
-        </select></label>
+        {!simple && (
+          <label className={L}>{contactForm.priorityLabel || "Priority"}<select value={form.priority} onChange={set("priority")} className={F + " mt-1"}>
+            <option value="">{contactForm.priorityPlaceholder || "Select priority"}</option>
+            {priorities.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+          </select></label>
+        )}
         <label className={L + " sm:col-span-2"}>{contactForm.messageLabel}<textarea rows={5} value={form.message} onChange={set("message")} className={F + " mt-1"} /></label>
-        <label className="flex gap-3 text-sm leading-relaxed text-shell-gray-700 sm:col-span-2">
-          <input type="checkbox" checked={form.consent} onChange={set("consent")} className="mt-1 h-4 w-4 shrink-0 accent-shell-red" />
-          <span>{contactForm.consentText}</span>
-        </label>
+        {!simple && (
+          <label className="flex gap-3 text-sm leading-relaxed text-shell-gray-700 sm:col-span-2">
+            <input type="checkbox" checked={form.consent} onChange={set("consent")} className="mt-1 h-4 w-4 shrink-0 accent-shell-red" />
+            <span>{contactForm.consentText}</span>
+          </label>
+        )}
         {status ? <p className={"sm:col-span-2 rounded-lg px-3 py-2 text-sm " + (done ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700")}>{status}</p> : null}
         <button type="submit" disabled={busy} className="sm:col-span-2 justify-self-start rounded-lg bg-shell-gray-900 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-shell-red disabled:opacity-50">{busy ? contactForm.sendingLabel : contactForm.submitLabel}</button>
       </form>

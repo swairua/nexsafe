@@ -23,14 +23,15 @@ the code rather than invented.
 | `about` | Benefits (the four principles) |
 | `company` | IntroBand (the "EnableIT. Transform. Empower." statement) |
 | `it-solutions` | CardGrid (the six service cards) |
-| `partners` | PartnerStrip (vendor wall — roster from `src/data/partners.js`) |
+| `partners` | PartnerStrip (auto-scrolling technology marquee — logo slots show the admin-uploaded mark per vendor, placeholder until then; roster from `src/data/partners.js`) |
 | `industries` | IndustriesStrip (four sectors + corporate-colour sweep button) |
 | `capabilities` | StackSection (the four technology-stack groups) |
-| `insights` | SuccessStorySection (the client case study) |
+| `insights` | InsightsSection (resource-library grid) |
 | `support` | PromoBanner (closing CTA) |
 
-Homepage order: Hero -> benefits -> intro band -> services grid -> partners ->
-industries -> stack -> success story -> promo -> footer.
+Homepage order: Hero -> benefits -> intro band -> services grid -> industries ->
+technology strip (partners) -> proof (stats/certs/awards) -> stack ->
+insights -> promo -> footer.
 
 Breadcrumbs on inner pages map eyebrow -> anchor via `SECTION_ANCHORS` in
 `PageView.jsx` (Company / IT solutions / Industries / Insights / Support;

@@ -149,12 +149,14 @@ export const featuredCards = [
   },
 ]
 
-// Vendor wall copy. The roster itself lives in `partners.js` and is rendered
-// from there, so the headline here and the tiles can never drift apart.
+// Technology strip copy. The roster itself lives in `partners.js` and is
+// rendered from there, so the headline here and the cards can never drift
+// apart. Wording is deliberately neutral ("platforms we use and support") —
+// never a partnership or endorsement claim.
 export const partnerStrip = {
   tag: 'Using trusted technology',
   title: 'Using trusted technology to solve your IT challenges',
-  text: 'Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.',
+  text: 'Nexsate uses proven platforms and technology we support to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.',
   cta: { label: 'Explore our services', href: pageHref('Services & Solutions') },
 }
 
@@ -280,33 +282,95 @@ export const certStrip = {
   ],
 }
 
-// Homepage contact section copy. The form itself reuses `contactForm`, the
-// detail rows reuse Site settings — this key only owns the section heading.
+// Homepage contact section copy. The left column carries the partner pitch,
+// benefits, and process steps from nexsate.com; the right column renders the
+// consultation form (no priority/consent on the homepage).
 export const homeContact = {
   tag: 'Contact us',
-  title: "We're here to help",
-  text: "Tell us about your IT environment and a nexsate expert will be in touch. We have offices in Alberta, Edmonton — and the power to support your business, no matter the location.",
+  title: 'Partner with Us for Comprehensive IT',
+  text: "We're happy to answer any questions you may have and help you determine which of our services best fit your needs.",
+  phoneLabel: 'Call us at:',
+  benefits: [
+    'Client-oriented',
+    'Independent',
+    'Competent',
+    'Results-driven',
+    'Problem-solving',
+    'Transparent',
+  ],
+  steps: [
+    'We Schedule a call at your convenience',
+    'We do a discovery and consulting meeting',
+    'We prepare a proposal',
+  ],
 }
 
 // The Home Page document names six sectors and the live site lists five
 // more (consulting, non-profit, telemedicine, fintech, education), all given
 // compact pages here. Professional Services still has no source document or
 // page, so it stays unlisted rather than invented.
+//
+// Icon art mirrors the NanoSoft reference: cyan line icons, five downloaded
+// from the live theme into public/uploads (banking, capital-markets,
+// manufacturing, healthcare, higher-education) and four drawn in the same
+// two-tone style for the extra Nexsate sectors (logistics, consulting,
+// non-profit, fintech).
 export const industriesStrip = {
   tag: 'Industries we serve',
-  title: 'Solving IT challenges for the industries that keep business moving',
-  text: 'Technology support built around how your sector works — whether that is a clinic, a warehouse, a branch office or a dispatch floor.',
+  title: 'Managed IT services customized for your industry',
+  text: 'Our vertical solutions expertise allows your business to streamline workflow, and increase productivity. No matter the business, Nexsate has you covered with industry compliant solutions, customized to your company\u2019s specific needs.',
   cta: { label: 'All our services', href: pageHref('Services & Solutions') },
   items: [
-    { label: 'Industrial & Manufacturing', href: pageHref('Industrial & Manufacturing'), note: 'Production continuity' },
-    { label: 'Transportation & Logistics', href: pageHref('Transportation & Logistics'), note: 'Dispatch and fleet' },
-    { label: 'Healthcare', href: pageHref('Healthcare'), note: 'Patient service' },
-    { label: 'Financial Services', href: pageHref('Banks & Insurance'), note: 'Confidentiality first' },
-    { label: 'Consulting Providers', href: pageHref('Consulting Providers'), note: 'Advisory firms' },
-    { label: 'Non-Profit', href: pageHref('Non-Profit'), note: 'Mission-first IT' },
-    { label: 'Telemedicine', href: pageHref('Telemedicine'), note: 'Virtual care' },
-    { label: 'Fintech', href: pageHref('Fintech'), note: 'Security-forward' },
-    { label: 'Education', href: pageHref('Education'), note: 'Connected learning' },
+    { label: 'Banking & Insurance', href: pageHref('Banks & Insurance'), note: 'Let us show you how our experience.', icon: '/uploads/industry-banking.svg' },
+    { label: 'Capital Markets', href: pageHref('Banks & Insurance'), note: 'Banking and capital-markets IT.', icon: '/uploads/industry-capital-markets.svg' },
+    { label: 'Manufacturing', href: pageHref('Industrial & Manufacturing'), note: 'Production-floor continuity.', icon: '/uploads/industry-manufacturing.svg' },
+    { label: 'Healthcare', href: pageHref('Healthcare'), note: 'Patient-service systems.', icon: '/uploads/industry-healthcare.svg' },
+    { label: 'Higher Education', href: pageHref('Education'), note: 'Connected campus learning.', icon: '/uploads/industry-higher-education.svg' },
+    { label: 'Transportation & Logistics', href: pageHref('Transportation & Logistics'), note: 'Dispatch and fleet', icon: 'truck' },
+    { label: 'Consulting Providers', href: pageHref('Consulting Providers'), note: 'Advisory firms', icon: 'briefcase' },
+    { label: 'Non-Profit', href: pageHref('Non-Profit'), note: 'Mission-first IT', icon: 'heart' },
+    { label: 'Fintech', href: pageHref('Fintech'), note: 'Security-forward', icon: 'lock' },
+  ],
+}
+
+// Case-study cards mounted at the foot of the industries band (Image 2 lower
+// half): tinted photo tiles with a white brand wordmark, sitting at the
+// band's foot with no overhang into the next section (the technology strip
+// that follows it). Photos + tints reuse the uploads
+// roster so the
+// site keeps its no-remote-images rule; wordmarks are text since we have no
+// client logo files to use.
+export const caseCards = {
+  tag: 'Case studies',
+  title: 'We work with global brands',
+  items: [
+    {
+      title: 'Cloud migration saves money for health insurer',
+      brand: 'unilogo',
+      href: pageHref('Success Story'),
+      image: '/uploads/team-collaboration.jpg',
+      alt: 'Two colleagues celebrating a successful project together',
+      tint: '#71cbcc',
+      fallback: 'linear-gradient(135deg, #0e9f8a 0%, #71cbcc 130%)',
+    },
+    {
+      title: 'Remote support center for semiconductor provider',
+      brand: 'jarguar',
+      href: pageHref('Success Story'),
+      image: '/uploads/business-meeting.jpg',
+      alt: 'Business meeting with colleagues reviewing documents',
+      tint: '#29b2fe',
+      fallback: 'linear-gradient(135deg, #0693e3 0%, #29b2fe 130%)',
+    },
+    {
+      title: 'Subscription licensing unlocks spike in IT orders',
+      brand: 'ticketbox',
+      href: pageHref('Success Story'),
+      image: '/uploads/boardroom-meeting.jpg',
+      alt: 'Team meeting around a boardroom table',
+      tint: '#8a49a1',
+      fallback: 'linear-gradient(135deg, #5b2b82 0%, #8a49a1 130%)',
+    },
   ],
 }
 

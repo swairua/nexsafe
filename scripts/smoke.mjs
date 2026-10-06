@@ -72,7 +72,14 @@ try {
     return p.sections.every((s) => (s.items || []).every((i) => text.includes(i.title)))
   })
 
-  const leafHrefs = navItems.flatMap((i) => i.columns.flatMap((c) => c.links.map((l) => l.href)))
+  const navLeafHrefs = (c) => [...(c.links || []), ...(c.tiles || []), ...(c.viewAll ? [c.viewAll] : [])].map((l) => l.href)
+  const leafHrefs = navItems.flatMap((i) => i.columns.flatMap((c) => navLeafHrefs(c)))
+  // Top-level nav hrefs (#company, #industries…) are homepage section anchors,
+  // and column "View all" links reuse them — both are valid nav targets.
+  const knownSectionAnchors = new Set([
+    ...Object.values(defaultContent.sectionIds).map((id) => `#${id}`),
+    ...navItems.map((i) => i.href),
+  ])
   const deepHrefs = [
     ...footerColumns.flatMap((c) => c.links.map((l) => l.href)),
     ...footerLegal.map((l) => l.href),
@@ -97,16 +104,23 @@ try {
       'Cybersecurity',
       'Backup & Disaster Recovery',
     ].every((t) => plain.includes(t)),
-    'homepage renders the industry chips': [
-      'Industrial & Manufacturing',
-      'Transportation & Logistics',
+    'homepage renders the industry tiles': [
+      'Banking & Insurance',
+      'Capital Markets',
+      'Manufacturing',
       'Healthcare',
-      'Financial Services',
+      'Higher Education',
+    ].every((t) => plain.includes(t)),
+    'homepage renders the insights section': [
+      'Form our blog',
+      'More articles from resource library',
+      'View all article',
+      'by Linethemes',
     ].every((t) => plain.includes(t)),
     'homepage renders the technology stack': stackGroups.every((g) => plain.includes(g.title)),
-    'homepage renders the success story': plain.includes(
-      'The goal was not just to fix IT problems',
-    ),
+    'homepage renders the technology strip (auto-scroll, logo slots, no disclaimer)':
+      plain.includes('Using trusted technology to solve your IT challenges') &&
+      !plain.includes('platform capability, not partnership or endorsement'),
     'homepage renders every stack vendor': partners.every((p) => html.includes(p.name)),
     'homepage owns the section anchors the nav targets': navItems.every((i) =>
       html.includes(`id="${i.href.slice(1)}"`),
@@ -125,7 +139,7 @@ try {
     'blog topic filter narrows to the AI post':
       blogAll.includes('Sage') && blogAI.includes('ChatGPT') && !blogAI.includes('Sage'),
     'every nav leaf href is a resolvable #/ route': leafHrefs.every(
-      (h) => h.startsWith('#/') && pages[h.slice(2)],
+      (h) => (h.startsWith('#/') && pages[h.slice(2)]) || knownSectionAnchors.has(h),
     ),
     'every footer/legal href is a resolvable #/ route': deepHrefs.every(
       (h) => h.startsWith('#/') && pages[h.slice(2)],

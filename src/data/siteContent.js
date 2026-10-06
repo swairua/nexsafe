@@ -1,7 +1,7 @@
 // Canonical site content - the single source used as (a) the SPA default/fallback and
 // (b) the seed that populates the SQLite DB. Admin edits are fetched from
 // GET /api/content.php at runtime and override these values.
-import { heroSlides, benefits, featuredCards, partnerStrip, industriesStrip, successStory, blogRow, blogIndex, homeContact, testimonials, statsBand, certStrip, searchSuggestions, faqTeaser, awardsBand, noticeBar, deptSplit, valuesStrip } from "./content.js"
+import { heroSlides, benefits, featuredCards, partnerStrip, industriesStrip, caseCards, successStory, blogRow, blogIndex, homeContact, testimonials, statsBand, certStrip, searchSuggestions, faqTeaser, awardsBand, noticeBar, deptSplit, valuesStrip } from "./content.js"
 import { stackGroups } from "./stack.js"
 import { partners } from "./partners.js"
 import { promo, footerColumns, footerLegal } from "./footerContent.js"
@@ -151,12 +151,14 @@ export const defaultContent = {
       "Other",
     ],
     messageLabel: "Message",
+    messagePlaceholder: "To better assist you, please describe how we can help...",
     consentText:
       "I agree to the Privacy Policy and give my permission to process my personal data for the purposes specified in the Privacy Policy.",
     addressLabel: "Address",
     detailsHeading: "Contact details",
     detailEmailLabel: "Email us:",
     detailPhoneLabel: "Call us at:",
+    detailPhone: "1-825-570-4550",
     detailSupportLabel: "Support line:",
     detailAddressLabel: "Address",
     submitLabel: "Submit",
@@ -180,6 +182,7 @@ export const defaultContent = {
   partnerStrip,
   partners,
   industriesStrip,
+  caseCards,
   stackGroups,
   successStory,
   blogRow,

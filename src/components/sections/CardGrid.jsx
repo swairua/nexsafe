@@ -1,19 +1,29 @@
+import { useRef } from 'react'
 import { pageHref } from '../../data/slug.js'
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
-/** 3-up service card grid with image zoom, arrow-link hover, scroll reveals
- *  and staggered card entrances. Cards come from the Home Page document's
- *  own six-service list. */
+/** 3-up service card strip with manual horizontal scroll.
+ *  Landing view pins 3 cards; swipe/scroll (or the arrow buttons) reveals
+ *  the other three. Cards come from the Home Page document's six-service list. */
 export default function CardGrid() {
   const { featuredCards, servicesSection, sectionIds } = useContent()
+  const trackRef = useRef(null)
+
+  const nudge = (dir) => {
+    const el = trackRef.current
+    if (!el) return
+    const reduce = typeof window !== 'undefined'
+      && typeof window.matchMedia === 'function'
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    // One "page" = the visible width, so arrows page through 3 at a time.
+    el.scrollBy({ left: dir * el.clientWidth * 0.92, behavior: reduce ? 'auto' : 'smooth' })
+  }
+
   return (
     <section id={sectionIds.itSolutions} className="relative overflow-hidden bg-shell-gray-100 py-16 md:py-24">
-      {/* Soft colour pools — give the glass cards' backdrop-blur something to mirror */}
-      <div className="pointer-events-none absolute -right-24 top-16 h-80 w-80 rounded-full bg-shell-green/15 blur-3xl" aria-hidden="true" />
-      <div className="pointer-events-none absolute -left-20 bottom-16 h-64 w-64 rounded-full bg-shell-red/10 blur-3xl" aria-hidden="true" />
       <div className="shell-container relative">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <Reveal variant="fade">
@@ -22,41 +32,71 @@ export default function CardGrid() {
               {servicesSection.title}
             </h2>
           </Reveal>
-          <Reveal as="a" href={pageHref('Services & Solutions')} delay={2} className="arrow-link">
-            {servicesSection.linkLabel} <span className="arrow">→</span>
-          </Reveal>
+          <div className="flex items-center gap-3">
+            <Reveal as="a" href={pageHref('Services & Solutions')} delay={2} className="arrow-link">
+              {servicesSection.linkLabel} <span className="arrow">→</span>
+            </Reveal>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => nudge(-1)}
+                aria-label="Scroll services left"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-shell-red hover:bg-shell-red hover:text-white active:scale-95"
+              >
+                <span aria-hidden="true">←</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => nudge(1)}
+                aria-label="Scroll services right"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-shell-red hover:bg-shell-red hover:text-white active:scale-95"
+              >
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          ref={trackRef}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label={servicesSection.title}
+          tabIndex={0}
+          className="no-scrollbar -mx-1 flex snap-x snap-mandatory gap-7 overflow-x-auto scroll-smooth px-1 pb-3"
+        >
           {featuredCards.map((card, idx) => (
             <Reveal
               key={card.id}
-              as="a"
-              href={card.href}
               delay={(idx % 3) + 1}
-              className="glass-card group flex flex-col rounded-2xl"
+              className="w-[85%] shrink-0 snap-start sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)]"
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <SmartImage
-                  src={card.image}
-                  alt={card.alt || card.title}
-                  fallback={card.fallback}
-                  className="h-full w-full"
-                  imgClassName="transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="absolute left-4 top-4 rounded-full bg-shell-red px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
-                  {card.tag}
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="mb-3 text-lg font-bold leading-snug text-shell-gray-900 group-hover:text-shell-red md:text-xl">
-                  {card.title}
-                </h3>
-                <div className="mb-5 text-sm leading-relaxed text-shell-gray-700"><Rich>{card.text}</Rich></div>
-                <span className="arrow-link mt-auto text-sm">
-                  {card.linkLabel} <span className="arrow">→</span>
-                </span>
-              </div>
+              <a
+                href={card.href}
+                className="group flex h-full flex-col overflow-hidden rounded-[16px] bg-white shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_18px_44px_-12px_rgba(10,20,64,0.28)]"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <SmartImage
+                    src={card.image}
+                    alt={card.alt || card.title}
+                    fallback={card.fallback}
+                    className="h-full w-full"
+                    imgClassName="transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute left-4 top-4 rounded-full bg-shell-red px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                    {card.tag}
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="mb-3 text-lg font-bold leading-snug text-shell-gray-900 md:text-xl">
+                    {card.title}
+                  </h3>
+                  <div className="mb-5 text-sm leading-relaxed text-shell-gray-700"><Rich>{card.text}</Rich></div>
+                  <span className="arrow-link mt-auto text-sm">
+                    {card.linkLabel} <span className="arrow">→</span>
+                  </span>
+                </div>
+              </a>
             </Reveal>
           ))}
         </div>

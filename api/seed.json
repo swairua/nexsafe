@@ -2,11 +2,12 @@
   "settings": {
     "brandName": "Nexsate",
     "tagline": "EnableIT. Transform. Empower.",
-    "footerNote": "Enabling, transforming and empowering your business",
-    "copyright": "nexsate.com 2026 - front-end demo site.",
+    "footerNote": "Simplifying IT for a complex world.",
+    "copyright": "© 2026 Nexsate Technologies Inc. All rights reserved.",
     "domain": "nexsate.com",
     "email": "service@nexsate.com",
     "phone": "1-825-570-4550",
+    "supportPhone": "1-825-526-5555",
     "address": "1253 91 St. SW Edmonton, AB T6X 1E9",
     "logo": "/brand/nexsate-wordmark.png",
     "logoAlt": "Nexsate — EnableIT. Transform. Empower.",
@@ -15,8 +16,7 @@
     "menuCta": {
       "label": "Talk to an expert",
       "href": "#/contact-us"
-    },
-    "supportPhone": "1-825-526-5555"
+    }
   },
   "sectionIds": {
     "top": "top",
@@ -140,6 +140,7 @@
     "home": "Home",
     "exploreMore": "Explore more",
     "readMore": "Read more",
+    "learnMore": "Learn more",
     "backToTop": "Back to top"
   },
   "notFound": {
@@ -152,36 +153,54 @@
     }
   },
   "cookieBanner": {
-    "text": "We use cookies (similar technologies) to collect and analyse information on our website's performance and functionality, to enhance and personalise your experience, and for marketing. By continuing to browse, you agree to our use of cookies.",
+    "text": "We use only the browser storage needed for the site to function, such as remembering your cookie choice. No tracking or advertising cookies — see our cookie policy for details.",
     "policyLabel": "Cookie policy",
     "policyHref": "#/cookie-policy",
     "manageLabel": "Manage settings",
     "acceptLabel": "Accept all cookies"
   },
   "contactForm": {
-    "title": "Talk to an expert",
-    "text": "Tell us what you need and we will get back to you.",
-    "nameLabel": "Name",
-    "emailLabel": "Email",
+    "title": "Schedule a Free Consultation",
+    "text": "",
+    "firstNameLabel": "First name",
+    "lastNameLabel": "Last name",
+    "companyLabel": "Company / Organization",
+    "emailLabel": "Company email",
     "phoneLabel": "Phone",
-    "companyLabel": "Company",
-    "subjectLabel": "Subject",
-    "messageLabel": "Message",
-    "addressLabel": "Address",
-    "detailsHeading": "Contact details",
-    "submitLabel": "Send message",
-    "sendingLabel": "Sending...",
-    "requiredText": "Please enter your name and email address.",
-    "successText": "Thanks - your message has been sent. A nexsate expert will be in touch soon.",
-    "errorText": "Could not send your message right now.",
-    "detailSupportLabel": "Support line:",
+    "subjectLabel": "How Can We Help You?",
     "priorityLabel": "Priority",
     "priorityPlaceholder": "Select priority",
     "priorityOptions": [
       "Normal",
       "High",
       "Urgent"
-    ]
+    ],
+    "options": [
+      "Select Option",
+      "Managed Services",
+      "IT Consulting & Advisory",
+      "Cyber Security",
+      "Web Development",
+      "Mobile Development",
+      "Cloud Services",
+      "Other"
+    ],
+    "messageLabel": "Message",
+    "messagePlaceholder": "To better assist you, please describe how we can help...",
+    "consentText": "I agree to the Privacy Policy and give my permission to process my personal data for the purposes specified in the Privacy Policy.",
+    "addressLabel": "Address",
+    "detailsHeading": "Contact details",
+    "detailEmailLabel": "Email us:",
+    "detailPhoneLabel": "Call us at:",
+    "detailPhone": "1-825-570-4550",
+    "detailSupportLabel": "Support line:",
+    "detailAddressLabel": "Address",
+    "submitLabel": "Submit",
+    "sendingLabel": "Sending...",
+    "requiredText": "Please enter your name and email address.",
+    "consentRequired": "Please agree to the Privacy Policy before sending your message.",
+    "successText": "Thanks - your message has been sent. A nexsate expert will be in touch soon.",
+    "errorText": "Could not send your message right now."
   },
   "categoryImages": {
     "Company": {
@@ -307,7 +326,7 @@
       "image": "/uploads/circuit-board.jpg",
       "alt": "Close-up of a circuit board with glowing traces",
       "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 140%)",
-      "href": "#/software-development-erp-crm-solutions"
+      "href": "#/software-erp-app-development"
     },
     {
       "id": "card-network-management",
@@ -346,7 +365,7 @@
   "partnerStrip": {
     "tag": "Using trusted technology",
     "title": "Using trusted technology to solve your IT challenges",
-    "text": "Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.",
+    "text": "Nexsate uses proven platforms and technology we support to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.",
     "cta": {
       "label": "Explore our services",
       "href": "#/services-solutions"
@@ -355,171 +374,196 @@
   "partners": [
     {
       "name": "Amazon Web Services",
-      "logo": "/uploads/logo-aws.svg",
       "area": "Cloud & hosting platforms",
-      "group": "cloud-hosting"
+      "group": "cloud-hosting",
+      "logo": "/uploads/stack-icons/amazon-web-services.svg"
     },
     {
-      "name": "Microsoft Azure",
-      "logo": "/uploads/logo-azure.svg",
+      "name": "Microsoft",
       "area": "Cloud & hosting platforms",
-      "group": "cloud-hosting"
+      "group": "cloud-hosting",
+      "logo": "/uploads/stack-icons/microsoft-azure.svg"
     },
     {
       "name": "Google Cloud",
-      "logo": "/uploads/logo-google-cloud.svg",
       "area": "Cloud & hosting platforms",
-      "group": "cloud-hosting"
+      "group": "cloud-hosting",
+      "logo": "/uploads/stack-icons/google-cloud.svg"
     },
     {
       "name": "Salesforce",
-      "logo": "/uploads/logo-salesforce.svg",
       "area": "Cloud & hosting platforms",
-      "group": "cloud-hosting"
+      "group": "cloud-hosting",
+      "logo": "/uploads/stack-icons/salesforce.svg"
     },
     {
       "name": "Digital Ocean",
-      "logo": "/uploads/logo-digitalocean.svg",
       "area": "Cloud & hosting platforms",
-      "group": "cloud-hosting"
+      "group": "cloud-hosting",
+      "logo": "/uploads/stack-icons/digital-ocean.svg"
     },
     {
       "name": "RackSpace",
-      "logo": "/uploads/logo-rackspace.svg",
       "area": "Cloud & hosting platforms",
-      "group": "cloud-hosting"
-    },
-    {
-      "name": "Microsoft 365",
-      "logo": "/uploads/logo-m365.svg",
-      "area": "Collaboration & productivity",
-      "group": "collaboration"
-    },
-    {
-      "name": "Teams",
-      "logo": "/uploads/logo-teams.svg",
-      "area": "Collaboration & productivity",
-      "group": "collaboration"
-    },
-    {
-      "name": "Exchange Online",
-      "logo": "/uploads/logo-exchange.svg",
-      "area": "Collaboration & productivity",
-      "group": "collaboration"
-    },
-    {
-      "name": "SharePoint",
-      "logo": "/uploads/logo-sharepoint.svg",
-      "area": "Collaboration & productivity",
-      "group": "collaboration"
-    },
-    {
-      "name": "OneDrive",
-      "logo": "/uploads/logo-onedrive.svg",
-      "area": "Collaboration & productivity",
-      "group": "collaboration"
-    },
-    {
-      "name": "Office Apps",
-      "logo": "/uploads/logo-office.svg",
-      "area": "Collaboration & productivity",
-      "group": "collaboration"
-    },
-    {
-      "name": "Microsoft Defender",
-      "logo": "/uploads/logo-defender.svg",
-      "area": "Security & endpoint protection",
-      "group": "security"
+      "group": "cloud-hosting",
+      "logo": "/uploads/stack-icons/rackspace.svg"
     },
     {
       "name": "CrowdStrike",
-      "logo": "/uploads/logo-crowdstrike.svg",
       "area": "Security & endpoint protection",
-      "group": "security"
+      "group": "security",
+      "logo": "/uploads/stack-icons/crowdstrike.svg"
     },
     {
       "name": "Sophos",
-      "logo": "/uploads/logo-sophos.svg",
-      "area": "Network & connectivity",
-      "group": "network"
+      "area": "Security & endpoint protection",
+      "group": "security",
+      "logo": "/uploads/stack-icons/sophos.svg"
     },
     {
       "name": "SentinelOne",
-      "logo": "/uploads/logo-sentinelone.svg",
       "area": "Security & endpoint protection",
-      "group": "security"
+      "group": "security",
+      "logo": "/uploads/stack-icons/sentinelone.svg"
     },
     {
       "name": "Bitdefender",
-      "logo": "/uploads/logo-bitdefender.svg",
       "area": "Security & endpoint protection",
-      "group": "security"
+      "group": "security",
+      "logo": "/uploads/stack-icons/bitdefender.svg"
     },
     {
       "name": "Trend Micro Apex One",
-      "logo": "/uploads/logo-trendmicro.svg",
       "area": "Security & endpoint protection",
-      "group": "security"
+      "group": "security",
+      "logo": "/uploads/stack-icons/trend-micro-apex-one.svg"
     },
     {
       "name": "Cisco",
-      "logo": "/uploads/logo-cisco.svg",
       "area": "Network & connectivity",
-      "group": "network"
+      "group": "network",
+      "logo": "/uploads/stack-icons/cisco.svg"
     },
     {
       "name": "Fortinet",
-      "logo": "/uploads/logo-fortinet.svg",
       "area": "Network & connectivity",
-      "group": "network"
+      "group": "network",
+      "logo": "/uploads/stack-icons/fortinet.svg"
     },
     {
       "name": "Ubiquiti",
-      "logo": "/uploads/logo-ubiquiti.svg",
       "area": "Network & connectivity",
-      "group": "network"
+      "group": "network",
+      "logo": "/uploads/stack-icons/ubiquiti.svg"
     },
     {
       "name": "Dell",
-      "logo": "/uploads/logo-dell.svg",
       "area": "Network & connectivity",
-      "group": "network"
+      "group": "network",
+      "logo": "/uploads/stack-icons/dell.svg"
     },
     {
       "name": "WatchGuard",
-      "logo": "/uploads/logo-watchguard.svg",
       "area": "Network & connectivity",
-      "group": "network"
+      "group": "network",
+      "logo": "/uploads/stack-icons/watchguard.svg"
     }
   ],
   "industriesStrip": {
     "tag": "Industries we serve",
-    "title": "Solving IT challenges for the industries that keep business moving",
-    "text": "Technology support built around how your sector works — whether that is a clinic, a warehouse, a branch office or a dispatch floor.",
+    "title": "Managed IT services customized for your industry",
+    "text": "Our vertical solutions expertise allows your business to streamline workflow, and increase productivity. No matter the business, Nexsate has you covered with industry compliant solutions, customized to your company’s specific needs.",
     "cta": {
       "label": "All our services",
       "href": "#/services-solutions"
     },
     "items": [
       {
-        "label": "Industrial & Manufacturing",
-        "href": "#/industrial-manufacturing",
-        "note": "Production continuity"
+        "label": "Banking & Insurance",
+        "href": "#/banks-insurance",
+        "note": "Let us show you how our experience.",
+        "icon": "/uploads/industry-banking.svg"
       },
       {
-        "label": "Transportation & Logistics",
-        "href": "#/transportation-logistics",
-        "note": "Dispatch and fleet"
+        "label": "Capital Markets",
+        "href": "#/banks-insurance",
+        "note": "Banking and capital-markets IT.",
+        "icon": "/uploads/industry-capital-markets.svg"
+      },
+      {
+        "label": "Manufacturing",
+        "href": "#/industrial-manufacturing",
+        "note": "Production-floor continuity.",
+        "icon": "/uploads/industry-manufacturing.svg"
       },
       {
         "label": "Healthcare",
         "href": "#/healthcare",
-        "note": "Patient service"
+        "note": "Patient-service systems.",
+        "icon": "/uploads/industry-healthcare.svg"
       },
       {
-        "label": "Financial Services",
-        "href": "#/banks-insurance",
-        "note": "Confidentiality first"
+        "label": "Higher Education",
+        "href": "#/education",
+        "note": "Connected campus learning.",
+        "icon": "/uploads/industry-higher-education.svg"
+      },
+      {
+        "label": "Transportation & Logistics",
+        "href": "#/transportation-logistics",
+        "note": "Dispatch and fleet",
+        "icon": "truck"
+      },
+      {
+        "label": "Consulting Providers",
+        "href": "#/consulting-providers",
+        "note": "Advisory firms",
+        "icon": "briefcase"
+      },
+      {
+        "label": "Non-Profit",
+        "href": "#/non-profit",
+        "note": "Mission-first IT",
+        "icon": "heart"
+      },
+      {
+        "label": "Fintech",
+        "href": "#/fintech",
+        "note": "Security-forward",
+        "icon": "lock"
+      }
+    ]
+  },
+  "caseCards": {
+    "tag": "Case studies",
+    "title": "We work with global brands",
+    "items": [
+      {
+        "title": "Cloud migration saves money for health insurer",
+        "brand": "unilogo",
+        "href": "#/success-story",
+        "image": "/uploads/team-collaboration.jpg",
+        "alt": "Two colleagues celebrating a successful project together",
+        "tint": "#71cbcc",
+        "fallback": "linear-gradient(135deg, #0e9f8a 0%, #71cbcc 130%)"
+      },
+      {
+        "title": "Remote support center for semiconductor provider",
+        "brand": "jarguar",
+        "href": "#/success-story",
+        "image": "/uploads/business-meeting.jpg",
+        "alt": "Business meeting with colleagues reviewing documents",
+        "tint": "#29b2fe",
+        "fallback": "linear-gradient(135deg, #0693e3 0%, #29b2fe 130%)"
+      },
+      {
+        "title": "Subscription licensing unlocks spike in IT orders",
+        "brand": "ticketbox",
+        "href": "#/success-story",
+        "image": "/uploads/boardroom-meeting.jpg",
+        "alt": "Team meeting around a boardroom table",
+        "tint": "#8a49a1",
+        "fallback": "linear-gradient(135deg, #5b2b82 0%, #8a49a1 130%)"
       }
     ]
   },
@@ -531,27 +575,27 @@
       "vendors": [
         {
           "name": "Amazon Web Services",
-          "logo": "/uploads/logo-aws.svg"
+          "logo": "/uploads/stack-icons/amazon-web-services.svg"
         },
         {
           "name": "Microsoft Azure",
-          "logo": "/uploads/logo-azure.svg"
+          "logo": "/uploads/stack-icons/microsoft-azure.svg"
         },
         {
           "name": "Google Cloud",
-          "logo": "/uploads/logo-google-cloud.svg"
+          "logo": "/uploads/stack-icons/google-cloud.svg"
         },
         {
           "name": "Salesforce",
-          "logo": "/uploads/logo-salesforce.svg"
+          "logo": "/uploads/stack-icons/salesforce.svg"
         },
         {
           "name": "Digital Ocean",
-          "logo": "/uploads/logo-digitalocean.svg"
+          "logo": "/uploads/stack-icons/digital-ocean.svg"
         },
         {
           "name": "RackSpace",
-          "logo": "/uploads/logo-rackspace.svg"
+          "logo": "/uploads/stack-icons/rackspace.svg"
         }
       ]
     },
@@ -562,27 +606,27 @@
       "vendors": [
         {
           "name": "Microsoft 365",
-          "logo": "/uploads/logo-m365.svg"
+          "logo": "/uploads/stack-icons/microsoft-365.svg"
         },
         {
           "name": "Teams",
-          "logo": "/uploads/logo-teams.svg"
+          "logo": "/uploads/stack-icons/teams.svg"
         },
         {
           "name": "Exchange Online",
-          "logo": "/uploads/logo-exchange.svg"
+          "logo": "/uploads/stack-icons/exchange-online.svg"
         },
         {
           "name": "SharePoint",
-          "logo": "/uploads/logo-sharepoint.svg"
+          "logo": "/uploads/stack-icons/sharepoint.svg"
         },
         {
           "name": "OneDrive",
-          "logo": "/uploads/logo-onedrive.svg"
+          "logo": "/uploads/stack-icons/onedrive.svg"
         },
         {
           "name": "Office Apps",
-          "logo": "/uploads/logo-office.svg"
+          "logo": "/uploads/stack-icons/office-apps.svg"
         }
       ]
     },
@@ -593,27 +637,27 @@
       "vendors": [
         {
           "name": "Microsoft Defender",
-          "logo": "/uploads/logo-defender.svg"
+          "logo": "/uploads/stack-icons/microsoft-defender.svg"
         },
         {
           "name": "CrowdStrike",
-          "logo": "/uploads/logo-crowdstrike.svg"
+          "logo": "/uploads/stack-icons/crowdstrike.svg"
         },
         {
           "name": "Sophos",
-          "logo": "/uploads/logo-sophos.svg"
+          "logo": "/uploads/stack-icons/sophos.svg"
         },
         {
           "name": "SentinelOne",
-          "logo": "/uploads/logo-sentinelone.svg"
+          "logo": "/uploads/stack-icons/sentinelone.svg"
         },
         {
           "name": "Bitdefender",
-          "logo": "/uploads/logo-bitdefender.svg"
+          "logo": "/uploads/stack-icons/bitdefender.svg"
         },
         {
           "name": "Trend Micro Apex One",
-          "logo": "/uploads/logo-trendmicro.svg"
+          "logo": "/uploads/stack-icons/trend-micro-apex-one.svg"
         }
       ]
     },
@@ -624,27 +668,27 @@
       "vendors": [
         {
           "name": "Cisco",
-          "logo": "/uploads/logo-cisco.svg"
+          "logo": "/uploads/stack-icons/cisco.svg"
         },
         {
           "name": "Fortinet",
-          "logo": "/uploads/logo-fortinet.svg"
+          "logo": "/uploads/stack-icons/fortinet.svg"
         },
         {
           "name": "Sophos",
-          "logo": "/uploads/logo-sophos.svg"
+          "logo": "/uploads/stack-icons/sophos.svg"
         },
         {
           "name": "Ubiquiti",
-          "logo": "/uploads/logo-ubiquiti.svg"
+          "logo": "/uploads/stack-icons/ubiquiti.svg"
         },
         {
           "name": "Dell",
-          "logo": "/uploads/logo-dell.svg"
+          "logo": "/uploads/stack-icons/dell.svg"
         },
         {
           "name": "WatchGuard",
-          "logo": "/uploads/logo-watchguard.svg"
+          "logo": "/uploads/stack-icons/watchguard.svg"
         }
       ]
     }
@@ -671,6 +715,153 @@
     "image": "/uploads/business-meeting.jpg",
     "alt": "Business meeting with colleagues reviewing documents",
     "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 130%)"
+  },
+  "blogRow": {
+    "tag": "From our blog",
+    "title": "Case studies and insights from the field",
+    "text": "How better IT alignment helps growing businesses — plus practical guidance on security, cloud, and everyday IT.",
+    "cta": {
+      "label": "View all articles",
+      "href": "#/blog"
+    }
+  },
+  "blogIndex": {
+    "tag": "From our blog",
+    "title": "Insights that help you do more",
+    "text": "Practical guidance on cybersecurity, cloud, and managed IT — plus case studies showing how better IT alignment helps growing businesses."
+  },
+  "homeContact": {
+    "tag": "Contact us",
+    "title": "Partner with Us for Comprehensive IT",
+    "text": "We're happy to answer any questions you may have and help you determine which of our services best fit your needs.",
+    "phoneLabel": "Call us at:",
+    "benefits": [
+      "Client-oriented",
+      "Independent",
+      "Competent",
+      "Results-driven",
+      "Problem-solving",
+      "Transparent"
+    ],
+    "steps": [
+      "We Schedule a call at your convenience",
+      "We do a discovery and consulting meeting",
+      "We prepare a proposal"
+    ]
+  },
+  "testimonials": {
+    "tag": "Testimonials",
+    "title": "What our customers say",
+    "text": "Rated 4.9 out of 5 across client reviews.",
+    "items": [
+      {
+        "quote": "I've been a customer for more than a decade. Nexsate is an example of the way Managed Services should be done. They do their very best to make sure you succeed. If there's an issue, they step in immediately. We will continue to be a customer for years to come.",
+        "name": "John Labkins",
+        "role": "Partner & CEO, Telecommunication Company"
+      },
+      {
+        "quote": "Nexsate has been an outstanding partner. Their team is professional, knowledgeable and customer-service driven. Nexsate proactive collaborative approach has been critical in helping us build an IT infrastructure that enables our success today and supports our long-term positioning strategy.",
+        "name": "Amanda Parks",
+        "role": "Network Manager, Healthcare Organization"
+      },
+      {
+        "quote": "Nexsate implemented such a powerful platform that we had no break in service when our employees had to work from home due to the COVID-19 pandemic. We weren't concerned about how to shift to a remote working environment because Nexsate facilitated a seamless transition.",
+        "name": "David Morandes",
+        "role": "CEO & Founder, Skole App"
+      }
+    ]
+  },
+  "statsBand": {
+    "items": [
+      {
+        "value": "20+",
+        "label": "Years of experience"
+      },
+      {
+        "value": "98%",
+        "label": "Client satisfaction"
+      },
+      {
+        "value": "3 min",
+        "label": "Average response time"
+      },
+      {
+        "value": "21+",
+        "label": "Projects delivered"
+      }
+    ]
+  },
+  "certStrip": {
+    "tag": "Certifications & partnerships",
+    "title": "Credentials you can verify",
+    "items": [
+      {
+        "name": "CISSP",
+        "note": "Security-certified professionals"
+      },
+      {
+        "name": "SOC 2 Type II",
+        "note": "Independently audited controls"
+      },
+      {
+        "name": "Microsoft Partner",
+        "note": "Cloud and Modern Work ecosystem"
+      }
+    ]
+  },
+  "searchSuggestions": {
+    "title": "Suggested searches",
+    "items": [
+      "cloud services",
+      "cybersecurity",
+      "managed IT support",
+      "backup and recovery"
+    ]
+  },
+  "faqTeaser": {
+    "tag": "Common questions",
+    "title": "Answers, before you even ask",
+    "text": "How managed IT works, what it costs, and what happens when something breaks — straight from our FAQ.",
+    "cta": {
+      "label": "View all FAQs",
+      "href": "#/help-and-faq"
+    }
+  },
+  "awardsBand": {
+    "tag": "Industry recognition",
+    "title": "Recognized. Awarded. Trusted.",
+    "text": "Independent analysts, client-review platforms, and technology partners have recognized the work behind our client outcomes."
+  },
+  "noticeBar": {
+    "enabled": true,
+    "text": "Schedule a Free Consultation",
+    "href": "#/contact-us"
+  },
+  "deptSplit": {
+    "tag": "Two ways to work with us",
+    "title": "Fully managed or co-managed — your call",
+    "text": "Two primary services, one goal: technology that supports the way your business works.",
+    "outsource": {
+      "title": "Outsource all your IT",
+      "text": "Fully Managed IT Services — Nexsate monitors, manages, supports, and secures all IT systems and users for a fixed and predictable monthly fee.",
+      "cta": {
+        "label": "Explore managed IT",
+        "href": "#/managed-it-services"
+      }
+    },
+    "extend": {
+      "title": "Extend your internal IT",
+      "text": "Co-Managed IT Services — We support internal IT as an extension of your team. This role includes patching, repetitive tasks, one-off services, and special projects. We handle the backend while in-house IT manages everything else.",
+      "cta": {
+        "label": "Talk to an expert",
+        "href": "#/contact-us"
+      }
+    }
+  },
+  "valuesStrip": {
+    "tag": "Our Core Values",
+    "title": "What we stand by, on every engagement",
+    "text": "Our culture is built around four core values that differentiate us from our competition."
   },
   "promo": {
     "tag": "Simply enabling IT for a complex world",
@@ -732,7 +923,7 @@
             },
             {
               "label": "Software Development, ERP & CRM Solutions",
-              "href": "#/software-development-erp-crm-solutions"
+              "href": "#/software-erp-app-development"
             }
           ]
         }
@@ -741,9 +932,10 @@
     {
       "label": "What We Do",
       "href": "#it-solutions",
+      "layout": "solutions",
       "columns": [
         {
-          "heading": "Core services",
+          "heading": "Services",
           "links": [
             {
               "label": "Managed IT Services",
@@ -754,44 +946,84 @@
               "href": "#/cloud-services"
             },
             {
-              "label": "Cybersecurity",
-              "href": "#/cybersecurity"
-            }
-          ]
-        },
-        {
-          "heading": "Connect and protect",
-          "links": [
+              "label": "Software Development",
+              "href": "#/software-erp-app-development"
+            },
             {
               "label": "Network Management",
               "href": "#/network-management"
             },
             {
-              "label": "Backup & Disaster Recovery",
+              "label": "Cyber Security",
+              "href": "#/cybersecurity"
+            },
+            {
+              "label": "Backup & Disaster Management",
               "href": "#/backup-disaster-recovery"
             }
           ]
         },
         {
-          "heading": "Build and improve",
-          "links": [
+          "heading": "Business Challenges",
+          "tiles": [
             {
-              "label": "Software & App Development",
-              "href": "#/software-erp-app-development"
+              "label": "Digital Transformation",
+              "href": "#/digital-transformation",
+              "icon": "transform",
+              "blurb": "Modernize systems and processes"
+            },
+            {
+              "label": "Security",
+              "href": "#/cybersecurity",
+              "icon": "shield",
+              "blurb": "Protect users, devices and data"
             },
             {
               "label": "Automation",
-              "href": "#/automation"
-            },
-            {
-              "label": "Digital Transformation",
-              "href": "#/digital-transformation"
+              "href": "#/automation",
+              "icon": "gear",
+              "blurb": "Remove repetitive manual work"
             },
             {
               "label": "Gaining Efficiency",
-              "href": "#/gaining-efficiency"
+              "href": "#/gaining-efficiency",
+              "icon": "gauge",
+              "blurb": "Get more from your technology"
             }
           ]
+        },
+        {
+          "heading": "Industry Focus",
+          "links": [
+            {
+              "label": "Industry Manufacturing",
+              "href": "#/industrial-manufacturing"
+            },
+            {
+              "label": "Transportation & Logistics",
+              "href": "#/transportation-logistics"
+            },
+            {
+              "label": "Healthcare",
+              "href": "#/healthcare"
+            },
+            {
+              "label": "Banking, Finance & Insurance",
+              "href": "#/banks-insurance"
+            },
+            {
+              "label": "Consulting Providers",
+              "href": "#/consulting-providers"
+            },
+            {
+              "label": "Non Profit",
+              "href": "#/non-profit"
+            }
+          ],
+          "viewAll": {
+            "label": "View all",
+            "href": "#industries"
+          }
         }
       ]
     },
@@ -1055,45 +1287,130 @@
   "pages": {
     "about-us": {
       "slug": "about-us",
-      "title": "About Us",
+      "title": "Commitment to delivering excellence",
       "eyebrow": "Company",
-      "intro": "Nexsate’s underlying principle is simple: EnableIT. Transform. Empower.",
+      "intro": "Everyone has a story. Here is ours.",
       "sections": [
         {
-          "heading": "Commitment to delivering excellence",
+          "heading": "Our Philosophy",
           "body": [
-            "This foundation has continued to inspire our raison d’être since 2016, when the vision was first shaped by our Founder. Our believe is technology should make business easier, safer, and more productive. Our role is to help organizations reduce downtime, strengthen security, improve connectivity, support users, and create a more reliable technology environment for daily operations and future growth."
+            "Nexsate’s underlying principle is simple: Enable Technology. Transform Processes. Empower Institutions. This foundation has continued to inspire our raison d’être since 2016, when the vision was first shaped by our Founder.",
+            "Our believe is technology should make business easier, safer, and more productive. Our role is to help organizations reduce downtime, strengthen security, improve connectivity, support users, and create a more reliable technology environment for daily operations and future growth."
           ]
         },
         {
-          "heading": "Your trusted IT Partner. Earned through service.",
+          "heading": "Our Mission",
           "body": [
-            "At Nexsate, our strength is built on people, guided by purpose, and delivered through process. We combine technical expertise, honest guidance, and responsive partnership to help businesses work better, stay supported, and move forward with confidence."
+            "Our mission is to deliver reliable, responsive, and secure IT, software, and telecommunications solutions that help businesses improve operations, strengthen security, enhance connectivity, reduce disruption, and move forward with confidence."
           ]
         },
         {
-          "heading": "Why Us",
+          "heading": "Community Impact",
+          "body": [
+            "We are committed to being more than a service provider. Our goal is to be a trusted technology partner that helps businesses grow sustainably. Beyond the services we deliver, we aim to nurture talent by providing meaningful work experience and creating pathways for young professionals and individuals interested in building careers in IT.",
+            "We believe that strengthening the technology foundation of local organizations contributes to stronger businesses, better service delivery, more opportunities, and a more connected community."
+          ]
+        },
+        {
+          "heading": "Why US",
           "body": [
             "Nexsate is more than a service provider. We partner with you to transform and empower your business with the right technology, resources, and expertise. Through our pool of specialists across various technology stacks, we provide proactive and responsive support that helps reduce disruption, simplify operations, improve efficiency, strengthen security, and deliver dependable guidance for long-term growth."
           ]
+        },
+        {
+          "heading": "Our Core Values",
+          "body": [
+            "Our culture is built around four core values that differentiate us from our competition."
+          ],
+          "items": [
+            {
+              "title": "Integrity",
+              "text": "We believe trust is earned through honesty, transparency, and responsible action. Nexsate communicates clearly about system issues, pricing, project timelines, and service expectations. We protect client data with a security-first mindset and provide recommendations based on what each business truly needs, not what is most profitable."
+            },
+            {
+              "title": "Dependability",
+              "text": "We take ownership of the outcomes we deliver. When issues arise, we focus on resolving them quickly, professionally, and without shifting responsibility. Our team is committed to meeting service commitments, learning from challenges, improving internal processes, and reducing recurring problems for our clients."
+            },
+            {
+              "title": "Customer-Centric",
+              "text": "Technology support should make work easier, not more frustrating. We take time to understand each client’s operations, challenges, and priorities so we can provide patient, practical, and responsive support. Our goal is to empower clients, streamline daily work, and prevent disruptions before they affect the business."
+            },
+            {
+              "title": "Innovative",
+              "text": "Technology is always changing, and businesses need a partner that can adapt with them. Nexsate stays current with emerging tools, cloud solutions, cybersecurity trends, automation, and AI-supported technologies. We help clients modernize outdated processes, improve efficiency, and embrace smarter ways of working."
+            }
+          ]
+        },
+        {
+          "heading": "A team built on experience",
+          "body": [
+            "We’re continuing to build our network nationally, bringing together a vibrant team with best-in-class service and technical skills alike. With more than 800 employees across the US, our team is growing fast."
+          ]
+        },
+        {
+          "heading": "Better together",
+          "body": [
+            "We know that work is important, but so is play! We respect all of our partnerships, and we make every effort to engage in fun ways that solve critical problems and leave a smile on your face at the same time.",
+            "We love our job and love helping our clients. Life is just too short to not enjoy every minute!"
+          ]
+        }
+      ],
+      "image": {
+        "src": "/uploads/about-philosophy.jpg",
+        "alt": "Colleagues talking through a plan at a table"
+      },
+      "gallery": [
+        {
+          "src": "/uploads/about-experience.jpg",
+          "alt": "Team member working at a laptop in a bright office"
+        },
+        {
+          "src": "/uploads/about-together.jpg",
+          "alt": "Colleagues collaborating around a desk"
+        }
+      ],
+      "logos": [
+        {
+          "src": "/uploads/award-google.png",
+          "alt": "Google Premier Partner badge"
+        },
+        {
+          "src": "/uploads/award-clutch-top-1000.png",
+          "alt": "Clutch Top 1000 badge"
+        },
+        {
+          "src": "/uploads/award-forbes-2022.png",
+          "alt": "Forbes 2022 badge"
+        },
+        {
+          "src": "/uploads/award-clutch-top.png",
+          "alt": "Clutch Top badge"
+        },
+        {
+          "src": "/uploads/award-msp-ny-2022.png",
+          "alt": "NY NYC managed service providers 2022 badge"
         }
       ],
       "related": [
-        "our-mission",
-        "core-values",
-        "our-process",
-        "services-solutions"
+        "services-solutions",
+        "contact-us",
+        "help-and-faq"
       ]
     },
     "services-solutions": {
       "slug": "services-solutions",
       "title": "Services & Solutions",
       "eyebrow": "IT solutions",
-      "intro": "Nexsate Technologies is your trusted partner for managed IT, cybersecurity, cloud technology, telecommunications, and fibre connectivity.",
+      "intro": "Take your company to new heights by investing in our reliable and efficient technology solutions.",
+      "image": {
+        "src": "/uploads/solutions-hero.jpg",
+        "alt": "Technology team working together at a long desk in a modern office"
+      },
       "sections": [
         {
           "heading": "Comprehensive IT services that enable and transform business",
           "body": [
+            "Nexsate Technologies is your trusted partner for managed IT, cybersecurity, cloud technology, telecommunications, and fibre connectivity.",
             "We enable, transform, and empower businesses with reliable technology solutions designed to improve productivity, strengthen security, reduce downtime, and help your organization save time and money.",
             "When we say comprehensive, we mean end-to-end services and support in your technology environment. Nexsate helps your business stay productive, connected, and secure, so you can operate with confidence, reduce downtime, and focus on growth."
           ]
@@ -1102,41 +1419,54 @@
           "heading": "Complete integrated solutions that empower the future of business",
           "body": [
             "Nexsate turns technology into business advantage through focused solutions that deliver results and solve real-world problems. Our solutions are designed to help businesses grow, adapt, and succeed in a changing digital environment."
-          ]
-        },
-        {
-          "heading": "Focus on your business. We will handle the technology behind it.",
-          "body": [
-            "When technology becomes a source of stress, downtime, security risk, or wasted resources, Nexsate Technologies helps get your business back on track. When we professionally manage your IT, it empowers your business to confidently:"
           ],
-          "list": [
-            "Focus on growth while we manage the technology behind your daily operations.",
-            "Minimize downtime with reliable systems, proactive support, and faster resolution.",
-            "Strengthen cybersecurity by protecting users, devices, systems, and business data.",
-            "Improve efficiency by streamlining workflows, support, systems, and daily operations.",
-            "Enhance connectivity with reliable network, cloud, and telecommunications support.",
-            "Plan ahead with expert guidance that supports long-term technology success."
-          ]
-        },
-        {
-          "heading": "Benefits of managed IT services provided by Nexsate",
           "items": [
             {
-              "title": "Specialized experts",
-              "text": "Access experienced IT professionals: from cybersecurity, cloud service, networks and fibre connectivity, applications - in one place."
+              "title": "End-user Support",
+              "text": "Free up your internal resources to focus on the business by letting us handle day to day support services, management, and monitoring of your IT.",
+              "href": "#/managed-it-services"
             },
             {
-              "title": "Predictable costs",
-              "text": "Plan your IT spending with fixed monthly support based on the service level your business requires."
+              "title": "Cloud Services",
+              "text": "The right technology, implemented properly, appropriately managed and monitored, can lead to significant gains in growth",
+              "href": "#/cloud-services"
             },
             {
-              "title": "Proactive support",
-              "text": "Reduce downtime by identifying, monitoring, and resolving technology issues before they disrupt operations."
+              "title": "Software Development",
+              "text": "Smarter digital solutions that streamline operations, connect business systems, and support growth.",
+              "href": "#/software-erp-app-development"
             },
             {
-              "title": "Responsive service",
-              "text": "Get fast, reliable support when issues arise, so your team can stay productive and focused."
+              "title": "Network Management",
+              "text": "Connecting your business and keeping it connected in a secure, reliable, well-managed environment.",
+              "href": "#/network-management"
+            },
+            {
+              "title": "Cybersecurity",
+              "text": "Protecting your business, users, devices, and data in a secure and well-managed digital environment.",
+              "href": "#/cybersecurity"
+            },
+            {
+              "title": "Back-up & Disaster Recovery",
+              "text": "Protecting critical business data and preparing your organization to recover quickly from disruption.",
+              "href": "#/backup-disaster-recovery"
+            },
+            {
+              "title": "Telecommunication",
+              "text": "Reliable fibre, cabling, and connectivity support that helps your business stay connected, communicate effectively, and operate with confidence."
+            },
+            {
+              "title": "IT Consulting & Advisory",
+              "text": "Strategic IT consulting and advisory support that helps your business plan smarter, reduce risk, improve efficiency, and make confident technology decisions."
             }
+          ]
+        },
+        {
+          "heading": "Why choose services from Nexsate?",
+          "body": [
+            "Nexsate provides businesses with an edge over the competition with a variety of benefits.",
+            "Opting for outsourced IT services improve the efficiency of business and build trust with customers and clients.",
+            "Our services can be tailored to meet specific needs to match your specific goals."
           ]
         }
       ],
@@ -1206,14 +1536,6 @@
             {
               "title": "Microsoft 365 administration",
               "text": "Manage Microsoft 365 users, email, Teams, SharePoint, OneDrive, licences, permissions, and security settings across your business environment."
-            },
-            {
-              "title": "Network & connectivity support",
-              "text": "Maintain the technology that keeps your business connected, including Wi-Fi, routers, switches, firewalls, internet coordination, and internal network access."
-            },
-            {
-              "title": "Backup & recovery oversight",
-              "text": "Monitor backup activity, recovery readiness, alerts, storage usage, and restore support so important business data remains better protected."
             },
             {
               "title": "Vendor & technology coordination",
@@ -1290,16 +1612,8 @@
               "text": "Improving teamwork through better use of Microsoft Teams, SharePoint, OneDrive, shared workspaces, and cloud-based communication tools."
             },
             {
-              "title": "Cloud storage management",
-              "text": "Organizing cloud storage, reduce file confusion, manage permissions, and improve how business information is stored and accessed."
-            },
-            {
               "title": "Cloud cost & licence review",
               "text": "Reviewing cloud licences, subscriptions, storage usage, and service plans to reduce waste and improve value."
-            },
-            {
-              "title": "Scalable cloud environment",
-              "text": "Building a cloud setup that can support more users, locations, applications, data, and business activity as your company grows."
             }
           ]
         }
@@ -1348,8 +1662,13 @@
         {
           "heading": "From risk to resilience",
           "body": [
-            "Nexsate looks beyond basic protection to understand where your business is most exposed and what could be impacted if a cyber incident occurs. We then build a practical cybersecurity approach that prioritizes key risks, strengthens weak points, improves preparedness, and supports a safer, more resilient business environment.",
-            "Cyber threats move quickly, and weak security can expose your business to phishing, ransomware, account compromise, data loss, and disruption. Nexsate strengthens access, secures devices, monitors threats, reduces vulnerabilities, and applies practical controls to protect the technology your business depends on."
+            "Nexsate looks beyond basic protection to understand where your business is most exposed and what could be impacted if a cyber incident occurs. We then build a practical cybersecurity approach that prioritizes key risks, strengthens weak points, improves preparedness, and supports a safer, more resilient business environment."
+          ],
+          "list": [
+            "Incident response support with containment guidance and recovery coordination when issues occur",
+            "Data protection controls for sensitive information, secure storage, and safer file handling",
+            "Vulnerability and patch coordination that closes known gaps before they become risks",
+            "Ongoing security improvement as your business, users, systems, and tools change"
           ]
         },
         {
@@ -1383,7 +1702,6 @@
         }
       ],
       "related": [
-        "security",
         "managed-it-services",
         "network-management",
         "cloud-services"
@@ -1448,14 +1766,6 @@
             {
               "title": "Traffic & bandwidth management",
               "text": "Monitor usage, reduce congestion, and improve how bandwidth is used across business applications, cloud platforms, and connected devices."
-            },
-            {
-              "title": "Automated alerts",
-              "text": "Receive timely alerts when network issues, outages, device failures, or performance problems need attention."
-            },
-            {
-              "title": "Configuration review & growth planning",
-              "text": "Review network settings, capacity, and future requirements so the network can support more users, devices, locations, and business growth."
             }
           ]
         }
@@ -1520,14 +1830,6 @@
               "text": "Manage cloud-based backups for important business data, files, systems, and applications to improve data availability and reduce reliance on local storage only."
             },
             {
-              "title": "Server & workstation backup",
-              "text": "Protect business servers, desktops, and laptops by backing up important files, configurations, and system data needed for recovery."
-            },
-            {
-              "title": "Backup alerts & reporting",
-              "text": "Track backup status, failed jobs, storage usage, and warning signs through alerts and reports that make backup health easier to manage."
-            },
-            {
               "title": "Recovery testing",
               "text": "Test restore processes to confirm that backups are usable and important data can be recovered when needed."
             },
@@ -1541,8 +1843,7 @@
       "related": [
         "cloud-services",
         "cybersecurity",
-        "managed-it-services",
-        "security"
+        "managed-it-services"
       ]
     },
     "automation": {
@@ -1617,8 +1918,8 @@
         }
       ],
       "related": [
-        "software-development-erp-crm-solutions",
-        "erp-solutions",
+        "software-erp-app-development",
+        "automation",
         "digital-transformation",
         "gaining-efficiency"
       ]
@@ -1697,8 +1998,7 @@
       "related": [
         "cloud-services",
         "automation",
-        "erp-solutions",
-        "erp-solutions"
+        "software-erp-app-development"
       ]
     },
     "gaining-efficiency": {
@@ -1775,18 +2075,142 @@
       "related": [
         "automation",
         "managed-it-services",
-        "software-development-erp-crm-solutions",
+        "software-erp-app-development",
         "digital-transformation"
+      ]
+    },
+    "software-erp-app-development": {
+      "slug": "software-erp-app-development",
+      "title": "Software, ERP & App Development",
+      "eyebrow": "IT solutions",
+      "intro": "Build smarter digital solutions that streamline operations, connect business systems, improve customer experiences, and support growth.",
+      "image": {
+        "src": "/uploads/solutions-hero.jpg",
+        "alt": "Technology team working together at a long desk in a modern office"
+      },
+      "sections": [
+        {
+          "heading": "Custom software that fits the business",
+          "body": [
+            "Software should make your business easier to run. Nexsate builds practical solutions — and supports ERP and CRM implementation for SAP, Microsoft Dynamics 365, and other systems — around the way you operate."
+          ],
+          "items": [
+            {
+              "title": "Custom business solutions",
+              "text": "We design and build software solutions tailored to your business processes, users, goals, and day-to-day operations."
+            },
+            {
+              "title": "Process automation",
+              "text": "We help reduce manual work by automating workflows, approvals, reporting, repetitive tasks, and business processes."
+            },
+            {
+              "title": "Mobile apps",
+              "text": "Mobile app development for iOS and Android, plus hybrid apps that ship to both from one codebase."
+            },
+            {
+              "title": "Web applications",
+              "text": "Web applications for operations, customers, and partners — from portals to workflow tools."
+            },
+            {
+              "title": "System integration & scalability",
+              "text": "We connect applications, ERP, CRM, data sources, and business platforms to improve visibility, efficiency, and decision-making, while building solutions that can grow with your business."
+            },
+            {
+              "title": "ERP & CRM support",
+              "text": "We support the implementation, customization, and improvement of ERP and CRM systems that help manage operations, customers, sales, data, and workflows."
+            }
+          ]
+        },
+        {
+          "heading": "Core ERP capabilities",
+          "items": [
+            {
+              "title": "ERP planning & advisory",
+              "text": "Evaluate your business needs, current systems, workflows, and process gaps to define an ERP direction that supports better decisions, smoother implementation, and long-term value."
+            },
+            {
+              "title": "ERP implementation support",
+              "text": "Guide ERP setup, configuration, data preparation, user readiness, and rollout activities so the system is introduced in a structured way and adopted more smoothly by your team."
+            },
+            {
+              "title": "Process alignment",
+              "text": "Configure ERP workflows around your real business processes, making approvals, purchasing, inventory, finance, reporting, and daily operations easier to manage."
+            },
+            {
+              "title": "Reporting & business visibility",
+              "text": "Turn connected data into clear reports and dashboards that help your team understand performance and make better decisions."
+            }
+          ]
+        },
+        {
+          "heading": "ERP platforms we support",
+          "items": [
+            {
+              "title": "Microsoft Dynamics 365 support",
+              "text": "Implement, configure, integrate, and support Microsoft Dynamics 365 solutions that improve operations, customer management, reporting, workflows, and business process efficiency."
+            },
+            {
+              "title": "SAP support",
+              "text": "Implement, configure, integrate, and support SAP solutions to help businesses manage operations, reporting, users, workflows, and business processes more effectively."
+            },
+            {
+              "title": "ERP configuration & customization",
+              "text": "Configure ERP modules, workflows, permissions, forms, fields, and business rules so the system better reflects how your organization works."
+            },
+            {
+              "title": "Data migration & cleanup",
+              "text": "Prepare, organize, and migrate business data from spreadsheets, legacy systems, or disconnected platforms into a cleaner ERP environment."
+            },
+            {
+              "title": "ERP integration",
+              "text": "Connect ERP systems with CRM platforms, Microsoft 365, reporting tools, inventory systems, portals, websites, and other business applications."
+            },
+            {
+              "title": "User training & adoption support",
+              "text": "Support employees with guidance, documentation, and practical training so teams understand how to use the ERP system effectively in their daily work."
+            }
+          ]
+        },
+        {
+          "heading": "Selected work",
+          "body": [
+            "Recent delivery includes education and consumer products such as Scuolla, Jolie, and Skole — apps used daily by real audiences, supported beyond launch."
+          ]
+        },
+        {
+          "heading": "From idea to everyday use",
+          "body": [
+            "Nexsate starts by understanding the purpose, the people, and the process — then shapes requirements, designs, tests, rolls out, and improves after launch.",
+            "As your business changes, your software should adapt with it. Nexsate helps create flexible digital solutions that support new users, processes, customers, and growth without adding unnecessary complexity."
+          ]
+        },
+        {
+          "heading": "A team that ships",
+          "body": [
+            "An 80+ strong delivery team across design, engineering, and quality — sized to take on funded-company roadmaps as well as focused business builds.",
+            "Engagements run the same disciplined path as every Nexsate service: understand the need, design the solution, build in the open, and support it in production."
+          ]
+        }
+      ],
+      "related": [
+        "automation",
+        "digital-transformation",
+        "managed-it-services",
+        "contact-us"
       ]
     },
     "banks-insurance": {
       "slug": "banks-insurance",
-      "title": "Banks & Insurance",
+      "title": "Banking, Finance & Insurance",
       "eyebrow": "Industries",
       "intro": "Technology services for financial offices, insurance agencies, advisory firms, lending teams, claims departments, and client-facing organizations where confidentiality, uptime, and trust are essential.",
+      "image": {
+        "src": "/uploads/industry-banks-hero.jpg",
+        "alt": "Advisor reviewing financial documents at a desk in a modern office"
+      },
       "sections": [
         {
-          "heading": "Focus",
+          "heading": "Confidential systems that stay available",
           "body": [
             "Financial and insurance operations depend on accuracy, privacy, and timely access to information. Client records, applications, policies, claims, approvals, payments, reports, and communication all move through digital systems that must be properly managed.",
             "A delay in access, a failed workstation, a locked account, a misrouted document, or an exposed file can affect client service, internal workflow, and business confidence. Teams need technology that protects sensitive information while keeping work organized and accessible to the right people.",
@@ -1794,56 +2218,45 @@
           ]
         },
         {
-          "heading": "Technology that builds and protects trust",
+          "heading": "Technology That Builds and Protects Trust",
           "body": [
             "In financial services, trust is part of the service experience. Clients expect their information to be handled carefully, staff need controlled access to the right systems, and management needs confidence that technology is not creating unnecessary risk.",
-            "Nexsate helps financial and insurance teams manage user access, office systems, business applications, devices, communication tools, and data protection practices. The focus is to create a technology environment where information is easier to control, staff can work efficiently, and client service is supported by stronger digital safeguards.",
+            "Financial workflows require technology that keeps information organized, access controlled, records protected, and business activity moving with fewer interruptions. Nexsate provides the structure, support, and safeguards needed to reduce manual delays and maintain dependable client service.",
             "Our work can support branch offices, brokerage teams, advisory firms, claims teams, administrative departments, remote employees, and client-facing service environments."
           ]
         },
         {
-          "heading": "Digital systems for finance, policies, and claims",
+          "heading": "Digital Systems for Finance, Policies, and Claims",
           "body": [
             "Banking and insurance teams work through many moving parts: applications, client files, underwriting documents, payment details, policy updates, claims records, compliance tasks, email communication, and reporting.",
-            "Financial workflows require technology that keeps information organized, access controlled, records protected, and business activity moving with fewer interruptions. Nexsate provides the structure, support, and safeguards needed to reduce manual delays and maintain dependable client service.",
             "Our technicians can support secure office technology setup, including workstations, cabling, network equipment, printing, scanning, device deployment, and connectivity, with attention to reliability, access control, and confidentiality."
           ]
         },
         {
-          "heading": "Services for banks & insurance",
+          "heading": "Our IT services for banks & insurance",
           "items": [
             {
-              "title": "Financial service desk support",
+              "title": "Financial Service Desk Support",
               "text": "Support for advisors, brokers, tellers, claims staff, administrators, managers, and office teams handling daily technical issues."
             },
             {
-              "title": "Office network & branch connectivity",
-              "text": "Design and setup of office networks, Wi-Fi, firewalls, workstations, printers, meeting rooms, and multi-location connectivity."
-            },
-            {
-              "title": "Core application support",
+              "title": "Core Application Support",
               "text": "Support for banking platforms, insurance software, CRM systems, accounting tools, document systems, reporting platforms, and client management applications."
             },
             {
-              "title": "Access control & identity management",
+              "title": "Access Control & Identity Management",
               "text": "User accounts, permission levels, administrator access, multi-factor authentication, password policies, and secure sign-in practices."
             },
             {
-              "title": "Hardware procurement & device setup",
-              "text": "Sourcing, configuring, and deploying laptops, desktops, monitors, printers, scanners, phones, tablets, and office technology equipment."
-            },
-            {
-              "title": "Document management & workflow support",
-              "text": "Support for digital files, client records, forms, approvals, shared folders, document routing, and controlled information access."
-            },
-            {
-              "title": "Cybersecurity & compliance readiness",
+              "title": "Cybersecurity & Compliance Readiness",
               "text": "Security reviews, endpoint protection, email safeguards, data handling controls, user awareness, audit preparation, and risk reduction practices."
-            },
-            {
-              "title": "Automation & AI administrative workflows",
-              "text": "Automation and AI-supported processes for document sorting, reminders, reporting, approvals, client follow-ups, form handling, and internal task management."
             }
+          ]
+        },
+        {
+          "heading": "Strengthen Trust Across Every Client Interaction",
+          "body": [
+            "Financial and insurance businesses need technology that protects information, improves internal control, and supports dependable client service. A stronger digital environment gives teams better access to records, clearer workflows, safer communication, and more confidence in the systems behind daily business activity."
           ]
         }
       ],
@@ -1859,9 +2272,13 @@
       "title": "Healthcare",
       "eyebrow": "Industries",
       "intro": "Technology support for medical clinics, dental practices, pharmacies, therapy providers, diagnostic centres, and healthcare offices where patient service, privacy, and system access are critical.",
+      "image": {
+        "src": "/uploads/industry-healthcare-hero.jpg",
+        "alt": "Clinician using a tablet during a patient appointment"
+      },
       "sections": [
         {
-          "heading": "Focus",
+          "heading": "Care without system delays",
           "body": [
             "Healthcare environments depend on technology at every stage of the patient experience. Appointment booking, intake forms, digital charts, billing, imaging, prescriptions, referrals, communication, and reporting all rely on systems being available, secure, and easy for staff to use.",
             "When technology is unreliable, the impact is felt quickly. Front desk teams may struggle with scheduling, clinicians may lose access to records, patients may wait longer, and administrative work can pile up behind the scenes.",
@@ -1869,7 +2286,7 @@
           ]
         },
         {
-          "heading": "Reliable systems behind every patient visit",
+          "heading": "Reliable Systems Behind Every Patient Visit",
           "body": [
             "Healthcare teams need systems that support the rhythm of a busy practice. Staff must move between patient records, appointment schedules, forms, communication tools, billing platforms, and office devices without unnecessary delays.",
             "Nexsate helps healthcare organizations manage the technology behind patient intake, clinical documentation, staff access, secure communication, and office workflows. We focus on reducing confusion, improving system usability, and creating a more controlled environment for sensitive information.",
@@ -1877,47 +2294,37 @@
           ]
         },
         {
-          "heading": "Technology behind better patient experiences",
+          "heading": "Technology Behind Better Patient Experience",
           "body": [
             "A smooth patient experience depends on more than medical expertise. It also depends on working computers, secure logins, connected printers, reliable Wi-Fi, accessible records, functioning phones, stable applications, and protected data.",
             "Nexsate supports the systems and devices healthcare teams rely on before, during, and after each patient interaction. When hands-on work is required, our local service technicians can assist with workstation setup, cabling, device deployment, connectivity, maintenance, and office technology needs."
           ]
         },
         {
-          "heading": "Services for healthcare",
+          "heading": "Our IT services for healthcare",
           "items": [
             {
-              "title": "Clinical desk & staff support",
+              "title": "Clinical Desk & Staff Support",
               "text": "Support for reception teams, practitioners, administrators, billing staff, and office users dealing with daily technology concerns."
             },
             {
-              "title": "EMR, EHR & practice application support",
+              "title": "EMR, EHR & Practice Application Support",
               "text": "Support for electronic medical records, scheduling systems, billing platforms, reporting tools, patient portals, and practice management applications."
             },
             {
-              "title": "Secure access & privacy controls",
+              "title": "Secure Access & Privacy Controls",
               "text": "User permissions, account protection, multi-factor authentication, role-based access, and safeguards for sensitive patient and business information."
             },
             {
-              "title": "Medical office network & Wi-Fi",
-              "text": "Network setup and support for clinics, treatment rooms, reception areas, staff offices, guest access, and connected healthcare workspaces."
-            },
-            {
-              "title": "Hardware, printers & peripheral setup",
-              "text": "Procurement, configuration, and deployment of computers, tablets, printers, scanners, label printers, phones, monitors, and other office technology."
-            },
-            {
-              "title": "Backup & record recovery readiness",
+              "title": "Backup & Record Recovery Readiness",
               "text": "Protection planning for important practice data, digital records, files, cloud platforms, and systems that must be recoverable when problems occur."
-            },
-            {
-              "title": "Systems maintenance & update coordination",
-              "text": "Regular maintenance for devices, applications, operating systems, security updates, performance concerns, and technology health."
-            },
-            {
-              "title": "Digital forms, automation & AI admin workflows",
-              "text": "Automation and AI-supported administrative workflows for forms, reminders, document routing, reporting, task follow-ups, and non-clinical office processes."
             }
+          ]
+        },
+        {
+          "heading": "Protect the Practice Behind the Patient",
+          "body": [
+            "Healthcare teams need technology that supports trust, privacy, and smooth service delivery. A well-managed digital environment helps staff access the right information, serve patients more efficiently, reduce administrative pressure, and keep the practice prepared for daily demands."
           ]
         }
       ],
@@ -1930,19 +2337,23 @@
     },
     "industrial-manufacturing": {
       "slug": "industrial-manufacturing",
-      "title": "Industrial & Manufacturing",
+      "title": "Industry Manufacturing",
       "eyebrow": "Industries",
-      "intro": "Technology support for production teams, warehouses, offices, and industrial operations that cannot afford avoidable disruption.",
+      "intro": "Insightful and reliable manufacturer IT services for productive and effective business",
+      "image": {
+        "src": "/uploads/industry-manufacturing-hero.jpg",
+        "alt": "Production floor of a manufacturing plant"
+      },
       "sections": [
         {
-          "heading": "Focus",
+          "heading": "Production that never waits on IT",
           "body": [
             "You have orders to complete, shipments to move, production schedules to meet, and customers depending on you. Technology should support that work, not slow it down.",
             "Nexsate works with industrial and manufacturing businesses to strengthen the technology behind daily operations, from users and devices to production systems, warehouse connectivity, data access, and operational continuity. The goal is a more secure, organized, and dependable environment that supports productivity today and growth tomorrow."
           ]
         },
         {
-          "heading": "Your local industrial technology partner",
+          "heading": "Your Local Industrial Technology Partner",
           "body": [
             "Manufacturing and industrial teams need support that understands urgency, schedules, and the cost of disruption. A small technology issue can quickly affect communication, production flow, warehouse activity, shipping, reporting, or customer commitments.",
             "Nexsate provides responsive remote and on-site support for offices, warehouses, and industrial environments. We work with your team to keep users supported, systems organized, access properly managed, and technology issues addressed with clarity and accountability.",
@@ -1950,54 +2361,44 @@
           ]
         },
         {
-          "heading": "Industrial tech support built for operational continuity",
+          "heading": "Industrial Tech Support Built for Operational Continuity",
           "body": [
             "Technology disruptions can slow production, delay communication, and affect customer commitments. Nexsate reduces recurring issues, improves system reliability, and creates a more organized technology environment for industrial and manufacturing operations.",
-            "Our local service technicians can be on-site when hands-on support is needed, to handle installations, maintenance, hardware setup, software support, and network-related work. We focus on doing the job properly from the start, ensuring your systems work together reliably and support your operations."
+            "Our local service technicians can be on-site when hands-on support is needed, to handle installations, maintenance, hardware setup, software support, and network-related work. We focus on doing the job properly from the start, ensuring you’re your systems work together reliably and support your operations."
           ]
         },
         {
-          "heading": "Services for manufacturers",
+          "heading": "Our IT services for manufacturers",
           "items": [
             {
-              "title": "Help desk & user support",
+              "title": "Help Desk & User Support",
               "text": "Responsive support for office staff, warehouse teams, supervisors, and production users experiencing day-to-day technology issues."
             },
             {
-              "title": "System design & network setup",
-              "text": "Design and setup of reliable technology environments, including networks, workstations, servers, Wi-Fi, access points, and system connectivity."
-            },
-            {
-              "title": "Business software support",
+              "title": "Business Software Support",
               "text": "Support for ERP systems, inventory platforms, production software, accounting tools, reporting systems, and other business applications used in daily operations."
             },
             {
-              "title": "Hardware procurement & setup",
-              "text": "Sourcing, configuring, and deploying laptops, desktops, servers, printers, networking equipment, and other technology hardware required for business operations."
-            },
-            {
-              "title": "Cabling & connectivity",
-              "text": "Structured cabling, fibre connectivity coordination, network points, equipment connections, and connectivity support for offices, warehouses, and production areas."
-            },
-            {
-              "title": "Systems maintenance",
-              "text": "Ongoing maintenance of devices, systems, networks, software updates, patches, backups, and performance issues to keep technology operating reliably."
-            },
-            {
-              "title": "Cybersecurity compliance & controls",
-              "text": "Security reviews, access controls, endpoint protection, data protection, user permissions, and cybersecurity practices that support safer operations and compliance readiness."
-            },
-            {
-              "title": "Automation & AI workflow support",
+              "title": "Automation & AI Workflow Support",
               "text": "Automation and AI-supported solutions for repetitive tasks, approvals, reporting, data entry, alerts, inventory updates, document handling, and operational workflows."
+            },
+            {
+              "title": "Cybersecurity Compliance & Controls",
+              "text": "Security reviews, access controls, endpoint protection, data protection, user permissions, and cybersecurity practices that support safer operations and compliance readiness."
             }
+          ]
+        },
+        {
+          "heading": "Reduce technology waste improve performance",
+          "body": [
+            "A well-managed technology environment reduces recurring issues, improves response times, controls costs, and keeps daily operations better connected."
           ]
         }
       ],
       "related": [
         "network-management",
         "managed-it-services",
-        "erp-solutions",
+        "software-erp-app-development",
         "transportation-logistics"
       ]
     },
@@ -2006,9 +2407,13 @@
       "title": "Transportation & Logistics",
       "eyebrow": "Industries",
       "intro": "Technology support for dispatch teams, drivers, fleet operations, warehouses, terminals, and logistics businesses where timing, visibility, and communication matter.",
+      "image": {
+        "src": "/uploads/industry-transportation-hero.jpg",
+        "alt": "Freight yard and trucks at a logistics terminal"
+      },
       "sections": [
         {
-          "heading": "Focus",
+          "heading": "Freight visibility without gaps",
           "body": [
             "Transportation and logistics operations move quickly. Dispatchers need accurate information, drivers need dependable access, customers expect timely updates, and every delay can affect the next pickup, delivery, invoice, or service commitment.",
             "Behind every shipment is a chain of technology: dispatch systems, fleet platforms, mobile devices, tracking tools, warehouse scanners, shared documents, customer communication, and reporting. When those systems are not properly supported, teams lose visibility, communication slows down, and operations become harder to control.",
@@ -2016,7 +2421,7 @@
           ]
         },
         {
-          "heading": "Connected systems for faster logistics",
+          "heading": "Connected Systems for Faster Logistics",
           "body": [
             "Transportation operations depend on fast communication and accurate information. Dispatchers, drivers, warehouse staff, customer service teams, and managers all rely on connected systems to keep freight moving and customers informed.",
             "When technology falls behind, the impact can show up quickly through missed updates, delayed paperwork, routing confusion, poor device access, tracking gaps, or slower billing. Nexsate supports transportation businesses by keeping the digital tools behind dispatch, fleet coordination, documentation, and communication easier to manage.",
@@ -2027,44 +2432,35 @@
           "heading": "Technology that makes movement seamless",
           "body": [
             "Transportation businesses need technology that keeps pace with dispatch, drivers, warehouses, yards, and management. Nexsate supports the systems behind routing, tracking, communication, documentation, customer updates, and daily administration.",
-            "When hands-on work is required, our local service technicians can assist with device setup, cabling, network equipment, workstation deployment, connectivity, and maintenance — whether in the office, warehouse, yard, or field."
+            "When hands-on work is required, our local service technicians can assist with device setup, cabling, network equipment, workstation deployment, connectivity, and maintenance, whether in the office, warehouse, yard, or field.",
+            "Our local service techs can be on-site when needed, handling installations and maintenance. We do the job right the first time, setting your company up with the hardware, software, and networking solutions that seamlessly integrate all your tech."
           ]
         },
         {
-          "heading": "Services for transportation & logistics",
+          "heading": "Our IT services for Transporters",
           "items": [
             {
-              "title": "Dispatch & user support",
+              "title": "Dispatch & User Support",
               "text": "Support for dispatchers, office teams, customer service staff, warehouse users, managers, and mobile workers dealing with everyday technical issues."
             },
             {
-              "title": "Network design & site connectivity",
-              "text": "Design and setup of networks for offices, warehouses, yards, terminals, remote branches, and connected work areas."
-            },
-            {
-              "title": "TMS, WMS & fleet software support",
+              "title": "TMS, WMS & Fleet Software Support",
               "text": "Support for transportation management systems, warehouse platforms, fleet tools, routing software, accounting systems, customer portals, and reporting applications."
             },
             {
-              "title": "Hardware procurement & device setup",
-              "text": "Sourcing, configuring, and deploying desktops, laptops, tablets, printers, scanners, mobile devices, routers, switches, access points, and fleet-related technology."
-            },
-            {
-              "title": "Cabling, Wi-Fi & yard coverage",
+              "title": "Cabling, Wi-Fi & Yard Coverage",
               "text": "Structured cabling, fibre coordination, wireless coverage, network drops, equipment connections, and connectivity support for buildings, warehouses, docks, and yards."
             },
             {
-              "title": "Systems maintenance & availability",
-              "text": "Ongoing maintenance for workstations, servers, software, updates, patches, device health, access issues, and performance concerns."
-            },
-            {
-              "title": "Cybersecurity & compliance controls",
-              "text": "Security reviews, user permissions, endpoint protection, email protection, data safeguards, access controls, and cybersecurity practices that support safer logistics operations."
-            },
-            {
-              "title": "Automation & AI workflow support",
+              "title": "Automation & AI Workflow Support",
               "text": "Automation and AI-supported workflows for shipment updates, document handling, reporting, approvals, customer notifications, shared inbox activity, data entry, and operational alerts."
             }
+          ]
+        },
+        {
+          "heading": "Stronger Visibility in Every Shipment",
+          "body": [
+            "A stronger technology setup gives transportation and logistics teams better access to dispatch information, shipment records, customer communication, route data, and business systems. It reduces recurring issues, improves response times, limits avoidable costs, and keeps operations moving with fewer technology-related interruptions"
           ]
         }
       ],
@@ -2072,469 +2468,7 @@
         "network-management",
         "managed-it-services",
         "industrial-manufacturing",
-        "erp-solutions"
-      ]
-    },
-    "success-story": {
-      "slug": "success-story",
-      "title": "Success Story",
-      "eyebrow": "Insights",
-      "intro": "How better IT alignment helped a growing business improve security, productivity, and daily operations.",
-      "sections": [
-        {
-          "heading": "The challenge",
-          "body": [
-            "A growing business was finding it harder to manage its technology as operations expanded. Employees depended on email, cloud files, business applications, Wi-Fi, shared documents, and remote access every day, but the technology environment had become difficult to control.",
-            "The company was experiencing recurring IT issues, slow support response, unclear access permissions, scattered files, inconsistent backups, and growing cybersecurity concerns. Although the business had many of the tools it needed, those tools were not properly aligned with the way the team worked.",
-            "Nexsate Technologies was engaged to review the environment, identify gaps, and create a more reliable, secure, and organized IT foundation."
-          ]
-        },
-        {
-          "heading": "What the business was facing",
-          "body": [
-            "As the business grew, technology problems became more visible. Staff were losing time dealing with device issues, password problems, email concerns, file access confusion, and unreliable connectivity.",
-            "The company also had limited visibility into its cybersecurity position. User accounts, devices, cloud access, backups, and software updates were not being managed in a structured way.",
-            "The business needed more than quick fixes. It needed technology that supported daily operations and long-term growth."
-          ],
-          "list": [
-            "Recurring support issues affecting employee productivity",
-            "Weak visibility into devices, users, and systems",
-            "Inconsistent software updates and patching",
-            "Unclear file access and sharing permissions",
-            "Limited backup and recovery readiness",
-            "Growing concern around phishing, ransomware, and account compromise",
-            "No clear IT roadmap to support future growth"
-          ]
-        },
-        {
-          "heading": "Our approach",
-          "body": [
-            "Nexsate started by understanding how the business used technology every day. This included reviewing users, devices, Microsoft 365, email, cloud storage, network connectivity, security settings, backups, and support processes.",
-            "Rather than replacing everything at once, Nexsate focused on improvements that would create the most immediate value."
-          ]
-        },
-        {
-          "heading": "Five key areas",
-          "items": [
-            {
-              "title": "Strengthening IT support and visibility",
-              "text": "Nexsate helped organize how IT issues were reported, tracked, and resolved. Devices, users, systems, and recurring problems were reviewed to improve support response and reduce repeated disruptions. This gave the business better visibility into its IT environment and helped employees get support faster when problems occurred."
-            },
-            {
-              "title": "Improving cybersecurity controls",
-              "text": "Security controls were reviewed and strengthened across user accounts, devices, email, cloud access, and administrator permissions. Multi-factor authentication, safer sign-in practices, endpoint protection, email security, and access controls were improved to reduce exposure to common threats such as phishing, unauthorized access, and malware."
-            },
-            {
-              "title": "Organizing cloud and collaboration tools",
-              "text": "The company was already using cloud-based tools, but file access and collaboration were not properly structured. Nexsate helped improve how documents were stored, shared, and accessed across Microsoft 365, SharePoint, OneDrive, and Teams. This made it easier for employees to find information, collaborate securely, and work from different locations."
-            },
-            {
-              "title": "Improving backup and recovery readiness",
-              "text": "Backup processes were reviewed to identify gaps in protection and recovery planning. Nexsate helped define what data needed to be protected, how backups should be monitored, and what recovery priorities mattered most to the business. This gave the company a clearer path to restore important information if data loss, system failure, or ransomware occurred."
-            },
-            {
-              "title": "Creating a practical IT roadmap",
-              "text": "The final step was helping the business move from reactive IT support to a more planned approach. Nexsate identified technology priorities, improvement opportunities, security gaps, and future needs. This gave the company a clearer roadmap for managing IT investments, reducing risk, and supporting future growth."
-            }
-          ]
-        },
-        {
-          "heading": "The result",
-          "body": [
-            "With a more structured IT environment, the business gained better control over its technology.",
-            "Employees experienced fewer recurring issues, support became easier to manage, cloud tools became more organized, and security controls were strengthened. Management also gained better visibility into technology risks, costs, and improvement priorities."
-          ],
-          "list": [
-            "Faster and more organized IT support",
-            "Stronger cybersecurity protection",
-            "Better control over user access and permissions",
-            "Improved Microsoft 365 and cloud collaboration",
-            "More reliable backup and recovery planning",
-            "Fewer recurring technology disruptions",
-            "A clearer IT roadmap for growth"
-          ]
-        },
-        {
-          "heading": "Technology aligned with business growth",
-          "body": [
-            "“The goal was not just to fix IT problems. The goal was to create a technology environment that helped the business work better, stay protected, and grow with more confidence.”",
-            "This success story shows how the right IT approach can improve more than technology. It can support productivity, security, communication, business continuity, and long-term planning.",
-            "At Nexsate Technologies, we help businesses align their IT environment with the way they actually work. From managed IT support and cybersecurity to cloud services, backup and recovery, network management, and technology advisory, Nexsate delivers practical solutions that support daily operations and future growth."
-          ]
-        }
-      ],
-      "related": [
-        "managed-it-services",
-        "cybersecurity",
-        "cloud-services",
-        "backup-disaster-recovery"
-      ],
-      "date": "2026-09-18",
-      "excerpt": "A growing business had the tools it needed — but they were not aligned with how the team worked. How Nexsate built a more reliable, secure IT foundation.",
-      "topic": "Case Study"
-    },
-    "contact-us": {
-      "slug": "contact-us",
-      "title": "Contact us",
-      "eyebrow": "Support",
-      "intro": "Tell us about your environment, your users, and the technology challenges affecting daily operations — we will come back to you with a practical way forward.",
-      "sections": [
-        {
-          "heading": "Start a conversation",
-          "body": [
-            "Nexsate works with businesses across a range of industries to improve the technology behind daily operations. Whether you need day-to-day IT support, a security review, a cloud migration, or help connecting the systems you already own, the conversation starts the same way: understanding what you are trying to achieve and what is getting in the way."
-          ],
-          "list": [
-            "Managed IT services and day-to-day support",
-            "Cybersecurity, security and compliance readiness",
-            "Cloud services, Microsoft 365 and migration",
-            "Network management, cabling and connectivity",
-            "Backup, disaster recovery and business continuity",
-            "Software development, ERP, CRM and automation"
-          ]
-        },
-        {
-          "heading": "What to tell us",
-          "body": [
-            "The more we know about your business, the more useful our first response will be. It helps to have an idea of your user numbers, the systems you run, the locations you operate from, and the problems that are costing you the most time."
-          ],
-          "list": [
-            "How many users need support, and from how many locations",
-            "Which business systems and applications you depend on",
-            "What is currently causing disruption or delay",
-            "Whether you are looking for ongoing support or a specific project"
-          ]
-        },
-        {
-          "heading": "Contact us",
-          "list": [
-            "Call us at: 1-825-570-4550",
-            "Email us: service@nexsate.com",
-            "Schedule a free consultation"
-          ]
-        },
-        {
-          "heading": "Our locations",
-          "body": [
-            "We have offices in Alberta, Edmonton — we’d love to show you around sometime. Don’t see an office in your area? We have the power to support your business, no matter the location."
-          ]
-        },
-        {
-          "heading": "What happens next",
-          "body": [
-            "Every engagement starts the same way — no pressure, no obligation:"
-          ],
-          "list": [
-            "We schedule a call at your convenience",
-            "We hold a discovery and consulting meeting",
-            "We prepare a proposal"
-          ]
-        },
-        {
-          "heading": "Your benefits",
-          "body": [
-            "Working with Nexsate means a partner that is:"
-          ],
-          "list": [
-            "Client-oriented",
-            "Independent",
-            "Competent",
-            "Results-driven",
-            "Problem-solving",
-            "Transparent"
-          ]
-        }
-      ],
-      "related": [
-        "services-solutions",
-        "managed-it-services",
-        "about-us"
-      ]
-    },
-    "help-and-faq": {
-      "slug": "help-and-faq",
-      "title": "Help and FAQ",
-      "eyebrow": "Support",
-      "intro": "Common questions about working with Nexsate, answered as plainly as we answer them in person.",
-      "sections": [
-        {
-          "heading": "How we work",
-          "body": [
-            "We begin by understanding your business, your people, your systems, and the technology challenges affecting daily operations. From there, we assess your environment, plan the right approach, provide support, and recommend improvements that align with your goals, budget, and growth plans."
-          ]
-        },
-        {
-          "heading": "Frequently asked questions",
-          "items": [
-            {
-              "title": "Do we have to replace everything?",
-              "text": "No. Nexsate focuses on improvements that create the most immediate value rather than replacing everything at once. Often the biggest gains come from better configuration, clearer processes, stronger support and smarter use of the tools you already have."
-            },
-            {
-              "title": "How is pricing structured?",
-              "text": "Plan your IT spending with fixed monthly support based on the service level, users, systems and support needs of your business."
-            },
-            {
-              "title": "Do you provide on-site support?",
-              "text": "Yes. Our local service technicians can be on-site when hands-on support is needed for installations, maintenance, hardware setup, software support, cabling and network-related work — in the office, warehouse, yard or on site."
-            },
-            {
-              "title": "Do you support Microsoft 365?",
-              "text": "Yes. We manage Microsoft 365 users, email, Teams, SharePoint, OneDrive, licences, permissions and security settings, and coordinate Microsoft 365 backup for email, OneDrive, SharePoint and Teams."
-            },
-            {
-              "title": "Can you work with our existing tools?",
-              "text": "Yes. We review your current systems first and build around how your business actually operates, including ERP, CRM and line-of-business applications you already own."
-            }
-          ]
-        }
-      ],
-      "related": [
-        "contact-us",
-        "about-us",
-        "our-process"
-      ]
-    },
-    "privacy-policy": {
-      "slug": "privacy-policy",
-      "title": "Privacy Policy",
-      "eyebrow": "Legal",
-      "intro": "How Nexsate handles information provided through this website.",
-      "sections": [
-        {
-          "heading": "Information we collect",
-          "body": [
-            "This website is a front-end demonstration build. No accounts are created, no contact form submissions are transmitted, and no analytics or advertising trackers are embedded. If you contact Nexsate through the details published on this site, information you provide is used only to respond to your enquiry."
-          ]
-        },
-        {
-          "heading": "How we protect information",
-          "body": [
-            "Protecting client data with a security-first mindset is one of our core values. Client information is handled confidentially, is not shared with third parties, and is retained only for as long as it is needed to respond to an enquiry or deliver agreed work."
-          ]
-        },
-        {
-          "heading": "Your choices",
-          "body": [
-            "You can ask us at any time what information we hold about you, request its correction, or ask for it to be deleted. Contact details for Nexsate are published on the contact page."
-          ]
-        }
-      ],
-      "related": [
-        "contact-us",
-        "cookie-policy",
-        "terms-conditions"
-      ]
-    },
-    "cookie-policy": {
-      "slug": "cookie-policy",
-      "title": "Cookie policy",
-      "eyebrow": "Legal",
-      "intro": "What this website stores on your device.",
-      "sections": [
-        {
-          "heading": "Cookies in use",
-          "body": [
-            "This site does not use cookies to track you, and it embeds no third-party analytics or advertising scripts. Any browser storage is limited to what is needed for the site to function in the browser you are using."
-          ]
-        },
-        {
-          "heading": "Managing cookies",
-          "body": [
-            "You can clear or block cookies through your browser settings at any time. Because the site does not rely on cookies for tracking, blocking them will not prevent you from reading the content."
-          ]
-        }
-      ],
-      "related": [
-        "privacy-policy",
-        "terms-conditions"
-      ]
-    },
-    "terms-conditions": {
-      "slug": "terms-conditions",
-      "title": "Terms & Conditions",
-      "eyebrow": "Legal",
-      "intro": "The terms that apply to your use of this website.",
-      "sections": [
-        {
-          "heading": "Use of this site",
-          "body": [
-            "This website is published by Nexsate Technologies as an information resource about our services, industries and approach. Content is provided for general information. It does not constitute a quote, a contract for services, or technical advice tailored to your specific environment."
-          ]
-        },
-        {
-          "heading": "Accuracy of information",
-          "body": [
-            "We work to keep the information on this site accurate and current, but service scope, availability and platform support can change. Where exact scope, pricing or timings matter, please speak to us directly and we will confirm them in writing."
-          ]
-        },
-        {
-          "heading": "Intellectual property",
-          "body": [
-            "The Nexsate name, logo and site content belong to Nexsate Technologies. You may reference and link to this site; please do not reproduce the branding or substantial content without permission."
-          ]
-        }
-      ],
-      "related": [
-        "privacy-policy",
-        "cookie-policy",
-        "contact-us"
-      ]
-    },
-    "everyday-cybersecurity-for-growing-businesses": {
-      "slug": "everyday-cybersecurity-for-growing-businesses",
-      "title": "Everyday cybersecurity for growing businesses",
-      "eyebrow": "Insights",
-      "date": "2026-06-12",
-      "excerpt": "Phishing, ransomware, and account compromise target businesses of every size. Here is how practical controls protect email, devices, and cloud access.",
-      "intro": "Cybersecurity is now a core part of modern business operations — and the threats target businesses of every size.",
-      "image": {
-        "src": "/uploads/cybersecurity.jpg",
-        "alt": "Padlock security overlay on a laptop"
-      },
-      "sections": [
-        {
-          "heading": "What your business is up against",
-          "body": [
-            "Your email, devices, cloud platforms, passwords, applications, files, and business data all need protection from threats such as phishing, malware, ransomware, unauthorized access, and data loss.",
-            "Weak security can expose your business to phishing, ransomware, account compromise, data loss, and disruption — and cyber threats move quickly."
-          ]
-        },
-        {
-          "heading": "Practical controls that reduce risk",
-          "body": [
-            "Nexsate helps businesses strengthen their cybersecurity environment with practical controls that protect users, secure devices, reduce risk, and improve security readiness — focusing on prevention, visibility, secure access, threat protection, and structured support."
-          ],
-          "list": [
-            "Email and phishing protection that reduces malicious links, unsafe attachments, spam, and impersonation attempts",
-            "Secure access management through multi-factor authentication, safer sign-ins, and administrator controls",
-            "Endpoint and device security for laptops, desktops, servers, and mobile devices",
-            "Security monitoring and alerts that surface suspicious activity early",
-            "Security awareness guidance on phishing, password safety, and everyday habits"
-          ]
-        },
-        {
-          "heading": "From risk to resilience",
-          "body": [
-            "Nexsate looks beyond basic protection to understand where your business is most exposed and what could be impacted if a cyber incident occurs — then builds a practical approach that prioritizes key risks, strengthens weak points, and improves preparedness."
-          ]
-        }
-      ],
-      "related": [
-        "cybersecurity",
-        "managed-it-services",
-        "backup-disaster-recovery"
-      ],
-      "topic": "Cybersecurity"
-    },
-    "moving-your-business-to-the-cloud": {
-      "slug": "moving-your-business-to-the-cloud",
-      "title": "Moving your business to the cloud without disrupting daily work",
-      "eyebrow": "Insights",
-      "date": "2026-04-24",
-      "excerpt": "Cloud tools should make work faster and safer — not slower and harder to control. How a structured migration keeps email, files, and collaboration running.",
-      "intro": "Your team needs secure access to email, files, applications, and collaboration tools — in the office, remote, or on the move.",
-      "image": {
-        "src": "/uploads/office-space.jpg",
-        "alt": "Modern office space with desks and computers"
-      },
-      "sections": [
-        {
-          "heading": "When cloud tools slow work down",
-          "body": [
-            "When cloud tools are poorly managed, file access is confusing, servers are outdated, or data is not properly protected — daily work can become slower, less secure, and harder to control."
-          ]
-        },
-        {
-          "heading": "A structured way forward",
-          "body": [
-            "Nexsate helps businesses move, manage, secure, and improve their cloud environment — supporting cloud setup, migration, Microsoft 365, secure file access, cloud backup, collaboration tools, and ongoing management for greater flexibility and less reliance on physical infrastructure."
-          ],
-          "list": [
-            "Cloud migration and setup that moves email, files, and systems with less disruption",
-            "Microsoft 365 management across users, Teams, SharePoint, OneDrive, licences, and security settings",
-            "Secure file access and sharing so documents are stored, shared, and protected properly",
-            "Cloud backup and data protection with recovery support and access controls",
-            "Collaboration improvement through better use of Teams, SharePoint, and shared workspaces"
-          ]
-        },
-        {
-          "heading": "Built around how your team works",
-          "body": [
-            "Every business uses cloud technology differently. The goal is a cloud environment that is secure, flexible, manageable, and aligned with how your team works every day — ready to support future growth."
-          ]
-        }
-      ],
-      "related": [
-        "cloud-services",
-        "managed-it-services",
-        "backup-disaster-recovery"
-      ],
-      "topic": "Cloud"
-    },
-    "proactive-managed-it-support": {
-      "slug": "proactive-managed-it-support",
-      "title": "What proactive managed IT support looks like day to day",
-      "eyebrow": "Insights",
-      "date": "2026-02-14",
-      "excerpt": "Slow devices, email issues, and unclear support processes pull attention away from real work. How managed IT brings order back to everyday technology.",
-      "intro": "Technology problems can quickly affect productivity, communication, customer service, and daily operations.",
-      "image": {
-        "src": "/uploads/service-managed-it.jpg",
-        "alt": "IT technician supporting office users"
-      },
-      "sections": [
-        {
-          "heading": "The cost of reactive IT",
-          "body": [
-            "Slow devices, email issues, software problems, network interruptions, password challenges, missed updates, and unclear support processes can frustrate employees and pull attention away from important work."
-          ]
-        },
-        {
-          "heading": "Support that prevents problems first",
-          "body": [
-            "Nexsate manages the IT support your business relies on every day — users, devices, Microsoft 365, networks, security tools, backups, cloud platforms, and business systems — so your team gets timely help and issues are addressed before they cause bigger disruptions."
-          ],
-          "list": [
-            "Helpdesk and user support for everyday technology questions",
-            "Monitoring and maintenance that identifies issues earlier",
-            "Patch and update coordination that improves reliability and closes security gaps",
-            "Backup and recovery oversight so important data stays protected",
-            "IT documentation and improvement planning tied to business goals"
-          ]
-        },
-        {
-          "heading": "Less time on technology, more time on work",
-          "body": [
-            "When IT is properly managed, employees spend less time dealing with technical problems and more time doing productive work — with predictable monthly costs based on your users, systems, and support needs."
-          ]
-        }
-      ],
-      "related": [
-        "managed-it-services",
-        "network-management",
-        "cybersecurity"
-      ],
-      "topic": "Managed IT"
-    },
-    "blog": {
-      "slug": "blog",
-      "title": "Blog",
-      "eyebrow": "Insights",
-      "layout": "blog-index",
-      "intro": "Case studies and practical guidance on managed IT, cybersecurity, cloud, and the technology growing businesses run on.",
-      "sections": [
-        {
-          "heading": "Latest insights",
-          "body": [
-            "Browse our case studies and articles below, or talk to a nexsate expert about your own IT environment."
-          ]
-        }
-      ],
-      "related": [
-        "success-story",
-        "managed-it-services",
-        "contact-us"
+        "software-erp-app-development"
       ]
     },
     "consulting-providers": {
@@ -2717,6 +2651,443 @@
         "contact-us"
       ]
     },
+    "success-story": {
+      "slug": "success-story",
+      "title": "Success Story",
+      "eyebrow": "Insights",
+      "topic": "Case Study",
+      "date": "2026-09-18",
+      "excerpt": "A growing business had the tools it needed — but they were not aligned with how the team worked. How Nexsate built a more reliable, secure IT foundation.",
+      "intro": "How better IT alignment helped a growing business improve security, productivity, and daily operations.",
+      "sections": [
+        {
+          "heading": "The challenge",
+          "body": [
+            "A growing business was finding it harder to manage its technology as operations expanded. Employees depended on email, cloud files, business applications, Wi-Fi, shared documents, and remote access every day, but the technology environment had become difficult to control.",
+            "The company was experiencing recurring IT issues, slow support response, unclear access permissions, scattered files, inconsistent backups, and growing cybersecurity concerns. Although the business had many of the tools it needed, those tools were not properly aligned with the way the team worked.",
+            "Nexsate Technologies was engaged to review the environment, identify gaps, and create a more reliable, secure, and organized IT foundation."
+          ]
+        },
+        {
+          "heading": "What the business was facing",
+          "body": [
+            "As the business grew, technology problems became more visible. Staff were losing time dealing with device issues, password problems, email concerns, file access confusion, and unreliable connectivity.",
+            "The company also had limited visibility into its cybersecurity position. User accounts, devices, cloud access, backups, and software updates were not being managed in a structured way.",
+            "The business needed more than quick fixes. It needed technology that supported daily operations and long-term growth."
+          ],
+          "list": [
+            "Recurring support issues affecting employee productivity",
+            "Weak visibility into devices, users, and systems",
+            "Inconsistent software updates and patching",
+            "Unclear file access and sharing permissions",
+            "Limited backup and recovery readiness",
+            "Growing concern around phishing, ransomware, and account compromise",
+            "No clear IT roadmap to support future growth"
+          ]
+        },
+        {
+          "heading": "Our approach",
+          "body": [
+            "Nexsate started by understanding how the business used technology every day. This included reviewing users, devices, Microsoft 365, email, cloud storage, network connectivity, security settings, backups, and support processes.",
+            "Rather than replacing everything at once, Nexsate focused on improvements that would create the most immediate value."
+          ]
+        },
+        {
+          "heading": "Five key areas",
+          "items": [
+            {
+              "title": "Strengthening IT support and visibility",
+              "text": "Nexsate helped organize how IT issues were reported, tracked, and resolved. Devices, users, systems, and recurring problems were reviewed to improve support response and reduce repeated disruptions. This gave the business better visibility into its IT environment and helped employees get support faster when problems occurred."
+            },
+            {
+              "title": "Improving cybersecurity controls",
+              "text": "Security controls were reviewed and strengthened across user accounts, devices, email, cloud access, and administrator permissions. Multi-factor authentication, safer sign-in practices, endpoint protection, email security, and access controls were improved to reduce exposure to common threats such as phishing, unauthorized access, and malware."
+            },
+            {
+              "title": "Organizing cloud and collaboration tools",
+              "text": "The company was already using cloud-based tools, but file access and collaboration were not properly structured. Nexsate helped improve how documents were stored, shared, and accessed across Microsoft 365, SharePoint, OneDrive, and Teams. This made it easier for employees to find information, collaborate securely, and work from different locations."
+            },
+            {
+              "title": "Improving backup and recovery readiness",
+              "text": "Backup processes were reviewed to identify gaps in protection and recovery planning. Nexsate helped define what data needed to be protected, how backups should be monitored, and what recovery priorities mattered most to the business. This gave the company a clearer path to restore important information if data loss, system failure, or ransomware occurred."
+            },
+            {
+              "title": "Creating a practical IT roadmap",
+              "text": "The final step was helping the business move from reactive IT support to a more planned approach. Nexsate identified technology priorities, improvement opportunities, security gaps, and future needs. This gave the company a clearer roadmap for managing IT investments, reducing risk, and supporting future growth."
+            }
+          ]
+        },
+        {
+          "heading": "The result",
+          "body": [
+            "With a more structured IT environment, the business gained better control over its technology.",
+            "Employees experienced fewer recurring issues, support became easier to manage, cloud tools became more organized, and security controls were strengthened. Management also gained better visibility into technology risks, costs, and improvement priorities."
+          ],
+          "list": [
+            "Faster and more organized IT support",
+            "Stronger cybersecurity protection",
+            "Better control over user access and permissions",
+            "Improved Microsoft 365 and cloud collaboration",
+            "More reliable backup and recovery planning",
+            "Fewer recurring technology disruptions",
+            "A clearer IT roadmap for growth"
+          ]
+        },
+        {
+          "heading": "Technology aligned with business growth",
+          "body": [
+            "“The goal was not just to fix IT problems. The goal was to create a technology environment that helped the business work better, stay protected, and grow with more confidence.”",
+            "This success story shows how the right IT approach can improve more than technology. It can support productivity, security, communication, business continuity, and long-term planning.",
+            "At Nexsate Technologies, we help businesses align their IT environment with the way they actually work. From managed IT support and cybersecurity to cloud services, backup and recovery, network management, and technology advisory, Nexsate delivers practical solutions that support daily operations and future growth."
+          ]
+        }
+      ],
+      "related": [
+        "managed-it-services",
+        "cybersecurity",
+        "cloud-services",
+        "backup-disaster-recovery"
+      ]
+    },
+    "contact-us": {
+      "slug": "contact-us",
+      "title": "Contact",
+      "eyebrow": "Support",
+      "intro": "We’re here to help",
+      "image": {
+        "src": "/uploads/contact-hero.jpg",
+        "alt": "Support consultant on a call in a modern office"
+      },
+      "sections": [
+        {
+          "heading": "Get in touch",
+          "list": [
+            "Call us at: 1-825-570-4550",
+            "Email us: service@nexsate.com",
+            "Schedule a free consultation"
+          ]
+        },
+        {
+          "heading": "Our locations",
+          "body": [
+            "We have offices in Alberta, Edmonton — we’d love to show you around sometime. Don’t see an office in your area? We have the power to support your business, no matter the location."
+          ]
+        },
+        {
+          "heading": "What happens next",
+          "body": [
+            "Every engagement starts the same way — no pressure, no obligation:"
+          ],
+          "list": [
+            "We schedule a call at your convenience",
+            "We hold a discovery and consulting meeting",
+            "We prepare a proposal"
+          ]
+        },
+        {
+          "heading": "Your benefits",
+          "body": [
+            "Working with Nexsate means a partner that is:"
+          ],
+          "list": [
+            "Client-oriented",
+            "Independent",
+            "Competent",
+            "Results-driven",
+            "Problem-solving",
+            "Transparent"
+          ]
+        }
+      ],
+      "related": [
+        "services-solutions",
+        "help-and-faq",
+        "about-us"
+      ]
+    },
+    "help-and-faq": {
+      "slug": "help-and-faq",
+      "title": "FAQ",
+      "eyebrow": "Support",
+      "intro": "Common questions about working with Nexsate, answered as plainly as we answer them in person.",
+      "sections": [
+        {
+          "heading": "Our services",
+          "items": [
+            {
+              "title": "What are your two primary services?",
+              "text": "<p>Fully Managed IT Services – Nexsate monitors, manages, supports, and secures all IT systems and users for a fixed and predictable monthly fee.</p><p>Co-Managed IT Services – We support internal IT as an extension of your team. This role includes patching, repetitive tasks, one-off services, and special projects. We handle the backend while in-house IT manages everything else.</p>"
+            },
+            {
+              "title": "What other services do you offer?",
+              "text": "<ul><li>Cybersecurity</li><li>IT Consulting</li><li>Cloud Services</li><li>Network Connectivity (ISP Services)</li></ul>"
+            }
+          ]
+        },
+        {
+          "heading": "What is included",
+          "items": [
+            {
+              "title": "What business problems do you solve?",
+              "text": "<p>By leading with IT strategy and compliance guidance, Nexsate fills two major gaps in the IT provider industry. This expertise helps clients:</p><ul><li>Save time, money, and increase profitability.</li><li>Reduce employee frustration and improve team morale.</li><li>Solidify defenses against data breaches, ransomware attacks, and legal exposure.</li><li>Lower cybersecurity and compliance risk</li></ul>"
+            },
+            {
+              "title": "What are your core services?",
+              "text": "<p>Core Services are fixed, baseline foundational resources included in every Fully Managed IT Service Level Agreement.</p><ul><li>vCIO – Strategic direction, budgeting, planning, and consulting services with account reviews and IT roadmaps to advance your digital transformation.</li><li>Managed Services Concierge – Your point of contact for all account details. This trusted advisor is the quarterback between your vCIO and the service team, managing questions about IT services, invoices, and every piece of business enabling technology that supports decision making, collaboration, productivity, compliance, business continuity, security, and efficiency.</li><li>Client Management Tools – Professional Services Automation, Ticketing, CRM, Remote Management and Monitoring, Documentation, Communication, Notification, and Data Privacy.</li><li>Vendor Technical Assistance – We interact directly with your other technology vendors for incident remediation, opening tickets, escalating requests, or working to resolve incidents within your IT environment. We will also answer basic questions about your environment or provide access to systems the vendor has requested when approved by the client, such as allocating IP addresses for a copier, a security camera vendor or allowing network traffic for a vendor’s service. This assistance covers hardware manufacturers, software development firms, cloud service providers, ISPs, telecommunication brokers, printer and copier companies, and local couriers.</li><li>Procurement Services – Nexsate sources products exclusively from authorized channels and recommends business-class solutions. We also identify configuration options, ensure proper registration, manage licensing and warranties, and guarantee that all products are genuine.</li><li>Network Management – Monitoring, Administration, Reporting, Domain Name, and SSL Certificate Management, Remote Incident Remediation, and On-site Incident Remediation.</li></ul><p>If a client has more than one location – with expanded Network Management &amp; Vendor Technical Assistance requirements – additional Core Services charges will apply.</p>"
+            }
+          ]
+        },
+        {
+          "heading": "How we work",
+          "items": [
+            {
+              "title": "How are you different?",
+              "text": "<p>Nexsate selectively partners with growing organizations that like applying strategy and budgets to a proven IT process based on standards and best practices – to improve performance and lower risk.</p><p>Nexsate creates and maintains powerful, quiet, and secure IT systems by actively engaging and advising our clients in regularly scheduled Strategic Business Reviews with a vCIO.</p><p>Most Nexsate locations limit new client onboardings to two per month. This approach allows us to institute comprehensive, data-driven quality controls – on the front end – which create increasing operating leverage for our clients throughout the lifetime of the relationship.</p>"
+            },
+            {
+              "title": "How do you maximize responsiveness?",
+              "text": "<p>Nexsate is responsive by design. We partner with organizations that appreciate the value of following a standards-based approach to inform the architecture and lifecycle management of their IT systems.</p><p>This alignment allows clients to enjoy business optimizing technology that doesn’t require constant, reactive, emergency intervention – so they have more time to focus on growing their business.</p><p>We give users direct access to support, which eliminates bottlenecks and allows us to collect data and insights to identify training gaps and recommend system improvements.</p><p>Our Service Level Agreement prioritizes client matters and response times by P1, P2, P3, and P4. A significant server or cloud application outage is a P1.</p><p>Assisting with a password reset is a P4. Good news: we can set you up with a self-serve password solution, so you don’t have to open a ticket.</p><p>The outcome is similar to the concept of compound interest. When you invest in the process over time, both quality of service and responsiveness accrue. Failure to invest (or starting late) makes it impossible to catch up.</p>"
+            }
+          ]
+        },
+        {
+          "heading": "Who we help",
+          "items": [
+            {
+              "title": "What is your industry focus?",
+              "text": "<p>Operationally mature organizations in the following verticals:</p><ul><li>Professional Services</li><li>CPA</li><li>Legal</li><li>Finance</li><li>Insurance</li><li>Real Estate</li><li>Consulting</li><li>Manufacturing</li><li>Healthcare</li><li>Nonprofit</li></ul>"
+            }
+          ]
+        }
+      ],
+      "related": [
+        "contact-us",
+        "about-us",
+        "services-solutions"
+      ]
+    },
+    "privacy-policy": {
+      "slug": "privacy-policy",
+      "title": "Privacy Policy",
+      "eyebrow": "Legal",
+      "intro": "How Nexsate handles information provided through this website.",
+      "sections": [
+        {
+          "heading": "Information we collect",
+          "body": [
+            "This website is a front-end demonstration build. No accounts are created, no contact form submissions are transmitted, and no analytics or advertising trackers are embedded. If you contact Nexsate through the details published on this site, information you provide is used only to respond to your enquiry."
+          ]
+        },
+        {
+          "heading": "How we protect information",
+          "body": [
+            "Protecting client data with a security-first mindset is one of our core values. Client information is handled confidentially, is not shared with third parties, and is retained only for as long as it is needed to respond to an enquiry or deliver agreed work."
+          ]
+        },
+        {
+          "heading": "Your choices",
+          "body": [
+            "You can ask us at any time what information we hold about you, request its correction, or ask for it to be deleted. Contact details for Nexsate are published on the contact page."
+          ]
+        }
+      ],
+      "related": [
+        "contact-us",
+        "cookie-policy",
+        "terms-conditions"
+      ]
+    },
+    "cookie-policy": {
+      "slug": "cookie-policy",
+      "title": "Cookie policy",
+      "eyebrow": "Legal",
+      "intro": "What this website stores on your device.",
+      "sections": [
+        {
+          "heading": "Cookies in use",
+          "body": [
+            "This site does not use cookies to track you, and it embeds no third-party analytics or advertising scripts. Any browser storage is limited to what is needed for the site to function in the browser you are using."
+          ]
+        },
+        {
+          "heading": "Managing cookies",
+          "body": [
+            "You can clear or block cookies through your browser settings at any time. Because the site does not rely on cookies for tracking, blocking them will not prevent you from reading the content."
+          ]
+        }
+      ],
+      "related": [
+        "privacy-policy",
+        "terms-conditions"
+      ]
+    },
+    "terms-conditions": {
+      "slug": "terms-conditions",
+      "title": "Terms & Conditions",
+      "eyebrow": "Legal",
+      "intro": "The terms that apply to your use of this website.",
+      "sections": [
+        {
+          "heading": "Use of this site",
+          "body": [
+            "This website is published by Nexsate Technologies as an information resource about our services, industries and approach. Content is provided for general information. It does not constitute a quote, a contract for services, or technical advice tailored to your specific environment."
+          ]
+        },
+        {
+          "heading": "Accuracy of information",
+          "body": [
+            "We work to keep the information on this site accurate and current, but service scope, availability and platform support can change. Where exact scope, pricing or timings matter, please speak to us directly and we will confirm them in writing."
+          ]
+        },
+        {
+          "heading": "Intellectual property",
+          "body": [
+            "The Nexsate name, logo and site content belong to Nexsate Technologies. You may reference and link to this site; please do not reproduce the branding or substantial content without permission."
+          ]
+        }
+      ],
+      "related": [
+        "privacy-policy",
+        "cookie-policy",
+        "contact-us"
+      ]
+    },
+    "everyday-cybersecurity-for-growing-businesses": {
+      "slug": "everyday-cybersecurity-for-growing-businesses",
+      "title": "Everyday cybersecurity for growing businesses",
+      "eyebrow": "Insights",
+      "topic": "Cybersecurity",
+      "date": "2026-06-12",
+      "excerpt": "Phishing, ransomware, and account compromise target businesses of every size. Here is how practical controls protect email, devices, and cloud access.",
+      "intro": "Small businesses face enterprise-grade threats. Here is the practical, layered way to meet them.",
+      "image": {
+        "src": "/uploads/cybersecurity.jpg",
+        "alt": "Padlock security overlay on a laptop"
+      },
+      "sections": [
+        {
+          "heading": "What your business is up against",
+          "body": [
+            "Your email, devices, cloud platforms, passwords, applications, files, and business data all need protection from threats such as phishing, malware, ransomware, unauthorized access, and data loss.",
+            "Weak security can expose your business to phishing, ransomware, account compromise, data loss, and disruption — and cyber threats move quickly."
+          ]
+        },
+        {
+          "heading": "Practical controls that reduce risk",
+          "body": [
+            "Nexsate helps businesses strengthen their cybersecurity environment with practical controls that protect users, secure devices, reduce risk, and improve security readiness — focusing on prevention, visibility, secure access, threat protection, and structured support."
+          ],
+          "list": [
+            "Email and phishing protection that reduces malicious links, unsafe attachments, spam, and impersonation attempts",
+            "Secure access management through multi-factor authentication, safer sign-ins, and administrator controls",
+            "Endpoint and device security for laptops, desktops, servers, and mobile devices",
+            "Security monitoring and alerts that surface suspicious activity early",
+            "Security awareness guidance on phishing, password safety, and everyday habits"
+          ]
+        },
+        {
+          "heading": "From risk to resilience",
+          "body": [
+            "Nexsate looks beyond basic protection to understand where your business is most exposed and what could be impacted if a cyber incident occurs — then builds a practical approach that prioritizes key risks, strengthens weak points, and improves preparedness."
+          ]
+        }
+      ],
+      "related": [
+        "cybersecurity",
+        "managed-it-services",
+        "backup-disaster-recovery"
+      ]
+    },
+    "moving-your-business-to-the-cloud": {
+      "slug": "moving-your-business-to-the-cloud",
+      "title": "Moving your business to the cloud without disrupting daily work",
+      "eyebrow": "Insights",
+      "topic": "Cloud",
+      "date": "2026-04-24",
+      "excerpt": "Cloud tools should make work faster and safer — not slower and harder to control. How a structured migration keeps email, files, and collaboration running.",
+      "intro": "The cloud promises flexibility — but only a structured setup delivers it without the chaos.",
+      "image": {
+        "src": "/uploads/office-space.jpg",
+        "alt": "Modern office space with desks and computers"
+      },
+      "sections": [
+        {
+          "heading": "When cloud tools slow work down",
+          "body": [
+            "When cloud tools are poorly managed, file access is confusing, servers are outdated, or data is not properly protected — daily work can become slower, less secure, and harder to control."
+          ]
+        },
+        {
+          "heading": "A structured way forward",
+          "body": [
+            "Nexsate helps businesses move, manage, secure, and improve their cloud environment — supporting cloud setup, migration, Microsoft 365, secure file access, cloud backup, collaboration tools, and ongoing management for greater flexibility and less reliance on physical infrastructure."
+          ],
+          "list": [
+            "Cloud migration and setup that moves email, files, and systems with less disruption",
+            "Microsoft 365 management across users, Teams, SharePoint, OneDrive, licences, and security settings",
+            "Secure file access and sharing so documents are stored, shared, and protected properly",
+            "Cloud backup and data protection with recovery support and access controls",
+            "Collaboration improvement through better use of Teams, SharePoint, and shared workspaces"
+          ]
+        },
+        {
+          "heading": "Built around how your team works",
+          "body": [
+            "Every business uses cloud technology differently. The goal is a cloud environment that is secure, flexible, manageable, and aligned with how your team works every day — ready to support future growth."
+          ]
+        }
+      ],
+      "related": [
+        "cloud-services",
+        "managed-it-services",
+        "backup-disaster-recovery"
+      ]
+    },
+    "proactive-managed-it-support": {
+      "slug": "proactive-managed-it-support",
+      "title": "What proactive managed IT support looks like day to day",
+      "eyebrow": "Insights",
+      "topic": "Managed IT",
+      "date": "2026-02-14",
+      "excerpt": "Slow devices, email issues, and unclear support processes pull attention away from real work. How managed IT brings order back to everyday technology.",
+      "intro": "The best IT support is the kind you never notice. Here is what that looks like in practice.",
+      "image": {
+        "src": "/uploads/service-managed-it.jpg",
+        "alt": "IT technician supporting office users"
+      },
+      "sections": [
+        {
+          "heading": "The cost of reactive IT",
+          "body": [
+            "Slow devices, email issues, software problems, network interruptions, password challenges, missed updates, and unclear support processes can frustrate employees and pull attention away from important work."
+          ]
+        },
+        {
+          "heading": "Support that prevents problems first",
+          "body": [
+            "Nexsate manages the IT support your business relies on every day — users, devices, Microsoft 365, networks, security tools, backups, cloud platforms, and business systems — so your team gets timely help and issues are addressed before they cause bigger disruptions."
+          ],
+          "list": [
+            "Helpdesk and user support for everyday technology questions",
+            "Monitoring and maintenance that identifies issues earlier",
+            "Patch and update coordination that improves reliability and closes security gaps",
+            "Backup and recovery oversight so important data stays protected",
+            "IT documentation and improvement planning tied to business goals"
+          ]
+        },
+        {
+          "heading": "Less time on technology, more time on work",
+          "body": [
+            "When IT is properly managed, employees spend less time dealing with technical problems and more time doing productive work — with predictable monthly costs based on your users, systems, and support needs."
+          ]
+        }
+      ],
+      "related": [
+        "managed-it-services",
+        "network-management",
+        "cybersecurity"
+      ]
+    },
     "startups-cutting-cloud-costs": {
       "slug": "startups-cutting-cloud-costs",
       "title": "How startups are cutting cloud costs, renegotiating deals with service providers",
@@ -2839,9 +3210,8 @@
         }
       ],
       "related": [
-        "erp-solutions",
-        "cybersecurity",
-        "software-development-erp-crm-solutions"
+        "software-erp-app-development",
+        "cybersecurity"
       ]
     },
     "sage-100-erp-vs-cloud": {
@@ -2884,7 +3254,7 @@
         }
       ],
       "related": [
-        "erp-solutions",
+        "software-erp-app-development",
         "cloud-services",
         "gaining-efficiency"
       ]
@@ -3067,7 +3437,7 @@
       ],
       "related": [
         "automation",
-        "software-development-erp-crm-solutions",
+        "software-erp-app-development",
         "success-story"
       ]
     },
@@ -3117,258 +3487,25 @@
         "success-story"
       ]
     },
-    "software-erp-app-development": {
-      "slug": "software-erp-app-development",
-      "title": "Software, ERP & App Development",
-      "eyebrow": "IT solutions",
-      "intro": "Build smarter digital solutions that streamline operations, connect business systems, improve customer experiences, and support growth.",
-      "image": {
-        "src": "/uploads/solutions-hero.jpg",
-        "alt": "Technology team working together at a long desk in a modern office"
-      },
+    "blog": {
+      "slug": "blog",
+      "title": "Blog",
+      "eyebrow": "Insights",
+      "layout": "blog-index",
+      "intro": "Case studies and practical guidance on managed IT, cybersecurity, cloud, and the technology growing businesses run on.",
       "sections": [
         {
-          "heading": "Custom software that fits the business",
+          "heading": "Latest insights",
           "body": [
-            "Software should make your business easier to run. Nexsate builds practical solutions — and supports ERP and CRM implementation for SAP, Microsoft Dynamics 365, and other systems — around the way you operate."
-          ],
-          "items": [
-            {
-              "title": "Custom business solutions",
-              "text": "We design and build software solutions tailored to your business processes, users, goals, and day-to-day operations."
-            },
-            {
-              "title": "Process automation",
-              "text": "We help reduce manual work by automating workflows, approvals, reporting, repetitive tasks, and business processes."
-            },
-            {
-              "title": "Mobile apps",
-              "text": "Mobile app development for iOS and Android, plus hybrid apps that ship to both from one codebase."
-            },
-            {
-              "title": "Web applications",
-              "text": "Web applications for operations, customers, and partners — from portals to workflow tools."
-            },
-            {
-              "title": "System integration & scalability",
-              "text": "We connect applications, ERP, CRM, data sources, and business platforms to improve visibility, efficiency, and decision-making, while building solutions that can grow with your business."
-            },
-            {
-              "title": "ERP & CRM support",
-              "text": "We support the implementation, customization, and improvement of ERP and CRM systems that help manage operations, customers, sales, data, and workflows."
-            }
-          ]
-        },
-        {
-          "heading": "Core ERP capabilities",
-          "items": [
-            {
-              "title": "ERP planning & advisory",
-              "text": "Evaluate your business needs, current systems, workflows, and process gaps to define an ERP direction that supports better decisions, smoother implementation, and long-term value."
-            },
-            {
-              "title": "ERP implementation support",
-              "text": "Guide ERP setup, configuration, data preparation, user readiness, and rollout activities so the system is introduced in a structured way and adopted more smoothly by your team."
-            },
-            {
-              "title": "Process alignment",
-              "text": "Configure ERP workflows around your real business processes, making approvals, purchasing, inventory, finance, reporting, and daily operations easier to manage."
-            },
-            {
-              "title": "Reporting & business visibility",
-              "text": "Turn connected data into clear reports and dashboards that help your team understand performance and make better decisions."
-            }
-          ]
-        },
-        {
-          "heading": "ERP platforms we support",
-          "items": [
-            {
-              "title": "Microsoft Dynamics 365 support",
-              "text": "Implement, configure, integrate, and support Microsoft Dynamics 365 solutions that improve operations, customer management, reporting, workflows, and business process efficiency."
-            },
-            {
-              "title": "SAP support",
-              "text": "Implement, configure, integrate, and support SAP solutions to help businesses manage operations, reporting, users, workflows, and business processes more effectively."
-            },
-            {
-              "title": "ERP configuration & customization",
-              "text": "Configure ERP modules, workflows, permissions, forms, fields, and business rules so the system better reflects how your organization works."
-            },
-            {
-              "title": "Data migration & cleanup",
-              "text": "Prepare, organize, and migrate business data from spreadsheets, legacy systems, or disconnected platforms into a cleaner ERP environment."
-            },
-            {
-              "title": "ERP integration",
-              "text": "Connect ERP systems with CRM platforms, Microsoft 365, reporting tools, inventory systems, portals, websites, and other business applications."
-            },
-            {
-              "title": "User training & adoption support",
-              "text": "Support employees with guidance, documentation, and practical training so teams understand how to use the ERP system effectively in their daily work."
-            }
-          ]
-        },
-        {
-          "heading": "Selected work",
-          "body": [
-            "Recent delivery includes education and consumer products such as Scuolla, Jolie, and Skole — apps used daily by real audiences, supported beyond launch."
-          ]
-        },
-        {
-          "heading": "From idea to everyday use",
-          "body": [
-            "Nexsate starts by understanding the purpose, the people, and the process — then shapes requirements, designs, tests, rolls out, and improves after launch.",
-            "As your business changes, your software should adapt with it. Nexsate helps create flexible digital solutions that support new users, processes, customers, and growth without adding unnecessary complexity."
-          ]
-        },
-        {
-          "heading": "A team that ships",
-          "body": [
-            "An 80+ strong delivery team across design, engineering, and quality — sized to take on funded-company roadmaps as well as focused business builds.",
-            "Engagements run the same disciplined path as every Nexsate service: understand the need, design the solution, build in the open, and support it in production."
+            "Browse our case studies and articles below, or talk to a nexsate expert about your own IT environment."
           ]
         }
       ],
       "related": [
-        "automation",
-        "digital-transformation",
+        "success-story",
         "managed-it-services",
         "contact-us"
       ]
     }
-  },
-  "blogRow": {
-    "tag": "From our blog",
-    "title": "Case studies and insights from the field",
-    "text": "How better IT alignment helps growing businesses — plus practical guidance on security, cloud, and everyday IT.",
-    "cta": {
-      "label": "View all articles",
-      "href": "#/blog"
-    }
-  },
-  "blogIndex": {
-    "tag": "From our blog",
-    "title": "Insights that help you do more",
-    "text": "Practical guidance on cybersecurity, cloud, and managed IT — plus case studies showing how better IT alignment helps growing businesses."
-  },
-  "homeContact": {
-    "tag": "Contact us",
-    "title": "We're here to help",
-    "text": "Tell us about your IT environment and a nexsate expert will be in touch. We have offices in Alberta, Edmonton — and the power to support your business, no matter the location."
-  },
-  "testimonials": {
-    "tag": "Testimonials",
-    "title": "What our customers say",
-    "text": "Rated 4.9 out of 5 across client reviews.",
-    "items": [
-      {
-        "quote": "I've been a customer for more than a decade. Nexsate is an example of the way Managed Services should be done. They do their very best to make sure you succeed. If there's an issue, they step in immediately. We will continue to be a customer for years to come.",
-        "name": "John Labkins",
-        "role": "Partner & CEO, Telecommunication Company"
-      },
-      {
-        "quote": "Nexsate has been an outstanding partner. Their team is professional, knowledgeable and customer-service driven. Nexsate proactive collaborative approach has been critical in helping us build an IT infrastructure that enables our success today and supports our long-term positioning strategy.",
-        "name": "Amanda Parks",
-        "role": "Network Manager, Healthcare Organization"
-      },
-      {
-        "quote": "Nexsate implemented such a powerful platform that we had no break in service when our employees had to work from home due to the COVID-19 pandemic. We weren't concerned about how to shift to a remote working environment because Nexsate facilitated a seamless transition.",
-        "name": "David Morandes",
-        "role": "CEO & Founder, Skole App"
-      }
-    ]
-  },
-  "statsBand": {
-    "items": [
-      {
-        "value": "20+",
-        "label": "Years of experience"
-      },
-      {
-        "value": "98%",
-        "label": "Client satisfaction"
-      },
-      {
-        "value": "3 min",
-        "label": "Average response time"
-      },
-      {
-        "value": "21+",
-        "label": "Projects delivered"
-      }
-    ]
-  },
-  "certStrip": {
-    "tag": "Certifications & partnerships",
-    "title": "Credentials you can verify",
-    "items": [
-      {
-        "name": "CISSP",
-        "note": "Security-certified professionals"
-      },
-      {
-        "name": "SOC 2 Type II",
-        "note": "Independently audited controls"
-      },
-      {
-        "name": "Microsoft Partner",
-        "note": "Cloud and Modern Work ecosystem"
-      }
-    ]
-  },
-  "searchSuggestions": {
-    "title": "Suggested searches",
-    "items": [
-      "cloud services",
-      "cybersecurity",
-      "managed IT support",
-      "backup and recovery"
-    ]
-  },
-  "faqTeaser": {
-    "tag": "Common questions",
-    "title": "Answers, before you even ask",
-    "text": "How managed IT works, what it costs, and what happens when something breaks — straight from our FAQ.",
-    "cta": {
-      "label": "View all FAQs",
-      "href": "#/help-and-faq"
-    }
-  },
-  "awardsBand": {
-    "tag": "Industry recognition",
-    "title": "Recognized. Awarded. Trusted.",
-    "text": "Independent analysts, client-review platforms, and technology partners have recognized the work behind our client outcomes."
-  },
-  "noticeBar": {
-    "enabled": true,
-    "text": "Schedule a Free Consultation",
-    "href": "#/contact-us"
-  },
-  "deptSplit": {
-    "tag": "Two ways to work with us",
-    "title": "Fully managed or co-managed — your call",
-    "text": "Two primary services, one goal: technology that supports the way your business works.",
-    "outsource": {
-      "title": "Outsource all your IT",
-      "text": "Fully Managed IT Services — Nexsate monitors, manages, supports, and secures all IT systems and users for a fixed and predictable monthly fee.",
-      "cta": {
-        "label": "Explore managed IT",
-        "href": "#/managed-it-services"
-      }
-    },
-    "extend": {
-      "title": "Extend your internal IT",
-      "text": "Co-Managed IT Services — We support internal IT as an extension of your team. This role includes patching, repetitive tasks, one-off services, and special projects. We handle the backend while in-house IT manages everything else.",
-      "cta": {
-        "label": "Talk to an expert",
-        "href": "#/contact-us"
-      }
-    }
-  },
-  "valuesStrip": {
-    "tag": "Our Core Values",
-    "title": "What we stand by, on every engagement",
-    "text": "Our culture is built around four core values that differentiate us from our competition."
   }
 }

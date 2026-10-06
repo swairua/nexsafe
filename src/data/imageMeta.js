@@ -66,6 +66,31 @@ export const IMAGE_META = {
     locations: ['Home > Service cards > Cybersecurity'],
     replaceable: true,
   },
+  '/uploads/industry-banking.svg': {
+    description: 'Dollar-badge line icon in cyan — NanoSoft reference artwork for the Banking industry tile.',
+    locations: ['Home > Industries strip > Banking'],
+    replaceable: true,
+  },
+  '/uploads/industry-capital-markets.svg': {
+    description: 'Pie-chart line icon in cyan — NanoSoft reference artwork for the Capital Markets industry tile.',
+    locations: ['Home > Industries strip > Capital Markets'],
+    replaceable: true,
+  },
+  '/uploads/industry-manufacturing.svg': {
+    description: 'Data-block line icon in cyan — NanoSoft reference artwork for the Manufacturing industry tile.',
+    locations: ['Home > Industries strip > Manufacturing'],
+    replaceable: true,
+  },
+  '/uploads/industry-healthcare.svg': {
+    description: 'Shield-heart line icon in cyan — NanoSoft reference artwork for the Healthcare industry tile.',
+    locations: ['Home > Industries strip > Healthcare'],
+    replaceable: true,
+  },
+  '/uploads/industry-higher-education.svg': {
+    description: 'Open-book line icon in cyan — NanoSoft reference artwork for the Higher Education industry tile.',
+    locations: ['Home > Industries strip > Higher Education'],
+    replaceable: true,
+  },
   '/uploads/office-space.jpg': {
     description: 'Modern open-plan office space with desks and daylight — closing CTA background.',
     locations: ['Home > Promo banner'],
@@ -149,116 +174,6 @@ export const IMAGE_META = {
   '/uploads/shape-form.svg': {
     description: 'Decorative form shape carried over from nexsate.com (not currently placed on a page).',
     locations: ['Carried over from the previous site (not currently placed on a page)'],
-    replaceable: true,
-  },
-  '/uploads/logo-aws.svg': {
-    description: 'Amazon Web Services brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Amazon Web Services (Cloud & hosting platforms)'],
-    replaceable: true,
-  },
-  '/uploads/logo-azure.svg': {
-    description: 'Microsoft Azure brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Microsoft Azure (Cloud & hosting platforms)'],
-    replaceable: true,
-  },
-  '/uploads/logo-google-cloud.svg': {
-    description: 'Google Cloud brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Google Cloud (Cloud & hosting platforms)'],
-    replaceable: true,
-  },
-  '/uploads/logo-digitalocean.svg': {
-    description: 'Digital Ocean brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Digital Ocean (Cloud & hosting platforms)'],
-    replaceable: true,
-  },
-  '/uploads/logo-rackspace.svg': {
-    description: 'RackSpace brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > RackSpace (Cloud & hosting platforms)'],
-    replaceable: true,
-  },
-  '/uploads/logo-m365.svg': {
-    description: 'Microsoft 365 brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Microsoft 365 (Collaboration & productivity)'],
-    replaceable: true,
-  },
-  '/uploads/logo-teams.svg': {
-    description: 'Teams brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Teams (Collaboration & productivity)'],
-    replaceable: true,
-  },
-  '/uploads/logo-exchange.svg': {
-    description: 'Exchange Online brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Exchange Online (Collaboration & productivity)'],
-    replaceable: true,
-  },
-  '/uploads/logo-sharepoint.svg': {
-    description: 'SharePoint brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > SharePoint (Collaboration & productivity)'],
-    replaceable: true,
-  },
-  '/uploads/logo-onedrive.svg': {
-    description: 'OneDrive brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > OneDrive (Collaboration & productivity)'],
-    replaceable: true,
-  },
-  '/uploads/logo-office.svg': {
-    description: 'Office Apps brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Office Apps (Collaboration & productivity)'],
-    replaceable: true,
-  },
-  '/uploads/logo-defender.svg': {
-    description: 'Microsoft Defender brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Microsoft Defender (Security & endpoint protection)'],
-    replaceable: true,
-  },
-  '/uploads/logo-crowdstrike.svg': {
-    description: 'CrowdStrike brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > CrowdStrike (Security & endpoint protection)'],
-    replaceable: true,
-  },
-  '/uploads/logo-sophos.svg': {
-    description: 'Sophos brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Sophos (Security & endpoint protection)'],
-    replaceable: true,
-  },
-  '/uploads/logo-sentinelone.svg': {
-    description: 'SentinelOne brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > SentinelOne (Security & endpoint protection)'],
-    replaceable: true,
-  },
-  '/uploads/logo-bitdefender.svg': {
-    description: 'Bitdefender brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Bitdefender (Security & endpoint protection)'],
-    replaceable: true,
-  },
-  '/uploads/logo-trendmicro.svg': {
-    description: 'Trend Micro Apex One brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Trend Micro Apex One (Security & endpoint protection)'],
-    replaceable: true,
-  },
-  '/uploads/logo-cisco.svg': {
-    description: 'Cisco brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Cisco (Network & connectivity)'],
-    replaceable: true,
-  },
-  '/uploads/logo-fortinet.svg': {
-    description: 'Fortinet brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Fortinet (Network & connectivity)'],
-    replaceable: true,
-  },
-  '/uploads/logo-ubiquiti.svg': {
-    description: 'Ubiquiti brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Ubiquiti (Network & connectivity)'],
-    replaceable: true,
-  },
-  '/uploads/logo-dell.svg': {
-    description: 'Dell brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > Dell (Network & connectivity)'],
-    replaceable: true,
-  },
-  '/uploads/logo-watchguard.svg': {
-    description: 'WatchGuard brand mark - homepage vendor wall.',
-    locations: ['Home > Using trusted technology > WatchGuard (Network & connectivity)'],
     replaceable: true,
   },
   '/brand/nexsate-wordmark.png': {

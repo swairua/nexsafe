@@ -31,6 +31,20 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                     <h4 className="mb-2 text-xs font-bold uppercase tracking-wider text-shell-gray-500">
                       {col.heading}
                     </h4>
+                    {col.tiles ? (
+                      <div className="grid grid-cols-2 gap-2.5">
+                        {col.tiles.map((t) => (
+                          <a
+                            key={t.label}
+                            href={t.href}
+                            onClick={onNavigate}
+                            className="rounded-lg border border-shell-gray-300/70 p-3 text-sm font-medium text-shell-gray-900 hover:border-shell-red hover:text-shell-red"
+                          >
+                            {t.label}
+                          </a>
+                        ))}
+                      </div>
+                    ) : (
                     <ul className="space-y-2">
                       {col.links.map((l) => (
                         <li key={l.label}>
@@ -44,6 +58,16 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                         </li>
                       ))}
                     </ul>
+                    )}
+                    {col.viewAll ? (
+                      <a
+                        href={col.viewAll.href}
+                        onClick={onNavigate}
+                        className="mt-2 inline-block text-sm font-bold text-shell-red hover:underline"
+                      >
+                        {col.viewAll.label}
+                      </a>
+                    ) : null}
                   </div>
                 ))}
               </div>

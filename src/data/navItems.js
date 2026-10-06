@@ -5,6 +5,51 @@ import { pageHref } from './slug.js'
 
 const links = (...labels) => labels.map((label) => ({ label, href: pageHref(label) }))
 
+const serviceLinks = [
+  { label: 'Managed IT Services', href: pageHref('Managed IT Services') },
+  { label: 'Cloud Services', href: pageHref('Cloud Services') },
+  { label: 'Software Development', href: '#/software-erp-app-development' },
+  { label: 'Network Management', href: pageHref('Network Management') },
+  { label: 'Cyber Security', href: pageHref('Cybersecurity') },
+  { label: 'Backup & Disaster Management', href: '#/backup-disaster-recovery' },
+]
+
+const challengeTiles = [
+  {
+    label: 'Digital Transformation',
+    href: pageHref('Digital Transformation'),
+    icon: 'transform',
+    blurb: 'Modernize systems and processes',
+  },
+  {
+    label: 'Security',
+    href: pageHref('Cybersecurity'),
+    icon: 'shield',
+    blurb: 'Protect users, devices and data',
+  },
+  {
+    label: 'Automation',
+    href: pageHref('Automation'),
+    icon: 'gear',
+    blurb: 'Remove repetitive manual work',
+  },
+  {
+    label: 'Gaining Efficiency',
+    href: pageHref('Gaining Efficiency'),
+    icon: 'gauge',
+    blurb: 'Get more from your technology',
+  },
+]
+
+const industryLinks = [
+  { label: 'Industry Manufacturing', href: pageHref('Industrial & Manufacturing') },
+  { label: 'Transportation & Logistics', href: pageHref('Transportation & Logistics') },
+  { label: 'Healthcare', href: pageHref('Healthcare') },
+  { label: 'Banking, Finance & Insurance', href: pageHref('Banks & Insurance') },
+  { label: 'Consulting Providers', href: pageHref('Consulting Providers') },
+  { label: 'Non Profit', href: pageHref('Non-Profit') },
+]
+
 export const navItems = [
   {
     label: 'Our Company',
@@ -20,28 +65,30 @@ export const navItems = [
       },
       {
         heading: 'Business services',
-        links: links('Network Management', 'Backup & Disaster Recovery', 'Software Development, ERP & CRM Solutions'),
+        links: [
+          ...links('Network Management', 'Backup & Disaster Recovery'),
+          { label: 'Software Development, ERP & CRM Solutions', href: '#/software-erp-app-development' },
+        ],
       },
     ],
   },
   {
     label: 'What We Do',
     href: '#it-solutions',
+    layout: 'solutions',
     columns: [
       {
-        heading: 'Core services',
-        links: links('Managed IT Services', 'Cloud Services', 'Cybersecurity'),
+        heading: 'Services',
+        links: serviceLinks,
       },
       {
-        heading: 'Connect and protect',
-        links: links('Network Management', 'Backup & Disaster Recovery'),
+        heading: 'Business Challenges',
+        tiles: challengeTiles,
       },
       {
-        heading: 'Build and improve',
-        links: [
-          { label: 'Software & App Development', href: '#/software-erp-app-development' },
-          ...links('Automation', 'Digital Transformation', 'Gaining Efficiency'),
-        ],
+        heading: 'Industry Focus',
+        links: industryLinks,
+        viewAll: { label: 'View all', href: '#industries' },
       },
     ],
   },

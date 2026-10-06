@@ -7,9 +7,11 @@ const IMG_EXT = [".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"]
 
 // Only the last path segment counts. The full name looks like "heroSlides[0].gradient",
 // and matching that against IMAGE_KEYS used to treat "gradient" as an image field just
-// because its parent is called "heroSlides".
+// because its parent is called "heroSlides". Tile icon keys (nav menu challenge
+// tiles: "transform" | "shield" | "gear" | "gauge") are icon names, not files.
 function isImageKey(name) {
   const key = String(name || "").split(".").pop().split("[")[0].toLowerCase()
+  if (key === "icon") return false
   return key !== "" && IMAGE_KEYS.some((k) => key.indexOf(k) !== -1)
 }
 
