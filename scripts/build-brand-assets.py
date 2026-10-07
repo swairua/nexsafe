@@ -3,13 +3,13 @@
 client-supplied wordmark, so every brand surface is the *same* logo.
 
 Why this exists
----------------
+--------------
 `public/brand/nexsate-wordmark.png` is a flattened **RGB** PNG: the "transparent"
 background the art was delivered with is a light-grey checkerboard baked into the
 pixels (254,254,254 / 246,246,246). That is fine for the header/footer plate
 but it means the artwork cannot be composited onto any other background.
 
-The two brand surfaces that *must* be rebuilt from the artwork were not:
+The brand surfaces that *must* be rebuilt from the artwork were not:
 
   * `favicon.svg` was a hand-made tile of three white bars - not the logo at all.
   * `og:image` pointed at `nexsate-banner.png` (600x150, 4:1) which is off the

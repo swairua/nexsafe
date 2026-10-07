@@ -186,14 +186,9 @@ export const IMAGE_META = {
     locations: ['Site metadata (og:image, twitter:image)'],
     replaceable: true,
   },
-  '/favicon.svg': {
-    description: 'Browser tab icon — the leading "N" of the Nexsate wordmark, in white on the brand gradient tile.',
-    locations: ['Browser tab / bookmark (favicon)'],
-    replaceable: false,
-  },
-  '/apple-touch-icon.png': {
-    description: 'iOS home-screen icon — the Nexsate "N" on the brand gradient tile.',
-    locations: ['iOS home screen (apple-touch-icon)'],
+  '/brand/nexsate-wordmark.png': {
+    description: 'Browser tab icon and Apple touch icon — the Nexsate wordmark logo.',
+    locations: ['Browser tab / bookmark (favicon)', 'iOS home screen (apple-touch-icon)'],
     replaceable: false,
   },
   '/social/facebook.png': {

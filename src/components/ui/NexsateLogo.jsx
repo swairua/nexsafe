@@ -9,10 +9,9 @@
  * The source file shipped as a flattened RGB PNG with the transparency
  * checkerboard baked into the pixels. `scripts/build-brand-assets.py` converts
  * it to a real alpha channel and derives every other brand surface from the same
- * artwork: the leading "N" becomes `public/favicon.svg` and
- * `public/apple-touch-icon.png`, and the full wordmark becomes the 1200x630
- * `public/brand/nexsate-og.png` share card. Re-run that script after replacing
- * the artwork.
+ * artwork: the full wordmark is used directly for the favicon,
+ * apple-touch-icon, and the 1200x630 `public/brand/nexsate-og.png` share card.
+ * Re-run that script after replacing the artwork.
  *
  * The source artwork was a 1254×1254 canvas with the wordmark centred; it has
  * been cropped to the mark itself (1116×140) so the browser reserves the
