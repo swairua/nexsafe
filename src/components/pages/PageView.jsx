@@ -153,7 +153,7 @@ export default function PageView({ page, slug, params }) {
       {/* Body content — Kyndryl alternating bands with feature-tile lists */}
       {page.sections.map((section, sIdx) => (
         <section key={section.heading} className={sIdx % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
-          <div className="shell-container max-w-4xl break-words py-12 md:py-16">
+          <div className="shell-container py-16 md:py-24 break-words">
             <Reveal id={`section-${sIdx + 1}`} variant="fade" className="scroll-mt-40">
               <h2 className="text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl lg:text-4xl">
                 {section.heading}
@@ -168,7 +168,7 @@ export default function PageView({ page, slug, params }) {
                       key={item}
                       className="flex gap-3 rounded-2xl border border-shell-gray-300 bg-white p-5"
                     >
-                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-[2px] bg-shell-green" aria-hidden="true" />
+                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red" aria-hidden="true" />
                       <span className="text-base leading-relaxed text-shell-gray-700 md:text-lg">{item}</span>
                     </li>
                   ))}
@@ -182,7 +182,7 @@ export default function PageView({ page, slug, params }) {
                       className="rounded-2xl border border-shell-gray-300 bg-white p-5"
                     >
                       <h3 className="flex gap-3 text-base font-bold leading-snug text-shell-gray-900 md:text-lg">
-                        <span className="mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-shell-green" aria-hidden="true" />
+                        <span className="mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red" aria-hidden="true" />
                         {item.title}
                       </h3>
                       <div className="mt-2 pl-5 text-sm leading-relaxed text-shell-gray-700 md:text-base">
@@ -205,7 +205,7 @@ export default function PageView({ page, slug, params }) {
       {/* Page gallery — photography the page carries itself (About page) */}
       {gallery.length > 0 && (
         <section className={page.sections.length % 2 === 0 ? 'bg-shell-gray-100' : 'bg-white'}>
-          <div className="shell-container py-12 md:py-16">
+          <div className="shell-container py-16 md:py-24">
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {gallery.map((shot) => (
                 <Reveal key={shot.src} variant="zoom">
@@ -225,7 +225,7 @@ export default function PageView({ page, slug, params }) {
       {/* Category visual — Kyndryl-style imagery block (decorative) */}
       {categoryImage && (
         <section className={page.sections.length % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
-          <div className="shell-container pb-4 pt-12 md:pb-6 md:pt-16">
+          <div className="shell-container py-16 md:py-24">
             <Reveal variant="zoom">
               <SmartImage
                 src={categoryImage}
@@ -241,7 +241,7 @@ export default function PageView({ page, slug, params }) {
       {/* Awards / certification logos carried by the page itself */}
       {logos.length > 0 && (
         <section className="bg-white">
-          <div className="shell-container py-12 md:py-14">
+          <div className="shell-container py-16 md:py-24">
             <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
               {logos.map((badge) => (
                 <Reveal key={badge.src} variant="fade">
@@ -261,7 +261,7 @@ export default function PageView({ page, slug, params }) {
       {/* Related pages */}
       {relatedPages.length > 0 && (
         <section className="bg-shell-gray-100">
-          <div className="shell-container py-14 md:py-16">
+          <div className="shell-container py-16 md:py-24">
             <Reveal as="h2" variant="fade" className="text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl">
               {labels.exploreMore}
             </Reveal>
@@ -299,7 +299,7 @@ export default function PageView({ page, slug, params }) {
 
       {isContact ? (
         <section id="contact-form" className="bg-white">
-          <div className="shell-container grid gap-10 py-14 md:py-20 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+          <div className="shell-container grid gap-10 py-16 md:py-24 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
             <ContactForm />
             {details.length ? (
               <div className="lg:pt-2">
