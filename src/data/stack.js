@@ -20,10 +20,9 @@ export const stackGroups = [
     vendors: [
       { name: 'Amazon Web Services', logo: '/uploads/stack-icons/amazon-web-services.svg' },
       { name: 'Microsoft Azure', logo: '/uploads/stack-icons/microsoft-azure.svg' },
-      { name: 'Google Cloud', logo: '/uploads/stack-icons/google-cloud.svg' },
-      { name: 'Salesforce', logo: '/uploads/stack-icons/salesforce.svg' },
+      { name: 'Google', logo: '/uploads/stack-icons/google-cloud.svg' },
+      { name: 'ReckSpace', logo: '/uploads/stack-icons/digital-ocean.svg' },
       { name: 'Digital Ocean', logo: '/uploads/stack-icons/digital-ocean.svg' },
-      { name: 'RackSpace', logo: '/uploads/stack-icons/rackspace.svg' },
     ],
   },
   {
@@ -36,7 +35,6 @@ export const stackGroups = [
       { name: 'Exchange Online', logo: '/uploads/stack-icons/exchange-online.svg' },
       { name: 'SharePoint', logo: '/uploads/stack-icons/sharepoint.svg' },
       { name: 'OneDrive', logo: '/uploads/stack-icons/onedrive.svg' },
-      { name: 'Office Apps', logo: '/uploads/stack-icons/office-apps.svg' },
     ],
   },
   {
@@ -49,7 +47,6 @@ export const stackGroups = [
       { name: 'Sophos', logo: '/uploads/stack-icons/sophos.svg' },
       { name: 'SentinelOne', logo: '/uploads/stack-icons/sentinelone.svg' },
       { name: 'Bitdefender', logo: '/uploads/stack-icons/bitdefender.svg' },
-      { name: 'Trend Micro Apex One', logo: '/uploads/stack-icons/trend-micro-apex-one.svg' },
     ],
   },
   {
@@ -61,7 +58,6 @@ export const stackGroups = [
       { name: 'Fortinet', logo: '/uploads/stack-icons/fortinet.svg' },
       { name: 'Sophos', logo: '/uploads/stack-icons/sophos.svg' },
       { name: 'Ubiquiti', logo: '/uploads/stack-icons/ubiquiti.svg' },
-      { name: 'Dell', logo: '/uploads/stack-icons/dell.svg' },
       { name: 'WatchGuard', logo: '/uploads/stack-icons/watchguard.svg' },
     ],
   },

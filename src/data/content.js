@@ -156,7 +156,7 @@ export const featuredCards = [
 export const partnerStrip = {
   tag: 'Using trusted technology',
   title: 'Using trusted technology to solve your IT challenges',
-  text: 'Nexsate uses proven platforms and technology we support to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.',
+  text: 'Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.',
   cta: { label: 'Explore our services', href: pageHref('Services & Solutions') },
 }
 
@@ -254,9 +254,9 @@ export const testimonials = {
     },
     {
       quote:
-        "Nexsate implemented such a powerful platform that we had no break in service when our employees had to work from home due to the COVID-19 pandemic. We weren't concerned about how to shift to a remote working environment because Nexsate facilitated a seamless transition.",
-      name: 'David Morandes',
-      role: 'CEO & Founder, Skole App',
+        'Nexsate implemented such a powerful platform that we had no break in service when our employees had to work from home due to the COVID-19 pandemic. We weren\'t concerned about how to shift to a remote working environment because Nexsate facilitated a seamless transition.',
+      name: 'Amanda Parks',
+      role: 'Network Manager, Healthcare Organization',
     },
   ],
 }

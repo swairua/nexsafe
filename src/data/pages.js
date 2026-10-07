@@ -13,6 +13,13 @@ import { industryMorePages } from './pages/industries-more.js'
 import { successStoryPages } from './pages/successStory.js'
 import { sitePages } from './pages/site.js'
 import { insightPosts, blogIndexPage } from './posts.js'
+import { partnershipPages } from './pages/partnerships.js'
+import { reviewsAwardsPages } from './pages/reviews-awards.js'
+import { careersPages } from './pages/careers.js'
+import { eventPages } from './pages/events.js'
+import { teamPages } from './pages/team.js'
+import { clientSupportPages } from './pages/client-support.js'
+import { caseStudyPages } from './pages/case-studies.js'
 
 export const allPages = [
   ...companyPages,
@@ -23,6 +30,13 @@ export const allPages = [
   ...successStoryPages,
   ...sitePages,
   ...insightPosts,
+  ...partnershipPages,
+  ...reviewsAwardsPages,
+  ...careersPages,
+  ...eventPages,
+  ...teamPages,
+  ...clientSupportPages,
+  ...caseStudyPages,
   blogIndexPage,
 ]
 

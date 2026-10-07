@@ -11,7 +11,7 @@ export const industryMorePages = [
     slug: 'consulting-providers',
     title: 'Consulting Providers',
     eyebrow: 'Industries',
-    intro: 'Network stability and responsive support for firms whose product is expertise — so downtime never reaches your clients.',
+    intro: 'If your computer network is less than stable, frequent downtime means slow transactions, missed deadlines, and lost sales.',
     image: { src: '/uploads/team-collaboration.jpg', alt: 'Diverse team collaborating together in a bright office' },
     sections: [
       {
@@ -40,7 +40,7 @@ export const industryMorePages = [
     slug: 'non-profit',
     title: 'Non-Profit',
     eyebrow: 'Industries',
-    intro: 'Scalable, cost-effective technology plans that put mission first — reliable IT sized to donor-funded budgets.',
+    intro: 'With scalable, cost-effective plans, we handle the tech—from strategy to maintenance to support—so you can focus on your mission.',
     image: { src: '/uploads/team-handshake.jpg', alt: 'Two professionals shaking hands in partnership' },
     sections: [
       {
@@ -69,7 +69,7 @@ export const industryMorePages = [
     slug: 'telemedicine',
     title: 'Telemedicine',
     eyebrow: 'Industries',
-    intro: 'Reliable platforms for virtual care — secure video visits, connected records access, and support clinicians can trust.',
+    intro: 'Healthcare is broken. Fix it by building a better virtual solution with a telehealth app or a web platform.',
     image: { src: '/uploads/client-smiling.jpg', alt: 'Smiling client' },
     sections: [
       {
@@ -98,7 +98,7 @@ export const industryMorePages = [
     slug: 'fintech',
     title: 'Fintech',
     eyebrow: 'Industries',
-    intro: 'Security-forward IT for financial technology — strict controls, clean audit posture, and infrastructure that scales with transaction volume.',
+    intro: 'Fintech projects are strict. We bring our innovative approach to it.',
     image: { src: '/uploads/boardroom-meeting.jpg', alt: 'Team meeting in a boardroom' },
     sections: [
       {
@@ -127,7 +127,7 @@ export const industryMorePages = [
     slug: 'education',
     title: 'Education',
     eyebrow: 'Industries',
-    intro: 'Secure, connected learning environments — dependable classroom connectivity and simple IT staff and students can use.',
+    intro: 'Great education starts with the right technology. Nexsate builds secure, connected, future-ready learning environments.',
     image: { src: '/uploads/hero-team-planning.jpg', alt: 'Team planning around a table' },
     sections: [
       {

@@ -57,7 +57,7 @@ export const navItems = [
     columns: [
       {
         heading: 'About us',
-        links: links('About Us'),
+        links: links('About Us', 'Why Us', 'Team', 'Careers'),
       },
       {
         heading: 'What we bring together',
@@ -69,6 +69,10 @@ export const navItems = [
           ...links('Network Management', 'Backup & Disaster Recovery'),
           { label: 'Software Development, ERP & CRM Solutions', href: '#/software-erp-app-development' },
         ],
+      },
+      {
+        heading: 'More',
+        links: links('Partners & Certifications', 'Reviews & Awards'),
       },
     ],
   },
@@ -137,7 +141,11 @@ export const navItems = [
     columns: [
       {
         heading: 'Help and support',
-        links: links('Help and FAQ', 'Contact us'),
+        links: links('Help and FAQ', 'Client Support', 'Contact us'),
+      },
+      {
+        heading: 'Learn',
+        links: links('Events', 'Blog'),
       },
       {
         heading: 'Legal',

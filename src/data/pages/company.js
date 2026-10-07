@@ -99,4 +99,45 @@ export const companyPages = [
     ],
     related: ['services-solutions', 'contact-us', 'help-and-faq'],
   },
+  {
+    slug: 'why-us',
+    title: 'Your trusted IT Partner. Earned through service.',
+    eyebrow,
+    intro: 'Built on purpose. Driven to enable, transform, and empower.',
+    sections: [
+      {
+        heading: 'People',
+        body: [
+          'Our people are the heart of Nexsate. From account managers to technicians, we bring together skilled, service-focused professionals who care about your business, listen to your needs, and work with commitment to support your success.',
+        ],
+      },
+      {
+        heading: 'Purpose',
+        body: [
+          'Our purpose is to help businesses use technology with clarity, confidence, and measurable value. Guided by our principle — EnableIT. Transform. Empower. — we work to reduce complexity, strengthen operations, and empower people to do their best work.',
+        ],
+      },
+      {
+        heading: 'Process',
+        body: [
+          'Our process starts with understanding your business. We assess your needs, recommend the right approach, deliver with care, and continue improving your technology environment as your business grows.',
+        ],
+      },
+      {
+        heading: 'How we do it',
+        body: [
+          'Our process is simple: understand first, deliver clearly, and keep improving as your business grows.',
+          'We begin by understanding your business, your people, your systems, and the technology challenges affecting daily operations. From there, we assess your environment, plan the right approach, provide support, and recommend improvements that align with your goals, budget, and growth plans.',
+          'Our focus is to make technology easier to manage, more effective for your business, and ready to support long-term growth.',
+        ],
+      },
+      {
+        heading: 'Our impact',
+        body: [
+          'Stronger revenue, reduced waste, lower operating costs, and improved overall business performance.',
+        ],
+      },
+    ],
+    related: ['services-solutions', 'contact-us', 'about-us'],
+  },
 ]

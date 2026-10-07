@@ -21,6 +21,7 @@ export const footerColumns = [
     links: [
       { label: 'Talk to an expert', href: pageHref('Contact us') },
       { label: 'Help and FAQ', href: pageHref('Help and FAQ') },
+      { label: 'Client Support', href: '#/client-support' },
     ],
   },
   {
@@ -58,9 +59,12 @@ export const footerColumns = [
     heading: 'Company',
     links: [
       link('About Us'),
-      link('Success Story'),
+      link('Why Us'),
+      link('Team'),
+      link('Careers'),
+      link('Partners & Certifications'),
+      link('Reviews & Awards'),
       link('Blog'),
-      link('Help and FAQ'),
     ],
   },
 ]
