@@ -1,6 +1,7 @@
 import RichTextEditor, { looksLikeHtml } from "./RichTextEditor.jsx"
 import { imageDescription, imageLocations } from "../data/imageMeta.js"
 import { BTN, BTN_MINI } from "./ui.js"
+import { resolveSrc } from "../utils/url.js"
 
 const IMAGE_KEYS = ["image", "img", "src", "logo", "banner", "photo", "thumbnail", "thumb", "icon", "cover", "hero", "background", "avatar", "picture"]
 const IMG_EXT = [".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"]
@@ -114,7 +115,7 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
     )
   }
   const str = String(value == null ? "" : value)
-  const preview = imageSrc(str)
+  const preview = imageSrc(resolveSrc(str))
   const leaf = String(key || "").split(".").pop().split("[")[0].toLowerCase()
   const isAltField = leaf === "alt" || leaf === "alttext" || leaf === "alt_text" || leaf === "logoalt"
   if (isImageKey(key) || preview) {
