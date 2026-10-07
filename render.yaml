@@ -8,9 +8,8 @@ services:
     plan: starter
     autoDeploy: true
     envVars:
-      # Point the built admin app at the API service below.
-      # Replace <API_SERVICE_URL> with your API service's Render URL,
-      # e.g. https://nexsafe-api.onrender.com
+      # Replace the value below with the URL of your nexsate-api service
+      # after it is created, e.g. https://nexsafe-api.onrender.com
       - key: VITE_API_URL
         value: https://nexsafe-api.onrender.com
       - key: NODE_ENV
