@@ -1,6 +1,7 @@
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
+import { resolveSrc } from "../../utils/url.js"
 
 /**
  * One vendor chip: the platform name as text only. Logos stay out of the
@@ -15,7 +16,7 @@ function VendorChip({ vendor }) {
   return (
     <li className="inline-flex items-center gap-2 rounded-full bg-shell-gray-100 px-3 py-1.5 text-sm font-semibold text-shell-gray-700">
       {logo ? (
-        <img src={logo} alt="" className="h-4 w-4 shrink-0 rounded object-contain" loading="lazy" />
+        <img src={resolveSrc(logo)} alt="" className="h-4 w-4 shrink-0 rounded object-contain" loading="lazy" />
       ) : null}
       {name}
     </li>

@@ -1,11 +1,28 @@
 services:
-  # Public site + admin portal + PHP API, all from one container.
+  # Public site + admin SPA (static frontend).
   - type: web
     name: nexsate
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    plan: starter
+    autoDeploy: true
+    envVars:
+      # Point the built admin app at the API service below.
+      # Replace <API_SERVICE_URL> with your API service's Render URL,
+      # e.g. https://nexsafe-api.onrender.com
+      - key: VITE_API_URL
+        value: https://nexsafe-api.onrender.com
+      - key: NODE_ENV
+        value: production
+
+  # PHP + SQLite API for content, media, auth, and messages.
+  - type: web
+    name: nexsate-api
     runtime: docker
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./Dockerfile.api
     dockerContext: .
-    plan: starter          # free instances cannot mount a persistent disk
+    plan: starter
     healthCheckPath: /api/content.php
     autoDeploy: true
     envVars:
@@ -18,8 +35,6 @@ services:
       - key: NX_SITE_BASE
         value: /
     disk:
-      # Keeps the SQLite content store and uploaded images across deploys.
-      # Without this every restart reverts edits to the api/seed.json defaults.
       name: nexsate-data
       mountPath: /data
       sizeGB: 1

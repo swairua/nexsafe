@@ -3,9 +3,11 @@
  * If the remote image fails to load (offline), the branded gradient shows instead.
  */
 import { useState } from 'react'
+import { resolveSrc } from '../../utils/url.js'
 
 export default function SmartImage({ src, alt = '', fallback = '#1a1a1a', className = '', imgClassName = '' }) {
-  const [failed, setFailed] = useState(!src)
+  const resolved = resolveSrc(src)
+  const [failed, setFailed] = useState(!resolved)
 
   return (
     <div
@@ -16,7 +18,7 @@ export default function SmartImage({ src, alt = '', fallback = '#1a1a1a', classN
     >
       {!failed && (
         <img
-          src={src}
+          src={resolved}
           alt={alt}
           loading="lazy"
           onError={() => setFailed(true)}

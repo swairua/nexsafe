@@ -1,4 +1,4 @@
-const base = (import.meta.env.BASE_URL || "/") + "api/"
+const base = ((import.meta.env.VITE_API_URL || ((import.meta.env.BASE_URL || "/") + "api/")).replace(/\/$/, "/") + "/")
 export function apiUrl(p) { return base + p }
 
 let csrf = null

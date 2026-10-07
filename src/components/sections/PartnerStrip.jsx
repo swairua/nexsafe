@@ -4,6 +4,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
+import { resolveSrc } from "../../utils/url.js"
 
 /**
  * Logo slot on a technology card: the vendor's mark once the admin uploads
@@ -13,7 +14,7 @@ import { useContent } from "../../content/ContentContext.jsx"
  */
 function LogoSlot({ partner }) {
   const [failed, setFailed] = useState(false)
-  const src = partner.logo && !failed ? partner.logo : ''
+  const src = partner.logo && !failed ? resolveSrc(partner.logo) : ''
   if (!src) {
     return (
       <span

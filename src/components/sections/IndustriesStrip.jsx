@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import Reveal from '../ui/Reveal.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
+import { resolveSrc } from "../../utils/url.js"
 
 /** Industry tile art: the five NanoSoft reference SVGs render as images;
  *  the four extra Nexsate sectors use inline line icons drawn in the same
@@ -9,7 +10,7 @@ import { useContent } from "../../content/ContentContext.jsx"
 function IndustryIcon({ icon, label }) {
   if (typeof icon === 'string' && icon.startsWith('/uploads/')) {
     return (
-      <img src={icon} alt="" aria-hidden="true" width={64} height={64} className="h-16 w-16" loading="lazy" />
+      <img src={resolveSrc(icon)} alt="" aria-hidden="true" width={64} height={64} className="h-16 w-16" loading="lazy" />
     )
   }
   const common = {

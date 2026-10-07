@@ -1,0 +1,11 @@
+# SPA fallback: hash-routed paths need index.html
+# Static assets (assets/*, brand/*, social/*, uploads/*, favicon.svg) are real files
+# and are served before this rule is evaluated by most static hosts.
+# If your host does not support _redirects, a fallback is the static router below.
+# See render.yaml for the frontend build/publish config.
+
+# Admin entry
+/admin  /admin.html  200
+
+# SPA fallback
+/*  /index.html  200

@@ -1,0 +1,38 @@
+# Nexsate — PHP API service for Render.
+#
+# Serves /api/* and /uploads/*. The frontend is deployed as a separate static
+# service (or another container) and points to this service via VITE_API_URL.
+
+FROM php:8.3-cli-bookworm
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends libsqlite3-dev \
+  && docker-php-ext-install pdo_sqlite \
+  && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY api ./api
+COPY router-api.php ./
+
+# Writable state on Render persistent disk
+RUN mkdir -p /data/db /data/uploads \
+  && chmod -R 0777 /data
+
+ENV NX_DATA_DIR=/data/db \
+    NX_UPLOAD_DIR=/data/uploads \
+    NX_UPLOAD_URL=/uploads \
+    NX_SITE_BASE=/ \
+    PORT=10000
+
+EXPOSE 10000
+
+# Seed shipped media onto the disk on first boot
+RUN cp -rn /app/public/uploads/. /data/uploads/ 2>/dev/null || true
+
+ENV PHP_CLI_SERVER_WORKERS=4
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD php -r 'exit(@file_get_contents("http://127.0.0.1:10000/api/content.php") === false ? 1 : 0);'
+
+CMD ["sh", "-c", "php -S 0.0.0.0:${PORT} -t /app /app/router-api.php"]

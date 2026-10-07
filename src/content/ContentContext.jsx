@@ -3,9 +3,10 @@ import { defaultContent } from "../data/siteContent.js"
 
 const ContentContext = createContext(defaultContent)
 
-// API base honors Vite base so it works both behind the dev proxy (base "/")
-// and a production build served from a subfolder (base "/nexsate/").
-export const API_BASE = (import.meta.env.BASE_URL || "/") + "api/"
+// API base:
+//  - VITE_API_URL: explicit origin for two-service deploy (frontend + API)
+//  - otherwise: same-origin /api/
+export const API_BASE = (import.meta.env.VITE_API_URL || ((import.meta.env.BASE_URL || "/") + "api/")).replace(/\/$/, "/")
 export function apiUrl(path) { return API_BASE + path }
 
 export function useContent() { return useContext(ContentContext) }
