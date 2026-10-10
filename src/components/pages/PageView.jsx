@@ -175,7 +175,25 @@ export default function PageView({ page, slug, params }) {
                   ))}
                 </ul>
               )}
-              {section.items && (
+              {section.items && slug === 'help-and-faq' && (
+                <div className="mt-6 space-y-3">
+                  {section.items.map((item) => (
+                    <details
+                      key={item.title}
+                      className="group rounded-2xl border border-shell-gray-300 bg-white open:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]"
+                    >
+                      <summary className="flex min-h-[3.5rem] cursor-pointer list-none items-center justify-between gap-4 p-5 text-left text-base font-bold leading-snug text-shell-gray-900 md:text-lg [&::-webkit-details-marker]:hidden">
+                        {item.title}
+                        <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-shell-gray-100 text-lg leading-none transition-transform duration-300 group-open:rotate-45">+</span>
+                      </summary>
+                      <div className="px-5 pb-5">
+                        <Copy para={item.text} />
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              )}
+              {section.items && slug !== 'help-and-faq' && (
                 <ul className="mt-6 grid gap-4 sm:grid-cols-2">
                   {section.items.map((item) => (
                     <li
