@@ -2,7 +2,6 @@
 declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 
-/** PDO (SQLite) singleton — creates the file, schema, and seeds on first use. */
 function nx_db(): PDO
 {
     static $pdo = null;
@@ -27,14 +26,11 @@ function nx_migrate(PDO $pdo): void
     $pdo->exec('CREATE TABLE IF NOT EXISTS media (id INTEGER PRIMARY KEY AUTOINCREMENT, filename TEXT NOT NULL, url TEXT NOT NULL, mime TEXT, size INTEGER, alt TEXT, width INTEGER, height INTEGER, created_at TEXT NOT NULL)');
     $pdo->exec('CREATE TABLE IF NOT EXISTS admins (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, email TEXT, created_at TEXT NOT NULL)');
     $pdo->exec('CREATE TABLE IF NOT EXISTS messages (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, phone TEXT, company TEXT, subject TEXT, body TEXT, created_at TEXT NOT NULL, seen INTEGER DEFAULT 0)');
-    // Support-ticket priority (Normal/High/Urgent, as on nexsate.com support
-    // form). Additive: existing rows read as untriaged.
+
     $mcols = [];
     foreach ($pdo->query('PRAGMA table_info(messages)') as $c) { $mcols[(string) $c['name']] = true; }
     if (!isset($mcols['priority'])) { $pdo->exec("ALTER TABLE messages ADD COLUMN priority TEXT NOT NULL DEFAULT ''"); }
-    // Media metadata upgrade: every image carries alt text + description +
-    // usage locations so the library shows what each image is, where it is
-    // used, and lets an editor replace the file in place.
+
     $cols = [];
     foreach ($pdo->query('PRAGMA table_info(media)') as $c) { $cols[(string) $c['name']] = true; }
     if (!isset($cols['description'])) { $pdo->exec("ALTER TABLE media ADD COLUMN description TEXT NOT NULL DEFAULT ''"); }
@@ -57,10 +53,6 @@ function nx_seed(PDO $pdo): void
         return;
     }
 
-    // Additive backfill: an install that already has content still picks up keys
-    // (and nested fields) added to the seed afterwards, so new admin sections
-    // show up without a manual re-seed. Saved values always win — nothing an
-    // editor changed is ever overwritten.
     $select  = $pdo->prepare('SELECT value FROM content WHERE key = ?');
     $insert  = $pdo->prepare('INSERT OR IGNORE INTO content (key, value, updated_at) VALUES (?,?,?)');
     $update  = $pdo->prepare('UPDATE content SET value = ?, updated_at = ? WHERE key = ?');
@@ -79,17 +71,11 @@ function nx_seed(PDO $pdo): void
     }
 }
 
-/** Content JSON writer — one place defines the encoding for stored values. */
 function nx_encode($value): string
 {
     return (string) json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 }
 
-/**
- * Fill in fields a stored value is missing, using the seed as the source of
- * truth for new defaults. Stored values always win; lists are never merged
- * index-wise (an editor who removed a card keeps it removed).
- */
 function nx_merge_defaults($defaults, $stored)
 {
     if (!is_array($defaults) || !is_array($stored) || $stored === null) {
@@ -105,7 +91,6 @@ function nx_merge_defaults($defaults, $stored)
     return $out;
 }
 
-/** Full content map (key => decoded value) — the shape the SPA consumes. */
 function nx_content_all(): array
 {
     $out = [];
@@ -129,23 +114,11 @@ function nx_content_set(string $key, $value): void
     $st->execute([$key, json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), date('c')]);
 }
 
-/** Image types the media library accepts: detected MIME type => stored extension. */
 function nx_media_types(): array
 {
     return ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp', 'image/gif' => 'gif', 'image/svg+xml' => 'svg'];
 }
 
-/**
- * Register files that already sit in UPLOAD_DIR but have no media row yet.
- *
- * The Media Library lists database rows, so images that arrived by any other
- * route - git checkout, FTP, the image localizer, a manual copy - were invisible
- * in the admin and unusable in the image picker. This makes the library match
- * the folder. It only ever adds rows: tracked files keep their stored alt text
- * and timestamps, and nothing on disk is touched or deleted.
- *
- * @return int number of rows added
- */
 function nx_media_sync(): int
 {
     $pdo = nx_db();
@@ -167,15 +140,15 @@ function nx_media_sync(): int
             continue;
         }
         if (isset($known[$name])) {
-            continue;                      // already tracked - keep its stored alt text and date
+            continue;
         }
         $ext = strtolower((string) pathinfo($name, PATHINFO_EXTENSION));
         $mime = $finfo ? ((string) $finfo->file($f) ?: '') : '';
         if ($mime === '' || !isset($types[$mime])) {
-            $mime = $byExt[$ext] ?? '';   // no fileinfo (or unknown type): fall back to the extension
+            $mime = $byExt[$ext] ?? '';
         }
         if (!isset($types[$mime])) {
-            continue;                      // stray non-image file in the uploads folder
+            continue;
         }
         $w = null; $h = null;
         if ($mime !== 'image/svg+xml') {
@@ -195,10 +168,6 @@ function nx_media_sync(): int
 
 }
 
-/**
- * How many content fields reference each uploaded file, keyed by filename.
- * Used by the Media Library to warn before deleting an image the site still uses.
- */
 function nx_media_usage(): array
 {
     $usage = [];
@@ -213,8 +182,6 @@ function nx_media_usage(): array
     return $usage;
 }
 
-
-/** Where each file is used: filename => ["section > field path", ...]. */
 function nx_media_locations(): array
 {
     $out = [];
@@ -243,5 +210,3 @@ function nx_collect_image_locations($node, string $section, string $path, array 
         }
     }
 }
-
-

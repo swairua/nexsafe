@@ -3,8 +3,6 @@ declare(strict_types=1);
 require_once __DIR__ . '/helpers.php';
 require_once __DIR__ . '/db.php';
 
-// CORS for cross-origin admin/frontend (two-service deploy).
-// Actual mutations still require session + CSRF.
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 if ($origin !== '') {
     header('Access-Control-Allow-Origin: ' . $origin);
@@ -22,4 +20,3 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'OPTIONS') {
     http_response_code(204);
     exit;
 }
-

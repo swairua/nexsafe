@@ -4,9 +4,6 @@ import SmartImage from '../ui/SmartImage.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import { resolveSrc } from "../../utils/url.js"
 
-/** Industry tile art: the five NanoSoft reference SVGs render as images;
- *  the four extra Nexsate sectors use inline line icons drawn in the same
- *  two-tone cyan style (bright #24ccfd + pale #8fc3e0). */
 function IndustryIcon({ icon, label }) {
   if (typeof icon === 'string' && icon.startsWith('/uploads/')) {
     return (
@@ -48,7 +45,7 @@ function IndustryIcon({ icon, label }) {
       </svg>
     )
   }
-  // lock (default — fintech)
+
   return (
     <svg {...common}>
       <rect x="16" y="27" width="32" height="25" rx="3" stroke={pale} strokeWidth="2.5" />
@@ -58,11 +55,6 @@ function IndustryIcon({ icon, label }) {
   )
 }
 
-/**
- * Dark industries band: split header (eyebrow + H2 left, supporting copy
- * right) above a manual-scroll tile strip — same interaction as the services
- * strip above. Owns the `#industries` anchor used by the primary nav.
- */
 export default function IndustriesStrip() {
   const { industriesStrip, caseCards, sectionIds } = useContent()
   const trackRef = useRef(null)
@@ -73,7 +65,7 @@ export default function IndustriesStrip() {
     const reduce = typeof window !== 'undefined'
       && typeof window.matchMedia === 'function'
       && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    // One "page" = the visible width, so arrows page through the tiles.
+
     el.scrollBy({ left: dir * el.clientWidth * 0.92, behavior: reduce ? 'auto' : 'smooth' })
   }
 

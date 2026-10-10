@@ -5,9 +5,7 @@ require_once __DIR__ . '/bootstrap.php';
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
 if ($method === 'GET') {
-    // The library lists database rows, so files placed in /uploads by other means
-    // (image localizer, git, FTP) would never show up. Registered here, but only
-    // for a signed-in admin, so an anonymous visitor can't cause DB writes.
+
     nx_session_start();
     $synced = nx_is_authed() ? nx_media_sync() : 0;
     $usage = nx_media_usage();
@@ -46,8 +44,6 @@ if ($method === 'POST') {
         if ($info !== false) { $w = (int) $info[0]; $h = (int) $info[1]; }
     }
 
-    // Replace mode: same row, same filename/URL — every content field that
-    // points at this image immediately serves the new file. Nothing else to edit.
     $replaceId = (int) ($_POST['replace_id'] ?? 0);
     if ($replaceId > 0) {
         $st = nx_db()->prepare('SELECT * FROM media WHERE id = ?');
@@ -56,7 +52,7 @@ if ($method === 'POST') {
         if (!$row) nx_fail('Image to replace not found', 404);
         $name = basename((string) $row['filename']);
         $dest = UPLOAD_DIR . DIRECTORY_SEPARATOR . $name;
-        // Validate the replacement extension matches the stored type family.
+
         $newExt = strtolower((string) pathinfo($name, PATHINFO_EXTENSION));
         if ($newExt !== $ext && !($ext === 'jpg' && $newExt === 'jpeg') && !($ext === 'jpeg' && $newExt === 'jpg')) {
             nx_fail('Replacement file must be the same format as the original (' . $newExt . ')');
@@ -111,8 +107,7 @@ if ($method === 'DELETE') {
     $st->execute([$id]);
     $m = $st->fetch();
     if ($m) {
-        // Deleting an image the site still points at breaks the page silently, so
-        // require an explicit force flag once the content references are known.
+
         $used = (nx_media_usage()[$m['filename']] ?? 0);
         if ($used > 0 && empty($b['force'])) {
             nx_fail("This image is used by {$used} content field(s). Edit those fields first, or confirm the forced delete.", 409);
@@ -127,4 +122,3 @@ if ($method === 'DELETE') {
 }
 
 nx_fail('Method not allowed', 405);
-

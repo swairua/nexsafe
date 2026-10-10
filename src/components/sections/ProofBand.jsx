@@ -3,13 +3,6 @@ import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from '../../content/ContentContext.jsx'
 
-/**
- * Count-up animation for statistics numbers.
- * Parses "20+", "98%", "3 min" into numeric part and suffix;
- * counts up the number when the element enters the viewport.
- * Uses a native IntersectionObserver (same pattern as Reveal.jsx) so we
- * don't pull in an extra dependency.
- */
 function CountUp({
   value,
   suffix = '',
@@ -199,4 +192,3 @@ export default function ProofBand() {
     </section>
   )
 }
-

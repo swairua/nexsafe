@@ -1,10 +1,3 @@
-// Central image registry — every image the site serves, with a human
-// description, its canonical location(s) in the content store, and whether it
-// can be replaced from the admin Media tab.
-//
-// All photography is local (public/uploads/*); brand art is in public/brand/*
-// and social glyphs in public/social/*. Nothing loads from an image CDN at
-// runtime — see scripts/localize-images.mjs.
 export const IMAGE_META = {
   '/uploads/hero-network-servers.jpg': {
     description: 'Server racks glowing blue inside a modern data centre — homepage hero background.',
@@ -67,27 +60,27 @@ export const IMAGE_META = {
     replaceable: true,
   },
   '/uploads/industry-banking.svg': {
-    description: 'Dollar-badge line icon in cyan — NanoSoft reference artwork for the Banking industry tile.',
+    description: 'Dollar-badge line icon in cyan for the Banking industry tile.',
     locations: ['Home > Industries strip > Banking'],
     replaceable: true,
   },
   '/uploads/industry-capital-markets.svg': {
-    description: 'Pie-chart line icon in cyan — NanoSoft reference artwork for the Capital Markets industry tile.',
+    description: 'Pie-chart line icon in cyan for the Capital Markets industry tile.',
     locations: ['Home > Industries strip > Capital Markets'],
     replaceable: true,
   },
   '/uploads/industry-manufacturing.svg': {
-    description: 'Data-block line icon in cyan — NanoSoft reference artwork for the Manufacturing industry tile.',
+    description: 'Data-block line icon in cyan for the Manufacturing industry tile.',
     locations: ['Home > Industries strip > Manufacturing'],
     replaceable: true,
   },
   '/uploads/industry-healthcare.svg': {
-    description: 'Shield-heart line icon in cyan — NanoSoft reference artwork for the Healthcare industry tile.',
+    description: 'Shield-heart line icon in cyan for the Healthcare industry tile.',
     locations: ['Home > Industries strip > Healthcare'],
     replaceable: true,
   },
   '/uploads/industry-higher-education.svg': {
-    description: 'Open-book line icon in cyan — NanoSoft reference artwork for the Higher Education industry tile.',
+    description: 'Open-book line icon in cyan for the Higher Education industry tile.',
     locations: ['Home > Industries strip > Higher Education'],
     replaceable: true,
   },
@@ -208,13 +201,11 @@ export const IMAGE_META = {
   },
 }
 
-/** Human description for an image path, or "" when unregistered. */
 export function imageDescription(src) {
   const m = IMAGE_META[src]
   return m ? m.description : ''
 }
 
-/** Where an image is used, as a list of "Section > field" labels. */
 export function imageLocations(src) {
   const m = IMAGE_META[src]
   return m && Array.isArray(m.locations) ? m.locations : []

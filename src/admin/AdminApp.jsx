@@ -8,8 +8,6 @@ import FieldEditor from "./FieldEditor.jsx"
 import MediaLibrary from "./MediaLibrary.jsx"
 import Messages from "./Messages.jsx"
 
-// Top-level keys of the content store (api/seed.json). "pages" is handled
-// page-by-page by PagesPanel so a single huge key is never rendered at once.
 const CONTENT_KEYS = [
   { key: "settings", label: "Site settings", group: "Site" },
   { key: "sectionIds", label: "Section anchors", group: "Site" },
@@ -59,7 +57,6 @@ function Screen({ children }) {
   return <div className="flex min-h-screen items-center justify-center bg-shell-gray-100 px-4 text-sm text-shell-gray-500">{children}</div>
 }
 
-/** Edit one entry of content.pages and write the whole map back under "pages". */
 function PagesPanel({ pages, onSaved, onPickImage }) {
   const slugs = Object.keys(pages || {})
   const [slug, setSlug] = useState(slugs[0] || "")
@@ -185,9 +182,7 @@ export default function AdminApp() {
   }
 
   useEffect(() => {
-    // A lost session (idle timeout, restarted PHP server, unreadable session
-    // file) must return the admin to the sign-in screen instead of leaving a
-    // dead "Unauthorized" line where an editor used to be.
+
     setUnauthorizedHandler(() => {
       setCsrf(null)
       setSession(null)
@@ -197,7 +192,7 @@ export default function AdminApp() {
   }, [])
 
   async function logout() {
-    try { await api.post("auth.php", { action: "logout" }) } catch (e) { /* already signed out */ }
+    try { await api.post("auth.php", { action: "logout" }) } catch (e) {  }
     setCsrf(null)
     await refresh()
   }

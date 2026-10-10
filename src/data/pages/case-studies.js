@@ -1,6 +1,3 @@
-// Case Studies index — ported from nexsate.com/case-studies/.
-// Serves as the dedicated case-studies hub; individual studies live in the
-// blog index and success-story page.
 const eyebrow = 'Insights'
 
 export const caseStudyPages = [

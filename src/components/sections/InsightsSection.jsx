@@ -3,10 +3,6 @@ import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import { formatPostDate, insightPosts } from "../pages/BlogIndex.jsx"
 
-/**
- * Byline badge overlaid on the card photo — green dot mark + white author
- * name, exactly as the reference layout draws it over every photo.
- */
 function Byline() {
   return (
     <span className="absolute bottom-3 left-4 flex items-center gap-2">
@@ -21,10 +17,6 @@ function Byline() {
   )
 }
 
-/**
- * Photo with the reference's desaturated blue-grey wash: grayscale image,
- * navy multiply tint, and a soft bottom shade so the byline stays legible.
- */
 function InsightPhoto({ post, fallbackImage, fallbackAlt, aspect }) {
   const src = (post.image && post.image.src) || fallbackImage
   const alt = (post.image && post.image.alt) || fallbackAlt || ''
@@ -95,13 +87,6 @@ function MiniCard({ post, fallbackImage, fallbackAlt, delay }) {
   )
 }
 
-/**
- * Insights section — exact replica of the reference "resource library" band:
- * centered eyebrow + H2, one large featured card left, four small cards in a
- * 2x2 grid right, closing line with the "View all article" link. Roster is
- * the five newest insight posts so cards and pages can never drift apart.
- * Owns the `#insights` anchor used by the primary nav.
- */
 export default function InsightsSection() {
   const content = useContent()
   const { sectionIds } = content

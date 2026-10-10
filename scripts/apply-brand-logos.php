@@ -1,16 +1,5 @@
 <?php
-/**
- * One-shot migration: backfill local brand-mark paths into the SQLite content
- * store for the homepage "Using trusted technology" section.
- *
- * Stored `partners` items and `stackGroups` vendor entries predate the logo
- * fields, so the homepage rendered letter-badge fallbacks instead of the real
- * marks in public/uploads/. This adds the missing `logo` values by vendor
- * name. Safe to re-run (entries that already have a logo, editor-added
- * vendors with no known mark, and custom ordering/removals are untouched).
- *
- *   php scripts/apply-brand-logos.php
- */
+
 declare(strict_types=1);
 require_once __DIR__ . '/../api/db.php';
 
@@ -20,7 +9,6 @@ if (!is_array($seed)) {
     exit(1);
 }
 
-// Canonical vendor name => local logo path, from the refreshed seed.
 $logos = [];
 foreach ((array) ($seed['partners'] ?? []) as $p) {
     if (is_array($p) && isset($p['name'], $p['logo'])) {
@@ -49,9 +37,7 @@ if ($raw !== false) {
     $list = json_decode((string) $raw, true);
     if (is_array($list)) {
         $n = 0;
-        // Collapse legacy exact-name duplicates (e.g. Sophos was seeded under
-        // both Security and Network), keeping the first occurrence so editor
-        // ordering of everything else is preserved.
+
         $seen = [];
         $deduped = [];
         $dropped = 0;

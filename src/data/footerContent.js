@@ -1,10 +1,7 @@
-// Footer + homepage-bottom content. Links resolve through slug.js so labels,
-// slugs and the page registry stay in lockstep with the client pages.
 import { pageHref } from './slug.js'
 
 const link = (label) => ({ label, href: pageHref(label) })
 
-// Closing CTA banner, built from the client's own positioning line.
 export const promo = {
   tag: 'Simply enabling IT for a complex world',
   title: 'We take care of your IT, so you can take care of your customers.',

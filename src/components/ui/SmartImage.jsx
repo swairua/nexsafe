@@ -1,7 +1,3 @@
-/**
- * Responsive image with brand gradient fallback.
- * If the remote image fails to load (offline), the branded gradient shows instead.
- */
 import { useState } from 'react'
 import { resolveSrc } from '../../utils/url.js'
 

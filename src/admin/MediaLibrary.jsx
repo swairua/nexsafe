@@ -5,11 +5,8 @@ import { BTN } from "./ui.js"
 
 const ACT = "inline-flex min-h-[40px] items-center justify-center rounded px-2.5 py-1 text-xs font-medium"
 
-// Every image shows: preview, description (what it is), location (local path
-// + which content fields use it), and a Replace action that swaps the file in
-// place while keeping the same URL so no content edit is needed.
 export default function MediaLibrary({ onSelect }) {
-  const [items, setItems] = useState(null) // null = still loading
+  const [items, setItems] = useState(null)
   const [file, setFile] = useState(null)
   const [alt, setAlt] = useState("")
   const [description, setDescription] = useState("")
@@ -25,8 +22,7 @@ export default function MediaLibrary({ onSelect }) {
     try {
       const r = await api.get("media.php")
       setItems(r.media || [])
-      // Files that were copied into /uploads without an upload (localizer, FTP,
-      // git) are registered by the server on this call.
+
       if (r.synced) setMsg(`Added ${r.synced} image${r.synced === 1 ? "" : "s"} found in /uploads to the library.`)
     } catch (e) {
       setItems([])
@@ -180,4 +176,3 @@ export default function MediaLibrary({ onSelect }) {
     </div>
   )
 }
-

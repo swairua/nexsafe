@@ -1,6 +1,5 @@
 import { useContent } from '../../content/ContentContext.jsx'
 
-/** Mobile drawer with accordion sub-menus for each primary nav item. */
 export default function MobileNav({ navItems, openIndex, onToggle, onNavigate }) {
   const { uiLabels } = useContent()
   return (

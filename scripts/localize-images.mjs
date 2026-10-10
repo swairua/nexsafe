@@ -1,13 +1,3 @@
-// Image localizer: downloads every remote (Unsplash) image the content refers
-// to into public/uploads/ and rewrites the data files + api/seed.json to the
-// local path, so the site has no runtime dependency on an image CDN.
-//
-//   node scripts/localize-images.mjs           # download + rewrite
-//   node scripts/localize-images.mjs --check   # report remote references only
-//
-// Re-runnable: already-downloaded files are skipped unless --force is passed.
-// Writes api/data/image-map.json so scripts/apply-image-map.php can migrate an
-// existing SQLite database onto the same local paths.
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -18,8 +8,6 @@ const UPLOAD_DIR = join(root, 'public', 'uploads')
 const MAP_FILE = join(root, 'api', 'data', 'image-map.json')
 const CDN = 'https://images.unsplash.com/'
 
-// Unsplash photo id -> [local filename, download width]. Every reference to an
-// id collapses onto one file; the width is the largest the layouts request.
 const IMAGES = {
   'photo-1558494949-ef010cbdcc31': ['hero-network-servers.jpg', 2000],
   'photo-1454165804606-c3d57bc86b40': ['hero-team-planning.jpg', 2000],
@@ -36,7 +24,6 @@ const IMAGES = {
   'photo-1497366216548-37526070297c': ['office-space.jpg', 2000],
 }
 
-// Data files whose image references should be rewritten to local paths.
 const TARGETS = [
   'src/data/content.js',
   'src/data/footerContent.js',
@@ -44,9 +31,8 @@ const TARGETS = [
   'api/seed.json',
 ]
 
-// https://images.unsplash.com/<id>?auto=format&fit=crop&w=2000&q=80
 const REMOTE_RE = new RegExp(CDN.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(photo-[a-z0-9-]+)\\?[^"\'`\\s)]*', 'g')
-// helper calls: img('photo-x', 1200) / img("photo-x") / catImg('photo-x')
+
 const CALL_RE = /\b(?:img|catImg)\(\s*['"](photo-[a-z0-9-]+)['"]\s*(?:,\s*\d+\s*)?\)/g
 
 const localPath = (id) => `/uploads/${IMAGES[id] ? IMAGES[id][0] : id + '.jpg'}`
@@ -54,7 +40,6 @@ const localPath = (id) => `/uploads/${IMAGES[id] ? IMAGES[id][0] : id + '.jpg'}`
 const checkOnly = process.argv.includes('--check')
 const force = process.argv.includes('--force')
 
-/** Download every mapped image that is not already on disk. */
 async function download() {
   await mkdir(UPLOAD_DIR, { recursive: true })
   let fetched = 0
@@ -83,7 +68,6 @@ async function download() {
   return failed
 }
 
-/** Point the data files (+ seed) at the local copies. */
 async function rewrite() {
   let changed = 0
   for (const rel of TARGETS) {
@@ -101,9 +85,6 @@ async function rewrite() {
   console.log(`Files rewritten: ${changed}`)
 }
 
-/** Report any remaining remote IMAGE reference in the data layer.
- * Social profile links (facebook/linkedin/x) are outbound links, not hotlinked
- * images, so they are deliberately ignored here. */
 async function report() {
   const found = new Set()
   for (const rel of TARGETS) {

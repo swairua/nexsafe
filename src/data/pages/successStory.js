@@ -1,18 +1,13 @@
-// Success story — the "How Better IT Alignment Helped a Growing Business…"
-// case study in the client-supplied Home Page document. It is the only
-// client-supplied narrative of this length, so it is kept whole rather than
-// split across pages.
 const eyebrow = 'Insights'
 
 export const successStoryPages = [
   {
-    // Short, readable H1; the full case-study title appears in the intro and
-    // the homepage teaser, so nothing is lost from the client's document.
+
     slug: 'success-story',
     title: 'Success Story',
     eyebrow,
     topic: 'Case Study',
-    // Blog fields: the case study leads the insights index, newest first.
+
     date: '2026-09-18',
     excerpt:
       'A growing business had the tools it needed — but they were not aligned with how the team worked. How Nexsate built a more reliable, secure IT foundation.',

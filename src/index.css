@@ -1,23 +1,14 @@
 @import "tailwindcss";
 
-/* ------------------------------------------------------------------
-   Nexsate navy/blue theme tokens
-   (class names keep the historical `shell-*` prefix so component
-   markup stays untouched — only values rotate)
-   ------------------------------------------------------------------ */
 @theme {
-  /* Brand colours lifted from the live nexsate.com palette: a cyan-blue
-     primary (used in its 135° brand gradient), a deep royal blue for hover and
-     gradient ends, and a turquoise highlight that only ever sits on dark
-     surfaces. `shell-red` / `shell-green` / `shell-yellow` keep their historic
-     class names so component markup stays untouched — only values rotate. */
-  --color-shell-red: #0693e3; /* corporate cyan-blue: buttons, links */
-  --color-shell-red-dark: #010ed0; /* deep royal blue: hover, sweep end */
-  --color-shell-green: #0693e3; /* corporate cyan-blue CTA (was spring green) */
-  --color-shell-green-dark: #010ed0; /* CTA hover */
-  --color-shell-yellow: #4aeadc; /* turquoise highlight — dark surfaces only */
-  --color-shell-cyan: #00a1e0; /* secondary cyan: tiles, borders, gradients */
-  --color-shell-black: #070e40; /* Nexsate navy */
+
+  --color-shell-red: #0693e3;
+  --color-shell-red-dark: #010ed0;
+  --color-shell-green: #0693e3;
+  --color-shell-green-dark: #010ed0;
+  --color-shell-yellow: #4aeadc;
+  --color-shell-cyan: #00a1e0;
+  --color-shell-black: #070e40;
   --color-shell-gray-900: #0a1440;
   --color-shell-gray-700: #333a3f;
   --color-shell-gray-500: #5f6b72;
@@ -27,15 +18,12 @@
 
   --font-sans: "Roboto", "Helvetica Neue", Arial, sans-serif;
 
-  /* Roboto ships 400/500/700/900 — no static 800. Remap the weight tokens so
-     `font-extrabold` lands on the real Black face instead of the browser
-     synthesizing a faux-bold (which renders blurry at display sizes). */
   --font-weight-medium: 500;
   --font-weight-semibold: 500;
   --font-weight-bold: 700;
   --font-weight-extrabold: 900;
 
-  --container-shell: 80rem; /* 1280px content width */
+  --container-shell: 80rem;
 }
 
 @layer base {
@@ -43,7 +31,6 @@
     scroll-behavior: smooth;
   }
 
-  /* Keep anchored sections clear of the sticky header (feel polish). */
   section[id] {
     scroll-margin-top: 6.5rem;
   }
@@ -53,23 +40,17 @@
     color: var(--color-shell-gray-900);
     background: var(--color-shell-white);
     -webkit-font-smoothing: antialiased;
-    /* Guard against accidental horizontal scrolling on small screens.
-       `clip` (not `hidden`) so the sticky header keeps working. */
+
     overflow-x: clip;
   }
 
-  /* Visible focus ring for keyboard users. */
   :focus-visible {
     outline: 2px solid var(--color-shell-red);
     outline-offset: 2px;
   }
 }
 
-/* Custom classes live in @layer components so Tailwind utilities
-   (max-w-*, px-*, text-* …) can override them — unlayered CSS would
-   always beat layered utilities in the cascade. */
 @layer components {
-  /* Utility helpers matching the site layout look & feel */
   .shell-container {
     width: 100%;
     max-width: var(--container-shell);
@@ -83,14 +64,12 @@
     }
   }
 
-  /* Primary pill button — tactile hover lift + press feedback */
   .btn-pill {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     border-radius: 9999px;
-    /* Roboto has no 600 — 500 (Medium) is the closest match, matching the
-       `font-semibold` remap in the @theme block above. */
+
     font-weight: 500;
     font-size: 0.9375rem;
     line-height: 1;
@@ -144,10 +123,6 @@
     box-shadow: 0 10px 22px -8px rgba(6, 147, 227, 0.55);
   }
 
-  /* Corporate-colour sweep button — the navy/blue fill wipes in from the left
-     on hover with the arrow nudging forward (doc brief: "improve the button
-     animation on hover to our corporate colors"). Outline by default so it
-     reads on light sections without competing with the primary pill. */
   .btn-sweep {
     position: relative;
     isolation: isolate;
@@ -189,7 +164,6 @@
     transform: translateX(5px);
   }
 
-  /* Floating nav bar: navy frosted glass over the hero. */
   .nav-glass {
     background: rgba(7, 14, 64, 0.4);
     backdrop-filter: blur(16px) saturate(1.2);
@@ -199,13 +173,6 @@
       0 12px 32px -12px rgba(0, 0, 0, 0.35);
   }
 
-  /* ------------------------------------------------------------------
-     Transparent mirror (glass) cards — translucent surface + backdrop
-     blur (\"mirrors\" whatever sits behind), thin tinted border, and a
-     specular light-sweep on hover. NOTE: hover lift uses the standalone
-     `translate` property (not `transform`) so it never fights the
-     scroll-reveal animation fill on the same element.
-     ------------------------------------------------------------------ */
   .glass-card {
     position: relative;
     overflow: hidden;
@@ -229,7 +196,6 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 
-  /* The \"mirror\" reflection — a sheen band sweeps across on hover. */
   .glass-card::after {
     content: "";
     position: absolute;
@@ -247,7 +213,6 @@
     animation: glassSheen 0.8s ease forwards;
   }
 
-  /* Dark-surface variant (stats tiles, navy/photo backdrops). */
   .glass-card--dark {
     background: rgba(11, 27, 43, 0.4);
     border-color: rgba(255, 255, 255, 0.16);
@@ -262,7 +227,6 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.18);
   }
 
-  /* Static panels (prose blocks, stat tiles): glass look, no lift/sheen. */
   .glass-card--static:hover {
     translate: none;
     border-color: rgba(214, 228, 240, 0.9);
@@ -280,7 +244,6 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
 
-  /* Micro glass chip for controls floating on imagery (hero arrows). */
   .glass-chip {
     background: rgba(255, 255, 255, 0.14);
     backdrop-filter: blur(12px);
@@ -294,7 +257,6 @@
     background: rgba(255, 255, 255, 0.3);
   }
 
-  /* Progressive fallback where backdrop-filter is unsupported. */
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .glass-card {
       background: rgba(255, 255, 255, 0.96);
@@ -307,8 +269,6 @@
     }
   }
 
-  /* Horizontal scroll-snap strip — hide the native scrollbar while
-     keeping keyboard + touch scrolling (used by the services track). */
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -317,12 +277,11 @@
     display: none;
   }
 
-  /* Arrow link (text + animated →) */
   .arrow-link {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-weight: 500; /* see .btn-pill — Roboto has no 600 */
+    font-weight: 500;
     color: var(--color-shell-red);
   }
   .arrow-link .arrow {
@@ -333,9 +292,6 @@
   }
 }
 
-/* ------------------------------------------------------------------
-   Dark section gradient accents (Enboarder-style: blur + tint)
-   ------------------------------------------------------------------ */
 .dark-gradient {
   position: relative;
 }
@@ -349,7 +305,6 @@
   z-index: 0;
 }
 
-/* Stats are the hero of the proof band — Enboarder's big numbers */
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -366,12 +321,6 @@
   }
 }
 
-
-/* ------------------------------------------------------------------
-   Motion layer — NanoSoft-style scroll reveals, hero word/layer
-   entrances, menu drops, banner + back-to-top entrances.
-   Keyframes follow animate.css semantics (subset the site uses).
-   ------------------------------------------------------------------ */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -424,7 +373,6 @@
 }
 
 @layer components {
-  /* Scroll reveals — armed only in the browser (see Reveal.jsx) */
   .reveal--up { opacity: 0; transform: translateY(26px); }
   .reveal--left { opacity: 0; transform: translateX(-30px); }
   .reveal--right { opacity: 0; transform: translateX(30px); }
@@ -451,7 +399,6 @@
   .reveal-delay-4 { --reveal-delay: 360ms; }
   .reveal-delay-5 { --reveal-delay: 450ms; }
 
-  /* Hero — Revolution-Slider-style staggered word/layer entrances */
   .hero-word { display: inline-block; }
   .hero-copy.is-active .hero-kicker {
     animation: fadeInUp 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
@@ -467,7 +414,6 @@
   }
   .hero-zoom { animation: kenBurns 9s ease-out both; }
 
-  /* Header panels — drop-in + staggered columns (mega menu, search, mobile) */
   .menu-anim { animation: menuDrop 0.24s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
   .menu-anim .menu-col { animation: fadeInUp 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
   .menu-anim .menu-col:nth-child(1) { animation-delay: 0.06s; }
@@ -477,8 +423,6 @@
   .menu-anim .menu-col:nth-child(5) { animation-delay: 0.3s; }
   .panel-anim { animation: fadeInUp 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
 
-
-/* Count-up animation for numbers in stats — animated when scrolled into view */
 .stat-value {
   display: inline-block;
   position: relative;
@@ -494,7 +438,6 @@
   to { opacity: 1; transform: none; }
 }
 
-/* Large hero-style section spacing — Enboarder premium feel */
 .py-28 {
   padding-block: 7rem;
 }
@@ -504,12 +447,10 @@
   }
 }
 
-  /* Cookie bar + floating back-to-top entrances */
   .banner-in { animation: bannerIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s both; }
   .back-to-top { animation: bttIn 0.35s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
 }
 
-/* Reduced motion: neutralise every entrance (content simply shows) */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

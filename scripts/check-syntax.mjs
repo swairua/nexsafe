@@ -1,6 +1,3 @@
-// Structural bracket-balance check for the plain-JS data files.
-// Catches the 'section closed with ] instead of }' class of bug (line/col).
-// Usage: node scripts/check-syntax.mjs
 import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -9,10 +6,10 @@ const openers = new Set(['(', '[', '{'])
 
 function check(file) {
   const src = readFileSync(file, 'utf8')
-  const stack = [] // { ch, line }
+  const stack = []
   let line = 1
-  let mode = null // null | 's' | 'd' | 't' | 'lc' | 'bc' | 'rx' | 'rxc'
-  let prevSig = undefined // last structural char in code mode (for regex detection)
+  let mode = null
+  let prevSig = undefined
   for (let i = 0; i < src.length; i++) {
     const c = src[i]
     const next = src[i + 1]

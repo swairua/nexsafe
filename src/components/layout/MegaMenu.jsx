@@ -1,7 +1,5 @@
 import { useContent } from '../../content/ContentContext.jsx'
 
-/** Line-stroke tile icons for the Business Challenges column (inline SVG,
- *  currentColor — no emoji, no image assets). */
 function ChallengeIcon({ icon }) {
   const common = {
     className: 'h-8 w-8 text-shell-red',
@@ -41,7 +39,7 @@ function ChallengeIcon({ icon }) {
       </svg>
     )
   }
-  // transform — migration documents with an upward pen (Digital Transformation)
+
   return (
     <svg {...common}>
       <path d="M5 8h14v6H5zM5 14h14M7 17.5h7V30H7z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
@@ -52,7 +50,6 @@ function ChallengeIcon({ icon }) {
   )
 }
 
-/** Promo panel on the right side of the mega menu (Enboarder-style). */
 function PromoPanel({ onClose }) {
   const { pageConnect } = useContent()
   if (!pageConnect) return null
@@ -84,7 +81,6 @@ function PromoPanel({ onClose }) {
   )
 }
 
-/** Desktop mega-menu panel rendered below the header for the open nav item. */
 export default function MegaMenu({ item, onClose }) {
   const { uiLabels } = useContent()
   if (item.layout === 'solutions') {
@@ -95,7 +91,7 @@ export default function MegaMenu({ item, onClose }) {
         onMouseLeave={onClose}
       >
         <div className="shell-container grid grid-cols-12 gap-6 py-10">
-          {/* Left — service links */}
+
           <div className="menu-col col-span-3">
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {services.heading}
@@ -114,7 +110,7 @@ export default function MegaMenu({ item, onClose }) {
               ))}
             </ul>
           </div>
-          {/* Centre — Business Challenges with icon + title + blurb */}
+
           <div className="menu-col col-span-6">
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {challenges.heading}
@@ -142,13 +138,13 @@ export default function MegaMenu({ item, onClose }) {
               ))}
             </div>
           </div>
-          {/* Right — promo panel */}
+
           <PromoPanel onClose={onClose} />
         </div>
       </div>
     )
   }
-  // Default layout: columns + promo panel
+
   return (
     <div
       className="menu-anim absolute inset-x-0 top-full rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl hidden lg:block"

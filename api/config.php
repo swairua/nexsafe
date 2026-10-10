@@ -1,10 +1,6 @@
 <?php
 declare(strict_types=1);
 
-// ---- Absolute filesystem paths ---------------------------------------------
-// DATA_DIR / UPLOAD_DIR / UPLOAD_URL / SITE_BASE are environment-overridable so
-// the same tree runs locally (XAMPP, "php -S") and on Render, where the writable
-// state lives on a persistent disk rather than inside the repo.
 $envOr = static function (string $key, string $fallback): string {
     $v = getenv($key);
     return ($v === false || $v === '') ? $fallback : $v;
@@ -16,21 +12,17 @@ define('DB_FILE',    DATA_DIR . '/nexsate.sqlite');
 define('SEED_FILE',  API_ROOT . '/seed.json');
 define('UPLOAD_DIR', $envOr('NX_UPLOAD_DIR', APP_ROOT . '/public/uploads'));
 
-// ---- Public URL bases (adjust if not served from /nexsate) -------------------
 define('UPLOAD_URL', $envOr('NX_UPLOAD_URL', '/uploads'));
 define('SITE_BASE',  $envOr('NX_SITE_BASE', '/'));
 
-// ---- Upload rules -----------------------------------------------------------
 define('UPLOAD_MAX_BYTES', 8 * 1024 * 1024);
 
-// ---- Session / cookie (shared by login + admin API) -------------------------
 function nx_session_start(): void
 {
     if (session_status() === PHP_SESSION_ACTIVE) {
         return;
     }
-    // The 24-minute default GC window is shorter than a typical editing session,
-    // which would sign an admin out mid-edit and lose unsaved field changes.
+
     ini_set('session.gc_maxlifetime', (string) (6 * 60 * 60));
     session_set_cookie_params([
         'lifetime' => 0,
@@ -42,14 +34,12 @@ function nx_session_start(): void
     session_start();
 }
 
-// ---- Default admin account (CHANGE the password after first login) ----------
 function nx_default_admin(): array
 {
     return [
         'username'      => 'admin',
-        // bcrypt hash of "nexsate-admin" (default - change it!)
+
         'password_hash' => '$2y$10$by.v/Llb7RPuzaLLjRh9H.oxqkNTBdAKRGDB1C.dygdPTrtIx16E.',
         'email'         => 'admin@example.com',
     ];
 }
-

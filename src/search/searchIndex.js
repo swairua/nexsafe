@@ -1,7 +1,3 @@
-// Client-side site search (Kyndryl-style): an index built from the content
-// pages at render time — no backend. Title matches rank first, then section
-// headings, then body copy. HTML is stripped before matching so rich-text
-// answers search as plain words.
 function stripHtml(v) {
   return String(v == null ? '' : v)
     .replace(/<[^>]+>/g, ' ')
@@ -27,7 +23,6 @@ function pageText(page) {
   return stripHtml(parts.filter(Boolean).join('\n')).toLowerCase()
 }
 
-/** [{ slug, title, eyebrow, topic, hay }] — rebuilt whenever pages change. */
 export function buildSearchIndex(pages) {
   return Object.values(pages || {})
     .filter((p) => p && p.slug && p.title)
@@ -40,10 +35,6 @@ export function buildSearchIndex(pages) {
     }))
 }
 
-/**
- * Ranked results for a query: every term must appear somewhere (AND), title
- * hits outrank heading hits outrank body hits. Returns at most `limit`.
- */
 export function searchIndex(index, query, limit = 8) {
   const terms = String(query || '')
     .toLowerCase()

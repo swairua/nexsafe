@@ -1,8 +1,3 @@
-/**
- * Link integrity check — every pageHref()/related slug used in nav, footer and
- * page data must resolve to a registered page, and no page may be orphaned.
- * Run with: node scripts/check-links.mjs
- */
 import { allPages } from '../src/data/pages.js'
 import { navItems } from '../src/data/navItems.js'
 import { footerColumns, footerLegal, promo } from '../src/data/footerContent.js'
@@ -47,7 +42,6 @@ for (const page of allPages) {
   }
 }
 
-// Every page should be reachable from nav, footer, or another page's related list.
 const linked = new Set()
 const collect = (href) => {
   if (typeof href === 'string' && href.startsWith('#/')) linked.add(href.slice(2))
@@ -60,8 +54,7 @@ for (const item of navItems) item.columns.forEach((c) => {
 for (const col of footerColumns) col.links.forEach((l) => collect(l.href))
 footerLegal.forEach(collect)
 for (const page of allPages) (page.related || []).forEach(collect)
-// The blog index ('#/blog') cards every insight post, and the homepage blog
-// row links the index — so insight posts are reachable even with no static href.
+
 if (linked.has('blog')) {
   for (const page of allPages) {
     if (page.eyebrow === 'Insights' && page.slug !== 'blog') linked.add(page.slug)

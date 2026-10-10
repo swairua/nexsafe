@@ -1,4 +1,3 @@
-// Client Support page — ported from nexsate.com/client-support/.
 const eyebrow = 'Support'
 
 export const clientSupportPages = [

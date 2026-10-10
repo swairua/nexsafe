@@ -2,12 +2,6 @@ import { useState } from "react"
 import { apiUrl, useContent } from "../../content/ContentContext.jsx"
 import { Rich } from "../ui/SectionTag.jsx"
 
-// The consultation form on nexsate.com: First name / Last name / Company /
-// Company email / Phone / "How Can We Help You?" / Priority / Message + a
-// Privacy Policy consent box. The messages API stores a single name and
-// email, so the two name fields are combined and the company email is sent
-// as the email address. Priority triage (Normal/High/Urgent) mirrors the
-// live support-ticket form.
 const EMPTY = {
   firstName: "",
   lastName: "",

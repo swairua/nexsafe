@@ -6,12 +6,6 @@ import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import { resolveSrc } from "../../utils/url.js"
 
-/**
- * Logo slot on a technology card: the vendor's mark once the admin uploads
- * one (Content > Home > Partners > Logo), otherwise a dashed placeholder in
- * the same footprint so the row keeps its rhythm while marks are pending.
- * A broken file falls back to the placeholder too.
- */
 function LogoSlot({ partner }) {
   const [failed, setFailed] = useState(false)
   const src = partner.logo && !failed ? resolveSrc(partner.logo) : ''
@@ -44,10 +38,6 @@ function LogoSlot({ partner }) {
   )
 }
 
-/**
- * One technology card: logo slot (vendor mark or placeholder) above the
- * platform name and its capability area.
- */
 function VendorTile({ partner }) {
   return (
     <div className="flex h-full min-h-[7rem] flex-col justify-center rounded-xl border border-shell-gray-300 bg-shell-gray-100 px-5 py-5 transition-colors duration-300 hover:border-shell-cyan">
@@ -62,17 +52,9 @@ function VendorTile({ partner }) {
   )
 }
 
-/**
- * Technology strip: the platforms Nexsate uses and supports, drawn as an
- * auto-scrolling card row (embla + autoplay, same stack as the hero) that
- * also keeps the manual ←/→ controls — autoplay pauses while the pointer or
- * keyboard focus is over the row. Cards carry the admin-uploaded vendor logo
- * or a placeholder slot. Owns the `#partners` anchor used by the primary nav.
- */
 export default function PartnerStrip() {
   const { partners, partnerStrip, sectionIds } = useContent()
-  // Autoplay is skipped under prefers-reduced-motion (same gate Reveal uses);
-  // the arrows still step the row on click.
+
   const reduceMotion = typeof window !== 'undefined'
     && typeof window.matchMedia === 'function'
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches

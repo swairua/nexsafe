@@ -8,8 +8,6 @@ import ConnectBand from '../sections/ConnectBand.jsx'
 import StartBand from '../sections/StartBand.jsx'
 import BlogIndex from './BlogIndex.jsx'
 
-// Plain paragraphs render as <p>; HTML saved by the admin rich-text editor
-// renders through <RichText> (sanitised), so formatting survives.
 function Copy({ para }) {
   const html = String(para || "")
   if (/<\s*(p|br|strong|em|ul|ol|li|a|h3|h4|blockquote)[\s/>]/i.test(html)) {
@@ -17,10 +15,6 @@ function Copy({ para }) {
   }
   return <p className="mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg">{para}</p>
 }
-
-// Eyebrow → homepage anchor (breadcrumb trail) and the decorative eyebrow →
-// image map are both content-driven (admin > "Breadcrumb anchors" /
-// "Category images"), so neither is duplicated here.
 
 function NotFound(notFound) {
   return (
@@ -42,10 +36,6 @@ function NotFound(notFound) {
   )
 }
 
-/**
- * Inner-page renderer for '#/<slug>' routes: dark hero + breadcrumb,
- * prose sections (body paragraphs + lists), related-page cards, back to top.
- */
 export default function PageView({ page, slug, params }) {
   const content = useContent()
   const pages = content.pages
@@ -54,14 +44,12 @@ export default function PageView({ page, slug, params }) {
   const anchors = content.categoryAnchors || {}
   const sectionIds = content.sectionIds || {}
   if (!page) return <NotFound {...(content.notFound || {})} />
-  // The blog index ('#/blog') renders the insight card grid instead of prose.
+
   if (page.layout === 'blog-index') return <BlogIndex page={page} topic={params ? params.get('topic') : null} />
 
   const sectionHref = anchors[page.eyebrow]
   const relatedPages = (page.related || []).map((slug) => pages[slug]).filter(Boolean)
-  // Category images carry alt text ({ src, alt }); legacy string values keep working.
-  // A page may ship its own hero image (ported from the previous site), which
-  // takes precedence over the shared per-category image.
+
   const categoryRaw = (content.categoryImages || {})[page.eyebrow]
   const sharedImage = typeof categoryRaw === "string" ? categoryRaw : (categoryRaw && categoryRaw.src) || ""
   const sharedAlt = typeof categoryRaw === "string" ? "" : ((categoryRaw && categoryRaw.alt) || "")
@@ -76,7 +64,7 @@ export default function PageView({ page, slug, params }) {
 
   return (
     <article>
-      {/* Dark hero with breadcrumb — Kyndryl Page Header */}
+
       <section className="relative overflow-hidden bg-shell-black text-white">
         <div
           className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-shell-red/20 blur-3xl"
@@ -124,7 +112,6 @@ export default function PageView({ page, slug, params }) {
         </div>
       </section>
 
-      {/* Sticky in-page tabs — Kyndryl page-header tab area */}
       {page.sections.length > 1 && (
         <div className="sticky top-20 z-30 md:top-24">
           <div className="shell-container py-3">
@@ -151,7 +138,6 @@ export default function PageView({ page, slug, params }) {
         </div>
       )}
 
-      {/* Body content — Kyndryl alternating bands with feature-tile lists */}
       {page.sections.map((section, sIdx) => (
         <section key={section.heading} className={sIdx % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
           <div className="shell-container py-16 md:py-24 break-words">
@@ -221,7 +207,6 @@ export default function PageView({ page, slug, params }) {
         </section>
       ))}
 
-      {/* Page gallery — photography the page carries itself (About page) */}
       {slug === 'about-us' && <StartBand />}
 
       {gallery.length > 0 && (
@@ -243,7 +228,6 @@ export default function PageView({ page, slug, params }) {
         </section>
       )}
 
-      {/* Category visual — Kyndryl-style imagery block (decorative) */}
       {categoryImage && (
         <section className={page.sections.length % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
           <div className="shell-container py-16 md:py-24">
@@ -259,7 +243,6 @@ export default function PageView({ page, slug, params }) {
         </section>
       )}
 
-      {/* Awards / certification logos carried by the page itself */}
       {logos.length > 0 && (
         <section className="bg-white">
           <div className="shell-container py-16 md:py-24">
@@ -279,7 +262,6 @@ export default function PageView({ page, slug, params }) {
         </section>
       )}
 
-      {/* Related pages */}
       {relatedPages.length > 0 && (
         <section className="bg-shell-gray-100">
           <div className="shell-container py-16 md:py-24">
@@ -342,7 +324,7 @@ export default function PageView({ page, slug, params }) {
           </div>
         </section>
       ) : null}
-      {/* Connect with us — dark CTA band before the footer (shared with homepage). */}
+
       <ConnectBand />
     </article>
   )

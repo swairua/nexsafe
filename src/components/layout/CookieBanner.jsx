@@ -12,9 +12,8 @@ function readConsent() {
   }
 }
 
-/** Cookie consent bar shown on first visit, following the common consent-banner pattern. */
 export default function CookieBanner() {
-  // Lazy initializer reads consent once at mount — no flash for returning visitors.
+
   const [visible, setVisible] = useState(readConsent)
   const { cookieBanner, uiLabels } = useContent()
 
@@ -22,7 +21,7 @@ export default function CookieBanner() {
     try {
       localStorage.setItem(STORAGE_KEY, 'accepted')
     } catch {
-      /* ignore */
+
     }
     setVisible(false)
   }

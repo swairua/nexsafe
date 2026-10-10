@@ -6,29 +6,21 @@ import { resolveSrc } from "../utils/url.js"
 const IMAGE_KEYS = ["image", "img", "src", "logo", "banner", "photo", "thumbnail", "thumb", "icon", "cover", "hero", "background", "avatar", "picture"]
 const IMG_EXT = [".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"]
 
-// Only the last path segment counts. The full name looks like "heroSlides[0].gradient",
-// and matching that against IMAGE_KEYS used to treat "gradient" as an image field just
-// because its parent is called "heroSlides". Tile icon keys (nav menu challenge
-// tiles: "transform" | "shield" | "gear" | "gauge") are icon names, not files.
 function isImageKey(name) {
   const key = String(name || "").split(".").pop().split("[")[0].toLowerCase()
   if (key === "icon") return false
   return key !== "" && IMAGE_KEYS.some((k) => key.indexOf(k) !== -1)
 }
 
-// Returns a value that is safe to put in <img src>, or "" when the field holds
-// something else. CSS must never reach an <img>: "linear-gradient(90deg, rgba(..) 0%, ..)"
-// has no "#", so the browser requests it as a path and the "%" in "0%," makes Vite's dev
-// server throw "URI malformed" inside decodeURI().
 function imageSrc(v) {
   if (typeof v !== "string") return ""
   const s = v.trim()
   if (!s) return ""
-  if (/%(?![0-9A-Fa-f]{2})/.test(s)) return ""                 // invalid % escape
+  if (/%(?![0-9A-Fa-f]{2})/.test(s)) return ""
   if (/^(data:image\/|blob:)/i.test(s)) return s
-  if (/^(linear|radial|conic)-gradient\(/i.test(s)) return ""   // CSS, not a file
-  if (/^(#[0-9a-f]{3,8}|rgba?\(|hsla?\()/i.test(s)) return ""   // CSS colour
-  if (/[\s()#]/.test(s)) return ""                             // not a URL
+  if (/^(linear|radial|conic)-gradient\(/i.test(s)) return ""
+  if (/^(#[0-9a-f]{3,8}|rgba?\(|hsla?\()/i.test(s)) return ""
+  if (/[\s()#]/.test(s)) return ""
   if (/^(https?:\/\/|\/|\.\/|\.\.\/)/i.test(s)) return s
   if (IMG_EXT.some((e) => s.toLowerCase().endsWith(e))) return s
   return ""
@@ -43,8 +35,6 @@ const INPUT = "w-full rounded-md border border-shell-gray-300 bg-white px-2.5 py
 const LABEL = "mb-1 block text-xs font-semibold uppercase tracking-wide text-shell-gray-500"
 const NL = String.fromCharCode(10)
 
-// Short human label for a collapsed array item: its title/name/heading when
-// it has one, otherwise a truncated peek at the raw value.
 function itemLabel(item, i) {
   if (item && typeof item === "object") {
     const t = item.title || item.label || item.name || item.heading || item.slug || item.href || item.src || item.url
@@ -142,7 +132,7 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
       </div>
     )
   }
-  // Alt / description text next to an image: short input with guidance.
+
   if (isAltField) {
     return (
       <label className="block text-sm">
@@ -151,7 +141,7 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
       </label>
     )
   }
-  // CSS (gradients) stays a plain textarea — rich formatting makes no sense there.
+
   if (/^(linear|radial|conic)-gradient\(/i.test(str)) {
     return (
       <label className="block text-sm sm:col-span-2">
@@ -160,7 +150,7 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
       </label>
     )
   }
-  // Long copy (or HTML from the rich editor) gets the free WYSIWYG editor.
+
   if (str.length > 70 || str.split(NL).length > 1 || looksLikeHtml(str)) {
     return <RichTextEditor label={label(key)} value={str} onChange={onChange} />
   }
@@ -171,4 +161,3 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
     </label>
   )
 }
-

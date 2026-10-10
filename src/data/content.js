@@ -1,24 +1,14 @@
-// Homepage section content — copy taken from the client-supplied Home Page
-// document. The document sets the order: hero, four benefits, the six
-// services, the industries line, the technology stack, then the success
-// story. Section components render these exports unchanged.
 import { pageHref } from './slug.js'
 import { blogIndex } from './posts.js'
 
-// Re-exported so siteContent (and the CMS seed) carry the blog page copy.
 export { blogIndex }
 
-// Photography is served from public/uploads (see scripts/localize-images.mjs).
-
-// Navy scrim over photography + brand-blue gradient fallback (used if the
-// image file is missing) — keeps every dark surface on-palette.
 const navyScrim =
   'linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)'
 const navyFallback = 'linear-gradient(135deg, #070e40 0%, #010ed0 130%)'
 const navyFallbackSoft = 'linear-gradient(135deg, #070e40 0%, #0693e3 130%)'
 const navyTile = 'linear-gradient(135deg, #070e40 0%, #010ed0 140%)'
 
-// The document opens on the promise, then the positioning, then the sectors.
 export const heroSlides = [
   {
     id: 'promise',
@@ -55,7 +45,6 @@ export const heroSlides = [
   },
 ]
 
-// The four benefits from the document, in its order and wording.
 export const benefits = [
   {
     id: 'cost-effectiveness',
@@ -79,7 +68,6 @@ export const benefits = [
   },
 ]
 
-// The document's "Services" list — six services, each with its own page.
 export const featuredCards = [
   {
     id: 'card-managed-it-services',
@@ -149,10 +137,6 @@ export const featuredCards = [
   },
 ]
 
-
-// Audience-specific cards: frames Nexsate's services around who they're
-// for — Business Leaders, IT Teams, Employees, Growing Companies. Renders
-// live in the new StakeholderCards section.
 export const stakeholderCards = {
   tag: 'Who Nexsate is for',
   title: 'Managed IT services built around you',
@@ -196,8 +180,6 @@ export const partnerStrip = {
   cta: { label: 'Explore our services', href: pageHref('Services & Solutions') },
 }
 
-// Blog copy. The cards themselves render from the insight pages (the case
-// study plus newer posts), so the roster and the teaser can never drift apart.
 export const blogRow = {
   tag: 'From our blog',
   title: 'Case studies and insights from the field',
@@ -205,8 +187,6 @@ export const blogRow = {
   cta: { label: 'View all articles', href: '#/blog' },
 }
 
-// Suggested searches shown in the empty search panel (Kyndryl pattern).
-// Queries are plain words the local index is guaranteed to match.
 export const searchSuggestions = {
   title: 'Suggested searches',
   items: [
@@ -217,8 +197,6 @@ export const searchSuggestions = {
   ],
 }
 
-// Homepage FAQ teaser copy. The answers themselves render live from the
-// help-and-faq page, so the teaser and the page can never drift apart.
 export const faqTeaser = {
   tag: 'Common questions',
   title: 'Answers, before you even ask',
@@ -226,24 +204,18 @@ export const faqTeaser = {
   cta: { label: 'View all FAQs', href: '#/help-and-faq' },
 }
 
-// Awards band copy. The badges themselves render live from the about-us
-// page logos, so the band and the page can never drift apart.
 export const awardsBand = {
   tag: 'Industry recognition',
   title: 'Recognized. Awarded. Trusted.',
   text: 'Independent analysts, client-review platforms, and technology partners have recognized the work behind our client outcomes.',
 }
 
-// Notice bar copy. Seeded with the live site's own consultation CTA line;
-// the live "Now Hiring" strip is excluded (it points at wrong-brand filler).
 export const noticeBar = {
   enabled: true,
   text: 'Schedule a Free Consultation',
   href: '#/contact-us',
 }
 
-// Dept splitter copy. Both routes quote FAQ Q1 ("What are your two primary
-// services?"): fully managed vs co-managed, in the FAQ's own words.
 export const deptSplit = {
   tag: 'Two ways to work with us',
   title: 'Fully managed or co-managed — your call',
@@ -260,17 +232,12 @@ export const deptSplit = {
   },
 }
 
-// Values strip copy. The value names themselves render live from the
-// about-us "Our Core Values" items; this key only owns the heading.
 export const valuesStrip = {
   tag: 'Our Core Values',
   title: 'What we stand by, on every engagement',
   text: 'Our culture is built around four core values that differentiate us from our competition.',
 }
 
-// Trust blocks ported from nexsate.com/reviews-awards and the homepage.
-// Quotes are verbatim from the live reviews page; stats match the live
-// homepage and client-support figures (20 years, 98%, 3-min response).
 export const testimonials = {
   tag: 'Testimonials',
   title: 'What our customers say',
@@ -306,8 +273,6 @@ export const statsBand = {
   ],
 }
 
-// Certifications named on nexsate.com/partnerships. Text badges only — no
-// badge artwork is fabricated or implied beyond the names themselves.
 export const certStrip = {
   tag: 'Certifications & partnerships',
   title: 'Credentials you can verify',
@@ -318,9 +283,6 @@ export const certStrip = {
   ],
 }
 
-// Homepage contact section copy. The left column carries the partner pitch,
-// benefits, and process steps from nexsate.com; the right column renders the
-// consultation form (no priority/consent on the homepage).
 export const homeContact = {
   tag: 'Contact us',
   title: 'Partner with Us for Comprehensive IT',
@@ -341,16 +303,6 @@ export const homeContact = {
   ],
 }
 
-// The Home Page document names six sectors and the live site lists five
-// more (consulting, non-profit, telemedicine, fintech, education), all given
-// compact pages here. Professional Services still has no source document or
-// page, so it stays unlisted rather than invented.
-//
-// Icon art mirrors the NanoSoft reference: cyan line icons, five downloaded
-// from the live theme into public/uploads (banking, capital-markets,
-// manufacturing, healthcare, higher-education) and four drawn in the same
-// two-tone style for the extra Nexsate sectors (logistics, consulting,
-// non-profit, fintech).
 export const industriesStrip = {
   tag: 'Industries we serve',
   title: 'Managed IT services customized for your industry',
@@ -369,13 +321,6 @@ export const industriesStrip = {
   ],
 }
 
-// Case-study cards mounted at the foot of the industries band (Image 2 lower
-// half): tinted photo tiles with a white brand wordmark, sitting at the
-// band's foot with no overhang into the next section (the technology strip
-// that follows it). Photos + tints reuse the uploads
-// roster so the
-// site keeps its no-remote-images rule; wordmarks are text since we have no
-// client logo files to use.
 export const caseCards = {
   tag: 'Case studies',
   title: 'We work with global brands',
@@ -410,8 +355,6 @@ export const caseCards = {
   ],
 }
 
-// The success story from the Home Page document, reduced to its outcome list
-// for the homepage teaser. The full narrative lives on its own page.
 export const successStory = {
   id: 'success-story',
   tag: 'Success stories',

@@ -1,7 +1,3 @@
-// Service pages. The "Services & Solutions" overview is ported from
-// nexsate.com/solutions/ (headline, intro, service cards and closing section are
-// the source site's own wording). The remaining pages keep the copy from the
-// client-supplied service documents in logoandcontent/.
 const eyebrow = 'IT solutions'
 
 export const servicePages = [
@@ -11,7 +7,7 @@ export const servicePages = [
     eyebrow,
     intro:
       'Take your company to new heights by investing in our reliable and efficient technology solutions.',
-    // Hero image carried over from the source Solutions page.
+
     image: {
       src: '/uploads/solutions-hero.jpg',
       alt: 'Technology team working together at a long desk in a modern office',
@@ -30,10 +26,7 @@ export const servicePages = [
         body: [
           'Nexsate turns technology into business advantage through focused solutions that deliver results and solve real-world problems. Our solutions are designed to help businesses grow, adapt, and succeed in a changing digital environment.',
         ],
-        // The eight service cards from the source page. Their "Learn more"
-        // links are mapped to the matching page in this site; Telecommunication
-        // and IT Consulting & Advisory have no counterpart here, so they are
-        // shown without a link rather than pointing somewhere unrelated.
+
         items: [
           {
             title: 'End-user Support',

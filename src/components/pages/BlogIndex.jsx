@@ -3,15 +3,12 @@ import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
-/** Newest-first insight posts (case studies + articles), excluding this index. */
 export function insightPosts(pages) {
   return Object.values(pages || {})
     .filter((p) => p && p.eyebrow === 'Insights' && p.slug !== 'blog')
     .sort((a, b) => String(b.date || '') .localeCompare(String(a.date || '')))
 }
 
-// Topic accent hues (Nanosoft color-coded case tiles, house palette tones).
-// Unknown future topics hash deterministically onto the same palette.
 const TOPIC_HUES = {
   'Case Study': '#8a49a1',
   Cybersecurity: '#010ed0',
@@ -39,10 +36,6 @@ export function formatPostDate(iso) {
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-/**
- * One insight card: image, date, title, excerpt, read-more. Shared by the
- * blog index page and the homepage blog row so both can never drift apart.
- */
 export function PostCard({ post, fallbackImage, fallbackAlt, delay = 0 }) {
   const img = (post.image && post.image.src) || fallbackImage
   const hue = topicHue(post.topic)
@@ -83,10 +76,6 @@ export function PostCard({ post, fallbackImage, fallbackAlt, delay = 0 }) {
   )
 }
 
-/**
- * Blog index ('#/blog'): dark hero with breadcrumb, then the card grid.
- * Rendered by PageView when the page carries `layout: 'blog-index'`.
- */
 export default function BlogIndex({ page, topic }) {
   const content = useContent()
   const pages = content.pages || {}

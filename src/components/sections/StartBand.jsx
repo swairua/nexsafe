@@ -2,12 +2,6 @@ import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
-/**
- * Start band: values words plus the fully/co-managed router cards in one dark
- * section. Merges the former ValuesStrip and DeptSplit — value names read
- * live from the about-us page, router copy quotes FAQ Q1, so neither half
- * can drift apart.
- */
 const FALLBACK_VALUES = ['Integrity', 'Dependability', 'Customer-Centric', 'Innovative']
 
 export default function StartBand() {

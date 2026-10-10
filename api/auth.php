@@ -38,4 +38,3 @@ if ($method === 'POST') {
 }
 
 nx_fail('Method not allowed', 405);
-

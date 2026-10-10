@@ -6,10 +6,7 @@ function nx_json($data, int $code = 200): void
 {
     http_response_code($code);
     header('Content-Type: application/json; charset=utf-8');
-    // Release the session file before the response is written out. PHP locks the
-    // session for the whole request, and the admin screen fires several API calls
-    // at once (content, media, messages), so each one would otherwise queue
-    // behind the previous one on the same lock.
+
     if (session_status() === PHP_SESSION_ACTIVE) {
         session_write_close();
     }
@@ -69,4 +66,3 @@ function nx_check_csrf(): void
         nx_fail('Bad CSRF token', 403);
     }
 }
-

@@ -6,11 +6,6 @@ import NoticeBar from './NoticeBar.jsx'
 import SearchPanel from './SearchPanel.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
-/**
- * Enboarder-style header: a clean, full-width sticky white bar with a subtle
- * bottom border. Logo on the left, uppercase nav items in the centre (active
- * item in brand colour), and a solid CTA pill + search on the right.
- */
 export default function Header({ overlay = false }) {
   const { navItems, settings, uiLabels, sectionIds } = useContent()
   const [openMenu, setOpenMenu] = useState(null)
@@ -19,7 +14,6 @@ export default function Header({ overlay = false }) {
   const [scrolled, setScrolled] = useState(false)
   const headerRef = useRef(null)
 
-  // Shadow appears once scrolled past the top.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
     onScroll()
@@ -111,7 +105,6 @@ export default function Header({ overlay = false }) {
             </svg>
           </button>
 
-          {/* Solid brand CTA pill */}
           <a
             href={settings.menuCta.href}
             className="hidden rounded-full bg-shell-red px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-shell-red/90 md:inline-flex"
@@ -119,7 +112,6 @@ export default function Header({ overlay = false }) {
             {settings.menuCta.label}
           </a>
 
-          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => { setMobileOpen((m) => !m); setOpenMenu(null); setSearchOpen(false) }}
@@ -155,4 +147,3 @@ export default function Header({ overlay = false }) {
     </header>
   )
 }
-

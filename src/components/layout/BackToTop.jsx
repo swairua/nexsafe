@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useContent } from '../../content/ContentContext.jsx'
 
-/** Floating back-to-top button (port of the ref theme's wpb_btt):
- *  fades/scales in after scrolling down, smooth-scrolls home. */
 export default function BackToTop() {
   const { uiLabels } = useContent()
   const [visible, setVisible] = useState(false)

@@ -1,6 +1,3 @@
-// Canonical site content - the single source used as (a) the SPA default/fallback and
-// (b) the seed that populates the SQLite DB. Admin edits are fetched from
-// GET /api/content.php at runtime and override these values.
 import { heroSlides, benefits, featuredCards, partnerStrip, industriesStrip, caseCards, successStory, blogRow, blogIndex, homeContact, testimonials, statsBand, certStrip, searchSuggestions, faqTeaser, awardsBand, noticeBar, deptSplit, valuesStrip } from "./content.js"
 import { stackGroups } from "./stack.js"
 import { partners } from "./partners.js"
@@ -16,22 +13,19 @@ export const defaultContent = {
     footerNote: "Simplifying IT for a complex world.",
     copyright: "© 2026 Nexsate Technologies Inc. All rights reserved.",
     domain: "nexsate.com",
-    // Contact details as published on nexsate.com (footer + contact page).
-    // service@ is the public address; the 526-5555 line is the client-support
-    // channel from nexsate.com/client-support.
+
     email: "service@nexsate.com",
     phone: "1-825-570-4550",
     supportPhone: "1-825-526-5555",
     address: "1253 91 St. SW Edmonton, AB T6X 1E9",
     logo: "/brand/nexsate-wordmark.png",
     logoAlt: "Nexsate — EnableIT. Transform. Empower.",
-    // Header/search chrome that used to be hardcoded in the components.
+
     homeTitle: "Nexsate — technology that works as one",
     searchPlaceholder: "Search nexsate.com",
     menuCta: { label: "Talk to an expert", href: "#/contact-us" },
   },
-  // Section anchors rendered by the homepage components. The nav/footer/CTA
-  // hrefs point at these, so they are content too rather than literals.
+
   sectionIds: {
     top: "top",
     about: "about",
@@ -43,7 +37,7 @@ export const defaultContent = {
     insights: "insights",
     support: "support",
   },
-  // Eyebrow -> homepage anchor for the breadcrumb trail on deep pages.
+
   categoryAnchors: {
     Company: "#company",
     "IT solutions": "#it-solutions",
@@ -52,7 +46,7 @@ export const defaultContent = {
     Support: "#support",
     Legal: "#top",
   },
-  // Screen-reader / structural labels, so even the aria strings are editable.
+
   uiLabels: {
     primaryNav: "Primary",
     mobileNav: "Mobile",
@@ -68,9 +62,7 @@ export const defaultContent = {
     cookieConsent: "Cookie consent",
     backToTop: "Back to top",
   },
-  // Social channels: add, remove or reorder from the admin. Leave `icon` blank
-  // for the built-in network glyph, or point it at an uploaded image/brand asset.
-  // Hrefs are the live nexsate.com profiles.
+
   socialLinks: [
     { network: "facebook", label: "Facebook", href: "https://www.facebook.com/profile.php?id=61591263043798", icon: "" },
     { network: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/company/135134635", icon: "" },
@@ -94,7 +86,7 @@ export const defaultContent = {
     text: "Connect with a nexsate expert to discuss how to design, build, manage and modernize the mission-critical technology your business runs on.",
     cta: { label: "Talk to an expert", href: "#/contact-us" },
   },
-  // Section headings that were previously literal JSX on the homepage.
+
   servicesSection: {
     tag: "Services",
     title: "Simply enabling IT for a complex world",
@@ -104,7 +96,7 @@ export const defaultContent = {
     tag: "Our technology stack",
     title: "Using trusted technology to solve your IT challenges",
   },
-  // Shared chrome copy for every deep page rendered by PageView.
+
   pageLabels: {
     home: "Home",
     exploreMore: "Explore more",
@@ -125,9 +117,7 @@ export const defaultContent = {
     manageLabel: "Manage settings",
     acceptLabel: "Accept all cookies",
   },
-  // The consultation form fields, labels and options mirror the form published
-  // on nexsate.com. `detail*Label` are the contact-page detail rows, which are
-  // worded differently from the form fields ("Call us at:" vs "Phone").
+
   contactForm: {
     title: "Schedule a Free Consultation",
     text: "",
@@ -203,4 +193,3 @@ export const defaultContent = {
   footerLegal,
   pages,
 }
-

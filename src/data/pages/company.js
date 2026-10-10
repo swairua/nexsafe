@@ -1,11 +1,3 @@
-// The About page, ported from nexsate.com/about/ during the redesign: wording,
-// section order and imagery are the source site's own. The former "Our Mission",
-// "Core Values", "Our People" and "Our Process" sub-pages were removed because
-// this single page already carries that content.
-//
-// The source page's "Learn more" (-> /why-us/) and "Meet the team" (-> Team
-// page) links have no equivalent route here, so they are not carried over
-// rather than rendered as dead links.
 const eyebrow = 'Company'
 
 export const companyPages = [
@@ -79,8 +71,7 @@ export const companyPages = [
         ],
       },
     ],
-    // Photography carried over from the source About page: the first photo is the
-    // page hero (as on nexsate.com/about/), the other two sit in the body gallery.
+
     image: {
       src: '/uploads/about-philosophy.jpg',
       alt: 'Colleagues talking through a plan at a table',
@@ -89,7 +80,7 @@ export const companyPages = [
       { src: '/uploads/about-experience.jpg', alt: 'Team member working at a laptop in a bright office' },
       { src: '/uploads/about-together.jpg', alt: 'Colleagues collaborating around a desk' },
     ],
-    // Awards & recognition badges carried over from the source About page.
+
     logos: [
       { src: '/uploads/award-google.png', alt: 'Google Premier Partner badge' },
       { src: '/uploads/award-clutch-top-1000.png', alt: 'Clutch Top 1000 badge' },

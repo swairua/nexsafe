@@ -1,8 +1,3 @@
-// Admin-portal smoke test: every content key the admin exposes must exist in
-// the content store, must render in the ContentEditor/FieldEditor, and the
-// Pages tab must be able to edit a page without throwing. Also asserts the
-// data layer no longer points at remote image hosts.
-// Run: node scripts/smoke-admin.mjs
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { createServer } from 'vite'
@@ -40,7 +35,6 @@ try {
   check(unreachable.length === 0, 'every content key is reachable in the admin', unreachable.join(', '))
   console.log(`       sections: ${sections.length}, content keys: ${storeKeys.length}`)
 
-  // Each section must render standalone without crashing and list its label.
   let sectionFails = []
   for (const s of sections) {
     try {
@@ -55,7 +49,6 @@ try {
   }
   check(sectionFails.length === 0, 'every section renders in the Content tab', sectionFails.join(', '))
 
-  // Whole Content tab + Pages tab + app shell.
   let renderFails = []
   try {
     renderToString(React.createElement(ContentEditor, { keys: sections, content, onSaved: () => {}, onPickImage: () => {} }))
@@ -68,7 +61,6 @@ try {
   } catch (e) { renderFails.push('pages tab: ' + e.message) }
   check(renderFails.length === 0, 'content tab, pages tab and app shell render', renderFails.join(', '))
 
-  // Every image-ish field in the store must point at a local path.
   const remote = []
   JSON.stringify(content).replace(/https?:\/\/[^"\\]+/g, (m) => {
     if (/\.(jpe?g|png|webp|gif|svg)(\?|$)/.test(m)) remote.push(m)
@@ -76,11 +68,6 @@ try {
   })
   check(remote.length === 0, 'no remote image URLs in the content store', remote.join(', '))
 
-  // Regression: a CSS gradient must never reach <img src>. "linear-gradient(.. 0%, ..)"
-  // carries a bare "%," that the browser requests as a path, and Vite's dev server then
-  // throws "URI malformed" inside decodeURI(), covering the whole admin in an error
-  // overlay. Fields nested under a parent named "heroSlides" used to match the
-  // image-key heuristic because the whole dotted path was matched, not the leaf name.
   const gradFails = []
   for (const key of ['heroSlides', 'introCards', 'featuredCards', 'promo', 'successStory']) {
     if (!(key in content)) continue
@@ -93,7 +80,6 @@ try {
   }
   check(gradFails.length === 0, 'gradients stay editable text and never become <img src>', gradFails.join(', '))
 
-  // Real upload paths must still get a preview.
   const preview = renderToString(React.createElement(FieldEditor, {
     name: 'heroSlides[0].image', value: '/uploads/boardroom-meeting.jpg', onChange: () => {},
   }))

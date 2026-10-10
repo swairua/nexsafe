@@ -1,9 +1,3 @@
-// Contact + FAQ + legal pages — the non-editorial routes the header, footer and
-// CTA buttons link to.
-//
-// The Contact and FAQ pages are ported from nexsate.com/contact/ and
-// nexsate.com/faq/: the wording, the contact details and the questions/answers
-// are the source site's own. The legal pages keep their existing plain copy.
 const support = 'Support'
 const legal = 'Legal'
 
@@ -13,7 +7,7 @@ export const sitePages = [
     title: 'Contact',
     eyebrow: support,
     intro: 'We’re here to help',
-    // Hero image carried over from the source Contact page.
+
     image: {
       src: '/uploads/contact-hero.jpg',
       alt: 'Support consultant on a call in a modern office',
@@ -70,8 +64,7 @@ export const sitePages = [
     sections: [
       {
         heading: 'Our services',
-        // Questions and answers as published on nexsate.com/faq/. Answers that
-        // are a list on the source site keep their list here.
+
         items: [
           {
             title: 'What are your two primary services?',

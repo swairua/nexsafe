@@ -1,6 +1,3 @@
-// Runtime smoke test: renders <App /> and every content page with
-// react-dom/server via Vite's module loader. Catches undefined imports, bad
-// hook usage, and render-time crashes.
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { createServer } from 'vite'
@@ -28,14 +25,11 @@ try {
   const css = await readFile('src/index.css', 'utf8')
 
   const html = renderToString(React.createElement(App))
-  // Visible text: strip tags and decode the entities React emits, so copy
-  // containing "&" is compared in its displayed form.
+
   const visibleText = (markup) =>
     markup.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#x27;/g, "'")
   const plain = visibleText(html)
 
-  // Every page must render without throwing and must surface its own title.
-  // The real slug is passed so slug-specific branches (the contact page) run.
   const pageResults = allPages.map((page) => {
     const rendered = renderToString(React.createElement(PageView, { page, slug: page.slug }))
     const text = visibleText(rendered)
@@ -49,23 +43,18 @@ try {
   })
   const failedPages = pageResults.filter((p) => !p.ok).map((p) => p.slug)
 
-  // Contact details on the contact page come from Site settings.
   const contactHtml = renderToString(
     React.createElement(PageView, { page: pages['contact-us'], slug: 'contact-us' }),
   )
 
   const notFoundHtml = renderToString(React.createElement(PageView, { page: undefined }))
 
-  // Search: the local index must rank the obvious page first, suggestions and
-  // grouped results must render, and the blog topic filter must narrow the grid.
   const searchIdx = buildSearchIndex(defaultContent.pages)
   const searchHits = searchIndex(searchIdx, 'cloud security')
   const searchHtml = renderToString(React.createElement(SearchPanel))
   const blogAll = renderToString(React.createElement(BlogIndex, { page: pages['blog'] }))
   const blogAI = renderToString(React.createElement(BlogIndex, { page: pages['blog'], topic: 'AI' }))
 
-  // Every page with an "items" block must render each item's title — this is
-  // what proves the new `items` schema works.
   const withItems = allPages.filter((p) => p.sections.some((s) => s.items?.length))
   const itemsRendered = withItems.every((p) => {
     const text = visibleText(renderToString(React.createElement(PageView, { page: p })))
@@ -74,8 +63,7 @@ try {
 
   const navLeafHrefs = (c) => [...(c.links || []), ...(c.tiles || []), ...(c.viewAll ? [c.viewAll] : [])].map((l) => l.href)
   const leafHrefs = navItems.flatMap((i) => i.columns.flatMap((c) => navLeafHrefs(c)))
-  // Top-level nav hrefs (#company, #industries…) are homepage section anchors,
-  // and column "View all" links reuse them — both are valid nav targets.
+
   const knownSectionAnchors = new Set([
     ...Object.values(defaultContent.sectionIds).map((id) => `#${id}`),
     ...navItems.map((i) => i.href),

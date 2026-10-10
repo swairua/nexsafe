@@ -2,12 +2,6 @@ import Reveal from '../ui/Reveal.jsx'
 import { Rich } from '../ui/SectionTag.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
-/**
- * "Connect with us" — the dark CTA band that sits directly above the footer,
- * Nanosoft "Let's get started" / Kyndryl "Connect with us" pattern. Copy is
- * content (`pageConnect`); rendered on deep pages (via PageView) and at the
- * homepage bottom so both can never drift apart.
- */
 export default function ConnectBand() {
   const { pageConnect: connect } = useContent()
   if (!connect) return null

@@ -1,9 +1,3 @@
-// Blog / insights engine — the case study is post #1 and the three starter
-// posts below are distilled from the client-supplied service documents
-// (Cybersecurity, Cloud Services, Managed IT Services), so every claim traces
-// back to client copy. Posts ARE pages: they render through the existing
-// PageView renderer and are edited in the admin Pages tab like any other
-// page. `date` (ISO) drives newest-first ordering; `excerpt` feeds the cards.
 export const blogIndex = {
   tag: 'From our blog',
   title: 'Insights that help you do more',
@@ -133,12 +127,6 @@ export const insightPosts = [
     related: ['managed-it-services', 'network-management', 'cybersecurity'],
   },
 
-  // ---- Legacy posts ported from nexsate.com/blog (April–March 2023). ----
-  // Seven of the eight shipped with identical mismatched filler bodies, so
-  // they are reconstructed here from each title's promise plus the live
-  // excerpt, grounded in the client documents where noted. Only the
-  // cloud-costs piece had a body that matched its title, and its facts
-  // (cuts, vendors, labour stats) are preserved below.
   {
     slug: 'startups-cutting-cloud-costs',
     title: 'How startups are cutting cloud costs, renegotiating deals with service providers',
@@ -415,10 +403,6 @@ export const insightPosts = [
     related: ['about-us', 'success-story', 'contact-us'],
   },
 
-  // ---- Portfolio case studies ported from nexsate.com (March 2023). ----
-  // Both bodies below are the live pages' own substance; sibling portfolio
-  // URLs share copy-pasted filler and are redirected to the blog index, not
-  // ported.
   {
     slug: 'paysafe-intelligent-automation',
     title: 'Delivering Enterprise-Wide Efficiencies at Paysafe Through Intelligent Automation',
@@ -496,7 +480,6 @@ export const insightPosts = [
   },
 ]
 
-/** The index page itself. `layout: 'blog-index'` switches PageView to the card grid. */
 export const blogIndexPage = {
   slug: 'blog',
   title: 'Blog',

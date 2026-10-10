@@ -1,4 +1,3 @@
-// Events page — ported from nexsate.com/events/.
 const eyebrow = 'Company'
 
 export const eventPages = [

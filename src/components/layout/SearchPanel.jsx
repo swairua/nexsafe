@@ -2,11 +2,6 @@ import { useMemo, useRef, useState } from "react"
 import { useContent } from '../../content/ContentContext.jsx'
 import { buildSearchIndex, searchIndex } from '../../search/searchIndex.js'
 
-/**
- * Functional search overlay (Kyndryl-style): live ranked results grouped into
- * Pages / Insights as you type, suggested searches when empty, full keyboard
- * support (arrows + Enter to open the top hit, Esc to close).
- */
 export default function SearchPanel({ autoFocus = true, onClose = () => {} }) {
   const { settings, pages } = useContent()
   const content = useContent()

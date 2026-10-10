@@ -4,7 +4,6 @@ import Autoplay from 'embla-carousel-autoplay'
 import { useContent } from "../../content/ContentContext.jsx"
 import { Rich } from '../ui/SectionTag.jsx'
 
-/** Full-bleed hero carousel with autoplay, arrows and dots (full-bleed banner style). */
 export default function HeroCarousel() {
   const { heroSlides, uiLabels, sectionIds } = useContent()
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 38 }, [
@@ -33,7 +32,7 @@ export default function HeroCarousel() {
         <div className="flex">
           {heroSlides.map((slide, i) => (
             <div key={slide.id} className="relative min-w-0 flex-[0_0_100%]">
-              {/* Background image with gradient overlay + fallback */}
+
               <div
                 className="absolute inset-0"
                 style={{ background: slide.fallback }}
@@ -46,13 +45,12 @@ export default function HeroCarousel() {
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
               <div className="absolute inset-0" style={{ background: slide.gradient }} aria-hidden="true" />
-              {/* Top scrim so the transparent floating nav always reads over imagery */}
+
               <div
                 className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-black/45 to-transparent md:h-72"
                 aria-hidden="true"
               />
 
-              {/* Content — layers replay via .is-active whenever the slide is selected */}
               <div className="shell-container relative flex min-h-[28rem] items-center pb-20 pt-28 sm:min-h-[34rem] md:min-h-[40rem] md:pb-24 md:pt-36 lg:min-h-[44rem]">
                 <div className={`hero-copy max-w-2xl text-white ${selected === i ? 'is-active' : ''}`}>
                   <span className="hero-kicker mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-shell-yellow">
@@ -82,7 +80,6 @@ export default function HeroCarousel() {
         </div>
       </div>
 
-      {/* Arrows */}
       <button
         type="button"
         onClick={scrollPrev}
@@ -104,7 +101,6 @@ export default function HeroCarousel() {
         </svg>
       </button>
 
-      {/* Dots */}
       <div className="absolute inset-x-0 bottom-5 flex items-center justify-center gap-2.5">
         {heroSlides.map((s, i) => (
           <button

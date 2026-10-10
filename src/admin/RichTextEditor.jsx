@@ -2,9 +2,6 @@ import { useEffect, useRef, useState } from "react"
 
 const LABEL = "mb-1 block text-xs font-semibold uppercase tracking-wide text-shell-gray-500"
 
-// Best free editor that needs no install: a contentEditable surface with a
-// formatting toolbar (bold / italic / lists / links / clear) + HTML source
-// view. Output is sanitised (safe tags only, no scripts/styles).
 const ALLOWED = new Set(["P", "BR", "STRONG", "B", "EM", "I", "U", "UL", "OL", "LI", "A", "H3", "H4", "BLOCKQUOTE"])
 
 export function sanitizeHtml(dirty) {
@@ -73,7 +70,6 @@ export function looksLikeHtml(v) {
   return /<\s*(p|br|strong|em|ul|ol|li|a|h3|h4|blockquote)[\s/>]/i.test(String(v || ""))
 }
 
-
 export default function RichTextEditor({ label, value, onChange }) {
   const viewRef = useRef(null)
   const [mode, setMode] = useState("visual")
@@ -86,7 +82,7 @@ export default function RichTextEditor({ label, value, onChange }) {
     if (viewRef.current && document.activeElement !== viewRef.current) {
       viewRef.current.innerHTML = sanitizeHtml(html)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [label, value])
 
   function emit(raw) {
@@ -94,9 +90,7 @@ export default function RichTextEditor({ label, value, onChange }) {
     if (clean === lastEmitted.current) return
     lastEmitted.current = clean
     const plain = htmlToPlain(clean)
-    // Only keep HTML when the editor actually applied formatting (bold, links,
-    // lists …). Ordinary typing stays plain text with \n breaks, so every
-    // component that renders a string keeps working exactly as before.
+
     const hasFormatting = /<(strong|b|em|i|u|a|ul|ol|li|blockquote|h3|h4)(\s|>)/i.test(clean)
     onChange(hasFormatting ? clean : plain)
   }
@@ -105,7 +99,7 @@ export default function RichTextEditor({ label, value, onChange }) {
     const el = viewRef.current
     if (!el) return
     el.focus()
-    try { document.execCommand(command, false, arg) } catch (e) { /* noop */ }
+    try { document.execCommand(command, false, arg) } catch (e) {  }
     emit(el.innerHTML)
   }
 

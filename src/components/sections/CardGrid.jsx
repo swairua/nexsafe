@@ -5,19 +5,10 @@ import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from '../../content/ContentContext.jsx'
 
-/**
- * Services section with tabbed interface.
- *
- * Groups the six service cards into two tabs — "Core IT" (Managed IT,
- * Cloud, Network) and "Security & Recovery" (Cybersecurity, Backup,
- * Software Development) — so the grid reads like Enboarder's organised
- * feature sections instead of an unstructured carousel.
- */
 export default function CardGrid() {
   const { featuredCards, servicesSection, sectionIds } = useContent()
   const trackRef = useRef(null)
 
-  // Fold the six cards into two "tab" groups by their tag names.
   const allCards = featuredCards || []
   const tabCards = {
     core: allCards.filter((c) =>
@@ -62,7 +53,6 @@ export default function CardGrid() {
           </div>
         </div>
 
-        {/* Tab pills — Enboarder-style, bold with tight tracking */}
         <div className="mb-12 flex flex-wrap gap-3" role="tablist" aria-label={servicesSection.title}>
           {tabs.map((t) => (
             <button
@@ -90,7 +80,6 @@ export default function CardGrid() {
           ))}
         </div>
 
-        {/* Tab panels */}
         <div
           id={`panel-${activeTab}`}
           role="tabpanel"

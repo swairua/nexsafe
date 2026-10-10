@@ -2,6 +2,8 @@
   "name": "nexsate-site",
   "private": true,
   "version": "0.1.0",
+  "author": "Eng. Gichuki Simon <gichukisimon@gmail.com>",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",

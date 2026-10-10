@@ -1,8 +1,3 @@
-// Software, ERP & App Development — the merged development vertical.
-// Combines "Software Development, ERP & CRM Solutions" and "ERP Solutions"
-// (70% overlap) with the "Software & App Development" hub (platforms,
-// portfolio, team). Copy is preserved verbatim from the three source pages;
-// only the "From idea" opener is tightened to the house paragraph cap.
 const eyebrow = 'IT solutions'
 
 export const softwarePages = [

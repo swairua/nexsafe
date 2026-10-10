@@ -1,16 +1,3 @@
-/**
- * Rules-of-Hooks lint: a hook must never be declared after an early `return`
- * inside the same function body.
- *
- * This bit us in src/admin/AdminApp.jsx: `useState` for the mobile menu sat
- * below `if (boot) return ... / if (!session) return ...`, so the hook only
- * existed on the signed-in branch. React then hit "Rendered more hooks than
- * during the previous render" the moment the session resolved. The smoke
- * tests could not catch it — renderToString(<AdminApp />) only ever exercises
- * the boot branch — so it is checked statically here instead.
- *
- * Run: node scripts/check-hooks.mjs
- */
 import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -20,7 +7,6 @@ const HOOKS = [
   'useTransition', 'useDeferredValue', 'useImperativeHandle',
 ]
 
-/** Blank out comments and string/template literals, preserving offsets/lines. */
 function stripLiterals(src) {
   const out = src.split('')
   const n = src.length
@@ -57,7 +43,6 @@ function stripLiterals(src) {
   return out.join('')
 }
 
-/** `return` counts as a statement when preceded by start-of-line, { ; } ) or >. */
 function isReturnStatement(src, index) {
   let i = index - 1
   while (i >= 0 && /\s/.test(src[i])) i--
@@ -70,7 +55,6 @@ function checkFile(file) {
   const src = stripLiterals(raw)
   const lineAt = (index) => raw.slice(0, index).split('\n').length
 
-  // Brace map -> innermost body containing any offset.
   const stack = []
   const bodies = []
   for (let i = 0; i < src.length; i++) {
@@ -88,7 +72,6 @@ function checkFile(file) {
     return best
   }
 
-  // First early `return` per body, at that body's own depth.
   const firstReturn = new Map()
   for (const b of bodies) {
     let depth = 0
@@ -107,10 +90,10 @@ function checkFile(file) {
   const hookRe = new RegExp(`\\b(${HOOKS.join('|')})\\s*\\(`, 'g')
   for (const m of src.matchAll(hookRe)) {
     const body = innermost(m.index)
-    if (!body) continue // module scope / top level
+    if (!body) continue
     const ret = firstReturn.get(body.start)
     if (ret === undefined || m.index <= ret) continue
-    // `return useContext(Ctx)` is idiomatic hook code, not an early exit.
+
     if (lineAt(m.index) === lineAt(ret)) continue
     problems.push(`line ${lineAt(m.index)}: ${m[1]}() is declared after an early return on line ${lineAt(ret)}`)
   }

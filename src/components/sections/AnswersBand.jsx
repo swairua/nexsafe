@@ -2,11 +2,6 @@ import SectionTag, { Rich, RichText } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
-/**
- * Answers band: the promo CTA beside the FAQ accordion in one section.
- * Merges the former PromoBanner and FaqTeaser — the accordion answers read
- * live from the help-and-faq page, so the two can never drift apart.
- */
 export default function AnswersBand() {
   const content = useContent()
   const promo = content.promo || {}

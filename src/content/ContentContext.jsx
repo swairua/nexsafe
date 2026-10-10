@@ -3,21 +3,11 @@ import { defaultContent } from "../data/siteContent.js"
 
 const ContentContext = createContext(defaultContent)
 
-// API base:
-//  - VITE_API_URL: explicit origin for two-service deploy (frontend + API)
-//  - otherwise: same-origin /api/
 export const API_BASE = (import.meta.env.VITE_API_URL || ((import.meta.env.BASE_URL || "/") + "api/")).replace(/\/$/, "/")
 export function apiUrl(path) { return API_BASE + path }
 
 export function useContent() { return useContext(ContentContext) }
 
-/**
- * Merge the stored content over the shipped defaults. Plain objects merge
- * field-by-field so a nested default added later (e.g. a new key inside
- * `settings` or `contactForm`) still reaches a database seeded before it
- * existed; arrays and primitives replace outright, so a card an editor
- * deleted never comes back.
- */
 export function mergeContent(base, override) {
   if (Array.isArray(override)) return override
   if (override && typeof override === "object" && base && typeof base === "object" && !Array.isArray(base)) {
@@ -46,4 +36,3 @@ export function ContentProvider({ children }) {
 
   return <ContentContext.Provider value={content}>{children}</ContentContext.Provider>
 }
-

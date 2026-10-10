@@ -1,13 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-/**
- * Scroll-reveal wrapper (port of the NanoSoft theme's vc_waypoints +
- * animate.css reveals: fadeInUp/Left/Right/In, slideInUp, bounceIn).
- * Renders children untouched on the server (smoke/SEO text checks keep
- * working); on the client it arms a hidden state and plays the matching
- * entrance animation once via IntersectionObserver. Honours
- * prefers-reduced-motion — then content simply stays visible.
- */
 let sharedObserver = null
 
 function getObserver() {
@@ -22,7 +14,7 @@ function getObserver() {
           }
         }
       },
-      // Fire as soon as the element enters (slightly inset from the bottom)
+
       { threshold: 0, rootMargin: '0px 0px -8% 0px' },
     )
   }
@@ -37,12 +29,6 @@ function motionAllowed() {
   )
 }
 
-/**
- * Variants: up (default) | left | right | fade | zoom | bounce.
- * delay: 1-5 -> stagger steps of 90ms (ref's delay-1..delay-5).
- * The reveal classes are dropped after the animation finishes so normal
- * CSS (hover transforms etc.) is not permanently overridden by fill-mode.
- */
 export default function Reveal({
   as: Tag = 'div',
   variant = 'up',

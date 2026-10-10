@@ -3,8 +3,6 @@ import Reveal from "../ui/Reveal.jsx"
 import { useContent } from "../../content/ContentContext.jsx"
 import { useContactDetails } from "../sections/contactDetails.js"
 
-// Built-in glyphs for the networks we ship by default. A social entry can
-// override this by pointing `icon` at an uploaded image instead.
 const socialIcons = {
   facebook: (<path d="M13.5 20v-7h2.4l.4-2.8h-2.8V8.4c0-.8.2-1.4 1.4-1.4h1.5V4.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8v2.8h2.5V20h3Z" />),
   linkedin: (<path d="M6.94 8.5H4V19h2.94V8.5ZM5.47 4a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM19 12.9c0-2.8-1.5-4.1-3.5-4.1-1.6 0-2.3.9-2.7 1.5V8.5H9.9V19h2.9v-5.6c0-1.3.7-2.1 1.8-2.1s1.7.8 1.7 2.1V19H19v-6.1Z" />),
@@ -13,11 +11,6 @@ const socialIcons = {
   youtube: (<path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z" />),
 }
 
-/**
- * The channels list is content: `socialLinks` is an editable array, so a
- * channel can be added, removed or reordered without touching code. Legacy
- * installs that still carry `settings.social` (an object) keep working.
- */
 function readChannels(settings, socialLinks) {
   if (Array.isArray(socialLinks) && socialLinks.length) {
     return socialLinks.filter((c) => c && c.href)
@@ -28,11 +21,6 @@ function readChannels(settings, socialLinks) {
     .map((k) => ({ network: k, label: k.charAt(0).toUpperCase() + k.slice(1), href: legacy[k], icon: "" }))
 }
 
-/**
- * Dark Nanosoft / Kyndryl-style footer: brand + contact-details column first
- * (address, phone, email, socials), then the admin-driven link columns, then
- * the copyright + legal bar. Flows directly out of the dark connect band.
- */
 export default function Footer() {
   const { footerColumns, footerLegal, settings, socialLinks } = useContent()
   const channels = readChannels(settings, socialLinks)

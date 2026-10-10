@@ -3,12 +3,6 @@ import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import { resolveSrc } from "../../utils/url.js"
 
-/**
- * One vendor chip: the platform name as text only. Logos stay out of the
- * chips until each vendor's approved mark is supplied (see stack.js audit
- * note) — CMS groups may carry vendors as plain strings or { name } objects,
- * so both shapes resolve to the name.
- */
 function VendorChip({ vendor }) {
   const name = typeof vendor === "string" ? vendor : vendor?.name
   const logo = typeof vendor === "string" ? "" : vendor?.logo
@@ -23,18 +17,12 @@ function VendorChip({ vendor }) {
   )
 }
 
-/**
- * Technology-stack band: the four platform areas and the named vendors from
- * the client-supplied Home Page document. Owns the `#capabilities` anchor.
- * Rendered on light so it reads as a reference list, not a marketing wall.
- */
 export default function StackSection() {
   const { stackGroups, stackSection, sectionIds } = useContent()
   return (
     <section id={sectionIds.capabilities} className="relative bg-white pb-20 md:pb-28">
       <div className="shell-container">
-        {/* Heading card straddles the awards band boundary (Nanosoft overlap):
-            dark text stays on the white card, never on the dark band. */}
+
         <Reveal
           variant="fade"
           className="relative -mt-20 max-w-3xl rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-[0_24px_60px_-24px_rgba(14,17,20,0.4)] md:-mt-28 md:p-8"

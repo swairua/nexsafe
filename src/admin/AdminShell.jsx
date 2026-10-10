@@ -7,12 +7,6 @@ const TABS = [
   { id: "messages", label: "Messages" },
 ]
 
-/**
- * Compact admin shell: a single h-14 sticky header row (never wraps, so the
- * sticky save bars always pin at exactly --admin-bar), a refined hamburger
- * dropdown on mobile, inline tabs on desktop, and safe-area-aware padding.
- * API/data untouched — this is chrome only.
- */
 export default function AdminShell({ tab, setTab, user, onLogout, siteUrl, menuOpen, setMenuOpen, error, children }) {
   return (
     <div className="min-h-screen bg-shell-gray-100" style={{ "--admin-bar": "3.5rem" }}>

@@ -1,16 +1,3 @@
-// Industry pages, ported from nexsate.com/industries/ during the redesign:
-// wording, section order, headings and imagery are the source site's own,
-// tightened in the readability pass (duplicate paragraphs removed, "Focus"
-// headings rewritten as promises, service lists cut to sector-unique items).
-//
-// Shape on the source, kept here: h1 + subtitle -> promise -> two positioning
-// sections -> the services list -> a closing section. Each page also carries its
-// own hero background image (page.image), which PageView prefers over the
-// shared per-category image.
-//
-// One thing is deliberately NOT copied: the source's services heading on the
-// healthcare and banks pages is a copy-paste error ("Our IT services for
-// manufacturers"), so each page names its own sector instead.
 const eyebrow = 'Industries'
 
 export const industryPages = [
@@ -20,7 +7,7 @@ export const industryPages = [
     eyebrow,
     intro:
       'Technology services for financial offices, insurance agencies, advisory firms, lending teams, claims departments, and client-facing organizations where confidentiality, uptime, and trust are essential.',
-    // Hero image carried over from the source page.
+
     image: {
       src: '/uploads/industry-banks-hero.jpg',
       alt: 'Advisor reviewing financial documents at a desk in a modern office',
@@ -85,7 +72,7 @@ export const industryPages = [
     eyebrow,
     intro:
       'Technology support for medical clinics, dental practices, pharmacies, therapy providers, diagnostic centres, and healthcare offices where patient service, privacy, and system access are critical.',
-    // Hero image carried over from the source page.
+
     image: {
       src: '/uploads/industry-healthcare-hero.jpg',
       alt: 'Clinician using a tablet during a patient appointment',
@@ -150,7 +137,7 @@ export const industryPages = [
     eyebrow,
     intro:
       'Insightful and reliable manufacturer IT services for productive and effective business',
-    // Hero image carried over from the source page.
+
     image: {
       src: '/uploads/industry-manufacturing-hero.jpg',
       alt: 'Production floor of a manufacturing plant',
@@ -214,7 +201,7 @@ export const industryPages = [
     eyebrow,
     intro:
       'Technology support for dispatch teams, drivers, fleet operations, warehouses, terminals, and logistics businesses where timing, visibility, and communication matter.',
-    // Hero image carried over from the source page.
+
     image: {
       src: '/uploads/industry-transportation-hero.jpg',
       alt: 'Freight yard and trucks at a logistics terminal',

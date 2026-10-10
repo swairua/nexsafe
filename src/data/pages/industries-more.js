@@ -1,11 +1,3 @@
-// Additional industry pages — the five sectors the live nexsate.com lists
-// beyond the four documented Industry Focus papers (consulting-providers,
-// non-profit, telemedicine, fintech, education). The live pages share one
-// manufacturing template with no sector-specific copy, so each page below is
-// a compact original built from the live teaser line plus the house service
-// vocabulary (managed IT, security, cloud, backup) already used across the
-// documented industries. Telemedicine complements the Healthcare focus page
-// for virtual-care delivery models.
 export const industryMorePages = [
   {
     slug: 'consulting-providers',

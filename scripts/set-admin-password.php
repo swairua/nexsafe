@@ -1,17 +1,5 @@
 <?php
-/**
- * Set the password for an admin account (CLI only — the panel has no
- * password-change screen yet, and api/config.php's default hash only applies to
- * a database that has not been created yet).
- *
- *   php scripts/set-admin-password.php admin "my-new-password"
- *   php scripts/set-admin-password.php admin                  # prompts for it
- *   php scripts/set-admin-password.php --force admin "short"  # bypass the minimum
- *   php scripts/set-admin-password.php --min=12 admin "..."   # stricter minimum
- *
- * Passwords shorter than the minimum (8) need --force, which prints a warning.
- * The password is stored as a bcrypt hash in api/data/nexsate.sqlite.
- */
+
 declare(strict_types=1);
 
 if (PHP_SAPI !== 'cli') {
@@ -25,7 +13,6 @@ $minLength = 8;
 $force = false;
 $args = array_slice($argv, 1);
 
-// Pull flags out of the argument list; the remainder is <username> [password].
 $positional = [];
 foreach ($args as $arg) {
     if ($arg === '--force') {
@@ -81,7 +68,6 @@ if ($id === false) {
 $hash = password_hash($password, PASSWORD_BCRYPT);
 $pdo->prepare('UPDATE admins SET password_hash = ? WHERE id = ?')->execute([$hash, (int) $id]);
 
-// Prove the stored hash verifies before reporting success.
 $check = $pdo->prepare('SELECT password_hash FROM admins WHERE id = ?');
 $check->execute([(int) $id]);
 $ok = password_verify($password, (string) $check->fetchColumn());

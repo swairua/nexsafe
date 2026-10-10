@@ -1,4 +1,3 @@
-// Team page — ported from nexsate.com/team/.
 const eyebrow = 'Company'
 
 export const teamPages = [

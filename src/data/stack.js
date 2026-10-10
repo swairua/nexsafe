@@ -1,17 +1,3 @@
-// Technology stack - the four platform groups and the named vendors listed
-// in the client-supplied Home Page document. These are platforms Nexsate uses
-// and supports; the document claims no partnership status for any of them,
-// so none is presented as a partner and no copy implies endorsement.
-//
-// Each vendor deliberately ships with NO `logo`: brand marks stay off the
-// site until an admin uploads the vendor's own file (Content > Home >
-// Partners > Logo, stored under public/uploads). The homepage technology
-// strip renders a placeholder slot until then and the chips below stay
-// text-only — nothing on the site can present an unauthorized or altered
-// mark by default.
-// AUDIT NOTE: serving a vendor's mark implies a capability claim that should
-// be covered by an agreement or approval — remove any vendor that lacks one.
-
 export const stackGroups = [
   {
     id: 'cloud-hosting',

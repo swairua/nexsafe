@@ -1,12 +1,5 @@
 import { useContent } from "../../content/ContentContext.jsx"
 
-/**
- * Contact detail rows (email / phone / address) from Site settings, each
- * rendered only when filled. Shared by the contact page and the homepage
- * contact section so both can never drift apart. The detail rows are worded
- * as they are on nexsate.com ("Call us at:"), which is why they have their
- * own labels rather than reusing the form's.
- */
 export function useContactDetails() {
   const content = useContent()
   const form = content.contactForm || {}

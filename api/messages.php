@@ -42,4 +42,3 @@ if ($method === 'GET') {
 }
 
 nx_fail('Method not allowed', 405);
-

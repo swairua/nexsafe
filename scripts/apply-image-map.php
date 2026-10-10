@@ -1,12 +1,5 @@
 <?php
-/**
- * One-shot migration: rewrite remote image URLs already stored in the SQLite
- * content store to the local /uploads/ paths produced by
- * scripts/localize-images.mjs. Safe to re-run (rows with no remote URL and
- * already-local rows are left untouched).
- *
- *   php scripts/apply-image-map.php
- */
+
 declare(strict_types=1);
 require_once __DIR__ . '/../api/db.php';
 
@@ -21,7 +14,6 @@ if (!is_array($map)) {
     exit(1);
 }
 
-// photo id => local path, plus a "is this an unsplash URL?" guard.
 $ids = [];
 foreach ($map as $id => $local) {
     $ids[(string) $id] = (string) $local;

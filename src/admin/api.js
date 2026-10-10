@@ -5,15 +5,9 @@ let csrf = null
 export function setCsrf(t) { csrf = t }
 export function getCsrf() { return csrf }
 
-// Notified when the server stops recognising our session, so the shell can show
-// the sign-in screen again instead of leaving a bare "Unauthorized" where a form
-// should be. Sessions end up lost when the idle timeout passes, when the PHP dev
-// server is restarted, or when its session file is momentarily unreadable.
 let onExpired = null
 export function setUnauthorizedHandler(fn) { onExpired = fn }
 
-// Re-read the session: refreshes the CSRF token and reports whether we are still
-// signed in. Used to replay a request once before treating it as a real failure.
 async function refreshSession() {
   const r = await fetch(apiUrl("auth.php"), { credentials: "include" }).catch(() => null)
   if (!r) return false
@@ -30,8 +24,7 @@ async function req(path, opts, retry = false) {
   if (method !== "GET" && csrf) { o.headers["X-CSRF-Token"] = csrf }
   const r = await fetch(apiUrl(path), o)
   const data = await r.json().catch(() => ({ ok: false, error: "Invalid server response" }))
-  // auth.php itself reports 401 for wrong credentials, so never treat that as an
-  // expired session.
+
   const isAuth = path.indexOf("auth.php") === 0
   if (r.status === 401 && !retry && !isAuth && await refreshSession()) {
     return req(path, opts, true)
@@ -53,4 +46,3 @@ export const api = {
   del: (p, b) => req(p, { method: "DELETE", body: b }),
   form: (p, fd) => req(p, { method: "POST", body: fd, json: false }),
 }
-

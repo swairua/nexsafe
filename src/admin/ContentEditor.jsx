@@ -3,8 +3,6 @@ import { api } from "./api.js"
 import FieldEditor from "./FieldEditor.jsx"
 import { BTN, CARD, INPUT, PANEL_TITLE, SAVE_BAR } from "./ui.js"
 
-// Modern responsive section browser: search + collapsible group drawer on
-// mobile, sticky sidebar + sticky save bar on desktop.
 export default function ContentEditor({ keys, content, onSaved, onPickImage }) {
   const [active, setActive] = useState(keys.length ? keys[0].key : "")
   const [draft, setDraft] = useState(content[active])
@@ -98,4 +96,3 @@ export default function ContentEditor({ keys, content, onSaved, onPickImage }) {
     </div>
   )
 }
-

@@ -1,9 +1,3 @@
-// Shared compact-admin tokens: one place defines tap targets, input sizing,
-// cards and sticky offsets so every admin panel stays dense and thumb-usable.
-//
-// - Buttons are min 44px tall (WCAG touch target).
-// - Text inputs render at 16px so iOS Safari does not auto-zoom on focus.
-// - Sticky bars pin below the shell header via --admin-bar (3.5rem = h-14).
 export const BTN =
   "inline-flex min-h-[44px] items-center justify-center rounded-lg px-3 py-2 text-sm font-medium"
 export const BTN_SM =

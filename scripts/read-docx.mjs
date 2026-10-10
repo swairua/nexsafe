@@ -1,13 +1,9 @@
-// One-off reader: extract readable text from the client's logoandcontent/*.docx
-// files. No dependencies — a .docx is a ZIP, so we read the central directory,
-// inflate word/document.xml with node:zlib, and flatten the WordprocessingML.
 import { readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { inflateRawSync } from 'node:zlib'
 
 const DIR = join(process.cwd(), 'logoandcontent')
 
-/** Locate the End Of Central Directory record and return the central directory offset. */
 function findEocd(buf) {
   const min = Math.max(0, buf.length - 66000)
   for (let i = buf.length - 22; i >= min; i--) {
@@ -16,7 +12,6 @@ function findEocd(buf) {
   throw new Error('EOCD not found — not a zip')
 }
 
-/** Return a map of entry name → raw compressed bytes from the central directory. */
 function readZipEntries(buf) {
   const eocd = findEocd(buf)
   const count = buf.readUInt16LE(eocd + 10)
@@ -32,7 +27,6 @@ function readZipEntries(buf) {
     const localOff = buf.readUInt32LE(off + 42)
     const name = buf.toString('utf8', off + 46, off + 46 + nameLen)
 
-    // Re-read sizes from the local header: some writers put 0 in the central dir.
     const lhNameLen = buf.readUInt16LE(localOff + 26)
     const lhExtraLen = buf.readUInt16LE(localOff + 28)
     const dataStart = localOff + 30 + lhNameLen + lhExtraLen
@@ -53,7 +47,6 @@ const decodeEntities = (s) =>
     .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(Number(d)))
     .replace(/&amp;/g, '&')
 
-/** document.xml → plain text, one line per paragraph, list items marked with "• ". */
 function documentToText(xml) {
   return decodeEntities(xml)
     .replace(/<w:tab\/>/g, '\t')
@@ -65,7 +58,6 @@ function documentToText(xml) {
     .trim()
 }
 
-/** Mark list paragraphs so bullets survive the flattening. */
 function markListItems(xml) {
   return xml.replace(/<w:p\b[^>]*>([\s\S]*?)<\/w:p>/g, (full, inner) =>
     /<w:numPr>/.test(inner) ? full.replace('<w:p', '<w:p data-bullet="1"') : full,
@@ -84,7 +76,6 @@ for (const file of readdirSync(DIR).filter((f) => f.toLowerCase().endsWith('.doc
   }
   const xml = doc.toString('utf8')
 
-  // Bullets: tag paragraphs in a numbered list, then render them with a marker.
   const withBullets = markListItems(xml)
   let text = documentToText(withBullets)
 

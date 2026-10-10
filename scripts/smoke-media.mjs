@@ -1,16 +1,3 @@
-// Media Library API smoke test.
-//
-// Guards the three things that broke the media library in the past:
-//   1. The library lists database rows, so files that arrived in public/uploads
-//      without going through the upload form (git, FTP, the image localizer) were
-//      invisible. The API must register them on read.
-//   2. Deleting an image the site still points at silently breaks the page, so a
-//      referenced image must be refused (409) unless explicitly forced.
-//   3. Uploads must be image-typed, and every mutation needs session + CSRF.
-//
-// Talks to a running PHP API ("php -S localhost:8000 -t ."); skips quietly when
-// it is not up, so `npm run verify` never depends on the backend being started.
-// Run: node scripts/smoke-media.mjs
 import http from 'node:http'
 import { statSync, existsSync } from 'node:fs'
 import { readdir, readFile } from 'node:fs/promises'
@@ -28,13 +15,10 @@ const check = (ok, name, detail = '') => {
   if (!ok) failures++
 }
 
-// Plain node:http rather than fetch(): fetch treats "cookie" as a forbidden
-// header name and drops it, which makes any hand-rolled session test lie.
 function send(pathname, { method = 'GET', headers = {}, body } = {}) {
   return new Promise((resolve, reject) => {
     const url = new URL(BASE + pathname)
-    // PHP's built-in server does not read chunked request bodies, so any request
-    // with a body must state its length or the connection is simply dropped.
+
     const h = { ...headers }
     const hasLength = Object.keys(h).some((k) => k.toLowerCase() === 'content-length')
     if (body !== undefined && body !== null && !hasLength) {
@@ -48,7 +32,7 @@ function send(pathname, { method = 'GET', headers = {}, body } = {}) {
         res.on('end', () => {
           const text = Buffer.concat(chunks).toString('utf8')
           let json = null
-          try { json = JSON.parse(text) } catch { /* non-JSON error page */ }
+          try { json = JSON.parse(text) } catch {  }
           resolve({ status: res.statusCode, setCookie: res.headers['set-cookie'] || [], json, text })
         })
       }
@@ -88,15 +72,13 @@ function multipart(fields, file) {
   }
 }
 
-// The smallest image already in the library makes a valid upload; a 1x1 PNG is
-// the fallback so the test still works on a checkout without the media files.
 async function sampleImage() {
   try {
     const names = (await readdir(UPLOADS)).filter((n) => IMAGE_EXT.test(n) && !/^(smoke|evil)/i.test(n))
     const sized = names.map((n) => ({ n, size: statSync(path.join(UPLOADS, n)).size }))
     sized.sort((a, b) => a.size - b.size)
     if (sized.length) return { name: sized[0].n, data: await readFile(path.join(UPLOADS, sized[0].n)) }
-  } catch { /* fall through to the built-in pixel */ }
+  } catch {  }
   return {
     name: 'smoke.png',
     data: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8DwHwAFAAH/q842iQAAAABJRU5ErkJggg==', 'base64'),
@@ -125,7 +107,6 @@ try {
   } else {
     console.log(`MEDIA SMOKE (${BASE}, signed in as admin)`)
 
-    // 1. Everything on disk must be listed, with no manual upload first.
     const first = await api('media.php')
     const rows = first.json?.media || []
     const disk = (await readdir(UPLOADS)).filter((n) => IMAGE_EXT.test(n))
@@ -135,11 +116,9 @@ try {
     check(rows.every((m) => typeof m.used === 'number'), 'each row carries an in-use reference count')
     console.log(`       ${rows.length} rows, ${disk.length} images on disk`)
 
-    // 2. A mutation needs the CSRF token, not just a session cookie.
     const noCsrf = await api('media.php', { method: 'POST', csrf: false, ...multipart({ alt: 'x' }, await sampleImage()) })
     check(noCsrf.status === 403, 'upload without a CSRF token is refused', `status=${noCsrf.status}`)
 
-    // 3. A real image uploads, is listed, and deletes again while unused.
     const up = await api('media.php', { method: 'POST', ...multipart({ alt: 'smoke test' }, await sampleImage()) })
     const made = up.json || {}
     check(up.status === 200 && !!made.filename, 'image upload accepted', (up.text || '').slice(0, 120))
@@ -151,7 +130,6 @@ try {
     const del = await api('media.php', { method: 'DELETE', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: made.id }) })
     check(del.status === 200 && !onDisk(made.filename), 'unused upload removed from database and disk', `status=${del.status}`)
 
-    // 4. An image the content store still points at must survive a delete.
     const inUse = (listed.json?.media || []).find((m) => m.used > 0)
     if (inUse) {
       const blocked = await api('media.php', { method: 'DELETE', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: inUse.id }) })
@@ -161,14 +139,12 @@ try {
       console.log('       note: no content-referenced image found, so 409 protection was not exercised')
     }
 
-    // 5. Every row shows what it is, where it lives, and where it is used.
     const located = rows.filter((m) => Array.isArray(m.locations))
     check(located.length === rows.length, 'each row carries usage locations', `${located.length}/${rows.length}`)
     check(rows.every((m) => typeof m.description === 'string'), 'each row carries a description field')
     const used = located.find((m) => m.locations.length > 0)
     check(!!used, 'a referenced image reports the content fields using it', used ? `${used.filename} -> ${used.locations[0]}` : 'none found')
 
-    // 6. Metadata (alt + description) is editable through PUT and survives.
     if (used) {
       const original = { alt: used.alt, description: used.description }
       const put = await api('media.php', {
@@ -179,15 +155,13 @@ try {
       check(put.status === 200, 'media metadata update accepted', `status=${put.status} ${put.text || ''}`)
       const afterPut = (await api('media.php')).json?.media?.find((m) => m.id === used.id)
       check(afterPut?.alt === 'smoke alt' && afterPut?.description === 'smoke description', 'alt and description persist')
-      // Restore the original metadata so the test leaves no trace.
+
       await api('media.php', {
         method: 'PUT',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ id: used.id, alt: original.alt || '', description: original.description || '' }),
       })
 
-      // 7. Replace swaps the bytes in place: same filename/URL, same metadata,
-      // so every page pointing at the image updates without editing content.
       const bytes = await readFile(path.join(UPLOADS, used.filename))
       const rep = multipart({ replace_id: String(used.id) }, { name: 'replacement' + path.extname(used.filename), type: used.mime || 'image/jpeg', data: bytes })
       const repRes = await api('media.php', { method: 'POST', ...rep })
@@ -200,14 +174,12 @@ try {
       console.log('       note: no located image found, so metadata/replace checks were skipped')
     }
 
-    // 8. Non-images are refused on detected type, not on the file extension.
     const evil = await api('media.php', {
       method: 'POST',
       ...multipart({ alt: 'evil' }, { name: 'evil.php', type: 'image/png', data: Buffer.from('<?php echo "pwned";', 'binary') }),
     })
     check(evil.status === 400, 'non-image upload refused', `status=${evil.status} ${evil.json?.error || ''}`)
 
-    // 9. Nothing from this run may survive.
     const leftovers = (await readdir(UPLOADS)).filter((n) => /^(smoke|evil|probe)/i.test(n))
     check(leftovers.length === 0, 'smoke run left no files behind', leftovers.join(', '))
   }

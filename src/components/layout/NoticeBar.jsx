@@ -1,12 +1,6 @@
 import { useState } from "react"
 import { useContent } from "../../content/ContentContext.jsx"
 
-/**
- * Notice bar (Nanosoft hiring-strip pattern): a thin navy strip pinned to the
- * top of the fixed header. Copy is content (`noticeBar`) — seeded with the
- * live site's own consultation CTA. Dismissal persists in localStorage;
- * SSR-safe (no window access during render).
- */
 export default function NoticeBar() {
   const { noticeBar } = useContent()
   const [dismissed, setDismissed] = useState(() => {
@@ -21,7 +15,7 @@ export default function NoticeBar() {
     try {
       window.localStorage.setItem("nx-notice-dismissed", "1")
     } catch {
-      /* private mode — just hide for this view */
+
     }
     setDismissed(true)
   }

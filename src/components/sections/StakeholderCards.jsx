@@ -2,11 +2,6 @@ import Reveal from '../ui/Reveal.jsx'
 import { stakeholderCards } from '../../data/content.js'
 import { useContent } from '../../content/ContentContext.jsx'
 
-/**
- * Audience-specific cards: frames Nexsate's services around who they're
- * for (Business Leaders, IT Teams, Employees, Growing Companies) — the
- * "user-perspective" pattern Enboarder uses throughout its site.
- */
 export default function StakeholderCards() {
   const content = useContent()
   const copy = content.stakeholderCards || stakeholderCards
