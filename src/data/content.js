@@ -149,10 +149,46 @@ export const featuredCards = [
   },
 ]
 
-// Technology strip copy. The roster itself lives in `partners.js` and is
-// rendered from there, so the headline here and the cards can never drift
-// apart. Wording is deliberately neutral ("platforms we use and support") —
-// never a partnership or endorsement claim.
+
+// Audience-specific cards: frames Nexsate's services around who they're
+// for — Business Leaders, IT Teams, Employees, Growing Companies. Renders
+// live in the new StakeholderCards section.
+export const stakeholderCards = {
+  tag: 'Who Nexsate is for',
+  title: 'Managed IT services built around you',
+  text: 'One partner. Every department. We align technology to the way each team actually works — so your people spend less time fighting IT and more time doing their best work.',
+  cards: [
+    {
+      initial: 'BL',
+      title: 'Business Leaders',
+      text: 'Reduce downtime, improve reliability, and plan technology investment with confidence.',
+      linkLabel: 'Explore for leaders',
+      href: pageHref('Services & Solutions'),
+    },
+    {
+      initial: 'IT',
+      title: 'IT Teams',
+      text: 'Extend your capacity with expert backup, proactive monitoring, and specialised skills you can call on 24/7.',
+      linkLabel: 'Explore for IT teams',
+      href: pageHref('Services & Solutions'),
+    },
+    {
+      initial: 'E',
+      title: 'Employees',
+      text: 'Fewer disruptions, faster support, and tools that just work — so you can focus on your work, not your workstation.',
+      linkLabel: 'Explore for employees',
+      href: pageHref('Services & Solutions'),
+    },
+    {
+      initial: 'G',
+      title: 'Growing Companies',
+      text: 'Scale your IT without scaling your overhead — flexible, transparent pricing designed for mid-market businesses.',
+      linkLabel: 'Explore for growing companies',
+      href: pageHref('Services & Solutions'),
+    },
+  ],
+}
+
 export const partnerStrip = {
   tag: 'Using trusted technology',
   title: 'Using trusted technology to solve your IT challenges',

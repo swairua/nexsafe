@@ -334,6 +334,40 @@
 }
 
 /* ------------------------------------------------------------------
+   Dark section gradient accents (Enboarder-style: blur + tint)
+   ------------------------------------------------------------------ */
+.dark-gradient {
+  position: relative;
+}
+.dark-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(600px circle at top right, rgba(11, 27, 43, 0.55) 0%, transparent 60%),
+              radial-gradient(400px circle at bottom left, rgba(6, 147, 227, 0.15) 0%, transparent 50%);
+  z-index: 0;
+}
+
+/* Stats are the hero of the proof band — Enboarder's big numbers */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* ------------------------------------------------------------------
    Motion layer — NanoSoft-style scroll reveals, hero word/layer
    entrances, menu drops, banner + back-to-top entrances.
    Keyframes follow animate.css semantics (subset the site uses).
@@ -442,6 +476,33 @@
   .menu-anim .menu-col:nth-child(4) { animation-delay: 0.24s; }
   .menu-anim .menu-col:nth-child(5) { animation-delay: 0.3s; }
   .panel-anim { animation: fadeInUp 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+
+
+/* Count-up animation for numbers in stats — animated when scrolled into view */
+.stat-value {
+  display: inline-block;
+  position: relative;
+  min-width: 3.5ch;
+}
+
+.stat-value.is-animated {
+  animation: countUp 1.6s ease-out forwards;
+}
+
+@keyframes countUp {
+  from { opacity: 0.4; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Large hero-style section spacing — Enboarder premium feel */
+.py-28 {
+  padding-block: 7rem;
+}
+@media (min-width: 768px) {
+  .py-28 {
+    padding-block: 8rem;
+  }
+}
 
   /* Cookie bar + floating back-to-top entrances */
   .banner-in { animation: bannerIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s both; }

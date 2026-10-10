@@ -1,29 +1,45 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { pageHref } from '../../data/slug.js'
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
-import { useContent } from "../../content/ContentContext.jsx"
+import { useContent } from '../../content/ContentContext.jsx'
 
-/** 3-up service card strip with manual horizontal scroll.
- *  Landing view pins 3 cards; swipe/scroll (or the arrow buttons) reveals
- *  the other three. Cards come from the Home Page document's six-service list. */
+/**
+ * Services section with tabbed interface.
+ *
+ * Groups the six service cards into two tabs — "Core IT" (Managed IT,
+ * Cloud, Network) and "Security & Recovery" (Cybersecurity, Backup,
+ * Software Development) — so the grid reads like Enboarder's organised
+ * feature sections instead of an unstructured carousel.
+ */
 export default function CardGrid() {
   const { featuredCards, servicesSection, sectionIds } = useContent()
   const trackRef = useRef(null)
 
-  const nudge = (dir) => {
-    const el = trackRef.current
-    if (!el) return
-    const reduce = typeof window !== 'undefined'
-      && typeof window.matchMedia === 'function'
-      && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    // One "page" = the visible width, so arrows page through 3 at a time.
-    el.scrollBy({ left: dir * el.clientWidth * 0.92, behavior: reduce ? 'auto' : 'smooth' })
+  // Fold the six cards into two "tab" groups by their tag names.
+  const allCards = featuredCards || []
+  const tabCards = {
+    core: allCards.filter((c) =>
+      ['Managed IT', 'Cloud', 'Network'].includes(c.tag)
+    ),
+    security: allCards.filter((c) =>
+      !['Managed IT', 'Cloud', 'Network'].includes(c.tag)
+    ),
   }
 
+  const [activeTab, setActiveTab] = useState('core')
+
+  const tabs = [
+    { id: 'core', label: 'Core IT' },
+    { id: 'security', label: 'Security & Recovery' },
+  ]
+
+  const selected = tabCards[activeTab]
+  if (selected.length === 0) return null
+
   return (
-    <section id={sectionIds.itSolutions} className="relative overflow-hidden bg-shell-gray-100 py-16 md:py-24">
+    <section id={sectionIds.itSolutions} className="relative overflow-hidden bg-shell-gray-100 py-20 md:py-28">
       <div className="shell-container relative">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <Reveal variant="fade">
@@ -33,44 +49,56 @@ export default function CardGrid() {
             </h2>
           </Reveal>
           <div className="flex items-center gap-3">
-            <Reveal as="a" href={pageHref('Services & Solutions')} delay={2} className="arrow-link">
-              {servicesSection.linkLabel} <span className="arrow">→</span>
-            </Reveal>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => nudge(-1)}
-                aria-label="Scroll services left"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-shell-red hover:bg-shell-red hover:text-white active:scale-95"
-              >
-                <span aria-hidden="true">←</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => nudge(1)}
-                aria-label="Scroll services right"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-shell-red hover:bg-shell-red hover:text-white active:scale-95"
-              >
-                <span aria-hidden="true">→</span>
-              </button>
+            <div className="flex flex-wrap items-center gap-2">
+              <Reveal variant="fade" delay={2}>
+                <a
+                  href={pageHref('Services & Solutions')}
+                  className="arrow-link"
+                >
+                  {servicesSection.linkLabel} <span className="arrow">→</span>
+                </a>
+              </Reveal>
             </div>
           </div>
         </div>
 
-        <div
-          ref={trackRef}
-          role="region"
-          aria-roledescription="carousel"
-          aria-label={servicesSection.title}
-          tabIndex={0}
-          className="no-scrollbar -mx-1 flex snap-x snap-mandatory gap-7 overflow-x-auto scroll-smooth px-1 pb-3"
-        >
-          {featuredCards.map((card, idx) => (
-            <Reveal
-              key={card.id}
-              delay={(idx % 3) + 1}
-              className="w-[85%] shrink-0 snap-start sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)]"
+        {/* Tab pills — Enboarder-style, bold with tight tracking */}
+        <div className="mb-12 flex flex-wrap gap-3" role="tablist" aria-label={servicesSection.title}>
+          {tabs.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              role="tab"
+              aria-selected={activeTab === t.id}
+              aria-controls={`panel-${t.id}`}
+              id={`tab-${t.id}`}
+              onClick={() => setActiveTab(t.id)}
+              className={`relative rounded-full px-6 py-2.5 text-sm font-bold tracking-wide transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-shell-red/50 ${
+                activeTab === t.id
+                  ? 'bg-shell-red text-white'
+                  : 'bg-white text-shell-gray-600 hover:bg-shell-gray-100'
+              }`}
             >
+              {t.label}
+              {activeTab === t.id && (
+                <span
+                  className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-shell-red/40"
+                  aria-hidden="true"
+                />
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab panels */}
+        <div
+          id={`panel-${activeTab}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${activeTab}`}
+          className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {selected.map((card, idx) => (
+            <Reveal key={card.id} delay={(idx % 3) + 1}>
               <a
                 href={card.href}
                 className="group flex h-full flex-col overflow-hidden rounded-[16px] bg-white shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_18px_44px_-12px_rgba(10,20,64,0.28)]"
@@ -91,7 +119,9 @@ export default function CardGrid() {
                   <h3 className="mb-3 text-lg font-bold leading-snug text-shell-gray-900 md:text-xl">
                     {card.title}
                   </h3>
-                  <div className="mb-5 text-sm leading-relaxed text-shell-gray-700"><Rich>{card.text}</Rich></div>
+                  <div className="mb-5 text-sm leading-relaxed text-shell-gray-700">
+                    <Rich>{card.text}</Rich>
+                  </div>
                   <span className="arrow-link mt-auto text-sm">
                     {card.linkLabel} <span className="arrow">→</span>
                   </span>

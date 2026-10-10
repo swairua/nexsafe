@@ -5,6 +5,7 @@ import { Rich, RichText } from '../ui/SectionTag.jsx'
 import ContactForm from '../sections/ContactForm.jsx'
 import { useContactDetails } from '../sections/contactDetails.js'
 import ConnectBand from '../sections/ConnectBand.jsx'
+import StartBand from '../sections/StartBand.jsx'
 import BlogIndex from './BlogIndex.jsx'
 
 // Plain paragraphs render as <p>; HTML saved by the admin rich-text editor
@@ -203,6 +204,8 @@ export default function PageView({ page, slug, params }) {
       ))}
 
       {/* Page gallery — photography the page carries itself (About page) */}
+      {slug === 'about-us' && <StartBand />}
+
       {gallery.length > 0 && (
         <section className={page.sections.length % 2 === 0 ? 'bg-shell-gray-100' : 'bg-white'}>
           <div className="shell-container py-16 md:py-24">

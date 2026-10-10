@@ -7,11 +7,11 @@ import SearchPanel from './SearchPanel.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
 /**
- * Kyndryl-style floating header: a transparent frosted-glass bar offset from
- * the viewport edges that overlays the hero, turning solid white once scrolled
- * past it. `overlay=false` (e.g. the 404 route) keeps the classic sticky bar.
+ * Enboarder-style header: a clean, full-width sticky white bar with a subtle
+ * bottom border. Logo on the left, uppercase nav items in the centre (active
+ * item in brand colour), and a solid CTA pill + search on the right.
  */
-export default function Header({ overlay = true }) {
+export default function Header({ overlay = false }) {
   const { navItems, settings, uiLabels, sectionIds } = useContent()
   const [openMenu, setOpenMenu] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -19,10 +19,9 @@ export default function Header({ overlay = true }) {
   const [scrolled, setScrolled] = useState(false)
   const headerRef = useRef(null)
 
-  // Solid-bar state: stays transparent while the hero fills the screen, turns
-  // solid once scrolled past it (Kyndryl behaviour). SSR-safe initial false.
+  // Shadow appears once scrolled past the top.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > Math.max(200, window.innerHeight - 140))
+    const onScroll = () => setScrolled(window.scrollY > 10)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -55,42 +54,20 @@ export default function Header({ overlay = true }) {
     setOpenMenu((cur) => (cur === i ? null : i))
   }
 
-  // White text/icons over the hero; classic dark-on-white once solid.
-  const onHero = overlay && !scrolled
-
   return (
     <header
       ref={headerRef}
-      className={
-        overlay
-          ? 'fixed inset-x-3 top-3.5 z-50 md:inset-x-5 md:top-5'
-          : `sticky top-0 z-50 bg-white transition-shadow duration-300 ${
-              scrolled
-                ? 'shadow-[0_8px_28px_-12px_rgba(11,27,43,0.28)]'
-                : 'shadow-[0_1px_0_0_rgba(0,0,0,0.08)]'
-            }`
-      }
+      className={`sticky top-0 z-50 bg-white border-b border-shell-gray-100 transition-shadow duration-300 ${
+        scrolled ? 'shadow-[0_4px_20px_-8px_rgba(11,27,43,0.15)]' : 'shadow-none'
+      }`}
     >
       <NoticeBar />
-      <div
-        className={
-          overlay
-            ? `flex h-14 items-center justify-between rounded-2xl px-3 transition-colors duration-300 md:h-16 md:px-5 ${
-                onHero
-                  ? 'nav-glass ring-1 ring-white/20'
-                  : 'bg-white shadow-[0_8px_28px_-12px_rgba(11,27,43,0.28)] ring-1 ring-black/5'
-              }`
-            : 'shell-container flex h-16 items-center justify-between md:h-[4.5rem]'
-        }
-      >
-        <a href={'#' + sectionIds.top} className="flex items-center" aria-label={settings.brandName + ' home'}>
-          {/* Client logo — plate keeps the dark-on-white artwork legible over
-              the hero imagery and seamless once the bar turns solid white.
-              The artwork itself comes from content settings (admin > Site settings). */}
-          <NexsateLogo className="h-4 md:h-5" src={settings.logo} alt={settings.logoAlt || settings.brandName} />
+      <div className="shell-container flex h-16 items-center justify-between md:h-[4.5rem]">
+        <a href={'#' + sectionIds.top} className="flex shrink-0 items-center" aria-label={settings.brandName + ' home'}>
+          <NexsateLogo className="h-5 md:h-6" src={settings.logo} alt={settings.logoAlt || settings.brandName} />
         </a>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label={uiLabels.primaryNav}>
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label={uiLabels.primaryNav}>
           {navItems.map((item, i) => (
             <button
               key={item.label}
@@ -98,55 +75,35 @@ export default function Header({ overlay = true }) {
               onClick={() => toggleMenu(i)}
               onMouseEnter={() => { setSearchOpen(false); setOpenMenu(i) }}
               aria-expanded={openMenu === i}
-              className={`flex items-center gap-1.5 rounded-md px-3.5 py-2.5 text-[0.95rem] font-semibold transition-colors ${
-                onHero
-                  ? openMenu === i
-                    ? 'bg-white/15 text-white'
-                    : 'text-white/85 hover:bg-white/10 hover:text-white'
-                  : openMenu === i
-                    ? 'bg-shell-gray-100 text-shell-red'
-                    : 'text-shell-gray-900 hover:text-shell-red'
+              className={`relative flex items-center gap-1.5 rounded-md px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+                openMenu === i
+                  ? 'text-shell-red'
+                  : 'text-shell-gray-900 hover:text-shell-red'
               }`}
             >
               {item.label}
               <svg
-                className={`h-3 w-3 transition-transform duration-200 ${openMenu === i ? 'rotate-180' : ''}`}
+                className={`h-2.5 w-2.5 transition-transform duration-200 ${openMenu === i ? 'rotate-180' : ''}`}
                 viewBox="0 0 12 8"
                 fill="none"
                 aria-hidden="true"
               >
-                <path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
+              {openMenu === i && (
+                <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-shell-red" />
+              )}
             </button>
           ))}
         </nav>
 
-        <div className="flex items-center gap-1.5">
-          {/* Live-header pattern: "Have any questions?" + the public phone line. */}
-          {settings.phone ? (
-            <a
-              href={"tel:" + String(settings.phone).replace(/\s+/g, "")}
-              className={`mr-1 hidden items-center gap-2.5 lg:flex ${onHero ? 'text-white' : 'text-shell-gray-900'}`}
-            >
-              <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-              </svg>
-              <span className="leading-tight">
-                <span className={`block text-[11px] font-medium ${onHero ? 'text-white/70' : 'text-shell-gray-500'}`}>Have any questions?</span>
-                <span className="block text-sm font-bold tracking-tight">{settings.phone}</span>
-              </span>
-            </a>
-          ) : null}
+        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => { setSearchOpen((s) => !s); setOpenMenu(null) }}
             aria-label={uiLabels.search}
             aria-expanded={searchOpen}
-            className={`rounded-full p-3 transition-colors ${
-              onHero
-                ? 'text-white hover:bg-white/15'
-                : 'text-shell-gray-900 hover:bg-shell-gray-100 hover:text-shell-red'
-            }`}
+            className="rounded-full p-2.5 text-shell-gray-900 transition-colors hover:bg-shell-gray-100 hover:text-shell-red"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
@@ -154,37 +111,21 @@ export default function Header({ overlay = true }) {
             </svg>
           </button>
 
+          {/* Solid brand CTA pill */}
           <a
             href={settings.menuCta.href}
-            className="btn-pill btn-pill--green mr-1 hidden px-4 py-2.5 text-sm md:inline-flex"
+            className="hidden rounded-full bg-shell-red px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-shell-red/90 md:inline-flex"
           >
             {settings.menuCta.label}
-            <span aria-hidden="true">→</span>
           </a>
 
-          {/* Static domain label, not a region selector: the build hosts a
-              single site, so there is nothing to switch to. The domain comes
-              from content settings (admin > Site settings). */}
-          <span
-            className={`hidden items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold md:flex ${
-              onHero ? 'text-white/85' : 'text-shell-gray-900'
-            }`}
-          >
-            <svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
-              <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" strokeWidth="1.5" />
-            </svg>
-            {settings.domain}
-          </span>
-
+          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => { setMobileOpen((m) => !m); setOpenMenu(null); setSearchOpen(false) }}
             aria-label={uiLabels.openMenu}
             aria-expanded={mobileOpen}
-            className={`rounded-full p-2.5 transition-colors lg:hidden ${
-              onHero ? 'text-white hover:bg-white/15' : 'text-shell-gray-900 hover:bg-shell-gray-100'
-            }`}
+            className="rounded-full p-2.5 text-shell-gray-900 transition-colors hover:bg-shell-gray-100 lg:hidden"
           >
             <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               {mobileOpen ? (

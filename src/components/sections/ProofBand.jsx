@@ -1,14 +1,90 @@
-import { useRef } from "react"
+import { useEffect, useRef, useState } from 'react'
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
-import { useContent } from "../../content/ContentContext.jsx"
+import { useContent } from '../../content/ContentContext.jsx'
 
 /**
- * Proof band: stats + certifications + award badges in one dark section.
- * Merges the former TrustStrip and AwardsBand so the homepage earns its
- * scroll — all three read live sources (statsBand/certStrip keys and the
- * about-us page logos), so nothing here can drift apart.
+ * Count-up animation for statistics numbers.
+ * Parses "20+", "98%", "3 min" into numeric part and suffix;
+ * counts up the number when the element enters the viewport.
+ * Uses a native IntersectionObserver (same pattern as Reveal.jsx) so we
+ * don't pull in an extra dependency.
  */
+function CountUp({
+  value,
+  suffix = '',
+  duration = 1600,
+  prefix = '',
+}) {
+  const ref = useRef(null)
+  const [inView, setInView] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setInView(true)
+      return undefined
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setInView(true)
+            observer.unobserve(entry.target)
+          }
+        }
+      },
+      { threshold: 0.4, triggerOnce: true },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  const num = parseFloat(String(value).replace(/[^0-9.]/g, '')) || 0
+  const fractional = num % 1 !== 0
+  const decimals = fractional ? 1 : 0
+  const startVal = 0
+
+  const [display, setDisplay] = useState(prefix + num + suffix)
+
+  useEffect(() => {
+    if (!inView) return
+
+    let frame = 0
+    const startTime = performance.now()
+
+    const tick = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      const current = startVal + (num - startVal) * eased
+
+      if (fractional) {
+        setDisplay(prefix + current.toFixed(decimals) + suffix)
+      } else {
+        setDisplay(prefix + Math.round(current) + suffix)
+      }
+
+      if (progress < 1) {
+        frame = requestAnimationFrame(tick)
+      } else {
+        setDisplay(prefix + num + suffix)
+      }
+    }
+
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
+  }, [inView, num, prefix, suffix, duration, fractional, decimals])
+
+  return (
+    <span
+      ref={ref}
+      className={`stat-value ${inView ? 'is-animated' : ''}`}
+    >
+      {display}
+    </span>
+  )
+}
+
 export default function ProofBand() {
   const content = useContent()
   const copy = content.awardsBand || {}
@@ -28,7 +104,7 @@ export default function ProofBand() {
   }
 
   return (
-    <section className="bg-shell-black py-16 text-white md:py-20">
+    <section className="bg-shell-black py-20 text-white md:py-28 dark-gradient">
       <div className="shell-container">
         <Reveal variant="fade" className="max-w-3xl">
           <SectionTag light>{copy.tag}</SectionTag>
@@ -39,15 +115,19 @@ export default function ProofBand() {
         </Reveal>
 
         {stats.length ? (
-          <dl className="mt-10 grid grid-cols-2 gap-6 text-center lg:grid-cols-4">
+          <div className="stats-grid mt-10">
             {stats.map((s, i) => (
-              <Reveal key={s.label + i} variant="fade" delay={i + 1}>
-                <dd className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">{s.value}</dd>
+              <div key={s.label + i} className="text-center">
+                <div className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+                  <Reveal variant="fade" delay={i + 1}>
+                    <CountUp value={s.value} />
+                  </Reveal>
+                </div>
                 <dt className="mt-1 text-xs font-semibold uppercase tracking-wider text-white/60">{s.label}</dt>
-              </Reveal>
+              </div>
             ))}
-          </dl>
-        ) : null}
+          </div>
+        ) : null }
 
         {certs.length ? (
           <ul className="mt-8 flex flex-wrap items-stretch justify-center gap-3">
@@ -63,12 +143,12 @@ export default function ProofBand() {
               </Reveal>
             ))}
           </ul>
-        ) : null}
+        ) : null }
 
         {badges.length ? (
           <div className="mt-10">
             <div className="flex items-center justify-between gap-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-white/60">Awards & recognition</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-white/60">Awards &amp; recognition</p>
               <div className="flex gap-2">
                 <button
                   type="button"
@@ -76,7 +156,7 @@ export default function ProofBand() {
                   aria-label="Previous awards"
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-shell-red hover:bg-shell-red"
                 >
-                  <span aria-hidden="true">←</span>
+                  <span aria-hidden="true">&larr;</span>
                 </button>
                 <button
                   type="button"
@@ -84,7 +164,7 @@ export default function ProofBand() {
                   aria-label="Next awards"
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-shell-red hover:bg-shell-red"
                 >
-                  <span aria-hidden="true">→</span>
+                  <span aria-hidden="true">&rarr;</span>
                 </button>
               </div>
             </div>
@@ -101,21 +181,22 @@ export default function ProofBand() {
                   <span className="mt-3 flex h-24 items-center justify-center">
                     <img
                       src={b.src}
-                      alt={b.alt || ""}
+                      alt={b.alt || ''}
                       loading="lazy"
                       className="max-h-24 w-auto max-w-full object-contain"
                       onError={(e) => { e.currentTarget.style.visibility = 'hidden' }}
                     />
                   </span>
                   <span className="mt-3 text-center text-xs font-semibold leading-snug text-shell-gray-700">
-                    {b.alt || ""}
+                    {b.alt || ''}
                   </span>
                 </div>
               ))}
             </div>
           </div>
-        ) : null}
+        ) : null }
       </div>
     </section>
   )
 }
+

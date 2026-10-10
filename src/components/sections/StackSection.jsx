@@ -31,7 +31,7 @@ function VendorChip({ vendor }) {
 export default function StackSection() {
   const { stackGroups, stackSection, sectionIds } = useContent()
   return (
-    <section id={sectionIds.capabilities} className="relative bg-white pb-16 md:pb-24">
+    <section id={sectionIds.capabilities} className="relative bg-white pb-20 md:pb-28">
       <div className="shell-container">
         {/* Heading card straddles the awards band boundary (Nanosoft overlap):
             dark text stays on the white card, never on the dark band. */}

@@ -4,7 +4,7 @@ import { useContent } from '../../content/ContentContext.jsx'
  *  currentColor — no emoji, no image assets). */
 function ChallengeIcon({ icon }) {
   const common = {
-    className: 'h-9 w-9 text-shell-red',
+    className: 'h-8 w-8 text-shell-red',
     viewBox: '0 0 40 40',
     fill: 'none',
     'aria-hidden': 'true',
@@ -52,6 +52,38 @@ function ChallengeIcon({ icon }) {
   )
 }
 
+/** Promo panel on the right side of the mega menu (Enboarder-style). */
+function PromoPanel({ onClose }) {
+  const { pageConnect } = useContent()
+  if (!pageConnect) return null
+  return (
+    <div className="col-span-3">
+      <a
+        href={pageConnect.cta?.href || '#/contact-us'}
+        onClick={onClose}
+        className="group flex h-full flex-col justify-between rounded-2xl p-7 text-white transition-transform hover:scale-[1.01]"
+        style={{ background: 'linear-gradient(135deg, #070e40 0%, #010ed0 100%)' }}
+      >
+        <div>
+          {pageConnect.tag && (
+            <span className="mb-3 inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+              {pageConnect.tag}
+            </span>
+          )}
+          <h3 className="mb-2 text-2xl font-bold leading-tight">{pageConnect.title}</h3>
+          <p className="text-sm leading-relaxed text-white/80">{pageConnect.text}</p>
+        </div>
+        <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold">
+          {pageConnect.cta?.label || 'Learn more'}
+          <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+      </a>
+    </div>
+  )
+}
+
 /** Desktop mega-menu panel rendered below the header for the open nav item. */
 export default function MegaMenu({ item, onClose }) {
   const { uiLabels } = useContent()
@@ -62,19 +94,19 @@ export default function MegaMenu({ item, onClose }) {
         className="menu-anim absolute inset-x-0 top-full hidden rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl lg:block"
         onMouseLeave={onClose}
       >
-        <div className="shell-container grid grid-cols-12 gap-8 py-10">
-          {/* Left — plain service links, navy heading */}
+        <div className="shell-container grid grid-cols-12 gap-6 py-10">
+          {/* Left — service links */}
           <div className="menu-col col-span-3">
-            <h3 className="mb-5 text-xl font-bold tracking-tight text-shell-gray-900">
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {services.heading}
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3.5">
               {services.links.map((l) => (
                 <li key={l.label}>
                   <a
                     href={l.href}
                     onClick={onClose}
-                    className="text-[0.95rem] font-medium text-shell-gray-900 hover:text-shell-red hover:underline"
+                    className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-shell-red hover:underline"
                   >
                     {l.label}
                   </a>
@@ -82,77 +114,59 @@ export default function MegaMenu({ item, onClose }) {
               ))}
             </ul>
           </div>
-          {/* Centre — Business Challenges 2x2 tile cards with icons */}
+          {/* Centre — Business Challenges with icon + title + blurb */}
           <div className="menu-col col-span-6">
-            <h3 className="mb-5 text-xl font-bold tracking-tight text-shell-gray-900">
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {challenges.heading}
             </h3>
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-2 gap-4">
               {(challenges.tiles || []).map((t) => (
                 <a
                   key={t.label}
                   href={t.href}
                   onClick={onClose}
-                  className="group flex min-h-[7.5rem] flex-col justify-between rounded-lg border border-shell-gray-300/70 bg-white p-5 transition-colors hover:border-shell-red"
+                  className="group flex items-start gap-4 rounded-lg border border-shell-gray-200 bg-white p-4 transition-colors hover:border-shell-red"
                 >
                   <ChallengeIcon icon={t.icon} />
-                  <span className="mt-4 text-[0.95rem] font-medium text-shell-gray-900 group-hover:text-shell-red">
-                    {t.label}
-                  </span>
+                  <div>
+                    <span className="block text-sm font-bold text-shell-gray-900 group-hover:text-shell-red">
+                      {t.label}
+                    </span>
+                    {t.blurb && (
+                      <span className="mt-1 block text-xs text-shell-gray-500">
+                        {t.blurb}
+                      </span>
+                    )}
+                  </div>
                 </a>
               ))}
             </div>
           </div>
-          {/* Right — industry links on a soft grey rail with View all */}
-          <div className="menu-col col-span-3 rounded-r-2xl bg-shell-gray-100/70 px-7 py-2">
-            <h3 className="mb-5 text-xl font-bold tracking-tight text-shell-gray-900">
-              {industries.heading}
-            </h3>
-            <ul className="space-y-4">
-              {industries.links.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    onClick={onClose}
-                    className="text-[0.95rem] font-medium text-shell-gray-900 hover:text-shell-red hover:underline"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            {industries.viewAll ? (
-              <a
-                href={industries.viewAll.href}
-                onClick={onClose}
-                className="mt-5 inline-block text-sm font-bold text-shell-red hover:underline"
-              >
-                {industries.viewAll.label}
-              </a>
-            ) : null}
-          </div>
+          {/* Right — promo panel */}
+          <PromoPanel onClose={onClose} />
         </div>
       </div>
     )
   }
+  // Default layout: columns + promo panel
   return (
     <div
-      className="menu-anim absolute inset-x-0 top-full hidden rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl lg:block"
+      className="menu-anim absolute inset-x-0 top-full rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl hidden lg:block"
       onMouseLeave={onClose}
     >
-      <div className="shell-container grid grid-cols-2 gap-x-6 gap-y-8 py-8 xl:grid-cols-4 xl:gap-8">
-        {item.columns.map((col) => (
-          <div key={col.heading} className="menu-col">
-            <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
+      <div className="shell-container grid grid-cols-12 gap-6 py-10">
+        {item.columns.slice(0, 2).map((col) => (
+          <div key={col.heading} className="menu-col col-span-3">
+            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {col.heading}
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3.5">
               {col.links.map((l) => (
                 <li key={l.label}>
                   <a
                     href={l.href}
                     onClick={onClose}
-                    className="text-[0.95rem] font-medium text-shell-gray-900 hover:text-shell-red hover:underline"
+                    className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-shell-red hover:underline"
                   >
                     {l.label}
                   </a>
@@ -161,11 +175,31 @@ export default function MegaMenu({ item, onClose }) {
             </ul>
           </div>
         ))}
-        <div className="menu-col col-span-2 border-t border-shell-gray-100 pt-5 xl:col-span-4">
-          <a href={item.href} onClick={onClose} className="arrow-link text-base">
-            {uiLabels.explore} {item.label} <span className="arrow">→</span>
-          </a>
-        </div>
+        {item.columns.length > 2 && (
+          <div className="menu-col col-span-3">
+            {item.columns.slice(2).map((col) => (
+              <div key={col.heading} className="mb-6 last:mb-0">
+                <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
+                  {col.heading}
+                </h3>
+                <ul className="space-y-3">
+                  {col.links.map((l) => (
+                    <li key={l.label}>
+                      <a
+                        href={l.href}
+                        onClick={onClose}
+                        className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-shell-red hover:underline"
+                      >
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+        <PromoPanel onClose={onClose} />
       </div>
     </div>
   )

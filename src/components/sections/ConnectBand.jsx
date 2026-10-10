@@ -12,12 +12,12 @@ export default function ConnectBand() {
   const { pageConnect: connect } = useContent()
   if (!connect) return null
   return (
-    <section className="relative overflow-hidden bg-shell-black text-white">
+    <section className="relative overflow-hidden bg-shell-black dark-gradient text-white">
       <div
         className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-shell-green/15 blur-3xl"
         aria-hidden="true"
       />
-      <div className="shell-container relative py-16 md:py-20">
+      <div className="shell-container relative py-20 md:py-28">
         <Reveal variant="fade">
           <p className="text-xs font-bold uppercase tracking-wider text-shell-red">
             {connect.tag}

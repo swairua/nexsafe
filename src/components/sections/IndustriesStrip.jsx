@@ -80,7 +80,7 @@ export default function IndustriesStrip() {
   return (
     <section
       id={sectionIds.industries}
-      className="bg-[#1e1432] pb-24 pt-16 md:pb-32 md:pt-24"
+      className="bg-[#1e1432] py-20 md:py-28"
     >
       <div className="shell-container">
         <div className="grid items-end gap-6 lg:grid-cols-2 lg:gap-12">

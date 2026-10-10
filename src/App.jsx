@@ -6,13 +6,12 @@ import BackToTop from './components/layout/BackToTop.jsx'
 import HeroCarousel from './components/sections/HeroCarousel.jsx'
 import IntroBand from './components/sections/IntroBand.jsx'
 import CardGrid from './components/sections/CardGrid.jsx'
+import StakeholderCards from './components/sections/StakeholderCards.jsx'
 import PartnerStrip from './components/sections/PartnerStrip.jsx'
 import ProofBand from './components/sections/ProofBand.jsx'
 import IndustriesStrip from './components/sections/IndustriesStrip.jsx'
 import StackSection from './components/sections/StackSection.jsx'
-import InsightsSection from './components/sections/InsightsSection.jsx'
 import AnswersBand from './components/sections/AnswersBand.jsx'
-import StartBand from './components/sections/StartBand.jsx'
 import HomeContact from './components/sections/HomeContact.jsx'
 import ConnectBand from './components/sections/ConnectBand.jsx'
 import PageView from './components/pages/PageView.jsx'
@@ -43,8 +42,8 @@ function parseHash(hash = '') {
  * Homepage band order (11 content bands + conversion run-up):
  * Hero > Intro > Services > Industries > Partners (technology
  * strip) > Proof (stats, certs, awards) > Stack (heading card overlaps the proof band)
- * > Insights (resource-library grid) > Answers (promo + FAQ) > Start (values + routers)
- * > Contact form > Connect band. Footer + legal bar close every route.
+ * > Answers (promo + FAQ) > Contact form > Connect band.
+ * Insights live on the blog page (#/blog). Footer + legal bar close every route.
  * Inner routes ('#/<slug>') replace main with PageView.
  */
 export default function App() {
@@ -82,7 +81,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header overlay={route.kind === 'home' || Boolean(pages[route.slug])} />
+      <Header />
       {route.kind === 'page' ? (
         <main>
           <PageView page={pages[route.slug]} slug={route.slug} params={route.params} />
@@ -92,13 +91,12 @@ export default function App() {
           <HeroCarousel />
           <IntroBand />
           <CardGrid />
+          <StakeholderCards />
           <IndustriesStrip />
           <PartnerStrip />
           <ProofBand />
           <StackSection />
-          <InsightsSection />
           <AnswersBand />
-          <StartBand />
           <HomeContact />
           <ConnectBand />
         </main>
