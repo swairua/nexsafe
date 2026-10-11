@@ -2,7 +2,7 @@ const eyebrow = 'Company'
 
 export const partnershipPages = [
   {
-    slug: 'partnerships',
+    slug: 'partners-certifications',
     title: 'Partners & Certifications',
     eyebrow,
     intro: 'We work with these industry leaders to bring you the best in technology.',

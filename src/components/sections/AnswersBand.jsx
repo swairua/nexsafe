@@ -6,11 +6,12 @@ export default function AnswersBand() {
   const content = useContent()
   const promo = content.promo || {}
   const copy = content.faqTeaser || {}
+  const sectionIds = content.sectionIds || {}
   const faq = (content.pages || {})['help-and-faq']
   const first = faq && Array.isArray(faq.sections) && faq.sections[0]
   const items = (first && Array.isArray(first.items) ? first.items : []).slice(0, 5)
   return (
-    <section className="bg-shell-gray-100 py-16 md:py-24">
+    <section id={sectionIds.support} className="bg-shell-gray-100 py-16 md:py-24">
       <div className="shell-container grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
         <Reveal variant="fade" className="lg:sticky lg:self-start lg:top-24">
           <span className="mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-shell-gray-900">

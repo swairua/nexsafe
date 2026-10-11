@@ -27,11 +27,11 @@ the code rather than invented.
 | `industries` | IndustriesStrip (four sectors + corporate-colour sweep button) |
 | `capabilities` | StackSection (the four technology-stack groups) |
 | `insights` | InsightsSection (resource-library grid) |
-| `support` | PromoBanner (closing CTA) |
+| `support` | AnswersBand (promo + FAQ teaser) |
 
 Homepage order: Hero -> benefits -> intro band -> services grid -> industries ->
 technology strip (partners) -> proof (stats/certs/awards) -> stack ->
-insights -> promo -> footer.
+insights -> answers (promo + FAQ) -> contact form -> connect band -> footer.
 
 Breadcrumbs on inner pages map eyebrow -> anchor via `SECTION_ANCHORS` in
 `PageView.jsx` (Company / IT solutions / Industries / Insights / Support;

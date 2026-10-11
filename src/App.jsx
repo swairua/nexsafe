@@ -11,6 +11,7 @@ import PartnerStrip from './components/sections/PartnerStrip.jsx'
 import ProofBand from './components/sections/ProofBand.jsx'
 import IndustriesStrip from './components/sections/IndustriesStrip.jsx'
 import StackSection from './components/sections/StackSection.jsx'
+import InsightsSection from './components/sections/InsightsSection.jsx'
 import AnswersBand from './components/sections/AnswersBand.jsx'
 import HomeContact from './components/sections/HomeContact.jsx'
 import ConnectBand from './components/sections/ConnectBand.jsx'
@@ -42,8 +43,8 @@ function parseHash(hash = '') {
  * Homepage band order (11 content bands + conversion run-up):
  * Hero > Intro > Services > Industries > Partners (technology
  * strip) > Proof (stats, certs, awards) > Stack (heading card overlaps the proof band)
- * > Answers (promo + FAQ) > Contact form > Connect band.
- * Insights live on the blog page (#/blog). Footer + legal bar close every route.
+ * > Insights (resource-library grid) > Answers (promo + FAQ) > Contact form
+ * > Connect band. Footer + legal bar close every route.
  * Inner routes ('#/<slug>') replace main with PageView.
  */
 export default function App() {
@@ -96,6 +97,7 @@ export default function App() {
           <PartnerStrip />
           <ProofBand />
           <StackSection />
+          <InsightsSection />
           <AnswersBand />
           <HomeContact />
           <ConnectBand />

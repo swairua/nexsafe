@@ -119,7 +119,7 @@ export const navItems = [
   },
   {
     label: 'Success Stories',
-    href: '#/blog',
+    href: '#insights',
     columns: [
       {
         heading: 'Client outcomes',
