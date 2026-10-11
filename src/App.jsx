@@ -6,7 +6,6 @@ import BackToTop from './components/layout/BackToTop.jsx'
 import HeroCarousel from './components/sections/HeroCarousel.jsx'
 import IntroBand from './components/sections/IntroBand.jsx'
 import CardGrid from './components/sections/CardGrid.jsx'
-import StakeholderCards from './components/sections/StakeholderCards.jsx'
 import PartnerStrip from './components/sections/PartnerStrip.jsx'
 import ProofBand from './components/sections/ProofBand.jsx'
 import IndustriesStrip from './components/sections/IndustriesStrip.jsx'
@@ -92,7 +91,6 @@ export default function App() {
           <HeroCarousel />
           <IntroBand />
           <CardGrid />
-          <StakeholderCards />
           <IndustriesStrip />
           <PartnerStrip />
           <ProofBand />
