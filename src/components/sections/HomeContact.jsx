@@ -23,17 +23,19 @@ export default function HomeContact() {
             <a href={"tel:" + String(contactForm.detailPhone || "").replace(/\s+/g, "")} className="inline-flex items-center rounded-lg bg-shell-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-shell-red">
               {copy.phoneLabel} {contactForm.detailPhone}
             </a>
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-shell-gray-500">Your benefits:</h3>
-              <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">
-                {(copy.benefits || []).map((b) => (
-                  <span key={b} className="flex items-center gap-2 text-sm text-shell-gray-700">
-                    <svg className="h-4 w-4 shrink-0 text-shell-red" viewBox="0 0 16 16" fill="currentColor"><path fillRule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z" clipRule="evenodd" /></svg>
-                    {b}
-                  </span>
-                ))}
+            {(copy.benefits || []).length > 0 && (
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-shell-gray-500">Your benefits:</h3>
+                <div className="mt-3 grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">
+                  {(copy.benefits || []).map((b) => (
+                    <span key={b} className="flex items-center gap-2 text-sm text-shell-gray-700">
+                      <svg className="h-4 w-4 shrink-0 text-shell-red" viewBox="0 0 16 16" fill="currentColor"><path fillRule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z" clipRule="evenodd" /></svg>
+                      {b}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-shell-gray-500">What happens next?</h3>
               <div className="mt-4 grid grid-cols-3 gap-4">

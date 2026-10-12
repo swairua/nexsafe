@@ -63,20 +63,6 @@ export const navItems = [
     ],
   },
   {
-    label: 'Shop',
-    href: '#',
-  },
-  {
-    label: 'Our People',
-    href: '#company',
-    columns: [
-      {
-        heading: 'Who we are',
-        links: links('Team', 'Careers'),
-      },
-    ],
-  },
-  {
     label: 'Industries we serve',
     href: '#industries',
     columns: [
