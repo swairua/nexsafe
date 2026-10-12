@@ -214,15 +214,14 @@ install picks up new admin sections without losing saved edits.
 Run the backend and the front-end, then open the admin entry point:
 
 ```
-php -S localhost:8000 -t .      # PHP + SQLite API
-npm run dev                     # Vite dev server (proxies /api -> :8000)
+npm run dev                     # starts PHP + Vite (concurrently)
 ```
 
 | | |
 |---|---|
 | Admin portal | `http://localhost:5173/admin.html` |
 | Public site | `http://localhost:5173/` |
-| API directly | `http://localhost:8000/api/content.php` |
+| API directly | `http://127.0.0.1:8000/api/content.php` |
 | Username | `admin` |
 | Password | whatever was last set with `npm run admin:password` (shipped default is `nexsate-admin`) |
 
@@ -277,7 +276,7 @@ Local equivalent of the production process:
 
 ```
 npm run build
-php -S localhost:8000 -t . router.php    # same router the container uses
+php -S 127.0.0.1:8000 -t . router.php    # same router the container uses
 ```
 and the other scripts.
 

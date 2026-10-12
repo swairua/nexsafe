@@ -30,15 +30,17 @@ function malformedUriGuard() {
 }
 
 // Nexsate — Vite + React + Tailwind CSS (public site + admin portal).
-// The PHP + SQLite backend runs separately (e.g. "php -S localhost:8000 -t .");
-// during dev we proxy /api to it. /uploads is served straight from public/ by Vite.
+// The PHP + SQLite backend runs alongside Vite (started via "npm run dev");
+// we proxy /api to it on 127.0.0.1:8000. Using 127.0.0.1 (IPv4) explicitly
+// avoids the IPv4/v6 mismatch that caused ECONNREFUSED -> 500 on Windows
+// (php -S localhost binds to ::1 only). /uploads is served from public/ by Vite.
 export default defineConfig({
   plugins: [malformedUriGuard(), react(), tailwindcss()],
   server: {
     host: true,
     port: 5173,
     proxy: {
-      '/api': { target: 'http://localhost:8000', changeOrigin: true },
+      '/api': { target: 'http://127.0.0.1:8000', changeOrigin: true },
     },
   },
   build: {

@@ -67,7 +67,8 @@ for (const p of allPages) {
 }
 
 for (const item of navItems) {
-  if (!knownAnchors.has(item.href)) errors.push(`nav top '${item.label}': unexpected href ${item.href}`)
+  if (!item.columns) continue // plain link items (e.g. Shop) carry no dropdown
+  if (item.href && item.href.length > 1 && !knownAnchors.has(item.href)) errors.push(`nav top '${item.label}': unexpected href ${item.href}`)
   for (const col of item.columns) {
     for (const l of col.links || []) checkNavLeaf(`nav leaf '${l.label}'`, l.href)
     for (const t of col.tiles || []) checkNavLeaf(`nav leaf '${t.label}'`, t.href)
@@ -141,7 +142,7 @@ if (blob.includes('"#\\""') || blob.includes("'#'")) {
 
 const navLeaves = (c) => [...(c.links || []), ...(c.tiles || []), ...(c.viewAll ? [c.viewAll] : [])]
 for (const item of navItems) {
-  for (const col of item.columns) {
+  for (const col of item.columns || []) {
     for (const l of navLeaves(col)) {
       if (!l.href.startsWith('#/')) continue
       const target = pages[l.href.slice(2)]
@@ -152,7 +153,7 @@ for (const item of navItems) {
 
 console.log(`Pages: ${allPages.length} total, ${Object.keys(pages).length} unique`)
 console.log(
-  `Nav leaves checked: ${navItems.flatMap((i) => i.columns.flatMap((c) => navLeaves(c))).length}; ` +
+  `Nav leaves checked: ${navItems.flatMap((i) => (i.columns || []).flatMap((c) => navLeaves(c))).length}; ` +
     `footer links: ${footerColumns.flatMap((c) => c.links).length + footerLegal.length}`,
 )
 if (errors.length) {

@@ -14,9 +14,8 @@ function LogoSlot({ partner }) {
       <span
         data-logo-placeholder
         aria-hidden="true"
-        className="mb-3 flex h-9 w-28 items-center justify-center rounded border border-dashed border-shell-gray-300 bg-white"
-      >
-        <svg className="h-4 w-4 text-shell-gray-400" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        className="mb-3 flex items-center justify-center rounded border border-dashed border-shell-gray-300 bg-white h-24 w-48">
+        <svg className="h-8 w-8 text-shell-gray-400" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="3" y="4.5" width="18" height="15" rx="2" stroke="currentColor" strokeWidth="1.6" />
           <circle cx="8.5" cy="10" r="1.6" fill="currentColor" />
           <path d="M4.5 17l4.5-4.5 3.5 3.5 2.5-2.5 4.5 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
@@ -25,14 +24,13 @@ function LogoSlot({ partner }) {
     )
   }
   return (
-    <span className="mb-3 flex h-9 items-center">
+    <span className="mb-3 flex items-center justify-center">
       <img
         src={src}
-        alt=""
+        alt={partner.name}
         aria-hidden="true"
         loading="lazy"
-        onError={() => setFailed(true)}
-        className="max-h-9 max-w-full object-contain"
+        className="max-h-48 max-w-full object-contain"
       />
     </span>
   )
@@ -40,7 +38,7 @@ function LogoSlot({ partner }) {
 
 function VendorTile({ partner }) {
   return (
-    <div className="flex h-full min-h-[7rem] flex-col justify-center rounded-xl border border-shell-gray-300 bg-shell-gray-100 px-5 py-5 transition-colors duration-300 hover:border-shell-cyan">
+    <div className="flex h-full min-h-[9rem] flex-col justify-center rounded-xl border border-shell-gray-300 bg-shell-gray-100 px-5 py-5 transition-colors duration-300 hover:border-shell-cyan">
       <LogoSlot partner={partner} />
       <span className="block text-sm font-bold text-shell-gray-900">
         {partner.name}
@@ -120,8 +118,7 @@ export default function PartnerStrip() {
               <Reveal
                 key={`${partner.group}-${partner.name}`}
                 delay={1}
-                className="min-w-0 flex-[0_0_80%] sm:flex-[0_0_calc(50%-10px)] lg:flex-[0_0_calc(33.333%-14px)] xl:flex-[0_0_calc(20%-16px)]"
-              >
+                className="min-w-0 flex-[0_0_80%] sm:flex-[0_0_calc(50%-10px)] lg:flex-[0_0_calc(33.333%-14px)] xl:flex-[0_0_calc(20%-16px)]">
                 <VendorTile partner={partner} />
               </Reveal>
             ))}

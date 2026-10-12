@@ -6,7 +6,8 @@ import { useContent } from "../../content/ContentContext.jsx"
 export default function IntroBand() {
   const { introBand, introCards, benefits, navItems, sectionIds, uiLabels } = useContent()
   return (
-    <section id={sectionIds.company} className="bg-[#eef1f5]">
+    <>
+    <section id={sectionIds.company} className="bg-[#eef1f5] pb-14 md:pb-20">
       <div className="bg-[#1e1432]">
         <div className="shell-container grid gap-8 px-6 pb-28 pt-14 md:grid-cols-2 md:gap-16 md:pb-36 md:pt-20">
           <Reveal delay={1} variant="fade">
@@ -41,7 +42,8 @@ export default function IntroBand() {
           ))}
         </ul>
       </div>
-      <div className="shell-container max-w-4xl flex justify-center pb-14 pt-4 md:pb-20">
+      </section>
+      <div className="shell-container max-w-4xl flex justify-center py-10 md:py-12">
         <Reveal delay={2} variant="fade">
           <nav aria-label={uiLabels.onThisPage} className="inline-flex flex-wrap justify-center gap-1 rounded-[2rem] bg-white p-2 shadow-[0_10px_40px_-12px_rgba(14,17,20,0.25)] ring-1 ring-black/5">
             {navItems.map((item) => (
@@ -50,6 +52,6 @@ export default function IntroBand() {
           </nav>
         </Reveal>
       </div>
-    </section>
+    </>
   )
 }

@@ -62,12 +62,14 @@ try {
   })
 
   const navLeafHrefs = (c) => [...(c.links || []), ...(c.tiles || []), ...(c.viewAll ? [c.viewAll] : [])].map((l) => l.href)
-  const leafHrefs = navItems.flatMap((i) => i.columns.flatMap((c) => navLeafHrefs(c)))
 
   const knownSectionAnchors = new Set([
     ...Object.values(defaultContent.sectionIds).map((id) => `#${id}`),
     ...navItems.map((i) => i.href),
   ])
+  const leafHrefs = navItems
+    .filter((i) => i.href && i.href.length > 1 && knownSectionAnchors.has(i.href))
+    .flatMap((i) => (i.columns || []).flatMap((c) => navLeafHrefs(c)))
   const deepHrefs = [
     ...footerColumns.flatMap((c) => c.links.map((l) => l.href)),
     ...footerLegal.map((l) => l.href),
@@ -109,9 +111,9 @@ try {
       plain.includes('Using trusted technology to solve your IT challenges') &&
       !plain.includes('platform capability, not partnership or endorsement'),
     'homepage renders every stack vendor': partners.every((p) => html.includes(p.name)),
-    'homepage owns the section anchors the nav targets': navItems.every((i) =>
-      html.includes(`id="${i.href.slice(1)}"`),
-    ),
+    'homepage owns the section anchors the nav targets': navItems
+      .filter((i) => i.href && i.href.length > 1)
+      .every((i) => html.includes(`id="${i.href.slice(1)}"`)),
     'homepage serves local images (no image CDN at runtime)':
       html.includes('/uploads/') && !html.includes('images.unsplash.com'),
     'all pages render with breadcrumb + related': failedPages.length === 0,

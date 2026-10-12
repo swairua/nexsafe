@@ -15,27 +15,29 @@ export default function NoticeBar() {
     try {
       window.localStorage.setItem("nx-notice-dismissed", "1")
     } catch {
-
     }
     setDismissed(true)
   }
+  const bgClass = noticeBar.type === 'info' ? 'bg-shell-yellow-100' : 'bg-shell-black'
   return (
-    <div className="flex items-center justify-center gap-3 bg-shell-black px-3 py-2 text-center">
+    <div className={`${bgClass} flex items-center justify-center gap-3 px-3 py-2 text-center`}>
       {noticeBar.href ? (
-        <a href={noticeBar.href} className="truncate text-xs font-semibold text-white hover:text-shell-yellow hover:underline">
+        <a href={noticeBar.href} className="truncate text-xs font-semibold text-shell-gray-900 hover:text-shell-yellow hover:underline">
           {noticeBar.text}
         </a>
       ) : (
-        <span className="truncate text-xs font-semibold text-white">{noticeBar.text}</span>
+        <span className="truncate text-xs font-semibold text-shell-gray-900">{noticeBar.text}</span>
       )}
-      <button
-        type="button"
-        onClick={dismiss}
-        aria-label="Dismiss announcement"
-        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs text-white/70 hover:bg-white/15 hover:text-white"
-      >
-        ✕
-      </button>
+      {noticeBar.type !== 'info' ? (
+        <button
+          type="button"
+          onClick={dismiss}
+          aria-label="Dismiss announcement"
+          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs text-white/70 hover:bg-white/15 hover:text-white"
+        >
+          ✕
+        </button>
+      ) : null}
     </div>
   )
 }

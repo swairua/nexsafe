@@ -13,7 +13,7 @@ const checkHref = (href, where) => {
 }
 
 for (const item of navItems) {
-  for (const col of item.columns) {
+  for (const col of item.columns || []) {
     for (const l of col.links || []) checkHref(l.href, `nav "${item.label}" / "${l.label}"`)
     for (const t of col.tiles || []) checkHref(t.href, `nav "${item.label}" / "${t.label}"`)
     if (col.viewAll) checkHref(col.viewAll.href, `nav "${item.label}" / "${col.viewAll.label}"`)
@@ -46,7 +46,7 @@ const linked = new Set()
 const collect = (href) => {
   if (typeof href === 'string' && href.startsWith('#/')) linked.add(href.slice(2))
 }
-for (const item of navItems) item.columns.forEach((c) => {
+for (const item of navItems) (item.columns || []).forEach((c) => {
   ;(c.links || []).forEach((l) => collect(l.href))
   ;(c.tiles || []).forEach((t) => collect(t.href))
   if (c.viewAll) collect(c.viewAll.href)

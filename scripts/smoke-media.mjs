@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const UPLOADS = path.join(ROOT, 'public', 'uploads')
-const BASE = process.env.NX_API_BASE || 'http://localhost:8000/api/'
+const BASE = process.env.NX_API_BASE || 'http://127.0.0.1:8000/api/'
 const IMAGE_EXT = /\.(jpe?g|png|webp|gif|svg)$/i
 
 let failures = 0
@@ -185,7 +185,7 @@ try {
   }
 } catch (err) {
   if (['ECONNREFUSED', 'ECONNRESET', 'ENOTFOUND'].includes(err.code)) {
-    console.log(`SKIP - no PHP API on ${BASE} (start it with "php -S localhost:8000 -t .")`)
+    console.log(`SKIP - no PHP API on ${BASE} (start it with "php -S 127.0.0.1:8000 -t . router.php")`)
   } else {
     console.error('MEDIA SMOKE: FAILED')
     console.error(err)

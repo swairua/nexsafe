@@ -57,44 +57,27 @@ export const navItems = [
         links: links('About Us', 'Why Us', 'Team', 'Careers'),
       },
       {
-        heading: 'What we bring together',
-        links: links('Services & Solutions', 'Managed IT Services', 'Cloud Services', 'Cybersecurity'),
-      },
-      {
-        heading: 'Business services',
-        links: [
-          ...links('Network Management', 'Backup & Disaster Recovery'),
-          { label: 'Software Development, ERP & CRM Solutions', href: '#/software-erp-app-development' },
-        ],
-      },
-      {
-        heading: 'More',
-        links: links('Partners & Certifications', 'Reviews & Awards'),
-      },
-    ],
-  },
-  {
-    label: 'What We Do',
-    href: '#it-solutions',
-    layout: 'solutions',
-    columns: [
-      {
         heading: 'Services',
         links: serviceLinks,
       },
+    ],
+  },
+  {
+    label: 'Shop',
+    href: '#',
+  },
+  {
+    label: 'Our People',
+    href: '#company',
+    columns: [
       {
-        heading: 'Business Challenges',
-        tiles: challengeTiles,
-      },
-      {
-        heading: 'Industry Focus',
-        links: industryLinks,
-        viewAll: { label: 'View all', href: '#industries' },
+        heading: 'Who we are',
+        links: links('Team', 'Careers'),
       },
     ],
   },
   {
-    label: 'Who We Serve',
+    label: 'Industries we serve',
     href: '#industries',
     columns: [
       {
@@ -110,10 +93,11 @@ export const navItems = [
           'Fintech',
           'Education',
         ),
+        viewAll: { label: 'View all', href: '#industries' },
       },
       {
-        heading: 'What we do for them',
-        links: links('Managed IT Services', 'Network Management', 'Cybersecurity', 'Backup & Disaster Recovery'),
+        heading: 'Business challenges',
+        tiles: challengeTiles,
       },
     ],
   },
@@ -123,7 +107,6 @@ export const navItems = [
     columns: [
       {
         heading: 'Client outcomes',
-
         links: [
           { label: 'View all insights', href: '#/blog' },
           { label: 'IT alignment for a growing business', href: '#/success-story' },
