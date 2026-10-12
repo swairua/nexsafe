@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+﻿import { useRef } from 'react'
 import Reveal from '../ui/Reveal.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
@@ -72,7 +72,7 @@ export default function IndustriesStrip() {
   return (
     <section
       id={sectionIds.industries}
-      className="bg-[#1e1432] py-20 md:py-28"
+      className="bg-shell-black py-20 md:py-28"
     >
       <div className="shell-container">
         <div className="grid items-end gap-6 lg:grid-cols-2 lg:gap-12">
@@ -142,51 +142,34 @@ export default function IndustriesStrip() {
           ))}
         </div>
 
-        {(caseCards?.items || []).length ? (
-          <div className="mt-14 md:mt-16">
+        <div className="bg-white py-14 md:py-16">
+          <div className="shell-container">
             <Reveal variant="fade" className="text-center">
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-shell-yellow">
                 {caseCards.tag}
               </p>
-              <h3 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              <h3 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl">
                 {caseCards.title}
               </h3>
             </Reveal>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {(caseCards.items || []).map((card, idx) => (
-                <Reveal
-                  key={card.title + idx}
-                  variant="up"
-                  delay={idx + 1}
-                >
+                <Reveal key={card.title + idx} variant="up" delay={idx + 1}>
                   <a
                     href={card.href}
-                    className="group relative flex h-full min-h-[19rem] flex-col justify-end overflow-hidden rounded-xl p-6 text-left shadow-[0_24px_60px_-24px_rgba(0,0,0,0.65)] md:min-h-[21rem] md:p-7"
+                    className="group relative flex h-full min-h-[19rem] flex-col justify-end overflow-hidden rounded-xl p-6 text-left shadow-[0_18px_36px_-20px_rgba(14,17,20,0.3)] md:min-h-[21rem] md:p-7"
                   >
-                    <SmartImage
-                      src={card.image}
-                      alt=""
-                      aria-hidden="true"
-                      fallback={card.fallback || card.tint}
-                      className="absolute inset-0 h-full w-full"
-                    />
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0"
-                      style={{ backgroundColor: card.tint, opacity: 0.72, mixBlendMode: 'multiply' }}
-                    />
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent"
-                    />
-                    <span className="relative text-2xl font-extrabold lowercase tracking-tight text-white md:text-[1.7rem]">
+                    <SmartImage src={card.image} alt="" aria-hidden="true" fallback={card.fallback || card.tint} className="absolute inset-0 h-full w-full" />
+                    <span aria-hidden="true" className="absolute inset-0" style={{ backgroundColor: card.tint, opacity: 0.28, mixBlendMode: 'multiply' }} />
+                    <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+                    <span className="relative text-2xl font-extrabold lowercase tracking-tight text-shell-gray-900 md:text-[1.7rem]">
                       {card.brand}
                       <span className="text-shell-yellow">.</span>
                     </span>
-                    <span className="relative mt-2 max-w-[16rem] text-sm font-semibold leading-snug text-white md:text-base">
+                    <span className="relative mt-2 max-w-[16rem] text-sm font-semibold leading-snug text-shell-gray-700 md:text-base">
                       {card.title}
                     </span>
-                    <span className="relative mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white/85 transition-colors group-hover:text-shell-yellow">
+                    <span className="relative mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-shell-red transition-colors group-hover:text-shell-yellow">
                       Read story <span aria-hidden="true">→</span>
                     </span>
                   </a>
@@ -194,7 +177,7 @@ export default function IndustriesStrip() {
               ))}
             </div>
           </div>
-        ) : null}
+        </div>
 
       </div>
     </section>

@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
-import { useContent } from '../../content/ContentContext.jsx'
+import { useContent } from "../../content/ContentContext.jsx"
 
 function CountUp({
   value,
@@ -106,7 +106,7 @@ export default function ProofBand() {
   if (!stats.length && !certs.length && !badges.length) return null
 
   return (
-    <section className="bg-shell-black py-20 text-white md:py-28 dark-gradient">
+    <section className="bg-shell-black py-20 md:py-28">
       <div className="shell-container">
         <Reveal variant="fade" className="max-w-3xl">
           <SectionTag light>{copy.tag}</SectionTag>
@@ -147,26 +147,26 @@ export default function ProofBand() {
           </ul>
         ) : null }
 
-        {badges.length ? (
-          <div className="mt-10">
+        <section className="bg-white py-12 md:py-16">
+          <div className="shell-container">
             <div className="flex items-center justify-between gap-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-white/60">Awards &amp; recognition</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-shell-gray-900">Awards &amp; recognition</p>
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => scrollBy(-1)}
                   aria-label="Previous awards"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-brand-ink hover:bg-brand-ink"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-shell-gray-900 transition-colors hover:border-shell-yellow hover:text-shell-yellow"
                 >
-                  <span aria-hidden="true">&larr;</span>
+                  <span aria-hidden="true">←</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => scrollBy(1)}
                   aria-label="Next awards"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-brand-ink hover:bg-brand-ink"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-shell-gray-900 transition-colors hover:border-shell-yellow hover:text-shell-yellow"
                 >
-                  <span aria-hidden="true">&rarr;</span>
+                  <span aria-hidden="true">→</span>
                 </button>
               </div>
             </div>
@@ -184,7 +184,7 @@ export default function ProofBand() {
                     key={b.src + i}
                     className="min-w-0 shrink-0 flex-[0_0_70%] sm:flex-[0_0_50%] md:flex-[0_0_calc(33.333%-14px)] lg:flex-[0_0_calc(25%-15px)]"
                   >
-                    <div className="flex h-full flex-col rounded-2xl bg-white p-5">
+                    <div className="flex h-full flex-col rounded-xl bg-white p-5 text-left shadow-[0_14px_36px_-16px_rgba(14,17,20,0.25)]">
                       <span className="text-xs font-extrabold tracking-widest text-shell-red">
                         {String(i + 1).padStart(2, '0')}
                       </span>
@@ -206,7 +206,8 @@ export default function ProofBand() {
               </div>
             </div>
           </div>
-        ) : null }
+        </section>
+
       </div>
     </section>
   )
