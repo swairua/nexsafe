@@ -10,7 +10,7 @@ export const companyPages = [
       {
         heading: 'Our Philosophy',
         body: [
-          'Nexsate’s underlying principle is simple: Enable Technology. Transform Processes. Empower Institutions. This foundation has continued to inspire our raison d’être since 2016, when the vision was first shaped by our Founder.',
+          'Nexsate’s underlying principle is simple: EnableIT. Transform. Empower. This foundation has continued to inspire our raison d’être since 2016, when the vision was first shaped by our Founder.',
           'Our believe is technology should make business easier, safer, and more productive. Our role is to help organizations reduce downtime, strengthen security, improve connectivity, support users, and create a more reliable technology environment for daily operations and future growth.',
         ],
       },
@@ -63,13 +63,6 @@ export const companyPages = [
           'We’re continuing to build our network nationally, bringing together a vibrant team with best-in-class service and technical skills alike. With more than 800 employees across the US, our team is growing fast.',
         ],
       },
-      {
-        heading: 'Better together',
-        body: [
-          'We know that work is important, but so is play! We respect all of our partnerships, and we make every effort to engage in fun ways that solve critical problems and leave a smile on your face at the same time.',
-          'We love our job and love helping our clients. Life is just too short to not enjoy every minute!',
-        ],
-      },
     ],
 
     image: {
@@ -120,12 +113,6 @@ export const companyPages = [
           'Our process is simple: understand first, deliver clearly, and keep improving as your business grows.',
           'We begin by understanding your business, your people, your systems, and the technology challenges affecting daily operations. From there, we assess your environment, plan the right approach, provide support, and recommend improvements that align with your goals, budget, and growth plans.',
           'Our focus is to make technology easier to manage, more effective for your business, and ready to support long-term growth.',
-        ],
-      },
-      {
-        heading: 'Our impact',
-        body: [
-          'Stronger revenue, reduced waste, lower operating costs, and improved overall business performance.',
         ],
       },
     ],

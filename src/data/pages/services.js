@@ -6,7 +6,7 @@ export const servicePages = [
     title: 'Services & Solutions',
     eyebrow,
     intro:
-      'Take your company to new heights by investing in our reliable and efficient technology solutions.',
+      'Nexsate Technologies is your trusted partner for managed IT, cybersecurity, cloud technology, telecommunications, and fibre connectivity. We enable, transform, and empower businesses with reliable technology solutions designed to improve productivity, strengthen security, reduce downtime, and help your organization save time and money.',
 
     image: {
       src: '/uploads/solutions-hero.jpg',
@@ -16,8 +16,6 @@ export const servicePages = [
       {
         heading: 'Comprehensive IT services that enable and transform business',
         body: [
-          'Nexsate Technologies is your trusted partner for managed IT, cybersecurity, cloud technology, telecommunications, and fibre connectivity.',
-          'We enable, transform, and empower businesses with reliable technology solutions designed to improve productivity, strengthen security, reduce downtime, and help your organization save time and money.',
           'When we say comprehensive, we mean end-to-end services and support in your technology environment. Nexsate helps your business stay productive, connected, and secure, so you can operate with confidence, reduce downtime, and focus on growth.',
         ],
       },
