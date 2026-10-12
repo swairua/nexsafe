@@ -87,7 +87,7 @@
   "introBand": {
     "eyebrow": "Our company",
     "title": "Nexsate is your trusted source in IT services and support",
-    "text": "We take care of your IT, so you can take care of your customers. Empowering businesses with transformative technology solutions - reliable, responsive, and secure IT that keeps daily operations moving."
+    "text": "We manage the technology behind daily operations so your team can stay focused — responsive support, stronger security, and systems that scale as you grow."
   },
   "introCards": [
     {
@@ -129,12 +129,12 @@
   },
   "servicesSection": {
     "tag": "Services",
-    "title": "Simply enabling IT for a complex world",
+    "title": "Everything we do to keep your business running",
     "linkLabel": "Find your solution"
   },
   "stackSection": {
     "tag": "Our technology stack",
-    "title": "Using trusted technology to solve your IT challenges"
+    "title": "The platforms we deploy, secure, and support"
   },
   "pageLabels": {
     "home": "Home",
@@ -864,8 +864,8 @@
     "text": "Our culture is built around four core values that differentiate us from our competition."
   },
   "promo": {
-    "tag": "Simply enabling IT for a complex world",
-    "title": "We take care of your IT, so you can take care of your customers.",
+    "tag": "Let's talk",
+    "title": "Tell us where IT is getting in the way",
     "text": "Tell us about your environment, your users, and the technology challenges affecting daily operations — we will come back to you with a practical way forward.",
     "cta": {
       "label": "Talk to an expert",

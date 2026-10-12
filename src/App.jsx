@@ -40,10 +40,10 @@ function parseHash(hash = '') {
 
 /**
  * Homepage band order (11 content bands + conversion run-up):
- * Hero > Intro > Services > Industries > Partners (technology
- * strip) > Proof (stats, certs, awards) > Stack (heading card overlaps the proof band)
- * > Insights (resource-library grid) > Answers (promo + FAQ) > Contact form
- * > Connect band. Footer + legal bar close every route.
+ * Hero > Intro > Services > Industries > Stack
+ * > Proof > Partners (technology strip)
+ * > Insights (resource-library grid) > Answers (promo + FAQ)
+ * > Contact form > Connect band. Footer + legal bar close every route.
  * Inner routes ('#/<slug>') replace main with PageView.
  */
 export default function App() {
@@ -92,9 +92,9 @@ export default function App() {
           <IntroBand />
           <CardGrid />
           <IndustriesStrip />
-          <PartnerStrip />
-          <ProofBand />
           <StackSection />
+          <ProofBand />
+          <PartnerStrip />
           <InsightsSection />
           <AnswersBand />
           <HomeContact />

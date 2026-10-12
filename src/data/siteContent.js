@@ -73,7 +73,7 @@ export const defaultContent = {
   introBand: {
     eyebrow: "Our company",
     title: "Nexsate is your trusted source in IT services and support",
-    text: "We take care of your IT, so you can take care of your customers. Empowering businesses with transformative technology solutions - reliable, responsive, and secure IT that keeps daily operations moving.",
+    text: "We manage the technology behind daily operations so your team can stay focused — responsive support, stronger security, and systems that scale as you grow.",
   },
   introCards: [
     { id: "our-services", eyebrow: "Our services", title: "How we can help", href: pageHref("Services & Solutions"), src: "/uploads/boardroom-meeting.jpg", alt: "Team meeting in a boardroom", fallback: "linear-gradient(135deg, #070e40 0%, #010ed0 140%)" },
@@ -89,12 +89,12 @@ export const defaultContent = {
 
   servicesSection: {
     tag: "Services",
-    title: "Simply enabling IT for a complex world",
+    title: "Everything we do to keep your business running",
     linkLabel: "Find your solution",
   },
   stackSection: {
     tag: "Our technology stack",
-    title: "Using trusted technology to solve your IT challenges",
+    title: "The platforms we deploy, secure, and support",
   },
 
   pageLabels: {

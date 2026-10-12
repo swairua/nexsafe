@@ -3,8 +3,8 @@ import { pageHref } from './slug.js'
 const link = (label) => ({ label, href: pageHref(label) })
 
 export const promo = {
-  tag: 'Simply enabling IT for a complex world',
-  title: 'We take care of your IT, so you can take care of your customers.',
+  tag: "Let's talk",
+  title: 'Tell us where IT is getting in the way',
   text: 'Tell us about your environment, your users, and the technology challenges affecting daily operations — we will come back to you with a practical way forward.',
   cta: { label: 'Talk to an expert', href: pageHref('Contact us') },
   image: '/uploads/office-space.jpg',

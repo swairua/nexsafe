@@ -30,7 +30,7 @@ the code rather than invented.
 | `support` | AnswersBand (promo + FAQ teaser) |
 
 Homepage order: Hero -> benefits -> intro band -> services grid -> industries ->
-technology strip (partners) -> proof (stats/certs/awards) -> stack ->
+stack -> proof (stats/certs/awards) -> technology strip (partners) ->
 insights -> answers (promo + FAQ) -> contact form -> connect band -> footer.
 
 Breadcrumbs on inner pages map eyebrow -> anchor via `SECTION_ANCHORS` in
