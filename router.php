@@ -43,9 +43,33 @@ if (preg_match('#^/api/([A-Za-z0-9_-]+\.php)$#', $uri, $m)) {
 // 2) Uploaded media. Served from UPLOAD_DIR so files added through the admin
 //    (which may live on a persistent disk) are reachable at their /uploads path.
 if (str_starts_with($uri, '/uploads/')) {
-    $name = basename($uri);
-    $file = UPLOAD_DIR . DIRECTORY_SEPARATOR . $name;
-    if ($name !== '' && is_file($file)) {
+    // Keep any subdirectory in the path. Media can live in nested folders (e.g.
+    // /uploads/stack-icons/), and basename() would strip that folder so the file
+    // is never found. Resolve against UPLOAD_DIR and refuse anything that
+    // escapes it - '..' segments outright, and a realpath() check for the rest.
+    $rel = str_replace('\\', '/', substr($uri, strlen('/uploads/')));
+    $parts = [];
+    $escaped = false;
+    foreach (explode('/', $rel) as $seg) {
+        if ($seg === '' || $seg === '.') {
+            continue;
+        }
+        if ($seg === '..') {
+            $escaped = true;
+            break;
+        }
+        $parts[] = $seg;
+    }
+    $file = '';
+    $root = realpath((string) UPLOAD_DIR);
+    if (!$escaped && $parts !== [] && $root !== false) {
+        $real = realpath(UPLOAD_DIR . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $parts));
+        if ($real !== false && str_starts_with($real, $root . DIRECTORY_SEPARATOR)) {
+            $file = $real;
+        }
+    }
+    if ($file !== '') {
+        $name = implode('/', $parts);
         $types = [
             'jpg' => 'image/jpeg', 'jpeg' => 'image/jpeg', 'png' => 'image/png',
             'webp' => 'image/webp', 'gif' => 'image/gif', 'svg' => 'image/svg+xml',

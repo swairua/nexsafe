@@ -63,7 +63,7 @@ export default function CardGrid() {
               aria-controls={`panel-${t.id}`}
               id={`tab-${t.id}`}
               onClick={() => setActiveTab(t.id)}
-              className={`relative rounded-full px-6 py-2.5 text-sm font-bold tracking-wide transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-shell-red/50 ${
+              className={`relative rounded-full px-6 py-2.5 text-sm font-bold tracking-wide transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50 ${
                 activeTab === t.id
                   ? 'bg-shell-red text-white'
                   : 'bg-white text-shell-gray-600 hover:bg-shell-gray-100'

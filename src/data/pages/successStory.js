@@ -13,6 +13,10 @@ export const successStoryPages = [
       'A growing business had the tools it needed — but they were not aligned with how the team worked. How Nexsate built a more reliable, secure IT foundation.',
     intro:
       'How better IT alignment helped a growing business improve security, productivity, and daily operations.',
+    quote: {
+      text: 'The goal was not just to fix IT problems. The goal was to create a technology environment that helped the business work better, stay protected, and grow with more confidence.',
+      attribution: 'Nexsate Technologies',
+    },
     sections: [
       {
         heading: 'The challenge',
@@ -90,7 +94,6 @@ export const successStoryPages = [
       {
         heading: 'Technology aligned with business growth',
         body: [
-          '“The goal was not just to fix IT problems. The goal was to create a technology environment that helped the business work better, stay protected, and grow with more confidence.”',
           'This success story shows how the right IT approach can improve more than technology. It can support productivity, security, communication, business continuity, and long-term planning.',
           'At Nexsate Technologies, we help businesses align their IT environment with the way they actually work. From managed IT support and cybersecurity to cloud services, backup and recovery, network management, and technology advisory, Nexsate delivers practical solutions that support daily operations and future growth.',
         ],

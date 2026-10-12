@@ -14,8 +14,8 @@ function LogoSlot({ partner }) {
       <span
         data-logo-placeholder
         aria-hidden="true"
-        className="mb-3 flex items-center justify-center rounded border border-dashed border-shell-gray-300 bg-white h-24 w-48">
-        <svg className="h-8 w-8 text-shell-gray-400" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        className="flex h-12 w-28 shrink-0 items-center justify-center rounded border border-dashed border-shell-gray-300 bg-white">
+        <svg className="h-6 w-6 text-shell-gray-400" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="3" y="4.5" width="18" height="15" rx="2" stroke="currentColor" strokeWidth="1.6" />
           <circle cx="8.5" cy="10" r="1.6" fill="currentColor" />
           <path d="M4.5 17l4.5-4.5 3.5 3.5 2.5-2.5 4.5 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
@@ -24,13 +24,14 @@ function LogoSlot({ partner }) {
     )
   }
   return (
-    <span className="mb-3 flex items-center justify-center">
+    <span className="flex h-12 w-28 shrink-0 items-center justify-center">
       <img
         src={src}
         alt={partner.name}
         aria-hidden="true"
         loading="lazy"
-        className="max-h-48 max-w-full object-contain"
+        onError={() => setFailed(true)}
+        className="max-h-12 w-full object-contain"
       />
     </span>
   )
@@ -38,13 +39,11 @@ function LogoSlot({ partner }) {
 
 function VendorTile({ partner }) {
   return (
-    <div className="flex h-full min-h-[9rem] flex-col justify-center rounded-xl border border-shell-gray-300 bg-shell-gray-100 px-5 py-5 transition-colors duration-300 hover:border-shell-cyan">
+    <div className="flex h-full min-h-[6.5rem] items-center gap-4 rounded-xl border border-shell-gray-300 bg-shell-gray-100 px-5 py-4 transition-colors duration-300 hover:border-brand-ink">
       <LogoSlot partner={partner} />
-      <span className="block text-sm font-bold text-shell-gray-900">
+      <span className="h-10 w-px shrink-0 bg-shell-gray-300" aria-hidden="true" />
+      <span className="flex flex-1 items-center justify-center text-center text-sm font-bold leading-snug text-shell-gray-900">
         {partner.name}
-      </span>
-      <span className="mt-1 block text-xs leading-relaxed text-shell-gray-500">
-        {partner.area}
       </span>
     </div>
   )
@@ -89,7 +88,7 @@ export default function PartnerStrip() {
                 type="button"
                 onClick={() => scrollBy(-1)}
                 aria-label="Scroll technology left"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-shell-red hover:bg-shell-red hover:text-white active:scale-95"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95"
               >
                 <span aria-hidden="true">←</span>
               </button>
@@ -97,7 +96,7 @@ export default function PartnerStrip() {
                 type="button"
                 onClick={() => scrollBy(1)}
                 aria-label="Scroll technology right"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-shell-red hover:bg-shell-red hover:text-white active:scale-95"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95"
               >
                 <span aria-hidden="true">→</span>
               </button>

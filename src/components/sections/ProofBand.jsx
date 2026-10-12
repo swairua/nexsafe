@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from '../../content/ContentContext.jsx'
@@ -85,16 +87,23 @@ export default function ProofBand() {
   const certs = (content.certStrip && content.certStrip.items) || []
   const about = (content.pages || {})['about-us']
   const badges = (about && about.logos) || []
-  const trackRef = useRef(null)
-  if (!stats.length && !certs.length && !badges.length) return null
+  const reduceMotion = typeof window !== 'undefined'
+    && typeof window.matchMedia === 'function'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, duration: 36 },
+    reduceMotion
+      ? []
+      : [Autoplay({ delay: 2400, stopOnInteraction: false, stopOnMouseEnter: true, stopOnFocusIn: true })],
+  )
 
-  const nudge = (dir) => {
-    const el = trackRef.current
-    if (!el) return
-    const card = el.querySelector('[data-award-card]')
-    const step = card ? card.getBoundingClientRect().width + 16 : 320
-    el.scrollBy({ left: dir * step, behavior: 'smooth' })
+  const scrollBy = (dir) => {
+    if (!emblaApi) return
+    if (dir < 0) emblaApi.scrollPrev()
+    else emblaApi.scrollNext()
   }
+
+  if (!stats.length && !certs.length && !badges.length) return null
 
   return (
     <section className="bg-shell-black py-20 text-white md:py-28 dark-gradient">
@@ -145,46 +154,56 @@ export default function ProofBand() {
               <div className="flex gap-2">
                 <button
                   type="button"
-                  onClick={() => nudge(-1)}
+                  onClick={() => scrollBy(-1)}
                   aria-label="Previous awards"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-shell-red hover:bg-shell-red"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-brand-ink hover:bg-brand-ink"
                 >
                   <span aria-hidden="true">&larr;</span>
                 </button>
                 <button
                   type="button"
-                  onClick={() => nudge(1)}
+                  onClick={() => scrollBy(1)}
                   aria-label="Next awards"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-shell-red hover:bg-shell-red"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-brand-ink hover:bg-brand-ink"
                 >
                   <span aria-hidden="true">&rarr;</span>
                 </button>
               </div>
             </div>
-            <div ref={trackRef} className="mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
-              {badges.map((b, i) => (
-                <div
-                  key={b.src + i}
-                  data-award-card
-                  className="flex w-56 shrink-0 snap-start flex-col rounded-2xl bg-white p-5"
-                >
-                  <span className="text-xs font-extrabold tracking-widest text-shell-red">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="mt-3 flex h-24 items-center justify-center">
-                    <img
-                      src={b.src}
-                      alt={b.alt || ''}
-                      loading="lazy"
-                      className="max-h-24 w-auto max-w-full object-contain"
-                      onError={(e) => { e.currentTarget.style.visibility = 'hidden' }}
-                    />
-                  </span>
-                  <span className="mt-3 text-center text-xs font-semibold leading-snug text-shell-gray-700">
-                    {b.alt || ''}
-                  </span>
-                </div>
-              ))}
+            <div
+              ref={emblaRef}
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Awards & recognition"
+              tabIndex={0}
+              className="overflow-hidden"
+            >
+              <div className="flex gap-5 pb-3">
+                {badges.map((b, i) => (
+                  <div
+                    key={b.src + i}
+                    className="min-w-0 shrink-0 flex-[0_0_70%] sm:flex-[0_0_50%] md:flex-[0_0_calc(33.333%-14px)] lg:flex-[0_0_calc(25%-15px)]"
+                  >
+                    <div className="flex h-full flex-col rounded-2xl bg-white p-5">
+                      <span className="text-xs font-extrabold tracking-widest text-shell-red">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="mt-3 flex h-24 items-center justify-center">
+                        <img
+                          src={b.src}
+                          alt={b.alt || ''}
+                          loading="lazy"
+                          className="max-h-24 w-auto max-w-full object-contain"
+                          onError={(e) => { e.currentTarget.style.visibility = 'hidden' }}
+                        />
+                      </span>
+                      <span className="mt-3 text-center text-xs font-semibold leading-snug text-shell-gray-700">
+                        {b.alt || ''}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ) : null }

@@ -241,7 +241,7 @@ export default function AdminApp() {
               <h2 className="text-base font-bold text-shell-gray-900 sm:text-lg">Choose an image</h2>
               <div className="flex gap-2">
                 <button onClick={() => { pick(""); setPick(null) }} className={BTN + " bg-white text-shell-gray-700 ring-1 ring-shell-gray-300 hover:bg-shell-gray-300"}>Clear image</button>
-                <button onClick={() => setPick(null)} className={BTN + " bg-shell-gray-900 text-white hover:bg-shell-red"}>Close</button>
+                <button onClick={() => setPick(null)} className={BTN + " bg-shell-gray-900 text-white hover:bg-brand-ink"}>Close</button>
               </div>
             </div>
             <MediaLibrary onSelect={(url) => { pick(url); setPick(null) }} />

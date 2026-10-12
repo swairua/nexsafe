@@ -16,6 +16,9 @@
   --color-shell-gray-100: #f4f5f6;
   --color-shell-white: #ffffff;
 
+  /* Logo wordmark ink (#0174A4) — hover accents + glow shadows use this everywhere. */
+  --color-brand-ink: #0174a4;
+
   --font-sans: "Roboto", "Helvetica Neue", Arial, sans-serif;
 
   --font-weight-medium: 500;
@@ -47,6 +50,18 @@
   :focus-visible {
     outline: 2px solid var(--color-shell-red);
     outline-offset: 2px;
+  }
+
+  /* Every link glows in the logo text color on hover/focus. Kept in base so
+     no link anywhere can miss it; border-color tokens are recolored too so
+     ring/border glows follow the same ink. `prefers-reduced-motion` (below)
+     collapses the transition for users who ask for it. */
+  a {
+    transition: color 0.2s ease, text-shadow 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  a:hover,
+  a:focus-visible {
+    text-shadow: 0 0 12px rgba(1, 116, 164, 0.55);
   }
 }
 
@@ -88,8 +103,8 @@
     color: #fff;
   }
   .btn-pill--primary:hover {
-    background: var(--color-shell-red-dark);
-    box-shadow: 0 10px 22px -8px rgba(6, 147, 227, 0.55);
+    background: var(--color-brand-ink);
+    box-shadow: 0 10px 22px -8px rgba(1, 116, 164, 0.55);
   }
 
   .btn-pill--outline {
@@ -119,8 +134,8 @@
     color: #fff;
   }
   .btn-pill--green:hover {
-    background: var(--color-shell-green-dark);
-    box-shadow: 0 10px 22px -8px rgba(6, 147, 227, 0.55);
+    background: var(--color-brand-ink);
+    box-shadow: 0 10px 22px -8px rgba(1, 116, 164, 0.55);
   }
 
   .btn-sweep {
@@ -141,7 +156,7 @@
     position: absolute;
     inset: -1px;
     z-index: 0;
-    background: linear-gradient(90deg, var(--color-shell-red) 0%, var(--color-shell-red-dark) 100%);
+    background: linear-gradient(90deg, var(--color-brand-ink) 0%, var(--color-shell-red-dark) 100%);
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -149,7 +164,7 @@
   .btn-sweep:hover,
   .btn-sweep:focus-visible {
     color: #fff;
-    box-shadow: inset 0 0 0 1px var(--color-shell-red), 0 12px 26px -12px rgba(6, 147, 227, 0.65);
+    box-shadow: inset 0 0 0 1px var(--color-brand-ink), 0 12px 26px -12px rgba(1, 116, 164, 0.65);
   }
   .btn-sweep:hover::before,
   .btn-sweep:focus-visible::before {
@@ -190,7 +205,7 @@
   }
   .glass-card:hover {
     translate: 0 -4px;
-    border-color: rgba(6, 147, 227, 0.55);
+    border-color: rgba(1, 116, 164, 0.55);
     box-shadow:
       0 18px 44px rgba(11, 27, 43, 0.18),
       inset 0 1px 0 rgba(255, 255, 255, 0.8);

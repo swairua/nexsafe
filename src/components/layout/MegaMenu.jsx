@@ -102,7 +102,7 @@ export default function MegaMenu({ item, onClose }) {
                   <a
                     href={l.href}
                     onClick={onClose}
-                    className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-shell-red hover:underline"
+                    className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline"
                   >
                     {l.label}
                   </a>
@@ -121,11 +121,11 @@ export default function MegaMenu({ item, onClose }) {
                   key={t.label}
                   href={t.href}
                   onClick={onClose}
-                  className="group flex items-start gap-4 rounded-lg border border-shell-gray-200 bg-white p-4 transition-colors hover:border-shell-red"
+                  className="group flex items-start gap-4 rounded-lg border border-shell-gray-200 bg-white p-4 transition-colors hover:border-brand-ink"
                 >
                   <ChallengeIcon icon={t.icon} />
                   <div>
-                    <span className="block text-sm font-bold text-shell-gray-900 group-hover:text-shell-red">
+                    <span className="block text-sm font-bold text-shell-gray-900 group-hover:text-brand-ink">
                       {t.label}
                     </span>
                     {t.blurb && (
@@ -162,7 +162,7 @@ export default function MegaMenu({ item, onClose }) {
                   <a
                     href={l.href}
                     onClick={onClose}
-                    className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-shell-red hover:underline"
+                    className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline"
                   >
                     {l.label}
                   </a>
@@ -184,7 +184,7 @@ export default function MegaMenu({ item, onClose }) {
                       <a
                         href={l.href}
                         onClick={onClose}
-                        className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-shell-red hover:underline"
+                        className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline"
                       >
                         {l.label}
                       </a>

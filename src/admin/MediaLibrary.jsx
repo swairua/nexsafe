@@ -111,7 +111,7 @@ export default function MediaLibrary({ onSelect }) {
         <label className="mt-3 block text-sm font-medium text-shell-gray-700">Description (what / where it is used)
           <input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="e.g. Homepage hero background" className="mt-1 w-full rounded-lg border border-shell-gray-300 px-3 py-2 text-base outline-none focus:border-shell-gray-900 sm:text-sm" />
         </label>
-        <button type="submit" disabled={busy} className={BTN + " mt-3 bg-shell-gray-900 text-white hover:bg-shell-red disabled:opacity-50"}>{busy ? "Uploading…" : "Upload"}</button>
+        <button type="submit" disabled={busy} className={BTN + " mt-3 bg-shell-gray-900 text-white hover:bg-brand-ink disabled:opacity-50"}>{busy ? "Uploading…" : "Upload"}</button>
       </form>
       {msg ? <p className="mt-3 rounded-lg bg-white px-3 py-2 text-sm text-shell-gray-700 ring-1 ring-shell-gray-300">{msg}</p> : null}
       <div className="sticky top-[var(--admin-bar,3.5rem)] z-10 -mx-1 bg-shell-gray-100 px-1 py-2">
@@ -146,13 +146,13 @@ export default function MediaLibrary({ onSelect }) {
                       <input value={editDesc} onChange={(e) => setEditDesc(e.target.value)} className="mt-1 w-full rounded-lg border border-shell-gray-300 px-2.5 py-2 text-base sm:text-sm" />
                     </label>
                     <div className="flex gap-1.5">
-                      <button onClick={() => saveMeta(m)} className={ACT + " bg-shell-gray-900 text-white hover:bg-shell-red"}>Save</button>
+                      <button onClick={() => saveMeta(m)} className={ACT + " bg-shell-gray-900 text-white hover:bg-brand-ink"}>Save</button>
                       <button onClick={() => setEditing(null)} className={ACT + " bg-shell-gray-100 hover:bg-shell-gray-300"}>Cancel</button>
                     </div>
                   </div>
                 ) : null}
                 <div className="mt-2 flex flex-wrap gap-1.5">
-                  {onSelect ? <button onClick={() => onSelect(m.url)} className={ACT + " bg-shell-gray-900 font-medium text-white hover:bg-shell-red"}>Use</button> : null}
+                  {onSelect ? <button onClick={() => onSelect(m.url)} className={ACT + " bg-shell-gray-900 font-medium text-white hover:bg-brand-ink"}>Use</button> : null}
                   <button onClick={() => { setEditing(m.id); setEditAlt(m.alt || ""); setEditDesc(m.description || desc) }} className={ACT + " bg-shell-gray-100 hover:bg-shell-gray-300"}>Edit</button>
                   <label className={ACT + " cursor-pointer bg-blue-100 font-medium text-blue-800 hover:bg-blue-200"}>
                     {replacing === m.id ? "Replacing…" : "Replace"}

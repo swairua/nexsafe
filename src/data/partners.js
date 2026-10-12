@@ -24,10 +24,10 @@ for (const group of stackGroups) {
 // External partners - these would be downloaded from partner sites
 // and added here with their logo paths/URLs
 const externalPartners = [
-  { name: 'HPE', logo: '/uploads/partner-hpe.svg', area: 'HPE Partner Program' },
-  { name: 'Dell Technologies', logo: '/uploads/partner-dell.svg', area: 'Dell Technologies Partner' },
-  { name: 'Cisco', logo: '/uploads/partner-cisco.svg', area: 'Cisco Partner Network' },
-  { name: 'VMware', logo: '/uploads/partner-vmware.svg', area: 'VMware Expert Program' },
+  { name: 'HPE', logo: '/uploads/stack-icons/hpe.svg', area: 'HPE Partner Program' },
+  { name: 'Dell Technologies', logo: '/uploads/stack-icons/dell.svg', area: 'Dell Technologies Partner' },
+  { name: 'Cisco', logo: '/uploads/stack-icons/cisco.svg', area: 'Cisco Partner Network' },
+  { name: 'VMware', logo: '/uploads/stack-icons/vmware.svg', area: 'VMware Expert Program' },
 ]
 
 export const partners = [...byName.values(), ...externalPartners]

@@ -18,15 +18,20 @@ export default function NoticeBar() {
     }
     setDismissed(true)
   }
-  const bgClass = noticeBar.type === 'info' ? 'bg-shell-yellow-100' : 'bg-shell-black'
+  const isInfo = noticeBar.type === 'info'
+  const bgClass = isInfo ? 'bg-shell-yellow-100' : 'bg-shell-black'
+  const plainText = isInfo ? 'text-shell-gray-900' : 'text-white'
+  const linkText = isInfo
+    ? 'text-shell-gray-900 hover:text-shell-black'
+    : 'text-white hover:text-shell-yellow'
   return (
     <div className={`${bgClass} flex items-center justify-center gap-3 px-3 py-2 text-center`}>
       {noticeBar.href ? (
-        <a href={noticeBar.href} className="truncate text-xs font-semibold text-shell-gray-900 hover:text-shell-yellow hover:underline">
+        <a href={noticeBar.href} className={`truncate text-xs font-semibold hover:underline ${linkText}`}>
           {noticeBar.text}
         </a>
       ) : (
-        <span className="truncate text-xs font-semibold text-shell-gray-900">{noticeBar.text}</span>
+        <span className={`truncate text-xs font-semibold ${plainText}`}>{noticeBar.text}</span>
       )}
       {noticeBar.type !== 'info' ? (
         <button

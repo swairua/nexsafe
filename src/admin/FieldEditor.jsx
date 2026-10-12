@@ -56,7 +56,7 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
       <div className="mb-2">
         <div className="mb-1.5 flex items-center justify-between gap-2">
           <span className="min-w-0 truncate text-xs font-semibold uppercase tracking-wide text-shell-gray-500">{label(key)} <span className="font-normal normal-case text-shell-gray-400">- {value.length} items</span></span>
-          <button type="button" onClick={add} className={BTN + " shrink-0 bg-shell-gray-900 px-3 text-white hover:bg-shell-red"}>+ Add</button>
+          <button type="button" onClick={add} className={BTN + " shrink-0 bg-shell-gray-900 px-3 text-white hover:bg-brand-ink"}>+ Add</button>
         </div>
         <div className="space-y-2">
           {value.map((item, i) => (
@@ -116,7 +116,7 @@ export default function FieldEditor({ name, value, onChange, onPickImage, depth 
         <span className={LABEL}>{label(key)} <span className="font-normal normal-case text-shell-gray-400">— image · replaceable</span></span>
         <div className="flex items-center gap-2">
           <input type="text" value={str} onChange={(e) => onChange(e.target.value)} placeholder="/uploads/…" className={INPUT + " flex-1"} />
-          {onPickImage ? <button type="button" onClick={() => onPickImage((url) => onChange(url || ""))} className="inline-flex min-h-[44px] shrink-0 items-center rounded-md bg-shell-gray-900 px-3 text-xs font-medium text-white hover:bg-shell-red">Pick · Replace</button> : null}
+          {onPickImage ? <button type="button" onClick={() => onPickImage((url) => onChange(url || ""))} className="inline-flex min-h-[44px] shrink-0 items-center rounded-md bg-shell-gray-900 px-3 text-xs font-medium text-white hover:bg-brand-ink">Pick · Replace</button> : null}
         </div>
         {preview ? (
           <div className="mt-2 flex gap-2 rounded-md border border-shell-gray-300 bg-shell-gray-100 p-2">

@@ -88,7 +88,7 @@ export default function SearchPanel({ autoFocus = true, onClose = () => {} }) {
                   key={s}
                   type="button"
                   onClick={() => { setQuery(s); setActive(0); inputRef.current && inputRef.current.focus() }}
-                  className="rounded-full border border-shell-gray-300 px-4 py-2 text-sm font-medium text-shell-gray-700 transition-colors hover:border-shell-red hover:text-shell-red"
+                  className="rounded-full border border-shell-gray-300 px-4 py-2 text-sm font-medium text-shell-gray-700 transition-colors hover:border-brand-ink hover:text-brand-ink"
                 >
                   {s}
                 </button>

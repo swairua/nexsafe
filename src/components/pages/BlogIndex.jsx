@@ -44,7 +44,7 @@ export function PostCard({ post, fallbackImage, fallbackAlt, delay = 0 }) {
       as="a"
       href={`#/${post.slug}`}
       delay={delay}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-shell-gray-300 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-shell-red hover:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-shell-gray-300 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]"
     >
       <span aria-hidden="true" className="block h-1 w-full" style={{ backgroundColor: hue }} />
       <SmartImage
@@ -62,7 +62,7 @@ export function PostCard({ post, fallbackImage, fallbackAlt, delay = 0 }) {
             {[post.topic, formatPostDate(post.date)].filter(Boolean).join(' · ')}
           </span>
         ) : null}
-        <span className="mt-2 text-lg font-bold leading-snug text-shell-gray-900 group-hover:text-shell-red">
+        <span className="mt-2 text-lg font-bold leading-snug text-shell-gray-900 group-hover:text-brand-ink">
           {post.title}
         </span>
         {post.excerpt ? (
@@ -131,7 +131,7 @@ export default function BlogIndex({ page, topic }) {
                   className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
                     t === activeTopic
                       ? 'border-shell-gray-900 bg-shell-gray-900 text-white'
-                      : 'border-shell-gray-300 bg-white text-shell-gray-700 hover:border-shell-red hover:text-shell-red'
+                      : 'border-shell-gray-300 bg-white text-shell-gray-700 hover:border-brand-ink hover:text-brand-ink'
                   }`}
                 >
                   {t}
@@ -166,12 +166,12 @@ export default function BlogIndex({ page, topic }) {
                   as="a"
                   href={`#/${rel.slug}`}
                   delay={(idx % 4) + 1}
-                  className="group rounded-2xl border border-shell-gray-300 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-shell-red hover:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]"
+                  className="group rounded-2xl border border-shell-gray-300 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]"
                 >
                   <p className="text-xs font-bold uppercase tracking-wider text-shell-red">
                     {rel.eyebrow}
                   </p>
-                  <h3 className="mt-2 text-base font-bold leading-snug text-shell-gray-900 group-hover:text-shell-red">
+                  <h3 className="mt-2 text-base font-bold leading-snug text-shell-gray-900 group-hover:text-brand-ink">
                     {rel.title}
                   </h3>
                   <span className="arrow-link mt-4 text-sm">

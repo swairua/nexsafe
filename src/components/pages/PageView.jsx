@@ -207,6 +207,26 @@ export default function PageView({ page, slug, params }) {
         </section>
       ))}
 
+      {page.quote && page.quote.text ? (
+        <section className="bg-shell-gray-900 text-white">
+          <div className="shell-container py-16 md:py-24">
+            <Reveal variant="fade" className="mx-auto max-w-3xl text-center">
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="mx-auto h-9 w-9 text-shell-red" fill="currentColor">
+                <path d="M9.5 5C7 5 5 7.2 5 9.9c0 2.2 1.5 3.9 3.5 4.4.3.1.5-.1.5-.4 0-.2-.1-.4-.3-.5C7.4 13 6.7 12 6.7 10.6c0-1.6 1.3-2.9 3-2.9.3 0 .7.1 1 .2C10.4 6.6 11.4 6 12.6 6H9.5zm9 0c-2.5 0-4.5 2.2-4.5 4.9 0 2.2 1.5 3.9 3.5 4.4.3.1.5-.1.5-.4 0-.2-.1-.4-.3-.5-.6-.5-1.3-1.5-1.3-2.9 0-1.6 1.3-2.9 3-2.9.3 0 .7.1 1 .2-.3-1.5-1.3-2.1-2.5-2.1h-.4z" />
+              </svg>
+              <blockquote className="mt-6 text-xl font-semibold leading-relaxed tracking-tight md:text-2xl lg:text-3xl">
+                {page.quote.text}
+              </blockquote>
+              {page.quote.attribution ? (
+                <cite className="mt-6 block text-sm font-bold uppercase tracking-wider not-italic text-white/60">
+                  {page.quote.attribution}
+                </cite>
+              ) : null}
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
+
       {slug === 'about-us' && <StartBand />}
 
       {gallery.length > 0 && (
@@ -275,12 +295,12 @@ export default function PageView({ page, slug, params }) {
                   as="a"
                   href={`#/${rel.slug}`}
                   delay={(idx % 4) + 1}
-                  className="group rounded-2xl border border-shell-gray-300 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-shell-red hover:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]"
+                  className="group rounded-2xl border border-shell-gray-300 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]"
                 >
                   <p className="text-xs font-bold uppercase tracking-wider text-shell-red">
                     {rel.eyebrow}
                   </p>
-                  <h3 className="mt-2 text-base font-bold leading-snug text-shell-gray-900 group-hover:text-shell-red">
+                  <h3 className="mt-2 text-base font-bold leading-snug text-shell-gray-900 group-hover:text-brand-ink">
                     {rel.title}
                   </h3>
                   <span className="arrow-link mt-4 text-sm">
@@ -312,7 +332,7 @@ export default function PageView({ page, slug, params }) {
                     <li key={d.label} className="rounded-xl border border-shell-gray-300 p-4">
                       <span className="block text-xs font-semibold uppercase tracking-wide text-shell-gray-500">{d.label}</span>
                       {d.href ? (
-                        <a href={d.href} className="mt-1 block text-sm font-medium text-shell-gray-900 underline-offset-2 hover:text-shell-red hover:underline">{d.value}</a>
+                        <a href={d.href} className="mt-1 block text-sm font-medium text-shell-gray-900 underline-offset-2 hover:text-brand-ink hover:underline">{d.value}</a>
                       ) : (
                         <span className="mt-1 block text-sm font-medium text-shell-gray-900">{d.value}</span>
                       )}

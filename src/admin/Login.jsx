@@ -42,7 +42,7 @@ export default function Login({ onAuthed }) {
               <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" className={INPUT} />
             </label>
             {error ? <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
-            <button type="submit" disabled={busy} className="inline-flex min-h-[48px] w-full items-center justify-center rounded-lg bg-shell-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-shell-red disabled:opacity-50">{busy ? "Signing in..." : "Sign in"}</button>
+            <button type="submit" disabled={busy} className="inline-flex min-h-[48px] w-full items-center justify-center rounded-lg bg-shell-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-ink disabled:opacity-50">{busy ? "Signing in..." : "Sign in"}</button>
           </form>
         </div>
         <p className="mt-4 text-center text-xs text-shell-gray-400">Authorized personnel only.</p>

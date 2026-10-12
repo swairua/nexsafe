@@ -22,12 +22,12 @@ export default function IntroBand() {
       <div className="shell-container px-6">
         <div id={sectionIds.about} className="-mt-20 grid gap-10 scroll-mt-28 md:-mt-24 md:grid-cols-3 md:gap-8">
           {introCards.map((card, idx) => (
-            <Reveal key={card.id} delay={idx + 1} variant="up">
-              <a href={card.href} className="group block" aria-label={`${card.eyebrow} - ${card.title}`}>
-                <SmartImage src={card.src} alt={card.alt} fallback={card.fallback} className="aspect-[16/11] w-full" imgClassName="transition-transform duration-500 group-hover:scale-105" />
-                <div className="relative mx-auto -mt-14 w-[86%] bg-white px-6 py-6 text-center shadow-[0_18px_50px_-12px_rgba(0,0,0,0.28)]">
+            <Reveal key={card.id} delay={idx + 1} variant="up" className="h-full">
+              <a href={card.href} className="group flex h-full flex-col rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(1,116,164,0.55)]" aria-label={`${card.eyebrow} - ${card.title}`}>
+                <SmartImage src={card.src} alt={card.alt} fallback={card.fallback} className="aspect-[16/11] w-full overflow-hidden rounded-2xl" imgClassName="transition-transform duration-500 group-hover:scale-105" />
+                <div className="relative mx-auto -mt-14 flex w-[86%] flex-1 flex-col justify-center bg-white px-6 py-6 text-center ring-1 ring-transparent shadow-[0_18px_50px_-12px_rgba(0,0,0,0.28)] transition-all duration-300 group-hover:ring-2 group-hover:ring-brand-ink/40 group-hover:shadow-[0_0_30px_rgba(1,116,164,0.5)]">
                   <p className="text-[15px] font-medium text-[#2aa5de]">{card.eyebrow}</p>
-                  <p className="mt-1.5 text-xl font-bold leading-snug text-[#0a1a3c] transition-colors group-hover:text-shell-red">{card.title}</p>
+                  <p className="mt-1.5 text-xl font-bold leading-snug text-[#0a1a3c] transition-colors group-hover:text-brand-ink">{card.title}</p>
                 </div>
               </a>
             </Reveal>

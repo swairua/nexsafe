@@ -45,7 +45,7 @@ export default function Messages() {
                 </div>
                 <p className="mt-2.5 whitespace-pre-wrap text-sm text-shell-gray-800">{m.body}</p>
                 <div className="mt-3 flex gap-2">
-                  <a href={"mailto:" + m.email} className={ACT + " bg-shell-gray-900 text-white hover:bg-shell-red"}>Reply</a>
+                  <a href={"mailto:" + m.email} className={ACT + " bg-shell-gray-900 text-white hover:bg-brand-ink"}>Reply</a>
                   <button onClick={() => remove(m.id)} className={ACT + " bg-red-100 text-red-700 hover:bg-red-200"}>Delete</button>
                 </div>
               </div>

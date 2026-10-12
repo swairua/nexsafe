@@ -19,7 +19,7 @@ export default function BackToTop() {
       type="button"
       aria-label={uiLabels.backToTop}
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="back-to-top fixed bottom-24 right-5 z-50 mb-[env(safe-area-inset-bottom)] mr-[env(safe-area-inset-right)] flex h-11 w-11 items-center justify-center rounded-full bg-shell-red text-white shadow-lg transition-colors hover:bg-shell-red-dark md:bottom-28 md:right-7"
+      className="back-to-top fixed bottom-24 right-5 z-50 mb-[env(safe-area-inset-bottom)] mr-[env(safe-area-inset-right)] flex h-11 w-11 items-center justify-center rounded-full bg-shell-red text-white shadow-lg transition-colors hover:bg-brand-ink md:bottom-28 md:right-7"
     >
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path

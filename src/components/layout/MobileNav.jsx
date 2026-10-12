@@ -37,7 +37,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                             key={t.label}
                             href={t.href}
                             onClick={onNavigate}
-                            className="rounded-lg border border-shell-gray-300/70 p-3 text-sm font-medium text-shell-gray-900 hover:border-shell-red hover:text-shell-red"
+                            className="rounded-lg border border-shell-gray-300/70 p-3 text-sm font-medium text-shell-gray-900 hover:border-brand-ink hover:text-brand-ink"
                           >
                             {t.label}
                           </a>
@@ -50,7 +50,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                           <a
                             href={l.href}
                             onClick={onNavigate}
-                            className="text-sm text-shell-gray-700 hover:text-shell-red"
+                            className="text-sm text-shell-gray-700 hover:text-brand-ink"
                           >
                             {l.label}
                           </a>

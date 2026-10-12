@@ -46,7 +46,7 @@ function FeaturedCard({ post, fallbackImage, fallbackAlt }) {
       <div className="flex flex-1 flex-col p-6 md:p-8">
         <p className="text-sm text-[#7b8ba0]">{formatPostDate(post.date)}</p>
         <h3 className="mt-3 text-xl font-bold leading-snug text-[#0b2c5f] md:text-2xl">
-          <a href={`#/${post.slug}`} className="transition-colors hover:text-[#0693e3]">
+          <a href={`#/${post.slug}`} className="transition-colors hover:text-brand-ink">
             <span aria-hidden="true" className="mr-2 inline-block h-5 w-5 rounded-full border-2 border-[#0b2c5f] align-[-3px]">
               <span className="ml-[5px] mt-[3px] block h-0 w-0 border-y-[4px] border-l-[6px] border-y-transparent border-l-[#0b2c5f]" />
             </span>
@@ -58,7 +58,7 @@ function FeaturedCard({ post, fallbackImage, fallbackAlt }) {
         ) : null}
         <a
           href={`#/${post.slug}`}
-          className="mt-6 block rounded-md bg-white py-4 text-center text-base font-medium text-[#29b2fe] shadow-sm transition-colors hover:text-[#0693e3]"
+          className="mt-6 block rounded-md bg-white py-4 text-center text-base font-medium text-[#29b2fe] shadow-sm transition-colors hover:text-brand-ink"
         >
           Read more
         </a>
@@ -77,7 +77,7 @@ function MiniCard({ post, fallbackImage, fallbackAlt, delay }) {
       <InsightPhoto post={post} fallbackImage={fallbackImage} fallbackAlt={fallbackAlt} aspect="aspect-[16/9]" />
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-[17px] font-bold leading-snug text-[#0b2c5f]">
-          <a href={`#/${post.slug}`} className="transition-colors hover:text-[#0693e3]">
+          <a href={`#/${post.slug}`} className="transition-colors hover:text-brand-ink">
             {post.title}
           </a>
         </h3>
@@ -124,7 +124,7 @@ export default function InsightsSection() {
         <Reveal variant="fade" className="mx-auto mt-12 max-w-3xl text-center">
           <p className="text-[15px] text-[#5b6b7f]">
             Insights to help you do what you do better, faster and more profitably.{' '}
-            <a href="#/blog" className="font-medium text-[#0b2c5f] underline decoration-[#0b2c5f]/30 underline-offset-4 transition-colors hover:text-[#0693e3]">
+            <a href="#/blog" className="font-medium text-[#0b2c5f] underline decoration-[#0b2c5f]/30 underline-offset-4 transition-colors hover:text-brand-ink">
               View all article
             </a>
           </p>

@@ -51,7 +51,7 @@ export default function Footer() {
             {channels.length ? (
               <div className="mt-5 flex items-center gap-3">
                 {channels.map((c) => (
-                  <a key={c.network + c.href} href={c.href} aria-label={c.label} className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-shell-red active:scale-95">
+                  <a key={c.network + c.href} href={c.href} aria-label={c.label} className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-ink active:scale-95">
                     {c.icon ? (
                       <img src={c.icon} alt="" className="h-5 w-5 object-contain" />
                     ) : (

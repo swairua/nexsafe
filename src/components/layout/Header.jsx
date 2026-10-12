@@ -72,7 +72,7 @@ export default function Header({ overlay = false }) {
               className={`relative flex items-center gap-1.5 rounded-md px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                 openMenu === i
                   ? 'text-shell-red'
-                  : 'text-shell-gray-900 hover:text-shell-red'
+                  : 'text-shell-gray-900 hover:text-brand-ink'
               }`}
             >
               {item.label}
@@ -97,7 +97,7 @@ export default function Header({ overlay = false }) {
             onClick={() => { setSearchOpen((s) => !s); setOpenMenu(null) }}
             aria-label={uiLabels.search}
             aria-expanded={searchOpen}
-            className="rounded-full p-2.5 text-shell-gray-900 transition-colors hover:bg-shell-gray-100 hover:text-shell-red"
+            className="rounded-full p-2.5 text-shell-gray-900 transition-colors hover:bg-shell-gray-100 hover:text-brand-ink"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
@@ -107,7 +107,7 @@ export default function Header({ overlay = false }) {
 
           <a
             href={settings.menuCta.href}
-            className="hidden rounded-full bg-shell-red px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-shell-red/90 md:inline-flex"
+            className="hidden rounded-full bg-shell-red px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-ink/90 md:inline-flex"
           >
             {settings.menuCta.label}
           </a>
