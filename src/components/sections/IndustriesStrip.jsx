@@ -74,8 +74,8 @@ export default function IndustriesStrip() {
       id={sectionIds.industries}
       className="relative isolate overflow-hidden bg-white py-20 md:py-28"
     >
-      <span aria-hidden="true" className="pointer-events-none absolute -right-24 top-[22%] -z-10 h-80 w-80 rounded-full bg-brand-ink/20 blur-3xl" />
-      <span aria-hidden="true" className="pointer-events-none absolute -left-24 bottom-[18%] -z-10 h-80 w-80 rounded-full bg-shell-red/20 blur-3xl" />
+      <span aria-hidden="true" className="pointer-events-none absolute -right-24 top-[22%] -z-10 h-80 w-80 rounded-full bg-brand-ink/50 blur-2xl" />
+      <span aria-hidden="true" className="pointer-events-none absolute -left-24 bottom-[18%] -z-10 h-80 w-80 rounded-full bg-shell-cyan/45 blur-2xl" />
       <div className="shell-container">
         <div className="grid items-end gap-6 lg:grid-cols-2 lg:gap-12">
           <Reveal variant="fade">
@@ -112,38 +112,42 @@ export default function IndustriesStrip() {
           </Reveal>
         </div>
 
-        <div
-          ref={trackRef}
-          role="region"
-          aria-roledescription="carousel"
-          aria-label={industriesStrip.title}
-          tabIndex={0}
-          className="no-scrollbar -mx-1 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
-        >
-          {(industriesStrip.items || []).map((item, idx) => (
-            <Reveal
-              key={item.label}
-              delay={(idx % 5) + 1}
-              className="w-[68%] shrink-0 snap-start sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(20%-16px)]"
-            >
-              <a
-                href={item.href}
-                className="group flex h-full min-h-[15rem] flex-col items-center glass-brand rounded-2xl border border-white/20 px-6 py-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
+        <div className="relative isolate mt-10">
+          <span aria-hidden="true" className="pointer-events-none absolute -left-10 top-4 -z-10 h-72 w-72 rounded-full bg-brand-ink/55 blur-2xl" />
+          <span aria-hidden="true" className="pointer-events-none absolute right-[12%] bottom-0 -z-10 h-64 w-64 rounded-full bg-shell-cyan/50 blur-2xl" />
+          <div
+            ref={trackRef}
+            role="region"
+            aria-roledescription="carousel"
+            aria-label={industriesStrip.title}
+            tabIndex={0}
+            className="no-scrollbar -mx-1 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
+          >
+            {(industriesStrip.items || []).map((item, idx) => (
+              <Reveal
+                key={item.label}
+                delay={(idx % 5) + 1}
+                className="w-[68%] shrink-0 snap-start sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(20%-16px)]"
               >
-                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white transition-colors duration-300 group-hover:bg-white/90">
-                  <IndustryIcon icon={item.icon} label={item.label} />
-                </span>
-                <span className="mt-5 text-base font-bold text-white">
-                  {item.label}
-                </span>
-                {item.note ? (
-                  <span className="mt-2 text-sm leading-relaxed text-white/80">
-                    {item.note}
+                <a
+                  href={item.href}
+                  className="group flex h-full min-h-[15rem] flex-col items-center glass-brand rounded-2xl border border-white/25 px-6 py-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
+                >
+                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white transition-colors duration-300 group-hover:bg-white/90">
+                    <IndustryIcon icon={item.icon} label={item.label} />
                   </span>
-                ) : null}
-              </a>
-            </Reveal>
-          ))}
+                  <span className="mt-5 text-base font-bold text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">
+                    {item.label}
+                  </span>
+                  {item.note ? (
+                    <span className="mt-2 text-sm leading-relaxed text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">
+                      {item.note}
+                    </span>
+                  ) : null}
+                </a>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         <div className="mt-20 md:mt-24">
@@ -155,7 +159,10 @@ export default function IndustriesStrip() {
               {caseCards.title}
             </h3>
           </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="relative isolate mt-10">
+          <span aria-hidden="true" className="pointer-events-none absolute -right-12 -top-8 -z-10 h-72 w-72 rounded-full bg-shell-cyan/50 blur-2xl" />
+          <span aria-hidden="true" className="pointer-events-none absolute -left-12 bottom-0 -z-10 h-64 w-64 rounded-full bg-brand-ink/55 blur-2xl" />
+          <div className="grid gap-6 md:grid-cols-3">
             {(caseCards.items || []).map((card, idx) => (
               <Reveal key={card.title + idx} variant="up" delay={idx + 1}>
                 <a
@@ -172,7 +179,7 @@ export default function IndustriesStrip() {
                       {card.brand}
                       <span className="text-shell-yellow">.</span>
                     </span>
-                    <span className="mt-2 max-w-[16rem] text-sm font-semibold leading-snug text-white/85 md:text-base">
+                    <span className="mt-2 max-w-[16rem] text-sm font-semibold leading-snug text-white md:text-base [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">
                       {card.title}
                     </span>
                     <span className="mt-auto inline-flex items-center gap-2 pt-5 text-xs font-bold uppercase tracking-[0.18em] text-white">
@@ -182,6 +189,7 @@ export default function IndustriesStrip() {
                 </a>
               </Reveal>
             ))}
+          </div>
           </div>
         </div>
       </div>

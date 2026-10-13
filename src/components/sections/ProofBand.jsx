@@ -133,7 +133,7 @@ export default function ProofBand() {
 
         {certs.length ? (
           <div className="relative isolate mt-8">
-            <span aria-hidden="true" className="pointer-events-none absolute -inset-x-2 -inset-y-6 -z-10 rounded-[2rem] bg-gradient-to-r from-brand-ink/20 via-shell-red/10 to-brand-ink/20 blur-2xl" />
+            <span aria-hidden="true" className="pointer-events-none absolute -inset-x-2 -inset-y-6 -z-10 rounded-[2rem] bg-gradient-to-r from-brand-ink/75 via-shell-cyan/50 to-brand-ink/75 blur-2xl" />
             <ul className="flex flex-wrap items-stretch justify-center gap-3">
               {certs.map((c, i) => (
                 <Reveal
@@ -143,7 +143,7 @@ export default function ProofBand() {
                   className="glass-light flex min-w-[12rem] flex-1 flex-col items-center rounded-xl border border-white/80 px-5 py-4 text-center shadow-[0_14px_36px_-16px_rgba(14,17,20,0.25)] sm:flex-none sm:basis-56"
                 >
                   <span className="text-base font-extrabold tracking-tight text-shell-gray-900">{c.name}</span>
-                  <span className="mt-1 text-xs text-shell-gray-500">{c.note}</span>
+                  <span className="mt-1 text-xs text-shell-gray-700">{c.note}</span>
                 </Reveal>
               ))}
             </ul>

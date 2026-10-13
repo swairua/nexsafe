@@ -8,8 +8,8 @@ export default function IntroBand() {
   return (
     <>
     <section id={sectionIds.company} className="relative isolate overflow-hidden bg-white pb-14 md:pb-20">
-      <span aria-hidden="true" className="pointer-events-none absolute -left-24 top-[30%] -z-10 h-80 w-80 rounded-full bg-brand-ink/20 blur-3xl" />
-      <span aria-hidden="true" className="pointer-events-none absolute -right-24 bottom-[12%] -z-10 h-80 w-80 rounded-full bg-shell-red/20 blur-3xl" />
+      <span aria-hidden="true" className="pointer-events-none absolute -left-24 top-[30%] -z-10 h-80 w-80 rounded-full bg-brand-ink/50 blur-2xl" />
+      <span aria-hidden="true" className="pointer-events-none absolute -right-24 bottom-[12%] -z-10 h-80 w-80 rounded-full bg-shell-cyan/45 blur-2xl" />
       <div className="shell-container grid gap-8 px-6 pb-28 pt-14 md:grid-cols-2 md:gap-16 md:pb-36 md:pt-20">
         <Reveal delay={1} variant="fade">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">{introBand.eyebrow}</p>
@@ -33,14 +33,18 @@ export default function IntroBand() {
             </Reveal>
           ))}
         </div>
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 md:mt-16">
-          {benefits.map((benefit, idx) => (
-            <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="glass-brand rounded-2xl border border-white/20 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_18px_40px_-16px_rgba(1,116,164,0.7)]">
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-white">{benefit.title}</p>
-              <div className="mt-3 text-sm leading-relaxed text-white/85"><Rich as="p">{benefit.text}</Rich></div>
-            </Reveal>
-          ))}
-        </ul>
+        <div className="relative isolate mt-12 md:mt-16">
+          <span aria-hidden="true" className="pointer-events-none absolute -left-16 -top-6 -z-10 h-64 w-64 rounded-full bg-brand-ink/55 blur-2xl" />
+          <span aria-hidden="true" className="pointer-events-none absolute -right-16 bottom-0 -z-10 h-64 w-64 rounded-full bg-shell-cyan/50 blur-2xl" />
+          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {benefits.map((benefit, idx) => (
+              <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="glass-brand rounded-2xl border border-white/25 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_18px_40px_-16px_rgba(1,116,164,0.7)]">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">{benefit.title}</p>
+                <div className="mt-3 text-sm leading-relaxed text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]"><Rich as="p">{benefit.text}</Rich></div>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
     <div className="shell-container max-w-4xl flex justify-center py-10 md:py-12">

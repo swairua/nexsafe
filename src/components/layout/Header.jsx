@@ -53,7 +53,7 @@ export default function Header({ overlay = false }) {
       ref={headerRef}
       className={`sticky top-0 z-50 border-b border-shell-gray-100 transition-[background-color,box-shadow] duration-300 ${
         scrolled
-          ? 'bg-white/80 shadow-[0_4px_20px_-8px_rgba(11,27,43,0.15)] backdrop-blur-xl'
+          ? 'glass-header shadow-[0_4px_20px_-8px_rgba(11,27,43,0.15)]'
           : 'bg-white shadow-none'
       }`}
     >
