@@ -19,7 +19,7 @@ export default function NoticeBar() {
     setDismissed(true)
   }
   const isInfo = noticeBar.type === 'info'
-  const bgClass = isInfo ? 'bg-shell-yellow-100' : 'bg-shell-black'
+  const bgClass = isInfo ? 'bg-shell-yellow-100' : 'bg-brand-ink/90 backdrop-blur-sm'
   const plainText = isInfo ? 'text-shell-gray-900' : 'text-white'
   const linkText = isInfo
     ? 'text-shell-gray-900 hover:text-shell-black'

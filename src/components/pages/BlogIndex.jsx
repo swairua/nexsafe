@@ -94,7 +94,7 @@ export default function BlogIndex({ page, topic }) {
   const fallbackAlt = typeof categoryRaw === 'string' ? '' : ((categoryRaw && categoryRaw.alt) || '')
   return (
     <article>
-      <section className="relative overflow-hidden bg-shell-black text-white">
+      <section className="relative overflow-hidden bg-brand-ink text-white">
         <div
           className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-shell-red/20 blur-3xl"
           aria-hidden="true"

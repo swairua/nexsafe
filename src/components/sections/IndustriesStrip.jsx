@@ -1,4 +1,4 @@
-﻿import { useRef } from 'react'
+import { useRef } from 'react'
 import Reveal from '../ui/Reveal.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
@@ -16,8 +16,8 @@ function IndustryIcon({ icon, label }) {
     fill: 'none',
     'aria-hidden': 'true',
   }
-  const bright = '#24ccfd'
-  const pale = '#8fc3e0'
+  const bright = '#0693e3'
+  const pale = '#0a1440'
   if (icon === 'truck') {
     return (
       <svg {...common}>
@@ -72,21 +72,23 @@ export default function IndustriesStrip() {
   return (
     <section
       id={sectionIds.industries}
-      className="bg-shell-black py-20 md:py-28"
+      className="relative isolate overflow-hidden bg-white py-20 md:py-28"
     >
+      <span aria-hidden="true" className="pointer-events-none absolute -right-24 top-[22%] -z-10 h-80 w-80 rounded-full bg-brand-ink/50 blur-2xl" />
+      <span aria-hidden="true" className="pointer-events-none absolute -left-24 bottom-[18%] -z-10 h-80 w-80 rounded-full bg-shell-cyan/45 blur-2xl" />
       <div className="shell-container">
         <div className="grid items-end gap-6 lg:grid-cols-2 lg:gap-12">
           <Reveal variant="fade">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-shell-yellow">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">
               {industriesStrip.tag}
             </p>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
               {industriesStrip.title}
             </h2>
           </Reveal>
 
           <Reveal delay={2} className="flex flex-wrap items-end justify-between gap-4 lg:justify-end">
-            <p className="max-w-xl text-base leading-relaxed text-white/70">
+            <p className="max-w-xl text-base leading-relaxed text-shell-gray-700">
               {industriesStrip.text}
             </p>
             <div className="flex gap-2">
@@ -94,7 +96,7 @@ export default function IndustriesStrip() {
                 type="button"
                 onClick={() => nudge(-1)}
                 aria-label="Scroll industries left"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-shell-yellow hover:text-shell-yellow active:scale-95"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95"
               >
                 <span aria-hidden="true">←</span>
               </button>
@@ -102,7 +104,7 @@ export default function IndustriesStrip() {
                 type="button"
                 onClick={() => nudge(1)}
                 aria-label="Scroll industries right"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-shell-yellow hover:text-shell-yellow active:scale-95"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95"
               >
                 <span aria-hidden="true">→</span>
               </button>
@@ -110,75 +112,96 @@ export default function IndustriesStrip() {
           </Reveal>
         </div>
 
-        <div
-          ref={trackRef}
-          role="region"
-          aria-roledescription="carousel"
-          aria-label={industriesStrip.title}
-          tabIndex={0}
-          className="no-scrollbar -mx-1 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
-        >
-          {(industriesStrip.items || []).map((item, idx) => (
-            <Reveal
-              key={item.label}
-              delay={(idx % 5) + 1}
-              className="w-[68%] shrink-0 snap-start sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(20%-16px)]"
-            >
-              <a
-                href={item.href}
-                className="group flex h-full min-h-[15rem] flex-col items-center rounded-lg border border-white/10 bg-white/[0.03] px-6 py-8 text-center transition-colors duration-300 hover:border-shell-yellow/60 hover:bg-white/[0.06]"
+        <div className="relative isolate mt-10">
+          <span aria-hidden="true" className="pointer-events-none absolute -left-10 top-4 -z-10 h-72 w-72 rounded-full bg-brand-ink/55 blur-2xl" />
+          <span aria-hidden="true" className="pointer-events-none absolute right-[12%] bottom-0 -z-10 h-64 w-64 rounded-full bg-shell-cyan/50 blur-2xl" />
+          <div
+            ref={trackRef}
+            role="region"
+            aria-roledescription="carousel"
+            aria-label={industriesStrip.title}
+            tabIndex={0}
+            className="no-scrollbar -mx-1 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
+          >
+            {(industriesStrip.items || []).map((item, idx) => (
+              <Reveal
+                key={item.label}
+                delay={(idx % 5) + 1}
+                className="w-[68%] shrink-0 snap-start sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] xl:w-[calc(20%-16px)]"
               >
-                <IndustryIcon icon={item.icon} label={item.label} />
-                <span className="mt-5 text-base font-bold text-white">
-                  {item.label}
-                </span>
-                {item.note ? (
-                  <span className="mt-2 text-sm leading-relaxed text-white/60">
-                    {item.note}
+                <a
+                  href={item.href}
+                  className="group flex h-full min-h-[15rem] flex-col items-center glass-brand rounded-2xl border border-white/40 bg-[rgba(1,90,128,0.6)] px-6 py-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
+                >
+                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white transition-colors duration-300 group-hover:bg-white/90">
+                    <IndustryIcon icon={item.icon} label={item.label} />
                   </span>
-                ) : null}
-              </a>
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="bg-white py-14 md:py-16">
-          <div className="shell-container">
-            <Reveal variant="fade" className="text-center">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-shell-yellow">
-                {caseCards.tag}
-              </p>
-              <h3 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl">
-                {caseCards.title}
-              </h3>
-            </Reveal>
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              {(caseCards.items || []).map((card, idx) => (
-                <Reveal key={card.title + idx} variant="up" delay={idx + 1}>
-                  <a
-                    href={card.href}
-                    className="group relative flex h-full min-h-[19rem] flex-col justify-end overflow-hidden rounded-xl p-6 text-left shadow-[0_18px_36px_-20px_rgba(14,17,20,0.3)] md:min-h-[21rem] md:p-7"
-                  >
-                    <SmartImage src={card.image} alt="" aria-hidden="true" fallback={card.fallback || card.tint} className="absolute inset-0 h-full w-full" />
-                    <span aria-hidden="true" className="absolute inset-0" style={{ backgroundColor: card.tint, opacity: 0.28, mixBlendMode: 'multiply' }} />
-                    <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-                    <span className="relative text-2xl font-extrabold lowercase tracking-tight text-shell-gray-900 md:text-[1.7rem]">
-                      {card.brand}
-                      <span className="text-shell-yellow">.</span>
+                  <span className="mt-5 text-base font-bold text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">
+                    {item.label}
+                  </span>
+                  {item.note ? (
+                    <span className="mt-2 text-sm leading-relaxed text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">
+                      {item.note}
                     </span>
-                    <span className="relative mt-2 max-w-[16rem] text-sm font-semibold leading-snug text-shell-gray-700 md:text-base">
-                      {card.title}
-                    </span>
-                    <span className="relative mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-shell-red transition-colors group-hover:text-shell-yellow">
-                      Read story <span aria-hidden="true">→</span>
-                    </span>
-                  </a>
-                </Reveal>
-              ))}
-            </div>
+                  ) : null}
+                </a>
+              </Reveal>
+            ))}
           </div>
         </div>
 
+        <div className="mt-20 md:mt-24">
+          <Reveal variant="fade">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">
+              {caseCards.tag}
+            </p>
+            <h3 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl">
+              {caseCards.title}
+            </h3>
+          </Reveal>
+          <div className="relative isolate mt-10">
+          <span aria-hidden="true" className="pointer-events-none absolute -right-12 -top-8 -z-10 h-72 w-72 rounded-full bg-shell-cyan/50 blur-2xl" />
+          <span aria-hidden="true" className="pointer-events-none absolute -left-12 bottom-0 -z-10 h-64 w-64 rounded-full bg-brand-ink/55 blur-2xl" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {(caseCards.items || []).map((card, idx) => (
+              <Reveal key={card.title + idx} variant="up" delay={idx + 1}>
+                <a
+                  href={card.href}
+                  className="group flex h-full flex-col overflow-hidden glass-brand rounded-2xl border border-white/40 bg-[rgba(1,90,128,0.6)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
+                >
+                  <div className="relative aspect-[16/10] w-full overflow-hidden">
+                    <SmartImage src={card.image} alt="" aria-hidden="true" fallback={card.fallback || card.tint} className="absolute inset-0 h-full w-full" imgClassName="transition-transform duration-500 group-hover:scale-105" />
+                    <span aria-hidden="true" className="absolute inset-0" style={{ backgroundColor: card.tint, opacity: 0.28, mixBlendMode: 'multiply' }} />
+                    <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6 md:p-7">
+                    {card.industry ? (
+                      <span className="mb-3 inline-flex w-fit rounded-full bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white">
+                        {card.industry}
+                      </span>
+                    ) : null}
+                    <span className="text-2xl font-extrabold lowercase tracking-tight text-white md:text-[1.7rem]">
+                      {card.brand}
+                      <span className="text-shell-yellow">.</span>
+                    </span>
+                    <span className="mt-2 max-w-[16rem] text-sm font-semibold leading-snug text-white md:text-base [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">
+                      {card.title}
+                    </span>
+                    <span className="mt-auto inline-flex items-center gap-2 pt-5 text-xs font-bold uppercase tracking-[0.18em] text-white">
+                      Read story <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </span>
+                  </div>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+          </div>
+          {caseCards.cta ? (
+            <a href={caseCards.cta.href} className="arrow-link mt-10 inline-block">
+              {caseCards.cta.label} <span className="arrow">→</span>
+            </a>
+          ) : null}
+        </div>
       </div>
     </section>
   )
