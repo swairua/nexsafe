@@ -29,8 +29,8 @@ function InsightPhoto({ post, fallbackImage, fallbackAlt, aspect }) {
         className={`${aspect} w-full`}
         imgClassName="grayscale"
       />
-      <span aria-hidden="true" className="absolute inset-0 bg-[#0a2a5e] opacity-25 mix-blend-multiply" />
-      <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0a2a5e]/35 via-transparent to-transparent" />
+      <span aria-hidden="true" className="absolute inset-0 bg-brand-ink opacity-25 mix-blend-multiply" />
+      <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-ink/35 via-transparent to-transparent" />
       <Byline />
     </span>
   )

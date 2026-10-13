@@ -4,10 +4,10 @@ import { blogIndex } from './posts.js'
 export { blogIndex }
 
 const navyScrim =
-  'linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)'
-const navyFallback = 'linear-gradient(135deg, #070e40 0%, #010ed0 130%)'
-const navyFallbackSoft = 'linear-gradient(135deg, #070e40 0%, #0693e3 130%)'
-const navyTile = 'linear-gradient(135deg, #070e40 0%, #010ed0 140%)'
+  'linear-gradient(90deg, rgba(1,116,164,.86) 0%, rgba(1,116,164,.45) 60%, rgba(1,116,164,.16) 100%)'
+const navyFallback = 'linear-gradient(135deg, #0174a4 0%, #0693e3 130%)'
+const navyFallbackSoft = 'linear-gradient(135deg, #0174a4 0%, #29b2fe 130%)'
+const navyTile = 'linear-gradient(135deg, #0174a4 0%, #0693e3 140%)'
 
 export const heroSlides = [
   {

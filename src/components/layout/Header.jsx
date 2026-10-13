@@ -51,8 +51,10 @@ export default function Header({ overlay = false }) {
   return (
     <header
       ref={headerRef}
-      className={`sticky top-0 z-50 bg-white border-b border-shell-gray-100 transition-shadow duration-300 ${
-        scrolled ? 'shadow-[0_4px_20px_-8px_rgba(11,27,43,0.15)]' : 'shadow-none'
+      className={`sticky top-0 z-50 border-b border-shell-gray-100 transition-[background-color,box-shadow] duration-300 ${
+        scrolled
+          ? 'glass-header shadow-[0_4px_20px_-8px_rgba(11,27,43,0.15)]'
+          : 'bg-white shadow-none'
       }`}
     >
       <NoticeBar />
