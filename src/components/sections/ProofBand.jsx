@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
@@ -106,26 +106,26 @@ export default function ProofBand() {
   if (!stats.length && !certs.length && !badges.length) return null
 
   return (
-    <section className="bg-shell-black py-20 md:py-28">
+    <section className="bg-shell-gray-100 py-20 md:py-28">
       <div className="shell-container">
         <Reveal variant="fade" className="max-w-3xl">
-          <SectionTag light>{copy.tag}</SectionTag>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+          <SectionTag>{copy.tag}</SectionTag>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
             {copy.title}
           </h2>
-          <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg"><Rich as="p">{copy.text}</Rich></div>
+          <div className="mt-4 max-w-2xl text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{copy.text}</Rich></div>
         </Reveal>
 
         {stats.length ? (
           <div className="stats-grid mt-10">
             {stats.map((s, i) => (
               <div key={s.label + i} className="text-center">
-                <div className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+                <div className="text-3xl font-extrabold tracking-tight text-shell-gray-900 md:text-4xl">
                   <Reveal variant="fade" delay={i + 1}>
                     <CountUp value={s.value} />
                   </Reveal>
                 </div>
-                <dt className="mt-1 text-xs font-semibold uppercase tracking-wider text-white/60">{s.label}</dt>
+                <dt className="mt-1 text-xs font-semibold uppercase tracking-wider text-shell-gray-500">{s.label}</dt>
               </div>
             ))}
           </div>
@@ -138,10 +138,10 @@ export default function ProofBand() {
                 key={c.name + i}
                 as="li"
                 delay={i + 1}
-                className="flex min-w-[12rem] flex-1 flex-col items-center rounded-xl bg-white/10 px-5 py-4 text-center sm:flex-none sm:basis-56"
+                className="flex min-w-[12rem] flex-1 flex-col items-center rounded-xl border border-shell-gray-300 bg-white px-5 py-4 text-center shadow-[0_14px_36px_-16px_rgba(14,17,20,0.25)] sm:flex-none sm:basis-56"
               >
-                <span className="text-base font-extrabold tracking-tight text-white">{c.name}</span>
-                <span className="mt-1 text-xs text-white/60">{c.note}</span>
+                <span className="text-base font-extrabold tracking-tight text-shell-gray-900">{c.name}</span>
+                <span className="mt-1 text-xs text-shell-gray-500">{c.note}</span>
               </Reveal>
             ))}
           </ul>
@@ -156,7 +156,7 @@ export default function ProofBand() {
                   type="button"
                   onClick={() => scrollBy(-1)}
                   aria-label="Previous awards"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-shell-gray-900 transition-colors hover:border-shell-yellow hover:text-shell-yellow"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 text-shell-gray-900 transition-colors hover:border-brand-ink hover:text-brand-ink"
                 >
                   <span aria-hidden="true">←</span>
                 </button>
@@ -164,7 +164,7 @@ export default function ProofBand() {
                   type="button"
                   onClick={() => scrollBy(1)}
                   aria-label="Next awards"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-shell-gray-900 transition-colors hover:border-shell-yellow hover:text-shell-yellow"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 text-shell-gray-900 transition-colors hover:border-brand-ink hover:text-brand-ink"
                 >
                   <span aria-hidden="true">→</span>
                 </button>
