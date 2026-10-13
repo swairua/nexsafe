@@ -2,9 +2,9 @@
 
 @theme {
 
-  --color-shell-red: #0693e3;
+  --color-shell-red: #0174a4;
   --color-shell-red-dark: #010ed0;
-  --color-shell-green: #0693e3;
+  --color-shell-green: #0174a4;
   --color-shell-green-dark: #010ed0;
   --color-shell-yellow: #4aeadc;
   --color-shell-cyan: #00a1e0;
@@ -103,7 +103,7 @@
     color: #fff;
   }
   .btn-pill--primary:hover {
-    background: var(--color-brand-ink);
+    background: var(--color-shell-gray-900);
     box-shadow: 0 10px 22px -8px rgba(1, 116, 164, 0.55);
   }
 
@@ -134,7 +134,7 @@
     color: #fff;
   }
   .btn-pill--green:hover {
-    background: var(--color-brand-ink);
+    background: var(--color-shell-gray-900);
     box-shadow: 0 10px 22px -8px rgba(1, 116, 164, 0.55);
   }
 

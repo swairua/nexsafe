@@ -28,8 +28,8 @@ export default function Footer() {
   return (
     <footer className="bg-brand-ink text-white">
       <div className="shell-container py-12 md:py-16">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8 md:grid-cols-3 lg:grid-cols-6">
-          <Reveal variant="up" className="col-span-2 md:col-span-3 lg:col-span-1">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-x-8 md:grid-cols-3 lg:grid-cols-6">
+          <Reveal variant="up" className="md:col-span-3 lg:col-span-1">
             <a href="#top" className="inline-flex items-center gap-3" aria-label={settings.brandName + " home"}>
               <NexsateLogo className="h-6 md:h-7" plateClassName="px-3 py-2" src={settings.logo} alt={settings.logoAlt || settings.brandName} />
             </a>
@@ -49,7 +49,7 @@ export default function Footer() {
               </ul>
             ) : null}
             {channels.length ? (
-              <div className="mt-5 flex items-center gap-3">
+              <div className="mt-5 flex flex-wrap items-center gap-3">
                 {channels.map((c) => (
                   <a key={c.network + c.href} href={c.href} aria-label={c.label} className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-ink active:scale-95">
                     {c.icon ? (

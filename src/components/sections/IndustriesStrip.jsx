@@ -131,7 +131,7 @@ export default function IndustriesStrip() {
               >
                 <a
                   href={item.href}
-                  className="group flex h-full min-h-[15rem] flex-col items-center glass-brand rounded-2xl border border-white/25 px-6 py-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
+                  className="group flex h-full min-h-[15rem] flex-col items-center glass-brand rounded-2xl border border-white/40 bg-[rgba(1,90,128,0.6)] px-6 py-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
                 >
                   <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white transition-colors duration-300 group-hover:bg-white/90">
                     <IndustryIcon icon={item.icon} label={item.label} />
@@ -167,7 +167,7 @@ export default function IndustriesStrip() {
               <Reveal key={card.title + idx} variant="up" delay={idx + 1}>
                 <a
                   href={card.href}
-                  className="group flex h-full flex-col overflow-hidden glass-brand rounded-2xl border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
+                  className="group flex h-full flex-col overflow-hidden glass-brand rounded-2xl border border-white/40 bg-[rgba(1,90,128,0.6)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden">
                     <SmartImage src={card.image} alt="" aria-hidden="true" fallback={card.fallback || card.tint} className="absolute inset-0 h-full w-full" imgClassName="transition-transform duration-500 group-hover:scale-105" />
@@ -175,6 +175,11 @@ export default function IndustriesStrip() {
                     <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                   </div>
                   <div className="flex flex-1 flex-col p-6 md:p-7">
+                    {card.industry ? (
+                      <span className="mb-3 inline-flex w-fit rounded-full bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white">
+                        {card.industry}
+                      </span>
+                    ) : null}
                     <span className="text-2xl font-extrabold lowercase tracking-tight text-white md:text-[1.7rem]">
                       {card.brand}
                       <span className="text-shell-yellow">.</span>
@@ -191,6 +196,11 @@ export default function IndustriesStrip() {
             ))}
           </div>
           </div>
+          {caseCards.cta ? (
+            <a href={caseCards.cta.href} className="arrow-link mt-10 inline-block">
+              {caseCards.cta.label} <span className="arrow">→</span>
+            </a>
+          ) : null}
         </div>
       </div>
     </section>

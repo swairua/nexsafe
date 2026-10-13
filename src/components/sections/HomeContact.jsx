@@ -8,19 +8,22 @@ export default function HomeContact() {
   const { homeContact, contactForm } = useContent()
   const copy = homeContact || {}
   const details = useContactDetails()
+  const hasHeader = Boolean(copy.tag || copy.title)
   return (
     <section className="bg-shell-gray-100">
-      <div className="shell-container py-16 md:py-24">
-        <Reveal variant="fade">
-          {copy.tag && <SectionTag>{copy.tag}</SectionTag>}
-          {copy.title && (
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-              {copy.title}
-            </h2>
-          )}
-        </Reveal>
-        <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
-          <Reveal variant="up" className="space-y-8">
+      <div className={`shell-container pb-16 md:pb-24 ${hasHeader ? 'pt-16 md:pt-24' : ''}`}>
+        {hasHeader && (
+          <Reveal variant="fade">
+            {copy.tag && <SectionTag>{copy.tag}</SectionTag>}
+            {copy.title && (
+              <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
+                {copy.title}
+              </h2>
+            )}
+          </Reveal>
+        )}
+        <div className={`grid gap-10 lg:grid-cols-2 lg:gap-16 ${hasHeader ? 'mt-10' : ''}`}>
+          <Reveal variant="left" className="space-y-8">
             {copy.text && <p className="text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{copy.text}</Rich></p>}
             {copy.phoneLabel && contactForm.detailPhone && (
               <a href={"tel:" + String(contactForm.detailPhone || "").replace(/\s+/g, "")} className="inline-flex items-center rounded-lg bg-shell-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-shell-red">
@@ -42,17 +45,20 @@ export default function HomeContact() {
             )}
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-shell-gray-500">What happens next?</h3>
-              <div className="mt-4 grid grid-cols-3 gap-4">
-                {(copy.steps || []).map((s, i) => (
-                  <div key={i} className="text-center">
-                    <span className="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-shell-gray-900 text-sm font-semibold text-white">{i + 1}</span>
-                    <p className="mt-2 text-xs leading-snug text-shell-gray-600">{s}</p>
-                  </div>
+              <ol className="mt-6">
+                {(copy.steps || []).map((s, i, steps) => (
+                  <li key={i} className="relative flex gap-5 pb-8 last:pb-0">
+                    {i < steps.length - 1 && (
+                      <span aria-hidden="true" className="absolute left-5 top-10 bottom-0 w-px bg-shell-gray-300" />
+                    )}
+                    <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-shell-gray-900 text-base font-semibold text-white">{i + 1}</span>
+                    <p className="pt-2 text-base leading-relaxed text-shell-gray-700 md:text-lg">{s}</p>
+                  </li>
                 ))}
-              </div>
+              </ol>
             </div>
           </Reveal>
-          <Reveal variant="up" className="lg:pt-2">
+          <Reveal variant="right" className="lg:pt-2">
             <div className="rounded-2xl border border-shell-gray-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm md:p-8">
               <h3 className="text-lg font-bold tracking-tight text-shell-gray-900">Schedule a Free Consultation</h3>
               <ContactForm simple />

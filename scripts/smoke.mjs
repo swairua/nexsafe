@@ -104,8 +104,8 @@ try {
       'Form our blog',
       'More articles from resource library',
       'View all article',
-      'by Linethemes',
     ].every((t) => plain.includes(t)),
+    'homepage carries no Linethemes byline': !html.includes('Linethemes'),
     'homepage renders the technology stack': stackGroups.every((g) => plain.includes(g.title)),
     'homepage renders the technology strip (auto-scroll, logo slots, no disclaimer)':
       plain.includes('Using trusted technology to solve your IT challenges') &&
@@ -135,7 +135,7 @@ try {
     ),
     'registry has no duplicate slugs': Object.keys(pages).length === allPages.length,
     'theme: brand colour tokens in place':
-      css.includes('--color-shell-red: #0693e3') &&
+      css.includes('--color-shell-red: #0174a4') &&
       css.includes('--color-shell-red-dark: #010ed0'),
   }
 

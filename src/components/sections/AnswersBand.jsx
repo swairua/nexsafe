@@ -13,7 +13,7 @@ export default function AnswersBand() {
   return (
     <section id={sectionIds.support} className="bg-shell-gray-100 py-16 md:py-24">
       <div className="shell-container grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-        <Reveal variant="fade" className="lg:sticky lg:self-start lg:top-24">
+        <Reveal variant="left" className="lg:sticky lg:self-start lg:top-24">
           <span className="mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-shell-gray-900">
             {promo.tag}
           </span>
@@ -29,7 +29,7 @@ export default function AnswersBand() {
           ) : null}
         </Reveal>
         <div>
-          <Reveal variant="fade" className="mb-5">
+          <Reveal variant="right" className="mb-5">
             <SectionTag>{copy.tag}</SectionTag>
             <h3 className="mt-2 text-xl font-bold tracking-tight text-shell-gray-900 md:text-2xl">
               {copy.title}
