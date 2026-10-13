@@ -1,10 +1,9 @@
-import SectionTag, { Rich, RichText } from '../ui/SectionTag.jsx'
+import SectionTag, { RichText } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
 export default function AnswersBand() {
   const content = useContent()
-  const promo = content.promo || {}
   const copy = content.faqTeaser || {}
   const sectionIds = content.sectionIds || {}
   const faq = (content.pages || {})['help-and-faq']
@@ -12,22 +11,7 @@ export default function AnswersBand() {
   const items = (first && Array.isArray(first.items) ? first.items : []).slice(0, 5)
   return (
     <section id={sectionIds.support} className="bg-shell-gray-100 py-16 md:py-24">
-      <div className="shell-container grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-        <Reveal variant="left" className="lg:sticky lg:self-start lg:top-24">
-          <span className="mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-shell-gray-900">
-            {promo.tag}
-          </span>
-          <h2 className="max-w-xl text-2xl font-bold leading-tight tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-            {promo.title}
-          </h2>
-          <div className="mt-4 max-w-xl text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{promo.text}</Rich></div>
-          {promo.cta ? (
-            <a href={promo.cta.href} className="btn-pill mt-8 bg-white text-shell-gray-900 hover:bg-shell-gray-100">
-              {promo.cta.label}
-              <span aria-hidden="true">→</span>
-            </a>
-          ) : null}
-        </Reveal>
+      <div className="shell-container max-w-5xl">
         <div>
           <Reveal variant="right" className="mb-5">
             <SectionTag>{copy.tag}</SectionTag>
