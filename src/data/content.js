@@ -3,8 +3,6 @@ import { blogIndex } from './posts.js'
 
 export { blogIndex }
 
-const navyScrim =
-  'linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)'
 const navyFallback = 'linear-gradient(135deg, #070e40 0%, #0a1440 130%)'
 const navyFallbackSoft = 'linear-gradient(135deg, #070e40 0%, #0a1440 130%)'
 const navyTile = 'linear-gradient(135deg, #070e40 0%, #0a1440 140%)'
@@ -16,10 +14,9 @@ export const heroSlides = [
     title: 'We take care of your IT, so you can take care of your customers.',
     text: 'From everyday user support to proactive monitoring, maintenance, and security, Nexsate takes responsibility for keeping your IT environment running smoothly. We help resolve issues before they disrupt operations, giving your people the support they need to stay focused on their work.',
     cta: { label: 'Discover Our Services', href: pageHref('Services & Solutions') },
-    image: '/uploads/hero-docx-network-fiber.png',
-    alt: 'Fiber-optic network lights glowing behind a dark navy overlay',
-    gradient: navyScrim,
-    fallback: navyFallback,
+    image: '/uploads/hero-network-servers.jpg',
+    alt: 'Server racks glowing inside a modern data centre',
+    fallback: '#070e40',
   },
   {
     id: 'enable-transform-empower',
@@ -27,10 +24,9 @@ export const heroSlides = [
     title: 'Simplifying IT for a complex world',
     text: 'We believe technology should make business easier, safer, and more productive. At Nexsate, that belief shapes everything we do, from how we understand our customers\' needs to how we design, deliver, and support technology that works for their business.',
     cta: { label: 'Explore Services', href: pageHref('Services & Solutions') },
-    image: '/uploads/hero-docx-principle-desk.png',
-    alt: 'Hands sketching IT plans on paper with a laptop nearby',
-    gradient: navyScrim,
-    fallback: navyFallbackSoft,
+    image: '/uploads/contact-hero.jpg',
+    alt: 'Bright modern reception area with a visitor desk',
+    fallback: '#070e40',
   },
   {
     id: 'industry-focus',
@@ -38,10 +34,9 @@ export const heroSlides = [
     title: 'Technology solutions build around the industries we serve.',
     text: 'Different industries depend on technology in different ways. From keeping production systems connected to supporting healthcare teams and business-critical operations, Nexsate delivers IT solutions that reflect the demands, workflows, and priorities of each sector.',
     cta: { label: 'Explore Industries', href: pageHref('Services & Solutions') },
-    image: '/uploads/hero-docx-industry-support.png',
-    alt: 'Support specialist wearing a headset while assisting a client',
-    gradient: navyScrim,
-    fallback: navyTile,
+    image: '/uploads/industry-manufacturing-hero.jpg',
+    alt: 'Colleagues working together in a modern office',
+    fallback: '#070e40',
   },
 ]
 
@@ -288,7 +283,14 @@ export const homeContact = {
   title: '',
   text: '',
   phoneLabel: '',
-  benefits: [],
+  benefits: [
+    'Client-oriented',
+    'Independent',
+    'Competent',
+    'Results-driven',
+    'Problem-solving',
+    'Transparent',
+  ],
   steps: [
     'We Schedule a call at your convenience',
     'We do a discovery and consulting meeting',

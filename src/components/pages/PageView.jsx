@@ -84,14 +84,14 @@ export default function PageView({ page, slug, params }) {
             variant="fade"
             delay={1}
             aria-label={ui.breadcrumb}
-            className="flex flex-wrap items-center gap-2 text-sm text-white/60"
+            className="breadcrumb-nav flex w-fit max-w-full flex-wrap items-center gap-2 rounded-md bg-shell-black px-3 py-2 text-sm text-white"
           >
-            <a href={'#' + sectionIds.top} className="transition-colors hover:text-shell-yellow">
+            <a href={'#' + sectionIds.top} className="text-white transition-colors hover:text-shell-yellow">
               {labels.home}
             </a>
             <span aria-hidden="true">/</span>
             {sectionHref ? (
-              <a href={sectionHref} className="transition-colors hover:text-shell-yellow">
+              <a href={sectionHref} className="text-white transition-colors hover:text-shell-yellow">
                 {page.eyebrow}
               </a>
             ) : (
@@ -321,31 +321,45 @@ export default function PageView({ page, slug, params }) {
       )}
 
       {isContact ? (
-        <section id="contact-form" className="bg-white">
-          <div className="shell-container grid gap-10 py-16 md:py-24 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-            <ContactForm />
-            {details.length ? (
-              <div className="lg:pt-2">
-                <h2 className="text-lg font-bold tracking-tight text-shell-gray-900">{form.detailsHeading}</h2>
-                <ul className="mt-4 space-y-3">
-                  {details.map((d) => (
-                    <li key={d.label} className="rounded-xl border border-shell-gray-300 p-4">
-                      <span className="block text-xs font-semibold uppercase tracking-wide text-shell-gray-500">{d.label}</span>
-                      {d.href ? (
-                        <a href={d.href} className="mt-1 block text-sm font-medium text-shell-gray-900 underline-offset-2 hover:text-brand-ink hover:underline">{d.value}</a>
-                      ) : (
-                        <span className="mt-1 block text-sm font-medium text-shell-gray-900">{d.value}</span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+        <section id="contact-form" className="relative overflow-hidden bg-[#d5deef]">
+          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[266px] bg-shell-black" />
+          <div className="shell-container relative z-10 flex min-h-[266px] flex-col justify-end pb-7 pt-10">
+            <Reveal variant="fade">
+              <span className="mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-white">Contact Us</span>
+              <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl">{page.title}</h2>
+            </Reveal>
+          </div>
+          <div className="shell-container relative z-10 grid gap-10 pb-16 pt-7 md:pb-24 md:grid-cols-[1.25fr_1fr] md:gap-8 lg:gap-16">
+            <div>
+              <p className="max-w-xl text-base leading-relaxed text-shell-gray-900 md:text-lg">{page.intro}</p>
+              {details.length ? (
+                <div className="mt-8">
+                  <h3 className="text-sm font-semibold text-shell-gray-900">{form.detailsHeading}</h3>
+                  <ul className="mt-3 space-y-3">
+                    {details.map((d) => (
+                      <li key={d.label} className="text-sm text-shell-gray-700">
+                        <span className="font-semibold text-shell-gray-900">{d.label} </span>
+                        {d.href ? (
+                          <a href={d.href} className="underline-offset-2 hover:text-brand-ink hover:underline">{d.value}</a>
+                        ) : (
+                          <span>{d.value}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
+            <div className="md:-mt-[158px] md:w-full md:max-w-md md:justify-self-end">
+              <div className="rounded-sm border border-shell-gray-200 bg-white p-6 shadow-lg md:p-7">
+                <ContactForm />
               </div>
-            ) : null}
+            </div>
           </div>
         </section>
       ) : null}
 
-      <ConnectBand />
+      {!isContact && <ConnectBand />}
     </article>
   )
 }

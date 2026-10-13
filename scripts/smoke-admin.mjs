@@ -76,7 +76,9 @@ try {
       html = renderToString(React.createElement(FieldEditor, { name: key, value: content[key], onChange: () => {} }))
     } catch (e) { gradFails.push(`${key}: ${e.message}`); continue }
     if (/src="linear-gradient/i.test(html)) gradFails.push(`${key} renders a gradient as an image`)
-    if (!html.includes('linear-gradient')) gradFails.push(`${key} lost its gradient field`)
+    if (key === 'heroSlides' ? html.includes('linear-gradient') : !html.includes('linear-gradient')) {
+      gradFails.push(key === 'heroSlides' ? 'heroSlides retains gradient configuration' : `${key} lost its gradient field`)
+    }
   }
   check(gradFails.length === 0, 'gradients stay editable text and never become <img src>', gradFails.join(', '))
 

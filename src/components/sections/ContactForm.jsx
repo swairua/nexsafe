@@ -46,10 +46,10 @@ export default function ContactForm({ simple = false } = {}) {
   const F = "w-full rounded-lg border border-shell-gray-300 px-3 py-2 text-sm outline-none focus:border-shell-gray-900 focus:ring-1 focus:ring-shell-gray-900"
   const L = "block text-sm font-medium text-shell-gray-700"
   return (
-    <div className="mx-auto max-w-2xl">
-      <h2 className="text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl"><Rich>{contactForm.title}</Rich></h2>
+    <div className={simple ? "w-full" : "mx-auto max-w-2xl"}>
+      <h2 className={simple ? "text-center text-lg font-bold tracking-tight text-shell-gray-900" : "text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl"}><Rich>{contactForm.title}</Rich></h2>
       {contactForm.text ? <div className="mt-2 text-base text-shell-gray-600"><Rich as="p">{contactForm.text}</Rich></div> : null}
-      <form onSubmit={submit} className="mt-8 grid gap-4 sm:grid-cols-2">
+      <form onSubmit={submit} className={simple ? "mt-4 grid gap-4 sm:grid-cols-2" : "mt-8 grid gap-4 sm:grid-cols-2"}>
         <label className={L}>{contactForm.firstNameLabel}<input value={form.firstName} onChange={set("firstName")} className={F + " mt-1"} /></label>
         <label className={L}>{contactForm.lastNameLabel}<input value={form.lastName} onChange={set("lastName")} className={F + " mt-1"} /></label>
         <label className={L + " sm:col-span-2"}>{contactForm.companyLabel}<input value={form.company} onChange={set("company")} className={F + " mt-1"} /></label>
@@ -64,7 +64,7 @@ export default function ContactForm({ simple = false } = {}) {
             {priorities.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
           </select></label>
         )}
-        <label className={L + " sm:col-span-2"}>{contactForm.messageLabel}<textarea rows={5} value={form.message} onChange={set("message")} className={F + " mt-1"} /></label>
+        <label className={L + " sm:col-span-2"}>{contactForm.messageLabel}<textarea rows={5} value={form.message} onChange={set("message")} placeholder={contactForm.messagePlaceholder} className={F + " mt-1"} /></label>
         {!simple && (
           <label className="flex gap-3 text-sm leading-relaxed text-shell-gray-700 sm:col-span-2">
             <input type="checkbox" checked={form.consent} onChange={set("consent")} className="mt-1 h-4 w-4 shrink-0 accent-shell-red" />

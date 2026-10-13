@@ -20,14 +20,10 @@ function readChannels(settings, socialLinks) {
     .map((k) => ({ network: k, label: k.charAt(0).toUpperCase() + k.slice(1), href: legacy[k], icon: "" }))
 }
 
-// Docx homepage footer: white band, brand block left (logo mark, address,
-// P:/M: contact line, grey social glyphs), four link columns right with navy
-// headings. Matches `image24.png` (`rId29`) at the tail of homepage.docx.
 function contactLines(settings) {
-  const phone = settings.phone ? `P: ${settings.phone}` : ""
-  const email = settings.email ? `M: ${settings.email}` : ""
-  const joined = [phone, email].filter(Boolean).join("  |  ")
-  return { address: settings.address || "", joined, email }
+  const phone = settings.phone || ""
+  const email = settings.email || ""
+  return { address: settings.address || "", phone, email }
 }
 
 export default function Footer() {
@@ -36,43 +32,36 @@ export default function Footer() {
   const contact = contactLines(settings)
   return (
     <footer className="bg-white text-[#5a6b87]">
-      <div className="shell-container py-12 md:py-16">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8 md:grid-cols-3 lg:grid-cols-5">
-          <Reveal variant="up" className="col-span-2 md:col-span-3 lg:col-span-1">
+      <div className="shell-container py-8 md:py-10">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-x-8 lg:grid-cols-[minmax(220px,1.7fr)_repeat(4,minmax(0,1fr))] lg:gap-x-7">
+          <Reveal variant="up" className="col-span-2 sm:col-span-1">
             <a href="#top" className="inline-block" aria-label={settings.brandName + " home"}>
               <img
                 src={settings.logo}
                 alt={settings.logoAlt || settings.brandName}
                 width="1116"
                 height="140"
-                className="h-7 w-auto md:h-8"
+                className="h-8 w-auto"
               />
             </a>
             {contact.address ? (
-              <p className="mt-6 max-w-xs text-[0.95rem] leading-relaxed text-[#5a6b87]">{contact.address}</p>
+              <p className="mt-4 max-w-xs text-xs leading-relaxed text-[#5a6b87]">{contact.address}</p>
             ) : null}
-            {contact.joined ? (
-              <p className="mt-1 max-w-xs text-[0.95rem] leading-relaxed text-[#5a6b87]">
-                {contact.joined.split("  |  ").map((part, i) => (
-                  <span key={i}>
-                    {i > 0 ? <span className="mx-1 text-[#9fb0c7]">|</span> : null}
-                    {part.startsWith("M: ") && contact.email ? (
-                      <span>M: <a href={"mailto:" + contact.email} className="font-semibold text-[#0a2a5e] hover:text-brand-ink hover:underline">{contact.email}</a></span>
-                    ) : (
-                      <span>{part}</span>
-                    )}
-                  </span>
-                ))}
+            {contact.phone || contact.email ? (
+              <p className="mt-1 max-w-xs text-xs leading-relaxed text-[#5a6b87]">
+                {contact.phone ? <><span>P: </span><a href={`tel:${contact.phone}`} className="hover:text-brand-ink hover:underline">{contact.phone}</a></> : null}
+                {contact.phone && contact.email ? <span className="mx-1 text-[#9fb0c7]">|</span> : null}
+                {contact.email ? <><span>M: </span><a href={`mailto:${contact.email}`} className="hover:text-brand-ink hover:underline">{contact.email}</a></> : null}
               </p>
             ) : null}
             {channels.length ? (
-              <div className="mt-6 flex items-center gap-4 text-[#a9b7cf]">
+              <div className="mt-4 flex items-center gap-3 text-[#a9b7cf]">
                 {channels.map((c) => (
                   <a key={c.network + c.href} href={c.href} aria-label={c.label} className="transition-colors duration-200 hover:-translate-y-0.5 hover:text-brand-ink">
                     {c.icon ? (
-                      <img src={c.icon} alt="" className="h-6 w-6 object-contain" />
+                      <img src={c.icon} alt="" className="h-4 w-4 object-contain" />
                     ) : (
-                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
                         {socialIcons[c.network] || <circle cx="12" cy="12" r="5" />}
                       </svg>
                     )}
@@ -83,11 +72,11 @@ export default function Footer() {
           </Reveal>
           {footerColumns.map((col, i) => (
             <Reveal key={col.heading} delay={(i % 5) + 1} variant="up">
-              <h3 className="mb-4 text-[0.95rem] font-bold text-[#0a2a5e]">{col.heading}</h3>
-              <ul className="space-y-2.5">
+              <h3 className="mb-2 text-xs font-bold text-[#0a2a5e]">{col.heading}</h3>
+              <ul className="space-y-1.5">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} className="text-[0.95rem] text-[#5a6b87] underline-offset-2 hover:text-brand-ink hover:underline">{l.label}</a>
+                    <a href={l.href} className="text-xs text-[#5a6b87] underline-offset-2 hover:text-brand-ink hover:underline">{l.label}</a>
                   </li>
                 ))}
               </ul>
@@ -96,7 +85,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-[#e6ebf2]">
-        <div className="shell-container flex flex-col gap-4 py-6 text-xs text-[#8a99b5] md:flex-row md:items-center md:justify-between">
+        <div className="shell-container flex flex-col gap-3 py-4 text-[0.7rem] text-[#8a99b5] md:flex-row md:items-center md:justify-between">
           <p>{settings.copyright}</p>
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
             {footerLegal.map((l) => (

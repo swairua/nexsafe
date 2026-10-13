@@ -238,10 +238,9 @@
         "label": "Discover our services",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-docx-network-fiber.png",
-      "alt": "Fiber-optic network lights glowing behind a dark navy overlay",
-      "gradient": "linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)",
-      "fallback": "linear-gradient(135deg, #070e40 0%, #0a1440 130%)"
+      "image": "/uploads/hero-network-servers.jpg",
+      "alt": "Server racks glowing inside a modern data centre",
+      "fallback": "#070e40"
     },
     {
       "id": "principle",
@@ -252,10 +251,9 @@
         "label": "About Nexsate",
         "href": "#/about-us"
       },
-      "image": "/uploads/hero-docx-principle-desk.png",
-      "alt": "Hands sketching IT plans on paper with a laptop nearby",
-      "gradient": "linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)",
-      "fallback": "linear-gradient(135deg, #070e40 0%, #0a1440 130%)"
+      "image": "/uploads/contact-hero.jpg",
+      "alt": "Bright modern reception area with a visitor desk",
+      "fallback": "#070e40"
     },
     {
       "id": "industries",
@@ -266,10 +264,9 @@
         "label": "See who we serve",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-docx-industry-support.png",
-      "alt": "Support specialist wearing a headset while assisting a client",
-      "gradient": "linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)",
-      "fallback": "linear-gradient(135deg, #070e40 0%, #0a1440 140%)"
+      "image": "/uploads/industry-manufacturing-hero.jpg",
+      "alt": "Colleagues working together in a modern office",
+      "fallback": "#070e40"
     }
   ],
   "benefits": [

@@ -66,6 +66,13 @@
 }
 
 @layer components {
+  .breadcrumb-nav a:hover,
+  .breadcrumb-nav a:focus-visible {
+    text-shadow: none;
+  }
+}
+
+@layer components {
   .shell-container {
     width: 100%;
     max-width: var(--container-shell);
