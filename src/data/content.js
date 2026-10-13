@@ -283,7 +283,14 @@ export const homeContact = {
   title: '',
   text: '',
   phoneLabel: '',
-  benefits: [],
+  benefits: [
+    'Client-oriented',
+    'Independent',
+    'Competent',
+    'Results-driven',
+    'Problem-solving',
+    'Transparent',
+  ],
   steps: [
     'We Schedule a call at your convenience',
     'We do a discovery and consulting meeting',
