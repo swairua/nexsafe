@@ -63,7 +63,7 @@ export default function IntroBand() {
           <span aria-hidden="true" className="pointer-events-none absolute -right-16 bottom-0 -z-10 h-64 w-64 rounded-full bg-shell-cyan/50 blur-2xl" />
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {benefits.map((benefit, idx) => (
-              <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="glass-brand rounded-2xl border border-white/25 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_18px_40px_-16px_rgba(1,116,164,0.7)]">
+              <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="glass-brand rounded-2xl border border-white/40 bg-[rgba(1,90,128,0.6)] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_40px_-16px_rgba(1,116,164,0.7)]">
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">{benefit.title}</p>
                 <div className="mt-3 text-sm leading-relaxed text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]"><Rich as="p">{benefit.text}</Rich></div>
               </Reveal>
