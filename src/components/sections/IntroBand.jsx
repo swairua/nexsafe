@@ -8,6 +8,7 @@ export default function IntroBand() {
   return (
     <>
     <section id={sectionIds.company} className="bg-shell-black pb-14 md:pb-20">
+      
       <div className="bg-shell-black">
         <div className="shell-container grid gap-8 px-6 pb-28 pt-14 md:grid-cols-2 md:gap-16 md:pb-36 md:pt-20">
           <Reveal delay={1} variant="fade">
@@ -19,6 +20,7 @@ export default function IntroBand() {
           </Reveal>
         </div>
       </div>
+
       <div className="shell-container px-6">
         <div id={sectionIds.about} className="-mt-20 grid gap-10 scroll-mt-28 md:-mt-24 md:grid-cols-3 md:gap-8">
           {introCards.map((card, idx) => (

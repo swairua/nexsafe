@@ -54,7 +54,7 @@ export const navItems = [
     columns: [
       {
         heading: 'About us',
-        links: links('About Us', 'Why Us', 'Team', 'Careers'),
+        links: links('About Us', 'Why Us', 'Team', 'Partners & Certifications', 'Reviews & Awards', 'Careers'),
       },
       {
         heading: 'Services',

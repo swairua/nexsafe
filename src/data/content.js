@@ -4,10 +4,10 @@ import { blogIndex } from './posts.js'
 export { blogIndex }
 
 const navyScrim =
-  'linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)'
-const navyFallback = 'linear-gradient(135deg, #070e40 0%, #010ed0 130%)'
-const navyFallbackSoft = 'linear-gradient(135deg, #070e40 0%, #0693e3 130%)'
-const navyTile = 'linear-gradient(135deg, #070e40 0%, #010ed0 140%)'
+  'linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)'
+const navyFallback = 'linear-gradient(135deg, #070e40 0%, #0a1440 130%)'
+const navyFallbackSoft = 'linear-gradient(135deg, #070e40 0%, #0a1440 130%)'
+const navyTile = 'linear-gradient(135deg, #070e40 0%, #0a1440 140%)'
 
 export const heroSlides = [
   {
@@ -16,8 +16,8 @@ export const heroSlides = [
     title: 'We take care of your IT, so you can take care of your customers.',
     text: 'Nexsate helps businesses reduce downtime, strengthen security, improve connectivity, support users, and create a more reliable technology environment for daily operations and future growth.',
     cta: { label: 'Discover our services', href: pageHref('Services & Solutions') },
-    image: '/uploads/hero-network-servers.jpg',
-    alt: 'Server racks glowing blue inside a modern data centre',
+    image: '/uploads/hero-docx-network-fiber.png',
+    alt: 'Fiber-optic network lights glowing behind a dark navy overlay',
     gradient: navyScrim,
     fallback: navyFallback,
   },
@@ -27,8 +27,8 @@ export const heroSlides = [
     title: 'Simply enabling IT for a complex world',
     text: 'Since 2016 our principle has shaped the business: technology should make business easier, safer, and more productive. We deliver reliable, responsive, and secure IT, software, and telecommunications solutions.',
     cta: { label: 'About Nexsate', href: pageHref('About Us') },
-    image: '/uploads/hero-team-planning.jpg',
-    alt: 'Colleagues planning around a table with laptops and notes',
+    image: '/uploads/hero-docx-principle-desk.png',
+    alt: 'Hands sketching IT plans on paper with a laptop nearby',
     gradient: navyScrim,
     fallback: navyFallbackSoft,
   },
@@ -38,8 +38,8 @@ export const heroSlides = [
     title: 'Solving IT challenges for the industries that keep business moving.',
     text: 'Industrial & Manufacturing, Transportation & Logistics, Healthcare, Financial Services, Professional Services, Non-Profit — technology support built around the way your sector actually operates.',
     cta: { label: 'See who we serve', href: pageHref('Services & Solutions') },
-    image: '/uploads/team-collaboration.jpg',
-    alt: 'Diverse team collaborating together in a bright office',
+    image: '/uploads/hero-docx-industry-support.png',
+    alt: 'Support specialist wearing a headset while assisting a client',
     gradient: navyScrim,
     fallback: navyTile,
   },

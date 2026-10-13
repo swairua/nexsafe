@@ -3,20 +3,6 @@ import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import { formatPostDate, insightPosts } from "../pages/BlogIndex.jsx"
 
-function Byline() {
-  return (
-    <span className="absolute bottom-3 left-4 flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className="flex h-7 w-7 items-center justify-center rounded-full bg-[#7fb539] text-[11px] font-extrabold italic text-white"
-      >
-        line
-      </span>
-      <span className="text-sm font-medium text-white">by Linethemes</span>
-    </span>
-  )
-}
-
 function InsightPhoto({ post, fallbackImage, fallbackAlt, aspect }) {
   const src = (post.image && post.image.src) || fallbackImage
   const alt = (post.image && post.image.alt) || fallbackAlt || ''
@@ -31,7 +17,6 @@ function InsightPhoto({ post, fallbackImage, fallbackAlt, aspect }) {
       />
       <span aria-hidden="true" className="absolute inset-0 bg-[#0a2a5e] opacity-25 mix-blend-multiply" />
       <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0a2a5e]/35 via-transparent to-transparent" />
-      <Byline />
     </span>
   )
 }

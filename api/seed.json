@@ -238,10 +238,10 @@
         "label": "Discover our services",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-network-servers.jpg",
-      "alt": "Server racks glowing blue inside a modern data centre",
-      "gradient": "linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)",
-      "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 130%)"
+      "image": "/uploads/hero-docx-network-fiber.png",
+      "alt": "Fiber-optic network lights glowing behind a dark navy overlay",
+      "gradient": "linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)",
+      "fallback": "linear-gradient(135deg, #070e40 0%, #0a1440 130%)"
     },
     {
       "id": "principle",
@@ -252,10 +252,10 @@
         "label": "About Nexsate",
         "href": "#/about-us"
       },
-      "image": "/uploads/hero-team-planning.jpg",
-      "alt": "Colleagues planning around a table with laptops and notes",
-      "gradient": "linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)",
-      "fallback": "linear-gradient(135deg, #070e40 0%, #0693e3 130%)"
+      "image": "/uploads/hero-docx-principle-desk.png",
+      "alt": "Hands sketching IT plans on paper with a laptop nearby",
+      "gradient": "linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)",
+      "fallback": "linear-gradient(135deg, #070e40 0%, #0a1440 130%)"
     },
     {
       "id": "industries",
@@ -266,10 +266,10 @@
         "label": "See who we serve",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/team-collaboration.jpg",
-      "alt": "Diverse team collaborating together in a bright office",
-      "gradient": "linear-gradient(90deg, rgba(7,14,64,.86) 0%, rgba(7,14,64,.45) 60%, rgba(7,14,64,.16) 100%)",
-      "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 140%)"
+      "image": "/uploads/hero-docx-industry-support.png",
+      "alt": "Support specialist wearing a headset while assisting a client",
+      "gradient": "linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)",
+      "fallback": "linear-gradient(135deg, #070e40 0%, #0a1440 140%)"
     }
   ],
   "benefits": [
@@ -1142,52 +1142,30 @@
   ],
   "footerColumns": [
     {
-      "heading": "Contact",
+      "heading": "IT Services",
       "links": [
         {
-          "label": "Talk to an expert",
-          "href": "#/contact-us"
-        },
-        {
-          "label": "Help and FAQ",
-          "href": "#/help-and-faq"
-        }
-      ]
-    },
-    {
-      "heading": "Services",
-      "links": [
-        {
-          "label": "Services & Solutions",
-          "href": "#/services-solutions"
-        },
-        {
-          "label": "Managed IT Services",
+          "label": "Managed IT",
           "href": "#/managed-it-services"
         },
         {
-          "label": "Cloud Services",
+          "label": "IT Support",
+          "href": "#/client-support"
+        },
+        {
+          "label": "IT Consultancy",
+          "href": "#/services-solutions"
+        },
+        {
+          "label": "Cloud Computing",
           "href": "#/cloud-services"
         },
         {
-          "label": "Cybersecurity",
+          "label": "Cyber Security",
           "href": "#/cybersecurity"
-        }
-      ]
-    },
-    {
-      "heading": "More services",
-      "links": [
-        {
-          "label": "Network Management",
-          "href": "#/network-management"
         },
         {
-          "label": "Backup & Disaster Recovery",
-          "href": "#/backup-disaster-recovery"
-        },
-        {
-          "label": "Software & App Development",
+          "label": "Custom Software",
           "href": "#/software-erp-app-development"
         }
       ]
@@ -1196,39 +1174,27 @@
       "heading": "Industries",
       "links": [
         {
-          "label": "Banks & Insurance",
+          "label": "Banking",
           "href": "#/banks-insurance"
+        },
+        {
+          "label": "Capital Markets",
+          "href": "#/fintech"
+        },
+        {
+          "label": "Enterprise Technology",
+          "href": "#/consulting-providers"
+        },
+        {
+          "label": "Manufacturing",
+          "href": "#/industrial-manufacturing"
         },
         {
           "label": "Healthcare",
           "href": "#/healthcare"
         },
         {
-          "label": "Industrial & Manufacturing",
-          "href": "#/industrial-manufacturing"
-        },
-        {
-          "label": "Transportation & Logistics",
-          "href": "#/transportation-logistics"
-        },
-        {
-          "label": "Consulting Providers",
-          "href": "#/consulting-providers"
-        },
-        {
-          "label": "Non-Profit",
-          "href": "#/non-profit"
-        },
-        {
-          "label": "Telemedicine",
-          "href": "#/telemedicine"
-        },
-        {
-          "label": "Fintech",
-          "href": "#/fintech"
-        },
-        {
-          "label": "Education",
+          "label": "Higher Education",
           "href": "#/education"
         }
       ]
@@ -1237,20 +1203,57 @@
       "heading": "Company",
       "links": [
         {
-          "label": "About Us",
+          "label": "About",
           "href": "#/about-us"
         },
         {
-          "label": "Success Story",
-          "href": "#/success-story"
+          "label": "Leadership Team",
+          "href": "#/team"
         },
         {
-          "label": "Blog",
+          "label": "IT Blog",
           "href": "#/blog"
         },
         {
-          "label": "Help and FAQ",
+          "label": "Case Studies",
+          "href": "#/case-studies"
+        },
+        {
+          "label": "Locations",
+          "href": "#/contact-us"
+        },
+        {
+          "label": "Careers",
+          "href": "#/careers"
+        }
+      ]
+    },
+    {
+      "heading": "Support",
+      "links": [
+        {
+          "label": "Forum Support",
+          "href": "#/client-support"
+        },
+        {
+          "label": "Help & FAQ",
           "href": "#/help-and-faq"
+        },
+        {
+          "label": "Contact Us",
+          "href": "#/contact-us"
+        },
+        {
+          "label": "Pricing and plans",
+          "href": "#/services-solutions"
+        },
+        {
+          "label": "Cookies Policy",
+          "href": "#/cookie-policy"
+        },
+        {
+          "label": "Privacy Policy",
+          "href": "#/privacy-policy"
         }
       ]
     }

@@ -53,7 +53,7 @@ export default function HeroCarousel() {
 
               <div className="shell-container relative flex min-h-[28rem] items-center pb-20 pt-28 sm:min-h-[34rem] md:min-h-[40rem] md:pb-24 md:pt-36 lg:min-h-[44rem]">
                 <div className={`hero-copy max-w-2xl text-white ${selected === i ? 'is-active' : ''}`}>
-                  <span className="hero-kicker mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-shell-yellow">
+                  <span className="hero-kicker mb-4 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-shell-yellow">
                     {slide.kicker}
                   </span>
                   <h1 className="hero-title mb-5 text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]">
@@ -101,7 +101,7 @@ export default function HeroCarousel() {
         </svg>
       </button>
 
-      <div className="absolute inset-x-0 bottom-5 flex items-center justify-center gap-2.5">
+      <div className="absolute inset-x-0 bottom-6 flex items-center justify-end gap-2 pr-6 md:pr-12">
         {heroSlides.map((s, i) => (
           <button
             key={s.id}
@@ -113,8 +113,8 @@ export default function HeroCarousel() {
           >
             <span
               aria-hidden="true"
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                selected === i ? 'w-8 bg-shell-yellow' : 'w-2.5 bg-white/60 group-hover/dot:bg-white'
+              className={`h-2 rounded-full transition-all duration-300 ${
+                selected === i ? 'w-7 bg-shell-yellow' : 'w-2 bg-white/60 group-hover/dot:bg-white'
               }`}
             />
           </button>

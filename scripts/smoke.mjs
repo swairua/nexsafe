@@ -104,8 +104,9 @@ try {
       'Form our blog',
       'More articles from resource library',
       'View all article',
-      'by Linethemes',
     ].every((t) => plain.includes(t)),
+    'homepage insights photos carry no third-party stamp':
+      !plain.includes('by Linethemes'),
     'homepage renders the technology stack': stackGroups.every((g) => plain.includes(g.title)),
     'homepage renders the technology strip (auto-scroll, logo slots, no disclaimer)':
       plain.includes('Using trusted technology to solve your IT challenges') &&
