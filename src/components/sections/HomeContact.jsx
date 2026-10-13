@@ -23,7 +23,7 @@ export default function HomeContact() {
           </Reveal>
         )}
         <div className={`grid gap-10 lg:grid-cols-2 lg:gap-16 ${hasHeader ? 'mt-10' : ''}`}>
-          <Reveal variant="up" className="space-y-8">
+          <Reveal variant="left" className="space-y-8">
             {copy.text && <p className="text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{copy.text}</Rich></p>}
             {copy.phoneLabel && contactForm.detailPhone && (
               <a href={"tel:" + String(contactForm.detailPhone || "").replace(/\s+/g, "")} className="inline-flex items-center rounded-lg bg-shell-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-shell-red">
@@ -58,7 +58,7 @@ export default function HomeContact() {
               </ol>
             </div>
           </Reveal>
-          <Reveal variant="up" className="lg:pt-2">
+          <Reveal variant="right" className="lg:pt-2">
             <div className="rounded-2xl border border-shell-gray-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm md:p-8">
               <h3 className="text-lg font-bold tracking-tight text-shell-gray-900">Schedule a Free Consultation</h3>
               <ContactForm simple />

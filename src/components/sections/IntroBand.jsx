@@ -35,11 +35,11 @@ export default function IntroBand() {
       <span aria-hidden="true" className="pointer-events-none absolute -left-24 top-[30%] -z-10 h-80 w-80 rounded-full bg-brand-ink/50 blur-2xl" />
       <span aria-hidden="true" className="pointer-events-none absolute -right-24 bottom-[12%] -z-10 h-80 w-80 rounded-full bg-shell-cyan/45 blur-2xl" />
       <div className="shell-container grid gap-8 px-6 pb-28 pt-14 md:grid-cols-2 md:gap-16 md:pb-36 md:pt-20">
-        <Reveal delay={1} variant="fade">
+        <Reveal delay={1} variant="left">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">{introBand.eyebrow}</p>
           <h2 className="mt-4 text-3xl font-extrabold leading-[1.12] tracking-tight text-shell-gray-900 md:text-[2.6rem]">{introBand.title}</h2>
         </Reveal>
-        <Reveal delay={2} variant="fade" className="flex items-start md:pt-8">
+        <Reveal delay={2} variant="right" className="flex items-start md:pt-8">
           <div className="text-[15px] leading-relaxed text-shell-gray-700 md:text-base"><Rich as="p">{introBand.text}</Rich></div>
         </Reveal>
       </div>

@@ -12,7 +12,7 @@ export default function ConnectBand() {
         aria-hidden="true"
       />
       <div className="shell-container relative py-20 md:py-28">
-        <Reveal variant="fade">
+        <Reveal variant="up">
           <p className="text-xs font-bold uppercase tracking-wider text-shell-red">
             {connect.tag}
           </p>

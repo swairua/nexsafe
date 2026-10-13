@@ -25,14 +25,14 @@ export default function StackSection() {
 
         {/* Heading row: eyebrow on the left, title inside a blue-outlined card on the right. */}
         <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] md:gap-10">
-          <Reveal variant="fade">
+          <Reveal variant="left">
             <p className="text-xl font-bold tracking-tight text-shell-red md:text-2xl">
               {stackSection.tag}
             </p>
           </Reveal>
 
           <Reveal
-            variant="fade"
+            variant="right"
             delay={1}
             className="group rounded-2xl border border-shell-red/45 bg-white p-6 shadow-[0_18px_44px_-20px_rgba(6,147,227,0.35)] transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[0_18px_44px_-20px_rgba(6,147,227,0.35),0_0_34px_rgba(1,116,164,0.55)] md:p-8"
           >
@@ -46,7 +46,7 @@ export default function StackSection() {
           {stackGroups.map((group, idx) => (
             <Reveal
               key={group.id}
-              variant="up"
+              variant={idx % 2 ? 'right' : 'left'}
               delay={(idx % 2) + 1}
               className="rounded-2xl border border-shell-gray-300/70 bg-[#f8f9fb] p-6 shadow-[0_14px_36px_-24px_rgba(14,17,20,0.35)] md:p-7"
             >
