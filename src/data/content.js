@@ -316,12 +316,14 @@ export const industriesStrip = {
 
 export const caseCards = {
   tag: 'Case studies',
-  title: 'We work with global brands',
+  title: 'Results our clients see from aligned IT',
+  cta: { label: 'Browse all case studies', href: pageHref('Case Studies') },
   items: [
     {
       title: 'Cloud migration saves money for health insurer',
       brand: 'unilogo',
-      href: pageHref('Success Story'),
+      industry: 'Banking & Insurance',
+      href: pageHref('Case Studies'),
       image: '/uploads/team-collaboration.jpg',
       alt: 'Two colleagues celebrating a successful project together',
       tint: '#71cbcc',
@@ -330,7 +332,8 @@ export const caseCards = {
     {
       title: 'Remote support center for semiconductor provider',
       brand: 'jarguar',
-      href: pageHref('Success Story'),
+      industry: 'Manufacturing',
+      href: pageHref('Case Studies'),
       image: '/uploads/business-meeting.jpg',
       alt: 'Business meeting with colleagues reviewing documents',
       tint: '#29b2fe',
@@ -339,7 +342,8 @@ export const caseCards = {
     {
       title: 'Subscription licensing unlocks spike in IT orders',
       brand: 'ticketbox',
-      href: pageHref('Success Story'),
+      industry: 'Consulting Providers',
+      href: pageHref('Case Studies'),
       image: '/uploads/boardroom-meeting.jpg',
       alt: 'Team meeting around a boardroom table',
       tint: '#8a49a1',

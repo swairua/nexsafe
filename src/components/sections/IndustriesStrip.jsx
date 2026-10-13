@@ -175,6 +175,11 @@ export default function IndustriesStrip() {
                     <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                   </div>
                   <div className="flex flex-1 flex-col p-6 md:p-7">
+                    {card.industry ? (
+                      <span className="mb-3 inline-flex w-fit rounded-full bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white">
+                        {card.industry}
+                      </span>
+                    ) : null}
                     <span className="text-2xl font-extrabold lowercase tracking-tight text-white md:text-[1.7rem]">
                       {card.brand}
                       <span className="text-shell-yellow">.</span>
@@ -191,6 +196,11 @@ export default function IndustriesStrip() {
             ))}
           </div>
           </div>
+          {caseCards.cta ? (
+            <a href={caseCards.cta.href} className="arrow-link mt-10 inline-block">
+              {caseCards.cta.label} <span className="arrow">→</span>
+            </a>
+          ) : null}
         </div>
       </div>
     </section>
