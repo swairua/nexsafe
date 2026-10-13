@@ -84,14 +84,14 @@ export default function PageView({ page, slug, params }) {
             variant="fade"
             delay={1}
             aria-label={ui.breadcrumb}
-            className="breadcrumb-nav flex flex-wrap items-center gap-2 text-sm text-white/60"
+            className="breadcrumb-nav flex w-fit max-w-full flex-wrap items-center gap-2 rounded-md bg-shell-black px-3 py-2 text-sm text-white"
           >
-            <a href={'#' + sectionIds.top} className="transition-colors hover:text-shell-yellow">
+            <a href={'#' + sectionIds.top} className="text-white transition-colors hover:text-shell-yellow">
               {labels.home}
             </a>
             <span aria-hidden="true">/</span>
             {sectionHref ? (
-              <a href={sectionHref} className="transition-colors hover:text-shell-yellow">
+              <a href={sectionHref} className="text-white transition-colors hover:text-shell-yellow">
                 {page.eyebrow}
               </a>
             ) : (
