@@ -72,7 +72,7 @@ export default function IndustriesStrip() {
   return (
     <section
       id={sectionIds.industries}
-      className="relative isolate overflow-hidden bg-white py-20 md:py-28"
+      className="relative isolate overflow-hidden bg-shell-black py-20 md:py-28"
     >
       <span aria-hidden="true" className="pointer-events-none absolute -right-24 top-[22%] -z-10 h-80 w-80 rounded-full bg-brand-ink/50 blur-2xl" />
       <span aria-hidden="true" className="pointer-events-none absolute -left-24 bottom-[18%] -z-10 h-80 w-80 rounded-full bg-shell-cyan/45 blur-2xl" />
@@ -82,13 +82,13 @@ export default function IndustriesStrip() {
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">
               {industriesStrip.tag}
             </p>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
               {industriesStrip.title}
             </h2>
           </Reveal>
 
           <Reveal delay={2} className="flex flex-wrap items-end justify-between gap-4 lg:justify-end">
-            <p className="max-w-xl text-base leading-relaxed text-shell-gray-700">
+            <p className="max-w-xl text-base leading-relaxed text-white/70">
               {industriesStrip.text}
             </p>
             <div className="flex gap-2">
@@ -131,16 +131,18 @@ export default function IndustriesStrip() {
               >
                 <a
                   href={item.href}
-                  className="group flex h-full min-h-[15rem] flex-col items-center glass-brand rounded-2xl border border-white/40 bg-[rgba(1,90,128,0.6)] px-6 py-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/60 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
+                  className="group flex h-full min-h-[15rem] flex-col items-center rounded-2xl border border-white/15 bg-white/5 px-6 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-white/30 hover:bg-white/10"
                 >
-                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white transition-colors duration-300 group-hover:bg-white/90">
-                    <IndustryIcon icon={item.icon} label={item.label} />
+                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white/10 transition-colors duration-300 group-hover:bg-white/15">
+                    <span className="icon-bob block">
+                      <IndustryIcon icon={item.icon} label={item.label} />
+                    </span>
                   </span>
-                  <span className="mt-5 text-base font-bold text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">
+                  <span className="mt-5 text-base font-bold text-white">
                     {item.label}
                   </span>
                   {item.note ? (
-                    <span className="mt-2 text-sm leading-relaxed text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.2)]">
+                    <span className="mt-2 text-sm leading-relaxed text-white/70">
                       {item.note}
                     </span>
                   ) : null}
@@ -151,6 +153,7 @@ export default function IndustriesStrip() {
         </div>
 
         <div className="mt-20 md:mt-24">
+          <div className="rounded-3xl bg-white p-8 md:p-12">
           <Reveal variant="fade">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">
               {caseCards.tag}
@@ -201,6 +204,7 @@ export default function IndustriesStrip() {
               {caseCards.cta.label} <span className="arrow">→</span>
             </a>
           ) : null}
+          </div>
         </div>
       </div>
     </section>

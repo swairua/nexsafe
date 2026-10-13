@@ -30,7 +30,7 @@ export default function CardGrid() {
   if (selected.length === 0) return null
 
   return (
-    <section id={sectionIds.itSolutions} className="relative overflow-hidden bg-shell-gray-100 py-20 md:py-28">
+    <section id={sectionIds.itSolutions} className="relative overflow-hidden bg-white py-20 md:py-28">
       <div className="shell-container relative">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <Reveal variant="fade">

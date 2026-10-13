@@ -8,28 +8,31 @@ export default function HomeContact() {
   const { homeContact, contactForm } = useContent()
   const copy = homeContact || {}
   const details = useContactDetails()
-  const hasHeader = Boolean(copy.tag || copy.title)
   return (
-    <section className="bg-shell-gray-100">
-      <div className={`shell-container pb-16 md:pb-24 ${hasHeader ? 'pt-16 md:pt-24' : ''}`}>
-        {hasHeader && (
+    <section>
+      <div className="bg-shell-black py-16 md:py-24">
+        <div className="shell-container">
           <Reveal variant="fade">
-            {copy.tag && <SectionTag>{copy.tag}</SectionTag>}
-            {copy.title && (
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-                {copy.title}
-              </h2>
+            <span className="mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-white">
+              Contact Us
+            </span>
+            <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+              Partner with Us for Comprehensive IT
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+              We're happy to answer any questions you may have and help you determine which of our services best fit your needs.
+            </p>
+            {contactForm.detailPhone && (
+              <p className="mt-8 text-lg font-bold text-white">
+                Call us at: {contactForm.detailPhone}
+              </p>
             )}
           </Reveal>
-        )}
-        <div className={`grid gap-10 lg:grid-cols-2 lg:gap-16 ${hasHeader ? 'mt-10' : ''}`}>
+        </div>
+      </div>
+      <div className="bg-[#e8eef7] py-16 md:py-24">
+        <div className="shell-container grid gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal variant="left" className="space-y-8">
-            {copy.text && <p className="text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{copy.text}</Rich></p>}
-            {copy.phoneLabel && contactForm.detailPhone && (
-              <a href={"tel:" + String(contactForm.detailPhone || "").replace(/\s+/g, "")} className="inline-flex items-center rounded-lg bg-shell-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-shell-red">
-                {copy.phoneLabel} {contactForm.detailPhone}
-              </a>
-            )}
             {(copy.benefits || []).length > 0 && (
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-shell-gray-500">Your benefits:</h3>
@@ -59,7 +62,7 @@ export default function HomeContact() {
             </div>
           </Reveal>
           <Reveal variant="right" className="lg:pt-2">
-            <div className="rounded-2xl border border-shell-gray-200 bg-white/80 p-6 shadow-lg backdrop-blur-sm md:p-8">
+            <div className="rounded-2xl border border-shell-gray-200 bg-white p-6 shadow-lg md:p-8">
               <h3 className="text-lg font-bold tracking-tight text-shell-gray-900">Schedule a Free Consultation</h3>
               <ContactForm simple />
             </div>

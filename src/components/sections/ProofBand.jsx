@@ -106,26 +106,26 @@ export default function ProofBand() {
   if (!stats.length && !certs.length && !badges.length) return null
 
   return (
-    <section className="relative isolate overflow-hidden bg-shell-gray-100 py-20 md:py-28">
+    <section className="relative isolate overflow-hidden bg-shell-black py-20 md:py-28">
       <div className="shell-container">
         <Reveal variant="fade" className="max-w-3xl">
           <SectionTag>{copy.tag}</SectionTag>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
             {copy.title}
           </h2>
-          <div className="mt-4 max-w-2xl text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{copy.text}</Rich></div>
+          <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg"><Rich as="p">{copy.text}</Rich></div>
         </Reveal>
 
         {stats.length ? (
           <div className="stats-grid mt-10">
             {stats.map((s, i) => (
               <div key={s.label + i} className="text-center">
-                <div className="text-3xl font-extrabold tracking-tight text-shell-gray-900 md:text-4xl">
+                <div className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
                   <Reveal variant="fade" delay={i + 1}>
                     <CountUp value={s.value} />
                   </Reveal>
                 </div>
-                <dt className="mt-1 text-xs font-semibold uppercase tracking-wider text-shell-gray-500">{s.label}</dt>
+                <dt className="mt-1 text-xs font-semibold uppercase tracking-wider text-white/50">{s.label}</dt>
               </div>
             ))}
           </div>
@@ -133,17 +133,16 @@ export default function ProofBand() {
 
         {certs.length ? (
           <div className="relative isolate mt-8">
-            <span aria-hidden="true" className="pointer-events-none absolute -inset-x-2 -inset-y-6 -z-10 rounded-[2rem] bg-gradient-to-r from-brand-ink/75 via-shell-cyan/50 to-brand-ink/75 blur-2xl" />
-            <ul className="flex flex-wrap items-stretch justify-center gap-3">
+             <ul className="flex flex-wrap items-stretch justify-center gap-3">
               {certs.map((c, i) => (
                 <Reveal
                   key={c.name + i}
                   as="li"
                   delay={i + 1}
-                  className="glass-light flex min-w-[12rem] flex-1 flex-col items-center rounded-xl border border-white/80 px-5 py-4 text-center shadow-[0_14px_36px_-16px_rgba(14,17,20,0.25)] sm:flex-none sm:basis-56"
+                  className="flex min-w-[12rem] flex-1 flex-col items-center rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-center sm:flex-none sm:basis-56"
                 >
-                  <span className="text-base font-extrabold tracking-tight text-shell-gray-900">{c.name}</span>
-                  <span className="mt-1 text-xs text-shell-gray-700">{c.note}</span>
+                  <span className="text-base font-extrabold tracking-tight text-white">{c.name}</span>
+                  <span className="mt-1 text-xs text-white/60">{c.note}</span>
                 </Reveal>
               ))}
             </ul>

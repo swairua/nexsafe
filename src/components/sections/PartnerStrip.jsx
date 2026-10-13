@@ -39,10 +39,10 @@ function LogoSlot({ partner }) {
 
 function VendorTile({ partner }) {
   return (
-    <div className="flex h-full min-h-[6.5rem] items-center gap-4 rounded-xl border border-shell-gray-300 bg-shell-gray-100 px-5 py-4 transition-colors duration-300 hover:border-brand-ink">
+    <div className="flex h-full min-h-[6.5rem] items-center gap-4 rounded-xl border border-white/15 bg-white/5 px-5 py-4 transition-colors duration-300 hover:border-white/30 hover:bg-white/10">
       <LogoSlot partner={partner} />
-      <span className="h-10 w-px shrink-0 bg-shell-gray-300" aria-hidden="true" />
-      <span className="flex flex-1 items-center justify-center text-center text-sm font-bold leading-snug text-shell-gray-900">
+      <span className="h-10 w-px shrink-0 bg-white/20" aria-hidden="true" />
+      <span className="flex flex-1 items-center justify-center text-center text-sm font-bold leading-snug text-white">
         {partner.name}
       </span>
     </div>
@@ -69,38 +69,15 @@ export default function PartnerStrip() {
   }
 
   return (
-    <section id={sectionIds.partners} className="bg-white py-16 md:py-24">
+    <section id={sectionIds.partners} className="bg-shell-black py-16 md:py-24">
       <div className="shell-container">
         <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
           <Reveal variant="fade">
             <SectionTag>{partnerStrip.tag}</SectionTag>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
               {partnerStrip.title}
             </h2>
-            <div className="mt-4 max-w-2xl text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{partnerStrip.text}</Rich></div>
-          </Reveal>
-          <Reveal delay={2} className="flex items-center gap-3">
-            <a href={partnerStrip.cta.href} className="arrow-link">
-              {partnerStrip.cta.label} <span className="arrow">→</span>
-            </a>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => scrollBy(-1)}
-                aria-label="Scroll technology left"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95"
-              >
-                <span aria-hidden="true">←</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollBy(1)}
-                aria-label="Scroll technology right"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95"
-              >
-                <span aria-hidden="true">→</span>
-              </button>
-            </div>
+            <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg"><Rich as="p">{partnerStrip.text}</Rich></div>
           </Reveal>
         </div>
 

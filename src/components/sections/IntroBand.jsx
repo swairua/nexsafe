@@ -45,7 +45,7 @@ export default function IntroBand() {
         </ul>
       </div>
       </section>
-      <div className="shell-container max-w-4xl flex justify-center py-10 md:py-12">
+      <div className="shell-container max-w-4xl flex justify-center py-4 md:py-6">
         <Reveal delay={2} variant="fade">
           <nav aria-label={uiLabels.onThisPage} className="inline-flex flex-wrap justify-center gap-1 rounded-[2rem] bg-white p-2 shadow-[0_10px_40px_-12px_rgba(14,17,20,0.25)] ring-1 ring-black/5">
             {navItems.map((item) => (

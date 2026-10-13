@@ -504,6 +504,15 @@
   to { opacity: 1; transform: none; }
 }
 
+@keyframes iconBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.icon-bob {
+  animation: iconBob 2.4s ease-in-out infinite;
+}
+
 .py-28 {
   padding-block: 7rem;
 }
