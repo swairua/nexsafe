@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-import Autoplay from 'embla-carousel-autoplay'
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
@@ -87,15 +86,7 @@ export default function ProofBand() {
   const certs = (content.certStrip && content.certStrip.items) || []
   const about = (content.pages || {})['about-us']
   const badges = (about && about.logos) || []
-  const reduceMotion = typeof window !== 'undefined'
-    && typeof window.matchMedia === 'function'
-    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, duration: 36 },
-    reduceMotion
-      ? []
-      : [Autoplay({ delay: 2400, stopOnInteraction: false, stopOnMouseEnter: true, stopOnFocusIn: true })],
-  )
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 36 })
 
   const scrollBy = (dir) => {
     if (!emblaApi) return
@@ -106,8 +97,10 @@ export default function ProofBand() {
   if (!stats.length && !certs.length && !badges.length) return null
 
   return (
-    <section className="relative isolate overflow-hidden bg-shell-black py-20 md:py-28">
-      <div className="shell-container">
+    <section className="relative isolate grid grid-cols-[minmax(0,1fr)] grid-rows-[auto_1fr_1fr_auto] overflow-hidden">
+      <div aria-hidden="true" className="z-0 col-start-1 row-start-1 row-end-3 bg-shell-black" />
+      <div aria-hidden="true" className="z-0 col-start-1 row-start-3 row-end-5 bg-white" />
+      <div className="shell-container relative z-10 col-start-1 row-start-1 pb-12 pt-20 md:pb-16 md:pt-28">
         <Reveal variant="fade" className="max-w-3xl">
           <SectionTag>{copy.tag}</SectionTag>
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
@@ -148,7 +141,9 @@ export default function ProofBand() {
             </ul>
           </div>
         ) : null }
+      </div>
 
+      <div className="shell-container relative z-10 col-start-1 row-start-2 row-end-4">
         <section className="bg-white py-12 md:py-16">
           <div className="shell-container">
             <div className="flex items-center justify-between gap-4">
@@ -209,8 +204,9 @@ export default function ProofBand() {
             </div>
           </div>
         </section>
-
       </div>
+
+      <div aria-hidden="true" className="z-0 col-start-1 row-start-4 h-20 md:h-28" />
     </section>
   )
 }
