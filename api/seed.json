@@ -238,8 +238,8 @@
         "label": "Discover our services",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-docx-network-fiber.png",
-      "alt": "Fiber-optic network lights glowing behind a dark navy overlay",
+      "image": "/uploads/hero-network-servers.jpg",
+      "alt": "Server racks glowing inside a modern data centre",
       "gradient": "linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)",
       "fallback": "linear-gradient(135deg, #070e40 0%, #0a1440 130%)"
     },
@@ -252,7 +252,7 @@
         "label": "About Nexsate",
         "href": "#/about-us"
       },
-      "image": "/uploads/hero-docx-principle-desk.png",
+      "image": "/uploads/hero-team-planning.jpg",
       "alt": "Hands sketching IT plans on paper with a laptop nearby",
       "gradient": "linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)",
       "fallback": "linear-gradient(135deg, #070e40 0%, #0a1440 130%)"
@@ -266,8 +266,8 @@
         "label": "See who we serve",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-docx-industry-support.png",
-      "alt": "Support specialist wearing a headset while assisting a client",
+      "image": "/uploads/team-collaboration.jpg",
+      "alt": "Team collaborating around laptops in an office",
       "gradient": "linear-gradient(90deg, rgba(7,14,64,.84) 0%, rgba(7,14,64,.68) 48%, rgba(5,10,45,.78) 100%)",
       "fallback": "linear-gradient(135deg, #070e40 0%, #0a1440 140%)"
     }
