@@ -100,7 +100,7 @@ export default function BlogIndex({ page, topic }) {
           aria-hidden="true"
         />
         <div className="shell-container relative pb-12 pt-28 md:pb-16 md:pt-36">
-          <Reveal as="nav" variant="fade" delay={1} aria-label={ui.breadcrumb} className="flex flex-wrap items-center gap-2 text-sm text-white/60">
+          <Reveal as="nav" variant="fade" delay={1} aria-label={ui.breadcrumb} className="breadcrumb-nav flex flex-wrap items-center gap-2 text-sm text-white/60">
             <a href={'#' + sectionIds.top} className="transition-colors hover:text-shell-yellow">
               {labels.home}
             </a>

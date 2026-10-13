@@ -84,7 +84,7 @@ export default function PageView({ page, slug, params }) {
             variant="fade"
             delay={1}
             aria-label={ui.breadcrumb}
-            className="flex flex-wrap items-center gap-2 text-sm text-white/60"
+            className="breadcrumb-nav flex flex-wrap items-center gap-2 text-sm text-white/60"
           >
             <a href={'#' + sectionIds.top} className="transition-colors hover:text-shell-yellow">
               {labels.home}
@@ -359,7 +359,7 @@ export default function PageView({ page, slug, params }) {
         </section>
       ) : null}
 
-      <ConnectBand />
+      {!isContact && <ConnectBand />}
     </article>
   )
 }

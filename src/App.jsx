@@ -13,7 +13,6 @@ import StackSection from './components/sections/StackSection.jsx'
 import InsightsSection from './components/sections/InsightsSection.jsx'
 import AnswersBand from './components/sections/AnswersBand.jsx'
 import HomeContact from './components/sections/HomeContact.jsx'
-import ConnectBand from './components/sections/ConnectBand.jsx'
 import PageView from './components/pages/PageView.jsx'
 import { useContent } from './content/ContentContext.jsx'
 
@@ -43,7 +42,7 @@ function parseHash(hash = '') {
  * Hero > Intro > Services > Industries > Stack
  * > Proof > Partners (technology strip)
  * > Insights (resource-library grid) > Answers (promo + FAQ)
- * > Contact form > Connect band. Footer + legal bar close every route.
+ * > Contact form. Footer + legal bar close every route.
  * Inner routes ('#/<slug>') replace main with PageView.
  */
 export default function App() {
@@ -98,7 +97,6 @@ export default function App() {
           <InsightsSection />
           <AnswersBand />
           <HomeContact />
-          <ConnectBand />
         </main>
       )}
       <Footer />
