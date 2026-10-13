@@ -4,6 +4,29 @@ import Autoplay from 'embla-carousel-autoplay'
 import { useContent } from "../../content/ContentContext.jsx"
 import { Rich } from '../ui/SectionTag.jsx'
 
+const textBearingHeroImages = {
+  '/uploads/hero-docx-network-fiber.png': {
+    src: '/uploads/hero-network-servers.jpg',
+    alt: 'Server racks glowing inside a modern data centre',
+  },
+  '/uploads/hero-docx-principle-desk.png': {
+    src: '/uploads/contact-hero.jpg',
+    alt: 'Bright modern reception area with a visitor desk',
+  },
+  '/uploads/hero-docx-industry-support.png': {
+    src: '/uploads/industry-manufacturing-hero.jpg',
+    alt: 'Colleagues working together in a modern office',
+  },
+  '/uploads/hero-team-planning.jpg': {
+    src: '/uploads/contact-hero.jpg',
+    alt: 'Bright modern reception area with a visitor desk',
+  },
+  '/uploads/team-collaboration.jpg': {
+    src: '/uploads/industry-manufacturing-hero.jpg',
+    alt: 'Colleagues working together in a modern office',
+  },
+}
+
 export default function HeroCarousel() {
   const { heroSlides, uiLabels, sectionIds } = useContent()
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 38 }, [
@@ -34,22 +57,16 @@ export default function HeroCarousel() {
             <div key={slide.id} className="relative min-w-0 flex-[0_0_100%]">
 
               <div
-                className="absolute inset-0"
-                style={{ background: slide.fallback }}
+                className="absolute inset-0 bg-shell-black"
                 aria-hidden="true"
               />
               <img
-                src={slide.image}
-                alt={slide.alt || ""}
+                src={textBearingHeroImages[slide.image]?.src || slide.image}
+                alt={textBearingHeroImages[slide.image]?.alt || slide.alt || ""}
                 className={`absolute inset-0 h-full w-full object-cover ${selected === i ? 'hero-zoom' : ''}`}
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
-              <div className="absolute inset-0" style={{ background: slide.gradient }} aria-hidden="true" />
-
-              <div
-                className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-black/45 to-transparent md:h-72"
-                aria-hidden="true"
-              />
+              <div className="absolute inset-0 bg-[rgba(7,14,64,0.68)]" aria-hidden="true" />
 
               <div className="shell-container relative flex min-h-[28rem] items-center pb-20 pt-28 sm:min-h-[34rem] md:min-h-[40rem] md:pb-24 md:pt-36 lg:min-h-[44rem]">
                 <div className={`hero-copy max-w-2xl text-white ${selected === i ? 'is-active' : ''}`}>

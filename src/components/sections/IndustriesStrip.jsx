@@ -74,8 +74,6 @@ export default function IndustriesStrip() {
       id={sectionIds.industries}
       className="relative isolate overflow-hidden bg-shell-black py-20 md:py-28"
     >
-      <span aria-hidden="true" className="pointer-events-none absolute -right-24 top-[22%] -z-10 h-80 w-80 rounded-full bg-brand-ink/50 blur-2xl" />
-      <span aria-hidden="true" className="pointer-events-none absolute -left-24 bottom-[18%] -z-10 h-80 w-80 rounded-full bg-shell-cyan/45 blur-2xl" />
       <div className="shell-container">
         <div className="grid items-end gap-6 lg:grid-cols-2 lg:gap-12">
           <Reveal variant="fade">
@@ -113,8 +111,6 @@ export default function IndustriesStrip() {
         </div>
 
         <div className="relative isolate mt-10">
-          <span aria-hidden="true" className="pointer-events-none absolute -left-10 top-4 -z-10 h-72 w-72 rounded-full bg-brand-ink/55 blur-2xl" />
-          <span aria-hidden="true" className="pointer-events-none absolute right-[12%] bottom-0 -z-10 h-64 w-64 rounded-full bg-shell-cyan/50 blur-2xl" />
           <div
             ref={trackRef}
             role="region"
@@ -163,8 +159,6 @@ export default function IndustriesStrip() {
             </h3>
           </Reveal>
           <div className="relative isolate mt-10">
-          <span aria-hidden="true" className="pointer-events-none absolute -right-12 -top-8 -z-10 h-72 w-72 rounded-full bg-shell-cyan/50 blur-2xl" />
-          <span aria-hidden="true" className="pointer-events-none absolute -left-12 bottom-0 -z-10 h-64 w-64 rounded-full bg-brand-ink/55 blur-2xl" />
           <div className="grid gap-6 md:grid-cols-3">
             {(caseCards.items || []).map((card, idx) => (
               <Reveal key={card.title + idx} variant="up" delay={idx + 1}>
