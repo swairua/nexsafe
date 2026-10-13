@@ -284,10 +284,10 @@ export const certStrip = {
 }
 
 export const homeContact = {
-  tag: 'Contact us',
-  title: 'Partner with Us for Comprehensive IT',
-  text: "We're happy to answer any questions you may have and help you determine which of our services best fit your needs.",
-  phoneLabel: 'Call us at:',
+  tag: '',
+  title: '',
+  text: '',
+  phoneLabel: '',
   benefits: [],
   steps: [
     'We Schedule a call at your convenience',

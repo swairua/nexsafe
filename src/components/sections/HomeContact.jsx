@@ -12,17 +12,21 @@ export default function HomeContact() {
     <section className="bg-shell-gray-100">
       <div className="shell-container py-16 md:py-24">
         <Reveal variant="fade">
-          <SectionTag>{copy.tag}</SectionTag>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-            {copy.title}
-          </h2>
+          {copy.tag && <SectionTag>{copy.tag}</SectionTag>}
+          {copy.title && (
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
+              {copy.title}
+            </h2>
+          )}
         </Reveal>
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal variant="up" className="space-y-8">
-            <p className="text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{copy.text}</Rich></p>
-            <a href={"tel:" + String(contactForm.detailPhone || "").replace(/\s+/g, "")} className="inline-flex items-center rounded-lg bg-shell-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-shell-red">
-              {copy.phoneLabel} {contactForm.detailPhone}
-            </a>
+            {copy.text && <p className="text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{copy.text}</Rich></p>}
+            {copy.phoneLabel && contactForm.detailPhone && (
+              <a href={"tel:" + String(contactForm.detailPhone || "").replace(/\s+/g, "")} className="inline-flex items-center rounded-lg bg-shell-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-shell-red">
+                {copy.phoneLabel} {contactForm.detailPhone}
+              </a>
+            )}
             {(copy.benefits || []).length > 0 && (
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-shell-gray-500">Your benefits:</h3>
