@@ -26,7 +26,7 @@ export default function Footer() {
   const channels = readChannels(settings, socialLinks)
   const details = useContactDetails()
   return (
-    <footer className="bg-shell-black text-white">
+    <footer className="bg-brand-ink text-white">
       <div className="shell-container py-12 md:py-16">
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-8 md:grid-cols-3 lg:grid-cols-6">
           <Reveal variant="up" className="col-span-2 md:col-span-3 lg:col-span-1">

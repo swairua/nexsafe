@@ -59,7 +59,10 @@ function PromoPanel({ onClose }) {
         href={pageConnect.cta?.href || '#/contact-us'}
         onClick={onClose}
         className="group flex h-full flex-col justify-between rounded-2xl p-7 text-white transition-transform hover:scale-[1.01]"
-        style={{ background: 'linear-gradient(135deg, #070e40 0%, #010ed0 100%)' }}
+        style={{
+          background: '#0174a4',
+          boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
+        }}
       >
         <div>
           {pageConnect.tag && (

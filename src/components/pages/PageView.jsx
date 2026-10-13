@@ -18,7 +18,7 @@ function Copy({ para }) {
 
 function NotFound(notFound) {
   return (
-    <section className="bg-shell-black text-white">
+    <section className="bg-brand-ink text-white">
       <div className="shell-container py-20 text-center md:py-28">
         <p className="text-xs font-bold uppercase tracking-wider text-shell-red">{notFound.tag}</p>
         <h1 className="mx-auto mt-3 max-w-2xl text-4xl font-bold tracking-tight md:text-6xl">
@@ -65,7 +65,7 @@ export default function PageView({ page, slug, params }) {
   return (
     <article>
 
-      <section className="relative overflow-hidden bg-shell-black text-white">
+      <section className="relative overflow-hidden bg-brand-ink text-white">
         <div
           className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-shell-red/20 blur-3xl"
           aria-hidden="true"
@@ -208,7 +208,7 @@ export default function PageView({ page, slug, params }) {
       ))}
 
       {page.quote && page.quote.text ? (
-        <section className="bg-shell-gray-900 text-white">
+        <section className="bg-brand-ink text-white">
           <div className="shell-container py-16 md:py-24">
             <Reveal variant="fade" className="mx-auto max-w-3xl text-center">
               <svg aria-hidden="true" viewBox="0 0 24 24" className="mx-auto h-9 w-9 text-shell-red" fill="currentColor">

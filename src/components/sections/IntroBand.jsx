@@ -1,5 +1,5 @@
 import Reveal from "../ui/Reveal.jsx"
-import SectionTag, { Rich } from "../ui/SectionTag.jsx"
+import { Rich } from "../ui/SectionTag.jsx"
 import SmartImage from "../ui/SmartImage.jsx"
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -23,9 +23,9 @@ export default function IntroBand() {
             <Reveal key={card.id} delay={idx + 1} variant="up" className="h-full">
               <a href={card.href} className="group flex h-full flex-col rounded-2xl transition-all duration-300 hover:-translate-y-1" aria-label={`${card.eyebrow} - ${card.title}`}>
                 <SmartImage src={card.src} alt={card.alt} fallback={card.fallback} className="aspect-[16/11] w-full overflow-hidden rounded-2xl" imgClassName="transition-transform duration-500 group-hover:scale-105" />
-                <div className="relative mx-auto -mt-14 flex w-[86%] flex-1 flex-col justify-center rounded-2xl bg-white px-6 py-6 text-center ring-1 ring-black/5 shadow-[0_18px_40px_-16px_rgba(10,20,64,0.25)] transition-all duration-300 group-hover:shadow-[0_22px_48px_-16px_rgba(1,116,164,0.45)] group-hover:ring-brand-ink/30">
-                  <p className="text-[15px] font-semibold text-brand-ink">{card.eyebrow}</p>
-                  <p className="mt-1.5 text-xl font-bold leading-snug text-shell-gray-900 transition-colors group-hover:text-brand-ink">{card.title}</p>
+                <div className="relative mx-auto -mt-14 flex w-[86%] flex-1 flex-col justify-center rounded-2xl bg-brand-ink px-6 py-6 text-center ring-1 ring-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_18px_40px_-16px_rgba(1,116,164,0.55)] transition-all duration-300 group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_22px_48px_-16px_rgba(1,116,164,0.75)] group-hover:ring-white/40">
+                  <p className="text-[15px] font-semibold text-white/85">{card.eyebrow}</p>
+                  <p className="mt-1.5 text-xl font-bold leading-snug text-white transition-colors group-hover:text-shell-yellow">{card.title}</p>
                 </div>
               </a>
             </Reveal>
@@ -33,9 +33,9 @@ export default function IntroBand() {
         </div>
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 md:mt-16">
           {benefits.map((benefit, idx) => (
-            <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-[0_8px_24px_-16px_rgba(10,20,64,0.18)] transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink/40 hover:shadow-[0_18px_40px_-16px_rgba(1,116,164,0.35)]">
-              <SectionTag>{benefit.title}</SectionTag>
-              <div className="mt-3 text-sm leading-relaxed text-shell-gray-700"><Rich as="p">{benefit.text}</Rich></div>
+            <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-white/20 bg-brand-ink p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_18px_40px_-16px_rgba(1,116,164,0.7)]">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-white">{benefit.title}</p>
+              <div className="mt-3 text-sm leading-relaxed text-white/85"><Rich as="p">{benefit.text}</Rich></div>
             </Reveal>
           ))}
         </ul>

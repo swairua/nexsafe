@@ -6,7 +6,7 @@ export default function ConnectBand() {
   const { pageConnect: connect } = useContent()
   if (!connect) return null
   return (
-    <section className="relative overflow-hidden bg-shell-black dark-gradient text-white">
+    <section className="relative overflow-hidden bg-brand-ink dark-gradient text-white">
       <div
         className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-shell-green/15 blur-3xl"
         aria-hidden="true"
@@ -22,7 +22,7 @@ export default function ConnectBand() {
           <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
             <Rich as="p">{connect.text}</Rich>
           </div>
-          <a href={connect.cta.href} className="btn-pill btn-pill--green mt-8">
+          <a href={connect.cta.href} className="btn-pill mt-8 bg-white text-brand-ink hover:bg-shell-yellow hover:text-shell-gray-900">
             {connect.cta.label}
             <span aria-hidden="true">→</span>
           </a>

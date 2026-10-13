@@ -27,7 +27,7 @@ export default function HeroCarousel() {
   const goTo = (i) => emblaApi && emblaApi.scrollTo(i)
 
   return (
-    <section id={sectionIds.top} className="relative bg-shell-black" aria-label={uiLabels.heroRegion}>
+    <section id={sectionIds.top} className="relative bg-brand-ink" aria-label={uiLabels.heroRegion}>
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {heroSlides.map((slide, i) => (
@@ -52,7 +52,7 @@ export default function HeroCarousel() {
               />
 
               <div className="shell-container relative flex min-h-[28rem] items-center pb-20 pt-28 sm:min-h-[34rem] md:min-h-[40rem] md:pb-24 md:pt-36 lg:min-h-[44rem]">
-                <div className={`hero-copy max-w-2xl text-white ${selected === i ? 'is-active' : ''}`}>
+                <div className={`hero-copy glass-panel max-w-2xl rounded-3xl p-6 text-white md:p-10 ${selected === i ? 'is-active' : ''}`}>
                   <span className="hero-kicker mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-shell-yellow">
                     {slide.kicker}
                   </span>

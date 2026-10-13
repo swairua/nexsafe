@@ -126,16 +126,16 @@ export default function IndustriesStrip() {
             >
               <a
                 href={item.href}
-                className="group flex h-full min-h-[15rem] flex-col items-center rounded-2xl border border-shell-gray-300 bg-white px-6 py-8 text-center shadow-[0_8px_24px_-16px_rgba(10,20,64,0.18)] transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink/40 hover:shadow-[0_18px_40px_-16px_rgba(1,116,164,0.4)]"
+                className="group flex h-full min-h-[15rem] flex-col items-center rounded-2xl border border-white/20 bg-brand-ink px-6 py-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
               >
-                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-shell-red/10 transition-colors duration-300 group-hover:bg-shell-red/20">
+                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white transition-colors duration-300 group-hover:bg-white/90">
                   <IndustryIcon icon={item.icon} label={item.label} />
                 </span>
-                <span className="mt-5 text-base font-bold text-shell-gray-900">
+                <span className="mt-5 text-base font-bold text-white">
                   {item.label}
                 </span>
                 {item.note ? (
-                  <span className="mt-2 text-sm leading-relaxed text-shell-gray-500">
+                  <span className="mt-2 text-sm leading-relaxed text-white/80">
                     {item.note}
                   </span>
                 ) : null}
@@ -158,7 +158,7 @@ export default function IndustriesStrip() {
               <Reveal key={card.title + idx} variant="up" delay={idx + 1}>
                 <a
                   href={card.href}
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-shell-gray-300 bg-white shadow-[0_8px_24px_-16px_rgba(10,20,64,0.18)] transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink/40 hover:shadow-[0_18px_40px_-16px_rgba(1,116,164,0.4)]"
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/20 bg-brand-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_18px_40px_-16px_rgba(1,116,164,0.7)]"
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden">
                     <SmartImage src={card.image} alt="" aria-hidden="true" fallback={card.fallback || card.tint} className="absolute inset-0 h-full w-full" imgClassName="transition-transform duration-500 group-hover:scale-105" />
@@ -166,14 +166,14 @@ export default function IndustriesStrip() {
                     <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                   </div>
                   <div className="flex flex-1 flex-col p-6 md:p-7">
-                    <span className="text-2xl font-extrabold lowercase tracking-tight text-shell-gray-900 md:text-[1.7rem]">
+                    <span className="text-2xl font-extrabold lowercase tracking-tight text-white md:text-[1.7rem]">
                       {card.brand}
                       <span className="text-shell-yellow">.</span>
                     </span>
-                    <span className="mt-2 max-w-[16rem] text-sm font-semibold leading-snug text-shell-gray-700 md:text-base">
+                    <span className="mt-2 max-w-[16rem] text-sm font-semibold leading-snug text-white/85 md:text-base">
                       {card.title}
                     </span>
-                    <span className="mt-auto inline-flex items-center gap-2 pt-5 text-xs font-bold uppercase tracking-[0.18em] text-brand-ink">
+                    <span className="mt-auto inline-flex items-center gap-2 pt-5 text-xs font-bold uppercase tracking-[0.18em] text-white">
                       Read story <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </span>
                   </div>
