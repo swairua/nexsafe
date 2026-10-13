@@ -281,6 +281,18 @@
       0 16px 40px -16px rgba(0, 0, 0, 0.3);
   }
 
+  .glass-brand {
+    background: rgba(1, 116, 164, 0.92);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px) saturate(1.1);
+    -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  }
+
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .glass-card {
       background: rgba(255, 255, 255, 0.96);
@@ -293,6 +305,12 @@
     }
     .glass-panel {
       background: rgba(1, 116, 164, 0.85);
+    }
+    .glass-brand {
+      background: rgba(1, 116, 164, 0.97);
+    }
+    .glass-light {
+      background: rgba(255, 255, 255, 0.97);
     }
   }
 

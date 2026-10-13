@@ -7,7 +7,9 @@ export default function IntroBand() {
   const { introBand, introCards, benefits, navItems, sectionIds, uiLabels } = useContent()
   return (
     <>
-    <section id={sectionIds.company} className="bg-white pb-14 md:pb-20">
+    <section id={sectionIds.company} className="relative isolate overflow-hidden bg-white pb-14 md:pb-20">
+      <span aria-hidden="true" className="pointer-events-none absolute -left-24 top-[30%] -z-10 h-80 w-80 rounded-full bg-brand-ink/20 blur-3xl" />
+      <span aria-hidden="true" className="pointer-events-none absolute -right-24 bottom-[12%] -z-10 h-80 w-80 rounded-full bg-shell-red/20 blur-3xl" />
       <div className="shell-container grid gap-8 px-6 pb-28 pt-14 md:grid-cols-2 md:gap-16 md:pb-36 md:pt-20">
         <Reveal delay={1} variant="fade">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">{introBand.eyebrow}</p>
@@ -23,7 +25,7 @@ export default function IntroBand() {
             <Reveal key={card.id} delay={idx + 1} variant="up" className="h-full">
               <a href={card.href} className="group flex h-full flex-col rounded-2xl transition-all duration-300 hover:-translate-y-1" aria-label={`${card.eyebrow} - ${card.title}`}>
                 <SmartImage src={card.src} alt={card.alt} fallback={card.fallback} className="aspect-[16/11] w-full overflow-hidden rounded-2xl" imgClassName="transition-transform duration-500 group-hover:scale-105" />
-                <div className="relative mx-auto -mt-14 flex w-[86%] flex-1 flex-col justify-center rounded-2xl bg-brand-ink px-6 py-6 text-center ring-1 ring-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_18px_40px_-16px_rgba(1,116,164,0.55)] transition-all duration-300 group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_22px_48px_-16px_rgba(1,116,164,0.75)] group-hover:ring-white/40">
+                <div className="glass-brand relative mx-auto -mt-14 flex w-[86%] flex-1 flex-col justify-center rounded-2xl px-6 py-6 text-center ring-1 ring-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_18px_40px_-16px_rgba(1,116,164,0.55)] transition-all duration-300 group-hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_22px_48px_-16px_rgba(1,116,164,0.75)] group-hover:ring-white/40">
                   <p className="text-[15px] font-semibold text-white/85">{card.eyebrow}</p>
                   <p className="mt-1.5 text-xl font-bold leading-snug text-white transition-colors group-hover:text-shell-yellow">{card.title}</p>
                 </div>
@@ -33,7 +35,7 @@ export default function IntroBand() {
         </div>
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 md:mt-16">
           {benefits.map((benefit, idx) => (
-            <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-white/20 bg-brand-ink p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_18px_40px_-16px_rgba(1,116,164,0.7)]">
+            <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="glass-brand rounded-2xl border border-white/20 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_8px_24px_-16px_rgba(1,116,164,0.5)] transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.22),0_18px_40px_-16px_rgba(1,116,164,0.7)]">
               <p className="text-xs font-bold uppercase tracking-[0.14em] text-white">{benefit.title}</p>
               <div className="mt-3 text-sm leading-relaxed text-white/85"><Rich as="p">{benefit.text}</Rich></div>
             </Reveal>
