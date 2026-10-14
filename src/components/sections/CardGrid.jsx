@@ -1,4 +1,4 @@
-import { Rich } from '../ui/SectionTag.jsx'
+import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from '../../content/ContentContext.jsx'
@@ -6,7 +6,7 @@ import { useContent } from '../../content/ContentContext.jsx'
 const REFERENCE_TAGS = ['Software', 'Security', 'Recovery']
 
 export default function CardGrid() {
-  const { featuredCards, sectionIds } = useContent()
+  const { featuredCards, servicesSection, sectionIds } = useContent()
 
   const cards = (featuredCards || []).filter((c) => REFERENCE_TAGS.includes(c.tag))
   if (cards.length === 0) return null
@@ -14,6 +14,12 @@ export default function CardGrid() {
   return (
     <section id={sectionIds.itSolutions} className="relative overflow-hidden bg-white py-20 md:py-28">
       <div className="shell-container relative">
+        <Reveal variant="fade" className="mb-10">
+          <SectionTag>{servicesSection.tag}</SectionTag>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
+            {servicesSection.title}
+          </h2>
+        </Reveal>
         <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((card, idx) => (
             <Reveal key={card.id} delay={(idx % 3) + 1}>
