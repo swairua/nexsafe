@@ -144,7 +144,7 @@ export default function ProofBand() {
       </div>
 
       <div className="shell-container relative z-10 col-start-1 row-start-2 row-end-4">
-        <section className="bg-white py-12 md:py-16">
+        <section className="bg-white pt-12 pb-4 md:pt-16 md:pb-6">
           <div className="shell-container">
             <div className="flex items-center justify-between gap-4">
               <p className="text-xs font-bold uppercase tracking-wider text-shell-gray-900">Awards &amp; recognition</p>
@@ -181,7 +181,7 @@ export default function ProofBand() {
                     key={b.src + i}
                     className="min-w-0 shrink-0 flex-[0_0_70%] sm:flex-[0_0_50%] md:flex-[0_0_calc(33.333%-14px)] lg:flex-[0_0_calc(25%-15px)]"
                   >
-                    <div className="flex h-full flex-col rounded-xl bg-white p-5 text-left shadow-[0_14px_36px_-16px_rgba(14,17,20,0.25)]">
+                    <div className="flex h-full flex-col rounded-xl bg-white p-5 text-left shadow-[inset_0_0_0_2px_rgba(1,116,164,0.72),0_0_10px_rgba(1,116,164,0.16),0_14px_36px_-16px_rgba(14,17,20,0.25)] transition-shadow duration-300 hover:shadow-[inset_0_0_0_2px_rgba(1,116,164,0.95),0_0_0_6px_rgba(1,116,164,0.16),0_0_24px_rgba(1,116,164,0.35),0_14px_36px_-16px_rgba(14,17,20,0.25)]">
                       <span className="text-xs font-extrabold tracking-widest text-shell-red">
                         {String(i + 1).padStart(2, '0')}
                       </span>
@@ -206,7 +206,7 @@ export default function ProofBand() {
         </section>
       </div>
 
-      <div aria-hidden="true" className="z-0 col-start-1 row-start-4 h-20 md:h-28" />
+      <div aria-hidden="true" className="z-0 col-start-1 row-start-4 h-4 md:h-6" />
     </section>
   )
 }

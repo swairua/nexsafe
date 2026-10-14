@@ -107,7 +107,7 @@ try {
       !plain.includes('by Linethemes'),
     'homepage renders the technology stack': stackGroups.filter((g) => g.id !== 'network').every((g) => plain.includes(g.title)),
     'homepage renders the technology strip (auto-scroll, logo slots, no disclaimer)':
-      plain.includes('Using Trusted Technology to Solve Your IT Challenges') &&
+      plain.includes('Great partnershipswith the best') &&
       !plain.includes('platform capability, not partnership or endorsement'),
     'homepage renders every stack vendor': partners.every((p) => html.includes(p.name)),
     'homepage owns the section anchors the nav targets': navItems

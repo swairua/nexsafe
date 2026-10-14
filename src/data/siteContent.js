@@ -100,7 +100,7 @@ export const defaultContent = {
   },
   stackSection: {
     tag: "Our technology stack",
-    title: "Using Trusted Technology to Solve Your IT Challenges",
+    title: "Great partnerships<br>with the best",
     text: "Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.",
   },
 

@@ -66,35 +66,35 @@ export default function PartnerStrip() {
   }
 
   return (
-    <section id={sectionIds.partners} className="bg-white py-16 md:py-24">
+    <section id={sectionIds.partners} className="bg-white pt-8 pb-16 md:pt-12 md:pb-24">
       <div className="shell-container">
-        <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
-          <Reveal variant="fade">
-            <SectionTag>{partnerStrip.tag}</SectionTag>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-              {partnerStrip.title}
-            </h2>
-            <div className="mt-4 text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{partnerStrip.text}</Rich></div>
-          </Reveal>
-        </div>
+        <div className="relative">
+          <div className="mb-9 md:absolute md:inset-y-0 md:left-0 md:z-10 md:mb-0 md:flex md:w-1/4 md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
+            <Reveal variant="fade">
+              <SectionTag>{partnerStrip.tag}</SectionTag>
+              <Rich as="h2" className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl lg:text-3xl">{partnerStrip.title}</Rich>
+              <div className="mt-4 text-base leading-relaxed text-shell-gray-700"><Rich as="p">{partnerStrip.text}</Rich></div>
+            </Reveal>
+          </div>
 
-        <div
-          ref={emblaRef}
-          role="region"
-          aria-roledescription="carousel"
-          aria-label={partnerStrip.title}
-          tabIndex={0}
-          className="overflow-hidden"
-        >
-          <div className="flex gap-5 pb-3">
-            {(partners || []).map((partner) => (
-              <Reveal
-                key={`${partner.group}-${partner.name}`}
-                delay={1}
-                className="min-w-0 flex-[0_0_80%] sm:flex-[0_0_calc(50%-10px)] lg:flex-[0_0_calc(33.333%-14px)] xl:flex-[0_0_calc(20%-16px)]">
-                <VendorTile partner={partner} />
-              </Reveal>
-            ))}
+          <div
+            ref={emblaRef}
+            role="region"
+            aria-roledescription="carousel"
+            aria-label={partnerStrip.title}
+            tabIndex={0}
+            className="overflow-hidden md:min-h-[22rem]"
+          >
+            <div className="flex gap-5 pb-3 md:min-h-[22rem] md:items-center">
+              {(partners || []).map((partner) => (
+                <Reveal
+                  key={`${partner.group}-${partner.name}`}
+                  delay={1}
+                  className="min-w-0 flex-[0_0_80%] sm:flex-[0_0_calc(50%-10px)] lg:flex-[0_0_calc(33.333%-14px)] xl:flex-[0_0_calc(20%-16px)]">
+                  <VendorTile partner={partner} />
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </div>
