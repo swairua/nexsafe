@@ -46,7 +46,7 @@ export default function CardGrid() {
                   <div className="mb-5 text-sm leading-relaxed text-shell-gray-700">
                     <Rich>{card.text}</Rich>
                   </div>
-                  <span className="arrow-link mt-auto text-sm">
+                  <span className="arrow-link mt-auto self-end text-sm">
                     {card.linkLabel} <span className="arrow">→</span>
                   </span>
                 </div>
