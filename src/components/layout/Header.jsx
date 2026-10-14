@@ -48,6 +48,18 @@ export default function Header({ overlay = false }) {
     setOpenMenu((cur) => (cur === i ? null : i))
   }
 
+  const openedByHover = useRef(false)
+
+  const onNavClick = (i) => {
+    if (openedByHover.current) {
+      openedByHover.current = false
+      setSearchOpen(false)
+      setOpenMenu(i)
+      return
+    }
+    toggleMenu(i)
+  }
+
   return (
     <header
       ref={headerRef}
@@ -68,8 +80,12 @@ export default function Header({ overlay = false }) {
             <button
               key={item.label}
               type="button"
-              onClick={() => toggleMenu(i)}
-              onMouseEnter={() => { setSearchOpen(false); setOpenMenu(i) }}
+              onClick={() => onNavClick(i)}
+              onMouseEnter={() => {
+                openedByHover.current = true
+                setSearchOpen(false)
+                setOpenMenu(i)
+              }}
               aria-expanded={openMenu === i}
               className={`relative flex items-center gap-1.5 rounded-md px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                 openMenu === i
