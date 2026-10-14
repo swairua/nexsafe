@@ -101,12 +101,12 @@ export default function ProofBand() {
       <div aria-hidden="true" className="z-0 col-start-1 row-start-1 row-end-3 bg-shell-black" />
       <div aria-hidden="true" className="z-0 col-start-1 row-start-3 row-end-5 bg-white" />
       <div className="shell-container relative z-10 col-start-1 row-start-1 pb-12 pt-20 md:pb-16 md:pt-28">
-        <Reveal variant="fade" className="max-w-3xl">
+        <Reveal variant="fade">
           <SectionTag>{copy.tag}</SectionTag>
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
             {copy.title}
           </h2>
-          <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg"><Rich as="p">{copy.text}</Rich></div>
+          <div className="mt-4 text-base leading-relaxed text-white/70 md:text-lg"><Rich as="p">{copy.text}</Rich></div>
         </Reveal>
 
         {stats.length ? (

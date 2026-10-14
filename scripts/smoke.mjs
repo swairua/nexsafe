@@ -87,16 +87,16 @@ try {
       'FLEXIBILITY',
     ].every((t) => plain.includes(t)),
     'homepage renders the three service cards': [
+      'Managed IT Services',
+      'Cloud Services',
       'Software Development',
-      'Cybersecurity',
-      'Backup & Disaster Recovery',
     ].every((t) => plain.includes(t)),
     'homepage renders the industry tiles': [
-      'Banking & Insurance',
-      'Capital Markets',
+      'Banking and Finance',
       'Manufacturing',
       'Healthcare',
-      'Higher Education',
+      'Education',
+      'Transport & Logistics',
     ].every((t) => plain.includes(t)),
     'homepage renders the insights section': [
       'Form our blog',
@@ -107,7 +107,7 @@ try {
       !plain.includes('by Linethemes'),
     'homepage renders the technology stack': stackGroups.filter((g) => g.id !== 'network').every((g) => plain.includes(g.title)),
     'homepage renders the technology strip (auto-scroll, logo slots, no disclaimer)':
-      plain.includes('Using trusted technology to solve your IT challenges') &&
+      plain.includes('Using Trusted Technology to Solve Your IT Challenges') &&
       !plain.includes('platform capability, not partnership or endorsement'),
     'homepage renders every stack vendor': partners.every((p) => html.includes(p.name)),
     'homepage owns the section anchors the nav targets': navItems

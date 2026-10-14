@@ -514,14 +514,14 @@
 @media (prefers-reduced-motion: no-preference) {
   .icon-draw * {
     stroke-dasharray: 300;
-    stroke-dashoffset: 300;
   }
   .is-visible .icon-draw * {
-    animation: iconDraw 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation: iconDraw 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
   }
 }
 
 @keyframes iconDraw {
+  from { stroke-dashoffset: 300; }
   to { stroke-dashoffset: 0; }
 }
 

@@ -16,41 +16,91 @@ function IndustryIcon({ icon, label }) {
     fill: 'none',
     'aria-hidden': 'true',
   }
-  const bright = '#0693e3'
-  const pale = '#0a1440'
+  const main = '#8fc3e0'
+  const accent = '#24ccfd'
   if (icon === 'truck') {
     return (
       <svg {...common}>
-        <path d="M6 22h30v20H6zM36 29h9l9 8v5H36" stroke={pale} strokeWidth="2.5" strokeLinejoin="round" />
-        <circle cx="15" cy="45" r="4.5" stroke={pale} strokeWidth="2.5" />
-        <circle cx="45" cy="45" r="4.5" stroke={pale} strokeWidth="2.5" />
-        <path d="M10 22l7-9h13l-4 9" stroke={bright} strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M6 22h30v20H6zM36 29h9l9 8v5H36" stroke={main} strokeWidth="2.5" strokeLinejoin="round" />
+        <circle cx="15" cy="45" r="4.5" stroke={main} strokeWidth="2.5" />
+        <circle cx="45" cy="45" r="4.5" stroke={main} strokeWidth="2.5" />
+        <path d="M10 22l7-9h13l-4 9" stroke={accent} strokeWidth="2.5" strokeLinejoin="round" />
       </svg>
     )
   }
   if (icon === 'briefcase') {
     return (
       <svg {...common}>
-        <rect x="10" y="20" width="44" height="28" rx="3" stroke={pale} strokeWidth="2.5" />
-        <path d="M24 20v-5a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v5M10 31h44" stroke={pale} strokeWidth="2.5" />
-        <rect x="27" y="28" width="10" height="6" rx="1.5" stroke={bright} strokeWidth="2.5" />
+        <rect x="10" y="20" width="44" height="28" rx="3" stroke={main} strokeWidth="2.5" />
+        <path d="M24 20v-5a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v5M10 31h44" stroke={main} strokeWidth="2.5" />
+        <rect x="27" y="28" width="10" height="6" rx="1.5" stroke={accent} strokeWidth="2.5" />
       </svg>
     )
   }
   if (icon === 'heart') {
     return (
       <svg {...common}>
-        <path d="M10 12l22-5 22 5v13c0 14-10 23-22 27C20 48 10 39 10 25V12Z" stroke={pale} strokeWidth="2.5" strokeLinejoin="round" />
-        <path d="M39 24a6.5 6.5 0 0 0-7 4.5A6.5 6.5 0 0 0 25 24a6.2 6.2 0 0 0-6 6.3c0 5.3 4.4 10.4 13 15.7 8.6-5.3 13-10.4 13-15.7A6.2 6.2 0 0 0 39 24Z" stroke={bright} strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M10 12l22-5 22 5v13c0 14-10 23-22 27C20 48 10 39 10 25V12Z" stroke={main} strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M39 24a6.5 6.5 0 0 0-7 4.5A6.5 6.5 0 0 0 25 24a6.2 6.2 0 0 0-6 6.3c0 5.3 4.4 10.4 13 15.7 8.6-5.3 13-10.4 13-15.7A6.2 6.2 0 0 0 39 24Z" stroke={accent} strokeWidth="2.5" strokeLinejoin="round" />
+      </svg>
+    )
+  }
+  if (icon === 'factory') {
+    return (
+      <svg {...common}>
+        <path d="M10 52V30l11-7v7l11-7v7l11-7v29H10Z" stroke={main} strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M43 52V16h8v36" stroke={main} strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M18 40h8v12h-8z" stroke={accent} strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M32 40h6M32 46h6" stroke={accent} strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+    )
+  }
+  if (icon === 'gear') {
+    return (
+      <svg {...common}>
+        <circle cx="32" cy="32" r="10" stroke={main} strokeWidth="2.5" />
+        <circle cx="32" cy="32" r="4" stroke={accent} strokeWidth="2.5" />
+        <path d="M32 12v7M32 45v7M12 32h7M45 32h7M17.9 17.9l5 5M41.1 41.1l5 5M46.1 17.9l-5 5M22.9 41.1l-5 5" stroke={main} strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+    )
+  }
+  if (icon === 'bank') {
+    return (
+      <svg {...common}>
+        <path d="M8 26 32 12l24 14" stroke={main} strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M14 28v16M24 28v16M40 28v16M50 28v16" stroke={main} strokeWidth="2.5" />
+        <path d="M8 52h48M10 46h44" stroke={main} strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="32" cy="21" r="3" stroke={accent} strokeWidth="2.5" />
+      </svg>
+    )
+  }
+  if (icon === 'book') {
+    return (
+      <svg {...common}>
+        <path d="M4 24 32 12l28 12-28 12L4 24Z" stroke={main} strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M16 30v12c0 4 7 8 16 8s16-4 16-8V30" stroke={main} strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M56 26v13" stroke={accent} strokeWidth="2.5" strokeLinecap="round" />
+        <circle cx="56" cy="42" r="3" stroke={accent} strokeWidth="2.5" />
+      </svg>
+    )
+  }
+  if (icon === 'landmark') {
+    return (
+      <svg {...common}>
+        <path d="M22 28a10 10 0 0 1 20 0" stroke={main} strokeWidth="2.5" />
+        <path d="M32 12v6" stroke={accent} strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M12 28h40" stroke={main} strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M16 30v16M26 30v16M38 30v16M48 30v16" stroke={main} strokeWidth="2.5" />
+        <path d="M10 52h44M12 46h40" stroke={main} strokeWidth="2.5" strokeLinecap="round" />
       </svg>
     )
   }
 
   return (
     <svg {...common}>
-      <rect x="16" y="27" width="32" height="25" rx="3" stroke={pale} strokeWidth="2.5" />
-      <path d="M22 27v-7a10 10 0 0 1 20 0v7" stroke={pale} strokeWidth="2.5" />
-      <circle cx="32" cy="39" r="3.5" stroke={bright} strokeWidth="2.5" />
+      <rect x="16" y="27" width="32" height="25" rx="3" stroke={main} strokeWidth="2.5" />
+      <path d="M22 27v-7a10 10 0 0 1 20 0v7" stroke={main} strokeWidth="2.5" />
+      <circle cx="32" cy="39" r="3.5" stroke={accent} strokeWidth="2.5" />
     </svg>
   )
 }

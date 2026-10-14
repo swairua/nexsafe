@@ -12,6 +12,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "seed": "node api/seed.mjs",
+    "content:sync": "node api/seed.mjs && php scripts/sync-content-from-seed.php",
+    "content:sync:dry": "node api/seed.mjs && php scripts/sync-content-from-seed.php --dry-run",
     "admin:password": "php scripts/set-admin-password.php",
     "images:localize": "node scripts/localize-images.mjs",
     "images:check": "node scripts/localize-images.mjs --check",
