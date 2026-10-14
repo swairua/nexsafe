@@ -54,22 +54,6 @@ export default function CardGrid() {
             </Reveal>
           ))}
         </div>
-
-        <div className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card, idx) => (
-            <Reveal key={card.id} delay={(idx % 3) + 1}>
-              <div className="flex h-full flex-col">
-                <h3 className="text-base font-bold text-shell-gray-900">{card.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-shell-gray-700">{card.columnText}</p>
-                <div className="mt-auto pt-4 text-right">
-                  <a href={card.href} className="arrow-link text-sm">
-                    {card.linkLabel} <span className="arrow">→</span>
-                  </a>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   )
