@@ -61,7 +61,7 @@ export default function HeroCarousel() {
               <div className="absolute inset-0 bg-[rgba(7,14,64,0.68)]" aria-hidden="true" />
 
               <div className="shell-container relative flex max-w-none min-h-[28rem] items-center pb-20 pt-28 sm:min-h-[34rem] md:min-h-[40rem] md:pb-24 md:pt-36 lg:min-h-[44rem]">
-                <div className={`hero-copy max-w-2xl text-white ${selected === i ? 'is-active' : ''}`}>
+                <div className={`hero-copy w-full text-white ${selected === i ? 'is-active' : ''}`}>
                   <span className="hero-kicker mb-4 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold uppercase tracking-[0.18em] text-shell-yellow">
                     {slide.kicker}
                   </span>
@@ -75,7 +75,7 @@ export default function HeroCarousel() {
                       </span>
                     ))}
                   </h1>
-                  <div className="hero-text mb-8 max-w-xl text-base leading-relaxed text-white/90 md:text-lg">
+                  <div className="hero-text mb-8 w-full text-base leading-relaxed text-white/90 md:text-lg">
                     <Rich as="p">{slide.text}</Rich>
                   </div>
                   <a href={slide.cta.href} className="hero-cta btn-pill btn-pill--ghost-light">
