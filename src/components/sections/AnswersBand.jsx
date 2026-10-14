@@ -7,8 +7,8 @@ export default function AnswersBand() {
   const copy = content.faqTeaser || {}
   const sectionIds = content.sectionIds || {}
   const faq = (content.pages || {})['help-and-faq']
-  const first = faq && Array.isArray(faq.sections) && faq.sections[0]
-  const items = (first && Array.isArray(first.items) ? first.items : []).slice(0, 4)
+  const allItems = faq && Array.isArray(faq.sections) ? faq.sections.flatMap((s) => (Array.isArray(s.items) ? s.items : [])) : []
+  const items = allItems.slice(0, 4)
   const half = Math.ceil(items.length / 2)
   return (
     <section id={sectionIds.support} className="bg-shell-gray-100 py-16 md:py-24">
