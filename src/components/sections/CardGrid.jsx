@@ -1,15 +1,26 @@
+import { useState } from 'react'
 import SectionTag, { Rich } from '../ui/SectionTag.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from '../../content/ContentContext.jsx'
 
-const REFERENCE_TAGS = ['Software', 'Security', 'Recovery']
+const CORE_TAGS = ['Managed IT', 'Cloud', 'Network']
+
+const TABS = [
+  { id: 'security', label: 'Security & Recovery' },
+  { id: 'core', label: 'Core IT' },
+]
 
 export default function CardGrid() {
   const { featuredCards, servicesSection, sectionIds } = useContent()
+  const [activeTab, setActiveTab] = useState('security')
 
-  const cards = (featuredCards || []).filter((c) => REFERENCE_TAGS.includes(c.tag))
-  if (cards.length === 0) return null
+  const allCards = featuredCards || []
+  if (allCards.length === 0) return null
+
+  const cards = allCards.filter((c) =>
+    activeTab === 'core' ? CORE_TAGS.includes(c.tag) : !CORE_TAGS.includes(c.tag)
+  )
 
   return (
     <section id={sectionIds.itSolutions} className="relative overflow-hidden bg-white py-20 md:py-28">
@@ -20,7 +31,33 @@ export default function CardGrid() {
             {servicesSection.title}
           </h2>
         </Reveal>
-        <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mb-12 flex flex-wrap gap-3" role="tablist" aria-label={servicesSection.title}>
+          {TABS.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              role="tab"
+              aria-selected={activeTab === t.id}
+              aria-controls={`panel-${t.id}`}
+              id={`tab-${t.id}`}
+              onClick={() => setActiveTab(t.id)}
+              className={`relative rounded-full px-6 py-2.5 text-sm font-bold tracking-wide transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50 ${
+                activeTab === t.id
+                  ? 'bg-shell-red text-white'
+                  : 'bg-white text-shell-gray-600 hover:bg-shell-gray-100'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        <div
+          id={`panel-${activeTab}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${activeTab}`}
+          className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {cards.map((card, idx) => (
             <Reveal key={card.id} delay={(idx % 3) + 1}>
               <a
@@ -46,27 +83,11 @@ export default function CardGrid() {
                   <div className="mb-5 text-sm leading-relaxed text-shell-gray-700">
                     <Rich>{card.text}</Rich>
                   </div>
-                  <span className="arrow-link mt-auto text-sm">
+                  <span className="arrow-link mt-auto self-end text-sm">
                     {card.linkLabel} <span className="arrow">→</span>
                   </span>
                 </div>
               </a>
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="mt-10 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card, idx) => (
-            <Reveal key={card.id} delay={(idx % 3) + 1}>
-              <div className="flex h-full flex-col">
-                <h3 className="text-base font-bold text-shell-gray-900">{card.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-shell-gray-700">{card.columnText}</p>
-                <div className="mt-auto pt-4 text-right">
-                  <a href={card.href} className="arrow-link text-sm">
-                    {card.linkLabel} <span className="arrow">→</span>
-                  </a>
-                </div>
-              </div>
             </Reveal>
           ))}
         </div>
