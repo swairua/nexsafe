@@ -7,7 +7,7 @@ export default function IndustryClosing() {
   return (
     <section className="bg-[#060f3d] py-20 md:py-28">
       <div className="shell-container">
-        <Reveal variant="fade" className="mx-auto max-w-3xl text-center">
+        <Reveal variant="fade" className="max-w-3xl">
           <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
             {industryClosing.title}
           </h2>
