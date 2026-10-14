@@ -231,11 +231,11 @@
   "heroSlides": [
     {
       "id": "promise",
-      "kicker": "Empowering businesses with transformative technology solutions",
+      "kicker": "MANAGED SERVICES",
       "title": "We take care of your IT, so you can take care of your customers.",
-      "text": "Nexsate helps businesses reduce downtime, strengthen security, improve connectivity, support users, and create a more reliable technology environment for daily operations and future growth.",
+      "text": "From everyday user support to proactive monitoring, maintenance, and security, Nexsate takes responsibility for keeping your IT environment running smoothly. We help resolve issues before they disrupt operations, giving your people the support they need to stay focused on their work.",
       "cta": {
-        "label": "Discover our services",
+        "label": "Discover Our Services",
         "href": "#/services-solutions"
       },
       "image": "/uploads/hero-network-servers.jpg",
@@ -244,11 +244,11 @@
     },
     {
       "id": "principle",
-      "kicker": "EnableIT. Transform. Empower.",
-      "title": "Simply enabling IT for a complex world",
-      "text": "Since 2016 our principle has shaped the business: technology should make business easier, safer, and more productive. We deliver reliable, responsive, and secure IT, software, and telecommunications solutions.",
+      "kicker": "ENABLE. TRANSFORM. EMPOWER",
+      "title": "Simplifying IT for a complex world",
+      "text": "We believe technology should make business easier, safer, and more productive. At Nexsate, that belief shapes everything we do, from how we understand our customers' needs to how we design, deliver, and support technology that works for their business.",
       "cta": {
-        "label": "About Nexsate",
+        "label": "Explore Services",
         "href": "#/about-us"
       },
       "image": "/uploads/contact-hero.jpg",
@@ -257,11 +257,11 @@
     },
     {
       "id": "industries",
-      "kicker": "Industry focus",
-      "title": "Solving IT challenges for the industries that keep business moving.",
-      "text": "Industrial & Manufacturing, Transportation & Logistics, Healthcare, Financial Services, Professional Services, Non-Profit — technology support built around the way your sector actually operates.",
+      "kicker": "INDUSTRY FOCUS",
+      "title": "Technology solutions build around the industries we serve.",
+      "text": "Different industries depend on technology in different ways. From keeping production systems connected to supporting healthcare teams and business-critical operations, Nexsate delivers IT solutions that reflect the demands, workflows, and priorities of each sector.",
       "cta": {
-        "label": "See who we serve",
+        "label": "Explore Industries",
         "href": "#/services-solutions"
       },
       "image": "/uploads/industry-manufacturing-hero.jpg",
