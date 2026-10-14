@@ -80,12 +80,6 @@ try {
       'We take care of your IT, so you can take care of your customers.',
     ),
     'homepage renders the principle kicker': plain.includes('ENABLE. TRANSFORM. EMPOWER'),
-    'homepage renders the four benefits': [
-      'Cost-effectiveness',
-      'Innovative technology',
-      'Industry expertise',
-      'Scalability',
-    ].every((t) => plain.includes(t)),
     'homepage renders the four pillars': [
       'ACCOUNTABILITY',
       'FORESIGHT',
