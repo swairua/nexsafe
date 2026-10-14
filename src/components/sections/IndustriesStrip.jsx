@@ -124,7 +124,8 @@ export default function IndustriesStrip() {
       id={sectionIds.industries}
       className="relative isolate overflow-hidden bg-[#060f3d] pt-20 md:pt-28"
     >
-      <div className="shell-container">
+      <div aria-hidden="true" className="glass-panel absolute inset-0" />
+      <div className="shell-container relative z-10">
         <Reveal variant="fade">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">
             {industriesStrip.tag}
