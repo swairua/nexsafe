@@ -72,7 +72,7 @@ export default function IndustriesStrip() {
   return (
     <section
       id={sectionIds.industries}
-      className="relative isolate overflow-hidden bg-[#060f3d] py-20 md:py-28"
+      className="relative isolate overflow-hidden bg-[#060f3d] pt-20 md:pt-28"
     >
       <div className="shell-container">
         <div className="grid items-start gap-6 lg:grid-cols-2 lg:gap-12">
@@ -150,7 +150,7 @@ export default function IndustriesStrip() {
 
         <div className="relative mt-20 md:mt-24">
           <div aria-hidden="true" className="absolute left-1/2 top-[67%] bottom-[-100vh] w-screen -translate-x-1/2 bg-white" />
-          <div className="relative rounded-3xl bg-white p-8 md:p-12">
+          <div className="relative rounded-3xl bg-white p-8 pb-0 md:p-12 md:pb-0">
           <Reveal variant="fade">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">
               {caseCards.tag}
