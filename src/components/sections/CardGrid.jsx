@@ -7,13 +7,13 @@ import { useContent } from '../../content/ContentContext.jsx'
 const CORE_TAGS = ['Managed IT', 'Cloud', 'Network']
 
 const TABS = [
-  { id: 'core', label: 'Core IT' },
   { id: 'security', label: 'Security & Recovery' },
+  { id: 'core', label: 'Core IT' },
 ]
 
 export default function CardGrid() {
   const { featuredCards, servicesSection, sectionIds } = useContent()
-  const [activeTab, setActiveTab] = useState('core')
+  const [activeTab, setActiveTab] = useState('security')
 
   const allCards = featuredCards || []
   if (allCards.length === 0) return null
