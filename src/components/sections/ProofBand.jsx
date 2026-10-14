@@ -144,7 +144,7 @@ export default function ProofBand() {
       </div>
 
       <div className="shell-container relative z-10 col-start-1 row-start-2 row-end-4">
-        <section className="bg-white py-12 md:py-16">
+        <section className="bg-white pt-12 pb-4 md:pt-16 md:pb-6">
           <div className="shell-container">
             <div className="flex items-center justify-between gap-4">
               <p className="text-xs font-bold uppercase tracking-wider text-shell-gray-900">Awards &amp; recognition</p>
@@ -206,7 +206,7 @@ export default function ProofBand() {
         </section>
       </div>
 
-      <div aria-hidden="true" className="z-0 col-start-1 row-start-4 h-20 md:h-28" />
+      <div aria-hidden="true" className="z-0 col-start-1 row-start-4 h-4 md:h-6" />
     </section>
   )
 }

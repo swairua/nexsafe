@@ -66,7 +66,7 @@ export default function PartnerStrip() {
   }
 
   return (
-    <section id={sectionIds.partners} className="bg-white py-16 md:py-24">
+    <section id={sectionIds.partners} className="bg-white pt-8 pb-16 md:pt-12 md:pb-24">
       <div className="shell-container">
         <div className="relative">
           <div className="mb-9 md:absolute md:inset-y-0 md:left-0 md:z-10 md:mb-0 md:flex md:w-1/4 md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
