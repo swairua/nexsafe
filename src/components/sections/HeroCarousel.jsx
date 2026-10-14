@@ -54,7 +54,7 @@ export default function HeroCarousel() {
                 className={`absolute inset-0 h-full w-full object-cover ${selected === i ? 'hero-zoom' : ''}`}
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,#070e40_0%,#070e40_60%,rgba(7,14,64,0.7)_100%)]" aria-hidden="true" />
+              <div className="absolute inset-0 bg-[rgba(7,14,64,0.68)]" aria-hidden="true" />
 
               <div className="shell-container relative flex min-h-[28rem] items-center pb-20 pt-28 sm:min-h-[34rem] md:min-h-[40rem] md:pb-24 md:pt-36 lg:min-h-[44rem]">
                 <div className={`hero-copy max-w-2xl text-white ${selected === i ? 'is-active' : ''}`}>
