@@ -140,7 +140,8 @@
   },
   "stackSection": {
     "tag": "Our technology stack",
-    "title": "The platforms we deploy, secure, and support"
+    "title": "Using Trusted Technology to Solve Your IT Challenges",
+    "text": "Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance."
   },
   "pageLabels": {
     "home": "Home",
@@ -598,7 +599,7 @@
   "stackGroups": [
     {
       "id": "cloud-hosting",
-      "title": "Cloud & hosting platforms",
+      "title": "Cloud & Hosting",
       "text": "Trusted cloud and hosting platforms that support secure access, reliable infrastructure, data availability, and scalable business operations.",
       "vendors": [
         {
@@ -625,7 +626,7 @@
     },
     {
       "id": "collaboration",
-      "title": "Collaboration & productivity",
+      "title": "Collaboration & Productivity",
       "text": "Tools for email, meetings, file sharing, teamwork, and document collaboration, helping employees stay connected and productive from anywhere.",
       "vendors": [
         {
@@ -656,7 +657,7 @@
     },
     {
       "id": "security",
-      "title": "Security & endpoint protection",
+      "title": "Security & Endpoint Protection",
       "text": "Platforms we use and support for endpoint security, identity protection, device management, firewall security, and threat monitoring.",
       "vendors": [
         {

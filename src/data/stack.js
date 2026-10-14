@@ -1,7 +1,7 @@
 export const stackGroups = [
   {
     id: 'cloud-hosting',
-    title: 'Cloud & hosting platforms',
+    title: 'Cloud & Hosting',
     text: 'Trusted cloud and hosting platforms that support secure access, reliable infrastructure, data availability, and scalable business operations.',
     vendors: [
       { name: 'Amazon Web Services', logo: '/uploads/stack-icons/amazon-web-services.svg' },
@@ -13,7 +13,7 @@ export const stackGroups = [
   },
   {
     id: 'collaboration',
-    title: 'Collaboration & productivity',
+    title: 'Collaboration & Productivity',
     text: 'Tools for email, meetings, file sharing, teamwork, and document collaboration, helping employees stay connected and productive from anywhere.',
     vendors: [
       { name: 'Microsoft 365', logo: '/uploads/stack-icons/microsoft-365.svg' },
@@ -26,7 +26,7 @@ export const stackGroups = [
   },
   {
     id: 'security',
-    title: 'Security & endpoint protection',
+    title: 'Security & Endpoint Protection',
     text: 'Platforms we use and support for endpoint security, identity protection, device management, firewall security, and threat monitoring.',
     vendors: [
       { name: 'Microsoft Defender', logo: '/uploads/stack-icons/microsoft-defender.svg' },
