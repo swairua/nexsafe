@@ -4,7 +4,7 @@ import SmartImage from "../ui/SmartImage.jsx"
 import { useContent } from "../../content/ContentContext.jsx"
 
 export default function IntroBand() {
-  const { introBand, introCards, benefits, navItems, sectionIds, uiLabels } = useContent()
+  const { introBand, statement, introCards, benefits, navItems, sectionIds, uiLabels } = useContent()
   return (
     <>
     <section id={sectionIds.company} className="bg-shell-black pb-14 md:pb-20">
@@ -35,7 +35,14 @@ export default function IntroBand() {
             </Reveal>
           ))}
         </div>
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 md:mt-16">
+      </div>
+      </section>
+      <div className="shell-container px-6 pt-14 md:pt-20">
+        <Reveal variant="fade" className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-extrabold leading-[1.12] tracking-tight text-[#0a1a3c] md:text-[2.6rem]">{statement.title}</h2>
+          <p className="mt-4 text-[15px] leading-relaxed text-shell-gray-700 md:text-base">{statement.text}</p>
+        </Reveal>
+        <ul className="mt-12 grid gap-5 pb-14 sm:grid-cols-2 lg:grid-cols-4 md:mt-16 md:pb-20">
           {benefits.map((benefit, idx) => (
             <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-white p-6">
               <SectionTag>{benefit.title}</SectionTag>
@@ -44,7 +51,6 @@ export default function IntroBand() {
           ))}
         </ul>
       </div>
-      </section>
       <div className="shell-container max-w-4xl flex justify-center py-4 md:py-6">
         <Reveal delay={2} variant="fade">
           <nav aria-label={uiLabels.onThisPage} className="inline-flex flex-wrap justify-center gap-1 rounded-[2rem] bg-white p-2 shadow-[0_10px_40px_-12px_rgba(14,17,20,0.25)] ring-1 ring-black/5">

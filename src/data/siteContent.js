@@ -75,6 +75,10 @@ export const defaultContent = {
     title: "Nexsate is your trusted source for IT services and support.",
     text: "Nexsate brings together managed IT, cloud infrastructure, cybersecurity, networking, software development, and systems integration under one roof, providing businesses with a single, accountable partner for their technology needs.",
   },
+  statement: {
+    title: "Nexsate is your trusted source for IT services and support.",
+    text: "Nexsate brings together managed IT, cloud infrastructure, cybersecurity, networking, software development, and systems integration under one roof, providing businesses with a single, accountable partner for their technology needs.",
+  },
   introCards: [
     { id: "our-services", eyebrow: "Our services", title: "How we can help", href: pageHref("Services & Solutions"), src: "/uploads/boardroom-meeting.jpg", alt: "Team meeting in a boardroom", fallback: "linear-gradient(135deg, #070e40 0%, #010ed0 140%)" },
     { id: "our-expertise", eyebrow: "Our expertise", title: "Why partner with us", href: pageHref("About Us"), src: "/uploads/team-collaboration.jpg", alt: "Diverse team giving thumbs up", fallback: "linear-gradient(135deg, #070e40 0%, #0693e3 130%)" },

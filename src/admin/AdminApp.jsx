@@ -17,6 +17,7 @@ const CONTENT_KEYS = [
   { key: "navItems", label: "Navigation menu", group: "Site" },
   { key: "heroSlides", label: "Hero slides", group: "Home" },
   { key: "introBand", label: "Intro band", group: "Home" },
+  { key: "statement", label: "Intro statement", group: "Home" },
   { key: "introCards", label: "Intro cards", group: "Home" },
   { key: "benefits", label: "Benefits", group: "Home" },
   { key: "featuredCards", label: "Featured cards", group: "Home" },

@@ -89,6 +89,10 @@
     "title": "Nexsate is your trusted source in IT services and support",
     "text": "We manage the technology behind daily operations so your team can stay focused — responsive support, stronger security, and systems that scale as you grow."
   },
+  "statement": {
+    "title": "Nexsate is your trusted source for IT services and support.",
+    "text": "Nexsate brings together managed IT, cloud infrastructure, cybersecurity, networking, software development, and systems integration under one roof, providing businesses with a single, accountable partner for their technology needs."
+  },
   "introCards": [
     {
       "id": "our-services",
@@ -271,24 +275,24 @@
   ],
   "benefits": [
     {
-      "id": "cost-effectiveness",
-      "title": "Cost-effectiveness",
-      "text": "Reduce downtime, prevent recurring issues, and access reliable IT expertise without the cost of a full in-house team."
+      "id": "accountability",
+      "title": "ACCOUNTABILITY",
+      "text": "One team, one point of contact. We take ownership of your IT needs and see issues through to resolution."
     },
     {
-      "id": "innovative-technology",
-      "title": "Innovative technology",
-      "text": "Modern tools and solutions that improve productivity, strengthen protection, and support smarter ways of working."
+      "id": "foresight",
+      "title": "FORESIGHT",
+      "text": "We identify recurring issues, anticipate challenges, and recommend improvements for long-term reliability."
     },
     {
-      "id": "industry-expertise",
-      "title": "Industry expertise",
-      "text": "Tailored IT solutions designed around your industry, operations, users, and business needs."
+      "id": "practicality",
+      "title": "PRACTICALITY",
+      "text": "We focus on what works. Technology that solves real problems without unnecessary cost or complexity."
     },
     {
-      "id": "scalability",
-      "title": "Scalability",
-      "text": "Flexible technology solutions that grow with your business and support long-term value from your investment."
+      "id": "flexibility",
+      "title": "FLEXIBILITY",
+      "text": "We work with your existing IT environment, adapt as your needs change, and provide specialist expertise where it matters most."
     }
   ],
   "featuredCards": [
