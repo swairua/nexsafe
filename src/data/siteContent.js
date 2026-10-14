@@ -95,6 +95,8 @@ export const defaultContent = {
     tag: "Services",
     title: "Everything we do to keep your business running",
     linkLabel: "Find your solution",
+    ctaLabel: "Discover more",
+    ctaHref: pageHref("Services & Solutions"),
   },
   stackSection: {
     tag: "Our technology stack",

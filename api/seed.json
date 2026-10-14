@@ -134,7 +134,9 @@
   "servicesSection": {
     "tag": "Services",
     "title": "Everything we do to keep your business running",
-    "linkLabel": "Find your solution"
+    "linkLabel": "Find your solution",
+    "ctaLabel": "Discover more",
+    "ctaHref": "#/services-solutions"
   },
   "stackSection": {
     "tag": "Our technology stack",
