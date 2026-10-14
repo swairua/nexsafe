@@ -1,4 +1,4 @@
-import { heroSlides, benefits, pillars, featuredCards, partnerStrip, industriesStrip, caseCards, successStory, blogRow, blogIndex, homeContact, testimonials, statsBand, certStrip, searchSuggestions, faqTeaser, awardsBand, noticeBar, deptSplit, valuesStrip } from "./content.js"
+import { heroSlides, benefits, pillars, featuredCards, partnerStrip, industriesStrip, industryClosing, caseCards, successStory, blogRow, blogIndex, homeContact, testimonials, statsBand, certStrip, searchSuggestions, faqTeaser, awardsBand, noticeBar, deptSplit, valuesStrip } from "./content.js"
 import { stackGroups } from "./stack.js"
 import { partners } from "./partners.js"
 import { promo, footerColumns, footerLegal } from "./footerContent.js"
@@ -180,6 +180,7 @@ export const defaultContent = {
   partnerStrip,
   partners,
   industriesStrip,
+  industryClosing,
   caseCards,
   stackGroups,
   successStory,
