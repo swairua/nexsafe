@@ -42,6 +42,29 @@ export const heroSlides = [
 
 export const benefits = [
   {
+    id: 'cost-effectiveness',
+    title: 'Cost-effectiveness',
+    text: 'Reduce downtime, prevent recurring issues, and access reliable IT expertise without the cost of a full in-house team.',
+  },
+  {
+    id: 'innovative-technology',
+    title: 'Innovative technology',
+    text: 'Modern tools and solutions that improve productivity, strengthen protection, and support smarter ways of working.',
+  },
+  {
+    id: 'industry-expertise',
+    title: 'Industry expertise',
+    text: 'Tailored IT solutions designed around your industry, operations, users, and business needs.',
+  },
+  {
+    id: 'scalability',
+    title: 'Scalability',
+    text: 'Flexible technology solutions that grow with your business and support long-term value from your investment.',
+  },
+]
+
+export const pillars = [
+  {
     id: 'accountability',
     title: 'ACCOUNTABILITY',
     text: 'One team, one point of contact. We take ownership of your IT needs and see issues through to resolution.',
@@ -91,6 +114,7 @@ export const featuredCards = [
     tag: 'Software',
     title: 'Software Development',
     text: 'We develop business applications, implement ERP systems, automate workflows, and integrate software platforms to improve data flow, reduce manual tasks, and simplify business operations.',
+    columnText: 'We develop business applications, implement ERP systems, automate workflows, and integrate software platforms to improve data flow, reduce manual tasks, and simplify business operations.',
     linkLabel: 'Build smarter',
     image: '/uploads/circuit-board.jpg',
     alt: 'Close-up of a circuit board with glowing traces',
@@ -113,6 +137,7 @@ export const featuredCards = [
     tag: 'Security',
     title: 'Cybersecurity',
     text: 'We protect networks, systems, applications, and data through threat monitoring, access controls, vulnerability management, and incident response to strengthen your organization\'s security.',
+    columnText: 'We protect networks, systems, applications, and data through threat monitoring, access controls, vulnerability management, and incident response to strengthen your organization\'s security.',
     linkLabel: 'Protect your business',
     image: '/uploads/cybersecurity.jpg',
     alt: 'Padlock security overlay on a laptop',
@@ -124,6 +149,7 @@ export const featuredCards = [
     tag: 'Recovery',
     title: 'Backup & Disaster Recovery',
     text: 'We manage backups, test recovery procedures, and plan for restoring critical data and systems, helping businesses recover from outages, data loss, and unexpected disruptions.',
+    columnText: 'We manage backups, test recovery procedures, and plan for restoring critical data and systems, helping businesses recover from outages, data loss, and unexpected disruptions.',
     linkLabel: 'Plan your recovery',
     image: '/uploads/data-centre.jpg',
     alt: 'Data centre corridor with server cabinets',

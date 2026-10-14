@@ -1,4 +1,4 @@
-import { heroSlides, benefits, featuredCards, partnerStrip, industriesStrip, caseCards, successStory, blogRow, blogIndex, homeContact, testimonials, statsBand, certStrip, searchSuggestions, faqTeaser, awardsBand, noticeBar, deptSplit, valuesStrip } from "./content.js"
+import { heroSlides, benefits, pillars, featuredCards, partnerStrip, industriesStrip, caseCards, successStory, blogRow, blogIndex, homeContact, testimonials, statsBand, certStrip, searchSuggestions, faqTeaser, awardsBand, noticeBar, deptSplit, valuesStrip } from "./content.js"
 import { stackGroups } from "./stack.js"
 import { partners } from "./partners.js"
 import { promo, footerColumns, footerLegal } from "./footerContent.js"
@@ -72,6 +72,10 @@ export const defaultContent = {
   ],
   introBand: {
     eyebrow: "Our company",
+    title: "Nexsate is your trusted source for IT services and support.",
+    text: "Nexsate brings together managed IT, cloud infrastructure, cybersecurity, networking, software development, and systems integration under one roof, providing businesses with a single, accountable partner for their technology needs.",
+  },
+  statement: {
     title: "Nexsate is your trusted source for IT services and support.",
     text: "Nexsate brings together managed IT, cloud infrastructure, cybersecurity, networking, software development, and systems integration under one roof, providing businesses with a single, accountable partner for their technology needs.",
   },
@@ -168,6 +172,7 @@ export const defaultContent = {
   },
   heroSlides,
   benefits,
+  pillars,
   featuredCards,
   partnerStrip,
   partners,

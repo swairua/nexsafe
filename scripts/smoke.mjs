@@ -86,12 +86,16 @@ try {
       'Industry expertise',
       'Scalability',
     ].every((t) => plain.includes(t)),
-    'homepage renders the tabbed services interface': [
-      'Core IT',
-      'Security & Recovery',
-      'Managed IT Services',
-      'Cloud Services',
-      'Network Management',
+    'homepage renders the four pillars': [
+      'ACCOUNTABILITY',
+      'FORESIGHT',
+      'PRACTICALITY',
+      'FLEXIBILITY',
+    ].every((t) => plain.includes(t)),
+    'homepage renders the three service cards': [
+      'Software Development',
+      'Cybersecurity',
+      'Backup & Disaster Recovery',
     ].every((t) => plain.includes(t)),
     'homepage renders the industry tiles': [
       'Banking & Insurance',

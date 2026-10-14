@@ -89,6 +89,10 @@
     "title": "Nexsate is your trusted source in IT services and support",
     "text": "We manage the technology behind daily operations so your team can stay focused — responsive support, stronger security, and systems that scale as you grow."
   },
+  "statement": {
+    "title": "Nexsate is your trusted source for IT services and support.",
+    "text": "Nexsate brings together managed IT, cloud infrastructure, cybersecurity, networking, software development, and systems integration under one roof, providing businesses with a single, accountable partner for their technology needs."
+  },
   "introCards": [
     {
       "id": "our-services",
@@ -249,7 +253,7 @@
       "text": "We believe technology should make business easier, safer, and more productive. At Nexsate, that belief shapes everything we do, from how we understand our customers' needs to how we design, deliver, and support technology that works for their business.",
       "cta": {
         "label": "Explore Services",
-        "href": "#/about-us"
+        "href": "#/services-solutions"
       },
       "image": "/uploads/hero-team-planning.jpg",
       "alt": "Colleagues planning with laptops and hand-written notes at a table",
@@ -291,6 +295,28 @@
       "text": "Flexible technology solutions that grow with your business and support long-term value from your investment."
     }
   ],
+  "pillars": [
+    {
+      "id": "accountability",
+      "title": "ACCOUNTABILITY",
+      "text": "One team, one point of contact. We take ownership of your IT needs and see issues through to resolution."
+    },
+    {
+      "id": "foresight",
+      "title": "FORESIGHT",
+      "text": "We identify recurring issues, anticipate challenges, and recommend improvements for long-term reliability."
+    },
+    {
+      "id": "practicality",
+      "title": "PRACTICALITY",
+      "text": "We focus on what works. Technology that solves real problems without unnecessary cost or complexity."
+    },
+    {
+      "id": "flexibility",
+      "title": "FLEXIBILITY",
+      "text": "We work with your existing IT environment, adapt as your needs change, and provide specialist expertise where it matters most."
+    }
+  ],
   "featuredCards": [
     {
       "id": "card-managed-it-services",
@@ -319,6 +345,7 @@
       "tag": "Software",
       "title": "Software Development",
       "text": "Custom software and ERP solutions designed to automate workflows, connect systems, improve efficiency, and support daily operations.",
+      "columnText": "We develop business applications, implement ERP systems, automate workflows, and integrate software platforms to improve data flow, reduce manual tasks, and simplify business operations.",
       "linkLabel": "Build smarter",
       "image": "/uploads/circuit-board.jpg",
       "alt": "Close-up of a circuit board with glowing traces",
@@ -341,6 +368,7 @@
       "tag": "Security",
       "title": "Cybersecurity",
       "text": "Security services that protect your business data, users, devices, systems, and cloud platforms from evolving digital threats.",
+      "columnText": "We protect networks, systems, applications, and data through threat monitoring, access controls, vulnerability management, and incident response to strengthen your organization's security.",
       "linkLabel": "Protect your business",
       "image": "/uploads/cybersecurity.jpg",
       "alt": "Padlock security overlay on a laptop",
@@ -352,6 +380,7 @@
       "tag": "Recovery",
       "title": "Backup & Disaster Recovery",
       "text": "Reliable data protection and recovery services that safeguard critical information, reduce disruption, and prepare your business for unexpected events.",
+      "columnText": "We manage backups, test recovery procedures, and plan for restoring critical data and systems, helping businesses recover from outages, data loss, and unexpected disruptions.",
       "linkLabel": "Plan your recovery",
       "image": "/uploads/data-centre.jpg",
       "alt": "Data centre corridor with server cabinets",
