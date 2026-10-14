@@ -20,6 +20,7 @@ const CONTENT_KEYS = [
   { key: "statement", label: "Intro statement", group: "Home" },
   { key: "introCards", label: "Intro cards", group: "Home" },
   { key: "benefits", label: "Benefits", group: "Home" },
+  { key: "pillars", label: "Intro pillars", group: "Home" },
   { key: "featuredCards", label: "Featured cards", group: "Home" },
   { key: "servicesSection", label: "Services heading", group: "Home" },
   { key: "partnerStrip", label: "Partner strip", group: "Home" },

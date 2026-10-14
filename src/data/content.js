@@ -42,6 +42,29 @@ export const heroSlides = [
 
 export const benefits = [
   {
+    id: 'cost-effectiveness',
+    title: 'Cost-effectiveness',
+    text: 'Reduce downtime, prevent recurring issues, and access reliable IT expertise without the cost of a full in-house team.',
+  },
+  {
+    id: 'innovative-technology',
+    title: 'Innovative technology',
+    text: 'Modern tools and solutions that improve productivity, strengthen protection, and support smarter ways of working.',
+  },
+  {
+    id: 'industry-expertise',
+    title: 'Industry expertise',
+    text: 'Tailored IT solutions designed around your industry, operations, users, and business needs.',
+  },
+  {
+    id: 'scalability',
+    title: 'Scalability',
+    text: 'Flexible technology solutions that grow with your business and support long-term value from your investment.',
+  },
+]
+
+export const pillars = [
+  {
     id: 'accountability',
     title: 'ACCOUNTABILITY',
     text: 'One team, one point of contact. We take ownership of your IT needs and see issues through to resolution.',

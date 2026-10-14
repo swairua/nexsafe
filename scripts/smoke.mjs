@@ -81,6 +81,12 @@ try {
     ),
     'homepage renders the principle kicker': plain.includes('ENABLE. TRANSFORM. EMPOWER'),
     'homepage renders the four benefits': [
+      'Cost-effectiveness',
+      'Innovative technology',
+      'Industry expertise',
+      'Scalability',
+    ].every((t) => plain.includes(t)),
+    'homepage renders the four pillars': [
       'ACCOUNTABILITY',
       'FORESIGHT',
       'PRACTICALITY',
