@@ -238,8 +238,8 @@
         "label": "Discover Our Services",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-network-servers.jpg",
-      "alt": "Server racks glowing inside a modern data centre",
+      "image": "/uploads/hero-docx-network-fiber.png",
+      "alt": "Fiber-optic network cabling in a data centre",
       "fallback": "#070e40"
     },
     {
@@ -251,8 +251,8 @@
         "label": "Explore Services",
         "href": "#/about-us"
       },
-      "image": "/uploads/contact-hero.jpg",
-      "alt": "Bright modern reception area with a visitor desk",
+      "image": "/uploads/hero-docx-principle-desk.png",
+      "alt": "Hands writing notes at a desk beside a laptop",
       "fallback": "#070e40"
     },
     {
@@ -264,8 +264,8 @@
         "label": "Explore Industries",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/industry-manufacturing-hero.jpg",
-      "alt": "Colleagues working together in a modern office",
+      "image": "/uploads/hero-docx-industry-support.png",
+      "alt": "IT support specialist working at a computer with headphones",
       "fallback": "#070e40"
     }
   ],

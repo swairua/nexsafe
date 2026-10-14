@@ -5,18 +5,6 @@ import { useContent } from "../../content/ContentContext.jsx"
 import { Rich } from '../ui/SectionTag.jsx'
 
 const textBearingHeroImages = {
-  '/uploads/hero-docx-network-fiber.png': {
-    src: '/uploads/hero-network-servers.jpg',
-    alt: 'Server racks glowing inside a modern data centre',
-  },
-  '/uploads/hero-docx-principle-desk.png': {
-    src: '/uploads/contact-hero.jpg',
-    alt: 'Bright modern reception area with a visitor desk',
-  },
-  '/uploads/hero-docx-industry-support.png': {
-    src: '/uploads/industry-manufacturing-hero.jpg',
-    alt: 'Colleagues working together in a modern office',
-  },
   '/uploads/hero-team-planning.jpg': {
     src: '/uploads/contact-hero.jpg',
     alt: 'Bright modern reception area with a visitor desk',

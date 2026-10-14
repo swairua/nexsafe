@@ -14,8 +14,8 @@ export const heroSlides = [
     title: 'We take care of your IT, so you can take care of your customers.',
     text: 'From everyday user support to proactive monitoring, maintenance, and security, Nexsate takes responsibility for keeping your IT environment running smoothly. We help resolve issues before they disrupt operations, giving your people the support they need to stay focused on their work.',
     cta: { label: 'Discover Our Services', href: pageHref('Services & Solutions') },
-    image: '/uploads/hero-network-servers.jpg',
-    alt: 'Server racks glowing inside a modern data centre',
+    image: '/uploads/hero-docx-network-fiber.png',
+    alt: 'Fiber-optic network cabling in a data centre',
     fallback: '#070e40',
   },
   {
@@ -24,8 +24,8 @@ export const heroSlides = [
     title: 'Simplifying IT for a complex world',
     text: 'We believe technology should make business easier, safer, and more productive. At Nexsate, that belief shapes everything we do, from how we understand our customers\' needs to how we design, deliver, and support technology that works for their business.',
     cta: { label: 'Explore Services', href: pageHref('Services & Solutions') },
-    image: '/uploads/contact-hero.jpg',
-    alt: 'Bright modern reception area with a visitor desk',
+    image: '/uploads/hero-docx-principle-desk.png',
+    alt: 'Hands writing notes at a desk beside a laptop',
     fallback: '#070e40',
   },
   {
@@ -34,8 +34,8 @@ export const heroSlides = [
     title: 'Technology solutions build around the industries we serve.',
     text: 'Different industries depend on technology in different ways. From keeping production systems connected to supporting healthcare teams and business-critical operations, Nexsate delivers IT solutions that reflect the demands, workflows, and priorities of each sector.',
     cta: { label: 'Explore Industries', href: pageHref('Services & Solutions') },
-    image: '/uploads/industry-manufacturing-hero.jpg',
-    alt: 'Colleagues working together in a modern office',
+    image: '/uploads/hero-docx-industry-support.png',
+    alt: 'IT support specialist working at a computer with headphones',
     fallback: '#070e40',
   },
 ]
