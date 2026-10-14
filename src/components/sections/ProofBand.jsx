@@ -181,7 +181,7 @@ export default function ProofBand() {
                     key={b.src + i}
                     className="min-w-0 shrink-0 flex-[0_0_70%] sm:flex-[0_0_50%] md:flex-[0_0_calc(33.333%-14px)] lg:flex-[0_0_calc(25%-15px)]"
                   >
-                    <div className="flex h-full flex-col rounded-xl bg-white p-5 text-left shadow-[0_14px_36px_-16px_rgba(14,17,20,0.25)]">
+                    <div className="flex h-full flex-col rounded-xl bg-white p-5 text-left shadow-[0_14px_36px_-16px_rgba(14,17,20,0.25)] transition-shadow duration-300 hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.45),0_0_16px_rgba(1,116,164,0.22),0_14px_36px_-16px_rgba(14,17,20,0.25)]">
                       <span className="text-xs font-extrabold tracking-widest text-shell-red">
                         {String(i + 1).padStart(2, '0')}
                       </span>
