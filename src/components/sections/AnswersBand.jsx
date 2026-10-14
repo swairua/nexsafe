@@ -19,7 +19,7 @@ export default function AnswersBand() {
               {copy.title}
             </h3>
           </Reveal>
-          <div className="grid items-start gap-3 md:grid-flow-col md:grid-rows-2">
+          <div className="grid grid-flow-col grid-rows-2 items-start gap-3">
             {items.map((item, i) => (
               <Reveal key={item.title + i} delay={i + 1}>
                 <details className="group rounded-2xl border border-shell-gray-300 bg-white open:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]">
