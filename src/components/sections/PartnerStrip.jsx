@@ -69,7 +69,7 @@ export default function PartnerStrip() {
     <section id={sectionIds.partners} className="bg-white py-16 md:py-24">
       <div className="shell-container">
         <div className="relative">
-          <div className="mb-9 lg:absolute lg:inset-y-0 lg:left-0 lg:z-10 lg:mb-0 lg:flex lg:w-1/4 lg:flex-col lg:justify-center lg:bg-white lg:pr-6 xl:pr-10">
+          <div className="mb-9 md:absolute md:inset-y-0 md:left-0 md:z-10 md:mb-0 md:flex md:w-1/4 md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
             <Reveal variant="fade">
               <SectionTag>{partnerStrip.tag}</SectionTag>
               <Rich as="h2" className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl lg:text-3xl">{partnerStrip.title}</Rich>
@@ -83,9 +83,9 @@ export default function PartnerStrip() {
             aria-roledescription="carousel"
             aria-label={partnerStrip.title}
             tabIndex={0}
-            className="overflow-hidden lg:min-h-[22rem]"
+            className="overflow-hidden md:min-h-[22rem]"
           >
-            <div className="flex gap-5 pb-3 lg:min-h-[22rem] lg:items-center">
+            <div className="flex gap-5 pb-3 md:min-h-[22rem] md:items-center">
               {(partners || []).map((partner) => (
                 <Reveal
                   key={`${partner.group}-${partner.name}`}
