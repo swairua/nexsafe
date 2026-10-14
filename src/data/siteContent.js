@@ -95,10 +95,13 @@ export const defaultContent = {
     tag: "Services",
     title: "Everything we do to keep your business running",
     linkLabel: "Find your solution",
+    ctaLabel: "Discover more",
+    ctaHref: pageHref("Services & Solutions"),
   },
   stackSection: {
     tag: "Our technology stack",
-    title: "The platforms we deploy, secure, and support",
+    title: "Using Trusted Technology to Solve Your IT Challenges",
+    text: "Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.",
   },
 
   pageLabels: {

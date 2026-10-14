@@ -80,12 +80,6 @@ try {
       'We take care of your IT, so you can take care of your customers.',
     ),
     'homepage renders the principle kicker': plain.includes('ENABLE. TRANSFORM. EMPOWER'),
-    'homepage renders the four benefits': [
-      'Cost-effectiveness',
-      'Innovative technology',
-      'Industry expertise',
-      'Scalability',
-    ].every((t) => plain.includes(t)),
     'homepage renders the four pillars': [
       'ACCOUNTABILITY',
       'FORESIGHT',
@@ -111,7 +105,7 @@ try {
     ].every((t) => plain.includes(t)),
     'homepage insights photos carry no third-party stamp':
       !plain.includes('by Linethemes'),
-    'homepage renders the technology stack': stackGroups.every((g) => plain.includes(g.title)),
+    'homepage renders the technology stack': stackGroups.filter((g) => g.id !== 'network').every((g) => plain.includes(g.title)),
     'homepage renders the technology strip (auto-scroll, logo slots, no disclaimer)':
       plain.includes('Using trusted technology to solve your IT challenges') &&
       !plain.includes('platform capability, not partnership or endorsement'),

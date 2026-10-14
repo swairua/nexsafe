@@ -4,7 +4,7 @@ import SmartImage from "../ui/SmartImage.jsx"
 import { useContent } from "../../content/ContentContext.jsx"
 
 export default function IntroBand() {
-  const { introBand, statement, introCards, benefits, pillars, sectionIds } = useContent()
+  const { introBand, statement, introCards, pillars, sectionIds } = useContent()
   return (
     <>
     <section id={sectionIds.company} className="bg-shell-black pb-14 md:pb-20">
@@ -46,24 +46,14 @@ export default function IntroBand() {
       <div className="mt-12 bg-shell-black md:mt-16">
         <div className="shell-container px-6">
           <ul className="grid gap-5 py-10 sm:grid-cols-2 lg:grid-cols-4 md:py-14">
-            {benefits.map((benefit, idx) => (
-              <Reveal key={benefit.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-white p-6">
-                <SectionTag>{benefit.title}</SectionTag>
-                <div className="mt-3 text-sm leading-relaxed text-shell-gray-700"><Rich as="p">{benefit.text}</Rich></div>
+            {pillars.map((pillar, idx) => (
+              <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-white p-6">
+                <SectionTag>{pillar.title}</SectionTag>
+                <div className="mt-3 text-sm leading-relaxed text-shell-gray-700"><Rich as="p">{pillar.text}</Rich></div>
               </Reveal>
             ))}
           </ul>
         </div>
-      </div>
-      <div className="shell-container px-6 pt-12 md:pt-14">
-        <ul className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 md:gap-8">
-          {pillars.map((pillar, idx) => (
-            <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1}>
-              <h3 className="text-sm font-bold uppercase tracking-wide text-[#0a1a3c]">{pillar.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-shell-gray-700">{pillar.text}</p>
-            </Reveal>
-          ))}
-        </ul>
       </div>
     </>
   )

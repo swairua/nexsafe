@@ -89,7 +89,7 @@ export const pillars = [
 export const featuredCards = [
   {
     id: 'card-managed-it-services',
-    tag: 'Managed IT',
+    tag: 'IT Support',
     title: 'Managed IT Services',
     text: 'A coordinated helpdesk for user requests, backed by device management, updates, and system maintenance. We track issues through resolution and keep your everyday IT administration organized.',
     linkLabel: 'Stay up and running',

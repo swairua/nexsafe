@@ -134,11 +134,14 @@
   "servicesSection": {
     "tag": "Services",
     "title": "Everything we do to keep your business running",
-    "linkLabel": "Find your solution"
+    "linkLabel": "Find your solution",
+    "ctaLabel": "Discover more",
+    "ctaHref": "#/services-solutions"
   },
   "stackSection": {
     "tag": "Our technology stack",
-    "title": "The platforms we deploy, secure, and support"
+    "title": "Using Trusted Technology to Solve Your IT Challenges",
+    "text": "Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance."
   },
   "pageLabels": {
     "home": "Home",
@@ -320,7 +323,7 @@
   "featuredCards": [
     {
       "id": "card-managed-it-services",
-      "tag": "Managed IT",
+      "tag": "IT Support",
       "title": "Managed IT Services",
       "text": "Reliable IT support that keeps your team productive, resolves issues faster, reduces downtime, and keeps daily operations moving.",
       "linkLabel": "Stay up and running",
@@ -344,7 +347,7 @@
       "id": "card-software-development",
       "tag": "Software",
       "title": "Software Development",
-      "text": "Custom software and ERP solutions designed to automate workflows, connect systems, improve efficiency, and support daily operations.",
+      "text": "We develop business applications, implement ERP systems, automate workflows, and integrate software platforms to improve data flow, reduce manual tasks, and simplify business operations.",
       "columnText": "We develop business applications, implement ERP systems, automate workflows, and integrate software platforms to improve data flow, reduce manual tasks, and simplify business operations.",
       "linkLabel": "Build smarter",
       "image": "/uploads/circuit-board.jpg",
@@ -367,7 +370,7 @@
       "id": "card-cybersecurity",
       "tag": "Security",
       "title": "Cybersecurity",
-      "text": "Security services that protect your business data, users, devices, systems, and cloud platforms from evolving digital threats.",
+      "text": "We protect networks, systems, applications, and data through threat monitoring, access controls, vulnerability management, and incident response to strengthen your organization's security.",
       "columnText": "We protect networks, systems, applications, and data through threat monitoring, access controls, vulnerability management, and incident response to strengthen your organization's security.",
       "linkLabel": "Protect your business",
       "image": "/uploads/cybersecurity.jpg",
@@ -379,7 +382,7 @@
       "id": "card-backup",
       "tag": "Recovery",
       "title": "Backup & Disaster Recovery",
-      "text": "Reliable data protection and recovery services that safeguard critical information, reduce disruption, and prepare your business for unexpected events.",
+      "text": "We manage backups, test recovery procedures, and plan for restoring critical data and systems, helping businesses recover from outages, data loss, and unexpected disruptions.",
       "columnText": "We manage backups, test recovery procedures, and plan for restoring critical data and systems, helping businesses recover from outages, data loss, and unexpected disruptions.",
       "linkLabel": "Plan your recovery",
       "image": "/uploads/data-centre.jpg",
@@ -596,7 +599,7 @@
   "stackGroups": [
     {
       "id": "cloud-hosting",
-      "title": "Cloud & hosting platforms",
+      "title": "Cloud & Hosting",
       "text": "Trusted cloud and hosting platforms that support secure access, reliable infrastructure, data availability, and scalable business operations.",
       "vendors": [
         {
@@ -623,7 +626,7 @@
     },
     {
       "id": "collaboration",
-      "title": "Collaboration & productivity",
+      "title": "Collaboration & Productivity",
       "text": "Tools for email, meetings, file sharing, teamwork, and document collaboration, helping employees stay connected and productive from anywhere.",
       "vendors": [
         {
@@ -654,7 +657,7 @@
     },
     {
       "id": "security",
-      "title": "Security & endpoint protection",
+      "title": "Security & Endpoint Protection",
       "text": "Platforms we use and support for endpoint security, identity protection, device management, firewall security, and threat monitoring.",
       "vendors": [
         {
