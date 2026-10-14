@@ -55,7 +55,7 @@ export default function IntroBand() {
           </ul>
         </div>
       </div>
-      <div className="shell-container px-6 pb-14 pt-12 md:pb-20 md:pt-14">
+      <div className="shell-container px-6 pt-12 md:pt-14">
         <ul className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 md:gap-8">
           {pillars.map((pillar, idx) => (
             <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1}>
