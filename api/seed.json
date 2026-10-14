@@ -238,8 +238,8 @@
         "label": "Discover Our Services",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-docx-network-fiber.png",
-      "alt": "Fiber-optic network cabling in a data centre",
+      "image": "/uploads/hero-network-servers.jpg",
+      "alt": "Server racks glowing behind mesh doors in a data centre",
       "fallback": "#070e40"
     },
     {
@@ -251,8 +251,8 @@
         "label": "Explore Services",
         "href": "#/about-us"
       },
-      "image": "/uploads/hero-docx-principle-desk.png",
-      "alt": "Hands writing notes at a desk beside a laptop",
+      "image": "/uploads/hero-team-planning.jpg",
+      "alt": "Colleagues planning with laptops and hand-written notes at a table",
       "fallback": "#070e40"
     },
     {
@@ -264,8 +264,8 @@
         "label": "Explore Industries",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-docx-industry-support.png",
-      "alt": "IT support specialist working at a computer with headphones",
+      "image": "/uploads/team-collaboration.jpg",
+      "alt": "Colleagues wearing headphones while working together on laptops",
       "fallback": "#070e40"
     }
   ],

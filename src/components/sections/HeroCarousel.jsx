@@ -5,13 +5,17 @@ import { useContent } from "../../content/ContentContext.jsx"
 import { Rich } from '../ui/SectionTag.jsx'
 
 const textBearingHeroImages = {
-  '/uploads/hero-team-planning.jpg': {
-    src: '/uploads/contact-hero.jpg',
-    alt: 'Bright modern reception area with a visitor desk',
+  '/uploads/hero-docx-network-fiber.png': {
+    src: '/uploads/hero-network-servers.jpg',
+    alt: 'Server racks glowing behind mesh doors in a data centre',
   },
-  '/uploads/team-collaboration.jpg': {
-    src: '/uploads/industry-manufacturing-hero.jpg',
-    alt: 'Colleagues working together in a modern office',
+  '/uploads/hero-docx-principle-desk.png': {
+    src: '/uploads/hero-team-planning.jpg',
+    alt: 'Colleagues planning with laptops and hand-written notes at a table',
+  },
+  '/uploads/hero-docx-industry-support.png': {
+    src: '/uploads/team-collaboration.jpg',
+    alt: 'Colleagues wearing headphones while working together on laptops',
   },
 }
 

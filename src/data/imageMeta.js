@@ -1,17 +1,17 @@
 export const IMAGE_META = {
   '/uploads/hero-docx-network-fiber.png': {
-    description: 'Fiber-optic network lights behind a dark navy overlay — homepage hero background (from homepage.docx).',
-    locations: ['Home > Hero slides > #1 "We take care of your IT"'],
+    description: 'Fiber-optic network lights behind a dark navy overlay — homepage.docx hero screenshot with text baked in (not used as a background; replaced by hero-network-servers.jpg).',
+    locations: ['Unused — kept as homepage.docx reference only'],
     replaceable: true,
   },
   '/uploads/hero-docx-principle-desk.png': {
-    description: 'Hands sketching IT plans on paper with a laptop nearby — homepage hero background (from homepage.docx).',
-    locations: ['Home > Hero slides > #2 "Simply enabling IT"'],
+    description: 'Hands sketching IT plans on paper with a laptop nearby — homepage.docx hero screenshot with text baked in (not used as a background; replaced by hero-team-planning.jpg).',
+    locations: ['Unused — kept as homepage.docx reference only'],
     replaceable: true,
   },
   '/uploads/hero-docx-industry-support.png': {
-    description: 'Support specialist wearing a headset while assisting a client — homepage hero background (from homepage.docx).',
-    locations: ['Home > Hero slides > #3 Industry focus'],
+    description: 'Support specialist wearing a headset while assisting a client — homepage.docx hero screenshot with text baked in (not used as a background; replaced by team-collaboration.jpg).',
+    locations: ['Unused — kept as homepage.docx reference only'],
     replaceable: true,
   },
   '/uploads/hero-network-servers.jpg': {
