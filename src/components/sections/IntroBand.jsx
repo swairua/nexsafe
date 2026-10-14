@@ -4,7 +4,7 @@ import SmartImage from "../ui/SmartImage.jsx"
 import { useContent } from "../../content/ContentContext.jsx"
 
 export default function IntroBand() {
-  const { introBand, statement, introCards, benefits, pillars, navItems, sectionIds, uiLabels } = useContent()
+  const { introBand, statement, introCards, benefits, pillars, sectionIds } = useContent()
   return (
     <>
     <section id={sectionIds.company} className="bg-shell-black pb-14 md:pb-20">
@@ -64,15 +64,6 @@ export default function IntroBand() {
             </Reveal>
           ))}
         </ul>
-      </div>
-      <div className="shell-container max-w-4xl flex justify-center py-4 md:py-6">
-        <Reveal delay={2} variant="fade">
-          <nav aria-label={uiLabels.onThisPage} className="inline-flex flex-wrap justify-center gap-1 rounded-[2rem] bg-white p-2 shadow-[0_10px_40px_-12px_rgba(14,17,20,0.25)] ring-1 ring-black/5">
-            {navItems.map((item) => (
-              <a key={item.label} href={item.href} className="rounded-full px-4 py-2 text-sm font-medium text-shell-gray-700 transition-colors hover:bg-shell-gray-100 hover:text-shell-gray-900">{item.label}</a>
-            ))}
-          </nav>
-        </Reveal>
       </div>
     </>
   )
