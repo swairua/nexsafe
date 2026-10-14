@@ -9,6 +9,7 @@ export default function AnswersBand() {
   const faq = (content.pages || {})['help-and-faq']
   const first = faq && Array.isArray(faq.sections) && faq.sections[0]
   const items = (first && Array.isArray(first.items) ? first.items : []).slice(0, 4)
+  const half = Math.ceil(items.length / 2)
   return (
     <section id={sectionIds.support} className="bg-shell-gray-100 py-16 md:py-24">
       <div className="shell-container max-w-5xl">
@@ -20,10 +21,10 @@ export default function AnswersBand() {
             </h3>
           </Reveal>
           <div className="grid grid-cols-2 items-start gap-3">
-            {[items.slice(0, 2), items.slice(2, 4)].map((column, c) => (
+            {[items.slice(0, half), items.slice(half)].map((column, c) => (
               <div key={c} className="space-y-3">
                 {column.map((item, i) => (
-                  <Reveal key={item.title + i} delay={c * 2 + i + 1}>
+                  <Reveal key={item.title + i} delay={c * half + i + 1}>
                     <details className="group rounded-2xl border border-shell-gray-300 bg-white open:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]">
                       <summary className="flex min-h-[3.5rem] cursor-pointer list-none items-center justify-between gap-4 p-5 text-left font-bold text-shell-gray-900 [&::-webkit-details-marker]:hidden">
                         {item.title}
