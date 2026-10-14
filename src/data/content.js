@@ -195,9 +195,9 @@ export const stakeholderCards = {
 }
 
 export const partnerStrip = {
-  tag: 'What we use',
+  tag: 'Partners',
   title: 'Great partnerships<br>with the best',
-  text: 'Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.',
+  text: 'The company needed to complete a complex migration on a tight deadline to avoid millions of dollars in post-contract fees and fines.',
   cta: { label: 'Explore our services', href: pageHref('Services & Solutions') },
 }
 
