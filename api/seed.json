@@ -239,7 +239,7 @@
       "title": "We take care of your IT, so you can take care of your customers.",
       "text": "From everyday user support to proactive monitoring, maintenance, and security, Nexsate takes responsibility for keeping your IT environment running smoothly. We help resolve issues before they disrupt operations, giving your people the support they need to stay focused on their work.",
       "cta": {
-        "label": "IT Support",
+        "label": "Discover Our Services",
         "href": "#/services-solutions"
       },
       "image": "/uploads/hero-network-servers.jpg",
@@ -320,7 +320,7 @@
   "featuredCards": [
     {
       "id": "card-managed-it-services",
-      "tag": "Managed IT",
+      "tag": "IT Support",
       "title": "Managed IT Services",
       "text": "Reliable IT support that keeps your team productive, resolves issues faster, reduces downtime, and keeps daily operations moving.",
       "linkLabel": "Stay up and running",

@@ -4,7 +4,7 @@ import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from '../../content/ContentContext.jsx'
 
-const CORE_TAGS = ['Managed IT', 'Cloud', 'Network']
+const CORE_TAGS = ['IT Support', 'Cloud', 'Network']
 
 const TABS = [
   { id: 'core', label: 'Core IT' },
