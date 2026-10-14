@@ -37,9 +37,7 @@ export default function StackSection() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-ink md:text-sm">
             {stackSection.tag}
           </p>
-          <h2 className="mt-3 text-left text-3xl font-bold tracking-tight text-shell-gray-900 sm:text-4xl md:text-5xl">
-            {stackSection.title}
-          </h2>
+          <Rich as="h2" className="mt-3 text-left text-3xl font-bold tracking-tight text-shell-gray-900 sm:text-4xl md:text-5xl">{stackSection.title}</Rich>
           {stackSection?.text ? (
             <div className="mt-4 text-left text-base leading-relaxed text-shell-gray-700 md:text-lg">
               <Rich as="p">{stackSection.text}</Rich>

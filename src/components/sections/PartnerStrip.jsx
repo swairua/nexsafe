@@ -71,9 +71,7 @@ export default function PartnerStrip() {
         <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
           <Reveal variant="fade">
             <SectionTag>{partnerStrip.tag}</SectionTag>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-              {partnerStrip.title}
-            </h2>
+            <Rich as="h2" className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">{partnerStrip.title}</Rich>
             <div className="mt-4 text-base leading-relaxed text-shell-gray-700 md:text-lg"><Rich as="p">{partnerStrip.text}</Rich></div>
           </Reveal>
         </div>
