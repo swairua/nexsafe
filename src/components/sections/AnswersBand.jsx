@@ -8,7 +8,7 @@ export default function AnswersBand() {
   const sectionIds = content.sectionIds || {}
   const faq = (content.pages || {})['help-and-faq']
   const first = faq && Array.isArray(faq.sections) && faq.sections[0]
-  const items = (first && Array.isArray(first.items) ? first.items : []).slice(0, 5)
+  const items = (first && Array.isArray(first.items) ? first.items : []).slice(0, 4)
   return (
     <section id={sectionIds.support} className="bg-shell-gray-100 py-16 md:py-24">
       <div className="shell-container max-w-5xl">
@@ -19,7 +19,7 @@ export default function AnswersBand() {
               {copy.title}
             </h3>
           </Reveal>
-          <div className="space-y-3">
+          <div className="grid items-start gap-3 md:grid-cols-2">
             {items.map((item, i) => (
               <Reveal key={item.title + i} delay={i + 1}>
                 <details className="group rounded-2xl border border-shell-gray-300 bg-white open:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]">
