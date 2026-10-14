@@ -79,7 +79,7 @@ try {
     'homepage renders the client hero line': plain.includes(
       'We take care of your IT, so you can take care of your customers.',
     ),
-    'homepage renders the principle kicker': plain.includes('EnableIT. Transform. Empower.'),
+    'homepage renders the principle kicker': plain.includes('ENABLE. TRANSFORM. EMPOWER'),
     'homepage renders the four benefits': [
       'Cost-effectiveness',
       'Innovative technology',
