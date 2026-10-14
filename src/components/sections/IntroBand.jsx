@@ -38,7 +38,7 @@ export default function IntroBand() {
       </div>
       </section>
       <div className="shell-container px-6 pt-14 md:pt-20">
-        <Reveal variant="fade" className="max-w-3xl text-left">
+        <Reveal variant="fade" className="text-left">
           <h2 className="text-3xl font-extrabold leading-[1.12] tracking-tight text-[#0a1a3c] md:text-[2.6rem]">{statement.title}</h2>
           <p className="mt-4 text-[15px] leading-relaxed text-shell-gray-700 md:text-base">{statement.text}</p>
         </Reveal>
