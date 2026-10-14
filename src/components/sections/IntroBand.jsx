@@ -10,7 +10,7 @@ export default function IntroBand() {
     <section id={sectionIds.company} className="bg-shell-black pb-14 md:pb-20">
       
       <div className="bg-shell-black">
-        <div className="shell-container grid gap-8 px-6 pb-28 pt-14 md:grid-cols-2 md:gap-16 md:pb-36 md:pt-20">
+        <div className="shell-container grid gap-8 px-6 pb-28 pt-14 md:gap-16 md:pb-36 md:pt-20">
           <Reveal delay={1} variant="fade">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#3aa9e0]">{introBand.eyebrow}</p>
             <h2 className="mt-4 text-3xl font-extrabold leading-[1.12] tracking-tight text-white md:text-[2.6rem]">{introBand.title}</h2>
