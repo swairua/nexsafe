@@ -125,40 +125,36 @@ export default function IndustriesStrip() {
       className="relative isolate overflow-hidden bg-[#060f3d] pt-20 md:pt-28"
     >
       <div className="shell-container">
-        <div className="grid items-start gap-6 lg:grid-cols-2 lg:gap-12">
-          <Reveal variant="fade">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">
-              {industriesStrip.tag}
-            </p>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
-              {industriesStrip.title}
-            </h2>
-          </Reveal>
+        <Reveal variant="fade">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">
+            {industriesStrip.tag}
+          </p>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
+            {industriesStrip.title}
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-white/70 md:text-lg">
+            {industriesStrip.text}
+          </p>
+        </Reveal>
 
-          <Reveal delay={2} className="flex flex-wrap items-end justify-between gap-4 lg:justify-end">
-            <p className="max-w-xl text-base leading-relaxed text-white/70">
-              {industriesStrip.text}
-            </p>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => nudge(-1)}
-                aria-label="Scroll industries left"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95"
-              >
-                <span aria-hidden="true">←</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => nudge(1)}
-                aria-label="Scroll industries right"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95"
-              >
-                <span aria-hidden="true">→</span>
-              </button>
-            </div>
-          </Reveal>
-        </div>
+        <Reveal delay={2} className="mt-6 flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={() => nudge(-1)}
+            aria-label="Scroll industries left"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95"
+          >
+            <span aria-hidden="true">←</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => nudge(1)}
+            aria-label="Scroll industries right"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95"
+          >
+            <span aria-hidden="true">→</span>
+          </button>
+        </Reveal>
 
         <div className="relative isolate mt-10">
           <div
