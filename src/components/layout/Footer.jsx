@@ -55,13 +55,22 @@ export default function Footer() {
               </p>
             ) : null}
             {channels.length ? (
-              <div className="mt-4 flex items-center gap-3 text-[#a9b7cf]">
+              <div className="mt-4 flex items-center gap-3">
                 {channels.map((c) => (
-                  <a key={c.network + c.href} href={c.href} aria-label={c.label} className="transition-colors duration-200 hover:-translate-y-0.5 hover:text-brand-ink">
+                  <a
+                    key={c.network + c.href}
+                    href={c.href}
+                    aria-label={c.label}
+                    title={c.label}
+                    target={c.href.startsWith('http') ? '_blank' : undefined}
+                    rel={c.href.startsWith('http') ? 'noreferrer' : undefined}
+                    data-social={c.network}
+                    className="social-glow group flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#a9b7cf] ring-1 ring-shell-gray-300/70 shadow-sm transition-all duration-300 hover:-translate-y-0.5"
+                  >
                     {c.icon ? (
                       <img src={c.icon} alt="" className="h-4 w-4 object-contain" />
                     ) : (
-                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
                         {socialIcons[c.network] || <circle cx="12" cy="12" r="5" />}
                       </svg>
                     )}

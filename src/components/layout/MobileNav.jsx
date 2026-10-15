@@ -30,7 +30,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                     <h4 className="mb-2 text-xs font-bold uppercase tracking-wider text-shell-gray-500">
                       {col.heading}
                     </h4>
-                    {col.tiles ? (
+                    {col.tiles && col.tiles.length > 0 ? (
                       <div className="grid grid-cols-2 gap-2.5">
                         {col.tiles.map((t) => (
                           <a
@@ -45,7 +45,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                       </div>
                     ) : (
                     <ul className="space-y-2">
-                      {col.links.map((l) => (
+                      {(col.links || []).map((l) => (
                         <li key={l.label}>
                           <a
                             href={l.href}

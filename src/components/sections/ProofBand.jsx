@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-import SectionTag, { Rich } from '../ui/SectionTag.jsx'
+import { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -102,23 +102,25 @@ export default function ProofBand() {
       <div aria-hidden="true" className="z-0 col-start-1 row-start-3 row-end-5 bg-white" />
       <div className="shell-container relative z-10 col-start-1 row-start-1 pb-12 pt-20 md:pb-16 md:pt-28">
         <Reveal variant="fade">
-          <SectionTag>{copy.tag}</SectionTag>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
+          <span className="inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]">
+            {copy.tag}
+          </span>
+          <h2 className="mt-3 bg-gradient-to-r from-white via-[#0174a4] to-white bg-clip-text text-2xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] sm:text-3xl md:text-4xl">
             {copy.title}
           </h2>
-          <div className="mt-4 text-base leading-relaxed text-white/70 md:text-lg"><Rich as="p">{copy.text}</Rich></div>
+          <div className="mt-4 text-base font-medium leading-relaxed text-white md:text-lg"><Rich as="p">{copy.text}</Rich></div>
         </Reveal>
 
         {stats.length ? (
           <div className="stats-grid mt-10">
             {stats.map((s, i) => (
               <div key={s.label + i} className="text-center">
-                <div className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+                <div className="text-3xl font-extrabold tracking-tight text-white drop-shadow-[0_0_14px_rgba(1,116,164,0.35)] md:text-4xl">
                   <Reveal variant="fade" delay={i + 1}>
                     <CountUp value={s.value} />
                   </Reveal>
                 </div>
-                <dt className="mt-1 text-xs font-semibold uppercase tracking-wider text-white/50">{s.label}</dt>
+                <dt className="mt-1 text-xs font-semibold uppercase tracking-wider text-white/70">{s.label}</dt>
               </div>
             ))}
           </div>
@@ -132,10 +134,10 @@ export default function ProofBand() {
                   key={c.name + i}
                   as="li"
                   delay={i + 1}
-                  className="flex min-w-[12rem] flex-1 flex-col items-center rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-center sm:flex-none sm:basis-56"
+                  className="flex min-w-[12rem] flex-1 flex-col items-center rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.5),0_0_0_3px_rgba(1,116,164,0.2),0_0_24px_3px_rgba(1,116,164,0.4),0_14px_30px_-12px_rgba(1,116,164,0.4)] sm:flex-none sm:basis-56"
                 >
                   <span className="text-base font-extrabold tracking-tight text-white">{c.name}</span>
-                  <span className="mt-1 text-xs text-white/60">{c.note}</span>
+                  <span className="mt-1 text-xs text-white/70">{c.note}</span>
                 </Reveal>
               ))}
             </ul>

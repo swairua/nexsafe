@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import SectionTag, { Rich } from '../ui/SectionTag.jsx'
+import { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import { resolveSrc } from "../../utils/url.js"
@@ -31,7 +31,7 @@ function LogoSlot({ partner }) {
         aria-hidden="true"
         loading="lazy"
         onError={() => setFailed(true)}
-        className="max-h-12 w-full object-contain"
+        className="max-h-12 w-full object-contain transition-transform duration-300 group-hover:scale-105"
       />
     </span>
   )
@@ -39,7 +39,7 @@ function LogoSlot({ partner }) {
 
 function VendorTile({ partner }) {
   return (
-    <div className="flex h-full min-h-[6.5rem] items-center justify-center rounded-xl border border-shell-gray-300 bg-white px-5 py-4 transition-colors duration-300 hover:border-brand-ink">
+    <div className="group flex h-full min-h-[6.5rem] items-center justify-center rounded-xl border border-shell-gray-300 bg-white px-5 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]">
       <LogoSlot partner={partner} />
       <span className="sr-only">{partner.name}</span>
     </div>
@@ -71,9 +71,11 @@ export default function PartnerStrip() {
         <div className="relative grid gap-6 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:items-center">
           <div className="md:z-10 md:flex md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
             <Reveal variant="fade">
-              <SectionTag>{partnerStrip.tag}</SectionTag>
-              <Rich as="h2" className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl lg:text-3xl">{partnerStrip.title}</Rich>
-              <div className="mt-4 text-base leading-relaxed text-shell-gray-700"><Rich as="p">{partnerStrip.text}</Rich></div>
+              <span className="inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]">
+                {partnerStrip.tag}
+              </span>
+              <Rich as="h2" className="mt-3 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-2xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] sm:text-3xl lg:text-3xl">{partnerStrip.title}</Rich>
+              <div className="mt-4 text-base font-medium leading-relaxed text-shell-gray-900"><Rich as="p">{partnerStrip.text}</Rich></div>
             </Reveal>
           </div>
 
@@ -85,7 +87,7 @@ export default function PartnerStrip() {
             tabIndex={0}
             className="overflow-hidden md:min-h-0"
           >
-            <div className="flex gap-5 pb-3 md:min-h-0 md:items-center">
+            <div className="flex gap-5 px-1 pb-6 pt-2 md:min-h-0 md:items-center">
               {(partners || []).map((partner) => (
                 <Reveal
                   key={`${partner.group}-${partner.name}`}

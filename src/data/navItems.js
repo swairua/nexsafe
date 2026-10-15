@@ -2,15 +2,6 @@ import { pageHref } from './slug.js'
 
 const links = (...labels) => labels.map((label) => ({ label, href: pageHref(label) }))
 
-const serviceLinks = [
-  { label: 'Managed IT Services', href: pageHref('Managed IT Services') },
-  { label: 'Cloud Services', href: pageHref('Cloud Services') },
-  { label: 'Software Development', href: '#/software-erp-app-development' },
-  { label: 'Network Management', href: pageHref('Network Management') },
-  { label: 'Cyber Security', href: pageHref('Cybersecurity') },
-  { label: 'Backup & Disaster Management', href: '#/backup-disaster-recovery' },
-]
-
 const challengeTiles = [
   {
     label: 'Digital Transformation',
@@ -54,11 +45,16 @@ export const navItems = [
     columns: [
       {
         heading: 'About us',
-        links: links('About Us', 'Why Us', 'Team', 'Partners & Certifications', 'Reviews & Awards', 'Careers'),
+        links: links('About nexsate', 'Mission, vision and values', 'Why choose us', 'Our story'),
+        viewAll: { label: 'Explore Company', href: '#company' },
       },
       {
-        heading: 'Services',
-        links: serviceLinks,
+        heading: 'People',
+        links: links('Leadership team', 'Careers', 'Diversity and inclusion'),
+      },
+      {
+        heading: 'Locations and contact',
+        links: links('Locations', 'Contact us', 'Report an issue with our website'),
       },
     ],
   },
