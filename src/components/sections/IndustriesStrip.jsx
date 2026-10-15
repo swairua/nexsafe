@@ -122,7 +122,7 @@ export default function IndustriesStrip() {
   return (
     <section
       id={sectionIds.industries}
-      className="relative isolate overflow-hidden bg-[#060f3d] pt-20 md:pt-28"
+      className="relative isolate overflow-hidden bg-[#070e40] pt-20 md:pt-28"
     >
       <div aria-hidden="true" className="glass-panel absolute inset-0" />
       <div className="shell-container relative z-10">

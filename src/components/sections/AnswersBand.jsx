@@ -8,11 +8,11 @@ export default function AnswersBand() {
   const sectionIds = content.sectionIds || {}
   const faq = (content.pages || {})['help-and-faq']
   const allItems = faq && Array.isArray(faq.sections) ? faq.sections.flatMap((s) => (Array.isArray(s.items) ? s.items : [])) : []
-  const items = allItems.slice(0, 4)
-  const half = Math.ceil(items.length / 2)
+  const limitedItems = allItems.slice(0, 4)
+  const half = Math.ceil(limitedItems.length / 2)
   return (
     <section id={sectionIds.support} className="bg-shell-gray-100 py-16 md:py-24">
-      <div className="shell-container max-w-5xl">
+      <div className="shell-container">
         <div>
           <Reveal variant="right" className="mb-5">
             <SectionTag>{copy.tag}</SectionTag>
@@ -21,7 +21,7 @@ export default function AnswersBand() {
             </h3>
           </Reveal>
           <div className="grid grid-cols-2 items-start gap-3">
-            {[items.slice(0, half), items.slice(half)].map((column, c) => (
+            {[limitedItems.slice(0, half), limitedItems.slice(half)].map((column, c) => (
               <div key={c} className="space-y-3">
                 {column.map((item, i) => (
                   <Reveal key={item.title + i} delay={c * half + i + 1}>
@@ -40,10 +40,12 @@ export default function AnswersBand() {
             ))}
           </div>
           {copy.cta ? (
-            <Reveal delay={items.length + 1}>
-              <a href={copy.cta.href} className="arrow-link mt-6 inline-block">
-                {copy.cta.label} <span className="arrow">→</span>
-              </a>
+            <Reveal delay={limitedItems.length + 1}>
+              <div className="text-right">
+                <a href={copy.cta.href} className="arrow-link mt-6 inline-block">
+                  {copy.cta.label} <span className="arrow">→</span>
+                </a>
+              </div>
             </Reveal>
           ) : null}
         </div>

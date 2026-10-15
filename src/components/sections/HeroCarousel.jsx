@@ -47,20 +47,13 @@ export default function HeroCarousel() {
         <div className="flex">
           {heroSlides.map((slide, i) => (
             <div key={slide.id} className="relative min-w-0 flex-[0_0_100%]">
-
-              <div
-                className="absolute inset-0 bg-shell-black"
-                aria-hidden="true"
-              />
               <img
                 src={textBearingHeroImages[slide.image]?.src || slide.image}
                 alt={textBearingHeroImages[slide.image]?.alt || slide.alt || ""}
                 className={`absolute inset-0 h-full w-full object-cover ${selected === i ? 'hero-zoom' : ''}`}
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
-              <div className="absolute inset-0 bg-[rgba(7,14,64,0.68)]" aria-hidden="true" />
-
-              <div className="shell-container relative flex max-w-none min-h-[28rem] items-center pb-20 pt-28 sm:min-h-[34rem] md:min-h-[40rem] md:pb-24 md:pt-36 lg:min-h-[44rem]">
+              <div className="shell-container relative flex min-h-[28rem] items-center pb-20 pt-28 sm:min-h-[34rem] md:min-h-[40rem] md:pb-24 md:pt-36 lg:min-h-[44rem]">
                 <div className={`hero-copy w-full text-white ${selected === i ? 'is-active' : ''}`}>
                   <span className="hero-kicker mb-4 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow">
                     {slide.kicker}
