@@ -1,4 +1,59 @@
+import { useEffect, useState } from 'react'
 import { useContent } from '../../content/ContentContext.jsx'
+
+const MENU_PAGE_SIZE = 5
+
+function MenuLinksCarousel({ links, onClose, label }) {
+  const [page, setPage] = useState(0)
+  const total = links.length
+  const pageCount = Math.max(1, Math.ceil(total / MENU_PAGE_SIZE))
+  useEffect(() => { setPage(0) }, [label, total])
+  if (pageCount <= 1) {
+    return (
+      <ul className="space-y-3.5">
+        {links.map((l) => (
+          <li key={l.label}>
+            <a href={l.href} onClick={onClose} className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline">
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  return (
+    <div>
+      <div className="overflow-hidden" role="region" aria-roledescription="carousel" aria-label={`${label} links`}>
+        <div className="flex transition-transform duration-300 ease-out" style={{ transform: `translateX(-${page * 100}%)` }}>
+          {Array.from({ length: pageCount }).map((_, p) => (
+            <ul key={p} className="w-full shrink-0 space-y-3.5" aria-hidden={p !== page} aria-live={p === page ? 'polite' : undefined}>
+              {links.slice(p * MENU_PAGE_SIZE, p * MENU_PAGE_SIZE + MENU_PAGE_SIZE).map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} onClick={onClose} tabIndex={p !== page ? -1 : undefined} className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
+      </div>
+      <div className="mt-4 flex items-center gap-2">
+        <button type="button" onClick={() => setPage((v) => Math.max(0, v - 1))} disabled={page === 0} aria-label="Previous links" className="flex h-7 w-7 items-center justify-center rounded-full border border-shell-gray-300 text-sm text-shell-gray-900 transition-colors hover:border-brand-ink hover:text-brand-ink disabled:cursor-not-allowed disabled:opacity-40">
+          <span aria-hidden="true">←</span>
+        </button>
+        <button type="button" onClick={() => setPage((v) => Math.min(pageCount - 1, v + 1))} disabled={page === pageCount - 1} aria-label="Next links" className="flex h-7 w-7 items-center justify-center rounded-full border border-shell-gray-300 text-sm text-shell-gray-900 transition-colors hover:border-brand-ink hover:text-brand-ink disabled:cursor-not-allowed disabled:opacity-40">
+          <span aria-hidden="true">→</span>
+        </button>
+        <span className="ml-1 flex gap-1.5" aria-hidden="true">
+          {Array.from({ length: pageCount }).map((_, p) => (
+            <span key={p} className={`h-1.5 rounded-full transition-all duration-300 ${p === page ? 'w-5 bg-brand-ink' : 'w-1.5 bg-shell-gray-300'}`} />
+          ))}
+        </span>
+      </div>
+    </div>
+  )
+}
 
 function ChallengeIcon({ icon }) {
   const common = {
@@ -50,29 +105,29 @@ function ChallengeIcon({ icon }) {
   )
 }
 
-function PromoPanel({ onClose }) {
+function PromoPanel({ onClose, span = 'col-span-3', wide = false }) {
   const { pageConnect } = useContent()
   if (!pageConnect) return null
   return (
-    <div className="col-span-3">
+    <div className={span}>
       <a
         href={pageConnect.cta?.href || '#/contact-us'}
         onClick={onClose}
-        className="group flex h-full flex-col justify-between rounded-2xl p-7 text-white transition-transform hover:scale-[1.01]"
+        className={`group flex h-full min-h-[16rem] rounded-2xl p-7 text-white transition-transform hover:scale-[1.01] md:p-8 ${wide ? 'flex-row items-center gap-8' : 'flex-col justify-between'}`}
         style={{
           background: '#0174a4',
           boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
         }}
       >
-        <div>
+        <div className={wide ? 'max-w-md flex-1' : ''}>
           {pageConnect.tag && (
             <span className="mb-3 inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
               {pageConnect.tag}
             </span>
           )}
-          <p className="text-sm leading-relaxed text-white/80">{pageConnect.text}</p>
+          <p className={`leading-relaxed text-white/80 ${wide ? 'text-base' : 'text-sm'}`}>{pageConnect.text}</p>
         </div>
-        <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold">
+        <span className={`inline-flex items-center gap-2 text-sm font-bold ${wide ? 'shrink-0 rounded-full bg-white px-5 py-3 text-[#0174a4] transition-all hover:shadow-[0_0_24px_3px_rgba(255,255,255,0.5)]' : 'mt-5'}`}>
           {pageConnect.cta?.label || 'Learn more'}
           <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -147,19 +202,29 @@ export default function MegaMenu({ item, onClose }) {
     )
   }
 
+  const colCount = item.columns.length
+  const linkColClass = colCount === 1 ? 'col-span-5' : colCount === 2 ? 'col-span-3' : 'col-span-2'
+  const extraColClass = 'col-span-2'
+  const promoSpan = colCount === 1 ? 'col-span-7' : 'col-span-6'
+  const promoWide = colCount <= 2
+
   return (
     <div
       className="menu-anim absolute inset-x-0 top-full rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl hidden lg:block"
       onMouseLeave={onClose}
     >
-      <div className="shell-container grid grid-cols-12 gap-6 py-10">
+      <div className="shell-container grid grid-cols-12 gap-6 py-8">
         {item.columns.slice(0, 2).map((col) => (
-          <div key={col.heading} className="menu-col col-span-3">
+          <div key={col.heading} className={`menu-col ${linkColClass}`}>
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {col.heading}
             </h3>
-            <ul className="space-y-3.5">
-              {col.links.map((l) => (
+            {(col.links || []).length > 0 ? (
+            (col.links || []).length > MENU_PAGE_SIZE ? (
+              <MenuLinksCarousel links={col.links} onClose={onClose} label={col.heading} />
+            ) : (
+            <ul className={`gap-x-6 gap-y-3.5 ${colCount === 1 && (col.links || []).length > 3 ? 'grid grid-cols-2' : 'space-y-3.5'}`}>
+              {(col.links || []).map((l) => (
                 <li key={l.label}>
                   <a
                     href={l.href}
@@ -171,17 +236,52 @@ export default function MegaMenu({ item, onClose }) {
                 </li>
               ))}
             </ul>
+            )
+            ) : null}
+            {(col.tiles || []).length > 0 ? (
+            <div className={`grid gap-3 ${colCount === 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+              {(col.tiles || []).map((t) => (
+                <a
+                  key={t.label}
+                  href={t.href}
+                  onClick={onClose}
+                  className="group flex items-start gap-3 rounded-lg border border-shell-gray-200 bg-white p-3 transition-colors hover:border-brand-ink"
+                >
+                  <ChallengeIcon icon={t.icon} />
+                  <span>
+                    <span className="block text-sm font-bold text-shell-gray-900 group-hover:text-brand-ink">
+                      {t.label}
+                    </span>
+                    {t.blurb ? (
+                      <span className="mt-1 block text-xs text-shell-gray-500">
+                        {t.blurb}
+                      </span>
+                    ) : null}
+                  </span>
+                </a>
+              ))}
+            </div>
+            ) : null}
+            {col.viewAll ? (
+              <a
+                href={col.viewAll.href}
+                onClick={onClose}
+                className="mt-4 inline-block text-[0.9rem] font-bold text-shell-gray-900 hover:text-brand-ink hover:underline"
+              >
+                {col.viewAll.label} →
+              </a>
+            ) : null}
           </div>
         ))}
         {item.columns.length > 2 && (
-          <div className="menu-col col-span-3">
+          <div className={`menu-col ${extraColClass}`}>
             {item.columns.slice(2).map((col) => (
               <div key={col.heading} className="mb-6 last:mb-0">
                 <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
                   {col.heading}
                 </h3>
                 <ul className="space-y-3">
-                  {col.links.map((l) => (
+                  {(col.links || []).map((l) => (
                     <li key={l.label}>
                       <a
                         href={l.href}
@@ -193,11 +293,44 @@ export default function MegaMenu({ item, onClose }) {
                     </li>
                   ))}
                 </ul>
+                {(col.tiles || []).length > 0 ? (
+                <div className="mt-4 grid grid-cols-1 gap-3">
+                  {(col.tiles || []).map((t) => (
+                    <a
+                      key={t.label}
+                      href={t.href}
+                      onClick={onClose}
+                      className="group flex items-start gap-3 rounded-lg border border-shell-gray-200 bg-white p-3 transition-colors hover:border-brand-ink"
+                    >
+                      <ChallengeIcon icon={t.icon} />
+                      <span>
+                        <span className="block text-sm font-bold text-shell-gray-900 group-hover:text-brand-ink">
+                          {t.label}
+                        </span>
+                        {t.blurb ? (
+                          <span className="mt-1 block text-xs text-shell-gray-500">
+                            {t.blurb}
+                          </span>
+                        ) : null}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+                ) : null}
+                {col.viewAll ? (
+                  <a
+                    href={col.viewAll.href}
+                    onClick={onClose}
+                    className="mt-4 inline-block text-[0.9rem] font-bold text-shell-gray-900 hover:text-brand-ink hover:underline"
+                  >
+                    {col.viewAll.label} →
+                  </a>
+                ) : null}
               </div>
             ))}
           </div>
         )}
-        <PromoPanel onClose={onClose} />
+        <PromoPanel onClose={onClose} span={promoSpan} wide={promoWide} />
       </div>
     </div>
   )

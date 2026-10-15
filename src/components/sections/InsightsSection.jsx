@@ -43,7 +43,7 @@ function FeaturedCard({ post, fallbackImage, fallbackAlt }) {
         ) : null}
         <a
           href={`#/${post.slug}`}
-          className="mt-6 block rounded-md bg-white py-4 text-center text-base font-medium text-[#29b2fe] shadow-sm transition-colors hover:text-brand-ink"
+          className="mt-6 block rounded-lg border border-shell-gray-300 bg-white py-4 text-center text-base font-medium text-[#29b2fe] shadow-sm transition-all btn-lift-glow hover:border-brand-ink hover:text-brand-ink"
         >
           Read more
         </a>
@@ -82,7 +82,7 @@ export default function InsightsSection() {
   const fallbackImage = typeof categoryRaw === 'string' ? categoryRaw : (categoryRaw && categoryRaw.src) || ''
   const fallbackAlt = typeof categoryRaw === 'string' ? '' : ((categoryRaw && categoryRaw.alt) || '')
   return (
-    <section id={sectionIds.insights} className="bg-white py-16 md:py-24">
+    <section id={sectionIds.insights} className="bg-white pt-16 pb-8 md:pt-24 md:pb-10">
       <div className="shell-container">
         <Reveal variant="fade" className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-medium uppercase tracking-[0.35em] text-[#5b6b7f]">
@@ -106,7 +106,7 @@ export default function InsightsSection() {
             ))}
           </div>
         </div>
-        <Reveal variant="fade" className="mx-auto mt-12 max-w-3xl text-center">
+        <Reveal variant="fade" className="mx-auto mt-8 max-w-3xl text-center">
           <p className="text-[15px] text-[#5b6b7f]">
             Insights to help you do what you do better, faster and more profitably.{' '}
             <a href="#/blog" className="font-medium text-[#0b2c5f] underline decoration-[#0b2c5f]/30 underline-offset-4 transition-colors hover:text-brand-ink">

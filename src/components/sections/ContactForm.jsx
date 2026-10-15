@@ -72,7 +72,7 @@ export default function ContactForm({ simple = false } = {}) {
           </label>
         )}
         {status ? <p className={"sm:col-span-2 rounded-lg px-3 py-2 text-sm " + (done ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700")}>{status}</p> : null}
-        <button type="submit" disabled={busy} className="sm:col-span-2 justify-self-start rounded-lg bg-shell-gray-900 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-ink disabled:opacity-50">{busy ? contactForm.sendingLabel : contactForm.submitLabel}</button>
+        <button type="submit" disabled={busy} className="sm:col-span-2 justify-self-start rounded-lg bg-shell-gray-900 px-6 py-2.5 text-sm font-semibold text-white transition-all btn-lift-glow hover:bg-brand-ink disabled:opacity-50">{busy ? contactForm.sendingLabel : contactForm.submitLabel}</button>
       </form>
     </div>
   )

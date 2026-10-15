@@ -122,9 +122,8 @@ export default function IndustriesStrip() {
   return (
     <section
       id={sectionIds.industries}
-      className="relative isolate overflow-hidden bg-[#070e40] pt-20 md:pt-28"
+      className="relative isolate overflow-hidden bg-[#111c55] pt-20 md:pt-28"
     >
-      <div aria-hidden="true" className="glass-panel absolute inset-0" />
       <div className="shell-container relative z-10">
         <Reveal variant="fade">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-ink">
@@ -168,15 +167,15 @@ export default function IndustriesStrip() {
           >
             {(industriesStrip.items || []).map((item, idx) => (
               <Reveal
-                key={item.label}
+                key={`${item.label}-${idx}`}
                 delay={(idx % 5) + 1}
                 className="w-[68%] shrink-0 snap-start sm:w-[calc(50%-10px)]"
               >
                 <a
                   href={item.href}
-                  className="group flex h-full min-h-[15rem] flex-col items-center justify-center rounded-2xl border border-white/10 bg-[#111c55] px-6 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-[#162366]"
+                  className="group flex h-full min-h-[15rem] flex-col items-center justify-center rounded-2xl border border-white/10 bg-[#252b57] px-6 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-[#323d7a]"
                 >
-                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-[#0a1240] ring-1 ring-[#1fa2e0]/60 transition-colors duration-300 group-hover:bg-[#0d1850]">
+                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-[#1a214f] ring-1 ring-[#1fa2e0]/60 transition-colors duration-300 group-hover:bg-[#232c5e]">
                     <span className="icon-draw block transition-transform duration-300 group-hover:-translate-y-1">
                       <IndustryIcon icon={item.icon} label={item.label} />
                     </span>

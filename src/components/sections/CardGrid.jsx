@@ -88,7 +88,7 @@ export default function CardGrid() {
         <div className="mt-10 flex justify-end">
           <a
             href={servicesSection.ctaHref}
-            className="inline-flex items-center rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-colors duration-300 hover:bg-shell-red/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+            className="inline-flex items-center rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
           >
             {servicesSection.ctaLabel}
           </a>

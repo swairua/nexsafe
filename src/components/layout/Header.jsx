@@ -125,7 +125,7 @@ export default function Header({ overlay = false }) {
 
           <a
             href={settings.menuCta.href}
-            className="hidden rounded-full bg-shell-red px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-shell-gray-900 md:inline-flex"
+            className="hidden rounded-full bg-shell-red px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all btn-lift-glow hover:bg-shell-gray-900 md:inline-flex"
           >
             {settings.menuCta.label}
           </a>

@@ -22,7 +22,7 @@ export default function ConnectBand() {
           <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
             <Rich as="p">{connect.text}</Rich>
           </div>
-          <a href={connect.cta.href} className="btn-pill mt-8 bg-white text-brand-ink hover:bg-shell-yellow hover:text-shell-gray-900">
+          <a href={connect.cta.href} className="btn-pill btn-pill--white mt-8">
             {connect.cta.label}
             <span aria-hidden="true">→</span>
           </a>

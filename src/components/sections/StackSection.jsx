@@ -71,7 +71,7 @@ export default function StackSection() {
           aria-roledescription="carousel"
           aria-label={stackSection.title}
           tabIndex={0}
-          className="no-scrollbar -mx-1 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
+          className="no-scrollbar -mx-1 mt-6 flex snap-x snap-mandatory items-start gap-5 overflow-x-auto scroll-smooth px-1 pb-6"
         >
           {visibleGroups.map((group, idx) => {
             const isOpen = openIds.has(group.id)
@@ -95,12 +95,17 @@ export default function StackSection() {
                   aria-controls={vendorListId}
                   className="mt-4 flex items-center gap-2 self-start text-sm font-bold text-shell-gray-900 transition-colors hover:text-brand-ink"
                 >
-                  <span aria-hidden="true" className="flex h-6 w-6 items-center justify-center rounded-full bg-shell-gray-100 text-base leading-none">
-                    {isOpen ? '−' : '+'}
+                  <span aria-hidden="true" className={`flex h-6 w-6 items-center justify-center rounded-full bg-shell-gray-100 text-base leading-none transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
+                    +
                   </span>
-                  View more
+                  {isOpen ? 'View less' : 'View more'}
                 </button>
-                <ul id={vendorListId} hidden={!isOpen} className="mt-4 divide-y divide-shell-gray-300/80">
+                <div
+                  id={vendorListId}
+                  className={`stack-vendors grid transition-[grid-template-rows,opacity] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                >
+                  <div className="overflow-hidden" aria-hidden={!isOpen}>
+                <ul className="mt-4 divide-y divide-shell-gray-300/80">
                   {group.vendors.map((vendor) => {
                     const name = typeof vendor === 'string' ? vendor : vendor?.name
                     const logo = typeof vendor === 'string' ? '' : vendor?.logo
@@ -113,6 +118,8 @@ export default function StackSection() {
                     )
                   })}
                 </ul>
+                  </div>
+                </div>
               </Reveal>
             )
           })}
