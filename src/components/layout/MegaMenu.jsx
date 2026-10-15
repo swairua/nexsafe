@@ -70,7 +70,6 @@ function PromoPanel({ onClose }) {
               {pageConnect.tag}
             </span>
           )}
-          <h3 className="mb-2 text-2xl font-bold leading-tight">{pageConnect.title}</h3>
           <p className="text-sm leading-relaxed text-white/80">{pageConnect.text}</p>
         </div>
         <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold">
