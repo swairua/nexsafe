@@ -153,7 +153,7 @@ export default function PageView({ page, slug, params }) {
                   {section.list.map((item) => (
                     <li
                       key={item}
-                      className="card-glow flex gap-3 rounded-2xl border border-shell-gray-300 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink"
+                      className="flex gap-3 rounded-2xl border border-shell-gray-300 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]"
                     >
                       <span className="mt-1.5 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red" aria-hidden="true" />
                       <span className="text-base leading-relaxed text-shell-gray-700 md:text-lg">{item}</span>
@@ -166,7 +166,7 @@ export default function PageView({ page, slug, params }) {
                   {section.items.map((item) => (
                     <details
                       key={item.title}
-                      className="faq-item card-glow group rounded-2xl border border-shell-gray-300 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink open:border-brand-ink"
+                      className="faq-item group rounded-2xl border border-shell-gray-300 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.5),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] open:border-brand-ink"
                     >
                       <summary className="flex min-h-[3.5rem] cursor-pointer list-none items-center justify-between gap-4 p-5 text-left text-base font-bold leading-snug text-shell-gray-900 md:text-lg [&::-webkit-details-marker]:hidden">
                         {item.title}
@@ -184,7 +184,7 @@ export default function PageView({ page, slug, params }) {
                   {section.items.map((item) => (
                     <li
                       key={item.title}
-                      className="card-glow rounded-2xl border border-shell-gray-300 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink"
+                      className="rounded-2xl border border-shell-gray-300 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]"
                     >
                       <h3 className="flex gap-3 text-base font-bold leading-snug text-shell-gray-900 md:text-lg">
                         <span className="mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red" aria-hidden="true" />
@@ -295,7 +295,7 @@ export default function PageView({ page, slug, params }) {
                   as="a"
                   href={`#/${rel.slug}`}
                   delay={(idx % 4) + 1}
-                  className="card-glow group rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink"
+                  className="group rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]"
                 >
                   <p className="text-xs font-bold uppercase tracking-wider text-shell-red">
                     {rel.eyebrow}

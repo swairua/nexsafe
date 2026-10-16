@@ -134,7 +134,7 @@ export default function ProofBand() {
                   key={c.name + i}
                   as="li"
                   delay={i + 1}
-                  className="card-glow flex min-w-[12rem] flex-1 flex-col items-center rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink sm:flex-none sm:basis-56"
+                  className="flex min-w-[12rem] flex-1 flex-col items-center rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.5),0_0_0_3px_rgba(1,116,164,0.2),0_0_24px_3px_rgba(1,116,164,0.4),0_14px_30px_-12px_rgba(1,116,164,0.4)] sm:flex-none sm:basis-56"
                 >
                   <span className="text-base font-extrabold tracking-tight text-white">{c.name}</span>
                   <span className="mt-1 text-xs text-white/70">{c.note}</span>
@@ -183,7 +183,7 @@ export default function ProofBand() {
                     key={b.src + i}
                     className="min-w-0 shrink-0 flex-[0_0_70%] sm:flex-[0_0_50%] md:flex-[0_0_calc(33.333%-14px)] lg:flex-[0_0_calc(25%-15px)]"
                   >
-                    <div className="card-glow flex h-full flex-col rounded-xl bg-white p-5 text-left shadow-[inset_0_0_0_2px_rgba(1,116,164,0.72),0_0_10px_rgba(1,116,164,0.16),0_14px_36px_-16px_rgba(14,17,20,0.25)] transition-all duration-300 hover:-translate-y-1">
+                    <div className="flex h-full flex-col rounded-xl bg-white p-5 text-left shadow-[inset_0_0_0_2px_rgba(1,116,164,0.72),0_0_10px_rgba(1,116,164,0.16),0_14px_36px_-16px_rgba(14,17,20,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[inset_0_0_0_2px_rgba(1,116,164,1),0_0_0_4px_rgba(1,116,164,0.25),0_0_28px_4px_rgba(1,116,164,0.45),0_18px_44px_-12px_rgba(1,116,164,0.35)]">
                       <span className="text-xs font-extrabold tracking-widest text-shell-red">
                         {String(i + 1).padStart(2, '0')}
                       </span>

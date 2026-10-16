@@ -46,7 +46,7 @@ export default function ContactForm({ simple = false } = {}) {
   const F = "w-full rounded-xl border border-shell-gray-300 bg-white px-3 py-2.5 text-sm text-shell-gray-900 outline-none transition-all duration-200 hover:border-brand-ink/50 focus:border-brand-ink focus:ring-1 focus:ring-brand-ink/40 focus:shadow-[0_0_0_4px_rgba(1,116,164,0.12)]"
   const L = "block text-sm font-semibold text-shell-gray-800 mb-1"
   return (
-    <div className={`card-glow ${simple ? "w-full" : "mx-auto max-w-3xl"} rounded-2xl border border-shell-gray-300 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink md:p-10`}>
+    <div className={`${simple ? "w-full" : "mx-auto max-w-3xl"} rounded-2xl border border-shell-gray-300 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] md:p-10`}>
       {!simple && (
         <span className="mb-3 inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]">
           Contact us
