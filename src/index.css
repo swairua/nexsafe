@@ -597,6 +597,30 @@
 .social-glow[data-social="youtube"]:hover { color: #FF0000; border-color: #FF0000; box-shadow: 0 0 14px 2px rgba(255,0,0,0.4), 0 4px 12px -4px rgba(255,0,0,0.4); }
 .social-glow[data-social="instagram"]:hover { color: #E1306C; border-color: #E1306C; box-shadow: 0 0 14px 2px rgba(225,48,108,0.45), 0 4px 12px -4px rgba(225,48,108,0.45); }
 
+/* Card outline glow — a gradient halo (purple on the left → brand-ink blue
+   on the right) that bleeds out from behind the card. box-shadow cannot
+   render gradients, so the glow lives on a blurred pseudo-element. The card
+   needs position:relative (set here) and must not be overflow:hidden or the
+   blurred bleed gets clipped. */
+.card-glow {
+  position: relative;
+}
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(to right, #8e2de2, var(--color-brand-ink));
+  filter: blur(16px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.card-glow:hover::before,
+.faq-item[open]::before {
+  opacity: 1;
+}
+
 /* FAQ accordions — the answer panel expands/collapses in a slow, smooth
    scroll instead of snapping open in one step. Chrome/Edge support the
    native ::details-content interpolation; other browsers gracefully keep

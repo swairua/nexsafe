@@ -39,7 +39,7 @@ function LogoSlot({ partner }) {
 
 function VendorTile({ partner }) {
   return (
-    <div className="group flex h-full min-h-[6.5rem] items-center justify-center rounded-xl border border-shell-gray-300 bg-white px-5 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]">
+    <div className="card-glow group flex h-full min-h-[6.5rem] items-center justify-center rounded-xl border border-shell-gray-300 bg-white px-5 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink">
       <LogoSlot partner={partner} />
       <span className="sr-only">{partner.name}</span>
     </div>
