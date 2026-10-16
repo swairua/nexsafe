@@ -1,59 +1,4 @@
-import { useEffect, useState } from 'react'
 import { useContent } from '../../content/ContentContext.jsx'
-
-const MENU_PAGE_SIZE = 5
-
-function MenuLinksCarousel({ links, onClose, label }) {
-  const [page, setPage] = useState(0)
-  const total = links.length
-  const pageCount = Math.max(1, Math.ceil(total / MENU_PAGE_SIZE))
-  useEffect(() => { setPage(0) }, [label, total])
-  if (pageCount <= 1) {
-    return (
-      <ul className="space-y-3.5">
-        {links.map((l) => (
-          <li key={l.label}>
-            <a href={l.href} onClick={onClose} className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline">
-              {l.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    )
-  }
-  return (
-    <div>
-      <div className="overflow-hidden" role="region" aria-roledescription="carousel" aria-label={`${label} links`}>
-        <div className="flex transition-transform duration-300 ease-out" style={{ transform: `translateX(-${page * 100}%)` }}>
-          {Array.from({ length: pageCount }).map((_, p) => (
-            <ul key={p} className="w-full shrink-0 space-y-3.5" aria-hidden={p !== page} aria-live={p === page ? 'polite' : undefined}>
-              {links.slice(p * MENU_PAGE_SIZE, p * MENU_PAGE_SIZE + MENU_PAGE_SIZE).map((l) => (
-                <li key={l.label}>
-                  <a href={l.href} onClick={onClose} tabIndex={p !== page ? -1 : undefined} className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline">
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
-      </div>
-      <div className="mt-4 flex items-center gap-2">
-        <button type="button" onClick={() => setPage((v) => Math.max(0, v - 1))} disabled={page === 0} aria-label="Previous links" className="flex h-7 w-7 items-center justify-center rounded-full border border-shell-gray-300 text-sm text-shell-gray-900 transition-colors hover:border-brand-ink hover:text-brand-ink disabled:cursor-not-allowed disabled:opacity-40">
-          <span aria-hidden="true">←</span>
-        </button>
-        <button type="button" onClick={() => setPage((v) => Math.min(pageCount - 1, v + 1))} disabled={page === pageCount - 1} aria-label="Next links" className="flex h-7 w-7 items-center justify-center rounded-full border border-shell-gray-300 text-sm text-shell-gray-900 transition-colors hover:border-brand-ink hover:text-brand-ink disabled:cursor-not-allowed disabled:opacity-40">
-          <span aria-hidden="true">→</span>
-        </button>
-        <span className="ml-1 flex gap-1.5" aria-hidden="true">
-          {Array.from({ length: pageCount }).map((_, p) => (
-            <span key={p} className={`h-1.5 rounded-full transition-all duration-300 ${p === page ? 'w-5 bg-brand-ink' : 'w-1.5 bg-shell-gray-300'}`} />
-          ))}
-        </span>
-      </div>
-    </div>
-  )
-}
 
 function ChallengeIcon({ icon }) {
   const common = {
@@ -220,9 +165,6 @@ export default function MegaMenu({ item, onClose }) {
               {col.heading}
             </h3>
             {(col.links || []).length > 0 ? (
-            (col.links || []).length > MENU_PAGE_SIZE ? (
-              <MenuLinksCarousel links={col.links} onClose={onClose} label={col.heading} />
-            ) : (
             <ul className={`gap-x-6 gap-y-3.5 ${colCount === 1 && (col.links || []).length > 3 ? 'grid grid-cols-2' : 'space-y-3.5'}`}>
               {(col.links || []).map((l) => (
                 <li key={l.label}>
@@ -236,7 +178,6 @@ export default function MegaMenu({ item, onClose }) {
                 </li>
               ))}
             </ul>
-            )
             ) : null}
             {(col.tiles || []).length > 0 ? (
             <div className={`grid gap-3 ${colCount === 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
