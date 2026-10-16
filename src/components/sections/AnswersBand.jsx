@@ -1,4 +1,4 @@
-import SectionTag, { RichText } from '../ui/SectionTag.jsx'
+import { RichText } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -15,8 +15,10 @@ export default function AnswersBand() {
       <div className="shell-container">
         <div>
           <Reveal variant="right" className="mb-5">
-            <SectionTag>{copy.tag}</SectionTag>
-            <h3 className="mt-2 text-xl font-bold tracking-tight text-shell-gray-900 md:text-2xl">
+            <span className="inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]">
+              {copy.tag}
+            </span>
+            <h3 className="mt-2 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] md:text-2xl">
               {copy.title}
             </h3>
           </Reveal>
@@ -25,10 +27,10 @@ export default function AnswersBand() {
               <div key={c} className="space-y-3">
                 {column.map((item, i) => (
                   <Reveal key={item.title + i} delay={c * half + i + 1}>
-                    <details className="group rounded-2xl border border-shell-gray-300 bg-white open:shadow-[0_18px_44px_-16px_rgba(14,17,20,0.25)]">
+                    <details className="faq-item group rounded-2xl border border-shell-gray-300 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.5),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] open:border-brand-ink">
                       <summary className="flex min-h-[3.5rem] cursor-pointer list-none items-center justify-between gap-4 p-5 text-left font-bold text-shell-gray-900 [&::-webkit-details-marker]:hidden">
                         {item.title}
-                        <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-shell-gray-100 text-lg leading-none transition-transform duration-300 group-open:rotate-45">+</span>
+                        <span aria-hidden="true" className="faq-plus flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-shell-gray-100 text-lg leading-none transition-all duration-300 group-hover:scale-110 group-hover:text-brand-ink group-open:rotate-45">+</span>
                       </summary>
                       <div className="px-5 pb-5 text-sm leading-relaxed text-shell-gray-700 md:text-base">
                         <RichText value={item.text} />
