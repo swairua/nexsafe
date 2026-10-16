@@ -33,7 +33,7 @@ export default function Footer() {
   return (
     <footer className="bg-white text-[#5a6b87]">
       <div className="shell-container py-8 md:py-10">
-        <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-x-8 lg:grid-cols-[minmax(220px,1.7fr)_repeat(4,minmax(0,1fr))] lg:gap-x-7">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-x-8 lg:grid-cols-[minmax(220px,1.7fr)_repeat(3,minmax(0,1fr))] lg:gap-x-7">
           <Reveal variant="up" className="col-span-2 sm:col-span-1">
             <a href="#top" className="inline-block" aria-label={settings.brandName + " home"}>
               <img
@@ -85,7 +85,10 @@ export default function Footer() {
               <ul className="space-y-1.5">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} className="text-xs text-[#5a6b87] underline-offset-2 hover:text-brand-ink hover:underline">{l.label}</a>
+                    <a href={l.href} className="flex items-start gap-1.5 text-xs text-[#5a6b87] underline-offset-2 hover:text-brand-ink hover:underline">
+                      <span aria-hidden="true" className="shrink-0">→</span>
+                      <span>{l.label}</span>
+                    </a>
                   </li>
                 ))}
               </ul>
