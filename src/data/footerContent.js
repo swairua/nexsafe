@@ -42,6 +42,7 @@ export const footerColumns = [
       { label: 'Leadership Team', href: '#/team' },
       { label: 'IT Blog', href: '#/blog' },
       { label: 'Case Studies', href: '#/case-studies' },
+      { label: 'Events', href: '#/events' },
       { label: 'Locations', href: '#/contact-us' },
       { label: 'Careers', href: '#/careers' },
     ],

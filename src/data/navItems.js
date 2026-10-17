@@ -56,13 +56,18 @@ export const navItems = [
           { label: 'Consulting Providers', href: '#/consulting-providers' },
           { label: 'Non Profit', href: '#/non-profit' },
         ],
+        more: [
+          { label: 'Telemedicine', href: '#/telemedicine' },
+          { label: 'Fintech', href: '#/fintech' },
+          { label: 'Education', href: '#/education' },
+        ],
         viewAll: { label: 'View all', href: '#industries' },
       },
     ],
   },
   {
     label: 'Company',
-    href: '#company',
+    href: '#/about-us',
     layout: 'company',
     headline: 'Simplifying IT\nfor a complex world.',
     links: [
@@ -88,6 +93,9 @@ export const navItems = [
     links: [
       { label: 'Schedule a Consultation', href: '#/contact-us' },
       { label: 'FAQ', href: '#/help-and-faq' },
+      { label: 'Events', href: '#/events' },
+      { label: 'Blog', href: '#/blog' },
+      { label: 'Case Studies', href: '#/case-studies' },
     ],
   },
 ]

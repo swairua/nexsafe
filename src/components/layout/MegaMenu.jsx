@@ -124,7 +124,7 @@ export default function MegaMenu({ item, onClose }) {
               {(partners.items || []).map((p) => (
                 <li key={p.label}>
                   <a href={p.href} onClick={onClose} className="group flex items-center gap-2.5">
-                    {p.logo ? <img src={p.logo} alt="" aria-hidden="true" className="h-5 w-7 object-contain" loading="lazy" /> : null}
+                    {p.logo ? <img src={p.logo} alt="" aria-hidden="true" className="h-5 w-7 object-contain" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none' }} /> : null}
                     <span className="text-[0.95rem] font-medium text-[#1a1d21] group-hover:text-[#0b1fb3]">{p.label}</span>
                   </a>
                 </li>
@@ -174,6 +174,17 @@ export default function MegaMenu({ item, onClose }) {
                 </li>
               ))}
             </ul>
+            {(industries.more || []).length > 0 ? (
+              <p className="mt-3 text-[0.85rem] leading-relaxed text-shell-gray-500">
+                More:&nbsp;
+                {(industries.more || []).map((m, i) => (
+                  <span key={m.label}>
+                    {i > 0 ? ' · ' : null}
+                    <a href={m.href} onClick={onClose} className="text-[#0b1fb3] hover:underline">{m.label}</a>
+                  </span>
+                ))}
+              </p>
+            ) : null}
             {industries.viewAll ? (
               <a href={industries.viewAll.href} onClick={onClose} className="mt-4 inline-block text-[0.9rem] font-medium text-[#0b1fb3] underline decoration-[#0b1fb3]/40 underline-offset-4 hover:decoration-[#0b1fb3]">
                 {industries.viewAll.label}

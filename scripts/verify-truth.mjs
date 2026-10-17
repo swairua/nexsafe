@@ -55,5 +55,57 @@ const editor = fs.readFileSync(join(root, "src", "admin", "ContentEditor.jsx"), 
 if (!editor.includes("STRUCTURAL_KEYS") || !editor.includes("Managed in code")) bad("ContentEditor missing readonly guard")
 else ok("admin disables structural saves")
 
+// 7. Every nav href resolves: #/slug exists in pages/posts, #anchor exists in sectionIds
+// pages.js / posts.js are aggregators — follow their relative imports to the real files.
+const collectSlugsDeep = (entryRel) => {
+  const out = new Set()
+  const seen = new Set()
+  const visit = (rel) => {
+    const abs = join(root, ...rel.split("/"))
+    if (seen.has(abs)) return
+    seen.add(abs)
+    let src
+    try { src = fs.readFileSync(abs, "utf8") } catch { return }
+    for (const m of src.matchAll(/slug:\s*'([^']+)'/g)) out.add(m[1])
+    const dir = rel.split("/").slice(0, -1).join("/")
+    for (const m of src.matchAll(/from\s+["'](\.[^"']+)["']/g)) {
+      visit((dir ? dir + "/" : "") + m[1] + (m[1].endsWith(".js") ? "" : ".js"))
+    }
+  }
+  visit(entryRel)
+  return out
+}
+const knownSlugs = new Set([...collectSlugsDeep("src/data/pages.js"), ...collectSlugsDeep("src/data/posts.js")])
+const siteSrc = fs.readFileSync(join(root, "src", "data", "siteContent.js"), "utf8")
+const navSrc = fs.readFileSync(join(root, "src", "data", "navItems.js"), "utf8")
+const knownAnchors = new Set(
+  [...siteSrc.matchAll(/^\s{4}(\w+):\s*"/gm)].map((m) => m[1]).concat(["top", "company", "it-solutions", "partners", "industries", "capabilities", "insights", "support"])
+)
+const hrefs = [...navSrc.matchAll(/href:\s*'([^']+)'/g)].map((m) => m[1])
+let dead = 0
+for (const h of new Set(hrefs)) {
+  if (h.startsWith("#/")) {
+    const slug = h.slice(2)
+    if (!knownSlugs.has(slug)) { bad(`nav href dead: '${h}' (no such page/post slug)`); dead++ }
+  } else if (h.startsWith("#")) {
+    const a = h.slice(1)
+    if (!knownAnchors.has(a)) { bad(`nav href dead: '${h}' (no such section anchor)`); dead++ }
+  } else if (!h.startsWith("/") && !h.startsWith("http")) {
+    bad(`nav href unexpected shape: '${h}'`); dead++
+  }
+}
+if (dead === 0) ok(`all ${new Set(hrefs).size} nav hrefs resolve (slugs + anchors)`)
+
+// 8. MobileNav + Header render all layout shapes (no silent null dropdown)
+for (const [file, needles] of [
+  ["src/components/layout/MobileNav.jsx", ["item.links", "item.headline", "item.partners", "item.columns"]],
+  ["src/components/layout/MegaMenu.jsx", ["layout === 'simple'", "layout === 'company'", "layout === 'solutions'"]],
+]) {
+  const t = fs.readFileSync(join(root, ...file.split("/")), "utf8")
+  const missing = needles.filter((n) => !t.includes(n))
+  if (missing.length) bad(`${file} missing: ${missing.join(", ")}`)
+  else ok(`${file} covers all layouts`)
+}
+
 console.log(fail === 0 ? "\nSYNC OK — frontend is single source of truth" : `\n${fail} check(s) failed`)
 process.exit(fail === 0 ? 0 : 1)
