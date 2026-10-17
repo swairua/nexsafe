@@ -19,6 +19,7 @@ function CountUp({
       setInView(true)
       return undefined
     }
+    
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -115,12 +116,14 @@ export default function ProofBand() {
           <div className="stats-grid mt-10">
             {stats.map((s, i) => (
               <div key={s.label + i} className="text-center">
-                <div className="text-3xl font-extrabold tracking-tight text-white drop-shadow-[0_0_14px_rgba(1,116,164,0.35)] md:text-4xl">
-                  <Reveal variant="fade" delay={i + 1}>
-                    <CountUp value={s.value} />
-                  </Reveal>
+                <div className="rounded-xl border border-shell-gray-300 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] md:p-6">
+                  <div className="text-3xl font-extrabold tracking-tight text-brand-ink drop-shadow-[0_0_14px_rgba(1,116,164,0.35)] md:text-4xl">
+                    <Reveal variant="fade" delay={i + 1}>
+                      <CountUp value={s.value} />
+                    </Reveal>
+                  </div>
+                  <dt className="mt-1 text-xs font-semibold uppercase tracking-wider text-shell-gray-700">{s.label}</dt>
                 </div>
-                <dt className="mt-1 text-xs font-semibold uppercase tracking-wider text-white/70">{s.label}</dt>
               </div>
             ))}
           </div>

@@ -194,7 +194,7 @@ export default function PageView({ page, slug, params }) {
                         <Copy para={item.text} />
                       </div>
                       {item.href ? (
-                        <a href={item.href} className="arrow-link mt-3 inline-block pl-5 text-sm">
+                        <a href={item.href} className="arrow-link inline-flex items-center justify-center gap-0.5 mt-3 rounded-full border border-shell-gray-300 bg-white px-4 py-2 text-sm font-medium text-[#29b2fe] shadow-sm btn-lift-glow hover:border-brand-ink hover:text-brand-ink">
                           {labels.learnMore || 'Learn more'} <span className="arrow">›</span>
                         </a>
                       ) : null}
@@ -312,7 +312,7 @@ export default function PageView({ page, slug, params }) {
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="arrow-link mt-10 text-sm"
+              className="arrow-link inline-flex items-center justify-center gap-0.5 mt-10 rounded-full border border-shell-gray-300 bg-white px-3 py-2 text-sm font-medium text-[#29b2fe] shadow-sm btn-lift-glow hover:border-brand-ink hover:text-brand-ink"
             >
               {labels.backToTop} <span className="arrow">↑</span>
             </button>

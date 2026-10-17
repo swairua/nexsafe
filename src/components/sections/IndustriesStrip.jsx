@@ -241,7 +241,7 @@ export default function IndustriesStrip() {
           </div>
           </div>
           {caseCards.cta ? (
-            <a href={caseCards.cta.href} className="arrow-link mt-10 inline-block">
+            <a href={caseCards.cta.href} className="arrow-link mx-auto inline-flex items-center justify-center gap-0.5 mt-10 rounded-full border border-shell-gray-300 bg-white px-8 py-3 text-base font-medium text-[#29b2fe] shadow-sm transition-all btn-lift-glow hover:border-brand-ink hover:text-brand-ink">
               {caseCards.cta.label} <span className="arrow">→</span>
             </a>
           ) : null}

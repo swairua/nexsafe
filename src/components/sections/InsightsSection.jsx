@@ -43,7 +43,7 @@ function FeaturedCard({ post, fallbackImage, fallbackAlt }) {
         ) : null}
         <a
           href={`#/${post.slug}`}
-          className="mt-6 block rounded-lg border border-shell-gray-300 bg-white py-4 text-center text-base font-medium text-[#29b2fe] shadow-sm transition-all btn-lift-glow hover:border-brand-ink hover:text-brand-ink"
+          className="mt-6 mx-auto inline-flex items-center justify-center rounded-full border border-shell-gray-300 bg-white px-8 py-3 text-base font-medium text-[#29b2fe] shadow-sm transition-all btn-lift-glow hover:border-brand-ink hover:text-brand-ink"
         >
           Read more
         </a>
