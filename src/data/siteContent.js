@@ -23,7 +23,7 @@ export const defaultContent = {
 
     homeTitle: "Nexsate — technology that works as one",
     searchPlaceholder: "Search nexsate.com",
-    menuCta: { label: "Talk to an expert", href: "#/contact-us" },
+    menuCta: { label: "Contact Us", href: "#/contact-us" },
   },
 
   sectionIds: {

@@ -14,7 +14,7 @@
     "homeTitle": "Nexsate — technology that works as one",
     "searchPlaceholder": "Search nexsate.com",
     "menuCta": {
-      "label": "Talk to an expert",
+      "label": "Contact Us",
       "href": "#/contact-us"
     }
   },
@@ -920,38 +920,21 @@
   },
   "navItems": [
     {
-      "label": "Our Company",
-      "href": "#company",
-      "columns": [
+      "label": "Home",
+      "href": "#top",
+      "layout": "simple",
+      "links": [
         {
-          "heading": "About us",
-          "links": [
-            {
-              "label": "About Us",
-              "href": "#/about-us"
-            },
-            {
-              "label": "Why Us",
-              "href": "#/why-us"
-            },
-            {
-              "label": "Team",
-              "href": "#/team"
-            },
-            {
-              "label": "Partners & Certifications",
-              "href": "#/partners-certifications"
-            },
-            {
-              "label": "Reviews & Awards",
-              "href": "#/reviews-awards"
-            },
-            {
-              "label": "Careers",
-              "href": "#/careers"
-            }
-          ]
-        },
+          "label": "IT Services",
+          "href": "#/managed-it-services"
+        }
+      ]
+    },
+    {
+      "label": "Solutions",
+      "href": "#it-solutions",
+      "layout": "solutions",
+      "columns": [
         {
           "heading": "Services",
           "links": [
@@ -980,26 +963,37 @@
               "href": "#/backup-disaster-recovery"
             }
           ]
-        }
-      ]
-    },
-    {
-      "label": "Industries we serve",
-      "href": "#industries",
-      "columns": [
+        },
         {
-          "heading": "Industry focus",
+          "heading": "Business Challenges",
+          "tiles": [
+            {
+              "label": "Digital Transformation",
+              "href": "#/digital-transformation",
+              "icon": "transform"
+            },
+            {
+              "label": "Security",
+              "href": "#/cybersecurity",
+              "icon": "shield"
+            },
+            {
+              "label": "Automation",
+              "href": "#/automation",
+              "icon": "gear"
+            },
+            {
+              "label": "Gaining Efficiency",
+              "href": "#/gaining-efficiency",
+              "icon": "gauge"
+            }
+          ]
+        },
+        {
+          "heading": "Industry Focus",
           "links": [
             {
-              "label": "Banks & Insurance",
-              "href": "#/banks-insurance"
-            },
-            {
-              "label": "Healthcare",
-              "href": "#/healthcare"
-            },
-            {
-              "label": "Industrial & Manufacturing",
+              "label": "Industry Manufacturing",
               "href": "#/industrial-manufacturing"
             },
             {
@@ -1007,131 +1001,87 @@
               "href": "#/transportation-logistics"
             },
             {
+              "label": "Healthcare",
+              "href": "#/healthcare"
+            },
+            {
+              "label": "Banking, Finance & Insurance",
+              "href": "#/banks-insurance"
+            },
+            {
               "label": "Consulting Providers",
               "href": "#/consulting-providers"
             },
             {
-              "label": "Non-Profit",
+              "label": "Non Profit",
               "href": "#/non-profit"
-            },
-            {
-              "label": "Telemedicine",
-              "href": "#/telemedicine"
-            },
-            {
-              "label": "Fintech",
-              "href": "#/fintech"
-            },
-            {
-              "label": "Education",
-              "href": "#/education"
             }
           ],
           "viewAll": {
             "label": "View all",
             "href": "#industries"
           }
-        },
-        {
-          "heading": "Business challenges",
-          "tiles": [
-            {
-              "label": "Digital Transformation",
-              "href": "#/digital-transformation",
-              "icon": "transform",
-              "blurb": "Modernize systems and processes"
-            },
-            {
-              "label": "Security",
-              "href": "#/cybersecurity",
-              "icon": "shield",
-              "blurb": "Protect users, devices and data"
-            },
-            {
-              "label": "Automation",
-              "href": "#/automation",
-              "icon": "gear",
-              "blurb": "Remove repetitive manual work"
-            },
-            {
-              "label": "Gaining Efficiency",
-              "href": "#/gaining-efficiency",
-              "icon": "gauge",
-              "blurb": "Get more from your technology"
-            }
-          ]
         }
       ]
     },
     {
-      "label": "Success Stories",
+      "label": "Company",
+      "href": "#company",
+      "layout": "company",
+      "headline": "Simplifying IT\nfor a complex world.",
+      "links": [
+        {
+          "label": "About us",
+          "href": "#/about-us"
+        },
+        {
+          "label": "Why us",
+          "href": "#/why-us"
+        },
+        {
+          "label": "Careers",
+          "href": "#/careers"
+        }
+      ],
+      "partners": {
+        "heading": "Platform partnerships",
+        "href": "#/partners-certifications",
+        "items": [
+          {
+            "label": "AWS",
+            "href": "#/partners-certifications",
+            "logo": "/uploads/stack-icons/amazon-web-services.svg"
+          },
+          {
+            "label": "Google Cloud",
+            "href": "#/partners-certifications",
+            "logo": "/uploads/stack-icons/google-cloud.svg"
+          },
+          {
+            "label": "Microsoft",
+            "href": "#/partners-certifications",
+            "logo": "/uploads/stack-icons/microsoft.svg"
+          },
+          {
+            "label": "Salesforce",
+            "href": "#/partners-certifications",
+            "logo": "/uploads/stack-icons/salesforce.svg"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Resources",
       "href": "#insights",
-      "columns": [
+      "layout": "simple",
+      "links": [
         {
-          "heading": "Client outcomes",
-          "links": [
-            {
-              "label": "View all insights",
-              "href": "#/blog"
-            },
-            {
-              "label": "IT alignment for a growing business",
-              "href": "#/success-story"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Support",
-      "href": "#support",
-      "columns": [
-        {
-          "heading": "Help and support",
-          "links": [
-            {
-              "label": "Help and FAQ",
-              "href": "#/help-and-faq"
-            },
-            {
-              "label": "Client Support",
-              "href": "#/client-support"
-            },
-            {
-              "label": "Contact us",
-              "href": "#/contact-us"
-            }
-          ]
+          "label": "Schedule a Consultation",
+          "href": "#/contact-us"
         },
         {
-          "heading": "Learn",
-          "links": [
-            {
-              "label": "Events",
-              "href": "#/events"
-            },
-            {
-              "label": "Blog",
-              "href": "#/blog"
-            }
-          ]
-        },
-        {
-          "heading": "Legal",
-          "links": [
-            {
-              "label": "Privacy Policy",
-              "href": "#/privacy-policy"
-            },
-            {
-              "label": "Cookie policy",
-              "href": "#/cookie-policy"
-            },
-            {
-              "label": "Terms & Conditions",
-              "href": "#/terms-conditions"
-            }
-          ]
+          "label": "FAQ",
+          "href": "#/help-and-faq"
         }
       ]
     }
@@ -1480,6 +1430,54 @@
           ]
         },
         {
+          "heading": "Benefits of managed IT services provided by Nexsate",
+          "body": [
+            "Focus on your business. We will handle the technology behind it. When technology becomes a source of stress, downtime, security risk, or wasted resources, Nexsate Technologies helps get your business back on track. When we professionally manage your IT, it empowers your business to confidently:"
+          ],
+          "items": [
+            {
+              "title": "Focus on growth",
+              "text": "Focus on growth while we manage the technology behind your daily operations."
+            },
+            {
+              "title": "Minimize downtime",
+              "text": "Minimize downtime with reliable systems, proactive support, and faster resolution."
+            },
+            {
+              "title": "Strengthen cybersecurity",
+              "text": "Strengthen cybersecurity by protecting users, devices, systems, and business data."
+            },
+            {
+              "title": "Improve efficiency",
+              "text": "Improve efficiency by streamlining workflows, support, systems, and daily operations."
+            },
+            {
+              "title": "Enhance connectivity",
+              "text": "Enhance connectivity with reliable network, cloud, and telecommunications support."
+            },
+            {
+              "title": "Plan ahead",
+              "text": "Plan ahead with expert guidance that supports long-term technology success."
+            },
+            {
+              "title": "Specialized Experts",
+              "text": "Access experienced IT professionals from cybersecurity, cloud service, networks and fibre connectivity, applications — in one place."
+            },
+            {
+              "title": "Predictable Costs",
+              "text": "Plan your IT spending with fixed monthly support based on the service level your business requires."
+            },
+            {
+              "title": "Proactive Support",
+              "text": "Reduce downtime by identifying, monitoring, and resolving technology issues before they disrupt operations."
+            },
+            {
+              "title": "Responsive Service",
+              "text": "Get fast, reliable support when issues arise, so your team can stay productive and focused."
+            }
+          ]
+        },
+        {
           "heading": "Why choose services from Nexsate?",
           "body": [
             "Nexsate provides businesses with an edge over the competition with a variety of benefits.",
@@ -1532,7 +1530,12 @@
         {
           "heading": "IT support with better clarity",
           "body": [
-            "Managed IT should bring order to everyday technology support. Nexsate helps organize how IT issues are reported, tracked, resolved, and improved over time. This includes user support, device care, vendor coordination, recurring issue management, system maintenance, and better visibility across your IT environment.",
+            "Managed IT should bring order to everyday technology support. Nexsate helps organize how IT issues are reported, tracked, resolved, and improved over time. This includes user support, device care, vendor coordination, recurring issue management, system maintenance, and better visibility across your IT environment."
+          ]
+        },
+        {
+          "heading": "Managed IT That Makes Work Easier",
+          "body": [
             "When IT is properly managed, employees spend less time dealing with technical problems and more time doing productive work. Nexsate helps create a more reliable technology environment by improving support, reducing recurring issues, strengthening security, organizing systems, and giving your business better visibility over its IT operations."
           ]
         },
@@ -1554,6 +1557,14 @@
             {
               "title": "Microsoft 365 administration",
               "text": "Manage Microsoft 365 users, email, Teams, SharePoint, OneDrive, licences, permissions, and security settings across your business environment."
+            },
+            {
+              "title": "Network & connectivity support",
+              "text": "Maintain the technology that keeps your business connected, including Wi-Fi, routers, switches, firewalls, internet coordination, and internal network access."
+            },
+            {
+              "title": "Backup & recovery oversight",
+              "text": "Monitor backup activity, recovery readiness, alerts, storage usage, and restore support so important business data remains better protected."
             },
             {
               "title": "Vendor & technology coordination",
@@ -1632,6 +1643,14 @@
             {
               "title": "Cloud cost & licence review",
               "text": "Reviewing cloud licences, subscriptions, storage usage, and service plans to reduce waste and improve value."
+            },
+            {
+              "title": "Cloud storage management",
+              "text": "Organizing cloud storage, reduce file confusion, manage permissions, and improve how business information is stored and accessed."
+            },
+            {
+              "title": "Scalable cloud environment",
+              "text": "Building a cloud setup that can support more users, locations, applications, data, and business activity as your company grows."
             }
           ]
         }
@@ -1784,6 +1803,14 @@
             {
               "title": "Traffic & bandwidth management",
               "text": "Monitor usage, reduce congestion, and improve how bandwidth is used across business applications, cloud platforms, and connected devices."
+            },
+            {
+              "title": "Automated alerts",
+              "text": "Receive timely alerts when network issues, outages, device failures, or performance problems need attention."
+            },
+            {
+              "title": "Configuration review & growth planning",
+              "text": "Review network settings, capacity, and future requirements so the network can support more users, devices, locations, and business growth."
             }
           ]
         }
@@ -1846,6 +1873,14 @@
             {
               "title": "Cloud backup management",
               "text": "Manage cloud-based backups for important business data, files, systems, and applications to improve data availability and reduce reliance on local storage only."
+            },
+            {
+              "title": "Server & workstation backup",
+              "text": "Protect business servers, desktops, and laptops by backing up important files, configurations, and system data needed for recovery."
+            },
+            {
+              "title": "Backup alerts & reporting",
+              "text": "Track backup status, failed jobs, storage usage, and warning signs through alerts and reports that make backup health easier to manage."
             },
             {
               "title": "Recovery testing",
@@ -2203,6 +2238,35 @@
           ]
         },
         {
+          "heading": "Software development benefits",
+          "items": [
+            {
+              "title": "Better Visibility",
+              "text": "Give your team clearer access to business information through dashboards, reports, and connected data."
+            },
+            {
+              "title": "Smarter Decisions",
+              "text": "Use accurate information to understand performance, track progress, and make informed business decisions."
+            },
+            {
+              "title": "Improved Team Productivity",
+              "text": "Help employees spend less time searching for information, repeating tasks, or working around disconnected systems."
+            },
+            {
+              "title": "Stronger Customer Experience",
+              "text": "Create smoother customer interactions through better portals, faster processes, and more organized service delivery."
+            },
+            {
+              "title": "Flexible Business Growth",
+              "text": "Build software that can adapt as your business adds users, services, locations, departments, or new processes."
+            },
+            {
+              "title": "Long-Term Improvement",
+              "text": "Continue improving your systems after launch so they remain useful as your business needs change."
+            }
+          ]
+        },
+        {
           "heading": "A team that ships",
           "body": [
             "An 80+ strong delivery team across design, engineering, and quality — sized to take on funded-company roadmaps as well as focused business builds.",
@@ -2268,6 +2332,22 @@
             {
               "title": "Cybersecurity & Compliance Readiness",
               "text": "Security reviews, endpoint protection, email safeguards, data handling controls, user awareness, audit preparation, and risk reduction practices."
+            },
+            {
+              "title": "Office Network & Branch Connectivity",
+              "text": "Design and setup of office networks, Wi-Fi, firewalls, workstations, printers, meeting rooms, and multi-location connectivity."
+            },
+            {
+              "title": "Hardware Procurement & Device Setup",
+              "text": "Sourcing, configuring, and deploying laptops, desktops, monitors, printers, scanners, phones, tablets, and office technology equipment."
+            },
+            {
+              "title": "Document Management & Workflow Support",
+              "text": "Support for digital files, client records, forms, approvals, shared folders, document routing, and controlled information access."
+            },
+            {
+              "title": "Automation & AI Administrative Workflows",
+              "text": "Automation and AI-supported processes for document sorting, reminders, reporting, approvals, client follow-ups, form handling, and internal task management."
             }
           ]
         },
@@ -2336,11 +2416,27 @@
             {
               "title": "Backup & Record Recovery Readiness",
               "text": "Protection planning for important practice data, digital records, files, cloud platforms, and systems that must be recoverable when problems occur."
+            },
+            {
+              "title": "Medical Office Network & Wi-Fi",
+              "text": "Network setup and support for clinics, treatment rooms, reception areas, staff offices, guest access, and connected healthcare workspaces."
+            },
+            {
+              "title": "Hardware, Printers & Peripheral Setup",
+              "text": "Procurement, configuration, and deployment of computers, tablets, printers, scanners, label printers, phones, monitors, and other office technology."
+            },
+            {
+              "title": "Systems Maintenance & Update Coordination",
+              "text": "Regular maintenance for devices, applications, operating systems, security updates, performance concerns, and technology health."
+            },
+            {
+              "title": "Digital Forms, Automation & AI Admin Workflows",
+              "text": "Automation and AI-supported administrative workflows for forms, reminders, document routing, reporting, task follow-ups, and non-clinical office processes."
             }
           ]
         },
         {
-          "heading": "Protect the Practice Behind the Patient",
+          "heading": "Protect the Practice Behind the Patient Experience",
           "body": [
             "Healthcare teams need technology that supports trust, privacy, and smooth service delivery. A well-managed digital environment helps staff access the right information, serve patients more efficiently, reduce administrative pressure, and keep the practice prepared for daily demands."
           ]
@@ -2355,9 +2451,9 @@
     },
     "industrial-manufacturing": {
       "slug": "industrial-manufacturing",
-      "title": "Industry Manufacturing",
+      "title": "Industrial & Manufacturing",
       "eyebrow": "Industries",
-      "intro": "Insightful and reliable manufacturer IT services for productive and effective business",
+      "intro": "Technology support for production teams, warehouses, offices, and industrial operations that cannot afford avoidable disruption.",
       "image": {
         "src": "/uploads/industry-manufacturing-hero.jpg",
         "alt": "Production floor of a manufacturing plant"
@@ -2403,6 +2499,22 @@
             {
               "title": "Cybersecurity Compliance & Controls",
               "text": "Security reviews, access controls, endpoint protection, data protection, user permissions, and cybersecurity practices that support safer operations and compliance readiness."
+            },
+            {
+              "title": "System Design & Network Setup",
+              "text": "Design and setup of reliable technology environments, including networks, workstations, servers, Wi-Fi, access points, and system connectivity."
+            },
+            {
+              "title": "Hardware Procurement & Setup",
+              "text": "Sourcing, configuring, and deploying laptops, desktops, servers, printers, networking equipment, and other technology hardware required for business operations."
+            },
+            {
+              "title": "Cabling & Connectivity",
+              "text": "Structured cabling, fibre connectivity coordination, network points, equipment connections, and connectivity support for offices, warehouses, and production areas."
+            },
+            {
+              "title": "Systems Maintenance",
+              "text": "Ongoing maintenance of devices, systems, networks, software updates, patches, backups, and performance issues to keep technology operating reliably."
             }
           ]
         },
@@ -2472,6 +2584,22 @@
             {
               "title": "Automation & AI Workflow Support",
               "text": "Automation and AI-supported workflows for shipment updates, document handling, reporting, approvals, customer notifications, shared inbox activity, data entry, and operational alerts."
+            },
+            {
+              "title": "Network Design & Site Connectivity",
+              "text": "Design and setup of networks for offices, warehouses, yards, terminals, remote branches, and connected work areas."
+            },
+            {
+              "title": "Hardware Procurement & Device Setup",
+              "text": "Sourcing, configuring, and deploying desktops, laptops, tablets, printers, scanners, mobile devices, routers, switches, access points, and fleet-related technology."
+            },
+            {
+              "title": "Systems Maintenance & Availability",
+              "text": "Ongoing maintenance for workstations, servers, software, updates, patches, device health, access issues, and performance concerns."
+            },
+            {
+              "title": "Cybersecurity & Compliance Controls",
+              "text": "Security reviews, user permissions, endpoint protection, email protection, data safeguards, access controls, and cybersecurity practices that support safer logistics operations."
             }
           ]
         },

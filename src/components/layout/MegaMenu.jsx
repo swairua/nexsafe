@@ -1,8 +1,6 @@
-import { useContent } from '../../content/ContentContext.jsx'
-
 function ChallengeIcon({ icon }) {
   const common = {
-    className: 'h-8 w-8 text-shell-red',
+    className: 'h-8 w-8 text-[#0b1fb3]',
     viewBox: '0 0 40 40',
     fill: 'none',
     'aria-hidden': 'true',
@@ -50,229 +48,142 @@ function ChallengeIcon({ icon }) {
   )
 }
 
-function PromoPanel({ onClose, span = 'col-span-3', wide = false }) {
-  const { pageConnect } = useContent()
-  if (!pageConnect) return null
+function TargetMark() {
   return (
-    <div className={span}>
-      <a
-        href={pageConnect.cta?.href || '#/contact-us'}
-        onClick={onClose}
-        className={`group flex h-full min-h-[16rem] rounded-2xl p-7 text-white transition-transform hover:scale-[1.01] md:p-8 ${wide ? 'flex-row items-center gap-8' : 'flex-col justify-between'}`}
-        style={{
-          background: '#0174a4',
-          boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
-        }}
-      >
-        <div className={wide ? 'max-w-md flex-1' : ''}>
-          {pageConnect.tag && (
-            <span className="mb-3 inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
-              {pageConnect.tag}
-            </span>
-          )}
-          <p className={`leading-relaxed text-white/80 ${wide ? 'text-base' : 'text-sm'}`}>{pageConnect.text}</p>
-        </div>
-        <span className={`inline-flex items-center gap-2 text-sm font-bold ${wide ? 'shrink-0 rounded-full bg-white px-5 py-3 text-[#0174a4] transition-all hover:shadow-[0_0_24px_3px_rgba(255,255,255,0.5)]' : 'mt-5'}`}>
-          {pageConnect.cta?.label || 'Learn more'}
-          <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </span>
-      </a>
-    </div>
+    <svg className="h-16 w-16 text-shell-gray-900" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <circle cx="30" cy="34" r="24" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="30" cy="34" r="15" stroke="currentColor" strokeWidth="1.2" opacity="0.5" />
+      <circle cx="30" cy="34" r="9" fill="#0b1fb3" />
+      <circle cx="30" cy="34" r="9" fill="#0b1fb3" fillOpacity="0.25" />
+      <path d="M30 34 52 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M46 6h8v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   )
 }
 
+const headingCls = 'mb-5 text-[1.35rem] font-bold normal-case tracking-normal text-[#0a1440]'
+const plainLinkCls = 'block rounded px-1 py-2 text-[0.95rem] font-normal text-[#1a1d21] transition-colors hover:text-[#0b1fb3]'
+
 export default function MegaMenu({ item, onClose }) {
-  const { uiLabels } = useContent()
-  if (item.layout === 'solutions') {
-    const [services, challenges, industries] = item.columns
+  if (!item) return null
+
+  if (item.layout === 'simple') {
+    const links = item.links || []
+    const offset = item.label === 'Home' ? '22%' : '52%'
     return (
-      <div
-        className="menu-anim absolute inset-x-0 top-full hidden rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl lg:block"
-        onMouseLeave={onClose}
-      >
-        <div className="shell-container grid grid-cols-12 gap-6 py-10">
-
-          <div className="menu-col col-span-3">
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
-              {services.heading}
-            </h3>
-            <ul className="space-y-3.5">
-              {services.links.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    onClick={onClose}
-                    className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="menu-col col-span-6">
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
-              {challenges.heading}
-            </h3>
-            <div className="grid grid-cols-2 gap-4">
-              {(challenges.tiles || []).map((t) => (
-                <a
-                  key={t.label}
-                  href={t.href}
-                  onClick={onClose}
-                  className="group flex items-start gap-4 rounded-lg border border-shell-gray-200 bg-white p-4 transition-colors hover:border-brand-ink"
-                >
-                  <ChallengeIcon icon={t.icon} />
-                  <div>
-                    <span className="block text-sm font-bold text-shell-gray-900 group-hover:text-brand-ink">
-                      {t.label}
-                    </span>
-                    {t.blurb && (
-                      <span className="mt-1 block text-xs text-shell-gray-500">
-                        {t.blurb}
-                      </span>
-                    )}
-                  </div>
-                </a>
-              ))}
+      <div className="menu-anim absolute inset-x-0 top-full hidden lg:block" onMouseLeave={onClose}>
+        <div className="shell-container flex py-2">
+          <div style={{ marginLeft: offset }}>
+            <div className="min-w-[15rem] rounded-b-md border border-t-0 border-shell-gray-300/60 bg-white px-6 py-4 shadow-[0_12px_28px_-12px_rgba(11,27,43,0.25)]">
+              <ul className="space-y-3">
+                {links.map((l) => (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      onClick={onClose}
+                      className={`block py-1 text-[0.95rem] font-normal transition-colors hover:text-[#0b1fb3] ${item.label === 'Home' ? 'text-center text-[#0b1fb3]' : 'text-left text-[#1a1d21]'}`}
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-
-          <PromoPanel onClose={onClose} />
         </div>
       </div>
     )
   }
 
-  const colCount = item.columns.length
-  const linkColClass = colCount === 1 ? 'col-span-5' : colCount === 2 ? 'col-span-3' : 'col-span-2'
-  const extraColClass = 'col-span-2'
-  const promoSpan = colCount === 1 ? 'col-span-7' : 'col-span-6'
-  const promoWide = colCount <= 2
-
-  return (
-    <div
-      className="menu-anim absolute inset-x-0 top-full rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl hidden lg:block"
-      onMouseLeave={onClose}
-    >
-      <div className="shell-container grid grid-cols-12 gap-6 py-8">
-        {item.columns.slice(0, 2).map((col) => (
-          <div key={col.heading} className={`menu-col ${linkColClass}`}>
-            <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
-              {col.heading}
-            </h3>
-            {(col.links || []).length > 0 ? (
-            <ul className={`gap-x-6 gap-y-3.5 ${colCount === 1 && (col.links || []).length > 3 ? 'grid grid-cols-2' : 'space-y-3.5'}`}>
-              {(col.links || []).map((l) => (
+  if (item.layout === 'company') {
+    const partners = item.partners || { items: [] }
+    return (
+      <div className="menu-anim absolute inset-x-0 top-full hidden border-t border-shell-gray-300/50 bg-white shadow-[0_24px_48px_-24px_rgba(11,27,43,0.25)] lg:block" onMouseLeave={onClose}>
+        <div className="shell-container grid grid-cols-12 gap-6">
+          <div className="col-span-5 py-12">
+            <p className="whitespace-pre-line text-[2rem] font-bold leading-[1.2] tracking-tight text-[#0a1440]">
+              {item.headline}
+            </p>
+          </div>
+          <div className="col-span-3 py-12">
+            <ul className="space-y-4 pt-1">
+              {(item.links || []).map((l) => (
                 <li key={l.label}>
-                  <a
-                    href={l.href}
-                    onClick={onClose}
-                    className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline"
-                  >
+                  <a href={l.href} onClick={onClose} className={plainLinkCls}>
                     {l.label}
                   </a>
                 </li>
               ))}
             </ul>
-            ) : null}
-            {(col.tiles || []).length > 0 ? (
-            <div className={`grid gap-3 ${colCount === 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
-              {(col.tiles || []).map((t) => (
-                <a
-                  key={t.label}
-                  href={t.href}
-                  onClick={onClose}
-                  className="group flex items-start gap-3 rounded-lg border border-shell-gray-200 bg-white p-3 transition-colors hover:border-brand-ink"
-                >
+          </div>
+          <div className="col-span-4 bg-[#f3f4f6] px-10 py-12">
+            <a href={partners.href || '#/partners-certifications'} onClick={onClose} className="mb-6 block text-[1rem] font-medium text-[#0a1440] hover:text-[#0b1fb3]">
+              {partners.heading}
+            </a>
+            <ul className="space-y-4">
+              {(partners.items || []).map((p) => (
+                <li key={p.label}>
+                  <a href={p.href} onClick={onClose} className="group flex items-center gap-2.5">
+                    {p.logo ? <img src={p.logo} alt="" aria-hidden="true" className="h-5 w-7 object-contain" loading="lazy" /> : null}
+                    <span className="text-[0.95rem] font-medium text-[#1a1d21] group-hover:text-[#0b1fb3]">{p.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (item.layout === 'solutions') {
+    const [services = { links: [] }, challenges = { tiles: [] }, industries = { links: [] }] = item.columns || []
+    return (
+      <div className="menu-anim absolute inset-x-0 top-full hidden border-t border-shell-gray-300/50 bg-white shadow-[0_24px_48px_-24px_rgba(11,27,43,0.25)] lg:block" onMouseLeave={onClose}>
+        <div className="shell-container relative grid grid-cols-12 gap-6">
+          <div className="pointer-events-none absolute right-[30%] top-6 hidden xl:block">
+            <TargetMark />
+          </div>
+          <div className="menu-col col-span-3 py-10">
+            <h3 className={headingCls}>{services.heading}</h3>
+            <ul className="space-y-1.5">
+              {(services.links || []).map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} onClick={onClose} className={plainLinkCls}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="menu-col col-span-5 py-10">
+            <h3 className={headingCls}>{challenges.heading}</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {(challenges.tiles || []).map((t) => (
+                <a key={t.label} href={t.href} onClick={onClose} className="group flex min-h-[7.5rem] flex-col justify-between rounded-lg border border-shell-gray-300/70 bg-white p-4 transition-colors hover:border-[#0b1fb3]">
                   <ChallengeIcon icon={t.icon} />
-                  <span>
-                    <span className="block text-sm font-bold text-shell-gray-900 group-hover:text-brand-ink">
-                      {t.label}
-                    </span>
-                    {t.blurb ? (
-                      <span className="mt-1 block text-xs text-shell-gray-500">
-                        {t.blurb}
-                      </span>
-                    ) : null}
-                  </span>
+                  <span className="mt-3 block text-[0.95rem] font-medium text-[#1a1d21] group-hover:text-[#0b1fb3]">{t.label}</span>
                 </a>
               ))}
             </div>
-            ) : null}
-            {col.viewAll ? (
-              <a
-                href={col.viewAll.href}
-                onClick={onClose}
-                className="mt-4 inline-block text-[0.9rem] font-bold text-shell-gray-900 hover:text-brand-ink hover:underline"
-              >
-                {col.viewAll.label} →
+          </div>
+          <div className="col-span-4 bg-[#f3f4f6] px-10 py-10">
+            <h3 className={headingCls}>{industries.heading}</h3>
+            <ul className="space-y-1.5">
+              {(industries.links || []).map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} onClick={onClose} className={plainLinkCls}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+            {industries.viewAll ? (
+              <a href={industries.viewAll.href} onClick={onClose} className="mt-4 inline-block text-[0.9rem] font-medium text-[#0b1fb3] underline decoration-[#0b1fb3]/40 underline-offset-4 hover:decoration-[#0b1fb3]">
+                {industries.viewAll.label}
               </a>
             ) : null}
           </div>
-        ))}
-        {item.columns.length > 2 && (
-          <div className={`menu-col ${extraColClass}`}>
-            {item.columns.slice(2).map((col) => (
-              <div key={col.heading} className="mb-6 last:mb-0">
-                <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
-                  {col.heading}
-                </h3>
-                <ul className="space-y-3">
-                  {(col.links || []).map((l) => (
-                    <li key={l.label}>
-                      <a
-                        href={l.href}
-                        onClick={onClose}
-                        className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline"
-                      >
-                        {l.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                {(col.tiles || []).length > 0 ? (
-                <div className="mt-4 grid grid-cols-1 gap-3">
-                  {(col.tiles || []).map((t) => (
-                    <a
-                      key={t.label}
-                      href={t.href}
-                      onClick={onClose}
-                      className="group flex items-start gap-3 rounded-lg border border-shell-gray-200 bg-white p-3 transition-colors hover:border-brand-ink"
-                    >
-                      <ChallengeIcon icon={t.icon} />
-                      <span>
-                        <span className="block text-sm font-bold text-shell-gray-900 group-hover:text-brand-ink">
-                          {t.label}
-                        </span>
-                        {t.blurb ? (
-                          <span className="mt-1 block text-xs text-shell-gray-500">
-                            {t.blurb}
-                          </span>
-                        ) : null}
-                      </span>
-                    </a>
-                  ))}
-                </div>
-                ) : null}
-                {col.viewAll ? (
-                  <a
-                    href={col.viewAll.href}
-                    onClick={onClose}
-                    className="mt-4 inline-block text-[0.9rem] font-bold text-shell-gray-900 hover:text-brand-ink hover:underline"
-                  >
-                    {col.viewAll.label} →
-                  </a>
-                ) : null}
-              </div>
-            ))}
-          </div>
-        )}
-        <PromoPanel onClose={onClose} span={promoSpan} wide={promoWide} />
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
+
+  return null
 }

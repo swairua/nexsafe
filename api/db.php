@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/truth.php';
 
 function nx_db(): PDO
 {
@@ -64,7 +65,7 @@ function nx_seed(PDO $pdo): void
             $insert->execute([(string) $key, nx_encode($default), $now]);
             continue;
         }
-        $merged = nx_merge_defaults($default, json_decode((string) $stored, true));
+        $merged = nx_merge_defaults($default, json_decode((string) $stored, true), (string) $key);
         if (nx_encode($merged) !== (string) $stored) {
             $update->execute([nx_encode($merged), $now, (string) $key]);
         }
@@ -76,17 +77,23 @@ function nx_encode($value): string
     return (string) json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 }
 
-function nx_merge_defaults($defaults, $stored)
+function nx_merge_defaults($defaults, $stored, string $key = '')
 {
     if (!is_array($defaults) || !is_array($stored) || $stored === null) {
         return $stored === null ? $defaults : $stored;
+    }
+    // Frontend is the single source of truth: structural keys (nav, pages,
+    // anchors, labels) always resolve to the code default. A stored list from
+    // an older design must never override the UI. See api/truth.php.
+    if (nx_is_structural($key)) {
+        return $defaults;
     }
     if (array_is_list($defaults) || array_is_list($stored)) {
         return $stored;
     }
     $out = $stored;
     foreach ($defaults as $k => $v) {
-        $out[$k] = array_key_exists($k, $out) ? nx_merge_defaults($v, $out[$k]) : $v;
+        $out[$k] = array_key_exists($k, $out) ? nx_merge_defaults($v, $out[$k], $key === '' ? (string) $k : $key . '.' . (string) $k) : $v;
     }
     return $out;
 }

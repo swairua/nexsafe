@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { defaultContent } from "../data/siteContent.js"
+import { CONTENT_VERSION, STRUCTURAL_KEYS } from "../data/contentTruth.js"
 
 const ContentContext = createContext(defaultContent)
 
@@ -18,6 +19,18 @@ export function mergeContent(base, override) {
   return override === undefined ? base : override
 }
 
+// Frontend is the single source of truth: structural keys (nav, pages,
+// anchors, labels) are always taken from code. Backend values for those
+// keys are dropped here so a stale CMS row can never override the UI.
+export function stripStructural(payload) {
+  if (!payload || typeof payload !== "object") return payload
+  const out = { ...payload }
+  for (const k of STRUCTURAL_KEYS) {
+    if (k in out) delete out[k]
+  }
+  return out
+}
+
 export function ContentProvider({ children }) {
   const [content, setContent] = useState(defaultContent)
 
@@ -27,7 +40,15 @@ export function ContentProvider({ children }) {
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
         if (active && j && j.ok && j.content) {
-          setContent(mergeContent(defaultContent, j.content))
+          if (j.version !== undefined && j.version !== CONTENT_VERSION) {
+            console.warn(
+              `[content] backend version ${j.version} != frontend ${CONTENT_VERSION} — structural keys pinned to frontend; regenerate seed (node api/seed.mjs).`
+            )
+          }
+          if (Array.isArray(j.readonly) && j.readonly.length) {
+            console.info(`[content] backend structural keys ignored: ${j.readonly.join(", ")}`)
+          }
+          setContent(mergeContent(defaultContent, stripStructural(j.content)))
         }
       })
       .catch(() => {})

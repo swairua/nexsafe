@@ -2,6 +2,15 @@ import { useEffect, useMemo, useState } from "react"
 import { api } from "./api.js"
 import FieldEditor from "./FieldEditor.jsx"
 import { BTN, CARD, INPUT, PANEL_TITLE, SAVE_BAR } from "./ui.js"
+import { STRUCTURAL_KEYS } from "../data/contentTruth.js"
+
+const CODE_FILE_HINT = {
+  navItems: "src/data/navItems.js",
+  pages: "src/data/pages/*.js",
+  sectionIds: "src/data/siteContent.js → sectionIds",
+  categoryAnchors: "src/data/siteContent.js → categoryAnchors",
+  uiLabels: "src/data/siteContent.js → uiLabels",
+}
 
 export default function ContentEditor({ keys, content, onSaved, onPickImage }) {
   const [active, setActive] = useState(keys.length ? keys[0].key : "")
@@ -23,6 +32,7 @@ export default function ContentEditor({ keys, content, onSaved, onPickImage }) {
   function reset() { setDraft(content[active]); setDirty(false); setStatus("") }
 
   const current = keys.find((k) => k.key === active)
+  const readonly = STRUCTURAL_KEYS.includes(active)
   const visible = useMemo(() => {
     const q = filter.trim().toLowerCase()
     if (!q) return keys
@@ -85,11 +95,17 @@ export default function ContentEditor({ keys, content, onSaved, onPickImage }) {
           </div>
           <div className="flex items-center gap-2">
             {status ? <span className="max-w-[10rem] truncate text-xs text-shell-gray-500" title={status}>{status}</span> : null}
-            <button onClick={reset} disabled={!dirty || busy} className={BTN + " bg-shell-gray-100 text-shell-gray-700 hover:bg-shell-gray-300 disabled:opacity-40"}>Reset</button>
-            <button onClick={save} disabled={!dirty || busy} className={BTN + " bg-shell-red px-4 font-semibold text-white hover:bg-shell-gray-900 disabled:opacity-40"}>{busy ? "Saving…" : "Save"}</button>
+            <button onClick={reset} disabled={!dirty || busy || readonly} className={BTN + " bg-shell-gray-100 text-shell-gray-700 hover:bg-shell-gray-300 disabled:opacity-40"}>Reset</button>
+            <button onClick={save} disabled={!dirty || busy || readonly} title={readonly ? "Managed in code — see " + (CODE_FILE_HINT[active] || "src/data/*") : undefined} className={BTN + " bg-shell-red px-4 font-semibold text-white hover:bg-shell-gray-900 disabled:opacity-40"}>{busy ? "Saving…" : "Save"}</button>
           </div>
         </div>
         <div className={CARD}>
+          {readonly ? (
+            <p className="mb-3 rounded-lg bg-shell-gray-100 px-3 py-2 text-xs leading-relaxed text-shell-gray-700">
+              Managed in code (frontend source of truth) — edit <code>{CODE_FILE_HINT[active] || "src/data/*"}</code>, then run{" "}
+              <code>node api/seed.mjs</code> and rebuild. Saving is disabled; the backend rejects writes to this key.
+            </p>
+          ) : null}
           {draft === undefined || draft === null ? <p className="text-sm text-shell-gray-500">No data for this section.</p> : <FieldEditor name={active} value={draft} onChange={(nv) => { setDraft(nv); setDirty(true) }} onPickImage={onPickImage} />}
         </div>
       </div>

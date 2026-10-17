@@ -75,7 +75,7 @@ export default function Header({ overlay = false }) {
           <NexsateLogo className="h-5 md:h-6" src={settings.logo} alt={settings.logoAlt || settings.brandName} />
         </a>
 
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label={uiLabels.primaryNav}>
+        <nav className="hidden items-center gap-1 lg:flex" aria-label={uiLabels.primaryNav}>
           {navItems.map((item, i) => (
             <button
               key={item.label}
@@ -87,35 +87,32 @@ export default function Header({ overlay = false }) {
                 setOpenMenu(i)
               }}
               aria-expanded={openMenu === i}
-              className={`relative flex items-center gap-1.5 rounded-md px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+              className={`relative flex items-center gap-1 rounded px-3 py-2 text-[0.95rem] font-medium normal-case tracking-normal transition-colors ${
                 openMenu === i
-                  ? 'text-shell-red'
-                  : 'text-shell-gray-900 hover:text-brand-ink'
+                  ? 'text-[#0b1fb3]'
+                  : 'text-[#1a1d21] hover:text-[#0b1fb3]'
               }`}
             >
               {item.label}
               <svg
-                className={`h-2.5 w-2.5 transition-transform duration-200 ${openMenu === i ? 'rotate-180' : ''}`}
+                className={`h-2 w-2 transition-transform duration-200 ${openMenu === i ? 'rotate-180' : ''}`}
                 viewBox="0 0 12 8"
                 fill="none"
                 aria-hidden="true"
               >
                 <path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              {openMenu === i && (
-                <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-shell-red" />
-              )}
             </button>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={() => { setSearchOpen((s) => !s); setOpenMenu(null) }}
             aria-label={uiLabels.search}
             aria-expanded={searchOpen}
-            className="rounded-full p-2.5 text-shell-gray-900 transition-colors hover:bg-shell-gray-100 hover:text-brand-ink"
+            className="hidden rounded-full p-2.5 text-shell-gray-900 transition-colors hover:bg-shell-gray-100 hover:text-brand-ink sm:block"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
@@ -123,11 +120,23 @@ export default function Header({ overlay = false }) {
             </svg>
           </button>
 
+          <div className="hidden flex-col items-end leading-tight md:flex">
+            <a
+              href="#/client-support"
+              className="rounded bg-[#f3f4f6] px-2.5 py-0.5 text-xs font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3]"
+            >
+              Client Support →
+            </a>
+            <a href="tel:18255704550" className="mt-1 text-[0.95rem] font-medium text-[#1a1d21] hover:text-[#0b1fb3]">
+              {settings.phone || '1-825-570-4550'}
+            </a>
+          </div>
+
           <a
-            href={settings.menuCta.href}
-            className="hidden rounded-full bg-shell-red px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all btn-lift-glow hover:bg-shell-gray-900 md:inline-flex"
+            href="#/contact-us"
+            className="hidden rounded-md bg-[#0b1fb3] px-6 py-3 text-[0.95rem] font-semibold text-white transition-colors hover:bg-[#091a8f] md:inline-flex"
           >
-            {settings.menuCta.label}
+            Contact Us
           </a>
 
           <button
