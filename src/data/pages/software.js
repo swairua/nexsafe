@@ -108,6 +108,35 @@ export const softwarePages = [
         ],
       },
       {
+        heading: 'Software development benefits',
+        items: [
+          {
+            title: 'Better Visibility',
+            text: 'Give your team clearer access to business information through dashboards, reports, and connected data.',
+          },
+          {
+            title: 'Smarter Decisions',
+            text: 'Use accurate information to understand performance, track progress, and make informed business decisions.',
+          },
+          {
+            title: 'Improved Team Productivity',
+            text: 'Help employees spend less time searching for information, repeating tasks, or working around disconnected systems.',
+          },
+          {
+            title: 'Stronger Customer Experience',
+            text: 'Create smoother customer interactions through better portals, faster processes, and more organized service delivery.',
+          },
+          {
+            title: 'Flexible Business Growth',
+            text: 'Build software that can adapt as your business adds users, services, locations, departments, or new processes.',
+          },
+          {
+            title: 'Long-Term Improvement',
+            text: 'Continue improving your systems after launch so they remain useful as your business needs change.',
+          },
+        ],
+      },
+      {
         heading: 'A team that ships',
         body: [
           'An 80+ strong delivery team across design, engineering, and quality — sized to take on funded-company roadmaps as well as focused business builds.',

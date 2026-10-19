@@ -55,6 +55,22 @@ export const industryPages = [
             title: 'Cybersecurity & Compliance Readiness',
             text: 'Security reviews, endpoint protection, email safeguards, data handling controls, user awareness, audit preparation, and risk reduction practices.',
           },
+          {
+            title: 'Office Network & Branch Connectivity',
+            text: 'Design and setup of office networks, Wi-Fi, firewalls, workstations, printers, meeting rooms, and multi-location connectivity.',
+          },
+          {
+            title: 'Hardware Procurement & Device Setup',
+            text: 'Sourcing, configuring, and deploying laptops, desktops, monitors, printers, scanners, phones, tablets, and office technology equipment.',
+          },
+          {
+            title: 'Document Management & Workflow Support',
+            text: 'Support for digital files, client records, forms, approvals, shared folders, document routing, and controlled information access.',
+          },
+          {
+            title: 'Automation & AI Administrative Workflows',
+            text: 'Automation and AI-supported processes for document sorting, reminders, reporting, approvals, client follow-ups, form handling, and internal task management.',
+          },
         ],
       },
       {
@@ -120,10 +136,26 @@ export const industryPages = [
             title: 'Backup & Record Recovery Readiness',
             text: 'Protection planning for important practice data, digital records, files, cloud platforms, and systems that must be recoverable when problems occur.',
           },
+          {
+            title: 'Medical Office Network & Wi-Fi',
+            text: 'Network setup and support for clinics, treatment rooms, reception areas, staff offices, guest access, and connected healthcare workspaces.',
+          },
+          {
+            title: 'Hardware, Printers & Peripheral Setup',
+            text: 'Procurement, configuration, and deployment of computers, tablets, printers, scanners, label printers, phones, monitors, and other office technology.',
+          },
+          {
+            title: 'Systems Maintenance & Update Coordination',
+            text: 'Regular maintenance for devices, applications, operating systems, security updates, performance concerns, and technology health.',
+          },
+          {
+            title: 'Digital Forms, Automation & AI Admin Workflows',
+            text: 'Automation and AI-supported administrative workflows for forms, reminders, document routing, reporting, task follow-ups, and non-clinical office processes.',
+          },
         ],
       },
       {
-        heading: 'Protect the Practice Behind the Patient',
+        heading: 'Protect the Practice Behind the Patient Experience',
         body: [
           'Healthcare teams need technology that supports trust, privacy, and smooth service delivery. A well-managed digital environment helps staff access the right information, serve patients more efficiently, reduce administrative pressure, and keep the practice prepared for daily demands.',
         ],
@@ -133,10 +165,10 @@ export const industryPages = [
   },
   {
     slug: 'industrial-manufacturing',
-    title: 'Industry Manufacturing',
+    title: 'Industrial & Manufacturing',
     eyebrow,
     intro:
-      'Insightful and reliable manufacturer IT services for productive and effective business',
+      'Technology support for production teams, warehouses, offices, and industrial operations that cannot afford avoidable disruption.',
 
     image: {
       src: '/uploads/industry-manufacturing-hero.jpg',
@@ -183,6 +215,22 @@ export const industryPages = [
           {
             title: 'Cybersecurity Compliance & Controls',
             text: 'Security reviews, access controls, endpoint protection, data protection, user permissions, and cybersecurity practices that support safer operations and compliance readiness.',
+          },
+          {
+            title: 'System Design & Network Setup',
+            text: 'Design and setup of reliable technology environments, including networks, workstations, servers, Wi-Fi, access points, and system connectivity.',
+          },
+          {
+            title: 'Hardware Procurement & Setup',
+            text: 'Sourcing, configuring, and deploying laptops, desktops, servers, printers, networking equipment, and other technology hardware required for business operations.',
+          },
+          {
+            title: 'Cabling & Connectivity',
+            text: 'Structured cabling, fibre connectivity coordination, network points, equipment connections, and connectivity support for offices, warehouses, and production areas.',
+          },
+          {
+            title: 'Systems Maintenance',
+            text: 'Ongoing maintenance of devices, systems, networks, software updates, patches, backups, and performance issues to keep technology operating reliably.',
           },
         ],
       },
@@ -249,6 +297,22 @@ export const industryPages = [
           {
             title: 'Automation & AI Workflow Support',
             text: 'Automation and AI-supported workflows for shipment updates, document handling, reporting, approvals, customer notifications, shared inbox activity, data entry, and operational alerts.',
+          },
+          {
+            title: 'Network Design & Site Connectivity',
+            text: 'Design and setup of networks for offices, warehouses, yards, terminals, remote branches, and connected work areas.',
+          },
+          {
+            title: 'Hardware Procurement & Device Setup',
+            text: 'Sourcing, configuring, and deploying desktops, laptops, tablets, printers, scanners, mobile devices, routers, switches, access points, and fleet-related technology.',
+          },
+          {
+            title: 'Systems Maintenance & Availability',
+            text: 'Ongoing maintenance for workstations, servers, software, updates, patches, device health, access issues, and performance concerns.',
+          },
+          {
+            title: 'Cybersecurity & Compliance Controls',
+            text: 'Security reviews, user permissions, endpoint protection, email protection, data safeguards, access controls, and cybersecurity practices that support safer logistics operations.',
           },
         ],
       },

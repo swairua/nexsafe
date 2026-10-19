@@ -67,6 +67,54 @@ export const servicePages = [
         ],
       },
       {
+        heading: 'Benefits of managed IT services provided by Nexsate',
+        body: [
+          'Focus on your business. We will handle the technology behind it. When technology becomes a source of stress, downtime, security risk, or wasted resources, Nexsate Technologies helps get your business back on track. When we professionally manage your IT, it empowers your business to confidently:',
+        ],
+        items: [
+          {
+            title: 'Focus on growth',
+            text: 'Focus on growth while we manage the technology behind your daily operations.',
+          },
+          {
+            title: 'Minimize downtime',
+            text: 'Minimize downtime with reliable systems, proactive support, and faster resolution.',
+          },
+          {
+            title: 'Strengthen cybersecurity',
+            text: 'Strengthen cybersecurity by protecting users, devices, systems, and business data.',
+          },
+          {
+            title: 'Improve efficiency',
+            text: 'Improve efficiency by streamlining workflows, support, systems, and daily operations.',
+          },
+          {
+            title: 'Enhance connectivity',
+            text: 'Enhance connectivity with reliable network, cloud, and telecommunications support.',
+          },
+          {
+            title: 'Plan ahead',
+            text: 'Plan ahead with expert guidance that supports long-term technology success.',
+          },
+          {
+            title: 'Specialized Experts',
+            text: 'Access experienced IT professionals from cybersecurity, cloud service, networks and fibre connectivity, applications — in one place.',
+          },
+          {
+            title: 'Predictable Costs',
+            text: 'Plan your IT spending with fixed monthly support based on the service level your business requires.',
+          },
+          {
+            title: 'Proactive Support',
+            text: 'Reduce downtime by identifying, monitoring, and resolving technology issues before they disrupt operations.',
+          },
+          {
+            title: 'Responsive Service',
+            text: 'Get fast, reliable support when issues arise, so your team can stay productive and focused.',
+          },
+        ],
+      },
+      {
         heading: 'Why choose services from Nexsate?',
         body: [
           'Nexsate provides businesses with an edge over the competition with a variety of benefits.',
@@ -116,6 +164,11 @@ export const servicePages = [
         heading: 'IT support with better clarity',
         body: [
           'Managed IT should bring order to everyday technology support. Nexsate helps organize how IT issues are reported, tracked, resolved, and improved over time. This includes user support, device care, vendor coordination, recurring issue management, system maintenance, and better visibility across your IT environment.',
+        ],
+      },
+      {
+        heading: 'Managed IT That Makes Work Easier',
+        body: [
           'When IT is properly managed, employees spend less time dealing with technical problems and more time doing productive work. Nexsate helps create a more reliable technology environment by improving support, reducing recurring issues, strengthening security, organizing systems, and giving your business better visibility over its IT operations.',
         ],
       },
@@ -137,6 +190,14 @@ export const servicePages = [
           {
             title: 'Microsoft 365 administration',
             text: 'Manage Microsoft 365 users, email, Teams, SharePoint, OneDrive, licences, permissions, and security settings across your business environment.',
+          },
+          {
+            title: 'Network & connectivity support',
+            text: 'Maintain the technology that keeps your business connected, including Wi-Fi, routers, switches, firewalls, internet coordination, and internal network access.',
+          },
+          {
+            title: 'Backup & recovery oversight',
+            text: 'Monitor backup activity, recovery readiness, alerts, storage usage, and restore support so important business data remains better protected.',
           },
           {
             title: 'Vendor & technology coordination',
@@ -211,6 +272,14 @@ export const servicePages = [
           {
             title: 'Cloud cost & licence review',
             text: 'Reviewing cloud licences, subscriptions, storage usage, and service plans to reduce waste and improve value.',
+          },
+          {
+            title: 'Cloud storage management',
+            text: 'Organizing cloud storage, reduce file confusion, manage permissions, and improve how business information is stored and accessed.',
+          },
+          {
+            title: 'Scalable cloud environment',
+            text: 'Building a cloud setup that can support more users, locations, applications, data, and business activity as your company grows.',
           },
         ],
       },
@@ -357,6 +426,14 @@ export const servicePages = [
             title: 'Traffic & bandwidth management',
             text: 'Monitor usage, reduce congestion, and improve how bandwidth is used across business applications, cloud platforms, and connected devices.',
           },
+          {
+            title: 'Automated alerts',
+            text: 'Receive timely alerts when network issues, outages, device failures, or performance problems need attention.',
+          },
+          {
+            title: 'Configuration review & growth planning',
+            text: 'Review network settings, capacity, and future requirements so the network can support more users, devices, locations, and business growth.',
+          },
         ],
       },
     ],
@@ -414,6 +491,14 @@ export const servicePages = [
           {
             title: 'Cloud backup management',
             text: 'Manage cloud-based backups for important business data, files, systems, and applications to improve data availability and reduce reliance on local storage only.',
+          },
+          {
+            title: 'Server & workstation backup',
+            text: 'Protect business servers, desktops, and laptops by backing up important files, configurations, and system data needed for recovery.',
+          },
+          {
+            title: 'Backup alerts & reporting',
+            text: 'Track backup status, failed jobs, storage usage, and warning signs through alerts and reports that make backup health easier to manage.',
           },
           {
             title: 'Recovery testing',
