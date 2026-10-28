@@ -54,7 +54,7 @@ export default function ContactForm({ simple = false } = {}) {
       )}
       <h2 className={simple ? "text-center text-xl font-bold tracking-tight text-shell-gray-900" : "mt-3 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-3xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] md:text-4xl"}><Rich>{contactForm.title}</Rich></h2>
       {contactForm.text ? <div className="mt-4 text-lg text-shell-gray-600"><Rich as="p">{contactForm.text}</Rich></div> : null}
-      <form onSubmit={submit} className={simple ? "mt-6 grid gap-6 sm:grid-cols-2" : "mt-10 grid gap-6 sm:grid-cols-2"}>
+      <form onSubmit={submit} className={simple ? "mt-6 grid gap-6 sm:grid-cols-2" : "mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-8 gap-y-6 sm:gap-x-10 sm:gap-y-8 md:gap-x-12 md:gap-y-10 lg:gap-x-16 lg:gap-y-12 xl:gap-x-20 xl:gap-y-14"}>
         <label className={L}>{contactForm.firstNameLabel}<input value={form.firstName} onChange={set("firstName")} className={F + " mt-1"} /></label>
         <label className={L}>{contactForm.lastNameLabel}<input value={form.lastName} onChange={set("lastName")} className={F + " mt-1"} /></label>
         <label className={L + " sm:col-span-2"}>{contactForm.companyLabel}<input value={form.company} onChange={set("company")} className={F + " mt-1"} /></label>

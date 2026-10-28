@@ -29,15 +29,6 @@ const challengeTiles = [
   },
 ]
 
-const industryLinks = [
-  { label: 'Industry Manufacturing', href: pageHref('Industrial & Manufacturing') },
-  { label: 'Transportation & Logistics', href: pageHref('Transportation & Logistics') },
-  { label: 'Healthcare', href: pageHref('Healthcare') },
-  { label: 'Banking, Finance & Insurance', href: pageHref('Banks & Insurance') },
-  { label: 'Consulting Providers', href: pageHref('Consulting Providers') },
-  { label: 'Non Profit', href: pageHref('Non-Profit') },
-]
-
 export const navItems = [
   {
     label: 'Our Company',
@@ -48,17 +39,17 @@ export const navItems = [
     },
     columns: [
       {
-        heading: 'Company',
-        links: links('About nexsate', 'Mission, vision and values', 'Why choose us', 'Our story'),
+        heading: 'Our Company',
+        links: links('Who We Are', 'Our Philosophy', 'Our People', 'Why Nexsate', 'Our Partner'),
         viewAll: { label: 'Explore Company', href: '#company' },
       },
       {
-        heading: 'Work',
-        links: links('Managed IT Services', 'Cloud Services', 'Cybersecurity', 'Software Development'),
+        heading: 'Our Work',
+        links: links('What We Do', 'How We Work', 'Who We Serve', 'Our Expertise', 'Customers Success'),
       },
       {
-        heading: 'Impact',
-        links: links('Client outcomes', 'Case studies', 'Awards', 'Testimonials'),
+        heading: 'People and Impact',
+        links: links('Careers', 'Innovation & Research', 'Communities Impact', 'Corporate Responsibility'),
       },
     ],
   },

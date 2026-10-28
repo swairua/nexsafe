@@ -117,7 +117,7 @@ export default function PartnerStrip() {
   }, [n, reduceMotion])
 
   return (
-    <section id={sectionIds.partners} className="bg-white py-8 md:py-10">
+    <section id={sectionIds.partners} className="bg-white py-4 md:py-6">
       <div className="shell-container">
         <div className="relative grid gap-6 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:items-center">
           <div className="md:z-10 md:flex md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">

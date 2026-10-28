@@ -99,9 +99,9 @@ export default function ProofBand() {
 
   return (
     <section className="relative isolate grid grid-cols-[minmax(0,1fr)] grid-rows-[auto_1fr_1fr_auto] overflow-hidden">
-      <div aria-hidden="true" className="z-0 col-start-1 row-start-1 row-end-3 bg-shell-black" />
+      <div aria-hidden="true" className="z-0 col-start-1 row-start-1 row-end-3 bg-[#0f141a]" />
       <div aria-hidden="true" className="z-0 col-start-1 row-start-3 row-end-5 bg-white" />
-      <div className="shell-container relative z-10 col-start-1 row-start-1 pb-12 pt-20 md:pb-16 md:pt-28">
+      <div className="shell-container relative z-10 col-start-1 row-start-1 pb-4 pt-8 md:pb-6 md:pt-10">
         <Reveal variant="fade">
           <span className="inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]">
             {copy.tag}
@@ -149,7 +149,7 @@ export default function ProofBand() {
       </div>
 
       <div className="shell-container relative z-10 col-start-1 row-start-2 row-end-4">
-        <section className="bg-white pt-12 pb-4 md:pt-16 md:pb-6">
+        <section className="bg-white pt-6 pb-2 md:pt-8 md:pb-3">
           <div className="shell-container">
             <div className="flex items-center justify-between gap-4">
               <p className="text-xs font-bold uppercase tracking-wider text-shell-gray-900">Awards &amp; recognition</p>

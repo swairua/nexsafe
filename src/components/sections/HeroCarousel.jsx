@@ -6,16 +6,16 @@ import { Rich } from '../ui/SectionTag.jsx'
 
 const textBearingHeroImages = {
   '/uploads/hero-docx-network-fiber.png': {
-    src: '/uploads/hero-network-servers.jpg',
-    alt: 'Server racks glowing behind mesh doors in a data centre',
+    src: '/uploads/hero-city-network.jpg',
+    alt: 'City skyline at night with a glowing network of connected nodes spread across it',
   },
   '/uploads/hero-docx-principle-desk.png': {
-    src: '/uploads/hero-team-planning.jpg',
-    alt: 'Colleagues planning with laptops and hand-written notes at a table',
+    src: '/uploads/hero-skyline-dark.jpg',
+    alt: 'City skyline at dusk under a heavy blue sky, lights coming on across the towers',
   },
   '/uploads/hero-docx-industry-support.png': {
-    src: '/uploads/team-collaboration.jpg',
-    alt: 'Colleagues wearing headphones while working together on laptops',
+    src: '/uploads/hero-plant-night.jpg',
+    alt: 'Industrial plant with illuminated stacks operating at night',
   },
 }
 
@@ -53,9 +53,11 @@ export default function HeroCarousel() {
                 className={`absolute inset-0 h-full w-full object-cover ${selected === i ? 'hero-zoom' : ''}`}
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
-              <div className="shell-container relative flex min-h-[28rem] items-center pb-20 pt-28 sm:min-h-[34rem] md:min-h-[40rem] md:pb-24 md:pt-36 lg:min-h-[44rem]">
+              {/* Legibility scrim — keeps hero copy readable over bright imagery */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25" aria-hidden="true" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25" aria-hidden="true" />
+              <div className="shell-container relative flex min-h-[28rem] items-center pb-8 pt-16 sm:min-h-[34rem] md:min-h-[36rem] md:pb-10 md:pt-20 lg:min-h-[40rem]">
               <div className={`hero-copy relative z-10 w-full text-white ${selected === i ? 'is-active' : ''}`}>
-                <div className="absolute inset-0 bg-black/40 -z-10 rounded-[1.5rem]" />
                 <span className="hero-kicker mb-4 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow">
                     {slide.kicker}
                   </span>
