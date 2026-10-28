@@ -25,7 +25,7 @@ function FeaturedCard({ post, fallbackImage, fallbackAlt }) {
   return (
     <Reveal
       as="article"
-      className="flex flex-col overflow-hidden rounded-md bg-[#f2f6fa]"
+      className="flex flex-col overflow-hidden rounded-md bg-[#f5f3ff]"
     >
       <InsightPhoto post={post} fallbackImage={fallbackImage} fallbackAlt={fallbackAlt} aspect="aspect-[16/10]" />
       <div className="flex flex-1 flex-col p-6 md:p-8">
@@ -43,7 +43,7 @@ function FeaturedCard({ post, fallbackImage, fallbackAlt }) {
         ) : null}
         <a
           href={`#/${post.slug}`}
-          className="mt-6 mx-auto inline-flex items-center justify-center rounded-full border border-shell-gray-300 bg-white px-8 py-3 text-base font-medium text-[#29b2fe] shadow-sm transition-all btn-lift-glow hover:border-brand-ink hover:text-brand-ink"
+          className="mt-6 mx-auto inline-flex items-center justify-center rounded-full border border-shell-gray-300 bg-[#f5f3ff] px-8 py-3 text-base font-medium text-[#29b2fe] shadow-sm transition-all btn-lift-glow hover:border-brand-ink hover:text-brand-ink"
         >
           Read more
         </a>
@@ -57,7 +57,7 @@ function MiniCard({ post, fallbackImage, fallbackAlt, delay }) {
     <Reveal
       as="article"
       delay={delay}
-      className="flex flex-col overflow-hidden rounded-md bg-[#f2f6fa]"
+      className="flex flex-col overflow-hidden rounded-md bg-[#f5f3ff]"
     >
       <InsightPhoto post={post} fallbackImage={fallbackImage} fallbackAlt={fallbackAlt} aspect="aspect-[16/9]" />
       <div className="flex flex-1 flex-col p-6">

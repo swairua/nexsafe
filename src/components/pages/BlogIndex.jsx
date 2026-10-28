@@ -44,7 +44,7 @@ export function PostCard({ post, fallbackImage, fallbackAlt, delay = 0 }) {
       as="a"
       href={`#/${post.slug}`}
       delay={delay}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-shell-gray-300 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]"
     >
       <span aria-hidden="true" className="block h-1 w-full" style={{ backgroundColor: hue }} />
       <SmartImage
@@ -131,7 +131,7 @@ export default function BlogIndex({ page, topic }) {
                   className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
                     t === activeTopic
                       ? 'border-shell-gray-900 bg-shell-gray-900 text-white'
-                      : 'border-shell-gray-300 bg-white text-shell-gray-700 hover:border-brand-ink hover:text-brand-ink'
+                      : 'border-shell-gray-300 bg-[#f5f3ff] text-shell-gray-700 hover:border-brand-ink hover:text-brand-ink'
                   }`}
                 >
                   {t}

@@ -31,37 +31,41 @@ export default function StackSection() {
   }
 
   return (
-    <section id={sectionIds.capabilities} className="bg-shell-black py-6 md:py-8">
+    <section id={sectionIds.capabilities} className="bg-[#f5f3ff] py-6 md:py-8">
       <div className="shell-container">
         <Reveal variant="fade">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#b19cd9] md:text-sm">
+          <span className="inline-flex items-center rounded-full bg-[#7c5cff]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#b19cd9] ring-1 ring-[#7c5cff]/25 shadow-[0_0_14px_2px_rgba(124,92,255,0.25)]">
             {stackSection.tag}
-          </p>
-          <Rich as="h2" className="mt-3 text-left text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">{stackSection.title}</Rich>
+          </span>
+          <Rich as="h2" className="mt-3 text-left text-3xl font-bold tracking-tight text-[#161d26] sm:text-4xl md:text-5xl">{stackSection.title}</Rich>
           {stackSection?.text ? (
-            <div className="mt-4 text-left text-base leading-relaxed text-white/80 md:text-lg">
+            <div className="mt-4 text-left text-base leading-relaxed text-[#232b37] md:text-lg">
               <Rich as="p">{stackSection.text}</Rich>
             </div>
           ) : null}
         </Reveal>
 
-        <div className="mx-auto mt-8 flex w-fit items-center gap-4 rounded-full border border-white/15 bg-white/5 px-4 py-2 shadow-sm" role="group" aria-label="Technology stack carousel controls">
+        <div className="mx-auto mt-8 flex w-fit items-center gap-4 rounded-full border border-shell-gray-300 bg-white px-4 py-2 shadow-sm" role="group" aria-label="Technology stack carousel controls">
           <button
             type="button"
             onClick={() => nudge(-1)}
             aria-label="Show previous technology category"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 active:scale-95"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
           >
-            <span aria-hidden="true">←</span>
+            <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
-          <span className="text-sm font-bold text-white">Our Technology Stack</span>
+          <span className="text-sm font-bold text-[#161d26]">Our Technology Stack</span>
           <button
             type="button"
             onClick={() => nudge(1)}
             aria-label="Show next technology category"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 active:scale-95"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
           >
-            <span aria-hidden="true">→</span>
+            <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
         </div>
 
@@ -82,20 +86,20 @@ export default function StackSection() {
                 variant="up"
                 delay={(idx % 3) + 1}
                 data-stack-card
-                className="flex w-[88%] shrink-0 snap-start flex-col rounded-2xl border border-white/15 bg-white/5 p-6 shadow-[0_14px_36px_-24px_rgba(124,92,255,0.25)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-7"
+                className="flex w-[88%] shrink-0 snap-start flex-col items-center rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-7"
               >
-                <h3 className="text-lg font-bold leading-snug text-white md:text-xl">
+                <h3 className="text-lg font-bold leading-snug text-[#161d26] md:text-xl">
                   {group.title}
                 </h3>
-                <div className="mt-3 text-sm leading-relaxed text-white/70"><Rich as="p">{group.text}</Rich></div>
+                <div className="mt-3 text-sm leading-relaxed text-[#232b37]"><Rich as="p">{group.text}</Rich></div>
                 <button
                   type="button"
                   onClick={() => toggleGroup(group.id)}
                   aria-expanded={isOpen}
                   aria-controls={vendorListId}
-                  className="mt-4 flex items-center gap-2 self-start text-sm font-bold text-[#b19cd9] transition-colors hover:text-white"
+                  className="mt-4 flex items-center gap-2 self-start text-sm font-bold text-brand-ink transition-colors hover:text-[#7c5cff]"
                 >
-                  <span aria-hidden="true" className={`flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-base leading-none transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
+                  <span aria-hidden="true" className={`flex h-6 w-6 items-center justify-center rounded-full bg-shell-gray-100 text-base leading-none transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
                     +
                   </span>
                   {isOpen ? 'View less' : 'View more'}
@@ -105,13 +109,13 @@ export default function StackSection() {
                   className={`stack-vendors grid transition-[grid-template-rows,opacity] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                 >
                   <div className="overflow-hidden" aria-hidden={!isOpen}>
-                <ul className="mt-4 divide-y divide-white/10">
+                <ul className="mt-4 divide-y divide-shell-gray-300">
                   {group.vendors.map((vendor) => {
                     const name = typeof vendor === 'string' ? vendor : vendor?.name
                     const logo = typeof vendor === 'string' ? '' : vendor?.logo
                     if (!name) return null
                     return (
-                      <li key={name} className="flex min-h-10 items-center gap-3 py-2 text-sm font-medium text-white">
+                      <li key={name} className="flex min-h-10 items-center gap-3 py-2 text-sm font-medium text-[#232b37]">
                         {logo ? <img src={resolveSrc(logo)} alt="" className="h-6 w-6 shrink-0 object-contain" loading="lazy" /> : null}
                         <span>{name}</span>
                       </li>

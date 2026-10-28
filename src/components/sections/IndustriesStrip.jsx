@@ -4,6 +4,20 @@ import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import { resolveSrc } from "../../utils/url.js"
 
+function iconGlyph(name) {
+  const glyphs = {
+    factory: '🏭',
+    heart: '❤️',
+    bank: '🏦',
+    book: '📚',
+    truck: '🚚',
+    gear: '⚙️',
+    briefcase: '💼',
+    landmark: '🏛️',
+  }
+  return glyphs[name] || '🏢'
+}
+
 export default function IndustriesStrip() {
   const { industriesStrip, sectionIds } = useContent()
   const trackRef = useRef(null)
@@ -40,18 +54,22 @@ export default function IndustriesStrip() {
             type="button"
             onClick={() => nudge(-1)}
             aria-label="Show previous industries"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 active:scale-95"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
           >
-            <span aria-hidden="true">←</span>
+            <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
           <span className="text-sm font-bold text-white">Industries</span>
           <button
             type="button"
             onClick={() => nudge(1)}
             aria-label="Show next industries"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 active:scale-95"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
           >
-            <span aria-hidden="true">→</span>
+            <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
         </div>
 
@@ -69,9 +87,12 @@ export default function IndustriesStrip() {
               variant="up"
               delay={(idx % 3) + 1}
               data-industry-card
-              className="flex w-[88%] shrink-0 snap-start flex-col rounded-2xl border border-white/15 bg-white/5 p-6 shadow-[0_14px_36px_-24px_rgba(124,92,255,0.25)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-7"
+              className="flex w-[88%] shrink-0 snap-start flex-col items-center rounded-2xl border border-white/15 bg-white/5 p-6 shadow-[0_14px_36px_-24px_rgba(124,92,255,0.25)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-7"
             >
-              <h3 className="text-lg font-bold leading-snug text-white md:text-xl">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-3xl text-white">
+                {iconGlyph(item.icon)}
+              </div>
+              <h3 className="mt-4 text-lg font-bold leading-snug text-white md:text-xl">
                 {item.label}
               </h3>
               {item.note ? (

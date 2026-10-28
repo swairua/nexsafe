@@ -33,18 +33,22 @@ export default function CardGrid() {
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
                 disabled={page === 0}
                 aria-label="Previous services"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-shell-gray-300 disabled:hover:bg-white disabled:hover:text-shell-gray-900"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-[#f5f3ff] text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-shell-gray-300 disabled:hover:bg-[#f5f3ff] disabled:hover:text-shell-gray-900"
               >
-                <span aria-hidden="true">←</span>
+                <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </button>
               <button
                 type="button"
                 onClick={() => setPage((p) => Math.min(lastPage, p + 1))}
                 disabled={page === lastPage}
                 aria-label="Next services"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-white text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-shell-gray-300 disabled:hover:bg-white disabled:hover:text-shell-gray-900"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-[#f5f3ff] text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-shell-gray-300 disabled:hover:bg-[#f5f3ff] disabled:hover:text-shell-gray-900"
               >
-                <span aria-hidden="true">→</span>
+                <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </button>
             </div>
           </div>
@@ -55,7 +59,7 @@ export default function CardGrid() {
             <Reveal key={card.id} delay={(idx % 3) + 1}>
               <a
                 href={card.href}
-                className="group flex h-full flex-col overflow-hidden rounded-[16px] bg-white shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_18px_44px_-12px_rgba(10,20,64,0.28)]"
+                className="group flex h-full flex-col overflow-hidden rounded-[16px] bg-[#f5f3ff] shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_18px_44px_-12px_rgba(10,20,64,0.28)]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <SmartImage

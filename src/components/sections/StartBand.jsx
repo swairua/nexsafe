@@ -53,7 +53,7 @@ export default function StartBand() {
                   key={card.title + i}
                   variant="up"
                   delay={i + 1}
-                  className="flex flex-col rounded-2xl bg-white p-6 transition-transform duration-300 hover:-translate-y-1 md:p-8"
+                  className="flex flex-col rounded-2xl bg-[#f5f3ff] p-6 transition-transform duration-300 hover:-translate-y-1 md:p-8"
                 >
                   <h4 className="text-lg font-bold leading-snug text-shell-gray-900 md:text-xl">
                     {card.title}

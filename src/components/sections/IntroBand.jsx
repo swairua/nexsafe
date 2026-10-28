@@ -10,24 +10,24 @@ export default function IntroBand() {
     <section id={sectionIds.company} className="bg-shell-black pb-4 md:pb-6">
       
       <div className="bg-shell-black">
-        <div className="shell-container grid gap-8 px-6 pb-16 pt-10 md:gap-16 md:pb-24 md:pt-14">
+        <div className="shell-container grid gap-6 px-4 pb-10 pt-8 md:gap-12 md:pb-14 md:pt-10">
           <Reveal delay={1} variant="fade">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#3aa9e0]">{introBand.eyebrow}</p>
-            <h2 className="mt-4 text-3xl font-extrabold leading-[1.12] tracking-tight text-white md:text-[2.6rem]">{introBand.title}</h2>
+            <h2 className="mt-3 text-3xl font-extrabold leading-[1.12] tracking-tight text-white md:text-[2.6rem]">{introBand.title}</h2>
           </Reveal>
-          <Reveal delay={2} variant="fade" className="flex items-start md:pt-8">
+          <Reveal delay={2} variant="fade" className="flex items-start md:pt-4">
             <div className="text-[15px] leading-relaxed text-white/60 md:text-base"><Rich as="p">{introBand.text}</Rich></div>
           </Reveal>
         </div>
       </div>
 
       <div className="shell-container px-6">
-        <div id={sectionIds.about} className="-mt-20 grid gap-10 scroll-mt-28 md:-mt-24 md:grid-cols-3 md:gap-8">
+        <div id={sectionIds.about} className="grid gap-10 scroll-mt-28 md:grid-cols-3 md:gap-8">
           {introCards.map((card, idx) => (
             <Reveal key={card.id} delay={idx + 1} variant="up" className="h-full">
               <a href={card.href} className="group flex h-full flex-col rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(255,153,0,0.55)]" aria-label={`${card.eyebrow} - ${card.title}`}>
                 <SmartImage src={card.src} alt={card.alt} fallback={card.fallback} className="aspect-[16/11] w-full overflow-hidden rounded-2xl" imgClassName="transition-transform duration-500 group-hover:scale-105" />
-                <div className="relative mx-auto -mt-14 flex w-[86%] flex-1 flex-col justify-center bg-white px-6 py-6 text-center ring-1 ring-transparent shadow-[0_18px_50px_-12px_rgba(0,0,0,0.28)] transition-all duration-300 group-hover:ring-2 group-hover:ring-[#ff9900]/40 group-hover:shadow-[0_0_30px_rgba(255,153,0,0.5)]">
+                <div className="relative flex w-full flex-1 flex-col justify-center bg-[#f5f3ff] px-6 py-6 text-center ring-1 ring-transparent shadow-[0_18px_50px_-12px_rgba(0,0,0,0.28)] transition-all duration-300 group-hover:ring-2 group-hover:ring-[#ff9900]/40 group-hover:shadow-[0_0_30px_rgba(255,153,0,0.5)]">
                   <p className="text-[15px] font-medium text-[#2aa5de]">{card.eyebrow}</p>
                   <p className="mt-1.5 text-xl font-bold leading-snug text-[#0a1a3c] transition-colors group-hover:text-[#ff9900]">{card.title}</p>
                 </div>
@@ -37,22 +37,24 @@ export default function IntroBand() {
         </div>
       </div>
       </section>
-      <div className="shell-container px-6 pt-8 md:pt-10">
+      <div className="shell-container px-6 pt-6 md:pt-8">
         <Reveal variant="fade" className="text-left">
           <h2 className="text-3xl font-extrabold leading-[1.12] tracking-tight text-[#0a1a3c] md:text-[2.6rem]">{statement.title}</h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-shell-gray-700 md:text-base">{statement.text}</p>
+          <p className="mt-3 text-[15px] leading-relaxed text-shell-gray-700 md:text-base">{statement.text}</p>
         </Reveal>
       </div>
-      <div className="mt-12 md:mt-16">
-        <div className="shell-container px-6 bg-shell-black">
-          <ul className="grid gap-5 py-10 sm:grid-cols-2 lg:grid-cols-4 md:py-14">
-            {pillars.map((pillar, idx) => (
-              <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ff9900] hover:shadow-[inset_0_0_0_1px_rgba(255,153,0,0.6),0_0_0_3px_rgba(255,153,0,0.15),0_0_24px_3px_rgba(255,153,0,0.35),0_14px_30px_-12px_rgba(255,153,0,0.35)]">
-                <SectionTag>{pillar.title}</SectionTag>
-                <div className="mt-3 text-sm leading-relaxed text-shell-gray-700"><Rich as="p">{pillar.text}</Rich></div>
-              </Reveal>
-            ))}
-          </ul>
+      <div className="mt-8 md:mt-10">
+        <div className="w-full bg-shell-black">
+          <div className="shell-container px-6">
+            <ul className="grid gap-5 py-8 sm:grid-cols-2 lg:grid-cols-4 md:py-10">
+              {pillars.map((pillar, idx) => (
+                <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ff9900] hover:shadow-[inset_0_0_0_1px_rgba(255,153,0,0.6),0_0_0_3px_rgba(255,153,0,0.15),0_0_24px_3px_rgba(255,153,0,0.35),0_14px_30px_-12px_rgba(255,153,0,0.35)]">
+                  <SectionTag>{pillar.title}</SectionTag>
+                  <div className="mt-3 text-sm leading-relaxed text-shell-gray-700"><Rich as="p">{pillar.text}</Rich></div>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </>

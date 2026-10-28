@@ -27,7 +27,7 @@ export default function StakeholderCards() {
             <Reveal key={card.title} delay={idx + 1}>
               <a
                 href={card.href}
-                className="group flex flex-col rounded-[16px] bg-white p-7 shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_18px_44px_-12px_rgba(10,20,64,0.28)]"
+                className="group flex flex-col rounded-[16px] bg-[#f5f3ff] p-7 shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_18px_44px_-12px_rgba(10,20,64,0.28)]"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-shell-red/10">
                   <span className="text-xl font-extrabold tracking-wide text-shell-red">

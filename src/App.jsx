@@ -9,6 +9,7 @@ import CardGrid from './components/sections/CardGrid.jsx'
 import PartnerStrip from './components/sections/PartnerStrip.jsx'
 import ProofBand from './components/sections/ProofBand.jsx'
 import IndustriesStrip from './components/sections/IndustriesStrip.jsx'
+import CaseStudies from './components/sections/CaseStudies.jsx'
 import StackSection from './components/sections/StackSection.jsx'
 import InsightsSection from './components/sections/InsightsSection.jsx'
 import AnswersBand from './components/sections/AnswersBand.jsx'
@@ -91,6 +92,7 @@ export default function App() {
           <IntroBand />
           <CardGrid />
           <IndustriesStrip />
+          <CaseStudies />
           <StackSection />
           <ProofBand />
           <PartnerStrip />

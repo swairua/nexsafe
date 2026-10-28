@@ -33,6 +33,7 @@ export const defaultContent = {
     itSolutions: "it-solutions",
     partners: "partners",
     industries: "industries",
+    caseStudies: "case-studies",
     capabilities: "capabilities",
     insights: "insights",
     support: "support",

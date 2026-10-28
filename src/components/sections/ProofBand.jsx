@@ -99,7 +99,7 @@ export default function ProofBand() {
 
   return (
     <section className="relative isolate grid grid-cols-[minmax(0,1fr)] grid-rows-[auto_1fr_1fr_auto] overflow-hidden">
-      <div aria-hidden="true" className="z-0 col-start-1 row-start-1 row-end-3 bg-[#0f141a]" />
+      <div aria-hidden="true" className="z-0 col-start-1 row-start-1 row-end-3 bg-shell-black" />
       <div aria-hidden="true" className="z-0 col-start-1 row-start-3 row-end-5 bg-white" />
       <div className="shell-container relative z-10 col-start-1 row-start-1 pb-4 pt-8 md:pb-6 md:pt-10">
         <Reveal variant="fade">
@@ -116,7 +116,7 @@ export default function ProofBand() {
           <div className="stats-grid mt-10">
             {stats.map((s, i) => (
               <div key={s.label + i} className="text-center">
-                <div className="rounded-xl border border-shell-gray-300 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] md:p-6">
+                <div className="rounded-xl border border-shell-gray-300 bg-[#f5f3ff] p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] md:p-6">
                   <div className="text-3xl font-extrabold tracking-tight text-brand-ink drop-shadow-[0_0_14px_rgba(1,116,164,0.35)] md:text-4xl">
                     <Reveal variant="fade" delay={i + 1}>
                       <CountUp value={s.value} />
@@ -149,26 +149,32 @@ export default function ProofBand() {
       </div>
 
       <div className="shell-container relative z-10 col-start-1 row-start-2 row-end-4">
-        <section className="bg-white pt-6 pb-2 md:pt-8 md:pb-3">
+        <section className="bg-transparent pt-6 pb-2 md:pt-8 md:pb-3">
           <div className="shell-container">
             <div className="flex items-center justify-between gap-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-shell-gray-900">Awards &amp; recognition</p>
+              <span className="inline-flex items-center rounded-full bg-[#7c5cff]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#b19cd9] ring-1 ring-[#7c5cff]/25 shadow-[0_0_14px_2px_rgba(124,92,255,0.25)]">
+                Awards &amp; recognition
+              </span>
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => scrollBy(-1)}
                   aria-label="Previous awards"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 text-shell-gray-900 transition-colors hover:border-brand-ink hover:text-brand-ink"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
                 >
-                  <span aria-hidden="true">←</span>
+                  <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </button>
                 <button
                   type="button"
                   onClick={() => scrollBy(1)}
                   aria-label="Next awards"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 text-shell-gray-900 transition-colors hover:border-brand-ink hover:text-brand-ink"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
                 >
-                  <span aria-hidden="true">→</span>
+                  <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </button>
               </div>
             </div>
@@ -186,7 +192,7 @@ export default function ProofBand() {
                     key={b.src + i}
                     className="min-w-0 shrink-0 flex-[0_0_70%] sm:flex-[0_0_50%] md:flex-[0_0_calc(33.333%-14px)] lg:flex-[0_0_calc(25%-15px)]"
                   >
-                    <div className="flex h-full flex-col rounded-xl bg-white p-5 text-left shadow-[inset_0_0_0_2px_rgba(1,116,164,0.72),0_0_10px_rgba(1,116,164,0.16),0_14px_36px_-16px_rgba(14,17,20,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[inset_0_0_0_2px_rgba(1,116,164,1),0_0_0_4px_rgba(1,116,164,0.25),0_0_28px_4px_rgba(1,116,164,0.45),0_18px_44px_-12px_rgba(1,116,164,0.35)]">
+                    <div className="flex h-full flex-col rounded-xl bg-[#f5f3ff] p-5 text-left shadow-[inset_0_0_0_2px_rgba(1,116,164,0.72),0_0_10px_rgba(1,116,164,0.16),0_14px_36px_-16px_rgba(14,17,20,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[inset_0_0_0_2px_rgba(1,116,164,1),0_0_0_4px_rgba(1,116,164,0.25),0_0_28px_4px_rgba(1,116,164,0.45),0_18px_44px_-12px_rgba(1,116,164,0.35)]">
                       <span className="text-xs font-extrabold tracking-widest text-shell-red">
                         {String(i + 1).padStart(2, '0')}
                       </span>

@@ -1,0 +1,67 @@
+import { useRef } from 'react'
+import { Rich } from '../ui/SectionTag.jsx'
+import Reveal from '../ui/Reveal.jsx'
+import { useContent } from "../../content/ContentContext.jsx"
+import { resolveSrc } from "../../utils/url.js"
+
+export default function CaseStudies() {
+  const { caseCards, sectionIds } = useContent()
+  const items = caseCards.items || []
+  if (!items.length) return null
+
+  const emblaRef = useRef(null)
+
+  return (
+    <section id={sectionIds.caseStudies} className="bg-shell-black py-12 md:py-16">
+      <div className="shell-container">
+        <Reveal variant="fade">
+          <span className="inline-flex items-center rounded-full bg-[#7c5cff]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#b19cd9] ring-1 ring-[#7c5cff]/25 shadow-[0_0_14px_2px_rgba(124,92,255,0.25)]">
+            {caseCards.tag}
+          </span>
+          <Rich as="h2" className="mt-3 text-left text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">{caseCards.title}</Rich>
+        </Reveal>
+
+        <div
+          ref={emblaRef}
+          className="no-scrollbar -mx-1 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-6"
+        >
+          {items.map((card, idx) => (
+            <Reveal
+              key={card.brand + idx}
+              variant="up"
+              delay={(idx % 3) + 1}
+              className="flex w-[88%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-shell-gray-300 bg-white shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_18px_44px_-12px_rgba(10,20,64,0.28)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-0"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <img
+                  src={resolveSrc(card.image)}
+                  alt={card.alt}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                  style={{ filter: `brightness(0.7) saturate(1.1) hue-rotate(-10deg)` }}
+                  onError={(e) => { e.currentTarget.style.display = 'none' }}
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0"
+                  style={{ backgroundColor: card.tint, opacity: 0.35, mixBlendMode: 'multiply' }}
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <span className="text-sm font-bold uppercase tracking-wider text-[#72747e]">{card.brand}</span>
+                <h3 className="mt-2 text-lg font-bold leading-snug text-[#161d26]">{card.title}</h3>
+                <a
+                  href={card.href}
+                  className="mt-4 inline-flex items-center gap-1 self-start text-sm font-bold text-[#0972d3] transition-colors hover:text-brand-ink"
+                >
+                  Read story
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

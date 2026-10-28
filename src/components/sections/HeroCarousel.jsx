@@ -58,10 +58,10 @@ export default function HeroCarousel() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25" aria-hidden="true" />
               <div className="shell-container relative flex min-h-[28rem] items-center pb-8 pt-16 sm:min-h-[34rem] md:min-h-[36rem] md:pb-10 md:pt-20 lg:min-h-[40rem]">
               <div className={`hero-copy relative z-10 w-full text-white ${selected === i ? 'is-active' : ''}`}>
-                <span className="hero-kicker mb-4 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow">
+                <span className="hero-kicker mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow">
                     {slide.kicker}
                   </span>
-                  <h1 className="hero-title mb-5 text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]">
+                  <h1 className="hero-title mb-4 text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]">
                     {slide.title.split(' ').map((word, wi) => (
                       <span key={`${slide.id}-w${wi}`}>
                         {wi > 0 ? ' ' : ''}
@@ -71,7 +71,7 @@ export default function HeroCarousel() {
                       </span>
                     ))}
                   </h1>
-                  <div className="hero-text mb-8 w-full text-base leading-relaxed text-white/90 md:text-lg">
+                  <div className="hero-text mb-6 w-full text-base leading-relaxed text-white/90 md:text-lg">
                     <Rich as="p">{slide.text}</Rich>
                   </div>
                   <a href={slide.cta.href} className="hero-cta btn-pill btn-pill--ghost-light">
@@ -89,7 +89,7 @@ export default function HeroCarousel() {
         type="button"
         onClick={scrollPrev}
         aria-label={uiLabels.previousSlide}
-        className="glass-chip absolute bottom-4 left-4 flex h-9 w-9 items-center justify-center rounded-full text-white active:scale-95 md:bottom-auto md:left-3 md:top-1/2 md:h-11 md:w-11 md:-translate-y-1/2"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50 absolute bottom-4 left-4 md:bottom-auto md:left-3 md:top-1/2 md:h-11 md:w-11 md:-translate-y-1/2"
       >
         <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -99,7 +99,7 @@ export default function HeroCarousel() {
         type="button"
         onClick={scrollNext}
         aria-label={uiLabels.nextSlide}
-        className="glass-chip absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full text-white active:scale-95 md:bottom-auto md:right-3 md:top-1/2 md:h-11 md:w-11 md:-translate-y-1/2"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50 absolute bottom-4 right-4 md:bottom-auto md:right-3 md:top-1/2 md:h-11 md:w-11 md:-translate-y-1/2"
       >
         <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
