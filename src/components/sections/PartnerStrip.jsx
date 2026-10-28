@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import Autoplay from 'embla-carousel-autoplay'
+import { useState, useEffect, useRef } from 'react'
 import { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
@@ -24,14 +22,14 @@ function LogoSlot({ partner }) {
     )
   }
   return (
-    <span className="flex h-12 w-28 shrink-0 items-center justify-center">
+    <span className="flex h-16 w-28 shrink-0 items-center justify-center">
       <img
         src={src}
         alt={partner.name}
         aria-hidden="true"
         loading="lazy"
         onError={() => setFailed(true)}
-        className="max-h-12 w-full object-contain transition-transform duration-300 group-hover:scale-105"
+        className="max-w-16 max-h-16 object-contain"
       />
     </span>
   )
@@ -39,7 +37,7 @@ function LogoSlot({ partner }) {
 
 function VendorTile({ partner }) {
   return (
-    <div className="group flex h-full min-h-[6.5rem] items-center justify-center rounded-xl border border-shell-gray-300 bg-white px-5 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]">
+    <div className="group flex h-full min-h-[7rem] items-center justify-center rounded-xl border border-shell-gray-300 bg-black/10 px-3 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1">
       <LogoSlot partner={partner} />
       <span className="sr-only">{partner.name}</span>
     </div>
@@ -52,18 +50,71 @@ export default function PartnerStrip() {
   const reduceMotion = typeof window !== 'undefined'
     && typeof window.matchMedia === 'function'
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, duration: 36 },
-    reduceMotion
-      ? []
-      : [Autoplay({ delay: 2400, stopOnInteraction: false, stopOnMouseEnter: true, stopOnFocusIn: true })],
-  )
 
-  const scrollBy = (dir) => {
-    if (!emblaApi) return
-    if (dir < 0) emblaApi.scrollPrev()
-    else emblaApi.scrollNext()
-  }
+  const items = partners || []
+  const n = items.length
+  const doubled = n ? [...items, ...items] : []
+  const wrapperRef = useRef(null)
+  const currentPct = useRef(0)
+  const isResetting = useRef(false)
+
+  useEffect(() => {
+    if (n === 0 || reduceMotion) {
+      const el = wrapperRef.current
+      if (el) {
+        el.style.transition = 'none'
+        el.style.transform = 'translateX(0%)'
+      }
+      currentPct.current = 0
+      return
+    }
+
+    let running = true
+
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
+    const moveTo = (targetPct, durationMs) => {
+      return new Promise((resolve) => {
+        const el = wrapperRef.current
+        if (!el) { resolve(); return }
+        el.style.transition = `transform ${durationMs}ms ease-in-out`
+        el.style.transform = `translateX(${targetPct}%)`
+        const onEnd = () => {
+          el.removeEventListener('transitionend', onEnd)
+          resolve()
+        }
+        el.addEventListener('transitionend', onEnd)
+        setTimeout(() => {
+          el.removeEventListener('transitionend', onEnd)
+          resolve()
+        }, durationMs + 120)
+      })
+    }
+
+    ;(async () => {
+      while (running) {
+        await sleep(2000) // show current 4 logos for two seconds
+        if (!running) break
+
+        const target = currentPct.current - 25 // smoothly hide the most-left logo
+        await moveTo(target, 900)
+
+        currentPct.current = target
+        if (currentPct.current <= -100) {
+          // seamless reset: duplicated logos make -100% identical to 0%
+          isResetting.current = true
+          const el = wrapperRef.current
+          el.style.transition = 'none'
+          el.style.transform = 'translateX(0%)'
+          currentPct.current = 0
+          await sleep(40)
+          isResetting.current = false
+        }
+      }
+    })()
+
+    return () => { running = false }
+  }, [n, reduceMotion])
 
   return (
     <section id={sectionIds.partners} className="bg-white py-8 md:py-10">
@@ -74,27 +125,27 @@ export default function PartnerStrip() {
               <span className="inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]">
                 {partnerStrip.tag}
               </span>
-              <Rich as="h2" className="mt-3 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-2xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] sm:text-3xl lg:text-3xl">{partnerStrip.title}</Rich>
+              <Rich as="h2" className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl lg:text-3xl text-shell-gray-900">{partnerStrip.title}</Rich>
               <div className="mt-4 text-base font-medium leading-relaxed text-shell-gray-900"><Rich as="p">{partnerStrip.text}</Rich></div>
             </Reveal>
           </div>
 
           <div
-            ref={emblaRef}
             role="region"
             aria-roledescription="carousel"
             aria-label={partnerStrip.title}
             tabIndex={0}
             className="overflow-hidden md:min-h-0"
           >
-            <div className="flex gap-5 px-1 pb-6 pt-2 md:min-h-0 md:items-center">
-              {(partners || []).map((partner) => (
-                <Reveal
-                  key={`${partner.group}-${partner.name}`}
-                  delay={1}
-                  className="min-w-0 flex-[0_0_80%] sm:flex-[0_0_calc(50%-10px)] lg:flex-[0_0_calc(33.333%-14px)] xl:flex-[0_0_calc(20%-16px)]">
+            <div
+              ref={wrapperRef}
+              className="flex flex-nowrap px-1 pb-6 pt-2 md:min-h-0 md:items-center"
+              style={{ transform: `translateX(${currentPct.current}%)` }}
+            >
+              {doubled.map((partner, i) => (
+                <div key={`${partner.group}-${partner.name}-${i}`} className="flex-[0_0_25%]">
                   <VendorTile partner={partner} />
-                </Reveal>
+                </div>
               ))}
             </div>
           </div>

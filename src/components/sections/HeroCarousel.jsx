@@ -54,8 +54,9 @@ export default function HeroCarousel() {
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
               <div className="shell-container relative flex min-h-[28rem] items-center pb-20 pt-28 sm:min-h-[34rem] md:min-h-[40rem] md:pb-24 md:pt-36 lg:min-h-[44rem]">
-                <div className={`hero-copy w-full text-white ${selected === i ? 'is-active' : ''}`}>
-                  <span className="hero-kicker mb-4 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow">
+              <div className={`hero-copy relative z-10 w-full text-white ${selected === i ? 'is-active' : ''}`}>
+                <div className="absolute inset-0 bg-black/40 -z-10 rounded-[1.5rem]" />
+                <span className="hero-kicker mb-4 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow">
                     {slide.kicker}
                   </span>
                   <h1 className="hero-title mb-5 text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]">

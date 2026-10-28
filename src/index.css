@@ -646,3 +646,15 @@
     box-shadow: 0 0 0 3px rgba(1, 116, 164, 0.2), 0 0 26px 3px rgba(1, 116, 164, 0.35), 0 18px 44px -16px rgba(14, 17, 20, 0.18);
   }
 }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}

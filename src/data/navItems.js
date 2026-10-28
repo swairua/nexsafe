@@ -1,101 +1,121 @@
+import { pageHref } from './slug.js'
+
+const links = (...labels) => labels.map((label) => ({ label, href: pageHref(label) }))
+
+const challengeTiles = [
+  {
+    label: 'Digital Transformation',
+    href: pageHref('Digital Transformation'),
+    icon: 'transform',
+    blurb: 'Modernize systems and processes',
+  },
+  {
+    label: 'Security',
+    href: pageHref('Cybersecurity'),
+    icon: 'shield',
+    blurb: 'Protect users, devices and data',
+  },
+  {
+    label: 'Automation',
+    href: pageHref('Automation'),
+    icon: 'gear',
+    blurb: 'Remove repetitive manual work',
+  },
+  {
+    label: 'Gaining Efficiency',
+    href: pageHref('Gaining Efficiency'),
+    icon: 'gauge',
+    blurb: 'Get more from your technology',
+  },
+]
+
+const industryLinks = [
+  { label: 'Industry Manufacturing', href: pageHref('Industrial & Manufacturing') },
+  { label: 'Transportation & Logistics', href: pageHref('Transportation & Logistics') },
+  { label: 'Healthcare', href: pageHref('Healthcare') },
+  { label: 'Banking, Finance & Insurance', href: pageHref('Banks & Insurance') },
+  { label: 'Consulting Providers', href: pageHref('Consulting Providers') },
+  { label: 'Non Profit', href: pageHref('Non-Profit') },
+]
+
 export const navItems = [
   {
-    label: 'Home',
-    href: '#top',
-    layout: 'simple',
-    links: [{ label: 'IT Services', href: '#/managed-it-services' }],
-  },
-  {
-    label: 'Solutions',
-    href: '#it-solutions',
-    layout: 'solutions',
+    label: 'Our Company',
+    href: '#company',
+    banner: {
+      heading: 'Our Company',
+      sub: 'EnableIT. Transform. Empower.',
+    },
     columns: [
       {
-        heading: 'Services',
-        links: [
-          { label: 'Managed IT Services', href: '#/managed-it-services' },
-          { label: 'Cloud Services', href: '#/cloud-services' },
-          { label: 'Software Development', href: '#/software-erp-app-development' },
-          { label: 'Network Management', href: '#/network-management' },
-          { label: 'Cyber Security', href: '#/cybersecurity' },
-          { label: 'Backup & Disaster Management', href: '#/backup-disaster-recovery' },
-        ],
+        heading: 'Company',
+        links: links('About nexsate', 'Mission, vision and values', 'Why choose us', 'Our story'),
+        viewAll: { label: 'Explore Company', href: '#company' },
       },
       {
-        heading: 'Business Challenges',
-        tiles: [
-          {
-            label: 'Digital Transformation',
-            href: '#/digital-transformation',
-            icon: 'transform',
-          },
-          {
-            label: 'Security',
-            href: '#/cybersecurity',
-            icon: 'shield',
-          },
-          {
-            label: 'Automation',
-            href: '#/automation',
-            icon: 'gear',
-          },
-          {
-            label: 'Gaining Efficiency',
-            href: '#/gaining-efficiency',
-            icon: 'gauge',
-          },
-        ],
+        heading: 'Work',
+        links: links('Managed IT Services', 'Cloud Services', 'Cybersecurity', 'Software Development'),
       },
       {
-        heading: 'Industry Focus',
-        links: [
-          { label: 'Industry Manufacturing', href: '#/industrial-manufacturing' },
-          { label: 'Transportation & Logistics', href: '#/transportation-logistics' },
-          { label: 'Healthcare', href: '#/healthcare' },
-          { label: 'Banking, Finance & Insurance', href: '#/banks-insurance' },
-          { label: 'Consulting Providers', href: '#/consulting-providers' },
-          { label: 'Non Profit', href: '#/non-profit' },
-        ],
-        more: [
-          { label: 'Telemedicine', href: '#/telemedicine' },
-          { label: 'Fintech', href: '#/fintech' },
-          { label: 'Education', href: '#/education' },
-        ],
+        heading: 'Impact',
+        links: links('Client outcomes', 'Case studies', 'Awards', 'Testimonials'),
+      },
+    ],
+  },
+  {
+    label: 'Industries we serve',
+    href: '#industries',
+    columns: [
+      {
+        heading: 'Industry focus',
+        links: links(
+          'Banks & Insurance',
+          'Healthcare',
+          'Industrial & Manufacturing',
+          'Transportation & Logistics',
+          'Consulting Providers',
+          'Non-Profit',
+          'Telemedicine',
+          'Fintech',
+          'Education',
+        ),
         viewAll: { label: 'View all', href: '#industries' },
       },
+      {
+        heading: 'Business challenges',
+        tiles: challengeTiles,
+      },
     ],
   },
   {
-    label: 'Company',
-    href: '#/about-us',
-    layout: 'company',
-    headline: 'Simplifying IT\nfor a complex world.',
-    links: [
-      { label: 'About us', href: '#/about-us' },
-      { label: 'Why us', href: '#/why-us' },
-      { label: 'Careers', href: '#/careers' },
-    ],
-    partners: {
-      heading: 'Platform partnerships',
-      href: '#/partners-certifications',
-      items: [
-        { label: 'AWS', href: '#/partners-certifications', logo: '/uploads/stack-icons/amazon-web-services.svg' },
-        { label: 'Google Cloud', href: '#/partners-certifications', logo: '/uploads/stack-icons/google-cloud.svg' },
-        { label: 'Microsoft', href: '#/partners-certifications', logo: '/uploads/stack-icons/microsoft.svg' },
-        { label: 'Salesforce', href: '#/partners-certifications', logo: '/uploads/stack-icons/salesforce.svg' },
-      ],
-    },
-  },
-  {
-    label: 'Resources',
+    label: 'Success Stories',
     href: '#insights',
-    layout: 'simple',
-    links: [
-      { label: 'Schedule a Consultation', href: '#/contact-us' },
-      { label: 'FAQ', href: '#/help-and-faq' },
-      { label: 'Events', href: '#/events' },
-      { label: 'Blog', href: '#/blog' },
-      { label: 'Case Studies', href: '#/case-studies' },
+    columns: [
+      {
+        heading: 'Client outcomes',
+        links: [
+          { label: 'View all insights', href: '#/blog' },
+          { label: 'IT alignment for a growing business', href: '#/success-story' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Support',
+    href: '#support',
+    columns: [
+      {
+        heading: 'Help and support',
+        links: links('Help and FAQ', 'Client Support', 'Contact us'),
+      },
+      {
+        heading: 'Learn',
+        links: links('Events', 'Blog'),
+      },
+      {
+        heading: 'Legal',
+        links: links('Privacy Policy', 'Cookie policy', 'Terms & Conditions'),
+      },
     ],
   },
 ]

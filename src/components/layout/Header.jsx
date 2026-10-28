@@ -134,9 +134,10 @@ export default function Header({ overlay = false }) {
 
           <a
             href="#/contact-us"
-            className="hidden rounded-md bg-[#0b1fb3] px-6 py-3 text-[0.95rem] font-semibold text-white transition-colors hover:bg-[#091a8f] md:inline-flex"
+            className="inline-flex items-center rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
           >
             Contact Us
+            <span className="arrow" aria-hidden="true">→</span>
           </a>
 
           <button

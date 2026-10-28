@@ -169,7 +169,7 @@ export default function IndustriesStrip() {
               <Reveal
                 key={`${item.label}-${idx}`}
                 delay={(idx % 5) + 1}
-                className="w-[68%] shrink-0 snap-start sm:w-[calc(50%-10px)]"
+                className="w-[68%] shrink-0 snap-start sm:w-[calc(25%-10px)]"
               >
                 <a
                   href={item.href}
