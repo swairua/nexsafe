@@ -33,7 +33,7 @@ export default function StackSection() {
         </div>
 
         <div className="rounded-2xl bg-[#f2f3f5] p-3 md:p-4">
-          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {stackGroups.map((group, index) => {
               const expanded = Boolean(expandedGroups[group.id])
               const previewVendors = group.vendors.slice(0, 3)
@@ -56,7 +56,7 @@ export default function StackSection() {
                         alt={vendor.name}
                         title={vendor.name}
                         loading="lazy"
-                        className="h-8 max-w-20 object-contain"
+                        className="h-10 max-w-24 object-contain"
                       />
                     ))}
                   </div>
@@ -80,7 +80,7 @@ export default function StackSection() {
                               alt={vendor.name}
                               title={vendor.name}
                               loading="lazy"
-                              className="h-8 max-w-20 object-contain"
+                              className="h-10 max-w-24 object-contain"
                             />
                           ))}
                         </div>
