@@ -120,7 +120,7 @@ export default function PartnerStrip() {
   return (
     <section id={sectionIds.partners} className="bg-white py-4 md:py-6">
       <div className="shell-container">
-        <div className="relative grid gap-6 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:gap-x-20 md:items-center">
+        <div className="relative grid gap-6 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:gap-x-20 md:items-stretch">
           <div className="md:z-10 md:flex md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
             <Reveal variant="fade">
               <SectionHeading eyebrow={partnerStrip.tag} title={partnerStrip.title} size="small" weight="bold" />
@@ -133,11 +133,11 @@ export default function PartnerStrip() {
             aria-roledescription="carousel"
             aria-label={partnerStrip.title}
             tabIndex={0}
-            className="overflow-hidden md:min-h-0"
+            className="overflow-hidden md:min-h-0 md:self-center"
           >
             <div
               ref={wrapperRef}
-              className="flex flex-nowrap px-1 pb-6 pt-2 md:min-h-0 md:items-center"
+              className="flex flex-nowrap px-1 pb-6 pt-2 md:min-h-0 md:items-center md:py-6"
               style={{ transform: `translateX(${currentPct.current}%)` }}
             >
               {doubled.map((partner, i) => (
