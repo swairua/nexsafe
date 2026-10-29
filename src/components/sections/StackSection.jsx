@@ -42,7 +42,7 @@ export default function StackSection() {
             </Reveal>
           </div>
 
-          <div className="hidden w-22 flex-shrink-0 md:block" />
+          <div className="hidden w-44 flex-shrink-0 md:block" />
 
           <div
             ref={trackRef}
