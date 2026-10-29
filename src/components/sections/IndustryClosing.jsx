@@ -6,7 +6,7 @@ export default function IndustryClosing() {
   const { industryClosing } = useContent()
 
   return (
-    <section className="bg-[#060f3d] py-20 md:py-28">
+    <section className="bg-[#060f3d] pt-2 pb-20 md:pt-4 md:pb-28">
       <div className="shell-container">
         <Reveal variant="fade" className="max-w-3xl">
           <SectionHeading title={industryClosing.title} light titleClassName="text-2xl sm:text-3xl md:text-4xl" />

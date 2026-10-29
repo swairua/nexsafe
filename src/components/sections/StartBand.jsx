@@ -18,7 +18,7 @@ export default function StartBand() {
     : FALLBACK_VALUES
   const cards = [split.outsource, split.extend].filter(Boolean)
   return (
-    <section className="overflow-hidden bg-brand-ink py-16 text-white md:py-24">
+    <section className="overflow-hidden bg-brand-ink pt-2 pb-16 text-white md:pt-4 md:pb-24">
       <div className="shell-container">
         <Reveal variant="fade" className="max-w-3xl">
           <SectionHeading eyebrow={values.tag} title={values.title} light titleClassName="text-2xl sm:text-3xl md:text-4xl" />

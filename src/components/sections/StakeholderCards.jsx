@@ -9,7 +9,7 @@ export default function StakeholderCards() {
   if (!copy) return null
 
   return (
-    <section className="bg-shell-gray-100 py-20 md:py-28">
+    <section className="bg-shell-gray-100 pt-2 pb-20 md:pt-4 md:pb-28">
       <div className="shell-container">
         <Reveal variant="fade" className="mb-12 max-w-2xl">
           <SectionHeading eyebrow={copy.tag} title={copy.title} titleClassName="text-2xl sm:text-3xl md:text-4xl" />

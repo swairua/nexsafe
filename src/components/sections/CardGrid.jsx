@@ -18,7 +18,7 @@ export default function CardGrid() {
   const cards = allCards.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE)
 
   return (
-<section id={sectionIds.itSolutions} className="values-cycle-bg relative overflow-hidden bg-white py-6 md:py-8">
+<section id={sectionIds.itSolutions} className="values-cycle-bg relative overflow-hidden bg-white pt-2 pb-6 md:pt-4 md:pb-8">
       <div className="shell-container relative">
         <Reveal variant="fade" className="mb-8">
           <div className="flex items-end justify-between gap-6">

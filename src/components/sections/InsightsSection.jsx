@@ -83,7 +83,7 @@ export default function InsightsSection() {
   const fallbackImage = typeof categoryRaw === 'string' ? categoryRaw : (categoryRaw && categoryRaw.src) || ''
   const fallbackAlt = typeof categoryRaw === 'string' ? '' : ((categoryRaw && categoryRaw.alt) || '')
   return (
-    <section id={sectionIds.insights} className="bg-white pt-6 pb-4 md:pt-8 md:pb-6">
+    <section id={sectionIds.insights} className="bg-white pt-2 pb-4 md:pt-4 md:pb-6">
       <div className="shell-container">
         <Reveal variant="fade" className="mx-auto max-w-3xl text-center">
           <SectionHeading eyebrow="Form our blog" title="More articles from resource library" titleClassName="md:text-4xl" />
