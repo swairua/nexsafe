@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
@@ -12,10 +13,7 @@ export default function StackSection() {
     <section id={sectionIds.capabilities} className="bg-white py-10 md:py-14">
       <div className="shell-container">
         <Reveal variant="fade">
-          <span className="text-sm font-bold uppercase tracking-[0.12em] text-brand-ink">
-            {stackSection.tag}
-          </span>
-          <Rich as="h2" className="mt-3 max-w-4xl text-3xl font-bold tracking-tight text-[#161d26] sm:text-4xl md:text-5xl">{stackSection.title}</Rich>
+          <SectionHeading eyebrow={stackSection.tag} title={stackSection.title} titleClassName="max-w-4xl sm:text-4xl md:text-5xl" />
           {stackSection?.text ? (
             <div className="mt-4 max-w-4xl text-base leading-relaxed text-[#232b37] md:text-lg">
               <Rich as="p">{stackSection.text}</Rich>

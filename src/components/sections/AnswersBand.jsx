@@ -1,5 +1,6 @@
 import { RichText } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
 export default function AnswersBand() {
@@ -15,12 +16,7 @@ export default function AnswersBand() {
       <div className="shell-container">
         <div>
           <Reveal variant="right" className="mb-5">
-            <span className="inline-flex items-center rounded-full bg-[#7c5cff]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#b19cd9] ring-1 ring-[#7c5cff]/25 shadow-[0_0_14px_2px_rgba(124,92,255,0.25)]">
-              {copy.tag}
-            </span>
-            <h3 className="mt-2 bg-gradient-to-r from-[#0a1440] via-[#7c5cff] to-[#0a1440] bg-clip-text text-xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(124,92,255,0.25)] md:text-2xl">
-              {copy.title}
-            </h3>
+            <SectionHeading as="h3" eyebrow={copy.tag} title={copy.title} titleClassName="text-xl md:text-2xl" />
           </Reveal>
           <div className="grid grid-cols-2 items-start gap-3">
             {[limitedItems.slice(0, half), limitedItems.slice(half)].map((column, c) => (

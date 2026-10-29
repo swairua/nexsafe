@@ -1,5 +1,6 @@
 import Reveal from "../ui/Reveal.jsx"
 import SectionTag, { Rich } from "../ui/SectionTag.jsx"
+import SectionHeading from "../ui/SectionHeading.jsx"
 import SmartImage from "../ui/SmartImage.jsx"
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -39,7 +40,7 @@ export default function IntroBand() {
       </section>
       <div className="shell-container px-6 pt-6 md:pt-8">
         <Reveal variant="fade" className="text-left">
-          <h2 className="text-3xl font-extrabold leading-[1.12] tracking-tight text-[#0a1a3c] md:text-[2.6rem]">{statement.title}</h2>
+          <SectionHeading title={statement.title} />
           <p className="mt-3 text-[15px] leading-relaxed text-shell-gray-700 md:text-base">{statement.text}</p>
         </Reveal>
       </div>

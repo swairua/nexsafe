@@ -1,5 +1,6 @@
 import Reveal from '../ui/Reveal.jsx'
 import { stakeholderCards } from '../../data/content.js'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import { useContent } from '../../content/ContentContext.jsx'
 
 export default function StakeholderCards() {
@@ -11,12 +12,7 @@ export default function StakeholderCards() {
     <section className="bg-shell-gray-100 py-20 md:py-28">
       <div className="shell-container">
         <Reveal variant="fade" className="mb-12 max-w-2xl">
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.14em] text-shell-red">
-            {copy.tag}
-          </span>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-            {copy.title}
-          </h2>
+          <SectionHeading eyebrow={copy.tag} title={copy.title} titleClassName="text-2xl sm:text-3xl md:text-4xl" />
           <div className="mt-4 text-base leading-relaxed text-shell-gray-700">
             {copy.text}
           </div>

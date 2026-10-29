@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import SectionTag, { Rich } from '../ui/SectionTag.jsx'
+import { Rich } from '../ui/SectionTag.jsx'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from '../../content/ContentContext.jsx'
@@ -22,10 +23,7 @@ export default function CardGrid() {
         <Reveal variant="fade" className="mb-8">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <SectionTag>{servicesSection.tag}</SectionTag>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-                {servicesSection.title}
-              </h2>
+              <SectionHeading eyebrow={servicesSection.tag} title={servicesSection.title} titleClassName="text-2xl sm:text-3xl md:text-4xl" />
             </div>
             <div className="flex shrink-0 gap-2">
               <button

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
@@ -122,10 +123,7 @@ export default function PartnerStrip() {
         <div className="relative grid gap-6 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:items-center">
           <div className="md:z-10 md:flex md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
             <Reveal variant="fade">
-              <span className="inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]">
-                {partnerStrip.tag}
-              </span>
-              <Rich as="h2" className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl lg:text-3xl text-shell-gray-900">{partnerStrip.title}</Rich>
+              <SectionHeading eyebrow={partnerStrip.tag} title={partnerStrip.title} titleClassName="text-2xl sm:text-3xl lg:text-3xl" />
               <div className="mt-4 text-base font-medium leading-relaxed text-shell-gray-900"><Rich as="p">{partnerStrip.text}</Rich></div>
             </Reveal>
           </div>

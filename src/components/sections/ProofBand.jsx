@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
@@ -103,12 +104,7 @@ export default function ProofBand() {
       <div aria-hidden="true" className="z-0 col-start-1 row-start-3 row-end-5 bg-white" />
       <div className="shell-container relative z-10 col-start-1 row-start-1 pb-4 pt-8 md:pb-6 md:pt-10">
         <Reveal variant="fade">
-          <span className="inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]">
-            {copy.tag}
-          </span>
-          <h2 className="mt-3 bg-gradient-to-r from-white via-[#0174a4] to-white bg-clip-text text-2xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] sm:text-3xl md:text-4xl">
-            {copy.title}
-          </h2>
+          <SectionHeading eyebrow={copy.tag} title={copy.title} light titleClassName="text-2xl sm:text-3xl md:text-4xl" />
           <div className="mt-4 text-base font-medium leading-relaxed text-white md:text-lg"><Rich as="p">{copy.text}</Rich></div>
         </Reveal>
 

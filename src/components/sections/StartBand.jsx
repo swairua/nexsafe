@@ -1,5 +1,6 @@
-import SectionTag, { Rich } from '../ui/SectionTag.jsx'
+import { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
 const FALLBACK_VALUES = ['Integrity', 'Dependability', 'Customer-Centric', 'Innovative']
@@ -20,10 +21,7 @@ export default function StartBand() {
     <section className="overflow-hidden bg-brand-ink py-16 text-white md:py-24">
       <div className="shell-container">
         <Reveal variant="fade" className="max-w-3xl">
-          <SectionTag light>{values.tag}</SectionTag>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
-            {values.title}
-          </h2>
+          <SectionHeading eyebrow={values.tag} title={values.title} light titleClassName="text-2xl sm:text-3xl md:text-4xl" />
           <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg"><Rich as="p">{values.text}</Rich></div>
         </Reveal>
         {words.length ? (

@@ -1,6 +1,7 @@
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import ContactForm from './ContactForm.jsx'
+import SectionHeading from '../ui/SectionHeading.jsx'
 
 export default function HomeContact() {
   const { homeContact, contactForm } = useContent()
@@ -11,12 +12,7 @@ export default function HomeContact() {
       <div className="bg-shell-black">
         <div className="shell-container relative z-10 flex flex-col justify-end pb-7 pt-10">
           <Reveal variant="fade">
-            <span className="mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-white">
-              Contact Us
-            </span>
-            <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl">
-              Partner with Us for Comprehensive IT
-            </h2>
+            <SectionHeading eyebrow="Contact Us" title="Partner with Us for Comprehensive IT" light titleClassName="max-w-2xl sm:text-4xl" />
           </Reveal>
         </div>
       </div>
