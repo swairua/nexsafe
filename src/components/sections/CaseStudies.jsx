@@ -14,7 +14,7 @@ export default function CaseStudies() {
   return (
     <>
       <section id={sectionIds.caseStudies} className="relative isolate bg-white pt-12 pb-6 md:pt-20 md:pb-10">
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[calc(100%-16rem)] bg-[#111c55] md:h-[calc(100%-16.5rem)]" />
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[calc(100%-16rem)] bg-[#111c55] md:h-[calc(100%-14rem)]" />
         <div className="shell-container relative z-10">
           <Reveal variant="fade">
             <SectionHeading eyebrow={caseCards.tag} title={caseCards.title} light titleClassName="sm:text-4xl md:text-5xl" />
