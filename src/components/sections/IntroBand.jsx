@@ -10,12 +10,12 @@ export default function IntroBand() {
     <section id={sectionIds.company} className="bg-shell-black pb-4 md:pb-6">
       
       <div className="bg-shell-black">
-        <div className="shell-container grid gap-6 px-4 pb-10 pt-8 md:gap-12 md:pb-14 md:pt-10">
+        <div className="shell-container grid gap-3 px-4 pb-10 pt-8 md:gap-4 md:pb-14 md:pt-10">
           <Reveal delay={1} variant="fade">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#3aa9e0]">{introBand.eyebrow}</p>
             <h2 className="mt-3 text-3xl font-extrabold leading-[1.12] tracking-tight text-white md:text-[2.6rem]">{introBand.title}</h2>
           </Reveal>
-          <Reveal delay={2} variant="fade" className="flex items-start md:pt-4">
+          <Reveal delay={2} variant="fade" className="flex items-start">
             <div className="text-[15px] leading-relaxed text-white/60 md:text-base"><Rich as="p">{introBand.text}</Rich></div>
           </Reveal>
         </div>
