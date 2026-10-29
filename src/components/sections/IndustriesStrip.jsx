@@ -1,6 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types';
-
 const IndustriesStrip = ({ items = [], activeIndex = 0 }) => {
   const gridRowClass = 'proofband-grid-row';
   
