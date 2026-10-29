@@ -13,7 +13,7 @@ export default function CaseStudies() {
 
   return (
     <>
-      <section id={sectionIds.caseStudies} className="relative isolate bg-white py-12 md:py-20">
+      <section id={sectionIds.caseStudies} className="relative isolate bg-white pt-12 pb-6 md:pt-20 md:pb-10">
         <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[calc(100%-16rem)] bg-[#111c55] md:h-[calc(100%-16.5rem)]" />
         <div className="shell-container relative z-10">
           <Reveal variant="fade">
@@ -22,7 +22,7 @@ export default function CaseStudies() {
 
           <div
             ref={emblaRef}
-            className="no-scrollbar -mx-1 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-6"
+            className="no-scrollbar -mx-1 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
           >
             {items.map((card, idx) => (
               <Reveal

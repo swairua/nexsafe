@@ -10,7 +10,7 @@ export default function StackSection() {
   const [expandedGroups, setExpandedGroups] = useState({})
 
   return (
-    <section id={sectionIds.capabilities} className="bg-white py-10 md:py-14">
+    <section id={sectionIds.capabilities} className="bg-white pt-5 pb-10 md:pt-7 md:pb-14">
       <div className="shell-container">
         <Reveal variant="fade">
           <SectionHeading eyebrow={stackSection.tag} title={stackSection.title} titleClassName="max-w-4xl sm:text-4xl md:text-5xl" />
