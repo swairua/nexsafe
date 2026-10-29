@@ -27,12 +27,16 @@ export default function StackSection() {
     <section id={sectionIds.capabilities} className="values-cycle-bg bg-white pt-2 pb-6 md:pt-4 md:pb-10">
       <div className="shell-container">
         <Reveal variant="fade">
-          <SectionHeading eyebrow={stackSection.tag} title={stackSection.title} titleClassName="max-w-4xl sm:text-4xl md:text-5xl" />
-          {stackSection?.text ? (
-            <div className="mt-4 max-w-4xl text-base leading-relaxed text-[#232b37] md:text-lg">
-              <Rich as="p">{stackSection.text}</Rich>
+          <div className="grid gap-6 md:grid-cols-2 md:items-center md:gap-12">
+            <div>
+              <SectionHeading eyebrow={stackSection.tag} title={stackSection.title} titleClassName="max-w-4xl sm:text-4xl md:text-5xl" />
             </div>
-          ) : null}
+            {stackSection?.text ? (
+              <div className="text-base leading-relaxed text-[#232b37] md:text-lg">
+                <Rich as="p">{stackSection.text}</Rich>
+              </div>
+            ) : null}
+          </div>
         </Reveal>
 
         <div className="my-6 flex justify-center md:my-8">
