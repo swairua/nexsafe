@@ -55,7 +55,7 @@ export default function StackSection() {
                     {expanded ? '− View less' : '+ View more'}
                   </button>
                   <div id={`vendors-${group.id}`} className={`stack-vendor-panel ${expanded ? 'is-expanded' : ''}`} aria-hidden={!expanded}>
-                    <ul className="stack-vendor-list m-0 list-none border-t border-shell-gray-200 pt-2">
+                    <ul className="stack-vendor-list m-0 list-none pt-2">
                       {group.vendors.map((vendor) => (
                         <li key={vendor.name} className="flex items-center gap-3 py-2 text-sm text-shell-gray-700">
                           <img
