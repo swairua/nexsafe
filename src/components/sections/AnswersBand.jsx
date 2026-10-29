@@ -12,7 +12,7 @@ export default function AnswersBand() {
   const limitedItems = allItems.slice(0, 4)
   const half = Math.ceil(limitedItems.length / 2)
   return (
-    <section id={sectionIds.support} className="bg-shell-gray-100 py-6 md:py-8">
+    <section id={sectionIds.support} className="bg-shell-gray-100 pt-2 pb-6 md:pt-4 md:pb-10">
       <div className="shell-container">
         <div>
           <Reveal variant="right" className="mb-5">
