@@ -50,29 +50,29 @@ function ChallengeIcon({ icon }) {
   )
 }
 
-function PromoPanel({ onClose, span = 'col-span-3', wide = false }) {
+function PromoPanel({ onClose, span = 'col-span-3' }) {
   const { pageConnect } = useContent()
   if (!pageConnect) return null
   return (
-    <div className={span}>
+    <div className={`${span} self-start`}>
       <a
         href={pageConnect.cta?.href || '#/contact-us'}
         onClick={onClose}
-        className={`group flex h-full min-h-[16rem] rounded-2xl p-7 text-white transition-transform hover:scale-[1.01] md:p-8 ${wide ? 'flex-row items-center gap-8' : 'flex-col justify-between'}`}
+        className="group flex items-center gap-6 rounded-2xl p-7 text-white transition-transform hover:scale-[1.01] md:p-8"
         style={{
           background: '#0174a4',
           boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
         }}
       >
-        <div className={wide ? 'max-w-md flex-1' : ''}>
+        <div className="flex-1">
           {pageConnect.tag && (
             <span className="mb-3 inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
               {pageConnect.tag}
             </span>
           )}
-          <p className={`leading-relaxed text-white/80 ${wide ? 'text-base' : 'text-sm'}`}>{pageConnect.text}</p>
+          <p className="text-sm leading-relaxed text-white/80">{pageConnect.text}</p>
         </div>
-        <span className={`inline-flex items-center gap-2 text-sm font-bold ${wide ? 'shrink-0 rounded-full bg-white px-5 py-3 text-[#0174a4] transition-all hover:shadow-[0_0_24px_3px_rgba(255,255,255,0.5)]' : 'mt-5'}`}>
+        <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark">
           {pageConnect.cta?.label || 'Learn more'}
           <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -219,7 +219,7 @@ export default function MegaMenu({ item, onClose }) {
             ) : null}
           </div>
         ))}
-        <PromoPanel onClose={onClose} span="col-span-6" wide={false} />
+        <PromoPanel onClose={onClose} span="col-span-6" />
       </div>
     </div>
   )
