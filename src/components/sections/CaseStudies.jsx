@@ -46,7 +46,7 @@ export default function CaseStudies() {
                     style={{ backgroundColor: card.tint, opacity: 0.35, mixBlendMode: 'multiply' }}
                   />
                 </div>
-<div className="flex min-h-[10rem] flex-1 flex-col bg-[#0972d3] p-6">
+<div className="flex min-h-[10rem] flex-1 flex-col bg-[#0972d3]/80 p-6">
                 <span className="text-sm font-bold uppercase tracking-wider text-white/80">{card.brand}</span>
                 <h3 className="mt-2 text-lg font-bold leading-snug text-white">{card.title}</h3>
                 <a
