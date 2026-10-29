@@ -13,7 +13,7 @@ export default function CaseStudies() {
 
   return (
     <>
-      <section id={sectionIds.caseStudies} className="values-cycle-bg relative isolate bg-white pt-12 pb-6 md:pt-20 md:pb-10">
+      <section id={sectionIds.caseStudies} className="values-cycle-bg relative isolate bg-white pt-6 pb-6 md:pt-10 md:pb-10">
         <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[calc(100%-16rem)] bg-[#111c55] md:h-[calc(100%-13.5rem)]" />
         <div className="shell-container relative z-10">
           <Reveal variant="fade">
