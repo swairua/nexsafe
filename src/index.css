@@ -476,10 +476,22 @@
   .reveal-delay-4 { --reveal-delay: 360ms; }
   .reveal-delay-5 { --reveal-delay: 450ms; }
 
-  .stack-vendors { visibility: hidden; }
-  .stack-vendors.grid-rows-\[1fr\] { visibility: visible; }
-  @media (prefers-reduced-motion: reduce) {
-    .stack-vendors { transition: none !important; }
+  .stack-vendor-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-0.75rem);
+    transition: grid-template-rows 900ms ease, opacity 700ms ease, transform 900ms ease;
+  }
+  .stack-vendor-panel.is-expanded {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stack-vendor-list {
+    min-height: 0;
+    overflow: hidden;
   }
 
   .hero-word { display: inline-block; }

@@ -36,7 +36,6 @@ export default function StackSection() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {stackGroups.map((group, index) => {
               const expanded = Boolean(expandedGroups[group.id])
-              const previewVendors = group.vendors.slice(0, 3)
 
               return (
                 <Reveal
@@ -48,45 +47,31 @@ export default function StackSection() {
                   <h3 className="text-base font-bold leading-snug text-shell-gray-900 md:text-lg">{group.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-shell-gray-700">{group.text}</p>
 
-                  <div className="mt-4 flex min-h-9 flex-wrap items-center gap-4" aria-label={`${group.title} technology partners`}>
-                    {previewVendors.map((vendor) => (
-                      <img
-                        key={vendor.name}
-                        src={resolveSrc(vendor.logo)}
-                        alt={vendor.name}
-                        title={vendor.name}
-                        loading="lazy"
-                        className="h-10 max-w-24 object-contain"
-                      />
-                    ))}
+                  <button
+                    type="button"
+                    aria-expanded={expanded}
+                    aria-controls={`vendors-${group.id}`}
+                    onClick={() => setExpandedGroups((current) => ({ ...current, [group.id]: !current[group.id] }))}
+                    className="mt-4 self-start text-xs font-bold text-shell-gray-900 hover:text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+                  >
+                    {expanded ? '− View less' : '+ View more'}
+                  </button>
+                  <div id={`vendors-${group.id}`} className={`stack-vendor-panel ${expanded ? 'is-expanded' : ''}`} aria-hidden={!expanded}>
+                    <ul className="stack-vendor-list m-0 list-none border-t border-shell-gray-200 pt-2">
+                      {group.vendors.map((vendor) => (
+                        <li key={vendor.name} className="flex items-center gap-3 py-2 text-sm text-shell-gray-700">
+                          <img
+                            src={resolveSrc(vendor.logo)}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            className="h-8 w-12 object-contain"
+                          />
+                          <span>{vendor.name}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-
-                  {group.vendors.length > previewVendors.length ? (
-                    <>
-                      <button
-                        type="button"
-                        aria-expanded={expanded}
-                        onClick={() => setExpandedGroups((current) => ({ ...current, [group.id]: !current[group.id] }))}
-                        className="mt-4 self-start text-xs font-bold text-shell-gray-900 hover:text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
-                      >
-                        {expanded ? '− View less' : '+ View more'}
-                      </button>
-                      {expanded ? (
-                        <div className="mt-3 flex flex-wrap items-center gap-3 border-t border-shell-gray-200 pt-3">
-                          {group.vendors.slice(previewVendors.length).map((vendor) => (
-                            <img
-                              key={vendor.name}
-                              src={resolveSrc(vendor.logo)}
-                              alt={vendor.name}
-                              title={vendor.name}
-                              loading="lazy"
-                              className="h-10 max-w-24 object-contain"
-                            />
-                          ))}
-                        </div>
-                      ) : null}
-                    </>
-                  ) : null}
                 </Reveal>
               )
             })}
