@@ -453,9 +453,9 @@
   50% { background-position: 100% 50%; }
 }
 .values-cycle-bg {
-  background-image: linear-gradient(120deg, #ff9900 0%, #f3f4f6 30%, #146eb4 62%, #f3f4f6 82%, #ff9900 100%);
-  background-size: 300% 300%;
-  animation: valuesColorCycle 26s ease-in-out infinite;
+  background-image: linear-gradient(120deg, #f4f1eb 0%, #f8f7f4 28%, #edf3f7 55%, #f8f6f1 78%, #f4f1eb 100%);
+  background-size: 360% 360%;
+  animation: valuesColorCycle 38s ease-in-out infinite;
 }
 
 @layer components {
