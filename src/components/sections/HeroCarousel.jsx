@@ -56,7 +56,7 @@ export default function HeroCarousel() {
               {/* Legibility scrim — keeps hero copy readable over bright imagery */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25" aria-hidden="true" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25" aria-hidden="true" />
-              <div className="shell-container relative flex min-h-[28rem] items-center pb-8 pt-16 sm:min-h-[34rem] md:min-h-[36rem] md:pb-10 md:pt-20 lg:min-h-[40rem]">
+              <div className="shell-container relative flex min-h-[24rem] items-center pb-8 pt-16 sm:min-h-[28rem] md:min-h-[30rem] md:pb-10 md:pt-20 lg:min-h-[34rem]">
               <div className={`hero-copy relative z-10 w-full text-white ${selected === i ? 'is-active' : ''}`}>
                 <span className="hero-kicker mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow">
                     {slide.kicker}
