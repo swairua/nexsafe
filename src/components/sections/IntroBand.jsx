@@ -27,7 +27,7 @@ export default function IntroBand() {
             <Reveal key={card.id} delay={idx + 1} variant="up" className="h-full">
               <a href={card.href} className="group flex h-full flex-col rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(255,153,0,0.55)]" aria-label={`${card.eyebrow} - ${card.title}`}>
                 <SmartImage src={card.src} alt={card.alt} fallback={card.fallback} className="aspect-[16/11] w-full overflow-hidden rounded-2xl" imgClassName="transition-transform duration-500 group-hover:scale-105" />
-                <div className="relative flex w-full flex-1 flex-col justify-center bg-[#f5f3ff] px-6 py-6 text-center ring-1 ring-transparent shadow-[0_18px_50px_-12px_rgba(0,0,0,0.28)] transition-all duration-300 group-hover:ring-2 group-hover:ring-[#ff9900]/40 group-hover:shadow-[0_0_30px_rgba(255,153,0,0.5)]">
+                <div className="relative z-10 mx-auto -mt-8 flex min-h-[4.5rem] w-[88%] flex-col justify-center rounded-sm bg-white px-4 py-3 text-center ring-1 ring-transparent shadow-[0_18px_50px_-12px_rgba(0,0,0,0.28)] transition-all duration-300 group-hover:ring-2 group-hover:ring-[#ff9900]/40 group-hover:shadow-[0_0_30px_rgba(255,153,0,0.5)]">
                   <p className="text-[15px] font-medium text-[#2aa5de]">{card.eyebrow}</p>
                   <p className="mt-1.5 text-xl font-bold leading-snug text-[#0a1a3c] transition-colors group-hover:text-[#ff9900]">{card.title}</p>
                 </div>
