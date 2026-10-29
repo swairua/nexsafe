@@ -90,9 +90,8 @@ export default function App() {
         <main>
           <HeroCarousel />
           <IntroBand />
-          <CardGrid />
-          <IndustriesStrip />
-          <CaseStudies />
+<CardGrid />
+<CaseStudies />
           <StackSection />
           <ProofBand />
           <PartnerStrip />
