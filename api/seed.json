@@ -247,8 +247,8 @@
         "label": "Discover Our Services",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-network-servers.jpg",
-      "alt": "Server racks glowing behind mesh doors in a data centre",
+      "image": "/uploads/hero_0.jpg",
+      "alt": "City skyline at night with a glowing network of connected nodes spread across it",
       "fallback": "#070e40"
     },
     {
@@ -260,8 +260,8 @@
         "label": "Explore Services",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-team-planning.jpg",
-      "alt": "Colleagues planning with laptops and hand-written notes at a table",
+      "image": "/uploads/hero_1.jpg",
+      "alt": "City skyline at dusk under a heavy blue sky, lights coming on across the towers",
       "fallback": "#070e40"
     },
     {
@@ -273,8 +273,8 @@
         "label": "Explore Industries",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/team-collaboration.jpg",
-      "alt": "Colleagues wearing headphones while working together on laptops",
+      "image": "/uploads/hero_2.jpg",
+      "alt": "Industrial plant with illuminated stacks operating at night",
       "fallback": "#070e40"
     }
   ],
