@@ -46,15 +46,15 @@ export default function CaseStudies() {
                     style={{ backgroundColor: card.tint, opacity: 0.35, mixBlendMode: 'multiply' }}
                   />
                 </div>
-<div className="flex min-h-[10rem] flex-1 flex-col p-6">
-                <span className="text-sm font-bold uppercase tracking-wider text-[#72747e]">{card.brand}</span>
-                <h3 className="mt-2 text-lg font-bold leading-snug text-[#161d26]">{card.title}</h3>
+<div className="flex min-h-[10rem] flex-1 flex-col bg-[#0972d3] p-6">
+                <span className="text-sm font-bold uppercase tracking-wider text-white/80">{card.brand}</span>
+                <h3 className="mt-2 text-lg font-bold leading-snug text-white">{card.title}</h3>
                 <a
                   href={card.href}
-                  className="mt-4 inline-flex items-center gap-1 self-start text-sm font-bold text-[#0972d3] transition-colors hover:text-[#7c5cff]"
+                  className="mt-auto inline-flex items-center gap-2 self-end rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
                 >
                   Read story
-                  <span aria-hidden="true">→</span>
+                  <span className="arrow" aria-hidden="true">→</span>
                 </a>
               </div>
               </Reveal>
