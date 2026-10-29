@@ -139,9 +139,11 @@
     "ctaHref": "#/services-solutions"
   },
   "stackSection": {
-    "tag": "Our technology stack",
-    "title": "Great partnerships<br>with the best",
-    "text": "Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance."
+    "tag": "The technologies we use",
+    "title": "Using Trusted Technology to Solve Your IT Challenges",
+    "text": "Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.",
+    "ctaLabel": "Our Technology Stack",
+    "ctaHref": "#/services-solutions"
   },
   "pageLabels": {
     "home": "Home",
@@ -706,7 +708,7 @@
     },
     {
       "id": "network",
-      "title": "Network & connectivity",
+      "title": "Network & Connectivity",
       "text": "Networking and connectivity platforms for firewalls, routers, switches, Wi-Fi, structured cabling, fibre connectivity, and secure business network access.",
       "vendors": [
         {
