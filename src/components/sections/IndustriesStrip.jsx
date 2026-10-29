@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
-import { resolveSrc } from "../../utils/url.js"
 
 function iconGlyph(name) {
   const glyphs = {
@@ -35,13 +34,13 @@ export default function IndustriesStrip() {
   if (!items.length) return null
 
   return (
-    <section id={sectionIds.industries} className="bg-shell-black py-6 md:py-8">
+    <section id={sectionIds.industries} className="bg-shell-black pb-8 pt-10 md:pb-10 md:pt-14">
       <div className="shell-container">
         <Reveal variant="fade">
           <span className="inline-flex items-center rounded-full bg-[#7c5cff]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#b19cd9] ring-1 ring-[#7c5cff]/25 shadow-[0_0_14px_2px_rgba(124,92,255,0.25)]">
             {industriesStrip.tag}
           </span>
-          <Rich as="h2" className="mt-3 text-left text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">{industriesStrip.title}</Rich>
+          <Rich as="h2" className="mt-4 text-left text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">{industriesStrip.title}</Rich>
           {industriesStrip?.text ? (
             <div className="mt-4 text-left text-base leading-relaxed text-white/80 md:text-lg">
               <Rich as="p">{industriesStrip.text}</Rich>
@@ -84,10 +83,12 @@ export default function IndustriesStrip() {
           {items.map((item, idx) => (
             <Reveal
               key={item.label + idx}
+              as="a"
+              href={item.href || '#industries'}
               variant="up"
               delay={(idx % 3) + 1}
               data-industry-card
-              className="flex w-[88%] shrink-0 snap-start flex-col items-center rounded-2xl border border-white/15 bg-white/5 p-6 shadow-[0_14px_36px_-24px_rgba(124,92,255,0.25)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-7"
+              className="group flex w-[88%] shrink-0 snap-start flex-col items-center rounded-2xl border border-white/15 bg-white/5 p-6 shadow-[0_14px_36px_-24px_rgba(124,92,255,0.25)] transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink/60 hover:bg-white/10 sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-7"
             >
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-3xl text-white">
                 {iconGlyph(item.icon)}

@@ -333,11 +333,8 @@ export const industriesStrip = {
     { label: 'Manufacturing', href: pageHref('Industrial & Manufacturing'), note: '', icon: 'factory' },
     { label: 'Healthcare', href: pageHref('Healthcare'), note: '', icon: 'heart' },
     { label: 'Banking and Finance', href: pageHref('Banks & Insurance'), note: '', icon: 'bank' },
-    { label: 'Education', href: pageHref('Education'), note: '', icon: 'book' },
     { label: 'Transport & Logistics', href: pageHref('Transportation & Logistics'), note: '', icon: 'truck' },
-    { label: 'Industrial', href: pageHref('Industrial & Manufacturing'), note: '', icon: 'gear' },
     { label: 'Professional services', href: pageHref('Consulting Providers'), note: '', icon: 'briefcase' },
-    { label: 'Public Sector', href: pageHref('Consulting Providers'), note: '', icon: 'landmark' },
     { label: 'Non-Profit', href: pageHref('Non-Profit'), note: '', icon: 'heart' },
   ],
 }
