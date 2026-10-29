@@ -112,7 +112,7 @@ export default function Header({ overlay = false }) {
             onClick={() => { setSearchOpen((s) => !s); setOpenMenu(null) }}
             aria-label={uiLabels.search}
             aria-expanded={searchOpen}
-            className="hidden rounded-full p-2.5 text-shell-gray-900 transition-colors hover:bg-shell-gray-100 hover:text-brand-ink sm:block"
+            className="hidden rounded-full p-2.5 text-[#1a1d21] transition-colors hover:bg-shell-gray-100 hover:text-[#0b1fb3] sm:block"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
@@ -127,7 +127,7 @@ export default function Header({ overlay = false }) {
             >
               Client Support →
             </a>
-            <a href="tel:18255704550" className="mt-1 text-[0.95rem] font-medium text-[#1a1d21] hover:text-[#0b1fb3]">
+            <a href="tel:18255704550" className="mt-1 text-[0.95rem] font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3]">
               {settings.phone || '1-825-570-4550'}
             </a>
           </div>
@@ -145,7 +145,7 @@ export default function Header({ overlay = false }) {
             onClick={() => { setMobileOpen((m) => !m); setOpenMenu(null); setSearchOpen(false) }}
             aria-label={uiLabels.openMenu}
             aria-expanded={mobileOpen}
-            className="rounded-full p-2.5 text-shell-gray-900 transition-colors hover:bg-shell-gray-100 lg:hidden"
+            className="rounded-full p-2.5 text-[#1a1d21] transition-colors hover:bg-shell-gray-100 hover:text-[#0b1fb3] lg:hidden"
           >
             <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               {mobileOpen ? (

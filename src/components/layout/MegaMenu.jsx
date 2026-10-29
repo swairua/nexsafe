@@ -104,7 +104,7 @@ export default function MegaMenu({ item, onClose }) {
                   <a
                     href={l.href}
                     onClick={onClose}
-                    className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline"
+                    className="text-[0.9rem] font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
                   >
                     {l.label}
                   </a>
@@ -127,7 +127,7 @@ export default function MegaMenu({ item, onClose }) {
                 >
                   <ChallengeIcon icon={t.icon} />
                   <div>
-                    <span className="block text-sm font-bold text-shell-gray-900 group-hover:text-brand-ink">
+                    <span className="block text-sm font-bold text-[#1a1d21] group-hover:text-[#0b1fb3]">
                       {t.label}
                     </span>
                     {t.blurb && (
@@ -176,7 +176,7 @@ export default function MegaMenu({ item, onClose }) {
                   <a
                     href={l.href}
                     onClick={onClose}
-                    className="text-[0.9rem] font-medium text-shell-gray-900 hover:text-brand-ink hover:underline"
+                    className="text-[0.9rem] font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
                   >
                     {l.label}
                   </a>
@@ -195,7 +195,7 @@ export default function MegaMenu({ item, onClose }) {
                 >
                   <ChallengeIcon icon={t.icon} />
                   <span>
-                    <span className="block text-sm font-bold text-shell-gray-900 group-hover:text-brand-ink">
+                    <span className="block text-sm font-bold text-[#1a1d21] group-hover:text-[#0b1fb3]">
                       {t.label}
                     </span>
                     {t.blurb ? (
@@ -212,7 +212,7 @@ export default function MegaMenu({ item, onClose }) {
               <a
                 href={col.viewAll.href}
                 onClick={onClose}
-                className="mt-4 inline-block text-[0.9rem] font-bold text-shell-gray-900 hover:text-brand-ink hover:underline"
+                className="mt-4 inline-block text-[0.9rem] font-bold text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
               >
                 {col.viewAll.label} →
               </a>
