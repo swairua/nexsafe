@@ -453,8 +453,8 @@
   50% { background-position: 100% 50%; }
 }
 .values-cycle-bg {
-  background-image: linear-gradient(120deg, #f4f1eb 0%, #f8f7f4 28%, #edf3f7 55%, #f8f6f1 78%, #f4f1eb 100%);
-  background-size: 360% 360%;
+  background-image: linear-gradient(120deg, #f4eadb 0%, #f9f8f5 28%, #e8f0f6 55%, #f8f4ec 78%, #f4eadb 100%);
+  background-size: 320% 320%;
   animation: valuesColorCycle 38s ease-in-out infinite;
 }
 
