@@ -1,5 +1,6 @@
 import Reveal from "../ui/Reveal.jsx"
 import SectionTag, { Rich } from "../ui/SectionTag.jsx"
+import SectionHeading from "../ui/SectionHeading.jsx"
 import SmartImage from "../ui/SmartImage.jsx"
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -10,12 +11,12 @@ export default function IntroBand() {
     <section id={sectionIds.company} className="bg-shell-black pb-4 md:pb-6">
       
       <div className="bg-shell-black">
-        <div className="shell-container grid gap-6 px-4 pb-10 pt-8 md:gap-12 md:pb-14 md:pt-10">
+        <div className="shell-container grid gap-3 px-4 pb-10 pt-8 md:gap-4 md:pb-14 md:pt-10">
           <Reveal delay={1} variant="fade">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#3aa9e0]">{introBand.eyebrow}</p>
             <h2 className="mt-3 text-3xl font-extrabold leading-[1.12] tracking-tight text-white md:text-[2.6rem]">{introBand.title}</h2>
           </Reveal>
-          <Reveal delay={2} variant="fade" className="flex items-start md:pt-4">
+          <Reveal delay={2} variant="fade" className="flex items-start">
             <div className="text-[15px] leading-relaxed text-white/60 md:text-base"><Rich as="p">{introBand.text}</Rich></div>
           </Reveal>
         </div>
@@ -39,16 +40,16 @@ export default function IntroBand() {
       </section>
       <div className="shell-container px-6 pt-6 md:pt-8">
         <Reveal variant="fade" className="text-left">
-          <h2 className="text-3xl font-extrabold leading-[1.12] tracking-tight text-[#0a1a3c] md:text-[2.6rem]">{statement.title}</h2>
+          <SectionHeading title={statement.title} />
           <p className="mt-3 text-[15px] leading-relaxed text-shell-gray-700 md:text-base">{statement.text}</p>
         </Reveal>
       </div>
       <div className="mt-8 md:mt-10">
-        <div className="w-full bg-shell-black">
+        <div className="values-cycle-bg w-full">
           <div className="shell-container px-6">
             <ul className="grid gap-5 py-8 sm:grid-cols-2 lg:grid-cols-4 md:py-10">
               {pillars.map((pillar, idx) => (
-                <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ff9900] hover:shadow-[inset_0_0_0_1px_rgba(255,153,0,0.6),0_0_0_3px_rgba(255,153,0,0.15),0_0_24px_3px_rgba(255,153,0,0.35),0_14px_30px_-12px_rgba(255,153,0,0.35)]">
+                <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-[#f3f4f6] p-6 shadow-sm">
                   <SectionTag>{pillar.title}</SectionTag>
                   <div className="mt-3 text-sm leading-relaxed text-shell-gray-700"><Rich as="p">{pillar.text}</Rich></div>
                 </Reveal>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import SectionTag, { Rich } from '../ui/SectionTag.jsx'
+import { Rich } from '../ui/SectionTag.jsx'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from '../../content/ContentContext.jsx'
@@ -17,15 +18,12 @@ export default function CardGrid() {
   const cards = allCards.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE)
 
   return (
-<section id={sectionIds.itSolutions} className="relative overflow-hidden bg-white py-6 md:py-8">
+<section id={sectionIds.itSolutions} className="values-cycle-bg relative overflow-hidden bg-white py-6 md:py-8">
       <div className="shell-container relative">
         <Reveal variant="fade" className="mb-8">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <SectionTag>{servicesSection.tag}</SectionTag>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-shell-gray-900 sm:text-3xl md:text-4xl">
-                {servicesSection.title}
-              </h2>
+              <SectionHeading eyebrow={servicesSection.tag} title={servicesSection.title} titleClassName="text-2xl sm:text-3xl md:text-4xl" />
             </div>
             <div className="flex shrink-0 gap-2">
               <button
@@ -33,7 +31,7 @@ export default function CardGrid() {
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
                 disabled={page === 0}
                 aria-label="Previous services"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-[#f5f3ff] text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-shell-gray-300 disabled:hover:bg-[#f5f3ff] disabled:hover:text-shell-gray-900"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
               >
                 <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -44,7 +42,7 @@ export default function CardGrid() {
                 onClick={() => setPage((p) => Math.min(lastPage, p + 1))}
                 disabled={page === lastPage}
                 aria-label="Next services"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-shell-gray-300 bg-[#f5f3ff] text-shell-gray-900 transition-colors hover:border-brand-ink hover:bg-brand-ink hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-shell-gray-300 disabled:hover:bg-[#f5f3ff] disabled:hover:text-shell-gray-900"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
               >
                 <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />

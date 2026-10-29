@@ -1,6 +1,7 @@
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import ContactForm from './ContactForm.jsx'
+import SectionHeading from '../ui/SectionHeading.jsx'
 
 export default function HomeContact() {
   const { homeContact, contactForm } = useContent()
@@ -11,16 +12,11 @@ export default function HomeContact() {
       <div className="bg-shell-black">
         <div className="shell-container relative z-10 flex flex-col justify-end pb-7 pt-10">
           <Reveal variant="fade">
-            <span className="mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-white">
-              Contact Us
-            </span>
-            <h2 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl">
-              Partner with Us for Comprehensive IT
-            </h2>
+            <SectionHeading eyebrow="Contact Us" title="Partner with Us for Comprehensive IT" light size="compact" titleClassName="max-w-2xl md:max-w-[44%]" />
           </Reveal>
         </div>
       </div>
-      <div className="shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-16 pt-7 md:pb-24 md:grid-cols-[1.25fr_1fr] md:gap-8 lg:gap-16">
+      <div className="shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-16 pt-7 md:pb-24 md:grid-cols-[1fr_1.2fr] md:gap-8 lg:gap-16">
         <Reveal variant="left" className="space-y-8">
           <div>
             <p className="max-w-xl text-base leading-relaxed text-shell-gray-900 md:text-lg">
@@ -69,7 +65,7 @@ export default function HomeContact() {
             </div>
           )}
         </Reveal>
-        <Reveal variant="right" className="md:-mt-[158px] md:w-full md:max-w-xl md:justify-self-end">
+        <Reveal variant="right" className="md:-mt-[158px] md:w-full md:max-w-2xl md:-mr-6 md:justify-self-end">
           <div className="rounded-sm bg-shell-black p-4 shadow-md md:p-5">
             <ContactForm simple />
           </div>

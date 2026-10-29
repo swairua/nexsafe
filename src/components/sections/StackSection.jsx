@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
@@ -9,13 +10,10 @@ export default function StackSection() {
   const [expandedGroups, setExpandedGroups] = useState({})
 
   return (
-    <section id={sectionIds.capabilities} className="bg-white py-10 md:py-14">
+    <section id={sectionIds.capabilities} className="values-cycle-bg bg-white pt-5 pb-10 md:pt-7 md:pb-14">
       <div className="shell-container">
         <Reveal variant="fade">
-          <span className="text-sm font-bold uppercase tracking-[0.12em] text-brand-ink">
-            {stackSection.tag}
-          </span>
-          <Rich as="h2" className="mt-3 max-w-4xl text-3xl font-bold tracking-tight text-[#161d26] sm:text-4xl md:text-5xl">{stackSection.title}</Rich>
+          <SectionHeading eyebrow={stackSection.tag} title={stackSection.title} titleClassName="max-w-4xl sm:text-4xl md:text-5xl" />
           {stackSection?.text ? (
             <div className="mt-4 max-w-4xl text-base leading-relaxed text-[#232b37] md:text-lg">
               <Rich as="p">{stackSection.text}</Rich>
@@ -57,7 +55,7 @@ export default function StackSection() {
                     {expanded ? '− View less' : '+ View more'}
                   </button>
                   <div id={`vendors-${group.id}`} className={`stack-vendor-panel ${expanded ? 'is-expanded' : ''}`} aria-hidden={!expanded}>
-                    <ul className="stack-vendor-list m-0 list-none border-t border-shell-gray-200 pt-2">
+                    <ul className="stack-vendor-list m-0 list-none pt-2">
                       {group.vendors.map((vendor) => (
                         <li key={vendor.name} className="flex items-center gap-3 py-2 text-sm text-shell-gray-700">
                           <img

@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Rich } from '../ui/SectionTag.jsx'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import { resolveSrc } from "../../utils/url.js"
@@ -13,19 +13,16 @@ export default function CaseStudies() {
 
   return (
     <>
-      <section id={sectionIds.caseStudies} className="relative isolate bg-white py-12 md:py-20">
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[calc(100%-16rem)] bg-[#111c55] md:h-[calc(100%-16.5rem)]" />
+      <section id={sectionIds.caseStudies} className="values-cycle-bg relative isolate bg-white pt-12 pb-6 md:pt-20 md:pb-10">
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[calc(100%-16rem)] bg-[#111c55] md:h-[calc(100%-13.5rem)]" />
         <div className="shell-container relative z-10">
           <Reveal variant="fade">
-            <span className="inline-flex items-center rounded-full bg-[#7c5cff]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#b19cd9] ring-1 ring-[#7c5cff]/25 shadow-[0_0_14px_2px_rgba(124,92,255,0.25)]">
-              {caseCards.tag}
-            </span>
-            <Rich as="h2" className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">{caseCards.title}</Rich>
+            <SectionHeading eyebrow={caseCards.tag} title={caseCards.title} light titleClassName="sm:text-4xl md:text-5xl" />
           </Reveal>
 
           <div
             ref={emblaRef}
-            className="no-scrollbar -mx-1 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-6"
+            className="no-scrollbar -mx-1 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
           >
             {items.map((card, idx) => (
               <Reveal
@@ -49,15 +46,15 @@ export default function CaseStudies() {
                     style={{ backgroundColor: card.tint, opacity: 0.35, mixBlendMode: 'multiply' }}
                   />
                 </div>
-<div className="flex min-h-[10rem] flex-1 flex-col p-6">
-                <span className="text-sm font-bold uppercase tracking-wider text-[#72747e]">{card.brand}</span>
-                <h3 className="mt-2 text-lg font-bold leading-snug text-[#161d26]">{card.title}</h3>
+<div className="flex min-h-[10rem] flex-1 flex-col bg-[#0972d3]/80 p-6">
+                <span className="text-sm font-bold uppercase tracking-wider text-white/80">{card.brand}</span>
+                <h3 className="mt-2 text-lg font-bold leading-snug text-white">{card.title}</h3>
                 <a
                   href={card.href}
-                  className="mt-4 inline-flex items-center gap-1 self-start text-sm font-bold text-[#0972d3] transition-colors hover:text-[#7c5cff]"
+                  className="mt-auto inline-flex items-center gap-2 self-end rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
                 >
                   Read story
-                  <span aria-hidden="true">→</span>
+                  <span className="arrow" aria-hidden="true">→</span>
                 </a>
               </div>
               </Reveal>

@@ -1,5 +1,6 @@
 import SmartImage from '../ui/SmartImage.jsx'
 import Reveal from '../ui/Reveal.jsx'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import { formatPostDate, insightPosts } from "../pages/BlogIndex.jsx"
 
@@ -85,12 +86,7 @@ export default function InsightsSection() {
     <section id={sectionIds.insights} className="bg-white pt-6 pb-4 md:pt-8 md:pb-6">
       <div className="shell-container">
         <Reveal variant="fade" className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.35em] text-shell-gray-500">
-            Form our blog
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-shell-gray-900 md:text-4xl">
-            More articles from resource library
-          </h2>
+          <SectionHeading eyebrow="Form our blog" title="More articles from resource library" titleClassName="md:text-4xl" />
         </Reveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           <FeaturedCard post={featured} fallbackImage={fallbackImage} fallbackAlt={fallbackAlt} />

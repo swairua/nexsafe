@@ -1,4 +1,5 @@
 import Reveal from '../ui/Reveal.jsx'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import { Rich } from '../ui/SectionTag.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
@@ -13,12 +14,7 @@ export default function ConnectBand() {
       />
       <div className="shell-container relative py-20 md:py-28">
         <Reveal variant="up">
-          <p className="text-xs font-bold uppercase tracking-wider text-shell-red">
-            {connect.tag}
-          </p>
-          <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-tight md:text-5xl">
-            {connect.title}
-          </h2>
+          <SectionHeading eyebrow={connect.tag} title={connect.title} light titleClassName="max-w-2xl md:text-5xl" />
           <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
             <Rich as="p">{connect.text}</Rich>
           </div>
