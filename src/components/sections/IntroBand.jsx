@@ -45,11 +45,11 @@ export default function IntroBand() {
         </Reveal>
       </div>
       <div className="mt-8 md:mt-10">
-        <div className="w-full bg-shell-black">
+        <div className="values-cycle-bg w-full">
           <div className="shell-container px-6">
             <ul className="grid gap-5 py-8 sm:grid-cols-2 lg:grid-cols-4 md:py-10">
               {pillars.map((pillar, idx) => (
-                <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#ff9900] hover:shadow-[inset_0_0_0_1px_rgba(255,153,0,0.6),0_0_0_3px_rgba(255,153,0,0.15),0_0_24px_3px_rgba(255,153,0,0.35),0_14px_30px_-12px_rgba(255,153,0,0.35)]">
+                <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-[#f3f4f6] p-6 shadow-sm">
                   <SectionTag>{pillar.title}</SectionTag>
                   <div className="mt-3 text-sm leading-relaxed text-shell-gray-700"><Rich as="p">{pillar.text}</Rich></div>
                 </Reveal>
