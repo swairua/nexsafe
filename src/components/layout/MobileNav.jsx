@@ -11,7 +11,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
               type="button"
               onClick={() => onToggle(i)}
               aria-expanded={openIndex === i}
-              className="flex w-full items-center justify-between py-4 text-left text-base font-semibold text-shell-gray-900"
+              className="flex w-full items-center justify-between py-4 text-left text-base font-semibold text-[#1a1d21] transition-colors hover:text-[#0b1fb3]"
             >
               {item.label}
               <svg
@@ -30,7 +30,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                   <ul className="space-y-2">
                     {(item.links || []).map((l) => (
                       <li key={l.label}>
-                        <a href={l.href} onClick={onNavigate} className="block py-1.5 text-sm text-shell-gray-700 hover:text-brand-ink">
+                        <a href={l.href} onClick={onNavigate} className="block py-1.5 text-sm text-[#1a1d21] transition-colors hover:text-[#0b1fb3]">
                           {l.label}
                         </a>
                       </li>
@@ -49,7 +49,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                     <ul className="space-y-2">
                       {(item.partners.items || []).map((p) => (
                         <li key={p.label}>
-                          <a href={p.href} onClick={onNavigate} className="text-sm font-medium text-shell-gray-900 hover:text-brand-ink">
+                          <a href={p.href} onClick={onNavigate} className="text-sm font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3]">
                             {p.label}
                           </a>
                         </li>
@@ -69,7 +69,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                             key={t.label}
                             href={t.href}
                             onClick={onNavigate}
-                            className="rounded-lg border border-shell-gray-300/70 p-3 text-sm font-medium text-shell-gray-900 hover:border-brand-ink hover:text-brand-ink"
+                            className="rounded-lg border border-shell-gray-300/70 p-3 text-sm font-medium text-[#1a1d21] transition-colors hover:border-brand-ink hover:text-[#0b1fb3]"
                           >
                             {t.label}
                           </a>
@@ -82,7 +82,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                           <a
                             href={l.href}
                             onClick={onNavigate}
-                            className="text-sm text-shell-gray-700 hover:text-brand-ink"
+                            className="text-sm text-[#1a1d21] transition-colors hover:text-[#0b1fb3]"
                           >
                             {l.label}
                           </a>
@@ -94,7 +94,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                       <a
                         href={col.viewAll.href}
                         onClick={onNavigate}
-                        className="mt-2 inline-block text-sm font-bold text-shell-red hover:underline"
+                        className="mt-2 inline-block text-sm font-bold text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
                       >
                         {col.viewAll.label}
                       </a>
@@ -106,7 +106,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
           </div>
         ))}
         <div className="flex items-center justify-between gap-3 border-t border-shell-gray-100 py-4">
-          <a href="tel:18255704550" className="text-sm font-semibold text-shell-gray-900">
+          <a href="tel:18255704550" className="text-sm font-semibold text-[#1a1d21] transition-colors hover:text-[#0b1fb3]">
             {settings.phone || '1-825-570-4550'}
           </a>
           <a href="#/contact-us" onClick={onNavigate} className="rounded-md bg-[#0b1fb3] px-5 py-2.5 text-sm font-semibold text-white">

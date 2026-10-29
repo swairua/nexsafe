@@ -13,8 +13,9 @@ export default function CaseStudies() {
 
   return (
     <>
-      <section id={sectionIds.caseStudies} className="bg-[#111c55] py-12 md:py-20">
-        <div className="shell-container">
+      <section id={sectionIds.caseStudies} className="relative isolate bg-white py-12 md:py-20">
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[calc(100%-16rem)] bg-[#111c55] md:h-[calc(100%-16.5rem)]" />
+        <div className="shell-container relative z-10">
           <Reveal variant="fade">
             <span className="inline-flex items-center rounded-full bg-[#7c5cff]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#b19cd9] ring-1 ring-[#7c5cff]/25 shadow-[0_0_14px_2px_rgba(124,92,255,0.25)]">
               {caseCards.tag}
@@ -48,7 +49,7 @@ export default function CaseStudies() {
                     style={{ backgroundColor: card.tint, opacity: 0.35, mixBlendMode: 'multiply' }}
                   />
                 </div>
-<div className="flex flex-1 flex-col p-6">
+<div className="flex min-h-[10rem] flex-1 flex-col p-6">
                 <span className="text-sm font-bold uppercase tracking-wider text-[#72747e]">{card.brand}</span>
                 <h3 className="mt-2 text-lg font-bold leading-snug text-[#161d26]">{card.title}</h3>
                 <a

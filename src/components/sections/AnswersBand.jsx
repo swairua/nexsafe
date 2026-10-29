@@ -44,7 +44,7 @@ export default function AnswersBand() {
           {copy.cta ? (
             <Reveal delay={limitedItems.length + 1}>
               <div className="text-right">
-                <a href={copy.cta.href} className="arrow-link mx-auto inline-flex items-center gap-0.5 mt-6 rounded-full bg-[#7c5cff] px-8 py-3 text-base font-bold text-white transition-all duration-300 btn-lift-glow hover:bg-[#6a4de6] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7c5cff]/50">
+                <a href={copy.cta.href} className="arrow-link relative inline-flex items-center gap-1 mt-6 rounded px-3 py-2 text-[0.95rem] font-medium normal-case tracking-normal text-[#1a1d21] transition-colors hover:text-[#0b1fb3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b1fb3]/50">
                   {copy.cta.label} <span className="arrow">→</span>
                 </a>
               </div>

@@ -139,9 +139,11 @@
     "ctaHref": "#/services-solutions"
   },
   "stackSection": {
-    "tag": "Our technology stack",
-    "title": "Great partnerships<br>with the best",
-    "text": "Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance."
+    "tag": "The technologies we use",
+    "title": "Using Trusted Technology to Solve Your IT Challenges",
+    "text": "Nexsate uses proven platforms and technology partners to deliver reliable support, stronger security, better visibility, and smoother day-to-day IT performance.",
+    "ctaLabel": "Our Technology Stack",
+    "ctaHref": "#/services-solutions"
   },
   "pageLabels": {
     "home": "Home",
@@ -245,8 +247,8 @@
         "label": "Discover Our Services",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-network-servers.jpg",
-      "alt": "Server racks glowing behind mesh doors in a data centre",
+      "image": "/uploads/hero_0.jpg",
+      "alt": "City skyline at night with a glowing network of connected nodes spread across it",
       "fallback": "#070e40"
     },
     {
@@ -258,8 +260,8 @@
         "label": "Explore Services",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/hero-team-planning.jpg",
-      "alt": "Colleagues planning with laptops and hand-written notes at a table",
+      "image": "/uploads/hero_1.jpg",
+      "alt": "City skyline at dusk under a heavy blue sky, lights coming on across the towers",
       "fallback": "#070e40"
     },
     {
@@ -271,8 +273,8 @@
         "label": "Explore Industries",
         "href": "#/services-solutions"
       },
-      "image": "/uploads/team-collaboration.jpg",
-      "alt": "Colleagues wearing headphones while working together on laptops",
+      "image": "/uploads/hero_2.jpg",
+      "alt": "Industrial plant with illuminated stacks operating at night",
       "fallback": "#070e40"
     }
   ],
@@ -706,7 +708,7 @@
     },
     {
       "id": "network",
-      "title": "Network & connectivity",
+      "title": "Network & Connectivity",
       "text": "Networking and connectivity platforms for firewalls, routers, switches, Wi-Fi, structured cabling, fibre connectivity, and secure business network access.",
       "vendors": [
         {

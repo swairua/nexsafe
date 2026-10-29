@@ -18,9 +18,4 @@ const IndustriesStrip = ({ items = [], activeIndex = 0 }) => {
   );
 };
 
-IndustriesStrip.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activeIndex: PropTypes.number
-};
-
 export default IndustriesStrip;

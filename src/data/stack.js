@@ -39,7 +39,7 @@ export const stackGroups = [
   },
   {
     id: 'network',
-    title: 'Network & connectivity',
+    title: 'Network & Connectivity',
     text: 'Networking and connectivity platforms for firewalls, routers, switches, Wi-Fi, structured cabling, fibre connectivity, and secure business network access.',
     vendors: [
       { name: 'Cisco', logo: '/uploads/stack-icons/cisco.svg' },

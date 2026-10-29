@@ -1,75 +1,80 @@
-import { useRef } from 'react'
+import { useState } from 'react'
 import { Rich } from '../ui/SectionTag.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 import { resolveSrc } from "../../utils/url.js"
 
-const VENDOR_LOGOS = [
-  { name: 'AWS', src: '/uploads/stack-icons/amazon-web-services.svg' },
-  { name: 'Azure', src: '/uploads/stack-icons/microsoft-azure.svg' },
-  { name: 'Google Cloud', src: '/uploads/stack-icons/google-cloud.svg' },
-  { name: 'DigitalOcean', src: '/uploads/stack-icons/digital-ocean.svg' },
-]
-
 export default function StackSection() {
-  const { stackSection, sectionIds } = useContent()
-  const trackRef = useRef(null)
-
-  const nudge = (direction) => {
-    const track = trackRef.current
-    if (!track) return
-    const card = track.querySelector('[data-vendor-card]')
-    const gap = Number.parseFloat(getComputedStyle(track).gap) || 0
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    track.scrollBy({ left: direction * ((card?.getBoundingClientRect().width || track.clientWidth) + gap), behavior: reduceMotion ? 'auto' : 'smooth' })
-  }
+  const { stackSection, stackGroups, sectionIds } = useContent()
+  const [expandedGroups, setExpandedGroups] = useState({})
 
   return (
-    <section id={sectionIds.capabilities} className="bg-[#f5f3ff] py-6 md:py-8">
+    <section id={sectionIds.capabilities} className="bg-white py-10 md:py-14">
       <div className="shell-container">
-        <div className="flex flex-col items-center gap-10 md:flex-row md:items-center">
-          <div className="w-full flex-shrink-0 md:w-[24%]">
-            <Reveal variant="fade">
-              <span className="inline-flex items-center rounded-full bg-[#7c5cff]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#b19cd9] ring-1 ring-[#7c5cff]/25 shadow-[0_0_14px_2px_rgba(124,92,255,0.25)]">
-                {stackSection.tag}
-              </span>
-              <Rich as="h2" className="mt-3 text-3xl font-bold tracking-tight text-[#161d26] sm:text-4xl md:text-5xl">{stackSection.title}</Rich>
-              {stackSection?.text ? (
-                <div className="mt-4 text-base leading-relaxed text-[#232b37] md:text-lg">
-                  <Rich as="p">{stackSection.text}</Rich>
-                </div>
-              ) : null}
-            </Reveal>
-          </div>
+        <Reveal variant="fade">
+          <span className="text-sm font-bold uppercase tracking-[0.12em] text-brand-ink">
+            {stackSection.tag}
+          </span>
+          <Rich as="h2" className="mt-3 max-w-4xl text-3xl font-bold tracking-tight text-[#161d26] sm:text-4xl md:text-5xl">{stackSection.title}</Rich>
+          {stackSection?.text ? (
+            <div className="mt-4 max-w-4xl text-base leading-relaxed text-[#232b37] md:text-lg">
+              <Rich as="p">{stackSection.text}</Rich>
+            </div>
+          ) : null}
+        </Reveal>
 
-          <div className="hidden w-44 flex-shrink-0 md:block" />
-
-          <div
-            ref={trackRef}
-            role="region"
-            aria-roledescription="carousel"
-            aria-label={stackSection.title}
-            tabIndex={0}
-            className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-1 pb-6 md:w-[55%]"
+        <div className="my-6 flex justify-center md:my-8">
+          <a
+            href={stackSection.ctaHref}
+            className="inline-flex items-center rounded-full border border-shell-gray-300 bg-white px-6 py-2.5 text-sm font-bold tracking-wide text-brand-ink shadow-sm transition-all duration-300 btn-lift-glow hover:border-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
           >
-            {VENDOR_LOGOS.map((vendor, idx) => (
-              <Reveal
-                key={vendor.name + idx}
-                variant="up"
-                delay={(idx % 4) + 1}
-                data-vendor-card
-                className="flex w-44 shrink-0 snap-start items-center justify-center rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]"
-              >
-                <img
-                  src={resolveSrc(vendor.src)}
-                  alt={vendor.name}
-                  loading="lazy"
-                  className="max-h-16 w-auto max-w-full object-contain"
-                  style={{ filter: 'brightness(0.85) saturate(1.05)' }}
-                  onError={(e) => { e.currentTarget.style.visibility = 'hidden' }}
-                />
-              </Reveal>
-            ))}
+            {stackSection.ctaLabel}
+          </a>
+        </div>
+
+        <div className="rounded-2xl bg-[#f2f3f5] p-3 md:p-4">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {stackGroups.map((group, index) => {
+              const expanded = Boolean(expandedGroups[group.id])
+
+              return (
+                <Reveal
+                  key={group.id}
+                  variant="up"
+                  delay={(index % 4) + 1}
+                  className="flex min-h-56 flex-col rounded-xl border border-shell-gray-200 bg-white p-4 shadow-sm md:p-5"
+                >
+                  <h3 className="text-base font-bold leading-snug text-shell-gray-900 md:text-lg">{group.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-shell-gray-700">{group.text}</p>
+
+                  <button
+                    type="button"
+                    aria-expanded={expanded}
+                    aria-controls={`vendors-${group.id}`}
+                    onClick={() => setExpandedGroups((current) => ({ ...current, [group.id]: !current[group.id] }))}
+                    className="mt-4 self-start text-xs font-bold text-shell-gray-900 hover:text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+                  >
+                    {expanded ? '− View less' : '+ View more'}
+                  </button>
+                  <div id={`vendors-${group.id}`} className={`stack-vendor-panel ${expanded ? 'is-expanded' : ''}`} aria-hidden={!expanded}>
+                    <ul className="stack-vendor-list m-0 list-none border-t border-shell-gray-200 pt-2">
+                      {group.vendors.map((vendor) => (
+                        <li key={vendor.name} className="flex items-center gap-3 py-2 text-sm text-shell-gray-700">
+                          <img
+                            src={resolveSrc(vendor.logo)}
+                            alt=""
+                            aria-hidden="true"
+                            loading="lazy"
+                            className="h-8 w-12 object-contain"
+                          />
+                          <span>{vendor.name}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+              )
+            })}
           </div>
         </div>
       </div>

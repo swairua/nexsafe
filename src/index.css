@@ -424,6 +424,10 @@
   from { opacity: 0; transform: translateY(0.55em); }
   to { opacity: 1; transform: none; }
 }
+@keyframes scrollCardReveal {
+  from { opacity: 0; transform: translate3d(0, 42px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
 @keyframes kenBurns {
   from { transform: scale(1); }
   to { transform: scale(1.07); }
@@ -446,7 +450,7 @@
 }
 
 @layer components {
-  .reveal--up { opacity: 0; transform: translateY(26px); }
+  .reveal--up { opacity: 0; transform: translateY(42px); }
   .reveal--left { opacity: 0; transform: translateX(-30px); }
   .reveal--right { opacity: 0; transform: translateX(30px); }
   .reveal--fade { opacity: 0; }
@@ -459,7 +463,7 @@
     animation-fill-mode: both;
     animation-delay: var(--reveal-delay, 0ms);
   }
-  .reveal--up.is-visible { animation-name: fadeInUp; }
+  .reveal--up.is-visible { animation-name: scrollCardReveal; animation-duration: 0.72s; }
   .reveal--left.is-visible { animation-name: fadeInLeft; }
   .reveal--right.is-visible { animation-name: fadeInRight; }
   .reveal--fade.is-visible { animation-name: fadeIn; }
@@ -472,10 +476,22 @@
   .reveal-delay-4 { --reveal-delay: 360ms; }
   .reveal-delay-5 { --reveal-delay: 450ms; }
 
-  .stack-vendors { visibility: hidden; }
-  .stack-vendors.grid-rows-\[1fr\] { visibility: visible; }
-  @media (prefers-reduced-motion: reduce) {
-    .stack-vendors { transition: none !important; }
+  .stack-vendor-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-0.75rem);
+    transition: grid-template-rows 900ms ease, opacity 700ms ease, transform 900ms ease;
+  }
+  .stack-vendor-panel.is-expanded {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stack-vendor-list {
+    min-height: 0;
+    overflow: hidden;
   }
 
   .hero-word { display: inline-block; }
