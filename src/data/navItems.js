@@ -54,7 +54,7 @@ export const navItems = [
     ],
   },
   {
-    label: 'Industries we serve',
+    label: 'Who we serve',
     href: '#industries',
     columns: [
       {
