@@ -31,7 +31,7 @@ const challengeTiles = [
 
 export const navItems = [
   {
-    label: 'Our Company',
+    label: 'Company',
     href: '#company',
     banner: {
       heading: 'Our Company',
