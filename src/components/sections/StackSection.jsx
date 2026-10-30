@@ -46,9 +46,9 @@ export default function StackSection() {
               onClick={() => setActiveIndex(Math.max(0, current - 1))}
               disabled={current === 0}
               aria-label="Previous technologies"
-              className="flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 hover:bg-shell-gray-100 disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50 md:h-11 md:w-11"
             >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
@@ -58,9 +58,9 @@ export default function StackSection() {
               onClick={() => setActiveIndex(Math.min(maxIndex, current + 1))}
               disabled={current === maxIndex}
               aria-label="Next technologies"
-              className="flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 hover:bg-shell-gray-100 disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50 md:h-11 md:w-11"
             >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
