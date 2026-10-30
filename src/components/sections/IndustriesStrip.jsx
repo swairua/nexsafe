@@ -45,7 +45,7 @@ export default function IndustriesStrip() {
       <div className="shell-container">
         <Reveal variant="fade">
           <SectionHeading eyebrow={industriesStrip.tag} title={industriesStrip.title} light titleClassName="sm:text-4xl md:text-5xl" />
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">{industriesStrip.text}</p>
+          <p className="mt-4 text-base leading-relaxed text-white/70 md:text-lg">{industriesStrip.text}</p>
         </Reveal>
 
         <div className="mt-8 flex justify-end gap-2">
