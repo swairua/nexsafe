@@ -74,6 +74,7 @@ export default function PartnerStrip() {
     }
 
     let running = true
+    const cycle = n * STEP
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -104,7 +105,7 @@ export default function PartnerStrip() {
         await moveTo(target, 900)
 
         currentPct.current = target
-        if (currentPct.current <= -99.9) {
+        if (currentPct.current <= -cycle + 0.01) {
           // seamless reset: duplicated logos make -100% identical to 0%
           isResetting.current = true
           const el = wrapperRef.current
