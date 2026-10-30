@@ -23,14 +23,14 @@ function LogoSlot({ partner }) {
     )
   }
   return (
-    <span className="flex h-16 w-28 shrink-0 items-center justify-center">
+    <span className="flex h-24 w-36 shrink-0 items-center justify-center">
       <img
         src={src}
         alt={partner.name}
         aria-hidden="true"
         loading="lazy"
         onError={() => setFailed(true)}
-        className="max-w-16 max-h-16 object-contain"
+        className="max-w-24 max-h-24 object-contain"
       />
     </span>
   )
