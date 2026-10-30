@@ -321,7 +321,7 @@ export default function PageView({ page, slug, params }) {
               </Reveal>
             </div>
           </div>
-          <div className='shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-16 pt-7 md:pb-24 md:grid-cols-[1.25fr_1fr] md:gap-8 lg:gap-16'>
+          <div className='shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-16 pt-7 md:pb-24 md:grid-cols-[1fr_1.2fr] md:gap-8 lg:gap-16'>
             <Reveal variant='left' className='space-y-8'>
               <div>
                 <p className='max-w-xl text-base leading-relaxed text-shell-gray-900 md:text-lg'>{page.intro}</p>
@@ -368,7 +368,7 @@ export default function PageView({ page, slug, params }) {
                 </div>
               )}
             </Reveal>
-            <Reveal variant='right' className='md:-mt-[158px] md:w-full md:max-w-md md:justify-self-end'>
+            <Reveal variant='right' className='md:-mt-[158px] md:w-full md:max-w-2xl md:-mr-6 md:justify-self-end'>
               <ContactForm simple />
             </Reveal>
           </div>
