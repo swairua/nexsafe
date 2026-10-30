@@ -158,7 +158,6 @@ export default function MegaMenu({ item, onClose }) {
 
   const colCount = item.columns.length
   const columnsGridClass = colCount === 1 ? 'grid-cols-1' : 'grid-cols-3'
-  const columnsSpanClass = colCount === 1 ? 'col-span-5' : 'col-span-8'
 
   return (
     <div
@@ -166,7 +165,7 @@ export default function MegaMenu({ item, onClose }) {
       onMouseLeave={onClose}
     >
       <div className="shell-container grid grid-cols-12 gap-6 py-8">
-        <div className={`${columnsSpanClass} grid gap-6 ${columnsGridClass}`}>
+        <div className={`col-span-8 grid gap-6 ${columnsGridClass}`}>
         {item.columns.map((col) => (
           <div key={col.heading} className="menu-col">
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
