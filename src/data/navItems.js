@@ -33,10 +33,6 @@ export const navItems = [
   {
     label: 'Company',
     href: '#company',
-    banner: {
-      heading: 'Our Company',
-      sub: 'EnableIT. Transform. Empower.',
-    },
     columns: [
       {
         heading: 'Our Company',
