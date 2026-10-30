@@ -122,7 +122,7 @@ export default function PartnerStrip() {
   }, [n, reduceMotion])
 
   return (
-    <section id={sectionIds.partners} className="bg-white pt-2 pb-4 md:pt-4 md:pb-6">
+    <section id={sectionIds.partners} className="bg-white pb-2 md:pb-4">
       <div className="shell-container">
         <div className="relative grid gap-10 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:gap-x-32 md:items-stretch">
           <div className="md:z-10 md:flex md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
@@ -141,7 +141,7 @@ export default function PartnerStrip() {
           >
             <div
               ref={wrapperRef}
-              className="flex flex-nowrap px-1 pb-8 pt-4 md:min-h-0 md:items-center md:py-10"
+              className="flex flex-nowrap px-1 pb-4 pt-2 md:min-h-0 md:items-center md:py-4"
               style={{ transform: `translateX(${currentPct.current}%)` }}
             >
               {doubled.map((partner, i) => (
