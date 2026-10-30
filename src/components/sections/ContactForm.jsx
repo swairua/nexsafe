@@ -46,7 +46,9 @@ export default function ContactForm({ simple = false } = {}) {
   const F = "w-full rounded-xl bg-white border border-shell-gray-300 border-dashed px-4 py-2 text-base text-shell-gray-900 outline-none transition-all duration-200 hover:border-brand-ink/50 focus:border-brand-ink focus:ring-1 focus:ring-brand-ink/40 focus:shadow-[0_0_0_4px_rgba(1,116,164,0.12)]"
   const L = "block text-base font-semibold text-shell-gray-800 mb-1"
   return (
-    <div className={`${simple ? "w-full" : "mx-auto max-w-[1600px]"} rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] md:p-8`}>
+    <div className={simple
+      ? "w-full rounded-2xl border border-brand-ink/60 p-6 md:p-8"
+      : "mx-auto max-w-[1600px] rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] md:p-8"}>
       {!simple && (
         <span className="mb-3 inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]">
           Contact us
@@ -54,7 +56,7 @@ export default function ContactForm({ simple = false } = {}) {
       )}
       <h2 className={simple ? "text-center text-xl font-bold tracking-tight text-shell-gray-900" : "mt-3 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-3xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] md:text-4xl"}><Rich>{contactForm.title}</Rich></h2>
       {contactForm.text ? <div className="mt-4 text-lg text-shell-gray-600"><Rich as="p">{contactForm.text}</Rich></div> : null}
-      <form onSubmit={submit} className={simple ? "mt-6 grid gap-6 sm:grid-cols-2" : "mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-8 gap-y-6 sm:gap-x-10 sm:gap-y-8 md:gap-x-12 md:gap-y-10 lg:gap-x-16 lg:gap-y-12 xl:gap-x-20 xl:gap-y-14"}>
+      <form onSubmit={submit} className={simple ? "mt-6 md:mt-8 grid gap-6 rounded-xl border border-brand-ink/60 bg-white p-4 sm:grid-cols-2 md:p-6" : "mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-8 gap-y-6 sm:gap-x-10 sm:gap-y-8 md:gap-x-12 md:gap-y-10 lg:gap-x-16 lg:gap-y-12 xl:gap-x-20 xl:gap-y-14"}>
         <label className={L}>{contactForm.firstNameLabel}<input value={form.firstName} onChange={set("firstName")} className={F + " mt-1"} /></label>
         <label className={L}>{contactForm.lastNameLabel}<input value={form.lastName} onChange={set("lastName")} className={F + " mt-1"} /></label>
         <label className={L + " sm:col-span-2"}>{contactForm.companyLabel}<input value={form.company} onChange={set("company")} className={F + " mt-1"} /></label>

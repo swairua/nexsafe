@@ -54,7 +54,7 @@ export const navItems = [
     ],
   },
   {
-    label: 'Industries we serve',
+    label: 'Who we serve',
     href: '#industries',
     columns: [
       {
@@ -72,40 +72,27 @@ export const navItems = [
         ),
         viewAll: { label: 'View all', href: '#industries' },
       },
+    ],
+  },
+  {
+    label: 'Solutions',
+    href: pageHref('Services & Solutions'),
+    layout: 'solutions',
+    columns: [
+      {
+        heading: 'Services',
+        links: links(
+          'Cybersecurity',
+          'Network Management',
+          'Backup & Disaster Recovery',
+          'Software, ERP & App Development',
+          'Automation',
+        ),
+        viewAll: { label: 'View all solutions', href: pageHref('Services & Solutions') },
+      },
       {
         heading: 'Business challenges',
         tiles: challengeTiles,
-      },
-    ],
-  },
-  {
-    label: 'Success Stories',
-    href: '#insights',
-    columns: [
-      {
-        heading: 'Client outcomes',
-        links: [
-          { label: 'View all insights', href: '#/blog' },
-          { label: 'IT alignment for a growing business', href: '#/success-story' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Support',
-    href: '#support',
-    columns: [
-      {
-        heading: 'Help and support',
-        links: links('Help and FAQ', 'Client Support', 'Contact us'),
-      },
-      {
-        heading: 'Learn',
-        links: links('Events', 'Blog'),
-      },
-      {
-        heading: 'Legal',
-        links: links('Privacy Policy', 'Cookie policy', 'Terms & Conditions'),
       },
     ],
   },

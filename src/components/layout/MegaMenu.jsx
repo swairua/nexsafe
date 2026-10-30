@@ -111,6 +111,15 @@ export default function MegaMenu({ item, onClose }) {
                 </li>
               ))}
             </ul>
+            {services.viewAll ? (
+              <a
+                href={services.viewAll.href}
+                onClick={onClose}
+                className="mt-5 inline-block text-[0.9rem] font-bold text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
+              >
+                {services.viewAll.label} →
+              </a>
+            ) : null}
           </div>
 
           <div className="menu-col col-span-6">
@@ -131,7 +140,7 @@ export default function MegaMenu({ item, onClose }) {
                       {t.label}
                     </span>
                     {t.blurb && (
-                      <span className="mt-1 block text-xs text-shell-gray-500">
+                      <span className="mt-1 block text-sm text-shell-gray-500">
                         {t.blurb}
                       </span>
                     )}
@@ -199,7 +208,7 @@ export default function MegaMenu({ item, onClose }) {
                       {t.label}
                     </span>
                     {t.blurb ? (
-                      <span className="mt-1 block text-xs text-shell-gray-500">
+                      <span className="mt-1 block text-sm text-shell-gray-500">
                         {t.blurb}
                       </span>
                     ) : null}

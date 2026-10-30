@@ -63,7 +63,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                       {col.heading}
                     </h4>
                     {col.tiles && col.tiles.length > 0 ? (
-                      <div className="grid grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-2">
                         {col.tiles.map((t) => (
                           <a
                             key={t.label}
@@ -109,8 +109,13 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
           <a href="tel:18255704550" className="text-sm font-semibold text-[#1a1d21] transition-colors hover:text-[#0b1fb3]">
             {settings.phone || '1-825-570-4550'}
           </a>
-          <a href="#/contact-us" onClick={onNavigate} className="rounded-md bg-[#0b1fb3] px-5 py-2.5 text-sm font-semibold text-white">
+          <a
+            href="#/contact-us"
+            onClick={onNavigate}
+            className="inline-flex items-center rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+          >
             Contact Us
+            <span className="arrow" aria-hidden="true">→</span>
           </a>
         </div>
       </nav>
