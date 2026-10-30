@@ -120,7 +120,7 @@ export default function BlogIndex({ page, topic }) {
       </section>
 
       <section className="bg-white">
-        <div className="shell-container py-16 md:py-24">
+        <div className="shell-container py-8 md:py-12">
           {topics.length > 1 ? (
             <div className="mb-8 flex flex-wrap gap-2" role="navigation" aria-label="Filter insights by topic">
               {['All', ...topics].map((t) => (
@@ -155,7 +155,7 @@ export default function BlogIndex({ page, topic }) {
 
       {relatedPages.length > 0 && (
         <section className="bg-shell-gray-100">
-          <div className="shell-container py-16 md:py-24">
+          <div className="shell-container py-8 md:py-12">
             <Reveal as="h2" variant="fade" className="text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl">
               {labels.exploreMore}
             </Reveal>
