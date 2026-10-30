@@ -185,7 +185,7 @@ export default function PageView({ page, slug, params }) {
                         <Copy para={item.text} />
                       </div>
                       {item.href ? (
-                        <a href={item.href} className='arrow-link inline-flex items-center justify-center gap-0.5 mt-3 rounded-full border border-shell-gray-300 bg-white px-4 py-2 text-sm font-medium text-[#29b2fe] shadow-sm btn-lift-glow hover:border-brand-ink hover:text-brand-ink'>
+                        <a href={item.href} className='mt-3 ml-auto flex w-fit items-center rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50'>
                           {labels.learnMore || 'Learn more'} <span className='arrow'>›</span>
                         </a>
                       ) : null}
@@ -303,7 +303,7 @@ export default function PageView({ page, slug, params }) {
             <button
               type='button'
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className='arrow-link inline-flex items-center justify-center gap-0.5 mt-10 rounded-full border border-shell-gray-300 bg-white px-3 py-2 text-sm font-medium text-[#29b2fe] shadow-sm btn-lift-glow hover:border-brand-ink hover:text-brand-ink'
+              className='mt-10 ml-auto flex w-fit items-center rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50'
             >
               {labels.backToTop} <span className='arrow'>↑</span>
             </button>
