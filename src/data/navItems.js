@@ -72,10 +72,6 @@ export const navItems = [
         ),
         viewAll: { label: 'View all', href: '#industries' },
       },
-      {
-        heading: 'Business challenges',
-        tiles: challengeTiles,
-      },
     ],
   },
   {
