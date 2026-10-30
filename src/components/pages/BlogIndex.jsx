@@ -107,20 +107,20 @@ export default function BlogIndex({ page, topic }) {
             <span aria-hidden="true">/</span>
             <span className="font-semibold text-white">{page.title}</span>
           </Reveal>
-          <Reveal as="p" delay={2} className="mt-8 text-xs font-bold uppercase tracking-wider text-shell-red">
+          <Reveal as="p" delay={2} className="mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow">
             {copy.tag || page.eyebrow}
           </Reveal>
-          <Reveal as="h1" delay={3} className="mt-3 max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">
+          <Reveal as="h1" delay={3} className="mb-4 max-w-3xl text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]">
             {copy.title || page.title}
           </Reveal>
-          <Reveal delay={4} className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
+          <Reveal delay={4} className="mb-6 max-w-2xl text-base leading-relaxed text-white/90 md:text-lg">
             <Rich as="p">{copy.text || page.intro}</Rich>
           </Reveal>
         </div>
       </section>
 
       <section className="bg-white">
-        <div className="shell-container py-16 md:py-24">
+        <div className="shell-container py-8 md:py-12">
           {topics.length > 1 ? (
             <div className="mb-8 flex flex-wrap gap-2" role="navigation" aria-label="Filter insights by topic">
               {['All', ...topics].map((t) => (
@@ -155,7 +155,7 @@ export default function BlogIndex({ page, topic }) {
 
       {relatedPages.length > 0 && (
         <section className="bg-shell-gray-100">
-          <div className="shell-container py-16 md:py-24">
+          <div className="shell-container py-8 md:py-12">
             <Reveal as="h2" variant="fade" className="text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl">
               {labels.exploreMore}
             </Reveal>

@@ -88,13 +88,13 @@ export default function PageView({ page, slug, params }) {
             <span aria-hidden='true'>/</span>
             <span className='font-semibold text-white'>{page.title}</span>
           </Reveal>
-          <Reveal as='p' delay={2} className='mt-8 text-xs font-bold uppercase tracking-wider text-shell-red'>
+          <Reveal as='p' delay={2} className='mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow'>
             {page.eyebrow}
           </Reveal>
-          <Reveal as='h1' delay={3} className='mt-3 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl'>
+          <Reveal as='h1' delay={3} className='mb-4 text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]'>
             {page.title}
           </Reveal>
-          <Reveal as='div' delay={4} className='mt-5 max-w-3xl text-base leading-relaxed text-white/80 md:text-lg'>
+          <Reveal as='div' delay={4} className='mb-6 max-w-3xl text-base leading-relaxed text-white/90 md:text-lg'>
             <Copy para={page.intro} />
           </Reveal>
         </div>
@@ -321,7 +321,7 @@ export default function PageView({ page, slug, params }) {
               </Reveal>
             </div>
           </div>
-          <div className='shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-16 pt-7 md:pb-24 md:grid-cols-[1fr_1.2fr] md:gap-8 lg:gap-16'>
+          <div className='shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-8 pt-7 md:pb-12 md:grid-cols-[1fr_1.2fr] md:gap-8 lg:gap-16'>
             <Reveal variant='left' className='space-y-8'>
               <div>
                 <p className='max-w-xl text-base leading-relaxed text-shell-gray-900 md:text-lg'>{page.intro}</p>
