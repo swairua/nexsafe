@@ -33,7 +33,6 @@ export const heroSlides = [
     kicker: 'INDUSTRY FOCUS',
     title: 'Technology solutions build around the industries we serve.',
     text: 'Different industries depend on technology in different ways. From keeping production systems connected to supporting healthcare teams and business-critical operations, Nexsate delivers IT solutions that reflect the demands, workflows, and priorities of each sector.',
-    cta: { label: 'Explore Industries', href: pageHref('Services & Solutions') },
     image: '/uploads/hero_2.jpg',
     alt: 'Industrial plant with illuminated stacks operating at night',
     fallback: '#070e40',
