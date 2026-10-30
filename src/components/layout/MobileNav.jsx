@@ -24,7 +24,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
               </svg>
             </button>
             {openIndex === i && (
-              <div className="panel-anim grid grid-cols-1 gap-x-6 gap-y-4 pb-5 sm:grid-cols-2">
+              <div className="panel-anim grid grid-cols-3 gap-x-4 gap-y-4 pb-5 sm:grid-cols-2 sm:gap-x-6">
                 {(item.links || []).length > 0 && (
                   <div>
                   <ul className="space-y-2">

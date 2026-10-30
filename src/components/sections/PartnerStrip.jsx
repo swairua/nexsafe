@@ -23,22 +23,25 @@ function LogoSlot({ partner }) {
     )
   }
   return (
-    <span className="flex h-16 w-28 shrink-0 items-center justify-center">
+    <span className="flex h-24 w-36 shrink-0 items-center justify-center">
       <img
         src={src}
         alt={partner.name}
         aria-hidden="true"
         loading="lazy"
         onError={() => setFailed(true)}
-        className="max-w-16 max-h-16 object-contain"
+        className="max-w-24 max-h-24 object-contain"
       />
     </span>
   )
 }
 
+const PER_VIEW = 3
+const STEP = 100 / PER_VIEW
+
 function VendorTile({ partner }) {
   return (
-    <div className="group flex h-full min-h-[7rem] items-center justify-center rounded-xl border border-shell-gray-300 bg-black/10 px-3 py-4 shadow-sm transition-all duration-300 hover:-translate-y-1">
+    <div className="group flex h-full min-h-[9rem] items-center justify-center rounded-xl border border-shell-gray-300 bg-black/10 px-4 py-6 shadow-sm transition-all duration-300 hover:-translate-y-1">
       <LogoSlot partner={partner} />
       <span className="sr-only">{partner.name}</span>
     </div>
@@ -71,6 +74,7 @@ export default function PartnerStrip() {
     }
 
     let running = true
+    const cycle = n * STEP
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -94,14 +98,14 @@ export default function PartnerStrip() {
 
     ;(async () => {
       while (running) {
-        await sleep(2000) // show current 4 logos for two seconds
+        await sleep(2000) // show current 3 logos for two seconds
         if (!running) break
 
-        const target = currentPct.current - 25 // smoothly hide the most-left logo
+        const target = currentPct.current - STEP // smoothly hide the most-left logo
         await moveTo(target, 900)
 
         currentPct.current = target
-        if (currentPct.current <= -100) {
+        if (currentPct.current <= -cycle + 0.01) {
           // seamless reset: duplicated logos make -100% identical to 0%
           isResetting.current = true
           const el = wrapperRef.current
@@ -118,9 +122,9 @@ export default function PartnerStrip() {
   }, [n, reduceMotion])
 
   return (
-    <section id={sectionIds.partners} className="bg-white pt-2 pb-6 md:pt-4 md:pb-10">
+    <section id={sectionIds.partners} className="bg-white pb-2 md:pb-4">
       <div className="shell-container">
-        <div className="relative grid gap-6 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:gap-x-20 md:items-stretch">
+        <div className="relative grid gap-10 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:gap-x-32 md:items-stretch">
           <div className="md:z-10 md:flex md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
             <Reveal variant="fade">
               <SectionHeading eyebrow={partnerStrip.tag} title={partnerStrip.title} size="small" weight="bold" />
@@ -137,11 +141,11 @@ export default function PartnerStrip() {
           >
             <div
               ref={wrapperRef}
-              className="flex flex-nowrap px-1 pb-6 pt-2 md:min-h-0 md:items-center md:py-6"
+              className="flex flex-nowrap px-1 pb-4 pt-2 md:min-h-0 md:items-center md:py-4"
               style={{ transform: `translateX(${currentPct.current}%)` }}
             >
               {doubled.map((partner, i) => (
-                <div key={`${partner.group}-${partner.name}-${i}`} className="flex-[0_0_25%]">
+                <div key={`${partner.group}-${partner.name}-${i}`} className="flex-[0_0_33.3333%] px-3 md:px-4">
                   <VendorTile partner={partner} />
                 </div>
               ))}

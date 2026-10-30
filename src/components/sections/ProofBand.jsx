@@ -145,7 +145,7 @@ export default function ProofBand() {
       </div>
 
       <div className="shell-container relative z-10 col-start-1 row-start-2 row-end-4">
-        <section className="bg-transparent pt-2 pb-6 md:pt-4 md:pb-10">
+        <section className="bg-transparent pt-2 pb-2 md:pt-4 md:pb-3">
           <div className="shell-container">
             <div className="flex items-center justify-between gap-4">
               <span className="inline-flex items-center rounded-full bg-[#7c5cff]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#b19cd9] ring-1 ring-[#7c5cff]/25 shadow-[0_0_14px_2px_rgba(124,92,255,0.25)]">
