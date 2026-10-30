@@ -40,7 +40,7 @@ export const navItems = [
     columns: [
       {
         heading: 'Our Company',
-        links: links('Who We Are', 'Our Philosophy', 'Our People', 'Why Nexsate', 'Our Partner'),
+        links: links('Who We Are', 'Our Philosophy', 'Our People', 'Why Nexsate', 'Our Partners'),
         viewAll: { label: 'Explore Company', href: '#company' },
       },
       {
