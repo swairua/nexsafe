@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import SectionHeading from '../ui/SectionHeading.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import { useContent } from '../../content/ContentContext.jsx'
@@ -14,7 +15,30 @@ const ICON_PATHS = {
 export default function IndustriesStrip() {
   const { industriesStrip, sectionIds } = useContent()
   const items = industriesStrip.items || []
+  const listRef = useRef(null)
+  const [atStart, setAtStart] = useState(true)
+  const [atEnd, setAtEnd] = useState(false)
+
+  const updateEdges = () => {
+    const el = listRef.current
+    if (!el) return
+    setAtStart(el.scrollLeft <= 1)
+    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 1)
+  }
+
+  useEffect(() => {
+    updateEdges()
+    window.addEventListener('resize', updateEdges)
+    return () => window.removeEventListener('resize', updateEdges)
+  }, [items.length])
+
   if (!items.length) return null
+
+  const scrollList = (dir) => {
+    const el = listRef.current
+    if (!el) return
+    el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: 'smooth' })
+  }
 
   return (
     <section id={sectionIds.industries} className="scroll-mt-28 bg-[#0a1a4a] pt-8 pb-10 md:pt-12 md:pb-16">
@@ -24,7 +48,36 @@ export default function IndustriesStrip() {
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">{industriesStrip.text}</p>
         </Reveal>
 
-        <ul className="no-scrollbar -mx-1 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3">
+        <div className="mt-8 flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={() => scrollList(-1)}
+            disabled={atStart}
+            aria-label="Previous industries"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+          >
+            <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollList(1)}
+            disabled={atEnd}
+            aria-label="Next industries"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-shell-red text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+          >
+            <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        <ul
+          ref={listRef}
+          onScroll={updateEdges}
+          className="no-scrollbar -mx-1 mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
+        >
           {items.map((item, idx) => (
             <Reveal
               key={item.label}
@@ -50,15 +103,6 @@ export default function IndustriesStrip() {
             </Reveal>
           ))}
         </ul>
-
-        <div className="mt-10 flex justify-end">
-          <a
-            href={industriesStrip.cta.href}
-            className="inline-flex items-center rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
-          >
-            {industriesStrip.cta.label}
-          </a>
-        </div>
       </div>
     </section>
   )

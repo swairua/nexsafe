@@ -328,7 +328,6 @@ export const industriesStrip = {
   tag: 'Delivering industry-specific technology solutions',
   title: 'Delivering industry-specific technology solutions',
   text: 'Behind every industry are critical processes, specialized applications, and people who depend on them. Nexsate considers these operational priorities when developing, implementing, and supporting technology across different business environments.',
-  cta: { label: 'Explore Industries', href: pageHref('Services & Solutions') },
   items: [
     { label: 'Manufacturing', href: pageHref('Industrial & Manufacturing'), note: '', icon: 'factory' },
     { label: 'Healthcare', href: pageHref('Healthcare'), note: '', icon: 'heart' },

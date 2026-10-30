@@ -50,7 +50,7 @@ function ChallengeIcon({ icon }) {
   )
 }
 
-function PromoPanel({ onClose, span = 'col-span-3' }) {
+function PromoPanel({ onClose, span = 'col-span-3', stacked = false }) {
   const { pageConnect } = useContent()
   if (!pageConnect) return null
   return (
@@ -58,7 +58,7 @@ function PromoPanel({ onClose, span = 'col-span-3' }) {
       <a
         href={pageConnect.cta?.href || '#/contact-us'}
         onClick={onClose}
-        className="group flex items-center gap-6 rounded-2xl p-7 text-white transition-transform hover:scale-[1.01] md:p-8"
+        className={`group flex gap-6 rounded-2xl p-7 text-white transition-transform hover:scale-[1.01] md:p-8 ${stacked ? 'flex-col items-start' : 'items-center'}`}
         style={{
           background: '#0174a4',
           boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
@@ -122,7 +122,7 @@ export default function MegaMenu({ item, onClose }) {
             ) : null}
           </div>
 
-          <div className="menu-col col-span-6">
+          <div className="menu-col col-span-5">
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {challenges.heading}
             </h3>
@@ -150,7 +150,7 @@ export default function MegaMenu({ item, onClose }) {
             </div>
           </div>
 
-          <PromoPanel onClose={onClose} />
+          <PromoPanel onClose={onClose} span="col-span-4" stacked />
         </div>
       </div>
     )
