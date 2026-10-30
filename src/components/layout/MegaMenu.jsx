@@ -72,7 +72,7 @@ function PromoPanel({ onClose, span = 'col-span-3', stacked = false }) {
           )}
           <p className="text-sm leading-relaxed text-white/80">{pageConnect.text}</p>
         </div>
-        <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark">
+        <span className={`inline-flex shrink-0 items-center gap-2 rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark ${stacked ? 'self-end' : ''}`}>
           {pageConnect.cta?.label || 'Learn more'}
           <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -157,7 +157,7 @@ export default function MegaMenu({ item, onClose }) {
   }
 
   const colCount = item.columns.length
-  const linkColClass = colCount === 1 ? 'col-span-5' : colCount === 2 ? 'col-span-3' : 'col-span-2'
+  const linkColClass = colCount === 1 ? 'col-span-6' : colCount === 2 ? 'col-span-3' : 'col-span-2'
 
   return (
     <div
