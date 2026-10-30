@@ -79,33 +79,23 @@ export const navItems = [
     ],
   },
   {
-    label: 'Success Stories',
-    href: '#insights',
+    label: 'Solutions',
+    href: pageHref('Services & Solutions'),
+    layout: 'solutions',
     columns: [
       {
-        heading: 'Client outcomes',
-        links: [
-          { label: 'View all insights', href: '#/blog' },
-          { label: 'IT alignment for a growing business', href: '#/success-story' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Support',
-    href: '#support',
-    columns: [
-      {
-        heading: 'Help and support',
-        links: links('Help and FAQ', 'Client Support', 'Contact us'),
+        heading: 'Services',
+        links: links(
+          'Cybersecurity',
+          'Network Management',
+          'Backup & Disaster Recovery',
+          'Software, ERP & App Development',
+          'Automation',
+        ),
       },
       {
-        heading: 'Learn',
-        links: links('Events', 'Blog'),
-      },
-      {
-        heading: 'Legal',
-        links: links('Privacy Policy', 'Cookie policy', 'Terms & Conditions'),
+        heading: 'Business challenges',
+        tiles: challengeTiles,
       },
     ],
   },
