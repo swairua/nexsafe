@@ -66,9 +66,7 @@ export default function HomeContact() {
           )}
         </Reveal>
         <Reveal variant="right" className="md:-mt-[158px] md:w-full md:max-w-2xl md:-mr-6 md:justify-self-end">
-          <div className="rounded-sm bg-shell-black p-4 shadow-md md:p-5">
-            <ContactForm simple />
-          </div>
+          <ContactForm simple />
         </Reveal>
       </div>
     </section>
