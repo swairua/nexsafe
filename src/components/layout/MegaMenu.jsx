@@ -131,7 +131,7 @@ export default function MegaMenu({ item, onClose }) {
                       {t.label}
                     </span>
                     {t.blurb && (
-                      <span className="mt-1 block text-xs text-shell-gray-500">
+                      <span className="mt-1 block text-sm text-shell-gray-500">
                         {t.blurb}
                       </span>
                     )}
@@ -199,7 +199,7 @@ export default function MegaMenu({ item, onClose }) {
                       {t.label}
                     </span>
                     {t.blurb ? (
-                      <span className="mt-1 block text-xs text-shell-gray-500">
+                      <span className="mt-1 block text-sm text-shell-gray-500">
                         {t.blurb}
                       </span>
                     ) : null}

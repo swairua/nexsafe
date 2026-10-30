@@ -63,7 +63,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
                       {col.heading}
                     </h4>
                     {col.tiles && col.tiles.length > 0 ? (
-                      <div className="grid grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-2">
                         {col.tiles.map((t) => (
                           <a
                             key={t.label}
