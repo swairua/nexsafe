@@ -36,16 +36,25 @@ export const navItems = [
     columns: [
       {
         heading: 'Our Company',
-        links: links('Who We Are', 'Our Philosophy', 'Our People', 'Why Nexsate', 'Our Partners'),
+        links: [
+          { label: 'Who We Are', href: pageHref('About Us') },
+          { label: 'Our People', href: pageHref('Team') },
+          { label: 'Why Nexsate', href: pageHref('Why Us') },
+          { label: 'Our Partners', href: pageHref('Partners & Certifications') },
+        ],
         viewAll: { label: 'Explore Company', href: '#company' },
       },
       {
         heading: 'Our Work',
-        links: links('What We Do', 'How We Work', 'Who We Serve', 'Our Expertise', 'Customers Success'),
+        links: [
+          { label: 'What We Do', href: pageHref('Services & Solutions') },
+          { label: 'Who We Serve', href: '#industries' },
+          { label: 'Customers Success', href: pageHref('Case Studies') },
+        ],
       },
       {
         heading: 'People and Impact',
-        links: links('Careers', 'Innovation & Research', 'Communities Impact', 'Corporate Responsibility'),
+        links: links('Careers'),
       },
     ],
   },

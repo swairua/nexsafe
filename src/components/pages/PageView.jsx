@@ -127,7 +127,7 @@ export default function PageView({ page, slug, params }) {
       )}
 
       {page.sections.map((section, sIdx) => (
-        <section key={section.heading} className={sIdx % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
+        <section key={section.heading} className={sIdx % 2 === 0 ? 'values-cycle-bg' : 'bg-shell-gray-100'}>
           <div className='shell-container py-8 md:py-12 break-words'>
             <Reveal id={`section-${sIdx + 1}`} variant='fade' className='scroll-mt-40'>
               <span className='inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]'>
@@ -141,14 +141,14 @@ export default function PageView({ page, slug, params }) {
               ))}
               {section.list && (
                 <ul className='mt-6 grid gap-4 sm:grid-cols-2'>
-                  {section.list.map((item) => (
-                    <li
+                  {section.list.map((item, idx) => (
+                    <Reveal as='li' variant='up' delay={(idx % 4) + 1}
                       key={item}
                       className='flex gap-3 rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
                     >
                       <span className='mt-1.5 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red' aria-hidden='true' />
                       <span className='text-base leading-relaxed text-shell-gray-700 md:text-lg'>{item}</span>
-                    </li>
+                    </Reveal>
                   ))}
                 </ul>
               )}
@@ -172,8 +172,8 @@ export default function PageView({ page, slug, params }) {
               )}
               {section.items && slug !== 'help-and-faq' && (
                 <ul className='mt-6 grid gap-4 sm:grid-cols-2'>
-                  {section.items.map((item) => (
-                    <li
+                  {section.items.map((item, idx) => (
+                    <Reveal as='li' variant='up' delay={(idx % 4) + 1}
                       key={item.title}
                       className='rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
                     >
@@ -189,7 +189,7 @@ export default function PageView({ page, slug, params }) {
                           {labels.learnMore || 'Learn more'} <span className='arrow'>›</span>
                         </a>
                       ) : null}
-                    </li>
+                    </Reveal>
                   ))}
                 </ul>
               )}
@@ -221,7 +221,7 @@ export default function PageView({ page, slug, params }) {
       {slug === 'about-us' && <StartBand />}
 
       {gallery.length > 0 && (
-        <section className={page.sections.length % 2 === 0 ? 'bg-shell-gray-100' : 'bg-white'}>
+        <section className={page.sections.length % 2 === 0 ? 'bg-shell-gray-100' : 'values-cycle-bg'}>
           <div className='shell-container py-8 md:py-12'>
             <div className='grid gap-5 sm:grid-cols-2 lg:grid-cols-3'>
               {gallery.map((shot) => (
@@ -240,8 +240,8 @@ export default function PageView({ page, slug, params }) {
       )}
 
       {categoryImage && (
-        <section className={page.sections.length % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
-          <div className='shell-container py-8 md:py-12'>
+        <section className={page.sections.length % 2 === 0 ? 'values-cycle-bg' : 'bg-shell-gray-100'}>
+        <div className='shell-container py-8 md:py-12'>
             <Reveal variant='zoom'>
               <SmartImage
                 src={categoryImage}
@@ -274,8 +274,8 @@ export default function PageView({ page, slug, params }) {
       )}
 
       {relatedPages.length > 0 && (
-        <section className={page.sections.length % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
-          <div className='shell-container py-8 md:py-12'>
+        <section className={page.sections.length % 2 === 0 ? 'values-cycle-bg' : 'bg-shell-gray-100'}>
+        <div className='shell-container py-8 md:py-12'>
             <Reveal as='h2' variant='fade' className='text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl'>
               {labels.exploreMore}
             </Reveal>
@@ -379,4 +379,3 @@ export default function PageView({ page, slug, params }) {
     </article>
   )
 }
-
