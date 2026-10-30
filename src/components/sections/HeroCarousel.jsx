@@ -74,12 +74,10 @@ export default function HeroCarousel() {
                   <div className="hero-text mb-6 w-full text-base leading-relaxed text-white/90 md:text-lg">
                     <Rich as="p">{slide.text}</Rich>
                   </div>
-                  {slide.cta && (
-                    <a href={slide.cta.href} className="hero-cta btn-pill btn-pill--ghost-light">
-                      {slide.cta.label}
-                      <span aria-hidden="true">→</span>
-                    </a>
-                  )}
+                  <a href={slide.cta.href} className="hero-cta btn-pill btn-pill--ghost-light">
+                    {slide.cta.label}
+                    <span aria-hidden="true">→</span>
+                  </a>
                 </div>
               </div>
             </div>
