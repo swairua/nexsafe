@@ -157,7 +157,7 @@ export default function MegaMenu({ item, onClose }) {
   }
 
   const colCount = item.columns.length
-  const linkColClass = colCount === 1 ? 'col-span-6' : colCount === 2 ? 'col-span-3' : 'col-span-2'
+  const columnsGridClass = colCount === 1 ? 'grid-cols-1' : 'grid-cols-3'
 
   return (
     <div
@@ -166,15 +166,16 @@ export default function MegaMenu({ item, onClose }) {
     >
       <div className="shell-container grid grid-cols-12 gap-6 py-8">
         {item.banner && (
-          <div className="col-span-12 mb-6">
+          <div className="col-span-3 self-start">
             <p className="mb-1 text-xs font-bold uppercase tracking-wider text-shell-gray-500">
               {item.banner.heading}
             </p>
             <p className="text-lg font-bold tracking-tight text-[#0a1440]">{item.banner.sub}</p>
           </div>
         )}
+        <div className={`col-span-5 grid gap-6 ${columnsGridClass}`}>
         {item.columns.map((col) => (
-          <div key={col.heading} className={`menu-col ${linkColClass}`}>
+          <div key={col.heading} className="menu-col">
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {col.heading}
             </h3>
@@ -228,7 +229,8 @@ export default function MegaMenu({ item, onClose }) {
             ) : null}
           </div>
         ))}
-        <PromoPanel onClose={onClose} span="col-span-6" />
+        </div>
+        <PromoPanel onClose={onClose} span="col-span-4" stacked />
       </div>
     </div>
   )
