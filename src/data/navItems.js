@@ -88,6 +88,7 @@ export const navItems = [
           'Software, ERP & App Development',
           'Automation',
         ),
+        viewAll: { label: 'View all solutions', href: pageHref('Services & Solutions') },
       },
       {
         heading: 'Business challenges',
