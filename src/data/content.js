@@ -335,7 +335,7 @@ export const industriesStrip = {
     { label: 'Banking and Finance', href: pageHref('Banks & Insurance'), note: '', icon: 'bank' },
     { label: 'Transport & Logistics', href: pageHref('Transportation & Logistics'), note: '', icon: 'truck' },
     { label: 'Professional services', href: pageHref('Consulting Providers'), note: '', icon: 'briefcase' },
-    { label: 'Non-Profit', href: pageHref('Non-Profit'), note: '', icon: 'heart' },
+    { label: 'Non-Profit', href: pageHref('Non-Profit'), note: '', icon: 'users' },
   ],
 }
 
