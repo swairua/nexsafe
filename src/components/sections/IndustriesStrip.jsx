@@ -44,7 +44,7 @@ export default function IndustriesStrip() {
     <section id={sectionIds.industries} className="scroll-mt-28 bg-[#0a1a4a] pt-8 pb-10 md:pt-12 md:pb-16">
       <div className="shell-container">
         <Reveal variant="fade">
-          <SectionHeading eyebrow={industriesStrip.tag} title={industriesStrip.title} light titleClassName="sm:text-4xl md:text-5xl" />
+          <SectionHeading eyebrow={industriesStrip.tag} title={industriesStrip.title} light eyebrowGlow titleClassName="sm:text-4xl md:text-5xl" />
           <p className="mt-4 text-base leading-relaxed text-white/70 md:text-lg">{industriesStrip.text}</p>
         </Reveal>
 
