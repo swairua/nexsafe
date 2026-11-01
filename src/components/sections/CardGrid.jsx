@@ -15,7 +15,7 @@ export default function CardGrid() {
   if (allCards.length === 0) return null
 
   const lastPage = Math.max(0, Math.ceil(allCards.length / PAGE_SIZE) - 1)
-  const cards = allCards.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE)
+  const pages = Array.from({ length: lastPage + 1 }, (_, i) => allCards.slice(i * PAGE_SIZE, i * PAGE_SIZE + PAGE_SIZE))
 
   return (
 <section id={sectionIds.itSolutions} className="relative overflow-hidden bg-white pt-2 pb-6 md:pt-4 md:pb-10">
@@ -52,10 +52,12 @@ export default function CardGrid() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card, idx) => (
-            <Reveal key={card.id} delay={(idx % 3) + 1}>
-              <a
+        <div className="-mx-2 -my-6 overflow-hidden px-2 py-6">
+          <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${page * 100}%)` }}>
+            {pages.map((pageCards, pageIdx) => (
+              <div key={pageIdx} className="grid w-full shrink-0 grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+                {pageCards.map((card) => (
+                  <a
                 href={card.href}
                 className="group flex h-full flex-col overflow-hidden rounded-[16px] bg-[#f5f3ff] shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]"
               >
@@ -82,9 +84,11 @@ export default function CardGrid() {
                     {card.linkLabel} <span className="arrow">→</span>
                   </span>
                 </div>
-              </a>
-            </Reveal>
-          ))}
+                  </a>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-10 flex justify-end">
