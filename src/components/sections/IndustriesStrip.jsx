@@ -44,8 +44,8 @@ export default function IndustriesStrip() {
     <section id={sectionIds.industries} className="scroll-mt-28 bg-[#0a1a4a] pt-8 pb-10 md:pt-12 md:pb-16">
       <div className="shell-container">
         <Reveal variant="fade">
-          <SectionHeading eyebrow={industriesStrip.tag} title={industriesStrip.title} light titleClassName="sm:text-4xl md:text-5xl" />
-          <p className="mt-4 text-base leading-relaxed text-white/70 md:text-lg">{industriesStrip.text}</p>
+          <SectionHeading eyebrow={industriesStrip.tag} title={industriesStrip.title} light eyebrowGlow titleClassName="sm:text-4xl md:text-5xl" />
+          <p className="mt-4 text-base leading-loose text-white/70 md:text-lg">{industriesStrip.text}</p>
         </Reveal>
 
         <div className="mt-8 flex justify-end gap-2">
@@ -76,7 +76,7 @@ export default function IndustriesStrip() {
         <ul
           ref={listRef}
           onScroll={updateEdges}
-          className="no-scrollbar -mx-1 mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
+          className="no-scrollbar -mx-1 mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3 pt-6"
         >
           {items.map((item, idx) => (
             <Reveal
@@ -88,7 +88,7 @@ export default function IndustriesStrip() {
             >
               <a
                 href={item.href}
-                className="group flex w-full flex-col justify-between gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[0_0_24px_3px_rgba(1,116,164,0.4)] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+                className="group flex w-full flex-col justify-between gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 transition-shadow duration-300 hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
               >
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-[#3aa9e0] ring-1 ring-brand-ink/30">
                   <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

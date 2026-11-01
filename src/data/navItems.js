@@ -38,28 +38,27 @@ export const navItems = [
         heading: 'Our Company',
         links: [
           { label: 'Who We Are', href: pageHref('About Us') },
+          { label: 'Our Philosophy', href: '#about' },
           { label: 'Our People', href: pageHref('Team') },
           { label: 'Why Nexsate', href: pageHref('Why Us') },
           { label: 'Our Partners', href: pageHref('Partners & Certifications') },
-          { label: 'Our Philosophy', href: '#about' },
-          { label: 'Our Expertise', href: '#capabilities' },
         ],
-        viewAll: { label: 'Explore Company', href: '#company' },
       },
       {
         heading: 'Our Work',
         links: [
           { label: 'What We Do', href: pageHref('Services & Solutions') },
-          { label: 'How We Work', href: '#it-solutions' },
+          { label: 'How we Work', href: '#it-solutions' },
           { label: 'Who We Serve', href: '#industries' },
-          { label: 'Customers Success', href: pageHref('Case Studies') },
-          { label: 'Innovation & Research', href: '#insights' },
+          { label: 'Customer Success', href: pageHref('Case Studies') },
+          { label: 'Our Expertise', href: '#capabilities' },
         ],
       },
       {
         heading: 'People and Impact',
         links: [
           { label: 'Careers', href: pageHref('Careers') },
+          { label: 'Innovation & Research', href: '#insights' },
           { label: 'Communities Impact', href: '#partners' },
           { label: 'Corporate Responsibility', href: '#company' },
         ],

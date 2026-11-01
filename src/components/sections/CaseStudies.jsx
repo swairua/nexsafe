@@ -13,11 +13,10 @@ export default function CaseStudies() {
 
   return (
     <>
-      <section id={sectionIds.caseStudies} className="values-cycle-bg relative isolate bg-white pt-2 pb-6 md:pt-4 md:pb-10">
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[calc(100%-16rem)] bg-[#111c55] md:h-[calc(100%-13.5rem)]" />
-        <div className="shell-container relative z-10">
+      <section id={sectionIds.caseStudies} className="relative bg-white pt-2 pb-6 md:pt-4 md:pb-10">
+        <div className="shell-container relative">
           <Reveal variant="fade">
-            <SectionHeading eyebrow={caseCards.tag} title={caseCards.title} light titleClassName="sm:text-4xl md:text-5xl" />
+            <SectionHeading eyebrow={caseCards.tag} title={caseCards.title} titleClassName="sm:text-4xl md:text-5xl" />
           </Reveal>
 
           <div
@@ -29,7 +28,7 @@ export default function CaseStudies() {
                 key={card.brand + idx}
                 variant="up"
                 delay={(idx % 3) + 1}
-                className="flex w-[88%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-[0_14px_36px_-24px_rgba(124,92,255,0.25)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-0"
+                className="flex w-[88%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-[0_14px_36px_-24px_rgba(124,92,255,0.25)] transition-shadow duration-300 hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-0"
               >
                 <div className="relative aspect-[16/10] overflow-hidden rounded-t-2xl">
                   <img

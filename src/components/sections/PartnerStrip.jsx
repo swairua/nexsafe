@@ -23,14 +23,14 @@ function LogoSlot({ partner }) {
     )
   }
   return (
-    <span className="flex h-24 w-36 shrink-0 items-center justify-center">
+    <span className="flex h-12 w-36 shrink-0 items-center justify-center">
       <img
         src={src}
         alt={partner.name}
         aria-hidden="true"
         loading="lazy"
         onError={() => setFailed(true)}
-        className="max-w-24 max-h-24 object-contain"
+        className="max-w-24 max-h-12 object-contain"
       />
     </span>
   )
@@ -41,7 +41,7 @@ const STEP = 100 / PER_VIEW
 
 function VendorTile({ partner }) {
   return (
-    <div className="group flex h-full min-h-[9rem] items-center justify-center rounded-xl border border-shell-gray-300 bg-black/10 px-4 py-6 shadow-sm transition-all duration-300 hover:-translate-y-1">
+    <div className="group flex h-full items-center justify-center rounded-xl border border-shell-gray-300 bg-black/10 px-4 py-2 shadow-sm transition-all duration-300 hover:-translate-y-1">
       <LogoSlot partner={partner} />
       <span className="sr-only">{partner.name}</span>
     </div>
@@ -128,7 +128,7 @@ export default function PartnerStrip() {
           <div className="md:z-10 md:flex md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
             <Reveal variant="fade">
               <SectionHeading eyebrow={partnerStrip.tag} title={partnerStrip.title} size="small" weight="bold" />
-              <div className="mt-4 text-base font-normal leading-relaxed text-shell-gray-900 md:text-lg"><Rich as="p">{partnerStrip.text}</Rich></div>
+              {partnerStrip.text ? <div className="mt-4 text-base font-normal leading-relaxed text-shell-gray-900 md:text-lg"><Rich as="p">{partnerStrip.text}</Rich></div> : null}
             </Reveal>
           </div>
 

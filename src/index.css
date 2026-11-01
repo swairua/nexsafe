@@ -448,16 +448,6 @@
   from { transform: translateX(-130%); }
   to { transform: translateX(130%); }
 }
-@keyframes valuesColorCycle {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-.values-cycle-bg {
-  background-image: linear-gradient(120deg, #f2dcb8 0%, #f9f8f5 28%, #cfe5f5 55%, #f8f4ec 78%, #f2dcb8 100%);
-  background-size: 320% 320%;
-  animation: valuesColorCycle 38s ease-in-out infinite;
-}
-
 @layer components {
   .reveal--up { opacity: 0; transform: translateY(42px); }
   .reveal--left { opacity: 0; transform: translateX(-30px); }
@@ -634,11 +624,15 @@
     height: 0;
     overflow: clip;
     content-visibility: hidden;
-    transition: height 0.45s ease, content-visibility 0.45s allow-discrete;
+    opacity: 0;
+    transform: translateY(-0.75rem);
+    transition: height 900ms ease, content-visibility 900ms allow-discrete, opacity 700ms ease, transform 900ms ease;
   }
   .faq-item[open]::details-content {
     height: auto;
     content-visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 .faq-item {
@@ -654,10 +648,10 @@
 @keyframes faq-glow-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 3px rgba(1, 116, 164, 0.16), 0 0 24px 3px rgba(1, 116, 164, 0.28), 0 18px 44px -16px rgba(14, 17, 20, 0.18);
+    box-shadow: 0 0 24px 3px rgba(1, 116, 164, 0.28), 0 18px 44px -16px rgba(14, 17, 20, 0.18);
   }
   50% {
-    box-shadow: 0 0 0 3px rgba(1, 116, 164, 0.3), 0 0 34px 5px rgba(1, 116, 164, 0.5), 0 18px 44px -16px rgba(14, 17, 20, 0.18);
+    box-shadow: 0 0 34px 5px rgba(1, 116, 164, 0.5), 0 18px 44px -16px rgba(14, 17, 20, 0.18);
   }
 }
 .faq-item[open] .faq-plus {
@@ -668,7 +662,7 @@
 @media (prefers-reduced-motion: reduce) {
   .faq-item[open] {
     animation: none;
-    box-shadow: 0 0 0 3px rgba(1, 116, 164, 0.2), 0 0 26px 3px rgba(1, 116, 164, 0.35), 0 18px 44px -16px rgba(14, 17, 20, 0.18);
+    box-shadow: 0 0 26px 3px rgba(1, 116, 164, 0.35), 0 18px 44px -16px rgba(14, 17, 20, 0.18);
   }
 }
 @keyframes marquee {
