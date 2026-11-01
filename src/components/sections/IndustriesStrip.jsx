@@ -76,7 +76,7 @@ export default function IndustriesStrip() {
         <ul
           ref={listRef}
           onScroll={updateEdges}
-          className="no-scrollbar -mx-1 mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
+          className="no-scrollbar -mx-1 mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3 pt-6"
         >
           {items.map((item, idx) => (
             <Reveal
