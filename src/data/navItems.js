@@ -44,7 +44,6 @@ export const navItems = [
           { label: 'Our Philosophy', href: '#about' },
           { label: 'Our Expertise', href: '#capabilities' },
         ],
-        viewAll: { label: 'Explore Company', href: '#company' },
       },
       {
         heading: 'Our Work',
