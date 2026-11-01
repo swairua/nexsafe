@@ -66,11 +66,7 @@ function PromoPanel({ onClose, span = 'col-span-3', stacked = false, divider = f
       <a
         href={pageConnect.cta?.href || '#/contact-us'}
         onClick={onClose}
-        className={`group flex gap-6 rounded-2xl p-7 text-white transition-transform hover:scale-[1.01] md:p-8 ${stacked ? 'flex-col items-start' : 'items-center'}`}
-        style={{
-          background: '#0174a4',
-          boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
-        }}
+        className={`group flex gap-6 rounded-2xl bg-[#0174a4] p-7 text-white transition-shadow duration-300 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2),inset_0_1px_0_rgba(255,255,255,0.25)] hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2),inset_0_1px_0_rgba(255,255,255,0.25),0_0_32px_6px_rgba(1,116,164,0.55)] md:p-8 ${stacked ? 'flex-col items-start' : 'items-center'}`}
       >
         <div className="flex-1">
           {pageConnect.tag && (
