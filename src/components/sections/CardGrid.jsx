@@ -57,7 +57,7 @@ export default function CardGrid() {
             <Reveal key={card.id} delay={(idx % 3) + 1}>
               <a
                 href={card.href}
-                className="group flex h-full flex-col overflow-hidden rounded-[16px] bg-[#f5f3ff] shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_0_34px_rgba(1,116,164,0.55)]"
+                className="group flex h-full flex-col overflow-hidden rounded-[16px] bg-[#f5f3ff] shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <SmartImage

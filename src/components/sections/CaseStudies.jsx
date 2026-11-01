@@ -28,7 +28,7 @@ export default function CaseStudies() {
                 key={card.brand + idx}
                 variant="up"
                 delay={(idx % 3) + 1}
-                className="flex w-[88%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-[0_14px_36px_-24px_rgba(124,92,255,0.25)] transition-shadow duration-300 hover:shadow-[0_0_34px_rgba(1,116,164,0.55)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-0"
+                className="flex w-[88%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-[0_14px_36px_-24px_rgba(124,92,255,0.25)] transition-shadow duration-300 hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] md:p-0"
               >
                 <div className="relative aspect-[16/10] overflow-hidden rounded-t-2xl">
                   <img
