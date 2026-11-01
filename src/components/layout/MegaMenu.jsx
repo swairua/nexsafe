@@ -166,8 +166,8 @@ export default function MegaMenu({ item, onClose }) {
     >
       <div className="shell-container grid grid-cols-12 gap-6 py-8">
         <div className={`col-span-8 grid gap-6 ${columnsGridClass}`}>
-        {item.columns.map((col) => (
-          <div key={col.heading} className="menu-col">
+        {item.columns.map((col, idx) => (
+          <div key={col.heading} className={`menu-col ${idx > 0 && colCount > 1 ? 'border-l border-shell-gray-200 pl-6' : ''}`}>
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {col.heading}
             </h3>
