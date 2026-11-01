@@ -149,7 +149,7 @@ export default function ProofBand() {
           <div className="shell-container">
             <div className="flex items-center justify-between gap-4">
               <span className="inline-flex items-center rounded-full bg-[#7c5cff]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-[#3aa9e0] ring-1 ring-[#7c5cff]/25 shadow-[0_0_14px_2px_rgba(124,92,255,0.25)]">
-                Awards &amp; recognition
+                AWARDS
               </span>
               <div className="flex gap-2">
                 <button

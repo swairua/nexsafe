@@ -226,7 +226,7 @@ export const faqTeaser = {
 }
 
 export const awardsBand = {
-  tag: 'Industry recognition',
+  tag: 'RECOGNITION',
   title: 'Recognized. Awarded. Trusted.',
   text: 'Independent analysts, client-review platforms, and technology partners have recognized the work behind our client outcomes.',
 }
