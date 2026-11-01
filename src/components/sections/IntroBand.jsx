@@ -26,11 +26,11 @@ export default function IntroBand() {
         <div id={sectionIds.about} className="grid gap-10 scroll-mt-28 md:grid-cols-3 md:gap-8">
           {introCards.map((card, idx) => (
             <Reveal key={card.id} delay={idx + 1} variant="up" className="h-full">
-              <a href={card.href} className="group flex h-full flex-col rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_34px_rgba(255,153,0,0.55)]" aria-label={`${card.eyebrow} - ${card.title}`}>
-                <SmartImage src={card.src} alt={card.alt} fallback={card.fallback} className="aspect-[16/11] w-full overflow-hidden rounded-2xl" imgClassName="transition-transform duration-500 group-hover:scale-105" />
-                <div className="relative z-10 mx-auto -mt-8 flex min-h-[4.5rem] w-[88%] flex-col justify-center rounded-sm bg-white px-4 py-3 text-center ring-1 ring-transparent shadow-[0_18px_50px_-12px_rgba(0,0,0,0.28)] transition-all duration-300 group-hover:ring-2 group-hover:ring-[#ff9900]/40 group-hover:shadow-[0_0_30px_rgba(255,153,0,0.5)]">
+              <a href={card.href} className="group flex h-full flex-col rounded-2xl transition-shadow duration-300 hover:shadow-[0_0_34px_rgba(1,116,164,0.55)]" aria-label={`${card.eyebrow} - ${card.title}`}>
+                <SmartImage src={card.src} alt={card.alt} fallback={card.fallback} className="aspect-[16/11] w-full overflow-hidden rounded-2xl" imgClassName="" />
+                <div className="relative z-10 mx-auto -mt-8 flex min-h-[4.5rem] w-[88%] flex-col justify-center rounded-sm bg-white px-4 py-3 text-center ring-1 ring-transparent shadow-[0_18px_50px_-12px_rgba(0,0,0,0.28)] transition-all duration-300 group-hover:ring-2 group-hover:ring-[#0174a4]/40 group-hover:shadow-[0_0_30px_rgba(1,116,164,0.5)]">
                   <p className="text-[15px] font-medium text-[#2aa5de]">{card.eyebrow}</p>
-                  <p className="mt-1.5 text-xl font-bold leading-snug text-[#0a1a3c] transition-colors group-hover:text-[#ff9900]">{card.title}</p>
+                  <p className="mt-1.5 text-xl font-bold leading-snug text-[#0a1a3c] transition-colors group-hover:text-[#0174a4]">{card.title}</p>
                 </div>
               </a>
             </Reveal>
