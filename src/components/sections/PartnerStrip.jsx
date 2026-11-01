@@ -41,7 +41,7 @@ const STEP = 100 / PER_VIEW
 
 function VendorTile({ partner }) {
   return (
-    <div className="group flex h-full min-h-[9rem] items-center justify-center rounded-xl border border-shell-gray-300 bg-black/10 px-4 py-6 shadow-sm transition-all duration-300 hover:-translate-y-1">
+    <div className="group flex h-full items-center justify-center rounded-xl border border-shell-gray-300 bg-black/10 px-4 py-3 shadow-sm transition-all duration-300 hover:-translate-y-1">
       <LogoSlot partner={partner} />
       <span className="sr-only">{partner.name}</span>
     </div>
@@ -128,7 +128,7 @@ export default function PartnerStrip() {
           <div className="md:z-10 md:flex md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
             <Reveal variant="fade">
               <SectionHeading eyebrow={partnerStrip.tag} title={partnerStrip.title} size="small" weight="bold" />
-              <div className="mt-4 text-base font-normal leading-relaxed text-shell-gray-900 md:text-lg"><Rich as="p">{partnerStrip.text}</Rich></div>
+              {partnerStrip.text ? <div className="mt-4 text-base font-normal leading-relaxed text-shell-gray-900 md:text-lg"><Rich as="p">{partnerStrip.text}</Rich></div> : null}
             </Reveal>
           </div>
 

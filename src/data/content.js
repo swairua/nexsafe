@@ -196,8 +196,8 @@ export const stakeholderCards = {
 
 export const partnerStrip = {
   tag: 'Partners',
-  title: 'Great partnerships<br>with the best',
-  text: 'The company needed to complete a complex migration on a tight deadline to avoid millions of dollars in post-contract fees and fines.',
+  title: 'Great partnerships with trailblazers',
+  text: '',
   cta: { label: 'Explore our services', href: pageHref('Services & Solutions') },
 }
 
