@@ -188,11 +188,8 @@ export default function ProofBand() {
                     key={b.src + i}
                     className="min-w-0 shrink-0 flex-[0_0_70%] sm:flex-[0_0_50%] md:flex-[0_0_calc(33.333%-14px)] lg:flex-[0_0_calc(25%-15px)]"
                   >
-                    <div className="flex h-full flex-col rounded-xl bg-[#f5f3ff] p-5 text-left shadow-[inset_0_0_0_2px_rgba(1,116,164,0.72),0_0_10px_rgba(1,116,164,0.16),0_14px_36px_-16px_rgba(14,17,20,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[inset_0_0_0_2px_rgba(1,116,164,1),0_0_0_4px_rgba(1,116,164,0.25),0_0_28px_4px_rgba(1,116,164,0.45),0_18px_44px_-12px_rgba(1,116,164,0.35)]">
-                      <span className="text-xs font-extrabold tracking-widest text-shell-red">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <span className="mt-3 flex h-24 items-center justify-center">
+                    <div className="flex h-full flex-col rounded-xl bg-[#f5f3ff] p-5 text-left shadow-[0_14px_36px_-16px_rgba(14,17,20,0.25)] transition-shadow duration-300 hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]">
+                      <span className="flex h-24 items-center justify-center">
                         <img
                           src={b.src}
                           alt={b.alt || ''}
