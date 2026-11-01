@@ -624,11 +624,15 @@
     height: 0;
     overflow: clip;
     content-visibility: hidden;
-    transition: height 0.45s ease, content-visibility 0.45s allow-discrete;
+    opacity: 0;
+    transform: translateY(-0.75rem);
+    transition: height 900ms ease, content-visibility 900ms allow-discrete, opacity 700ms ease, transform 900ms ease;
   }
   .faq-item[open]::details-content {
     height: auto;
     content-visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 .faq-item {
