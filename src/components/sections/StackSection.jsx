@@ -40,7 +40,7 @@ export default function StackSection() {
         </Reveal>
 
         <div className="my-6 flex justify-center md:my-8">
-          <div className="btn-lift-glow inline-flex items-center gap-1 rounded-full border border-shell-gray-300 bg-white py-1.5 pl-1.5 pr-1.5 text-sm font-bold tracking-wide text-brand-ink shadow-sm transition-all duration-300 hover:border-brand-ink">
+          <div className="inline-flex items-center gap-1 rounded-full border border-shell-gray-300 bg-white py-1.5 pl-1.5 pr-1.5 text-sm font-bold tracking-wide text-brand-ink shadow-sm">
             <button
               type="button"
               onClick={() => setActiveIndex(Math.max(0, current - 1))}
