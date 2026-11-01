@@ -88,7 +88,7 @@ export default function IndustriesStrip() {
             >
               <a
                 href={item.href}
-                className="group flex w-full flex-col justify-between gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[0_0_24px_3px_rgba(1,116,164,0.4)] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+                className="group flex w-full flex-col justify-between gap-6 rounded-2xl border border-white/15 bg-white/5 p-6 transition-shadow duration-300 hover:shadow-[0_0_24px_3px_rgba(1,116,164,0.4)] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
               >
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-[#3aa9e0] ring-1 ring-brand-ink/30">
                   <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
