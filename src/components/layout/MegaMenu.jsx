@@ -50,11 +50,19 @@ function ChallengeIcon({ icon }) {
   )
 }
 
-function PromoPanel({ onClose, span = 'col-span-3', stacked = false }) {
+function LinkArrow() {
+  return (
+    <svg className="h-3 w-3 shrink-0 text-shell-gray-400 transition-transform group-hover:translate-x-0.5" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function PromoPanel({ onClose, span = 'col-span-3', stacked = false, divider = false }) {
   const { pageConnect } = useContent()
   if (!pageConnect) return null
   return (
-    <div className={`${span} self-start`}>
+    <div className={`${span} self-start ${divider ? 'border-l border-shell-gray-200 pl-6' : ''}`}>
       <a
         href={pageConnect.cta?.href || '#/contact-us'}
         onClick={onClose}
@@ -104,8 +112,9 @@ export default function MegaMenu({ item, onClose }) {
                   <a
                     href={l.href}
                     onClick={onClose}
-                    className="text-[0.9rem] font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
+                    className="group inline-flex items-center gap-2 text-[0.9rem] font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
                   >
+                    <LinkArrow />
                     {l.label}
                   </a>
                 </li>
@@ -122,7 +131,7 @@ export default function MegaMenu({ item, onClose }) {
             ) : null}
           </div>
 
-          <div className="menu-col col-span-5">
+          <div className="menu-col col-span-5 border-l border-shell-gray-200 pl-6">
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {challenges.heading}
             </h3>
@@ -150,7 +159,7 @@ export default function MegaMenu({ item, onClose }) {
             </div>
           </div>
 
-          <PromoPanel onClose={onClose} span="col-span-4" stacked />
+          <PromoPanel onClose={onClose} span="col-span-4" stacked divider />
         </div>
       </div>
     )
@@ -178,8 +187,9 @@ export default function MegaMenu({ item, onClose }) {
                   <a
                     href={l.href}
                     onClick={onClose}
-                    className="text-[0.9rem] font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
+                    className="group inline-flex items-center gap-2 text-[0.9rem] font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
                   >
+                    <LinkArrow />
                     {l.label}
                   </a>
                 </li>
@@ -222,7 +232,7 @@ export default function MegaMenu({ item, onClose }) {
           </div>
         ))}
         </div>
-        <PromoPanel onClose={onClose} span="col-span-4" stacked />
+        <PromoPanel onClose={onClose} span="col-span-4" stacked divider />
       </div>
     </div>
   )
