@@ -196,8 +196,8 @@ export const stakeholderCards = {
 
 export const partnerStrip = {
   tag: 'Partners',
-  title: 'Great partnerships<br>with the best',
-  text: 'The company needed to complete a complex migration on a tight deadline to avoid millions of dollars in post-contract fees and fines.',
+  title: 'Great partnerships with trailblazers',
+  text: '',
   cta: { label: 'Explore our services', href: pageHref('Services & Solutions') },
 }
 
@@ -226,7 +226,7 @@ export const faqTeaser = {
 }
 
 export const awardsBand = {
-  tag: 'Industry recognition',
+  tag: 'RECOGNITION',
   title: 'Recognized. Awarded. Trusted.',
   text: 'Independent analysts, client-review platforms, and technology partners have recognized the work behind our client outcomes.',
 }
@@ -325,8 +325,8 @@ export const homeContact = {
 }
 
 export const industriesStrip = {
-  tag: 'Delivering industry-specific technology solutions',
-  title: 'Delivering industry-specific technology solutions',
+  tag: 'SOLUTIONS',
+  title: '',
   text: 'Behind every industry are critical processes, specialized applications, and people who depend on them. Nexsate considers these operational priorities when developing, implementing, and supporting technology across different business environments.',
   items: [
     { label: 'Manufacturing', href: pageHref('Industrial & Manufacturing'), note: '', icon: 'factory' },

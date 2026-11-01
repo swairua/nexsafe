@@ -24,7 +24,7 @@ export default function StackSection() {
   const current = Math.min(activeIndex, maxIndex)
 
   return (
-    <section id={sectionIds.capabilities} className="values-cycle-bg bg-white pt-2 pb-6 md:pt-4 md:pb-10">
+    <section id={sectionIds.capabilities} className="bg-white pt-2 pb-6 md:pt-4 md:pb-10">
       <div className="shell-container">
         <Reveal variant="fade">
           <div className="grid gap-6 md:grid-cols-2 md:items-center md:gap-12">
@@ -40,7 +40,7 @@ export default function StackSection() {
         </Reveal>
 
         <div className="my-6 flex justify-center md:my-8">
-          <div className="btn-lift-glow inline-flex items-center gap-1 rounded-full border border-shell-gray-300 bg-white py-1.5 pl-1.5 pr-1.5 text-sm font-bold tracking-wide text-brand-ink shadow-sm transition-all duration-300 hover:border-brand-ink">
+          <div className="inline-flex items-center gap-1 rounded-full border border-shell-gray-300 bg-white py-1.5 pl-1.5 pr-1.5 text-sm font-bold tracking-wide text-brand-ink shadow-sm">
             <button
               type="button"
               onClick={() => setActiveIndex(Math.max(0, current - 1))}
@@ -97,7 +97,7 @@ export default function StackSection() {
                       aria-expanded={expanded}
                       aria-controls={`vendors-${group.id}`}
                       onClick={() => setExpandedGroups((state) => ({ ...state, [group.id]: !state[group.id] }))}
-                      className="mt-4 self-start text-xs font-bold text-shell-gray-900 hover:text-brand-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+                      className="mt-2 -mx-2 -mb-2 cursor-pointer self-start px-2 py-2 text-xs font-bold text-shell-gray-900 transition-all duration-300 hover:text-brand-ink hover:drop-shadow-[0_0_6px_rgba(1,116,164,0.7)] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
                     >
                       {expanded ? '− View less' : '+ View more'}
                     </button>

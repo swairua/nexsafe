@@ -39,6 +39,10 @@ documents/
 logoandcontent/
 .docx-text/
 
+# AI tooling scratch (plans, throwaway scripts, screenshots)
+.builder/
+.shot-tmp*.mjs
+
 # Runtime data. The SQLite store holds the live content edits, the media rows and
 # the admin password hash; it is created locally with "npm run seed" and re-seeded
 # from api/seed.json, so it is not versioned.
@@ -46,4 +50,3 @@ api/data/*.sqlite
 api/data/*.sqlite-journal
 api/data/*.sqlite-wal
 api/data/*.sqlite-shm
-
