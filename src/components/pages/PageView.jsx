@@ -127,7 +127,7 @@ export default function PageView({ page, slug, params }) {
       )}
 
       {page.sections.map((section, sIdx) => (
-        <section key={section.heading} className={sIdx % 2 === 0 ? 'values-cycle-bg' : 'bg-shell-gray-100'}>
+        <section key={section.heading} className={sIdx % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
           <div className='shell-container py-8 md:py-12 break-words'>
             <Reveal id={`section-${sIdx + 1}`} variant='fade' className='scroll-mt-40'>
               <span className='inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]'>
@@ -221,7 +221,7 @@ export default function PageView({ page, slug, params }) {
       {slug === 'about-us' && <StartBand />}
 
       {gallery.length > 0 && (
-        <section className={page.sections.length % 2 === 0 ? 'bg-shell-gray-100' : 'values-cycle-bg'}>
+        <section className={page.sections.length % 2 === 0 ? 'bg-shell-gray-100' : 'bg-white'}>
           <div className='shell-container py-8 md:py-12'>
             <div className='grid gap-5 sm:grid-cols-2 lg:grid-cols-3'>
               {gallery.map((shot) => (
@@ -240,7 +240,7 @@ export default function PageView({ page, slug, params }) {
       )}
 
       {categoryImage && (
-        <section className={page.sections.length % 2 === 0 ? 'values-cycle-bg' : 'bg-shell-gray-100'}>
+        <section className={page.sections.length % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
         <div className='shell-container py-8 md:py-12'>
             <Reveal variant='zoom'>
               <SmartImage
@@ -274,7 +274,7 @@ export default function PageView({ page, slug, params }) {
       )}
 
       {relatedPages.length > 0 && (
-        <section className={page.sections.length % 2 === 0 ? 'values-cycle-bg' : 'bg-shell-gray-100'}>
+        <section className={page.sections.length % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
         <div className='shell-container py-8 md:py-12'>
             <Reveal as='h2' variant='fade' className='text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl'>
               {labels.exploreMore}

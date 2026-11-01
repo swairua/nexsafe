@@ -24,7 +24,7 @@ export default function StackSection() {
   const current = Math.min(activeIndex, maxIndex)
 
   return (
-    <section id={sectionIds.capabilities} className="values-cycle-bg bg-white pt-2 pb-6 md:pt-4 md:pb-10">
+    <section id={sectionIds.capabilities} className="bg-white pt-2 pb-6 md:pt-4 md:pb-10">
       <div className="shell-container">
         <Reveal variant="fade">
           <div className="grid gap-6 md:grid-cols-2 md:items-center md:gap-12">

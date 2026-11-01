@@ -45,8 +45,7 @@ export default function IntroBand() {
         </Reveal>
       </div>
       <div className="mt-8 md:mt-10">
-        <div className="values-cycle-bg relative w-full">
-          <div aria-hidden="true" className="values-band-fade pointer-events-none absolute inset-x-0 top-0 h-8" />
+        <div className="w-full bg-white">
           <div className="shell-container px-6">
             <ul className="grid gap-5 py-8 sm:grid-cols-2 lg:grid-cols-4 md:py-10">
               {pillars.map((pillar, idx) => (
