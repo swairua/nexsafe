@@ -57,7 +57,7 @@ export default function CardGrid() {
             <Reveal key={card.id} delay={(idx % 3) + 1}>
               <a
                 href={card.href}
-                className="group flex h-full flex-col overflow-hidden rounded-[16px] bg-[#f5f3ff] shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_18px_44px_-12px_rgba(10,20,64,0.28)]"
+                className="group flex h-full flex-col overflow-hidden rounded-[16px] bg-[#f5f3ff] shadow-[0_8px_24px_-12px_rgba(10,20,64,0.18)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_0_34px_rgba(1,116,164,0.55)]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <SmartImage
@@ -65,7 +65,7 @@ export default function CardGrid() {
                     alt={card.alt || card.title}
                     fallback={card.fallback}
                     className="h-full w-full"
-                    imgClassName="transition-transform duration-500 group-hover:scale-105"
+                    imgClassName=""
                   />
                   <span className="absolute left-4 top-4 rounded-full bg-shell-red px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
                     {card.tag}
