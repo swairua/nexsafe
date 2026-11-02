@@ -21,7 +21,7 @@ export default function CaseStudies() {
 
           <div
             ref={emblaRef}
-            className="no-scrollbar -mx-1 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-3"
+            className="no-scrollbar -mx-12 -mt-4 -mb-9 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-12 pt-12 pb-12"
           >
             {items.map((card, idx) => (
               <Reveal
