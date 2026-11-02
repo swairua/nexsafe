@@ -506,7 +506,7 @@
   .hero-copy.is-active .hero-cta {
     animation: fadeInUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.78s both;
   }
-  .hero-zoom { animation: kenBurns 9s ease-out both; }
+  .hero-zoom { animation: kenBurns 9s ease-out both; transform: translateZ(0); backface-visibility: hidden; }
 
   .menu-anim { animation: menuDrop 0.24s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
   .menu-anim .menu-col { animation: fadeInUp 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both; }

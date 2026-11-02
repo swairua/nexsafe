@@ -46,7 +46,7 @@ export default function HeroCarousel() {
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {heroSlides.map((slide, i) => (
-            <div key={slide.id} className="relative min-w-0 flex-[0_0_100%]">
+            <div key={slide.id} className="relative min-w-0 flex-[0_0_100%] overflow-hidden bg-shell-black">
               <img
                 src={textBearingHeroImages[slide.image]?.src || slide.image}
                 alt={textBearingHeroImages[slide.image]?.alt || slide.alt || ""}
