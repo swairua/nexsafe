@@ -41,7 +41,7 @@ const STEP = 100 / PER_VIEW
 
 function VendorTile({ partner }) {
   return (
-    <div className="group flex h-full items-center justify-center rounded-xl border border-shell-gray-300 bg-black/10 px-4 py-2 shadow-sm transition-all duration-300 hover:-translate-y-1">
+    <div className="group flex h-full items-center justify-center rounded-xl border border-shell-gray-300 bg-black/10 px-4 py-2 shadow-sm">
       <LogoSlot partner={partner} />
       <span className="sr-only">{partner.name}</span>
     </div>
