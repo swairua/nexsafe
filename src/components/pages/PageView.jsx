@@ -4,6 +4,7 @@ import SmartImage from '../ui/SmartImage.jsx'
 import { Rich, RichText } from '../ui/SectionTag.jsx'
 import ContactForm from '../sections/ContactForm.jsx'
 import ConnectBand from '../sections/ConnectBand.jsx'
+import SectionHeading from '../ui/SectionHeading.jsx'
 import StartBand from '../sections/StartBand.jsx'
 import BlogIndex from './BlogIndex.jsx'
 
@@ -73,8 +74,11 @@ export default function PageView({ page, slug, params }) {
             src={categoryImage}
             alt={categoryAlt}
             aria-hidden={categoryAlt ? undefined : 'true'}
-            className='pointer-events-none absolute -right-24 top-0 h-full w-1/2 object-cover opacity-20 [mask-image:linear-gradient(to_left,black,transparent)]'
+            className='pointer-events-none absolute -right-24 top-0 h-full w-1/2 object-cover opacity-30 [mask-image:linear-gradient(to_left,black,transparent)]'
           />
+        )}
+        {categoryImage && (
+          <div aria-hidden='true' className='pointer-events-none absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25' />
         )}
         <div className='shell-container relative z-10 py-14 md:py-20'>
           <Reveal as='nav' variant='fade' className='mb-12 text-xs text-white/60' aria-label={ui.breadcrumb}>
@@ -316,12 +320,11 @@ export default function PageView({ page, slug, params }) {
           <div className='bg-shell-black'>
             <div className='shell-container relative z-10 flex flex-col justify-end pb-7 pt-10'>
               <Reveal variant='fade'>
-                <span className='mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-white'>Contact Us</span>
-                <h2 className='max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl'>{page.title}</h2>
+                <SectionHeading eyebrow='Contact Us' title={page.title} light size='compact' titleClassName='max-w-2xl md:max-w-[44%]' />
               </Reveal>
             </div>
           </div>
-          <div className='shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-8 pt-7 md:pb-12 md:grid-cols-[1fr_1.2fr] md:gap-8 lg:gap-16'>
+          <div className='shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-16 pt-7 md:pb-24 md:grid-cols-[1fr_1.2fr] md:gap-8 lg:gap-16'>
             <Reveal variant='left' className='space-y-8'>
               <div>
                 <p className='max-w-xl text-base leading-relaxed text-shell-gray-900 md:text-lg'>{page.intro}</p>
