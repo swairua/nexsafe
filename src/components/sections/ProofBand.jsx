@@ -186,7 +186,7 @@ export default function ProofBand() {
                 {badges.map((b, i) => (
                   <div
                     key={b.src + i}
-                    className="min-w-0 shrink-0 pl-5 flex-[0_0_70%] sm:flex-[0_0_50%] md:flex-[0_0_33.333%]"
+                    className="min-w-0 shrink-0 pl-5 flex-[0_0_70%] sm:flex-[0_0_50%] md:flex-[0_0_33.333%] lg:flex-[0_0_25%]"
                   >
                     <div className="flex h-full flex-col rounded-xl bg-[#f5f3ff] p-5 text-left shadow-[0_14px_36px_-16px_rgba(14,17,20,0.25)] transition-shadow duration-300 hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]">
                       <span className="flex h-24 items-center justify-center">
