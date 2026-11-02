@@ -133,7 +133,7 @@ export default function ProofBand() {
                   key={c.name + i}
                   as="li"
                   delay={i + 1}
-                  className="flex min-w-[12rem] flex-1 flex-col items-center rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.5),0_0_0_3px_rgba(1,116,164,0.2),0_0_24px_3px_rgba(1,116,164,0.4),0_14px_30px_-12px_rgba(1,116,164,0.4)] sm:flex-none sm:basis-56"
+                  className="flex min-w-[12rem] flex-1 flex-col items-center rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-center shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.5),0_0_0_3px_rgba(1,116,164,0.2),0_0_24px_3px_rgba(1,116,164,0.4),0_14px_30px_-12px_rgba(1,116,164,0.4)] sm:flex-none sm:basis-56"
                 >
                   <span className="text-base font-extrabold tracking-tight text-white">{c.name}</span>
                   <span className="mt-1 text-xs text-white/70">{c.note}</span>

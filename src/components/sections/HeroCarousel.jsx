@@ -4,7 +4,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import { useContent } from "../../content/ContentContext.jsx"
 import { Rich } from '../ui/SectionTag.jsx'
 
-const textBearingHeroImages = {
+export const textBearingHeroImages = {
   '/uploads/hero-docx-network-fiber.png': {
     src: '/uploads/hero-city-network.jpg',
     alt: 'City skyline at night with a glowing network of connected nodes spread across it',
@@ -46,11 +46,11 @@ export default function HeroCarousel() {
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {heroSlides.map((slide, i) => (
-            <div key={slide.id} className="relative min-w-0 flex-[0_0_100%]">
+            <div key={slide.id} className="relative min-w-0 flex-[0_0_100%] overflow-hidden bg-shell-black">
               <img
                 src={textBearingHeroImages[slide.image]?.src || slide.image}
                 alt={textBearingHeroImages[slide.image]?.alt || slide.alt || ""}
-                className={`absolute inset-0 h-full w-full object-cover ${selected === i ? 'hero-zoom' : ''}`}
+                className={`hero-feather absolute inset-0 h-full w-full object-cover ${selected === i ? 'hero-zoom' : ''}`}
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
               {/* Legibility scrim — keeps hero copy readable over bright imagery */}

@@ -2,10 +2,12 @@ import { useContent } from '../../content/ContentContext.jsx'
 import Reveal from '../ui/Reveal.jsx'
 import SmartImage from '../ui/SmartImage.jsx'
 import { Rich, RichText } from '../ui/SectionTag.jsx'
-import ContactForm from '../sections/ContactForm.jsx'
+import HomeContact from '../sections/HomeContact.jsx'
 import ConnectBand from '../sections/ConnectBand.jsx'
 import StartBand from '../sections/StartBand.jsx'
 import BlogIndex from './BlogIndex.jsx'
+import PageHeroCarousel from './PageHeroCarousel.jsx'
+import { textBearingHeroImages } from '../sections/HeroCarousel.jsx'
 
 function Copy({ para }) {
   const html = String(para || '')
@@ -58,8 +60,7 @@ export default function PageView({ page, slug, params }) {
   const gallery = page.gallery || []
   const logos = page.logos || []
   const isContact = slug === 'contact-us'
-  const form = content.contactForm || {}
-  const copy = content.homeContact || {}
+  const heroImages = [...new Set([categoryImage, ...(content.heroSlides || []).map((s) => textBearingHeroImages[s.image]?.src || s.image)].filter(Boolean))]
 
   return (
     <article>
@@ -68,14 +69,7 @@ export default function PageView({ page, slug, params }) {
           className='pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-shell-red/20 blur-3xl'
           aria-hidden='true'
         />
-        {categoryImage && (
-          <img
-            src={categoryImage}
-            alt={categoryAlt}
-            aria-hidden={categoryAlt ? undefined : 'true'}
-            className='pointer-events-none absolute -right-24 top-0 h-full w-1/2 object-cover opacity-20 [mask-image:linear-gradient(to_left,black,transparent)]'
-          />
-        )}
+        {heroImages.length > 0 && <PageHeroCarousel images={heroImages} />}
         <div className='shell-container relative z-10 py-14 md:py-20'>
           <Reveal as='nav' variant='fade' className='mb-12 text-xs text-white/60' aria-label={ui.breadcrumb}>
             {sectionHref ? (
@@ -144,7 +138,7 @@ export default function PageView({ page, slug, params }) {
                   {section.list.map((item, idx) => (
                     <Reveal as='li' variant='up' delay={(idx % 4) + 1}
                       key={item}
-                      className='flex gap-3 rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
+                      className='flex gap-3 rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
                     >
                       <span className='mt-1.5 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red' aria-hidden='true' />
                       <span className='text-base leading-relaxed text-shell-gray-700 md:text-lg'>{item}</span>
@@ -175,7 +169,7 @@ export default function PageView({ page, slug, params }) {
                   {section.items.map((item, idx) => (
                     <Reveal as='li' variant='up' delay={(idx % 4) + 1}
                       key={item.title}
-                      className='rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
+                      className='rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
                     >
                       <h3 className='flex gap-3 text-base font-bold leading-snug text-shell-gray-900 md:text-lg'>
                         <span className='mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red' aria-hidden='true' />
@@ -286,7 +280,7 @@ export default function PageView({ page, slug, params }) {
                   as='a'
                   href={`#/${rel.slug}`}
                   delay={(idx % 4) + 1}
-                  className='group rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
+                  className='group rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-6 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
                 >
                   <p className='text-xs font-bold uppercase tracking-wider text-shell-red'>
                     {rel.eyebrow}
@@ -311,69 +305,7 @@ export default function PageView({ page, slug, params }) {
         </section>
       )}
 
-      {isContact ? (
-        <section id='contact-form' className='relative overflow-hidden bg-[#d5deef]'>
-          <div className='bg-shell-black'>
-            <div className='shell-container relative z-10 flex flex-col justify-end pb-7 pt-10'>
-              <Reveal variant='fade'>
-                <span className='mb-4 inline-block border-l-4 border-shell-yellow pl-3 text-sm font-bold uppercase tracking-[0.16em] text-white'>Contact Us</span>
-                <h2 className='max-w-2xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl'>{page.title}</h2>
-              </Reveal>
-            </div>
-          </div>
-          <div className='shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-8 pt-7 md:pb-12 md:grid-cols-[1fr_1.2fr] md:gap-8 lg:gap-16'>
-            <Reveal variant='left' className='space-y-8'>
-              <div>
-                <p className='max-w-xl text-base leading-relaxed text-shell-gray-900 md:text-lg'>{page.intro}</p>
-                {form.detailPhone && (
-                  <a href={`tel:${String(form.detailPhone).replace(/[^+\d]/g, '')}`} className='group mt-8 inline-flex max-w-full flex-wrap items-center gap-3 break-words text-base font-bold text-shell-gray-900 transition-transform duration-300 hover:translate-x-0.5 sm:text-lg'>
-                    <span className='flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-brand-ink/30 shadow-[0_0_12px_2px_rgba(1,116,164,0.35),0_2px_8px_-2px_rgba(1,116,164,0.4)] transition-shadow duration-300 group-hover:shadow-[0_0_18px_4px_rgba(1,116,164,0.5),0_2px_10px_-2px_rgba(1,116,164,0.5)]'>
-                      <svg className='h-4 w-4 text-brand-ink' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.2' strokeLinecap='round' strokeLinejoin='round' aria-hidden='true'><path d='M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.25a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z' /></svg>
-                    </span>
-                    <span>Call us at: <span className='text-brand-ink transition-colors group-hover:text-shell-gray-900'>{form.detailPhone}</span></span>
-                  </a>
-                )}
-              </div>
-              {(copy.benefits || []).length > 0 && (
-                <div>
-                  <h3 className='text-xs font-bold uppercase tracking-[0.18em] text-brand-ink'>Your benefits:</h3>
-                  <div className='mt-4 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2'>
-                    {(copy.benefits || []).map((benefit) => (
-                      <span key={benefit} className='group flex items-center gap-3 text-sm font-medium text-shell-gray-900 transition-transform duration-300 hover:translate-x-0.5'>
-                        <span className='flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-brand-ink/30 shadow-[0_0_12px_2px_rgba(1,116,164,0.35),0_2px_8px_-2px_rgba(1,116,164,0.4)] transition-shadow duration-300 group-hover:shadow-[0_0_18px_4px_rgba(1,116,164,0.5),0_2px_10px_-2px_rgba(1,116,164,0.5)]'>
-                          <svg className='h-3.5 w-3.5 text-brand-ink' viewBox='0 0 16 16' fill='none' stroke='currentColor' strokeWidth='3' strokeLinecap='round' strokeLinejoin='round' aria-hidden='true'><path d='M3 8.5l3.2 3.2L13 5' /></svg>
-                        </span>
-                        {benefit}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {(copy.steps || []).length > 0 && (
-                <div>
-                  <h3 className='text-xs font-bold uppercase tracking-[0.18em] text-brand-ink'>What happens next?</h3>
-                  <ol className='mt-5 grid gap-6 sm:grid-cols-3'>
-                    {(copy.steps || []).map((step, index) => (
-                      <li key={step} className='relative flex items-start gap-4'>
-                        <span className='flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#070e40] text-sm font-extrabold text-white ring-2 ring-brand-ink/50 shadow-[0_0_18px_3px_rgba(1,116,164,0.45),inset_0_1px_0_rgba(255,255,255,0.25)]'>
-                          {index + 1}
-                        </span>
-                        <p className='pt-1.5 text-sm leading-relaxed text-shell-gray-700'>{step}</p>
-                        {index < (copy.steps || []).length - 1 ? (
-                          <span aria-hidden='true' className='absolute bottom-0 left-[18px] top-10 hidden w-px bg-gradient-to-b from-brand-ink/50 to-transparent sm:block' />
-                        ) : null}
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              )}
-            </Reveal>
-            <Reveal variant='right' className='md:-mt-[158px] md:w-full md:max-w-2xl md:-mr-6 md:justify-self-end'>
-              <ContactForm simple />
-            </Reveal>
-          </div>
-        </section>
-      ) : null}
+      {isContact ? <HomeContact /> : null}
 
       {!isContact && <ConnectBand />}
     </article>
