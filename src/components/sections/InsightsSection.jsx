@@ -26,7 +26,7 @@ function FeaturedCard({ post, fallbackImage, fallbackAlt }) {
   return (
     <Reveal
       as="article"
-      className="flex flex-col overflow-hidden rounded-md bg-[#f5f3ff]"
+      className="flex flex-col overflow-hidden rounded-md bg-[#f5f3ff] transition-shadow duration-300 hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.5),0_0_0_3px_rgba(1,116,164,0.2),0_0_24px_3px_rgba(1,116,164,0.4)]"
     >
       <InsightPhoto post={post} fallbackImage={fallbackImage} fallbackAlt={fallbackAlt} aspect="aspect-[16/10]" />
       <div className="flex flex-1 flex-col p-6 md:p-8">
@@ -58,7 +58,7 @@ function MiniCard({ post, fallbackImage, fallbackAlt, delay }) {
     <Reveal
       as="article"
       delay={delay}
-      className="flex flex-col overflow-hidden rounded-md bg-[#f5f3ff]"
+      className="flex flex-col overflow-hidden rounded-md bg-[#f5f3ff] transition-shadow duration-300 hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.5),0_0_0_3px_rgba(1,116,164,0.2),0_0_24px_3px_rgba(1,116,164,0.4)]"
     >
       <InsightPhoto post={post} fallbackImage={fallbackImage} fallbackAlt={fallbackAlt} aspect="aspect-[16/9]" />
       <div className="flex flex-1 flex-col p-6">
