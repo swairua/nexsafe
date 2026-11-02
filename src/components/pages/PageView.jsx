@@ -6,6 +6,8 @@ import HomeContact from '../sections/HomeContact.jsx'
 import ConnectBand from '../sections/ConnectBand.jsx'
 import StartBand from '../sections/StartBand.jsx'
 import BlogIndex from './BlogIndex.jsx'
+import PageHeroCarousel from './PageHeroCarousel.jsx'
+import { textBearingHeroImages } from '../sections/HeroCarousel.jsx'
 
 function Copy({ para }) {
   const html = String(para || '')
@@ -58,6 +60,7 @@ export default function PageView({ page, slug, params }) {
   const gallery = page.gallery || []
   const logos = page.logos || []
   const isContact = slug === 'contact-us'
+  const heroImages = [...new Set([categoryImage, ...(content.heroSlides || []).map((s) => textBearingHeroImages[s.image]?.src || s.image)].filter(Boolean))]
 
   return (
     <article>
@@ -66,17 +69,7 @@ export default function PageView({ page, slug, params }) {
           className='pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-shell-red/20 blur-3xl'
           aria-hidden='true'
         />
-        {categoryImage && (
-          <img
-            src={categoryImage}
-            alt={categoryAlt}
-            aria-hidden={categoryAlt ? undefined : 'true'}
-            className='pointer-events-none absolute -right-24 top-0 h-full w-1/2 object-cover opacity-30 [mask-image:linear-gradient(to_left,black,transparent)]'
-          />
-        )}
-        {categoryImage && (
-          <div aria-hidden='true' className='pointer-events-none absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25' />
-        )}
+        {heroImages.length > 0 && <PageHeroCarousel images={heroImages} />}
         <div className='shell-container relative z-10 py-14 md:py-20'>
           <Reveal as='nav' variant='fade' className='mb-12 text-xs text-white/60' aria-label={ui.breadcrumb}>
             {sectionHref ? (

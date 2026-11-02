@@ -4,7 +4,7 @@ import Autoplay from 'embla-carousel-autoplay'
 import { useContent } from "../../content/ContentContext.jsx"
 import { Rich } from '../ui/SectionTag.jsx'
 
-const textBearingHeroImages = {
+export const textBearingHeroImages = {
   '/uploads/hero-docx-network-fiber.png': {
     src: '/uploads/hero-city-network.jpg',
     alt: 'City skyline at night with a glowing network of connected nodes spread across it',
