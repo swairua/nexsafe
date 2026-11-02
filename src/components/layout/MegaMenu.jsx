@@ -87,6 +87,25 @@ function PromoPanel({ onClose, span = 'col-span-3', stacked = false, divider = f
   )
 }
 
+function LinkList({ links, onClose }) {
+  return (
+    <ul className="space-y-3.5">
+      {links.map((l) => (
+        <li key={l.label}>
+          <a
+            href={l.href}
+            onClick={onClose}
+            className="group inline-flex items-center gap-2 text-[0.9rem] font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
+          >
+            <LinkArrow />
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export default function MegaMenu({ item, onClose }) {
   const { uiLabels } = useContent()
   if (item.layout === 'solutions') {
@@ -177,20 +196,16 @@ export default function MegaMenu({ item, onClose }) {
               {col.heading}
             </h3>
             {(col.links || []).length > 0 ? (
-            <ul className={`gap-x-6 gap-y-3.5 ${colCount === 1 && (col.links || []).length > 3 ? 'grid grid-cols-2' : 'space-y-3.5'}`}>
-              {(col.links || []).map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    onClick={onClose}
-                    className="group inline-flex items-center gap-2 text-[0.9rem] font-medium text-[#1a1d21] transition-colors hover:text-[#0b1fb3] hover:underline"
-                  >
-                    <LinkArrow />
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+              colCount === 1 && col.links.length > 3 ? (
+                <div className="flex gap-6">
+                  <LinkList links={col.links.slice(0, Math.ceil(col.links.length / 2))} onClose={onClose} />
+                  <div className="border-l border-shell-gray-200 pl-6">
+                    <LinkList links={col.links.slice(Math.ceil(col.links.length / 2))} onClose={onClose} />
+                  </div>
+                </div>
+              ) : (
+                <LinkList links={col.links} onClose={onClose} />
+              )
             ) : null}
             {(col.tiles || []).length > 0 ? (
             <div className={`grid gap-3 ${colCount === 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>

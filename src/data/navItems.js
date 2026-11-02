@@ -82,7 +82,6 @@ export const navItems = [
           'Fintech',
           'Education',
         ),
-        viewAll: { label: 'View all', href: '#industries' },
       },
     ],
   },
