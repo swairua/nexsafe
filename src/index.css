@@ -507,6 +507,17 @@
     animation: fadeInUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.78s both;
   }
   .hero-zoom { animation: kenBurns 9s ease-out both; transform: translateZ(0); backface-visibility: hidden; }
+  .hero-feather {
+    --hero-feather: 12%;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent, #000 var(--hero-feather), #000 calc(100% - var(--hero-feather)), transparent),
+      linear-gradient(to bottom, transparent, #000 var(--hero-feather), #000 calc(100% - var(--hero-feather)), transparent);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent, #000 var(--hero-feather), #000 calc(100% - var(--hero-feather)), transparent),
+      linear-gradient(to bottom, transparent, #000 var(--hero-feather), #000 calc(100% - var(--hero-feather)), transparent);
+    mask-composite: intersect;
+  }
 
   .menu-anim { animation: menuDrop 0.24s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
   .menu-anim .menu-col { animation: fadeInUp 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both; }

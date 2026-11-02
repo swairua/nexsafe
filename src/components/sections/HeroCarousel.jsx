@@ -50,7 +50,7 @@ export default function HeroCarousel() {
               <img
                 src={textBearingHeroImages[slide.image]?.src || slide.image}
                 alt={textBearingHeroImages[slide.image]?.alt || slide.alt || ""}
-                className={`absolute inset-0 h-full w-full object-cover ${selected === i ? 'hero-zoom' : ''}`}
+                className={`hero-feather absolute inset-0 h-full w-full object-cover ${selected === i ? 'hero-zoom' : ''}`}
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
               />
               {/* Legibility scrim — keeps hero copy readable over bright imagery */}
