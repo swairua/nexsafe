@@ -8,12 +8,13 @@ import StartBand from '../sections/StartBand.jsx'
 import BlogIndex from './BlogIndex.jsx'
 import { textBearingHeroImages } from '../sections/HeroCarousel.jsx'
 
-function Copy({ para }) {
+function Copy({ para, light = false }) {
   const html = String(para || '')
+  const tone = light ? 'text-white' : 'text-shell-gray-700'
   if (/<\s*(p|br|strong|em|ul|ol|li|a|h3|h4|blockquote)[\s/>]/i.test(html)) {
-    return <RichText value={html} className='mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg [&_a]:text-shell-red [&_a]:underline [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_blockquote]:border-l-4 [&_blockquote]:border-shell-gray-300 [&_blockquote]:pl-4 [&_blockquote]:italic' />
+    return <RichText value={html} className={`mt-5 text-base leading-relaxed ${tone} md:text-lg [&_a]:text-shell-red [&_a]:underline [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_blockquote]:border-l-4 [&_blockquote]:border-shell-gray-300 [&_blockquote]:pl-4 [&_blockquote]:italic`} />
   }
-  return <p className='mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg'>{para}</p>
+  return <p className={`mt-5 text-base leading-relaxed ${tone} md:text-lg`}>{para}</p>
 }
 
 function NotFound(notFound) {
@@ -97,8 +98,8 @@ export default function PageView({ page, slug, params }) {
           <Reveal as='h1' delay={3} className='mb-4 text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]'>
             {page.title}
           </Reveal>
-          <Reveal as='div' delay={4} className='mb-6 max-w-3xl text-base leading-relaxed text-white/90 md:text-lg'>
-            <Copy para={page.intro} />
+          <Reveal as='div' delay={4} className='mb-6 text-base leading-relaxed text-white/90 md:text-lg'>
+            <Copy para={page.intro} light />
           </Reveal>
         </div>
       </section>
