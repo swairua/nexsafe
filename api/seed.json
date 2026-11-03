@@ -25,6 +25,7 @@
     "itSolutions": "it-solutions",
     "partners": "partners",
     "industries": "industries",
+    "caseStudies": "case-studies",
     "capabilities": "capabilities",
     "insights": "insights",
     "support": "support"
@@ -465,31 +466,31 @@
     },
     {
       "name": "Cisco",
-      "area": "Network & connectivity",
+      "area": "Network & Connectivity",
       "group": "network",
       "logo": "/uploads/stack-icons/cisco.svg"
     },
     {
       "name": "Fortinet",
-      "area": "Network & connectivity",
+      "area": "Network & Connectivity",
       "group": "network",
       "logo": "/uploads/stack-icons/fortinet.svg"
     },
     {
       "name": "Ubiquiti",
-      "area": "Network & connectivity",
+      "area": "Network & Connectivity",
       "group": "network",
       "logo": "/uploads/stack-icons/ubiquiti.svg"
     },
     {
       "name": "Dell",
-      "area": "Network & connectivity",
+      "area": "Network & Connectivity",
       "group": "network",
       "logo": "/uploads/stack-icons/dell.svg"
     },
     {
       "name": "WatchGuard",
-      "area": "Network & connectivity",
+      "area": "Network & Connectivity",
       "group": "network",
       "logo": "/uploads/stack-icons/watchguard.svg"
     },
@@ -518,10 +519,6 @@
     "tag": "SOLUTIONS",
     "title": "",
     "text": "Behind every industry are critical processes, specialized applications, and people who depend on them. Nexsate considers these operational priorities when developing, implementing, and supporting technology across different business environments.",
-    "cta": {
-      "label": "Explore Industries",
-      "href": "#/services-solutions"
-    },
     "items": [
       {
         "label": "Manufacturing",
@@ -542,22 +539,10 @@
         "icon": "bank"
       },
       {
-        "label": "Education",
-        "href": "#/education",
-        "note": "",
-        "icon": "book"
-      },
-      {
         "label": "Transport & Logistics",
         "href": "#/transportation-logistics",
         "note": "",
         "icon": "truck"
-      },
-      {
-        "label": "Industrial",
-        "href": "#/industrial-manufacturing",
-        "note": "",
-        "icon": "gear"
       },
       {
         "label": "Professional services",
@@ -566,16 +551,10 @@
         "icon": "briefcase"
       },
       {
-        "label": "Public Sector",
-        "href": "#/consulting-providers",
-        "note": "",
-        "icon": "landmark"
-      },
-      {
         "label": "Non-Profit",
         "href": "#/non-profit",
         "note": "",
-        "icon": "heart"
+        "icon": "users"
       }
     ]
   },
@@ -922,80 +901,99 @@
   },
   "navItems": [
     {
-      "label": "Home",
-      "href": "#top",
-      "layout": "simple",
-      "links": [
+      "label": "Company",
+      "href": "#company",
+      "columns": [
         {
-          "label": "IT Services",
-          "href": "#/managed-it-services"
+          "heading": "Our Company",
+          "links": [
+            {
+              "label": "Who We Are",
+              "href": "#/about-us"
+            },
+            {
+              "label": "Our Philosophy",
+              "href": "#about"
+            },
+            {
+              "label": "Our People",
+              "href": "#/team"
+            },
+            {
+              "label": "Why Nexsate",
+              "href": "#/why-us"
+            },
+            {
+              "label": "Our Partners",
+              "href": "#/partners-certifications"
+            }
+          ]
+        },
+        {
+          "heading": "Our Work",
+          "links": [
+            {
+              "label": "What We Do",
+              "href": "#/services-solutions"
+            },
+            {
+              "label": "How we Work",
+              "href": "#it-solutions"
+            },
+            {
+              "label": "Who We Serve",
+              "href": "#industries"
+            },
+            {
+              "label": "Customer Success",
+              "href": "#/case-studies"
+            },
+            {
+              "label": "Our Expertise",
+              "href": "#capabilities"
+            }
+          ]
+        },
+        {
+          "heading": "People and Impact",
+          "links": [
+            {
+              "label": "Careers",
+              "href": "#/careers"
+            },
+            {
+              "label": "Innovation & Research",
+              "href": "#insights"
+            },
+            {
+              "label": "Communities Impact",
+              "href": "#partners"
+            },
+            {
+              "label": "Corporate Responsibility",
+              "href": "#company"
+            }
+          ]
         }
       ]
     },
     {
-      "label": "Solutions",
-      "href": "#it-solutions",
-      "layout": "solutions",
+      "label": "Who we serve",
+      "href": "#industries",
       "columns": [
         {
-          "heading": "Services",
+          "heading": "Industry focus",
           "links": [
             {
-              "label": "Managed IT Services",
-              "href": "#/managed-it-services"
+              "label": "Banks & Insurance",
+              "href": "#/banks-insurance"
             },
             {
-              "label": "Cloud Services",
-              "href": "#/cloud-services"
+              "label": "Healthcare",
+              "href": "#/healthcare"
             },
             {
-              "label": "Software Development",
-              "href": "#/software-erp-app-development"
-            },
-            {
-              "label": "Network Management",
-              "href": "#/network-management"
-            },
-            {
-              "label": "Cyber Security",
-              "href": "#/cybersecurity"
-            },
-            {
-              "label": "Backup & Disaster Management",
-              "href": "#/backup-disaster-recovery"
-            }
-          ]
-        },
-        {
-          "heading": "Business Challenges",
-          "tiles": [
-            {
-              "label": "Digital Transformation",
-              "href": "#/digital-transformation",
-              "icon": "transform"
-            },
-            {
-              "label": "Security",
-              "href": "#/cybersecurity",
-              "icon": "shield"
-            },
-            {
-              "label": "Automation",
-              "href": "#/automation",
-              "icon": "gear"
-            },
-            {
-              "label": "Gaining Efficiency",
-              "href": "#/gaining-efficiency",
-              "icon": "gauge"
-            }
-          ]
-        },
-        {
-          "heading": "Industry Focus",
-          "links": [
-            {
-              "label": "Industry Manufacturing",
+              "label": "Industrial & Manufacturing",
               "href": "#/industrial-manufacturing"
             },
             {
@@ -1003,23 +1001,13 @@
               "href": "#/transportation-logistics"
             },
             {
-              "label": "Healthcare",
-              "href": "#/healthcare"
-            },
-            {
-              "label": "Banking, Finance & Insurance",
-              "href": "#/banks-insurance"
-            },
-            {
               "label": "Consulting Providers",
               "href": "#/consulting-providers"
             },
             {
-              "label": "Non Profit",
+              "label": "Non-Profit",
               "href": "#/non-profit"
-            }
-          ],
-          "more": [
+            },
             {
               "label": "Telemedicine",
               "href": "#/telemedicine"
@@ -1032,84 +1020,68 @@
               "label": "Education",
               "href": "#/education"
             }
-          ],
-          "viewAll": {
-            "label": "View all",
-            "href": "#industries"
-          }
+          ]
         }
       ]
     },
     {
-      "label": "Company",
-      "href": "#/about-us",
-      "layout": "company",
-      "headline": "Simplifying IT\nfor a complex world.",
-      "links": [
+      "label": "Solutions",
+      "href": "#/services-solutions",
+      "layout": "solutions",
+      "columns": [
         {
-          "label": "About us",
-          "href": "#/about-us"
+          "heading": "Services",
+          "links": [
+            {
+              "label": "Cybersecurity",
+              "href": "#/cybersecurity"
+            },
+            {
+              "label": "Network Management",
+              "href": "#/network-management"
+            },
+            {
+              "label": "Backup & Disaster Recovery",
+              "href": "#/backup-disaster-recovery"
+            },
+            {
+              "label": "Software, ERP & App Development",
+              "href": "#/software-erp-app-development"
+            },
+            {
+              "label": "Automation",
+              "href": "#/automation"
+            }
+          ]
         },
         {
-          "label": "Why us",
-          "href": "#/why-us"
-        },
-        {
-          "label": "Careers",
-          "href": "#/careers"
-        }
-      ],
-      "partners": {
-        "heading": "Platform partnerships",
-        "href": "#/partners-certifications",
-        "items": [
-          {
-            "label": "AWS",
-            "href": "#/partners-certifications",
-            "logo": "/uploads/stack-icons/amazon-web-services.svg"
-          },
-          {
-            "label": "Google Cloud",
-            "href": "#/partners-certifications",
-            "logo": "/uploads/stack-icons/google-cloud.svg"
-          },
-          {
-            "label": "Microsoft",
-            "href": "#/partners-certifications",
-            "logo": "/uploads/stack-icons/microsoft.svg"
-          },
-          {
-            "label": "Salesforce",
-            "href": "#/partners-certifications",
-            "logo": "/uploads/stack-icons/salesforce.svg"
-          }
-        ]
-      }
-    },
-    {
-      "label": "Resources",
-      "href": "#insights",
-      "layout": "simple",
-      "links": [
-        {
-          "label": "Schedule a Consultation",
-          "href": "#/contact-us"
-        },
-        {
-          "label": "FAQ",
-          "href": "#/help-and-faq"
-        },
-        {
-          "label": "Events",
-          "href": "#/events"
-        },
-        {
-          "label": "Blog",
-          "href": "#/blog"
-        },
-        {
-          "label": "Case Studies",
-          "href": "#/case-studies"
+          "heading": "Business challenges",
+          "tiles": [
+            {
+              "label": "Digital Transformation",
+              "href": "#/digital-transformation",
+              "icon": "transform",
+              "blurb": "Modernize systems and processes"
+            },
+            {
+              "label": "Security",
+              "href": "#/cybersecurity",
+              "icon": "shield",
+              "blurb": "Protect users, devices and data"
+            },
+            {
+              "label": "Automation",
+              "href": "#/automation",
+              "icon": "gear",
+              "blurb": "Remove repetitive manual work"
+            },
+            {
+              "label": "Gaining Efficiency",
+              "href": "#/gaining-efficiency",
+              "icon": "gauge",
+              "blurb": "Get more from your technology"
+            }
+          ]
         }
       ]
     }
@@ -2997,7 +2969,7 @@
           "items": [
             {
               "title": "What are your two primary services?",
-              "text": "<p>Fully Managed IT Services – Nexsate monitors, manages, supports, and secures all IT systems and users for a fixed and predictable monthly fee.</p><p>Co-Managed IT Services – We support internal IT as an extension of your team. This role includes patching, repetitive tasks, one-off services, and special projects. We handle the backend while in-house IT manages everything else.</p>"
+              "text": "<ul><li>Fully Managed IT Services – Nexsate monitors, manages, supports, and secures all IT systems and users for a fixed and predictable monthly fee.</li><li>Co-Managed IT Services – We support internal IT as an extension of your team. This role includes patching, repetitive tasks, one-off services, and special projects. We handle the backend while in-house IT manages everything else.</li></ul>"
             },
             {
               "title": "What other services do you offer?",
@@ -3023,11 +2995,11 @@
           "items": [
             {
               "title": "How are you different?",
-              "text": "<p>Nexsate selectively partners with growing organizations that like applying strategy and budgets to a proven IT process based on standards and best practices – to improve performance and lower risk.</p><p>Nexsate creates and maintains powerful, quiet, and secure IT systems by actively engaging and advising our clients in regularly scheduled Strategic Business Reviews with a vCIO.</p><p>Most Nexsate locations limit new client onboardings to two per month. This approach allows us to institute comprehensive, data-driven quality controls – on the front end – which create increasing operating leverage for our clients throughout the lifetime of the relationship.</p>"
+              "text": "<ul><li>Nexsate selectively partners with growing organizations that like applying strategy and budgets to a proven IT process based on standards and best practices – to improve performance and lower risk.</li><li>Nexsate creates and maintains powerful, quiet, and secure IT systems by actively engaging and advising our clients in regularly scheduled Strategic Business Reviews with a vCIO.</li><li>Most Nexsate locations limit new client onboardings to two per month. This approach allows us to institute comprehensive, data-driven quality controls – on the front end – which create increasing operating leverage for our clients throughout the lifetime of the relationship.</li></ul>"
             },
             {
               "title": "How do you maximize responsiveness?",
-              "text": "<p>Nexsate is responsive by design. We partner with organizations that appreciate the value of following a standards-based approach to inform the architecture and lifecycle management of their IT systems.</p><p>This alignment allows clients to enjoy business optimizing technology that doesn’t require constant, reactive, emergency intervention – so they have more time to focus on growing their business.</p><p>We give users direct access to support, which eliminates bottlenecks and allows us to collect data and insights to identify training gaps and recommend system improvements.</p><p>Our Service Level Agreement prioritizes client matters and response times by P1, P2, P3, and P4. A significant server or cloud application outage is a P1.</p><p>Assisting with a password reset is a P4. Good news: we can set you up with a self-serve password solution, so you don’t have to open a ticket.</p><p>The outcome is similar to the concept of compound interest. When you invest in the process over time, both quality of service and responsiveness accrue. Failure to invest (or starting late) makes it impossible to catch up.</p>"
+              "text": "<ul><li>Nexsate is responsive by design. We partner with organizations that appreciate the value of following a standards-based approach to inform the architecture and lifecycle management of their IT systems.</li><li>This alignment allows clients to enjoy business optimizing technology that doesn’t require constant, reactive, emergency intervention – so they have more time to focus on growing their business.</li><li>We give users direct access to support, which eliminates bottlenecks and allows us to collect data and insights to identify training gaps and recommend system improvements.</li><li>Our Service Level Agreement prioritizes client matters and response times by P1, P2, P3, and P4. A significant server or cloud application outage is a P1.</li><li>Assisting with a password reset is a P4. Good news: we can set you up with a self-serve password solution, so you don’t have to open a ticket.</li><li>The outcome is similar to the concept of compound interest. When you invest in the process over time, both quality of service and responsiveness accrue. Failure to invest (or starting late) makes it impossible to catch up.</li></ul>"
             }
           ]
         },

@@ -28,7 +28,7 @@ export default function AnswersBand() {
                         {item.title}
                         <span aria-hidden="true" className="faq-plus flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-shell-gray-100 text-lg leading-none transition-all duration-300 group-hover:scale-110 group-hover:text-[#0b1fb3] group-open:rotate-45">+</span>
                       </summary>
-                      <div className="px-5 pb-5 text-sm leading-relaxed text-shell-gray-700 md:text-base">
+                      <div className="px-5 pb-5 text-sm leading-relaxed text-shell-gray-700 md:text-base [&_ul]:list-disc [&_ul]:pl-5 [&_li]:mb-1">
                         <RichText value={item.text} />
                       </div>
                     </details>
