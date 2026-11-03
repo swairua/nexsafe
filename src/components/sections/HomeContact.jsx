@@ -16,7 +16,7 @@ export default function HomeContact() {
           </Reveal>
         </div>
       </div>
-      <div className="shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-16 pt-7 md:pb-24 md:grid-cols-[1fr_1.2fr] md:gap-8 lg:gap-16">
+      <div className="shell-container relative z-10 grid gap-10 bg-[#d5deef] pb-16 pt-7 md:pb-24 md:grid-cols-[1fr_1.2fr] md:gap-4">
         <Reveal variant="left" className="space-y-8">
           <div>
             <p className="max-w-xl text-base leading-relaxed text-shell-gray-900 md:text-lg">
