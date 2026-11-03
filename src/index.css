@@ -650,36 +650,15 @@
   transition: box-shadow 0.45s ease;
 }
 
-/* FAQ glow — open card breathes a soft brand-ink halo (matches the
-   partner/proof glow language); the + disc fills brand colour with its own
-   small glow. Pulse stops for users who prefer reduced motion. */
-.faq-item[open] {
-  animation: faq-glow-pulse 2.6s ease-in-out infinite;
-}
-@keyframes faq-glow-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 24px 3px rgba(1, 116, 164, 0.28), 0 18px 44px -16px rgba(14, 17, 20, 0.18);
-  }
-  50% {
-    box-shadow: 0 0 34px 5px rgba(1, 116, 164, 0.5), 0 18px 44px -16px rgba(14, 17, 20, 0.18);
-  }
-}
+.faq-item[open],
 .faq-item[open]:hover {
-  animation: none;
   border-color: var(--color-shell-gray-300);
-  box-shadow: 0 0 24px 3px rgba(1, 116, 164, 0.35), 0 14px 30px -12px rgba(1, 116, 164, 0.35);
+  box-shadow: none;
 }
 .faq-item[open] .faq-plus {
   background: var(--color-brand-ink);
   color: #fff;
   box-shadow: 0 0 14px 2px rgba(1, 116, 164, 0.45);
-}
-@media (prefers-reduced-motion: reduce) {
-  .faq-item[open] {
-    animation: none;
-    box-shadow: 0 0 26px 3px rgba(1, 116, 164, 0.35), 0 18px 44px -16px rgba(14, 17, 20, 0.18);
-  }
 }
 @keyframes marquee {
   from { transform: translateX(0); }
