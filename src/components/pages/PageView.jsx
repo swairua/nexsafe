@@ -6,15 +6,15 @@ import HomeContact from '../sections/HomeContact.jsx'
 import ConnectBand from '../sections/ConnectBand.jsx'
 import StartBand from '../sections/StartBand.jsx'
 import BlogIndex from './BlogIndex.jsx'
-import PageHeroCarousel from './PageHeroCarousel.jsx'
 import { textBearingHeroImages } from '../sections/HeroCarousel.jsx'
 
-function Copy({ para }) {
+function Copy({ para, light = false }) {
   const html = String(para || '')
+  const tone = light ? 'text-white' : 'text-shell-gray-700'
   if (/<\s*(p|br|strong|em|ul|ol|li|a|h3|h4|blockquote)[\s/>]/i.test(html)) {
-    return <RichText value={html} className='mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg [&_a]:text-shell-red [&_a]:underline [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_blockquote]:border-l-4 [&_blockquote]:border-shell-gray-300 [&_blockquote]:pl-4 [&_blockquote]:italic' />
+    return <RichText value={html} className={`mt-5 text-base leading-relaxed ${tone} md:text-lg [&_a]:text-shell-red [&_a]:underline [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_blockquote]:border-l-4 [&_blockquote]:border-shell-gray-300 [&_blockquote]:pl-4 [&_blockquote]:italic`} />
   }
-  return <p className='mt-5 text-base leading-relaxed text-shell-gray-700 md:text-lg'>{para}</p>
+  return <p className={`mt-5 text-base leading-relaxed ${tone} md:text-lg`}>{para}</p>
 }
 
 function NotFound(notFound) {
@@ -69,7 +69,17 @@ export default function PageView({ page, slug, params }) {
           className='pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-shell-red/20 blur-3xl'
           aria-hidden='true'
         />
-        {heroImages.length > 0 && <PageHeroCarousel images={heroImages} />}
+        {heroImages[0] && (
+          <>
+            <img
+              src={heroImages[0]}
+              alt=''
+              className='hero-feather absolute inset-0 h-full w-full object-cover'
+              onError={(e) => { e.currentTarget.style.display = 'none' }}
+            />
+            <div className='pointer-events-none absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25' aria-hidden='true' />
+          </>
+        )}
         <div className='shell-container relative z-10 py-14 md:py-20'>
           <Reveal as='nav' variant='fade' className='mb-12 text-xs text-white/60' aria-label={ui.breadcrumb}>
             {sectionHref ? (
@@ -88,8 +98,8 @@ export default function PageView({ page, slug, params }) {
           <Reveal as='h1' delay={3} className='mb-4 text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]'>
             {page.title}
           </Reveal>
-          <Reveal as='div' delay={4} className='mb-6 max-w-3xl text-base leading-relaxed text-white/90 md:text-lg'>
-            <Copy para={page.intro} />
+          <Reveal as='div' delay={4} className='mb-6 text-base leading-relaxed text-white/90 md:text-lg'>
+            <Copy para={page.intro} light />
           </Reveal>
         </div>
       </section>
