@@ -97,7 +97,7 @@ export default function StackSection() {
                       aria-expanded={expanded}
                       aria-controls={`vendors-${group.id}`}
                       onClick={() => setExpandedGroups((state) => ({ ...state, [group.id]: !state[group.id] }))}
-                      className="mt-2 -mx-2 -mb-2 cursor-pointer self-start px-2 py-2 text-xs font-bold text-shell-gray-900 transition-all duration-300 hover:text-brand-ink hover:drop-shadow-[0_0_6px_rgba(1,116,164,0.7)] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
+                      className="mt-1 -mx-3 -mb-3 cursor-pointer self-start rounded-md px-3 py-3 text-xs font-bold text-shell-gray-900 transition-all duration-300 hover:bg-brand-ink/10 hover:text-brand-ink hover:drop-shadow-[0_0_6px_rgba(1,116,164,0.7)] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50"
                     >
                       {expanded ? '− View less' : '+ View more'}
                     </button>

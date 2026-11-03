@@ -82,7 +82,7 @@ export default function IndustriesStrip() {
             <Reveal
               key={item.label}
               as="li"
-              variant="up"
+              variant="fade"
               delay={(idx % 3) + 1}
               className="flex w-[80%] shrink-0 snap-start sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]"
             >
