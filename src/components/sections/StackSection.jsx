@@ -69,7 +69,7 @@ export default function StackSection() {
 
         <div className="overflow-hidden rounded-2xl bg-[#f2f3f5] p-3 md:p-4">
           <div
-            className="flex transition-transform duration-500 ease-out"
+            className="flex items-start transition-transform duration-500 ease-out"
             style={{
               gap: `${GAP_PX}px`,
               transform: `translateX(calc(-${current} * (100% + ${GAP_PX}px) / ${visible}))`,
@@ -87,7 +87,7 @@ export default function StackSection() {
                   <Reveal
                     variant="up"
                     delay={(index % 4) + 1}
-                    className="flex h-full min-h-56 flex-col rounded-xl border border-shell-gray-200 bg-white p-4 shadow-sm md:p-5"
+                    className="flex min-h-56 flex-col rounded-xl border border-shell-gray-200 bg-white p-4 shadow-sm md:p-5"
                   >
                     <h3 className="text-base font-bold leading-snug text-shell-gray-900 md:text-lg">{group.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-shell-gray-700">{group.text}</p>
