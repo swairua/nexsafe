@@ -53,7 +53,7 @@ export default function CardGrid() {
         </Reveal>
 
         <div className="-mx-2 -my-6 overflow-hidden px-2 py-6">
-          <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${page * 100}%)` }}>
+          <div className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,0.61,0.36,1)]" style={{ transform: `translateX(-${page * 100}%)` }}>
             {pages.map((pageCards, pageIdx) => (
               <div key={pageIdx} className="grid w-full shrink-0 grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
                 {pageCards.map((card) => (
