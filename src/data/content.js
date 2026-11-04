@@ -12,7 +12,7 @@ export const heroSlides = [
     id: 'managed-services',
     kicker: 'MANAGED SERVICES',
     title: 'We take care of your IT, so you can take care of your customers.',
-    text: 'From everyday user support to proactive monitoring, maintenance, and security, Nexsate takes responsibility for keeping your IT environment running smoothly. We help resolve issues before they disrupt operations, giving your people the support they need to stay focused on their work.',
+    text: 'We manage the technology behind daily operations so your team can stay focused — responsive support, stronger security, and systems that scale as you grow.',
     cta: { label: 'Discover Our Services', href: pageHref('Services & Solutions') },
     image: '/uploads/hero_0.jpg',
     alt: 'City skyline at night with a glowing network of connected nodes spread across it',
