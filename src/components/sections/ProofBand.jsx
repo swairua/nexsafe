@@ -88,7 +88,7 @@ export default function ProofBand() {
   const certs = (content.certStrip && content.certStrip.items) || []
   const about = (content.pages || {})['about-us']
   const badges = (about && about.logos) || []
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 36 })
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 36, align: 'start' })
 
   const scrollBy = (dir) => {
     if (!emblaApi) return
