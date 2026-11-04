@@ -73,8 +73,8 @@ export const defaultContent = {
   ],
   introBand: {
     eyebrow: "Our company",
-    title: "Nexsate is your trusted source for IT services and support.",
-    text: "Nexsate brings together managed IT, cloud infrastructure, cybersecurity, networking, software development, and systems integration under one roof, providing businesses with a single, accountable partner for their technology needs.",
+    title: "Nexsate is your trusted source in IT services and support",
+    text: "We manage the technology behind daily operations so your team can stay focused — responsive support, stronger security, and systems that scale as you grow.",
   },
   statement: {
     title: "Nexsate is your trusted source for IT services and support.",
