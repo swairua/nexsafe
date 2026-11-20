@@ -4,7 +4,7 @@ export default function MobileNav({ navItems, openIndex, onToggle, onNavigate })
   const { uiLabels, settings } = useContent()
   return (
     <div className="menu-anim absolute inset-x-5 top-full max-h-[75vh] overflow-y-auto overscroll-contain rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl md:inset-x-8 lg:hidden">
-      <nav className="py-4" aria-label={uiLabels.mobileNav}>
+      <nav className="px-4 py-4 sm:px-5" aria-label={uiLabels.mobileNav}>
         {navItems.map((item, i) => (
           <div key={item.label} className="border-b border-shell-gray-100 last:border-0">
             <button
