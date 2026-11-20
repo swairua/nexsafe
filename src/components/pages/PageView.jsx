@@ -134,9 +134,6 @@ export default function PageView({ page, slug, params }) {
         <section key={section.heading} className={sIdx % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
           <div className='shell-container py-8 md:py-12 break-words'>
             <Reveal id={`section-${sIdx + 1}`} variant='fade' className='scroll-mt-40'>
-              <span className='inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-shell-yellow ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]'>
-                {page.eyebrow}
-              </span>
               <h2 className='mt-3 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-2xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] md:text-3xl lg:text-4xl'>
                 {section.heading}
               </h2>
