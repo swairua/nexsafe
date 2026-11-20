@@ -56,9 +56,7 @@ export default function HomeContact() {
                       {index + 1}
                     </span>
                     <p className="pt-1.5 text-sm leading-relaxed text-shell-gray-700">{step}</p>
-                    {index < (copy.steps || []).length - 1 ? (
-                      <span aria-hidden="true" className="absolute bottom-0 left-[18px] top-10 hidden w-px bg-gradient-to-b from-brand-ink/50 to-transparent sm:block" />
-                    ) : null}
+                    <span aria-hidden="true" className="absolute bottom-0 left-[18px] top-10 hidden w-px bg-gradient-to-b from-brand-ink/50 to-transparent sm:block" />
                   </li>
                 ))}
               </ol>
