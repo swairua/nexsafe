@@ -26,7 +26,7 @@ export function Rich({ as: Tag = "span", className = "", children, ...rest }) {
 
 export default function SectionTag({ children }) {
   return (
-    <span className="inline-block text-sm font-bold uppercase tracking-[0.14em] text-shell-yellow">
+    <span className="inline-block text-sm font-bold uppercase tracking-[0.14em] text-shell-red">
       {children}
     </span>
   )
