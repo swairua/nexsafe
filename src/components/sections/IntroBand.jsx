@@ -13,7 +13,7 @@ export default function IntroBand() {
       <div className="bg-shell-black">
         <div className="shell-container grid gap-3 px-4 pb-10 pt-8 md:grid-cols-2 md:items-center md:gap-12 md:pb-14 md:pt-10">
           <Reveal delay={1} variant="fade">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#3aa9e0]">{introBand.eyebrow}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-shell-yellow">{introBand.eyebrow}</p>
             <h2 className="mt-3 text-3xl font-extrabold leading-[1.12] tracking-tight text-white md:text-[2.6rem]">{introBand.title}</h2>
           </Reveal>
           <Reveal delay={2} variant="fade" className="flex items-start">
@@ -29,7 +29,7 @@ export default function IntroBand() {
               <a href={card.href} className="group flex h-full flex-col rounded-2xl transition-shadow duration-300 hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]" aria-label={`${card.eyebrow} - ${card.title}`}>
                 <SmartImage src={card.src} alt={card.alt} fallback={card.fallback} className="aspect-[16/11] w-full overflow-hidden rounded-2xl" imgClassName="" />
                 <div className="relative z-10 mx-auto -mt-8 flex min-h-[4.5rem] w-[88%] flex-col justify-center rounded-xl bg-white px-4 py-3 text-center ring-1 ring-transparent shadow-[0_18px_50px_-12px_rgba(0,0,0,0.28)] transition-all duration-300 group-hover:ring-2 group-hover:ring-[#0174a4]/40 group-hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]">
-                  <p className="text-[15px] font-medium text-[#2aa5de]">{card.eyebrow}</p>
+                  <p className="text-[15px] font-medium text-shell-yellow">{card.eyebrow}</p>
                   <p className="mt-1.5 text-xl font-bold leading-snug text-[#0a1a3c] transition-colors group-hover:text-[#0174a4]">{card.title}</p>
                 </div>
               </a>

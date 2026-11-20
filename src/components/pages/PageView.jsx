@@ -21,7 +21,7 @@ function NotFound(notFound) {
   return (
     <section className='bg-brand-ink text-white'>
       <div className='shell-container py-20 text-center md:py-28'>
-        <p className='text-xs font-bold uppercase tracking-wider text-shell-red'>{notFound.tag}</p>
+        <p className='text-xs font-bold uppercase tracking-wider text-shell-yellow'>{notFound.tag}</p>
         <h1 className='mx-auto mt-3 max-w-2xl text-4xl font-bold tracking-tight md:text-6xl'>
           {notFound.title}
         </h1>
@@ -134,7 +134,7 @@ export default function PageView({ page, slug, params }) {
         <section key={section.heading} className={sIdx % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
           <div className='shell-container py-8 md:py-12 break-words'>
             <Reveal id={`section-${sIdx + 1}`} variant='fade' className='scroll-mt-40'>
-              <span className='inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-brand-ink ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]'>
+              <span className='inline-flex items-center rounded-full bg-brand-ink/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-shell-yellow ring-1 ring-brand-ink/25 shadow-[0_0_14px_2px_rgba(1,116,164,0.25)]'>
                 {page.eyebrow}
               </span>
               <h2 className='mt-3 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-2xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] md:text-3xl lg:text-4xl'>
@@ -292,7 +292,7 @@ export default function PageView({ page, slug, params }) {
                   delay={(idx % 4) + 1}
                   className='group rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-6 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
                 >
-                  <p className='text-xs font-bold uppercase tracking-wider text-shell-red'>
+                  <p className='text-xs font-bold uppercase tracking-wider text-shell-yellow'>
                     {rel.eyebrow}
                   </p>
                   <h3 className='mt-2 text-base font-bold leading-snug text-shell-gray-900 group-hover:text-brand-ink'>

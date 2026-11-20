@@ -168,7 +168,7 @@ export default function BlogIndex({ page, topic }) {
                   delay={(idx % 4) + 1}
                   className="group rounded-2xl border border-shell-gray-300 bg-white p-6 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]"
                 >
-                  <p className="text-xs font-bold uppercase tracking-wider text-shell-red">
+                  <p className="text-xs font-bold uppercase tracking-wider text-shell-yellow">
                     {rel.eyebrow}
                   </p>
                   <h3 className="mt-2 text-base font-bold leading-snug text-shell-gray-900 group-hover:text-brand-ink">
