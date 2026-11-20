@@ -8,9 +8,9 @@ export default function IntroBand() {
   const { introBand, statement, introCards, pillars, sectionIds } = useContent()
   return (
     <>
-    <section id={sectionIds.company} className="pb-4 md:pb-6">
+    <section id={sectionIds.company} className="bg-shell-black pb-4 md:pb-6">
 
-      <div>
+      <div className="bg-shell-black">
         <div className="shell-container grid gap-3 px-4 pb-10 pt-8 md:grid-cols-2 md:items-center md:gap-12 md:pb-14 md:pt-10">
           <Reveal delay={1} variant="fade">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-shell-yellow">{introBand.eyebrow}</p>
