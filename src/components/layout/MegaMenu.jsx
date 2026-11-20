@@ -191,7 +191,7 @@ export default function MegaMenu({ item, onClose }) {
       <div className="shell-container grid grid-cols-12 gap-6 py-8">
         <div className={`col-span-8 grid gap-6 ${columnsGridClass}`}>
         {item.columns.map((col, idx) => (
-          <div key={col.heading} className={`menu-col ${idx > 0 && colCount > 1 ? "relative pl-6 before:absolute before:-left-9 before:bottom-1 before:h-2/3 before:w-px before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']" : ''}`}>
+          <div key={col.heading} className={`menu-col ${idx > 0 && colCount > 1 ? "relative pl-6 before:absolute before:-left-9 before:bottom-5 before:h-2/3 before:w-px before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']" : ''}`}>
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {col.heading}
             </h3>
@@ -199,7 +199,7 @@ export default function MegaMenu({ item, onClose }) {
               colCount === 1 && col.links.length > 3 ? (
                 <div className="flex gap-16">
                   <LinkList links={col.links.slice(0, Math.ceil(col.links.length / 2))} onClose={onClose} />
-                  <div className="relative self-start before:absolute before:-left-8 before:bottom-1 before:h-2/3 before:w-px before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']">
+                  <div className="relative self-start before:absolute before:-left-9 before:bottom-5 before:h-2/3 before:w-px before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']">
                     <LinkList links={col.links.slice(Math.ceil(col.links.length / 2))} onClose={onClose} />
                   </div>
                 </div>
