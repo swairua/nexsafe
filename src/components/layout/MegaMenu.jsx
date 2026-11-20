@@ -146,7 +146,7 @@ export default function MegaMenu({ item, onClose }) {
             ) : null}
           </div>
 
-          <div className="menu-col col-span-5 relative self-start pl-6 before:absolute before:-left-9 before:bottom-5 before:h-2/3 before:w-px before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']">
+          <div className="menu-col col-span-5 relative pl-6 before:absolute before:-left-9 before:bottom-5 before:h-2/3 before:w-px before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']">
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {challenges.heading}
             </h3>
