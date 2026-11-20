@@ -58,11 +58,11 @@ function LinkArrow() {
   )
 }
 
-function PromoPanel({ onClose, span = 'col-span-3', stacked = false, divider = false }) {
+function PromoPanel({ onClose, span = 'col-span-3', stacked = false }) {
   const { pageConnect } = useContent()
   if (!pageConnect) return null
   return (
-    <div className={`${span} self-start ${divider ? 'border-l border-shell-gray-200 pl-6' : ''}`}>
+    <div className={`${span} self-start`}>
       <a
         href={pageConnect.cta?.href || '#/contact-us'}
         onClick={onClose}
@@ -146,7 +146,7 @@ export default function MegaMenu({ item, onClose }) {
             ) : null}
           </div>
 
-          <div className="menu-col col-span-5 border-l border-shell-gray-200 pl-6">
+          <div className="menu-col col-span-5 relative pl-6 before:absolute before:-left-3 before:top-1/2 before:h-3/4 before:w-px before:-translate-y-1/2 before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']">
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {challenges.heading}
             </h3>
@@ -174,7 +174,7 @@ export default function MegaMenu({ item, onClose }) {
             </div>
           </div>
 
-          <PromoPanel onClose={onClose} span="col-span-4" stacked divider />
+          <PromoPanel onClose={onClose} span="col-span-4" stacked />
         </div>
       </div>
     )
@@ -199,7 +199,7 @@ export default function MegaMenu({ item, onClose }) {
               colCount === 1 && col.links.length > 3 ? (
                 <div className="flex gap-6">
                   <LinkList links={col.links.slice(0, Math.ceil(col.links.length / 2))} onClose={onClose} />
-                  <div className="border-l border-shell-gray-200 pl-6">
+                  <div className="relative pl-6 before:absolute before:-left-3 before:top-1/2 before:h-3/4 before:w-px before:-translate-y-1/2 before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']">
                     <LinkList links={col.links.slice(Math.ceil(col.links.length / 2))} onClose={onClose} />
                   </div>
                 </div>
