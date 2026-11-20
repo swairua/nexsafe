@@ -6,7 +6,6 @@ import HomeContact from '../sections/HomeContact.jsx'
 import ConnectBand from '../sections/ConnectBand.jsx'
 import StartBand from '../sections/StartBand.jsx'
 import BlogIndex from './BlogIndex.jsx'
-import { textBearingHeroImages } from '../sections/HeroCarousel.jsx'
 
 function Copy({ para, light = false }) {
   const html = String(para || '')
@@ -60,7 +59,10 @@ export default function PageView({ page, slug, params }) {
   const gallery = page.gallery || []
   const logos = page.logos || []
   const isContact = slug === 'contact-us'
-  const heroImages = [...new Set([categoryImage, ...(content.heroSlides || []).map((s) => textBearingHeroImages[s.image]?.src || s.image)].filter(Boolean))]
+  const sectionImages = [
+    ...(categoryImage ? [{ src: categoryImage, alt: categoryAlt }] : []),
+    ...gallery,
+  ].filter((image, index, images) => images.findIndex((item) => item.src === image.src) === index)
 
   return (
     <article>
@@ -69,17 +71,6 @@ export default function PageView({ page, slug, params }) {
           className='pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-shell-red/20 blur-3xl'
           aria-hidden='true'
         />
-        {heroImages[0] && (
-          <>
-            <img
-              src={heroImages[0]}
-              alt=''
-              className='hero-feather absolute inset-0 h-full w-full object-cover'
-              onError={(e) => { e.currentTarget.style.display = 'none' }}
-            />
-            <div className='pointer-events-none absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25' aria-hidden='true' />
-          </>
-        )}
         <div className='shell-container relative z-10 py-14 md:py-20'>
           <Reveal as='nav' variant='fade' className='mb-12 text-xs text-white/60' aria-label={ui.breadcrumb}>
             {sectionHref ? (
@@ -130,11 +121,16 @@ export default function PageView({ page, slug, params }) {
         </div>
       )}
 
-      {page.sections.map((section, sIdx) => (
+      {page.sections.map((section, sIdx) => {
+        const sectionImage = sectionImages[sIdx]
+        const imageFirst = sIdx % 2 === 0
+        return (
         <section key={section.heading} className={sIdx % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
           <div className='shell-container py-8 md:py-12 break-words'>
-            <Reveal id={`section-${sIdx + 1}`} variant='fade' className='scroll-mt-40'>
-              <h2 className='mt-3 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-2xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] md:text-3xl lg:text-4xl'>
+            <Reveal id={`section-${sIdx + 1}`} variant='fade' className={`scroll-mt-40 ${sectionImage ? 'grid gap-8 md:grid-cols-2 md:items-center' : ''}`}>
+              {sectionImage ? <SmartImage src={sectionImage.src} alt={sectionImage.alt || ''} fallback='linear-gradient(135deg, #d8dbdd 0%, #f4f5f6 100%)' className={`aspect-[4/3] w-full rounded-2xl ${imageFirst ? 'order-1' : 'order-2'}`} /> : null}
+              <div className={sectionImage ? (imageFirst ? 'order-2' : 'order-1') : ''}>
+              <h2 className='mt-0 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-2xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] md:text-3xl lg:text-4xl'>
                 {section.heading}
               </h2>
               {(section.body || []).map((para, pi) => (
@@ -194,10 +190,12 @@ export default function PageView({ page, slug, params }) {
                   ))}
                 </ul>
               )}
+              </div>
             </Reveal>
           </div>
         </section>
-      ))}
+        )
+      })}
 
       {page.quote && page.quote.text ? (
         <section className='bg-brand-ink text-white'>
@@ -220,40 +218,6 @@ export default function PageView({ page, slug, params }) {
       ) : null}
 
       {slug === 'about-us' && <StartBand />}
-
-      {gallery.length > 0 && (
-        <section className={page.sections.length % 2 === 0 ? 'bg-shell-gray-100' : 'bg-white'}>
-          <div className='shell-container py-8 md:py-12'>
-            <div className='grid gap-5 sm:grid-cols-2 lg:grid-cols-3'>
-              {gallery.map((shot) => (
-                <Reveal key={shot.src} variant='zoom'>
-                  <SmartImage
-                    src={shot.src}
-                    alt={shot.alt || ''}
-                    fallback='linear-gradient(135deg, #070e40 0%, #010ed0 130%)'
-                    className='aspect-[4/3] w-full rounded-2xl'
-                  />
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {categoryImage && (
-        <section className={page.sections.length % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
-        <div className='shell-container py-8 md:py-12'>
-            <Reveal variant='zoom'>
-              <SmartImage
-                src={categoryImage}
-                alt={categoryAlt}
-                fallback='linear-gradient(135deg, #070e40 0%, #010ed0 130%)'
-                className='aspect-[16/7] w-full rounded-2xl md:aspect-[21/8]'
-              />
-            </Reveal>
-          </div>
-        </section>
-      )}
 
       {logos.length > 0 && (
         <section className='bg-shell-gray-100'>
