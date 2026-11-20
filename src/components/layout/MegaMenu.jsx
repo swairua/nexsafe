@@ -191,7 +191,7 @@ export default function MegaMenu({ item, onClose }) {
       <div className="shell-container grid grid-cols-12 gap-6 py-8">
         <div className={`col-span-8 grid gap-6 ${columnsGridClass}`}>
         {item.columns.map((col, idx) => (
-          <div key={col.heading} className={`menu-col ${idx > 0 && colCount > 1 ? 'border-l border-shell-gray-200 pl-6' : ''}`}>
+          <div key={col.heading} className={`menu-col ${idx > 0 && colCount > 1 ? "relative pl-6 before:absolute before:-left-3 before:top-1/2 before:h-3/4 before:w-px before:-translate-y-1/2 before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']" : ''}`}>
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {col.heading}
             </h3>
@@ -243,7 +243,7 @@ export default function MegaMenu({ item, onClose }) {
           </div>
         ))}
         </div>
-        <PromoPanel onClose={onClose} span="col-span-4" stacked divider />
+        <PromoPanel onClose={onClose} span="col-span-4" stacked />
       </div>
     </div>
   )
