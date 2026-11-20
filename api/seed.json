@@ -102,7 +102,7 @@
       "href": "#/services-solutions",
       "src": "/uploads/boardroom-meeting.jpg",
       "alt": "Team meeting in a boardroom",
-      "fallback": "linear-gradient(135deg, #070e40 0%, #010ed0 140%)"
+      "fallback": "transparent"
     },
     {
       "id": "our-expertise",
@@ -111,7 +111,7 @@
       "href": "#/about-us",
       "src": "/uploads/team-collaboration.jpg",
       "alt": "Diverse team giving thumbs up",
-      "fallback": "linear-gradient(135deg, #070e40 0%, #0693e3 130%)"
+      "fallback": "transparent"
     },
     {
       "id": "our-customers",
@@ -120,7 +120,7 @@
       "href": "#/success-story",
       "src": "/uploads/client-smiling.jpg",
       "alt": "Smiling client",
-      "fallback": "linear-gradient(135deg, #b98a1c 0%, #e8b93c 100%)"
+      "fallback": "transparent"
     }
   ],
   "pageConnect": {
