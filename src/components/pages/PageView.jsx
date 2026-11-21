@@ -80,17 +80,6 @@ export default function PageView({ page, slug, params }) {
           aria-hidden='true'
         />
         <div className='shell-container relative z-10 flex min-h-[28rem] flex-col justify-center py-20 md:min-h-[36rem]'>
-          <Reveal as='nav' variant='fade' className='mb-12 text-xs text-white/60' aria-label={ui.breadcrumb}>
-            {sectionHref ? (
-              <a href={sectionHref} className='underline-offset-2 hover:text-white hover:underline'>
-                {page.eyebrow}
-              </a>
-            ) : (
-              <span>{page.eyebrow}</span>
-            )}
-            <span aria-hidden='true'>/</span>
-            <span className='font-semibold text-white'>{page.title}</span>
-          </Reveal>
           <Reveal as='p' delay={2} className='mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-sm font-bold tracking-[0.02em] text-shell-yellow'>
             {page.eyebrow}
           </Reveal>

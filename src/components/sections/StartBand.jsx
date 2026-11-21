@@ -3,7 +3,12 @@ import Reveal from '../ui/Reveal.jsx'
 import SectionHeading from '../ui/SectionHeading.jsx'
 import { useContent } from "../../content/ContentContext.jsx"
 
-const FALLBACK_VALUES = ['Integrity', 'Dependability', 'Customer-Centric', 'Innovative']
+const FALLBACK_VALUES = [
+  { title: 'Integrity', text: 'We believe trust is earned through honesty, transparency, and responsible action. Nexsate communicates clearly about system issues, pricing, project timelines, and service expectations.' },
+  { title: 'Dependability', text: 'We take ownership of the outcomes we deliver. When issues arise, we focus on resolving them quickly, professionally, and without shifting responsibility.' },
+  { title: 'Customer-Centric', text: 'Technology support should make work easier, not more frustrating. We take time to understand each client\'s operations, challenges, and priorities so we can provide patient, practical, and responsive support.' },
+  { title: 'Innovative', text: 'Technology is always changing, and businesses need a partner that can adapt with them. Nexsate stays current with emerging tools, cloud solutions, cybersecurity trends, automation, and AI-supported technologies.' },
+]
 
 export default function StartBand() {
   const content = useContent()
@@ -13,8 +18,8 @@ export default function StartBand() {
   const section = about && Array.isArray(about.sections)
     ? about.sections.find((s) => /core value/i.test(s.heading || ''))
     : null
-  const words = section && Array.isArray(section.items) && section.items.length
-    ? section.items.map((it) => it.title).filter(Boolean)
+  const valuesData = section && Array.isArray(section.items) && section.items.length
+    ? section.items
     : FALLBACK_VALUES
   const cards = [split.outsource, split.extend].filter(Boolean)
   return (
@@ -24,19 +29,27 @@ export default function StartBand() {
           <SectionHeading eyebrow={values.tag} title={values.title} light titleClassName="text-2xl sm:text-3xl md:text-4xl" />
           <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg"><Rich as="p">{values.text}</Rich></div>
         </Reveal>
-        {words.length ? (
-          <ul className="mt-8 flex flex-wrap items-baseline gap-x-8 gap-y-3">
-            {words.map((w, i) => (
-              <Reveal as="li" key={w + i} delay={i + 1}>
-                <span className="text-3xl font-extrabold uppercase leading-none tracking-tight text-white sm:text-4xl">
-                  {w}
+        {valuesData.length ? (
+          <div className="mt-8 grid md:grid-cols-2 gap-6 md:gap-8">
+            {valuesData.map((v, i) => (
+              <Reveal
+                key={v.title + i}
+                variant="up"
+                delay={i + 1}
+                className="flex flex-col rounded-2xl bg-[rgba(255,255,255,0.08)] p-5 transition-transform duration-300 hover:bg-[rgba(255,255,255,0.12)] md:p-6"
+              >
+                <span className="text-xs uppercase tracking-wider text-shell-yellow mb-3 block">
+                  {i + 1}
                 </span>
-                {i < words.length - 1 ? (
-                  <span aria-hidden="true" className="ml-8 hidden text-2xl font-extrabold text-shell-red sm:inline">·</span>
-                ) : null}
+                <h4 className="text-lg font-bold leading-snug text-white md:text-xl">
+                  {v.title}
+                </h4>
+                <div className="mt-3 text-sm leading-relaxed text-white/70 md:text-base">
+                  {v.text}
+                </div>
               </Reveal>
             ))}
-          </ul>
+          </div>
         ) : null}
         {split.title && cards.length ? (
           <div className="mt-12">
