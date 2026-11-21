@@ -58,7 +58,7 @@ export default function StartBand() {
                   </h4>
                   <div className="mt-3 flex-1 text-sm leading-relaxed text-shell-gray-700 md:text-base"><Rich as="p">{card.text}</Rich></div>
                   {card.cta ? (
-                    <a href={card.cta.href} className="btn-pill btn-sweep mt-6 self-start">
+                    <a href={card.cta.href} className="btn-pill btn-sweep mt-6 self-end">
                       {card.cta.label}
                       <span className="arrow" aria-hidden="true">→</span>
                     </a>
@@ -66,7 +66,7 @@ export default function StartBand() {
                 </Reveal>
               ))}
             </div>
-            <Reveal delay={cards.length + 1} className="mt-8">
+            <Reveal delay={cards.length + 1} className="mt-8 flex justify-end">
               <a href="#/about-us" className="btn-pill btn-pill--primary">
                 About us <span aria-hidden="true">→</span>
               </a>
