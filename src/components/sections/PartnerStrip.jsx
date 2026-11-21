@@ -127,7 +127,7 @@ export default function PartnerStrip() {
         <div className="relative grid gap-10 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:gap-x-[3.55rem] md:items-center">
           <div className="md:z-10 md:flex md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
             <Reveal variant="fade">
-              <SectionHeading eyebrow={partnerStrip.tag} title={partnerStrip.title} weight="bold" titleClassName="sm:text-4xl md:text-5xl" />
+              <SectionHeading eyebrow={partnerStrip.tag} title={partnerStrip.title} weight="bold" titleClassName="sm:text-[2.1rem] md:text-[2.9rem]" />
               {partnerStrip.text ? <div className="mt-4 text-base font-normal leading-relaxed text-shell-gray-900 md:text-lg"><Rich as="p">{partnerStrip.text}</Rich></div> : null}
             </Reveal>
           </div>
