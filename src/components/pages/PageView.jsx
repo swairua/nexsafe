@@ -4,7 +4,6 @@ import SmartImage from '../ui/SmartImage.jsx'
 import { Rich, RichText } from '../ui/SectionTag.jsx'
 import HomeContact from '../sections/HomeContact.jsx'
 import ConnectBand from '../sections/ConnectBand.jsx'
-import StartBand from '../sections/StartBand.jsx'
 import BlogIndex from './BlogIndex.jsx'
 
 function Copy({ para, light = false }) {
@@ -214,8 +213,6 @@ export default function PageView({ page, slug, params }) {
           </div>
         </section>
       ) : null}
-
-      {slug === 'about-us' && <StartBand />}
 
       {logos.length > 0 && (
         <section className='bg-shell-black'>
