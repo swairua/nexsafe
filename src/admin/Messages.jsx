@@ -14,7 +14,7 @@ export default function Messages() {
       {/* Message list using new design tokens */}
       <div className="space-y-2">
         {messages.map((m) => (
-          <div key={m.id} className={CARD + " mb-2 p-3">
+          <div key={m.id} className={CARD + " mb-2 p-3"}>
             <p className="font-medium text-shell-gray-900">{m.name}</p>
             <p className="text-sm text-shell-gray-600">{m.email}</p>
             <a href={"mailto:" + m.email} className={BTN_PRIMARY + " text-white hover:bg-brand-ink"}>Reply</a>
