@@ -124,7 +124,7 @@ export default function PartnerStrip() {
   return (
     <section id={sectionIds.partners} className="my-8 bg-white pb-2 md:my-12 md:pb-4">
       <div className="shell-container">
-        <div className="relative grid gap-10 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:gap-x-[5.33rem] md:items-center">
+        <div className="relative grid gap-10 md:grid-cols-[minmax(0,26%)_minmax(0,1fr)] md:gap-x-[3.55rem] md:items-center">
           <div className="md:z-10 md:flex md:flex-col md:justify-center md:bg-white md:pr-6 lg:pr-10">
             <Reveal variant="fade">
               <SectionHeading eyebrow={partnerStrip.tag} title={partnerStrip.title} weight="bold" titleClassName="sm:text-4xl md:text-5xl" />
