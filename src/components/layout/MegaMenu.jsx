@@ -115,9 +115,9 @@ export default function MegaMenu({ item, onClose }) {
         className="menu-anim absolute inset-x-0 top-full hidden rounded-b-2xl border-t border-shell-gray-100 bg-white shadow-xl lg:block"
         onMouseLeave={onClose}
       >
-        <div className="shell-container grid grid-cols-12 gap-6 py-10">
+        <div className="shell-container grid grid-cols-12 gap-8 py-10">
 
-          <div className="menu-col col-span-3">
+          <div className="menu-col relative col-span-3 after:absolute after:-right-4 after:top-0 after:bottom-0 after:w-px after:bg-shell-gray-300 after:shadow-[0_0_3px_rgba(100,116,139,0.2)] after:content-['']">
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {services.heading}
             </h3>
@@ -146,7 +146,7 @@ export default function MegaMenu({ item, onClose }) {
             ) : null}
           </div>
 
-          <div className="menu-col col-span-5 relative pl-6 before:absolute before:-left-9 before:bottom-5 before:h-2/3 before:w-px before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']">
+          <div className="menu-col col-span-5 relative pl-6">
             <h3 className="mb-5 text-sm font-bold uppercase tracking-wider text-shell-gray-500">
               {challenges.heading}
             </h3>
