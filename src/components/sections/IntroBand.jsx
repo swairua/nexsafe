@@ -1,5 +1,5 @@
 import Reveal from "../ui/Reveal.jsx"
-import SectionTag, { Rich } from "../ui/SectionTag.jsx"
+import { Rich } from "../ui/SectionTag.jsx"
 import SectionHeading from "../ui/SectionHeading.jsx"
 import SmartImage from "../ui/SmartImage.jsx"
 import { useContent } from "../../content/ContentContext.jsx"
@@ -50,7 +50,7 @@ export default function IntroBand() {
             <ul className="grid gap-5 py-8 sm:grid-cols-2 lg:grid-cols-4 md:py-10">
               {pillars.map((pillar, idx) => (
                 <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-[#f3f4f6] p-6 shadow-sm transition-shadow duration-300 hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]">
-                  <SectionTag>{pillar.title}</SectionTag>
+                  <span className="inline-block text-base font-bold uppercase tracking-[0.14em] text-[#0a1a3c]">{pillar.title}</span>
                   <div className="mt-3 text-sm leading-relaxed text-shell-gray-700"><Rich as="p">{pillar.text}</Rich></div>
                 </Reveal>
               ))}
