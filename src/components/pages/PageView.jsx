@@ -263,14 +263,6 @@ export default function PageView({ page, slug, params }) {
                 </Reveal>
               ))}
             </div>
-            <button
-              type='button'
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className='mt-10 ml-auto flex w-fit items-center rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50'
-            >
-              {labels.backToTop} <span className='arrow'>↑</span>
-            </button>
-          </div>
         </section>
       )}
 
