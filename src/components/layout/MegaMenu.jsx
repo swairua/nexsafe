@@ -199,7 +199,7 @@ export default function MegaMenu({ item, onClose }) {
               colCount === 1 && col.links.length > 3 ? (
                 <div className="flex gap-16">
                   <LinkList links={col.links.slice(0, Math.ceil(col.links.length / 2))} onClose={onClose} />
-                  <div className="relative before:absolute before:-left-9 before:bottom-5 before:h-2/3 before:w-px before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']">
+                  <div className="relative before:absolute before:-left-9 before:top-0 before:bottom-0 before:w-px before:bg-shell-gray-300 before:shadow-[0_0_3px_rgba(100,116,139,0.2)] before:content-['']">
                     <LinkList links={col.links.slice(Math.ceil(col.links.length / 2))} onClose={onClose} />
                   </div>
                 </div>
