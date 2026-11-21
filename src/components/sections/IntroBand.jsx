@@ -1,5 +1,5 @@
 import Reveal from "../ui/Reveal.jsx"
-import SectionTag, { Rich } from "../ui/SectionTag.jsx"
+import { Rich } from "../ui/SectionTag.jsx"
 import SectionHeading from "../ui/SectionHeading.jsx"
 import SmartImage from "../ui/SmartImage.jsx"
 import { useContent } from "../../content/ContentContext.jsx"
@@ -13,7 +13,7 @@ export default function IntroBand() {
       <div className="bg-shell-black">
         <div className="shell-container grid gap-3 px-4 pb-10 pt-8 md:grid-cols-2 md:items-center md:gap-12 md:pb-14 md:pt-10">
           <Reveal delay={1} variant="fade">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-shell-yellow">{introBand.eyebrow}</p>
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-shell-yellow">{introBand.eyebrow}</p>
             <h2 className="mt-3 text-3xl font-extrabold leading-[1.12] tracking-tight text-white md:text-[2.6rem]">{introBand.title}</h2>
           </Reveal>
           <Reveal delay={2} variant="fade" className="flex items-start">
@@ -50,7 +50,7 @@ export default function IntroBand() {
             <ul className="grid gap-5 py-8 sm:grid-cols-2 lg:grid-cols-4 md:py-10">
               {pillars.map((pillar, idx) => (
                 <Reveal key={pillar.id} as="li" variant="up" delay={(idx % 4) + 1} className="rounded-2xl border border-shell-gray-300 bg-[#f3f4f6] p-6 shadow-sm transition-shadow duration-300 hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]">
-                  <SectionTag>{pillar.title}</SectionTag>
+                  <span className="inline-block text-base font-bold uppercase tracking-[0.14em] text-[#0a1a3c]">{pillar.title}</span>
                   <div className="mt-3 text-sm leading-relaxed text-shell-gray-700"><Rich as="p">{pillar.text}</Rich></div>
                 </Reveal>
               ))}

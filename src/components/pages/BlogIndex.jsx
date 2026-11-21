@@ -94,12 +94,19 @@ export default function BlogIndex({ page, topic }) {
   const fallbackAlt = typeof categoryRaw === 'string' ? '' : ((categoryRaw && categoryRaw.alt) || '')
   return (
     <article>
-      <section className="relative overflow-hidden bg-brand-ink text-white">
+      <section className="relative overflow-hidden bg-shell-black text-white">
+        {fallbackImage ? (
+          <>
+            <img src={fallbackImage} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover opacity-55" onError={(e) => { e.currentTarget.style.display = 'none' }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25" aria-hidden="true" />
+          </>
+        ) : null}
         <div
           className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-shell-red/20 blur-3xl"
           aria-hidden="true"
         />
-        <div className="shell-container relative pb-12 pt-28 md:pb-16 md:pt-36">
+        <div className="shell-container relative z-10 flex min-h-[28rem] flex-col justify-center py-20 md:min-h-[36rem]">
           <Reveal as="nav" variant="fade" delay={1} aria-label={ui.breadcrumb} className="breadcrumb-nav flex w-fit max-w-full flex-wrap items-center gap-2 rounded-md bg-shell-black px-3 py-2 text-sm text-white">
             <a href={'#' + sectionIds.top} className="text-white transition-colors hover:text-shell-yellow">
               {labels.home}
@@ -107,7 +114,7 @@ export default function BlogIndex({ page, topic }) {
             <span aria-hidden="true">/</span>
             <span className="font-semibold text-white">{page.title}</span>
           </Reveal>
-          <Reveal as="p" delay={2} className="mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow">
+          <Reveal as="p" delay={2} className="mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-sm font-bold tracking-[0.02em] text-shell-yellow">
             {copy.tag || page.eyebrow}
           </Reveal>
           <Reveal as="h1" delay={3} className="mb-4 max-w-3xl text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]">

@@ -20,7 +20,7 @@ function NotFound(notFound) {
   return (
     <section className='bg-brand-ink text-white'>
       <div className='shell-container py-20 text-center md:py-28'>
-        <p className='text-xs font-bold uppercase tracking-wider text-shell-yellow'>{notFound.tag}</p>
+        <p className='text-sm font-bold uppercase tracking-wider text-shell-yellow'>{notFound.tag}</p>
         <h1 className='mx-auto mt-3 max-w-2xl text-4xl font-bold tracking-tight md:text-6xl'>
           {notFound.title}
         </h1>
@@ -58,20 +58,28 @@ export default function PageView({ page, slug, params }) {
   const categoryAlt = ownImage.src ? (ownImage.alt || '') : sharedAlt
   const gallery = page.gallery || []
   const logos = page.logos || []
+  const isAbout = slug === 'about-us'
   const isContact = slug === 'contact-us'
   const sectionImages = [
-    ...(categoryImage ? [{ src: categoryImage, alt: categoryAlt }] : []),
+    ...(!isAbout && categoryImage ? [{ src: categoryImage, alt: categoryAlt }] : []),
     ...gallery,
   ].filter((image, index, images) => images.findIndex((item) => item.src === image.src) === index)
 
   return (
     <article>
-      <section className='relative overflow-hidden bg-brand-ink text-white'>
+      <section className='relative overflow-hidden bg-shell-black text-white'>
+        {categoryImage ? (
+          <>
+            <img src={categoryImage} alt='' aria-hidden='true' className='absolute inset-0 h-full w-full object-cover opacity-55' onError={(e) => { e.currentTarget.style.display = 'none' }} />
+            <div className='absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25' aria-hidden='true' />
+            <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25' aria-hidden='true' />
+          </>
+        ) : null}
         <div
           className='pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-shell-red/20 blur-3xl'
           aria-hidden='true'
         />
-        <div className='shell-container relative z-10 py-14 md:py-20'>
+        <div className='shell-container relative z-10 flex min-h-[28rem] flex-col justify-center py-20 md:min-h-[36rem]'>
           <Reveal as='nav' variant='fade' className='mb-12 text-xs text-white/60' aria-label={ui.breadcrumb}>
             {sectionHref ? (
               <a href={sectionHref} className='underline-offset-2 hover:text-white hover:underline'>
@@ -83,7 +91,7 @@ export default function PageView({ page, slug, params }) {
             <span aria-hidden='true'>/</span>
             <span className='font-semibold text-white'>{page.title}</span>
           </Reveal>
-          <Reveal as='p' delay={2} className='mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow'>
+          <Reveal as='p' delay={2} className='mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-sm font-bold tracking-[0.02em] text-shell-yellow'>
             {page.eyebrow}
           </Reveal>
           <Reveal as='h1' delay={3} className='mb-4 text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]'>
@@ -122,29 +130,30 @@ export default function PageView({ page, slug, params }) {
       )}
 
       {page.sections.map((section, sIdx) => {
-        const sectionImage = sectionImages[sIdx]
+        const sectionImage = isAbout ? gallery[sIdx - 1] : sectionImages[sIdx]
         const imageFirst = sIdx % 2 === 0
+        const darkSection = sIdx % 2 === 0
         return (
-        <section key={section.heading} className={sIdx % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
+        <section key={section.heading} className={darkSection ? 'bg-shell-black text-white' : 'bg-white'}>
           <div className='shell-container py-8 md:py-12 break-words'>
             <Reveal id={`section-${sIdx + 1}`} variant='fade' className={`scroll-mt-40 ${sectionImage ? 'grid gap-8 md:grid-cols-2 md:items-center' : ''}`}>
               {sectionImage ? <SmartImage src={sectionImage.src} alt={sectionImage.alt || ''} fallback='linear-gradient(135deg, #d8dbdd 0%, #f4f5f6 100%)' className={`aspect-[4/3] w-full rounded-2xl ${imageFirst ? 'order-1' : 'order-2'}`} /> : null}
               <div className={sectionImage ? (imageFirst ? 'order-2' : 'order-1') : ''}>
-              <h2 className='mt-0 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-2xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] md:text-3xl lg:text-4xl'>
+              <h2 className={`mt-0 text-2xl font-extrabold tracking-tight md:text-3xl lg:text-4xl ${darkSection ? 'text-white' : 'text-[#0a1a3c]'}`}>
                 {section.heading}
               </h2>
               {(section.body || []).map((para, pi) => (
-                <Copy key={String(para).slice(0, 60) + pi} para={para} />
+                <Copy key={String(para).slice(0, 60) + pi} para={para} light={darkSection} />
               ))}
               {section.list && (
                 <ul className='mt-6 grid gap-4 sm:grid-cols-2'>
                   {section.list.map((item, idx) => (
                     <Reveal as='li' variant='up' delay={(idx % 4) + 1}
                       key={item}
-                      className='flex gap-3 rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
+                      className={`flex gap-3 rounded-2xl border p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] ${darkSection ? 'border-white/15 bg-white/5' : 'border-shell-gray-300 bg-[#f3f4f6]'}`}
                     >
                       <span className='mt-1.5 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red' aria-hidden='true' />
-                      <span className='text-base leading-relaxed text-shell-gray-700 md:text-lg'>{item}</span>
+                      <span className={`text-base leading-relaxed md:text-lg ${darkSection ? 'text-white/85' : 'text-shell-gray-700'}`}>{item}</span>
                     </Reveal>
                   ))}
                 </ul>
@@ -172,14 +181,14 @@ export default function PageView({ page, slug, params }) {
                   {section.items.map((item, idx) => (
                     <Reveal as='li' variant='up' delay={(idx % 4) + 1}
                       key={item.title}
-                      className='rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
+                      className={`rounded-2xl border p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] ${darkSection ? 'border-white/15 bg-white/5' : 'border-shell-gray-300 bg-[#f3f4f6]'}`}
                     >
-                      <h3 className='flex gap-3 text-base font-bold leading-snug text-shell-gray-900 md:text-lg'>
+                      <h3 className={`flex gap-3 text-base font-bold leading-snug md:text-lg ${darkSection ? 'text-white' : 'text-shell-gray-900'}`}>
                         <span className='mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red' aria-hidden='true' />
                         {item.title}
                       </h3>
-                      <div className='mt-2 pl-5 text-sm leading-relaxed text-shell-gray-700 md:text-base'>
-                        <Copy para={item.text} />
+                      <div className={`mt-2 pl-5 text-sm leading-relaxed md:text-base ${darkSection ? 'text-white/80' : 'text-shell-gray-700'}`}>
+                        <Copy para={item.text} light={darkSection} />
                       </div>
                       {item.href ? (
                         <a href={item.href} className='mt-3 ml-auto flex w-fit items-center rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50'>
@@ -198,7 +207,7 @@ export default function PageView({ page, slug, params }) {
       })}
 
       {page.quote && page.quote.text ? (
-        <section className='bg-brand-ink text-white'>
+        <section className='bg-shell-black text-white'>
           <div className='shell-container py-8 md:py-12'>
             <Reveal variant='fade' className='mx-auto max-w-3xl text-center'>
               <svg aria-hidden='true' viewBox='0 0 24 24' className='mx-auto h-9 w-9 text-shell-red' fill='currentColor'>
@@ -220,16 +229,16 @@ export default function PageView({ page, slug, params }) {
       {slug === 'about-us' && <StartBand />}
 
       {logos.length > 0 && (
-        <section className='bg-shell-gray-100'>
+        <section className='bg-shell-black'>
           <div className='shell-container py-8 md:py-12'>
-            <div className='flex flex-wrap items-center justify-center gap-6 md:gap-10'>
+            <div className='flex flex-wrap items-center justify-center gap-4 md:gap-5'>
               {logos.map((logo) => (
-                <Reveal key={logo.src} variant='fade'>
+                <Reveal key={logo.src} variant='fade' className='flex h-36 w-36 items-center justify-center rounded-xl border border-white/15 bg-white/5 p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]'>
                   <img
                     src={logo.src}
                     alt={logo.alt || ''}
                     loading='lazy'
-                    className='h-16 w-auto object-contain opacity-80 transition-opacity hover:opacity-100'
+                    className='max-h-24 w-auto max-w-full object-contain'
                   />
                 </Reveal>
               ))}
@@ -239,24 +248,24 @@ export default function PageView({ page, slug, params }) {
       )}
 
       {relatedPages.length > 0 && (
-        <section className={page.sections.length % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100'}>
+        <section className='bg-white'>
         <div className='shell-container py-8 md:py-12'>
-            <Reveal as='h2' variant='fade' className='text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl'>
+            <Reveal as='h2' variant='fade' className='text-3xl font-extrabold tracking-tight text-[#0a1a3c] md:text-4xl'>
               {labels.exploreMore}
             </Reveal>
-            <div className='mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4'>
+            <div className='mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3'>
               {relatedPages.map((rel, idx) => (
                 <Reveal
                   key={rel.slug}
                   as='a'
                   href={`#/${rel.slug}`}
                   delay={(idx % 4) + 1}
-                  className='group rounded-2xl border border-shell-gray-300 bg-[#f5f3ff] p-6 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
+                  className='group rounded-2xl border border-shell-gray-300 bg-[#f3f4f6] p-6 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
                 >
-                  <p className='text-xs font-bold uppercase tracking-wider text-shell-yellow'>
+                  <p className='text-sm font-bold uppercase tracking-wider text-[#0174a4]'>
                     {rel.eyebrow}
                   </p>
-                  <h3 className='mt-2 text-base font-bold leading-snug text-shell-gray-900 group-hover:text-brand-ink'>
+                  <h3 className='mt-2 text-lg font-bold leading-snug text-shell-gray-900 group-hover:text-brand-ink'>
                     {rel.title}
                   </h3>
                   <span className='arrow-link mt-4 text-sm'>
