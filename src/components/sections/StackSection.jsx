@@ -29,7 +29,7 @@ export default function StackSection() {
         <Reveal variant="fade">
           <div className="grid gap-6 md:grid-cols-2 md:items-center md:gap-12">
             <div>
-              <SectionHeading eyebrow={stackSection.tag} title={stackSection.title} titleClassName="max-w-4xl sm:text-4xl md:text-5xl" />
+              <SectionHeading eyebrow={stackSection.tag} title={stackSection.title} titleClassName="max-w-4xl sm:text-[2.1rem] md:text-[2.9rem]" />
             </div>
             {stackSection?.text ? (
               <div className="text-base leading-relaxed text-[#232b37] md:text-lg">
