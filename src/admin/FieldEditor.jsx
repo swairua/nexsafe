@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react"
 import { api } from "./api.js"
 import { BTN, BTN_MINI, BTN_SM, INPUT } from "./ui.js"
 import MediaLibrary from "./MediaLibrary.jsx"
+import RichTextEditor from "./RichTextEditor.jsx"
 
 const IMAGE_KEYS = new Set(["src", "image", "logo", "fallback", "icon"])
 const LONG_KEYS = new Set(["text", "quote", "note", "columnText", "description", "alt", "kicker", "tag", "label"])
@@ -203,7 +204,7 @@ function renderField(key, val, absPath, onChange, onPickImage) {
   }
   const multiline = LONG_KEYS.has(key)
   if (multiline) {
-    return <StringInput value={val} onChange={onChange} />
+    return <RichTextEditor value={val} onChange={onChange} />
   }
   return <TextInput value={val} onChange={onChange} />
 }

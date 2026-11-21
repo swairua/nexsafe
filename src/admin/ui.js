@@ -16,6 +16,9 @@ export const BTN_MINI =
 export const INPUT =
   "rounded-2xl w-full border border-shell-gray-300 bg-white px-3 py-2.5 text-base text-shell-gray-900 outline-none focus:border-shell-red focus:ring-1 focus:ring-brand-ink transition-all duration-200";
 
+export const INPUT_LABEL =
+  "block text-[11px] font-bold uppercase tracking-wider text-shell-gray-500 mb-1";
+
 export const CARD =
   "rounded-2xl bg-white/80 backdrop-blur-sm p-4 ring-1 ring-shell-gray-200 shadow-sm hover:shadow-[0_0_24px_3px_rgba(6,147,227,0.12)] transition-all duration-200";
 
@@ -47,3 +50,18 @@ export const GRADIENT_TEXT =
   "bg-clip-text text-transparent bg-gradient-to-r from-shell-red to-brand-ink";
 
 export const TRANSITION_ALL = "transition-all duration-300 ease-out";
+
+export const RICH_TOOLBAR =
+  "flex items-center gap-1 px-2 py-1 rounded-xl border border-shell-gray-200 bg-white shadow-sm";
+
+export const RICH_TOOLBAR_BTN =
+  "h-8 w-8 rounded-lg flex items-center justify-center text-shell-gray-600 hover:bg-shell-gray-100 hover:text-shell-red transition-colors";
+
+export const RICH_EDITOR =
+  "rounded-xl border border-shell-gray-200 bg-white p-3 min-h-[200px] outline-none focus:border-shell-red focus:ring-1 focus:ring-brand-ink transition-all duration-200";
+
+export const EMPTY_STATE =
+  "flex flex-col items-center justify-center rounded-2xl p-8 text-center bg-white/50 backdrop-blur-sm ring-1 ring-shell-gray-200 shadow-sm";
+
+export const FIELD_GROUP =
+  "space-y-1";
