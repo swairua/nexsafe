@@ -15,7 +15,7 @@ export default function ConnectBand() {
       <div className="shell-container relative py-20 md:py-28">
         <Reveal variant="up">
           <SectionHeading eyebrow={connect.tag} title={connect.title} light titleClassName="max-w-2xl md:text-5xl" />
-          <div className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
+          <div className="mt-4 text-base leading-relaxed text-white/80 md:text-lg">
             <Rich as="p">{connect.text}</Rich>
           </div>
           <a href={connect.cta.href} className="mt-8 ml-auto flex w-fit items-center rounded-full bg-shell-red px-6 py-2.5 text-sm font-bold tracking-wide text-white transition-all duration-300 btn-lift-glow hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50">
