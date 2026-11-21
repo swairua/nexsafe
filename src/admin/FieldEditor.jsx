@@ -97,7 +97,7 @@ function ImageInput({ value, onChange, onPickImage }) {
           <img
             src={value}
             alt="preview"
-            className="w-32 h-24 object-cover rounded-lg border border-shell-gray-200 bg-shell-gray-100"
+            className="w-32 h-24 object-cover rounded-xl border border-shell-gray-200 bg-shell-gray-100"
             onError={(e) => {
               e.target.style.display = "none"
             }}
@@ -146,7 +146,7 @@ function ArrayEditor({ value, onChange, absPath, onPickImage }) {
         return (
           <div key={i} className="rounded-xl border border-shell-gray-200 bg-white p-3 shadow-sm space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold tracking-wider text-shell-gray-400">Item {i + 1}</span>
+              <span className="text-[10px] font-bold tracking-wider text-shell-gray-500">Item {i + 1}</span>
               <button type="button" onClick={() => removeItem(i)} className="text-xs text-shell-red hover:underline">
                 Remove
               </button>

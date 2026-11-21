@@ -18,9 +18,9 @@ export default function Login({ onAuthed }) {
     finally { setBusy(false) }
   }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-shell-black px-4">
+    <div className="min-h-screen flex items-center justify-center bg-shell-black px-4 text-white">
       <div className="w-full max-w-sm">
-        <div className="rounded-2xl bg-shell-gray-900 p-8 shadow-xl ring-1 ring-shell-gray-300">
+        <div className="rounded-2xl bg-shell-gray-900 p-8 shadow-xl ring-1 ring-shell-gray-800">
           <div className="flex items-center gap-3 mb-6">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-shell-red text-white">
               <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
@@ -33,7 +33,7 @@ export default function Login({ onAuthed }) {
               <p className="text-xs text-shell-gray-400">Admin portal</p>
             </div>
           </div>
-          <span className={EYEBROW} />| ADMIN PORTAL
+          <span className={EYEBROW}>Sign in</span>
           <form onSubmit={submit} className="mt-6 space-y-4">
             <label className="block text-sm font-medium text-shell-gray-300">Username
               <input value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" className={INPUT} />
@@ -44,7 +44,7 @@ export default function Login({ onAuthed }) {
             {error ? <p className="mt-2 rounded-lg bg-red-500 px-3 py-2 text-sm text-red-200">{error}</p> : null}
             <button type="submit" disabled={busy} className={BTN_PRIMARY}>{busy ? "Signing in..." : "Sign in"}</button>
           </form>
-          <p className="mt-4 text-center text-xs text-shell-gray-400">Authorized personnel only.</p>
+          <p className="mt-4 text-center text-xs text-shell-gray-500">Authorized personnel only.</p>
         </div>
       </div>
     </div>

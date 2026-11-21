@@ -1,20 +1,20 @@
 export const BTN =
-  "inline-flex min-h-[44px] items-center justify-center rounded-full px-3 py-2 text-sm font-medium text-shell-gray-900 hover:bg-shell-gray-100 transition-colors";
+  "inline-flex min-h-[48px] items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-shell-gray-900 hover:bg-shell-gray-100 transition-colors";
 
 export const BTN_PRIMARY =
-  "inline-flex min-h-[44px] items-center justify-center rounded-full px-3 py-2 text-sm font-medium text-white bg-shell-red hover:bg-shell-red-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink/50";
+  "inline-flex min-h-[48px] items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-white bg-shell-red hover:bg-shell-gray-900 transition-colors shadow-sm hover:shadow-[0_0_24px_2px_rgba(6,147,227,0.35)]";
 
 export const BTN_SOFT =
-  "inline-flex min-h-[44px] items-center justify-center rounded-full px-3 py-2 text-sm font-medium text-shell-gray-700 hover:bg-shell-gray-100 transition-colors";
+  "inline-flex min-h-[48px] items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-shell-gray-700 hover:bg-shell-gray-100 transition-colors";
 
 export const BTN_SM =
-  "inline-flex min-h-[36px] items-center justify-center rounded-md px-2.5 py-1 text-xs font-medium";
+  "inline-flex min-h-[36px] items-center justify-center rounded-md px-3 py-1 text-xs font-medium text-shell-gray-700 hover:bg-shell-gray-100 transition-colors";
 
 export const BTN_MINI =
-  "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md px-2 py-1 text-xs font-medium";
+  "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md px-2 py-1 text-xs font-medium text-shell-gray-600 hover:bg-shell-gray-100 transition-colors";
 
 export const INPUT =
-  "rounded-xl w-full border border-shell-gray-300 bg-white px-3 py-2.5 text-base text-shell-gray-900 outline-none focus:border-shell-red focus:ring-1 focus:ring-brand-ink";
+  "rounded-xl w-full border border-shell-gray-300 bg-white px-3 py-2.5 text-base text-shell-gray-900 outline-none focus:border-shell-red focus:ring-1 focus:ring-brand-ink transition-colors";
 
 export const CARD =
   "rounded-2xl bg-white p-3 ring-1 ring-shell-gray-100 shadow-[0_10px_36px_-16px_rgba(11,27,43,0.18)]";
@@ -30,3 +30,9 @@ export const EYEBROW =
 
 export const PILL_BADGE =
   "inline-flex items-center rounded-full bg-shell-red/10 px-2 py-0.5 text-xs text-shell-red font-semibold";
+
+export const PAGE_TITLE =
+  "text-3xl font-extrabold tracking-tight text-shell-gray-900 md:text-4xl";
+
+export const PAGE_LEDE =
+  "mt-3 text-base leading-relaxed text-shell-gray-700 md:text-lg";

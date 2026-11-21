@@ -4,13 +4,13 @@ const TABS = [
   { id: "content", label: "Content" },
   { id: "pages", label: "Pages" },
   { id: "media", label: "Media" },
-  { id: "messages", label: "Messages" },
+  { id: "messages", label: "Messages" }
 ]
 
 export default function AdminShell({ tab, setTab, user, onLogout, siteUrl, menuOpen, setMenuOpen, error, children }) {
   return (
     <div className="min-h-screen bg-shell-gray-100" style={{ "--admin-bar": "3.5rem" }}>
-      <header className="sticky top-0 z-20 h-14 border-b border-shell-gray-300 bg-white/95 backdrop-blur">
+      <header className="sticky top-0 z-20 h-14 border-b border-shell-gray-200 bg-white/90 backdrop-blur">
         <div className="mx-auto flex h-full max-w-6xl items-center gap-1.5 px-3 sm:gap-2 sm:px-4">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -93,7 +93,7 @@ export default function AdminShell({ tab, setTab, user, onLogout, siteUrl, menuO
             </div>
           </div>
         )}
-        {error ? <p className="mb-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-500">{error}</p> : null}
+        {error ? <p className="mb-3 rounded-xl bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
         {children}
       </main>
     </div>
