@@ -33,7 +33,7 @@ export default function Login({ onAuthed }) {
               <p className="text-xs text-shell-gray-400">Admin portal</p>
             </div>
           </div>
-          <EYEBROW />| ADMIN PORTAL
+          <span className={EYEBROW} />| ADMIN PORTAL
           <form onSubmit={submit} className="mt-6 space-y-4">
             <label className="block text-sm font-medium text-shell-gray-300">Username
               <input value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" className={INPUT} />
