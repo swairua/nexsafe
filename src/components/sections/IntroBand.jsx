@@ -13,7 +13,7 @@ export default function IntroBand() {
       <div className="bg-shell-black">
         <div className="shell-container grid gap-3 px-4 pb-10 pt-8 md:grid-cols-2 md:items-center md:gap-12 md:pb-14 md:pt-10">
           <Reveal delay={1} variant="fade">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-shell-yellow">{introBand.eyebrow}</p>
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-shell-yellow">{introBand.eyebrow}</p>
             <h2 className="mt-3 text-3xl font-extrabold leading-[1.12] tracking-tight text-white md:text-[2.6rem]">{introBand.title}</h2>
           </Reveal>
           <Reveal delay={2} variant="fade" className="flex items-start">

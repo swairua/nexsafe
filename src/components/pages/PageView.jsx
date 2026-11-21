@@ -20,7 +20,7 @@ function NotFound(notFound) {
   return (
     <section className='bg-brand-ink text-white'>
       <div className='shell-container py-20 text-center md:py-28'>
-        <p className='text-xs font-bold uppercase tracking-wider text-shell-yellow'>{notFound.tag}</p>
+        <p className='text-sm font-bold uppercase tracking-wider text-shell-yellow'>{notFound.tag}</p>
         <h1 className='mx-auto mt-3 max-w-2xl text-4xl font-bold tracking-tight md:text-6xl'>
           {notFound.title}
         </h1>
@@ -83,7 +83,7 @@ export default function PageView({ page, slug, params }) {
             <span aria-hidden='true'>/</span>
             <span className='font-semibold text-white'>{page.title}</span>
           </Reveal>
-          <Reveal as='p' delay={2} className='mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow'>
+          <Reveal as='p' delay={2} className='mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-sm font-bold tracking-[0.02em] text-shell-yellow'>
             {page.eyebrow}
           </Reveal>
           <Reveal as='h1' delay={3} className='mb-4 text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]'>

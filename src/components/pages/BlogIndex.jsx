@@ -107,7 +107,7 @@ export default function BlogIndex({ page, topic }) {
             <span aria-hidden="true">/</span>
             <span className="font-semibold text-white">{page.title}</span>
           </Reveal>
-          <Reveal as="p" delay={2} className="mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-[0.8rem] font-bold tracking-[0.02em] text-shell-yellow">
+          <Reveal as="p" delay={2} className="mt-8 mb-3 inline-block border-l-[3px] border-shell-yellow pl-3 text-sm font-bold tracking-[0.02em] text-shell-yellow">
             {copy.tag || page.eyebrow}
           </Reveal>
           <Reveal as="h1" delay={3} className="mb-4 max-w-3xl text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.4rem]">

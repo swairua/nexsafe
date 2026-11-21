@@ -41,7 +41,7 @@ export default function StartBand() {
         {split.title && cards.length ? (
           <div className="mt-12">
             <Reveal variant="fade" className="max-w-2xl">
-              <p className="text-xs font-bold uppercase tracking-wider text-shell-yellow">{split.tag}</p>
+              <p className="text-sm font-bold uppercase tracking-wider text-shell-yellow">{split.tag}</p>
               <h3 className="mt-2 text-xl font-bold tracking-tight md:text-2xl">{split.title}</h3>
               <div className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70 md:text-base"><Rich as="p">{split.text}</Rich></div>
             </Reveal>
