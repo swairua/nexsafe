@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { api, setCsrf } from "./api.js"
+import { BTN, BTN_PRIMARY, INPUT, EYEBROW, PILL_BADGE } from "./ui.js"
 
 export default function Login({ onAuthed }) {
   const [username, setUsername] = useState("admin")
@@ -16,36 +17,35 @@ export default function Login({ onAuthed }) {
     } catch (err) { setError(err.message) }
     finally { setBusy(false) }
   }
-  const INPUT = "mt-1 w-full rounded-lg border border-shell-gray-300 bg-white px-3 py-2.5 text-base text-shell-gray-900 outline-none transition focus:border-shell-gray-900 focus:ring-1 focus:ring-shell-gray-900 sm:text-sm"
   return (
-    <div className="flex min-h-screen items-center justify-center bg-shell-gray-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-shell-black px-4">
       <div className="w-full max-w-sm">
-        <div className="rounded-2xl bg-white p-8 shadow-xl ring-1 ring-shell-gray-300">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-shell-gray-900 text-white">
+        <div className="rounded-2xl bg-shell-gray-900 p-8 shadow-xl ring-1 ring-shell-gray-300">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-shell-red text-white">
               <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
                 <rect x="4" y="4" width="16" height="16" rx="4" fill="currentColor"/>
                 <path d="M8 12h8M12 8v8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-shell-gray-900">Nexsate</h1>
-              <p className="text-xs text-shell-gray-500">Admin portal</p>
+              <h1 className="text-xl font-bold text-white">Nexsate</h1>
+              <p className="text-xs text-shell-gray-400">Admin portal</p>
             </div>
           </div>
-          <p className="mt-6 text-sm text-shell-gray-600">Sign in to manage site content.</p>
+          <EYEBROW />| ADMIN PORTAL
           <form onSubmit={submit} className="mt-6 space-y-4">
-            <label className="block text-sm font-medium text-shell-gray-700">Username
+            <label className="block text-sm font-medium text-shell-gray-300">Username
               <input value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" className={INPUT} />
             </label>
-            <label className="block text-sm font-medium text-shell-gray-700">Password
+            <label className="block text-sm font-medium text-shell-gray-300">Password
               <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" className={INPUT} />
             </label>
-            {error ? <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
-            <button type="submit" disabled={busy} className="inline-flex min-h-[48px] w-full items-center justify-center rounded-lg bg-shell-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-ink disabled:opacity-50">{busy ? "Signing in..." : "Sign in"}</button>
+            {error ? <p className="mt-2 rounded-lg bg-red-500 px-3 py-2 text-sm text-red-200">{error}</p> : null}
+            <button type="submit" disabled={busy} className={BTN_PRIMARY}>{busy ? "Signing in..." : "Sign in"}</button>
           </form>
+          <p className="mt-4 text-center text-xs text-shell-gray-400">Authorized personnel only.</p>
         </div>
-        <p className="mt-4 text-center text-xs text-shell-gray-400">Authorized personnel only.</p>
       </div>
     </div>
   )

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react"
 import { api, setCsrf, setUnauthorizedHandler } from "./api.js"
 import Login from "./Login.jsx"
 import AdminShell from "./AdminShell.jsx"
-import { BTN, CARD, INPUT, PANEL_TITLE, SAVE_BAR } from "./ui.js"
+import { BTN, BTN_PRIMARY, BTN_SOFT, CARD, INPUT, PANEL_TITLE, SAVE_BAR, EYEBROW, PILL_BADGE } from "./ui.js"
 import ContentEditor from "./ContentEditor.jsx"
 import FieldEditor from "./FieldEditor.jsx"
 import MediaLibrary from "./MediaLibrary.jsx"
@@ -57,7 +57,7 @@ const CONTENT_KEYS = [
 const clone = (v) => (v == null ? null : JSON.parse(JSON.stringify(v)))
 
 function Screen({ children }) {
-  return <div className="flex min-h-screen items-center justify-center bg-shell-gray-100 px-4 text-sm text-shell-gray-500">{children}</div>
+  return <div className="flex min-h-screen items-center justify-center bg-shell-black px-4 text-sm text-shell-gray-400">{children}</div>
 }
 
 function PagesPanel({ pages, onSaved, onPickImage }) {
@@ -119,7 +119,7 @@ function PagesPanel({ pages, onSaved, onPickImage }) {
                 <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter pages…" className={INPUT + " mb-2"} />
                 <div className="flex flex-col gap-1 pr-1">
                   {visible.map((s) => (
-                    <button key={s} onClick={() => { setSlug(s); setNavOpen(false) }} title={s} className={BTN + " justify-start truncate " + (s === slug ? "bg-shell-gray-900 text-white" : "text-shell-gray-700 hover:bg-shell-gray-200")}>
+                    <button key={s} onClick={() => { setSlug(s); setNavOpen(false) }} title={s} className={(s === slug ? BTN_PRIMARY : BTN_SOFT) + " justify-start truncate " + (s === slug ? "text-white" : "text-shell-gray-700 hover:bg-shell-gray-200")}>
                       {(pages[s] && pages[s].title) || s}
                     </button>
                   ))}
@@ -138,7 +138,7 @@ function PagesPanel({ pages, onSaved, onPickImage }) {
           <div className="flex items-center gap-2">
             {status ? <span className="text-xs text-shell-gray-500">{status}</span> : null}
             <button onClick={() => { setDraft(clone(pages[slug])); setDirty(false); setStatus("") }} disabled={!dirty || busy} className={BTN + " bg-shell-gray-100 text-shell-gray-700 hover:bg-shell-gray-300 disabled:opacity-40"}>Reset</button>
-            <button onClick={save} disabled={!dirty || busy} className={BTN + " bg-shell-red text-white hover:bg-shell-gray-900 disabled:opacity-40"}>{busy ? "Saving…" : "Save page"}</button>
+            <button onClick={save} disabled={!dirty || busy} className={BTN_PRIMARY + " bg-shell-red text-white hover:bg-shell-gray-900 disabled:opacity-40"}>busy ? "Saving…" : "Save page"</button>
           </div>
         </div>
         <div className={CARD}>
@@ -148,6 +148,23 @@ function PagesPanel({ pages, onSaved, onPickImage }) {
             <p className="text-sm text-shell-gray-500">Nothing to edit for this page.</p>
           )}
         </div>
+      </div>
+    </div>
+  )
+}
+
+function ImagePickModal({ pick, setPick, onSelect }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 sm:items-center sm:p-4" onClick={() => setPick(null)}>
+      <div className="max-h-[92vh] w-full overflow-y-auto rounded-t-2xl bg-shell-gray-100 p-4 shadow-2xl sm:max-h-[85vh] sm:max-w-4xl sm:rounded-2xl sm:p-6" onClick={(e) => e.stopPropagation()}>
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2 sm:mb-4 sm:gap-3">
+          <h2 className="text-base font-bold text-shell-gray-900 sm:text-lg">Choose an image</h2>
+          <div className="flex gap-2">
+            <button onClick={() => { pick(""); setPick(null) }} className={BTN + " bg-white text-shell-gray-700 ring-1 ring-shell-gray-300 hover:bg-shell-gray-300"}>Clear image</button>
+            <button onClick={() => setPick(null)} className={BTN_PRIMARY + " bg-shell-red text-white hover:bg-brand-ink"}>Close</button>
+          </div>
+        </div>
+        <MediaLibrary onSelect={(url) => { pick(url); setPick(null) }} />
       </div>
     </div>
   )
@@ -219,7 +236,7 @@ export default function AdminApp() {
     .filter((k) => k !== "pages" && !CONTENT_KEYS.some((c) => c.key === k))
     .map((k) => ({ key: k, label: k, group: "Other" }))
   const keys = CONTENT_KEYS.filter((k) => Object.prototype.hasOwnProperty.call(content, k.key)).concat(extras)
-  const startPick = (setter) => setPick(() => setter)
+  const startPicker = (setter) => setPick(() => setter)
   const siteUrl = import.meta.env.BASE_URL || "/"
 
   return (
@@ -233,23 +250,12 @@ export default function AdminApp() {
       setMenuOpen={setMenuOpen}
       error={err}
     >
-      {tab === "content" ? <ContentEditor keys={keys} content={content} onSaved={setContent} onPickImage={startPick} /> : null}
-      {tab === "pages" ? <PagesPanel pages={content.pages || {}} onSaved={setContent} onPickImage={startPick} /> : null}
+      {tab === "content" ? <ContentEditor keys={keys} content={content} onSaved={setContent} onPickImage={startPicker} /> : null}
+      {tab === "pages" ? <PagesPanel pages={content.pages || {}} onSaved={setContent} onPickImage={startPicker} /> : null}
       {tab === "media" ? <MediaLibrary /> : null}
       {tab === "messages" ? <Messages /> : null}
       {pick ? (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 sm:items-center sm:p-4" onClick={() => setPick(null)}>
-          <div className="max-h-[92vh] w-full overflow-y-auto rounded-t-2xl bg-shell-gray-100 p-4 shadow-2xl sm:max-h-[85vh] sm:max-w-4xl sm:rounded-2xl sm:p-6" onClick={(e) => e.stopPropagation()}>
-            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 sm:mb-4 sm:gap-3">
-              <h2 className="text-base font-bold text-shell-gray-900 sm:text-lg">Choose an image</h2>
-              <div className="flex gap-2">
-                <button onClick={() => { pick(""); setPick(null) }} className={BTN + " bg-white text-shell-gray-700 ring-1 ring-shell-gray-300 hover:bg-shell-gray-300"}>Clear image</button>
-                <button onClick={() => setPick(null)} className={BTN + " bg-shell-gray-900 text-white hover:bg-brand-ink"}>Close</button>
-              </div>
-            </div>
-            <MediaLibrary onSelect={(url) => { pick(url); setPick(null) }} />
-          </div>
-        </div>
+        <ImagePickModal pick={pick} setPick={setPick} onSelect={startPicker} />
       ) : null}
     </AdminShell>
   )

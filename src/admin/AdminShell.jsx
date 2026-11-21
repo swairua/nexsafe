@@ -1,4 +1,4 @@
-import { BTN } from "./ui.js"
+import { BTN, BTN_PRIMARY, BTN_SOFT } from "./ui.js"
 
 const TABS = [
   { id: "content", label: "Content" },
@@ -29,7 +29,7 @@ export default function AdminShell({ tab, setTab, user, onLogout, siteUrl, menuO
                 key={t.id}
                 onClick={() => setTab(t.id)}
                 aria-current={t.id === tab ? "page" : undefined}
-                className={BTN + " " + (t.id === tab ? "bg-shell-gray-900 text-white" : "text-shell-gray-700 hover:bg-shell-gray-100")}
+                className={BTN + " " + (t.id === tab ? BTN_PRIMARY : BTN_SOFT)}
               >
                 {t.label}
               </button>
@@ -48,32 +48,9 @@ export default function AdminShell({ tab, setTab, user, onLogout, siteUrl, menuO
             </button>
           </div>
         </div>
-        {menuOpen ? (
-          <nav aria-label="Admin sections" className="border-t border-shell-gray-300 bg-white px-3 py-2 shadow-lg lg:hidden">
-            <div className="grid grid-cols-2 gap-1.5">
-              {TABS.map((t) => (
-                <button
-                  key={t.id}
-                  onClick={() => { setTab(t.id); setMenuOpen(false) }}
-                  aria-current={t.id === tab ? "page" : undefined}
-                  className={BTN + " justify-start " + (t.id === tab ? "bg-shell-gray-900 text-white" : "bg-shell-gray-100 text-shell-gray-700")}
-                >
-                  {t.label}
-                </button>
-              ))}
-            </div>
-            <a
-              href={siteUrl}
-              className={BTN + " mt-1.5 w-full bg-shell-gray-100 text-shell-gray-700 sm:hidden"}
-            >
-              View site →
-            </a>
-            {user ? <p className="mt-1.5 truncate px-1 text-xs text-shell-gray-500 md:hidden">Signed in as {user}</p> : null}
-          </nav>
-        ) : null}
       </header>
       <main className="mx-auto max-w-6xl px-3 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-4 sm:py-4">
-        {error ? <p className="mb-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}
+        {error ? <p className="mb-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-500">{error}</p> : null}
         {children}
       </main>
     </div>
