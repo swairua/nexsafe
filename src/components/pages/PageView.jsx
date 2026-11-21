@@ -67,8 +67,8 @@ export default function PageView({ page, slug, params }) {
 
   return (
     <article>
-      <section className={`relative overflow-hidden text-white ${isAbout ? 'bg-shell-black' : 'bg-brand-ink'}`}>
-        {isAbout && categoryImage ? (
+      <section className='relative overflow-hidden bg-shell-black text-white'>
+        {categoryImage ? (
           <>
             <img src={categoryImage} alt='' aria-hidden='true' className='absolute inset-0 h-full w-full object-cover opacity-55' onError={(e) => { e.currentTarget.style.display = 'none' }} />
             <div className='absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25' aria-hidden='true' />
@@ -79,7 +79,7 @@ export default function PageView({ page, slug, params }) {
           className='pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-shell-red/20 blur-3xl'
           aria-hidden='true'
         />
-        <div className={`shell-container relative z-10 ${isAbout ? 'flex min-h-[28rem] flex-col justify-center py-20 md:min-h-[36rem]' : 'py-14 md:py-20'}`}>
+        <div className='shell-container relative z-10 flex min-h-[28rem] flex-col justify-center py-20 md:min-h-[36rem]'>
           <Reveal as='nav' variant='fade' className='mb-12 text-xs text-white/60' aria-label={ui.breadcrumb}>
             {sectionHref ? (
               <a href={sectionHref} className='underline-offset-2 hover:text-white hover:underline'>
@@ -132,14 +132,14 @@ export default function PageView({ page, slug, params }) {
       {page.sections.map((section, sIdx) => {
         const sectionImage = isAbout ? gallery[sIdx - 1] : sectionImages[sIdx]
         const imageFirst = sIdx % 2 === 0
-        const darkSection = isAbout && sIdx % 2 === 0
+        const darkSection = sIdx % 2 === 0
         return (
-        <section key={section.heading} className={isAbout ? (darkSection ? 'bg-shell-black text-white' : 'bg-white') : (sIdx % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100')}>
+        <section key={section.heading} className={darkSection ? 'bg-shell-black text-white' : 'bg-white'}>
           <div className='shell-container py-8 md:py-12 break-words'>
             <Reveal id={`section-${sIdx + 1}`} variant='fade' className={`scroll-mt-40 ${sectionImage ? 'grid gap-8 md:grid-cols-2 md:items-center' : ''}`}>
               {sectionImage ? <SmartImage src={sectionImage.src} alt={sectionImage.alt || ''} fallback='linear-gradient(135deg, #d8dbdd 0%, #f4f5f6 100%)' className={`aspect-[4/3] w-full rounded-2xl ${imageFirst ? 'order-1' : 'order-2'}`} /> : null}
               <div className={sectionImage ? (imageFirst ? 'order-2' : 'order-1') : ''}>
-              <h2 className={isAbout ? `mt-0 text-2xl font-extrabold tracking-tight md:text-3xl lg:text-4xl ${darkSection ? 'text-white' : 'text-[#0a1a3c]'}` : 'mt-0 bg-gradient-to-r from-[#0a1440] via-[#0174a4] to-[#0a1440] bg-clip-text text-2xl font-bold tracking-tight text-transparent drop-shadow-[0_0_18px_rgba(1,116,164,0.25)] md:text-3xl lg:text-4xl'}>
+              <h2 className={`mt-0 text-2xl font-extrabold tracking-tight md:text-3xl lg:text-4xl ${darkSection ? 'text-white' : 'text-[#0a1a3c]'}`}>
                 {section.heading}
               </h2>
               {(section.body || []).map((para, pi) => (
@@ -150,7 +150,7 @@ export default function PageView({ page, slug, params }) {
                   {section.list.map((item, idx) => (
                     <Reveal as='li' variant='up' delay={(idx % 4) + 1}
                       key={item}
-                      className={`flex gap-3 rounded-2xl border p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] ${darkSection ? 'border-white/15 bg-white/5' : (isAbout ? 'border-shell-gray-300 bg-[#f3f4f6]' : 'border-shell-gray-300 bg-[#f5f3ff]')}`}
+                      className={`flex gap-3 rounded-2xl border p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] ${darkSection ? 'border-white/15 bg-white/5' : 'border-shell-gray-300 bg-[#f3f4f6]'}`}
                     >
                       <span className='mt-1.5 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red' aria-hidden='true' />
                       <span className={`text-base leading-relaxed md:text-lg ${darkSection ? 'text-white/85' : 'text-shell-gray-700'}`}>{item}</span>
@@ -181,7 +181,7 @@ export default function PageView({ page, slug, params }) {
                   {section.items.map((item, idx) => (
                     <Reveal as='li' variant='up' delay={(idx % 4) + 1}
                       key={item.title}
-                      className={`rounded-2xl border p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] ${darkSection ? 'border-white/15 bg-white/5' : (isAbout ? 'border-shell-gray-300 bg-[#f3f4f6]' : 'border-shell-gray-300 bg-[#f5f3ff]')}`}
+                      className={`rounded-2xl border p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] ${darkSection ? 'border-white/15 bg-white/5' : 'border-shell-gray-300 bg-[#f3f4f6]'}`}
                     >
                       <h3 className={`flex gap-3 text-base font-bold leading-snug md:text-lg ${darkSection ? 'text-white' : 'text-shell-gray-900'}`}>
                         <span className='mt-2 h-2 w-2 shrink-0 rounded-[2px] bg-shell-red' aria-hidden='true' />
@@ -207,7 +207,7 @@ export default function PageView({ page, slug, params }) {
       })}
 
       {page.quote && page.quote.text ? (
-        <section className='bg-brand-ink text-white'>
+        <section className='bg-shell-black text-white'>
           <div className='shell-container py-8 md:py-12'>
             <Reveal variant='fade' className='mx-auto max-w-3xl text-center'>
               <svg aria-hidden='true' viewBox='0 0 24 24' className='mx-auto h-9 w-9 text-shell-red' fill='currentColor'>
@@ -229,16 +229,16 @@ export default function PageView({ page, slug, params }) {
       {slug === 'about-us' && <StartBand />}
 
       {logos.length > 0 && (
-        <section className={isAbout ? 'bg-brand-ink' : 'bg-shell-gray-100'}>
+        <section className='bg-shell-black'>
           <div className='shell-container py-8 md:py-12'>
-            <div className={`flex flex-wrap items-center justify-center ${isAbout ? 'gap-4 md:gap-5' : 'gap-6 md:gap-10'}`}>
+            <div className='flex flex-wrap items-center justify-center gap-4 md:gap-5'>
               {logos.map((logo) => (
-                <Reveal key={logo.src} variant='fade' className={isAbout ? 'flex h-36 w-36 items-center justify-center rounded-xl border border-white/15 bg-white/5 p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]' : ''}>
+                <Reveal key={logo.src} variant='fade' className='flex h-36 w-36 items-center justify-center rounded-xl border border-white/15 bg-white/5 p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]'>
                   <img
                     src={logo.src}
                     alt={logo.alt || ''}
                     loading='lazy'
-                    className={isAbout ? 'max-h-24 w-auto max-w-full object-contain' : 'h-16 w-auto object-contain opacity-80 transition-opacity hover:opacity-100'}
+                    className='max-h-24 w-auto max-w-full object-contain'
                   />
                 </Reveal>
               ))}
@@ -248,24 +248,24 @@ export default function PageView({ page, slug, params }) {
       )}
 
       {relatedPages.length > 0 && (
-        <section className={isAbout ? 'bg-white' : (page.sections.length % 2 === 0 ? 'bg-white' : 'bg-shell-gray-100')}>
+        <section className='bg-white'>
         <div className='shell-container py-8 md:py-12'>
-            <Reveal as='h2' variant='fade' className={isAbout ? 'text-3xl font-extrabold tracking-tight text-[#0a1a3c] md:text-4xl' : 'text-2xl font-bold tracking-tight text-shell-gray-900 md:text-3xl'}>
+            <Reveal as='h2' variant='fade' className='text-3xl font-extrabold tracking-tight text-[#0a1a3c] md:text-4xl'>
               {labels.exploreMore}
             </Reveal>
-            <div className={`mt-7 grid gap-5 sm:grid-cols-2 ${isAbout ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}>
+            <div className='mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3'>
               {relatedPages.map((rel, idx) => (
                 <Reveal
                   key={rel.slug}
                   as='a'
                   href={`#/${rel.slug}`}
                   delay={(idx % 4) + 1}
-                  className={`group rounded-2xl border border-shell-gray-300 p-6 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)] ${isAbout ? 'bg-[#f3f4f6]' : 'bg-[#f5f3ff]'}` }
+                  className='group rounded-2xl border border-shell-gray-300 bg-[#f3f4f6] p-6 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[inset_0_0_0_1px_rgba(1,116,164,0.6),0_0_0_3px_rgba(1,116,164,0.15),0_0_24px_3px_rgba(1,116,164,0.35),0_14px_30px_-12px_rgba(1,116,164,0.35)]'
                 >
-                  <p className={isAbout ? 'text-sm font-bold uppercase tracking-wider text-[#0174a4]' : 'text-xs font-bold uppercase tracking-wider text-shell-yellow'}>
+                  <p className='text-sm font-bold uppercase tracking-wider text-[#0174a4]'>
                     {rel.eyebrow}
                   </p>
-                  <h3 className={isAbout ? 'mt-2 text-lg font-bold leading-snug text-shell-gray-900 group-hover:text-brand-ink' : 'mt-2 text-base font-bold leading-snug text-shell-gray-900 group-hover:text-brand-ink'}>
+                  <h3 className='mt-2 text-lg font-bold leading-snug text-shell-gray-900 group-hover:text-brand-ink'>
                     {rel.title}
                   </h3>
                   <span className='arrow-link mt-4 text-sm'>
