@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState, useCallback } from "react"
 import { api, setCsrf, setUnauthorizedHandler } from "./api.js"
 import Login from "./Login.jsx"
 import AdminShell from "./AdminShell.jsx"
-import { BTN, BTN_PRIMARY, BTN_SOFT, CARD, INPUT, PANEL_TITLE, SAVE_BAR, EYEBROW, PILL_BADGE } from "./ui.js"
+import { BTN, BTN_PRIMARY, BTN_SOFT, CARD, CARD_ELEVATED, INPUT, PANEL_TITLE, SAVE_BAR, EYEBROW, PILL_BADGE, GLASS, GRADIENT_TEXT, TRANSITION_ALL } from "./ui.js"
 import ContentEditor from "./ContentEditor.jsx"
 import FieldEditor from "./FieldEditor.jsx"
 import MediaLibrary from "./MediaLibrary.jsx"
@@ -51,13 +51,30 @@ const CONTENT_KEYS = [
   { key: "cookieBanner", label: "Cookie banner", group: "Pages" },
   { key: "contactForm", label: "Contact form", group: "Pages" },
   { key: "footerColumns", label: "Footer columns", group: "Footer" },
-  { key: "footerLegal", label: "Footer legal links", group: "Footer" },
+  { key: "footerLegal", label: "Footer legal links", group: "Footer" }
 ]
 
 const clone = (v) => (v == null ? null : JSON.parse(JSON.stringify(v)))
 
 function Screen({ children }) {
-  return <div className="flex min-h-screen items-center justify-center bg-shell-black px-4 text-sm text-shell-gray-400">{children}</div>
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-shell-black px-4 text-white">
+      <div className="rounded-2xl bg-shell-gray-900 p-8 shadow-xl ring-1 ring-shell-gray-800">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-shell-red text-white">
+            <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden="true">
+              <rect x="4" y="4" width="16" height="16" rx="4" fill="currentColor"/>
+              <path d="M8 12h8M12 8v8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+          </div>
+          <span className="text-xl font-extrabold tracking-tight text-white group">
+            <span className={GRADIENT_TEXT}>Nexsate</span> <span className="text-shell-red">Admin</span>
+          </span>
+        </div>
+        <p className="text-sm text-shell-gray-400">{children}</p>
+      </div>
+    </div>
+  )
 }
 
 function PagesPanel({ pages, onSaved, onPickImage }) {
@@ -65,7 +82,6 @@ function PagesPanel({ pages, onSaved, onPickImage }) {
   const [slug, setSlug] = useState(slugs[0] || "")
   const [draft, setDraft] = useState(null)
   const [dirty, setDirty] = useState(false)
-  const [status, setStatus] = useState("")
   const [busy, setBusy] = useState(false)
   const [filter, setFilter] = useState("")
   const [navOpen, setNavOpen] = useState(false)
@@ -73,7 +89,6 @@ function PagesPanel({ pages, onSaved, onPickImage }) {
   useEffect(() => {
     setDraft(clone(pages && pages[slug]))
     setDirty(false)
-    setStatus("")
   }, [slug, pages])
 
   const visible = useMemo(() => {
@@ -82,20 +97,24 @@ function PagesPanel({ pages, onSaved, onPickImage }) {
     return slugs.filter((s) => s.toLowerCase().includes(q) || String((pages[s] && pages[s].title) || "").toLowerCase().includes(q))
   }, [slugs, pages, filter])
 
-  if (!slugs.length) return <p className="text-sm text-shell-gray-500">No pages in the content store yet.</p>
+  if (!slugs.length) {
+    return (
+      <div className={CARD_ELEVATED + " p-6 text-center"}>
+        <p className="text-sm text-shell-gray-500">No pages in the content store yet.</p>
+      </div>
+    )
+  }
 
   async function save() {
     setBusy(true)
-    setStatus("")
     try {
       const value = Object.assign({}, pages)
       value[slug] = draft
       const r = await api.post("content.php", { key: "pages", value: value })
       if (onSaved) onSaved(r.content)
-      setStatus("Saved")
       setDirty(false)
     } catch (e) {
-      setStatus(e.message)
+      alert(e.message || "Save failed")
     } finally {
       setBusy(false)
     }
@@ -104,25 +123,27 @@ function PagesPanel({ pages, onSaved, onPickImage }) {
   return (
     <div className="grid gap-3 lg:grid-cols-[14rem_minmax(0,1fr)]">
       <aside>
-        <div className={CARD + " lg:sticky lg:top-[var(--admin-bar,3.5rem)]"}>
-          <button onClick={() => setNavOpen(!navOpen)} aria-expanded={navOpen} className={BTN + " w-full bg-shell-gray-100 text-shell-gray-700 lg:hidden"}>
-            {navOpen ? "Hide page list" : "Choose page (" + slugs.length + ")"}
-          </button>
-          <div className={(navOpen ? "" : "hidden ") + "lg:block"}>
-            <div className="fixed inset-0 z-30 bg-black/40 lg:hidden" onClick={() => setNavOpen(false)} aria-hidden="true" />
-            <div className="fixed inset-y-0 left-0 z-30 flex w-[86vw] max-w-xs flex-col bg-white p-3 shadow-2xl lg:static lg:z-auto lg:w-auto lg:max-w-none lg:bg-transparent lg:p-0 lg:shadow-none">
-              <div className="mb-2 flex items-center justify-between lg:hidden">
-                <span className="text-sm font-bold text-shell-gray-900">Pages</span>
-                <button onClick={() => setNavOpen(false)} aria-label="Close page list" className={BTN + " min-w-[44px] px-2 text-shell-gray-700"}>✕</button>
-              </div>
-              <div className="min-h-0 flex-1 overflow-y-auto">
-                <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter pages…" className={INPUT + " mb-2"} />
-                <div className="flex flex-col gap-1 pr-1">
-                  {visible.map((s) => (
-                    <button key={s} onClick={() => { setSlug(s); setNavOpen(false) }} title={s} className={(s === slug ? BTN_PRIMARY : BTN_SOFT) + " justify-start truncate " + (s === slug ? "text-white" : "text-shell-gray-700 hover:bg-shell-gray-200")}>
-                      {(pages[s] && pages[s].title) || s}
-                    </button>
-                  ))}
+        <div className={CARD_ELEVATED + " lg:sticky lg:top-[var(--admin-bar,3.5rem)]"}>
+          <div className="p-4">
+            <button onClick={() => setNavOpen(!navOpen)} aria-expanded={navOpen} className={BTN + " w-full bg-shell-gray-100 text-shell-gray-700 lg:hidden"}>
+              {navOpen ? "Hide pages" : "Choose page (" + slugs.length + ")"}
+            </button>
+            <div className={(navOpen ? "" : "hidden ") + "lg:block"}>
+              <div className="fixed inset-0 z-30 bg-black/40 lg:hidden" onClick={() => setNavOpen(false)} aria-hidden="true" />
+              <div className="fixed inset-y-0 left-0 z-30 flex w-[86vw] max-w-xs flex-col bg-white p-3 shadow-[0_20px_40px_-12px_rgba(11,27,43,0.15)] lg:static lg:z-auto lg:w-auto lg:max-w-none lg:bg-transparent lg:p-0 lg:shadow-none">
+                <div className="mb-2 flex items-center justify-between lg:hidden">
+                  <span className="text-sm font-bold text-shell-gray-900">Pages</span>
+                  <button onClick={() => setNavOpen(false)} aria-label="Close page list" className={BTN + " min-w-[44px] px-2 text-shell-gray-700"}>✕</button>
+                </div>
+                <div className="min-h-0 flex-1 overflow-y-auto">
+                  <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter pages…" className={INPUT + " mb-2"} />
+                  <div className="flex flex-col gap-1 pr-1">
+                    {visible.map((s) => (
+                      <button key={s} onClick={() => { setSlug(s); setNavOpen(false) }} title={s} className={(s === slug ? BTN_PRIMARY : BTN_SOFT) + " justify-start truncate " + (s === slug ? "text-white" : "text-shell-gray-700 hover:bg-shell-gray-100")}>
+                        {(pages[s] && pages[s].title) || s}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -133,12 +154,11 @@ function PagesPanel({ pages, onSaved, onPickImage }) {
         <div className={SAVE_BAR}>
           <div className="min-w-0">
             <h2 className={PANEL_TITLE}>{(pages[slug] && pages[slug].title) || slug}</h2>
-            <p className="truncate text-xs text-shell-gray-500">#/{slug}{dirty ? " · unsaved changes" : ""}</p>
+            <p className="truncate text-xs text-shell-gray-500">#/{slug}{dirty ? " · unsaved" : ""}</p>
           </div>
           <div className="flex items-center gap-2">
-            {status ? <span className="text-xs text-shell-gray-500">{status}</span> : null}
-            <button onClick={() => { setDraft(clone(pages[slug])); setDirty(false); setStatus("") }} disabled={!dirty || busy} className={BTN + " bg-shell-gray-100 text-shell-gray-700 hover:bg-shell-gray-300 disabled:opacity-40"}>Reset</button>
-            <button onClick={save} disabled={!dirty || busy} className={BTN_PRIMARY + " bg-shell-red text-white hover:bg-shell-gray-900 disabled:opacity-40"}>busy ? "Saving…" : "Save page"</button>
+            <button onClick={() => { setDraft(clone(pages[slug])); setDirty(false) }} disabled={!dirty || busy} className={BTN + " bg-white text-shell-gray-700 hover:bg-shell-gray-100 ring-1 ring-shell-gray-200 disabled:opacity-40"}>Reset</button>
+            <button onClick={save} disabled={!dirty || busy} className={BTN_PRIMARY + " disabled:opacity-40"}>busy ? "Saving…" : "Save page"</button>
           </div>
         </div>
         <div className={CARD}>
@@ -155,14 +175,13 @@ function PagesPanel({ pages, onSaved, onPickImage }) {
 
 function ImagePickModal({ pick, setPick, onSelect }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 sm:items-center sm:p-4" onClick={() => setPick(null)}>
-      <div className="max-h-[92vh] w-full overflow-y-auto rounded-t-2xl bg-shell-gray-100 p-4 shadow-2xl sm:max-h-[85vh] sm:max-w-4xl sm:rounded-2xl sm:p-6" onClick={(e) => e.stopPropagation()}>
-        <div className="mb-3 flex flex-wrap items-center justify-between gap-2 sm:mb-4 sm:gap-3">
-          <h2 className="text-base font-bold text-shell-gray-900 sm:text-lg">Choose an image</h2>
-          <div className="flex gap-2">
-            <button onClick={() => { pick(""); setPick(null) }} className={BTN + " bg-white text-shell-gray-700 ring-1 ring-shell-gray-300 hover:bg-shell-gray-300"}>Clear image</button>
-            <button onClick={() => setPick(null)} className={BTN_PRIMARY + " bg-shell-red text-white hover:bg-brand-ink"}>Close</button>
-          </div>
+    <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center" onClick={() => setPick(null)}>
+      <div className="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-base font-bold text-shell-gray-900">Choose an image</h2>
+          <button type="button" onClick={() => setPick(null)} className={BTN + " text-shell-gray-500 hover:text-shell-gray-900"}>
+            ✕
+          </button>
         </div>
         <MediaLibrary onSelect={(url) => { pick(url); setPick(null) }} />
       </div>
@@ -178,6 +197,15 @@ export default function AdminApp() {
   const [pick, setPick] = useState(null)
   const [err, setErr] = useState("")
   const [menuOpen, setMenuOpen] = useState(false)
+  const [toasts, setToasts] = useState([])
+
+  const dismissToast = useCallback((id) => setToasts((ts) => ts.filter((t) => t.id !== id)), [])
+
+  const addToast = useCallback((msg) => {
+    const id = Date.now() + Math.random()
+    setToasts((ts) => [...ts, { id, msg }])
+    setTimeout(() => setToasts((ts) => ts.filter((t) => t.id !== id)), 3000)
+  }, [])
 
   async function refresh() {
     setErr("")
@@ -202,7 +230,6 @@ export default function AdminApp() {
   }
 
   useEffect(() => {
-
     setUnauthorizedHandler(() => {
       setCsrf(null)
       setSession(null)
@@ -222,7 +249,7 @@ export default function AdminApp() {
     refresh()
   }
 
-  if (boot) return <Screen>Loading admin...</Screen>
+  if (boot) return <Screen>Loading admin…</Screen>
   if (!session) return <Login onAuthed={afterLogin} />
   if (!content) {
     return (
@@ -249,9 +276,11 @@ export default function AdminApp() {
       menuOpen={menuOpen}
       setMenuOpen={setMenuOpen}
       error={err}
+      toasts={toasts}
+      dismissToast={dismissToast}
     >
-      {tab === "content" ? <ContentEditor keys={keys} content={content} onSaved={setContent} onPickImage={startPicker} /> : null}
-      {tab === "pages" ? <PagesPanel pages={content.pages || {}} onSaved={setContent} onPickImage={startPicker} /> : null}
+      {tab === "content" ? <ContentEditor keys={keys} content={content} onSaved={setContent} onPickImage={startPicker} addToast={addToast} /> : null}
+      {tab === "pages" ? <PagesPanel pages={content.pages || {}} onSaved={setContent} onPickImage={startPicker} addToast={addToast} /> : null}
       {tab === "media" ? <MediaLibrary /> : null}
       {tab === "messages" ? <Messages /> : null}
       {pick ? (
