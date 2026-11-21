@@ -137,7 +137,7 @@ export default function PartnerStrip() {
             aria-roledescription="carousel"
             aria-label={partnerStrip.title}
             tabIndex={0}
-            className="overflow-hidden md:min-h-0"
+            className="overflow-hidden md:min-h-0 md:translate-y-4"
           >
             <div
               ref={wrapperRef}
