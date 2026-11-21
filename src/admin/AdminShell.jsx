@@ -50,6 +50,49 @@ export default function AdminShell({ tab, setTab, user, onLogout, siteUrl, menuO
         </div>
       </header>
       <main className="mx-auto max-w-6xl px-3 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-4 sm:py-4">
+        {menuOpen && (
+          <div className="fixed inset-0 z-40 bg-white/95 backdrop-blur-sm" aria-label="Mobile menu" role="menu">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-shell-gray-200">
+              <h2 className="text-base font-bold text-shell-gray-900">Nexsate Admin</h2>
+              <button
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                aria-label="Close mobile menu"
+                className={BTN + " text-shell-gray-500 hover:text-shell-gray-900"}
+              >
+                ✕
+              </button>
+            </div>
+            <nav aria-label="Mobile sections" className="px-4 py-4 space-y-1" role="none">
+              {TABS.map((t) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  role="menuitem"
+                  onClick={() => { setTab(t.id); setMenuOpen(false) }}
+                  aria-current={t.id === tab ? "page" : undefined}
+                  className={BTN + " w-full justify-start text-left " + (t.id === tab ? "bg-shell-gray-100 text-shell-gray-900" : "text-shell-gray-700 hover:bg-shell-gray-100")}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </nav>
+            <div className="px-4 py-3 border-t border-shell-gray-200">
+              {user ? (
+                <p className="mb-2 truncate text-xs text-shell-gray-500 md:inline">Signed in as {user}</p>
+              ) : null}
+              <a
+                href={siteUrl}
+                className={BTN + " w-full bg-shell-gray-100 text-shell-gray-700 hover:bg-shell-gray-300 flex justify-center"}
+              >
+                View site
+              </a>
+              <button onClick={onLogout} className={BTN + " mt-2 w-full bg-shell-red px-3 text-white hover:bg-shell-gray-900 flex justify-center"}>
+                Sign out
+              </button>
+            </div>
+          </div>
+        )}
         {error ? <p className="mb-3 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-500">{error}</p> : null}
         {children}
       </main>
