@@ -263,6 +263,7 @@ export default function PageView({ page, slug, params }) {
                 </Reveal>
               ))}
             </div>
+          </div>
         </section>
       )}
 
