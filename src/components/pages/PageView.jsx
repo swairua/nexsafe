@@ -215,20 +215,18 @@ export default function PageView({ page, slug, params }) {
       ) : null}
 
       {logos.length > 0 && (
-        <section className='bg-shell-black'>
-          <div className='shell-container py-8 md:py-12'>
-            <div className='flex flex-wrap items-center justify-center gap-4 md:gap-5'>
-              {logos.map((logo) => (
-                <Reveal key={logo.src} variant='fade' className='flex h-36 w-36 items-center justify-center rounded-xl border border-white/15 bg-white/5 p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]'>
-                  <img
-                    src={logo.src}
-                    alt={logo.alt || ''}
-                    loading='lazy'
-                    className='max-h-24 w-auto max-w-full object-contain'
-                  />
-                </Reveal>
-              ))}
-            </div>
+        <section className='bg-shell-black py-8 md:py-12 px-4 md:px-8'>
+          <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6'>
+            {logos.map((logo) => (
+              <Reveal key={logo.src} variant='fade' className='flex h-36 items-center justify-center rounded-xl border border-white/15 bg-white/5 p-5 shadow-sm transition-all duration-300 hover:border-brand-ink hover:shadow-[0_0_14px_1px_rgba(1,116,164,0.7),0_0_36px_8px_rgba(1,116,164,0.3)]'>
+                <img
+                  src={logo.src}
+                  alt={logo.alt || ''}
+                  loading='lazy'
+                  className='max-h-24 w-auto max-w-full object-contain'
+                />
+              </Reveal>
+            ))}
           </div>
         </section>
       )}
